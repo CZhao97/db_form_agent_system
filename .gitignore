@@ -49,3 +49,8 @@ reflection_*.txt
 # OS files
 .DS_Store
 Thumbs.db
+
+
+sample.txt
+data
+searching_results
