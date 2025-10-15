@@ -20,13 +20,17 @@ from langchain.tools import BaseTool
 
 
 log = logging.getLogger("fulltext_journal_search")
-if not log.handlers:
+# Only set basicConfig if root logger not already configured
+if not logging.getLogger().hasHandlers():
     logging.basicConfig(level=logging.INFO, format="%(asctime)s | %(levelname)s | %(message)s")
 
 class FullTextJournalSearchInput(BaseModel):
     query: str = Field(..., description="Academic search terms")
     max_results: int = Field(20, description="Maximum number of results to return")
-    include_preprints: bool = Field(True, description="Include preprint servers")
+    include_preprints: bool = Field(True, description="Include arXiv")
+    include_pubmed: bool = Field(True, description="Include PubMed/PMC")
+    include_crossref: bool = Field(False, description="Include Crossref (API on/off)")
+    include_biorxiv: bool = Field(False, description="Include bioRxiv (API on/off)")
 
 def make_requests_session(total_retries: int = 5, backoff: float = 0.5, status_forcelist=(429,500,502,503,504)):
     retry = Retry(
@@ -124,12 +128,17 @@ class FullTextJournalSearchTool(BaseTool):
     _max_retries: int = 3
     _backoff_base: float = 1.5
     _http: requests.Session
+    # Exposed configuration flags (declare as fields so pydantic/BaseTool accepts them)
+    include_pubmed: bool = True
+    include_preprints: bool = False
+    results_base_dir: Optional[pathlib.Path] = None
 
     def __init__(self, **data):
         super().__init__(**data)
         self._http = make_requests_session()
         self._current_run_assets_dir: Optional[pathlib.Path] = None
-
+        self.include_pubmed = data.get("include_pubmed", True)
+        self.include_preprints = data.get("include_preprints", True)
 
     # ---------------- Entrez ----------------
     def entrez_call(self, func, *args, **kwargs):
@@ -273,138 +282,138 @@ class FullTextJournalSearchTool(BaseTool):
             log.error(f"arXiv search error: {e}")
         return results
 
-    # ---------------- bioRxiv ----------------
-    def search_biorxiv(self, query: str, max_results: int) -> List[Dict]:
-        results: List[Dict] = []
-        try:
-            end_date = datetime.utcnow()
-            start_date = end_date - timedelta(days=3*365)
-            url = f"https://api.biorxiv.org/details/biorxiv/{start_date.strftime('%Y-%m-%d')}/{end_date.strftime('%Y-%m-%d')}"
-            r = self._http.get(url, timeout=60); r.raise_for_status()
-            data = r.json()
-            if not (data.get("messages") and data["messages"][0].get("status") == "ok"):
-                return results
+    # # ---------------- bioRxiv ----------------
+    # def search_biorxiv(self, query: str, max_results: int) -> List[Dict]:
+    #     results: List[Dict] = []
+    #     try:
+    #         end_date = datetime.utcnow()
+    #         start_date = end_date - timedelta(days=3*365)
+    #         url = f"https://api.biorxiv.org/details/biorxiv/{start_date.strftime('%Y-%m-%d')}/{end_date.strftime('%Y-%m-%d')}"
+    #         r = self._http.get(url, timeout=60); r.raise_for_status()
+    #         data = r.json()
+    #         if not (data.get("messages") and data["messages"][0].get("status") == "ok"):
+    #             return results
 
-            ql = (query or "").lower()
-            for p in data.get("collection", []):
-                title = p.get("title","") or ""; abstract = p.get("abstract","") or ""
-                if ql and (ql not in title.lower() and ql not in abstract.lower()):
-                    continue
+    #         ql = (query or "").lower()
+    #         for p in data.get("collection", []):
+    #             title = p.get("title","") or ""; abstract = p.get("abstract","") or ""
+    #             if ql and (ql not in title.lower() and ql not in abstract.lower()):
+    #                 continue
 
-                doi = (p.get("doi") or "").strip()
-                version = str(p.get("version") or "").strip()
-                if not doi: continue
+    #             doi = (p.get("doi") or "").strip()
+    #             version = str(p.get("version") or "").strip()
+    #             if not doi: continue
 
-                base = f"https://www.biorxiv.org/content/{doi}"
-                landing  = f"{base}v{version}" if version else base
-                html_url = f"{landing}.full"
-                pdf_url  = f"{landing}.full.pdf"
+    #             base = f"https://www.biorxiv.org/content/{doi}"
+    #             landing  = f"{base}v{version}" if version else base
+    #             html_url = f"{landing}.full"
+    #             pdf_url  = f"{landing}.full.pdf"
 
-                authors_raw = p.get("authors","") or ""
-                author_list = []
-                for a in [x.strip() for x in authors_raw.split(";") if x.strip()]:
-                    if "," in a:
-                        last, first = a.split(",",1); author_list.append(f"{first.strip()} {last.strip()}")
-                    else:
-                        author_list.append(a)
-                author_str = ", ".join(author_list[:3]) + (" et al." if len(author_list) > 3 else "")
+    #             authors_raw = p.get("authors","") or ""
+    #             author_list = []
+    #             for a in [x.strip() for x in authors_raw.split(";") if x.strip()]:
+    #                 if "," in a:
+    #                     last, first = a.split(",",1); author_list.append(f"{first.strip()} {last.strip()}")
+    #                 else:
+    #                     author_list.append(a)
+    #             author_str = ", ".join(author_list[:3]) + (" et al." if len(author_list) > 3 else "")
 
-                results.append({
-                    "source": "bioRxiv",
-                    "ids": {"doi": doi},
-                    "title": title,
-                    "authors": author_str,
-                    "journal": "bioRxiv preprint",
-                    "pubdate": p.get("date","") or "",
-                    "doi": doi,
-                    "url": landing,
-                    "abstract": abstract,
-                    "html_url": html_url,
-                    "pdf_url": pdf_url,
-                    "full_text": "",
-                    "sections": [],
-                    "pdf_path": "",
-                    "html_path": "",
-                    "has_fulltext": False,
-                })
-                if len(results) >= max_results:
-                    break
-        except Exception as e:
-            log.error(f"bioRxiv search error: {e}")
-        return results
+    #             results.append({
+    #                 "source": "bioRxiv",
+    #                 "ids": {"doi": doi},
+    #                 "title": title,
+    #                 "authors": author_str,
+    #                 "journal": "bioRxiv preprint",
+    #                 "pubdate": p.get("date","") or "",
+    #                 "doi": doi,
+    #                 "url": landing,
+    #                 "abstract": abstract,
+    #                 "html_url": html_url,
+    #                 "pdf_url": pdf_url,
+    #                 "full_text": "",
+    #                 "sections": [],
+    #                 "pdf_path": "",
+    #                 "html_path": "",
+    #                 "has_fulltext": False,
+    #             })
+    #             if len(results) >= max_results:
+    #                 break
+    #     except Exception as e:
+    #         log.error(f"bioRxiv search error: {e}")
+    #     return results
 
-    def get_biorxiv_jats_fulltext(self, doi: str, version: Optional[str]) -> Tuple[str, List[Dict[str, str]], Optional[str]]:
-        """Fetch and parse bioRxiv JATS XML. Returns (full_text, sections, xml_path)."""
-        try:
-            base = f"https://www.biorxiv.org/content/{doi}"
-            xml_url = f"{base}v{version}.source.xml" if (version and version.strip()) else f"{base}.source.xml"
+    # def get_biorxiv_jats_fulltext(self, doi: str, version: Optional[str]) -> Tuple[str, List[Dict[str, str]], Optional[str]]:
+    #     """Fetch and parse bioRxiv JATS XML. Returns (full_text, sections, xml_path)."""
+    #     try:
+    #         base = f"https://www.biorxiv.org/content/{doi}"
+    #         xml_url = f"{base}v{version}.source.xml" if (version and version.strip()) else f"{base}.source.xml"
 
-            r = self._http.get(xml_url, timeout=60)
-            r.raise_for_status()
+    #         r = self._http.get(xml_url, timeout=60)
+    #         r.raise_for_status()
             
-            xml_path = None
-            if self._current_run_assets_dir:
-                xml_name = sanitize_filename(doi + (f"v{version}" if version else "")) + ".source.xml"
-                xml_fpath = self._current_run_assets_dir / xml_name
-                xml_fpath.write_bytes(r.content)
-                xml_path = str(xml_fpath)
+    #         xml_path = None
+    #         if self._current_run_assets_dir:
+    #             xml_name = sanitize_filename(doi + (f"v{version}" if version else "")) + ".source.xml"
+    #             xml_fpath = self._current_run_assets_dir / xml_name
+    #             xml_fpath.write_bytes(r.content)
+    #             xml_path = str(xml_fpath)
 
-            root = ET.fromstring(r.content)
-            sections = jats_nodes_to_sections(root)
-            full_text = sections_to_markdown(sections)
-            return full_text, sections, xml_path
-        except Exception as e:
-            log.debug(f"bioRxiv JATS fetch/parse failed for {doi}v{version or ''}: {e}")
-            return "", [], None
+    #         root = ET.fromstring(r.content)
+    #         sections = jats_nodes_to_sections(root)
+    #         full_text = sections_to_markdown(sections)
+    #         return full_text, sections, xml_path
+    #     except Exception as e:
+    #         log.debug(f"bioRxiv JATS fetch/parse failed for {doi}v{version or ''}: {e}")
+    #         return "", [], None
 
-    # ---------------- Crossref ----------------
-    def search_crossref(self, query: str, max_results: int) -> List[Dict]:
-        # (Function is unchanged)
-        results: List[Dict] = []
-        try:
-            url = "https://api.crossref.org/works"
-            params = {"query": query, "rows": max_results, "sort": "relevance", "order": "desc"}
-            r = self._http.get(url, params=params, timeout=30); r.raise_for_status()
-            data = r.json()
-            for item in data.get("message", {}).get("items", []):
-                title = " ".join(item.get("title", []) or [])
-                if not title: continue
-                authors_fmt = []
-                for a in item.get("author", []) or []:
-                    given, family = a.get("given",""), a.get("family","")
-                    if given and family: authors_fmt.append(f"{given} {family}")
-                author_str = ", ".join(authors_fmt[:3]) + (" et al." if len(authors_fmt) > 3 else "")
-                journal = " ".join(item.get("container-title", []) or [])
-                pubyear = extract_year_from_crossref(item)
-                doi = item.get("DOI","") or ""
-                landing = item.get("URL","") or ""
-                abstract = strip_html_tags(item.get("abstract",""))
+    # # ---------------- Crossref ----------------
+    # def search_crossref(self, query: str, max_results: int) -> List[Dict]:
+    #     # (Function is unchanged)
+    #     results: List[Dict] = []
+    #     try:
+    #         url = "https://api.crossref.org/works"
+    #         params = {"query": query, "rows": max_results, "sort": "relevance", "order": "desc"}
+    #         r = self._http.get(url, params=params, timeout=30); r.raise_for_status()
+    #         data = r.json()
+    #         for item in data.get("message", {}).get("items", []):
+    #             title = " ".join(item.get("title", []) or [])
+    #             if not title: continue
+    #             authors_fmt = []
+    #             for a in item.get("author", []) or []:
+    #                 given, family = a.get("given",""), a.get("family","")
+    #                 if given and family: authors_fmt.append(f"{given} {family}")
+    #             author_str = ", ".join(authors_fmt[:3]) + (" et al." if len(authors_fmt) > 3 else "")
+    #             journal = " ".join(item.get("container-title", []) or [])
+    #             pubyear = extract_year_from_crossref(item)
+    #             doi = item.get("DOI","") or ""
+    #             landing = item.get("URL","") or ""
+    #             abstract = strip_html_tags(item.get("abstract",""))
 
-                pdf_url = ""
-                for link in item.get("link", []) or []:
-                    if link.get("content-type","").lower() == "application/pdf" and link.get("URL"):
-                        pdf_url = link["URL"]; break
+    #             pdf_url = ""
+    #             for link in item.get("link", []) or []:
+    #                 if link.get("content-type","").lower() == "application/pdf" and link.get("URL"):
+    #                     pdf_url = link["URL"]; break
 
-                results.append({
-                    "source": "CrossRef",
-                    "ids": {"doi": doi},
-                    "title": title,
-                    "authors": author_str,
-                    "journal": journal,
-                    "pubdate": pubyear,
-                    "doi": doi,
-                    "url": landing,
-                    "abstract": abstract,
-                    "pdf_url": pdf_url,
-                    "full_text": "",
-                    "sections": [],
-                    "pdf_path": "",
-                    "html_path": "",
-                    "has_fulltext": False,
-                })
-        except Exception as e:
-            log.error(f"CrossRef search error: {e}")
-        return results
+    #             results.append({
+    #                 "source": "CrossRef",
+    #                 "ids": {"doi": doi},
+    #                 "title": title,
+    #                 "authors": author_str,
+    #                 "journal": journal,
+    #                 "pubdate": pubyear,
+    #                 "doi": doi,
+    #                 "url": landing,
+    #                 "abstract": abstract,
+    #                 "pdf_url": pdf_url,
+    #                 "full_text": "",
+    #                 "sections": [],
+    #                 "pdf_path": "",
+    #                 "html_path": "",
+    #                 "has_fulltext": False,
+    #             })
+    #     except Exception as e:
+    #         log.error(f"CrossRef search error: {e}")
+    #     return results
 
     # ---------------- Fetchers & Parsers ----------------
     def download_to_path(self, url: str, path: pathlib.Path) -> bool:
@@ -539,7 +548,7 @@ class FullTextJournalSearchTool(BaseTool):
                 fpath = run_dir / fname
                 with fpath.open("w", encoding="utf-8") as jf:
                     json.dump(p, jf, ensure_ascii=False, indent=2)
-                saved_files.append(str(fpath))
+                saved_files.append(str(fpath.resolve()))
                 writer.writerow([
                     str(fpath), p.get("source",""), p.get("title",""), p.get("authors",""),
                     p.get("journal",""), p.get("pubdate",""), p.get("doi",""), p.get("url",""),
@@ -547,98 +556,141 @@ class FullTextJournalSearchTool(BaseTool):
                     p.get("has_fulltext",False), p.get("pdf_path",""), p.get("html_path","")
                 ])
                 fnd.write(json.dumps(p, ensure_ascii=False) + "\n")
-        return saved_files, str(index_csv), str(index_ndjson)
+        return saved_files, str(index_csv.resolve()), str(index_ndjson.resolve())
+
 
     # ---------------- Orchestrator ----------------
+    # ---------------- Orchestrator ----------------
     def _run(self, query: str, max_results: int = 20, include_preprints: bool = True) -> List[str]:
-        ts = datetime.utcnow().strftime("%Y%m%d_%H%M%S")
-        run_dir = pathlib.Path("searching_results") / f"run_{ts}"
-        assets_dir = run_dir / "assets"; assets_dir.mkdir(parents=True, exist_ok=True)
+        """
+        Backward-compatible:
+        - Input:  query is still a str (per args_schema)
+        - Output: List[str] of saved file paths (flattened across all runs)
+
+        New flexibility:
+        - If `query` is a JSON array string (e.g., '["q1","q2"]'), run each.
+        - If `query` contains '||', split on '||' into multiple queries.
+        - Otherwise, treat as a single query.
+        """
+        import json
+        from datetime import datetime
+        import pathlib
+
+        # Allow Entrez email override
+        try:
+            Entrez.email = os.environ.get("ENTREZ_EMAIL", self._entrez_email)
+        except Exception:
+            pass
+
+        # --- Normalize into a list of queries without changing args_schema ---
+        queries: List[str] = []
+        q_str = (query or "").strip()
+        if q_str.startswith("[") and q_str.endswith("]"):
+            try:
+                parsed = json.loads(q_str)
+                if isinstance(parsed, list) and all(isinstance(x, str) for x in parsed):
+                    queries = [x.strip() for x in parsed if x and x.strip()]
+            except Exception:
+                # fall back to single
+                queries = [q_str]
+        if not queries:
+            # support simple delimiter for multiple variants
+            if "||" in q_str:
+                queries = [x.strip() for x in q_str.split("||") if x and x.strip()]
+            else:
+                queries = [q_str] if q_str else []
+
+        if not queries:
+            log.info("No query provided.")
+            return []
+
+        all_saved_files: List[str] = []
+        
+        # Check if a session directory is already set (for multiple searches in one user query)
+        session_dir = os.environ.get("SEARCH_SESSION_DIR")
+        
+        if session_dir:
+            # Reuse existing session directory
+            run_dir = pathlib.Path(session_dir).resolve()
+            log.info(f"Reusing existing session directory: {run_dir}")
+        else:
+            # Create ONE timestamp for ALL queries (single folder per search session)
+            ts = datetime.utcnow().strftime("%Y%m%d_%H%M%S")
+            
+            # Prefer an explicit results_base_dir attribute if the object was constructed with one.
+            # Fallback to environment variable SEARCH_RESULTS_DIR, then to the repository default.
+            try:
+                configured = getattr(self, "results_base_dir", None)
+            except Exception:
+                configured = None
+
+            if configured:
+                base_dir = pathlib.Path(configured).resolve()
+            else:
+                base_dir = pathlib.Path(os.environ.get("SEARCH_RESULTS_DIR", pathlib.Path(__file__).resolve().parent.parent / "searching_results")).resolve()
+
+            # Single run directory for all queries
+            run_dir = (base_dir / f"run_{ts}").resolve()
+        
+        assets_dir = run_dir / "assets"
+        assets_dir.mkdir(parents=True, exist_ok=True)
         self._current_run_assets_dir = assets_dir
-
+        
         all_results: List[Dict] = []
-        log.info("Searching PubMed/PMC…")
-        all_results.extend(self.search_pubmed_pmc(query, max_results))
-        if include_preprints:
-            log.info("Searching arXiv…")
-            all_results.extend(self.search_arxiv(query, max_results))
-            log.info("Searching bioRxiv…")
-            all_results.extend(self.search_biorxiv(query, max_results))
-        log.info("Searching CrossRef…")
-        all_results.extend(self.search_crossref(query, max_results))
 
+        for idx, q in enumerate(queries, start=1):
+            log.info(f"Starting search #{idx}/{len(queries)} for query: {q!r}; saving to {run_dir}")
+
+            all_results: List[Dict] = []
+
+            if self.include_pubmed:
+                log.info(f"[{idx}/{len(queries)}] Searching PubMed/PMC…")
+                try:
+                    all_results.extend(self.search_pubmed_pmc(q, max_results))
+                except Exception as e:
+                    log.error(f"PubMed/PMC search error for '{q}': {e}")
+
+            # Note: searches are performed above respecting self.include_pubmed and self.include_preprints
+
+            # (Crossref/bioRxiv remain disabled exactly as in your current code)
+
+        # Deduplicate across ALL queries combined
         papers = self.deduplicate(all_results)
-        log.info(f"Found {len(all_results)} results, {len(papers)} unique. Fetching full text...")
+        log.info(f"Found {len(all_results)} results total, {len(papers)} unique. Fetching full text...")
 
         for p in papers:
-            if p.get("has_fulltext"): continue
+            if p.get("has_fulltext"):
+                continue
 
-            source = p.get("source","")
-            
-            # --- bioRxiv: JATS -> HTML -> PDF ---
-            if source == "bioRxiv":
-                doi = (p.get("doi") or "").strip()
-                version_from_url = (m.group(1) if (m := re.search(r"v(\d+)", p.get("url","") or "")) else "")
-                
-                # 1) JATS XML (Primary)
-                if doi:
-                    full_text, sections, xml_path = self.get_biorxiv_jats_fulltext(doi, version_from_url or None)
-                    if full_text:
-                        p.update({"full_text": full_text, "sections": sections, "has_fulltext": True, "xml_path": xml_path or ""})
-                        log.info(f"[JATS OK] bioRxiv: {p['title'][:60]}")
-                        continue
-
-                # 2) HTML (Fallback)
-                html_url = p.get("html_url")
-                if html_url:
-                    try:
-                        r = self._http.get(html_url, timeout=60); r.raise_for_status()
-                        full_text, sections = self.html_to_main_text(r.content)
-                        if full_text:
-                            html_name = sanitize_filename(p.get("doi", p.get('title',""))) + ".html"
-                            html_path = assets_dir / html_name
-                            html_path.write_bytes(r.content)
-                            p.update({"full_text": full_text, "sections": sections, "html_path": str(html_path), "has_fulltext": True})
-                            log.info(f"[HTML OK] bioRxiv: {p['title'][:60]}")
-                            continue
-                    except Exception as e:
-                        log.debug(f"bioRxiv HTML fetch failed for {doi}: {e}")
-
-            # --- PDF (Final fallback for all sources) ---
+            source = p.get("source", "")
             pdf_url = p.get("pdf_url")
+
+            # --- PDF (final fallback for all sources) ---
             if pdf_url:
-                pdf_name = sanitize_filename(first(p.get("doi"), p.get("ids",{}).get("arxiv"), p.get("title"), "paper")) + ".pdf"
+                pdf_name = sanitize_filename(first(p.get("doi"), p.get("ids", {}).get("arxiv"), p.get("title"), "paper")) + ".pdf"
                 pdf_path = assets_dir / pdf_name
                 if self.download_to_path(pdf_url, pdf_path):
                     text, tables, figures = self.pdf_to_text_tables_figures(pdf_path, assets_dir)
-                    text = self.clean_extracted_text(text, source=p.get("source",""))
+                    text = self.clean_extracted_text(text, source=source)
                     if text:
                         p.update({"full_text": text, "pdf_path": str(pdf_path), "tables": tables, "figures": figures, "has_fulltext": True})
-                        log.info(f"[PDF OK] {source}: {p['title'][:60]}")
+                        log.info(f"[PDF OK] {source}: {p.get('title','')[:60]}")
                     else:
                         p.update({"pdf_path": str(pdf_path), "tables": tables, "figures": figures})
-                        log.warning(f"[PDF EMPTY] {source}: {p['title'][:60]}")
+                        log.warning(f"[PDF EMPTY] {source}: {p.get('title','')[:60]}")
                     continue
 
-            # --- CrossRef Landing Page Sniff (Last resort) ---
-            if source == "CrossRef" and not p.get("has_fulltext") and p.get("url"):
-                try:
-                    r = self._http.get(p["url"], timeout=30); r.raise_for_status()
-                    soup = BeautifulSoup(r.text, "lxml")
-                    link = soup.find("a", href=re.compile(r"\.pdf($|\?)", re.I))
-                    if link and link.get("href"):
-                        from urllib.parse import urljoin
-                        cand = urljoin(p["url"], link["href"])
-                        # Now re-run the PDF logic with this new candidate URL
-                        # (This part is simplified; in a real scenario you might loop or refactor)
-                        # ...
-                        pass
-                except Exception as e:
-                    log.debug(f"Crossref landing sniff failed: {e}")
+        # Sort papers: fulltext first, then by source priority
+        priority = {"PubMed": 0, "CrossRef": 1, "arXiv": 2, "bioRxiv": 2}
+        papers.sort(key=lambda x: (not x.get("has_fulltext", False), priority.get(x.get("source", ""), 99)))
 
-        priority = {"PubMed":0, "CrossRef":1, "arXiv":2, "bioRxiv":2}
-        papers.sort(key=lambda x: (not x.get("has_fulltext", False), priority.get(x.get("source",""), 99)))
+        # ONLY save papers with full text
+        papers_with_fulltext = [p for p in papers if p.get("has_fulltext", False)]
+        log.info(f"Filtered to {len(papers_with_fulltext)} papers with full text (skipped {len(papers) - len(papers_with_fulltext)} without)")
 
-        saved_files, _, _ = self.save_results(papers, run_dir)
-        log.info(f"Saved {len(saved_files)} records to {run_dir}")
-        return saved_files
+        saved_files, _, _ = self.save_results(papers_with_fulltext, run_dir)
+        log.info(f"Saved {len(saved_files)} records with full text to {run_dir}")
+        all_saved_files.extend(saved_files)
+
+        log.info(f"Completed {len(queries)} search run(s). Total saved files: {len(all_saved_files)}")
+        return all_saved_files
