@@ -8,7 +8,7 @@ import json
 import pathlib
 
 sys.path.append('code')
-from searching_agent import FullTextJournalSearchTool
+from searching_tool import FullTextJournalSearchTool
 
 
 def main():

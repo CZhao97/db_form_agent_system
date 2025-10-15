@@ -1,0 +1,90 @@
+Name,Origin,Endogenous_LLM,Endogenous_bool,Endogenous_LLM_bool
+Glucose,Endogenous,Endogenous,True,True
+Lactate,Endogenous,Endogenous,True,True
+Pyruvate,Endogenous,Endogenous,True,True
+Citrate,Endogenous,Endogenous,True,True
+Isocitrate,Endogenous,Endogenous,True,True
+?-Ketoglutarate,Endogenous,Endogenous,True,True
+Succinate,Endogenous,Endogenous,True,True
+Fumarate,Endogenous,Endogenous,True,True
+Malate,Endogenous,Endogenous,True,True
+Oxaloacetate,Endogenous,Endogenous,True,True
+Acetate,Endogenous,Endogenous,True,True
+3-Hydroxybutyrate (?-HB),Endogenous,Endogenous,True,True
+Acetoacetate,Endogenous,Endogenous,True,True
+Alanine,Endogenous,Endogenous,True,True
+Glycine,Endogenous,Endogenous,True,True
+Serine,Endogenous,Endogenous,True,True
+Threonine,Endogenous,Endogenous,True,True
+Valine,Endogenous,Endogenous,True,True
+Leucine,Endogenous,Endogenous,True,True
+Isoleucine,Endogenous,Endogenous,True,True
+Phenylalanine,Endogenous,Endogenous,True,True
+Tyrosine,Endogenous,Endogenous,True,True
+Tryptophan,Endogenous,Endogenous,True,True
+Histidine,Endogenous,Endogenous,True,True
+Lysine,Endogenous,Endogenous,True,True
+Arginine,Endogenous,Endogenous,True,True
+Ornithine,Endogenous,Endogenous,True,True
+Citrulline,Endogenous,Endogenous,True,True
+Proline,Endogenous,Endogenous,True,True
+Methionine,Endogenous,Endogenous,True,True
+Cysteine,Endogenous,Endogenous,True,True
+Homocysteine,Endogenous,Endogenous,True,True
+Glutamate,Endogenous,Endogenous,True,True
+Glutamine,Endogenous,Endogenous,True,True
+Aspartate,Endogenous,Endogenous,True,True
+Asparagine,Endogenous,Endogenous,True,True
+GABA (??aminobutyric acid),Endogenous,Endogenous,True,True
+Creatine,Endogenous,Endogenous,True,True
+Creatinine,Endogenous,Endogenous,True,True
+Urea,Endogenous,Endogenous,True,True
+Uric acid,Endogenous,Endogenous,True,True
+Bilirubin,Endogenous,Endogenous,True,True
+Choline,Endogenous,Endogenous,True,True
+Betaine,Endogenous,Endogenous,True,True
+L?Carnitine,Endogenous,Endogenous,True,True
+Acetylcarnitine,Endogenous,Endogenous,True,True
+Taurine,Endogenous,Endogenous,True,True
+S?adenosylmethionine (SAM),Endogenous,Endogenous,True,True
+S?adenosylhomocysteine (SAH),Endogenous,Endogenous,True,True
+Dopamine,Endogenous,Endogenous,True,True
+Caffeine,Exogenous,Exogenous,False,False
+Paraxanthine,Exogenous,Endogenous,False,True
+Theobromine,Exogenous,Exogenous,False,False
+Theophylline,Exogenous,Exogenous,False,False
+Nicotine,Exogenous,Exogenous,False,False
+Cotinine,Exogenous,Exogenous,False,False
+Acetaminophen (Paracetamol),Exogenous,Exogenous,False,False
+Acetaminophen glucuronide,Exogenous,Exogenous,False,False
+Ibuprofen,Exogenous,Exogenous,False,False
+Aspirin (Acetylsalicylic acid),Exogenous,Exogenous,False,False
+Naproxen,Exogenous,Exogenous,False,False
+Fexofenadine,Exogenous,Exogenous,False,False
+Diphenhydramine,Exogenous,Exogenous,False,False
+Cetirizine,Exogenous,Exogenous,False,False
+Metformin,Exogenous,Exogenous,False,False
+Atenolol,Exogenous,Exogenous,False,False
+Propranolol,Exogenous,Exogenous,False,False
+Omeprazole,Exogenous,Exogenous,False,False
+Pantoprazole,Exogenous,Exogenous,False,False
+Methylparaben,Exogenous,Exogenous,False,False
+Bisphenol A (BPA),Exogenous,Exogenous,False,False
+Bisphenol S (BPS),Exogenous,Exogenous,False,False
+Mono(2?ethylhexyl) phthalate (MEHP),Exogenous,Exogenous,False,False
+Triclosan,Exogenous,Exogenous,False,False
+Acesulfame?K,Exogenous,Exogenous,False,False
+Sucralose,Exogenous,Exogenous,False,False
+Saccharin,Exogenous,Exogenous,False,False
+Aspartame,Exogenous,Exogenous,False,False
+Sorbic acid,Exogenous,Exogenous,False,False
+Eugenol,Exogenous,Exogenous,False,False
+Capsaicin,Exogenous,Exogenous,False,False
+Curcumin,Exogenous,Exogenous,False,False
+Quercetin,Exogenous,Exogenous,False,False
+Resveratrol,Exogenous,Exogenous,False,False
+Piperine,Exogenous,Exogenous,False,False
+Glyphosate,Exogenous,Exogenous,False,False
+DEET,Exogenous,Exogenous,False,False
+PFOA,Exogenous,Exogenous,False,False
+PFOS,Exogenous,Exogenous,False,False
