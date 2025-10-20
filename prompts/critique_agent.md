@@ -25,23 +25,34 @@ Example:
 "Original question: <text>\\nResearcher output:\\n<JSON>"
 
 OUTPUT (return ONLY this JSON object)
+
 {
-  "decision": "approve|clarify",
-  "reasoning": "<2–4 short lines in a single string about strengths/weaknesses>",
-  "next_query": "<ONE refined query if decision=clarify, else empty string>",
-  "quality_checks": {
-    "json_shape_ok": true|false,
-    "claim_justified": true|false,
-    "human_specific": true|false,
-    "identification_confidence_ok": true|false,
-    "evidence_diverse_sources": true|false
-  },
-  "stop_reason": "''|APPROVED|NO_NEW_EVIDENCE|STAGNANT_CLAIM|TOOL_UNAVAILABLE|FUTILITY_DETECTED"
+  "synthesis": { <EXACT copy of the Researcher synthesis object> },
+  "traceability": { <EXACT copy of the Researcher traceability object> },
+  "next_actions": { <EXACT copy of the Researcher next_actions object> },
+  "critique": {
+    "decision": "approve|clarify",
+    "reasoning": "<2–4 short lines in a single string about strengths/weaknesses>",
+    "next_query": "<ONE refined query if decision=clarify, else empty string>",
+    "quality_checks": {
+      "json_shape_ok": true|false,
+      "claim_justified": true|false,
+      "human_specific": true|false,
+      "identification_confidence_ok": true|false,
+      "evidence_diverse_sources": true|false
+    },
+    "stop_reason": "''|APPROVED|NO_NEW_EVIDENCE|STAGNANT_CLAIM|TOOL_UNAVAILABLE|FUTILITY_DETECTED"
+  }
 }
 
+OUTPUT REQUIREMENTS
+- Copy the incoming `synthesis`, `traceability`, and `next_actions` objects verbatim (no rewriting, re-ordering, or trimming). If they are missing, include empty objects `{}` for those keys.
+- Populate the `critique` object with your evaluation fields; do not duplicate the critique keys at the top level.
+- Return nothing else—no Markdown, no explanatory text outside the JSON.
+
 ACCEPTABLE JSON
-- Researcher output must contain "synthesis" (with "claim", "explanation", "confidence_score")
-  and "traceability" (with "evidence" and "search_log"). Extra researcher keys are fine.
+- The preserved Researcher output must contain "synthesis" (with "claim", "explanation", "confidence_score")
+  and "traceability" (with "evidence" and "search_log"). Extra researcher keys already present must remain untouched.
 
 REVIEW CRITERIA
 - Claim ↔ Evidence: synthesis.claim must match the *strongest* cited evidence and comply with any explicit answer options named by the user; when no options are provided, assume the canonical set {Yes, No, Plausible, Unclear}.
@@ -58,7 +69,7 @@ DIRECT ANSWER REQUIREMENT
 
 STOP REASON POLICY
 - If you select a non-empty stop_reason, you MUST set "next_query" to "".
-- APPROVED: answer acceptable as-is.
+- APPROVED: answer acceptable as-is. When decision="approve", set stop_reason="APPROVED".
 - NO_NEW_EVIDENCE: >80% of sources reused across two consecutive iterations.
 - STAGNANT_CLAIM: claim label unchanged AND |Δ confidence| < 0.05 across two consecutive iterations.
 - TOOL_UNAVAILABLE: repeated tool failures (e.g., sustained 429/5xx) block verification.
