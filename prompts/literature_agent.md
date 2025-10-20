@@ -29,7 +29,7 @@ Return ONLY a single JSON object as the final message—no prose outside JSON.
 {
   "synthesis": {
     "claim": "<verdict string>",
-    "explanation": "2–5 sentences synthesizing retrieved snippets AND reasonable inference from component evidence. If direct evidence is unavailable but highly related component are documented for answering, you may infer plausibility while noting the lack of direct evidence.",
+    "explanation": "3 sentences synthesizing retrieved snippets AND reasonable inference from component evidence. If direct evidence is unavailable but highly related component are documented for answering, you may infer plausibility while noting the lack of direct evidence.",
     "confidence_score": "0.0–1.0",
     "limitations": "<key gaps or ambiguities>"
   },
@@ -38,43 +38,25 @@ Return ONLY a single JSON object as the final message—no prose outside JSON.
     "compound_detected": true/false,
     "primary_candidate": {
       "name": "",
-      "pubchem_cid": "",
       "inchikey": "",
       "smiles": "",
       "formula": "",
-      "mass_da": ""
     },
     "synonyms": ["..."],
     "queries": {
       "source": ["<keyword query>"],
     },
-    "search_call": {
-      "query_param_sent": "[\"<Searching Source>\"]",
-      "max_results": 25,
-      "include_preprints": true,
-      "additional_runs": [
-        {
-          "query_param_sent": "[\"<new batch 1>\", \"<new batch 2>\"]",
-          "reason": "<why this follow-up was needed>",
-          "run_dir": "<searching_results/run_...>"
-        }
-      ]
-    },
     "search_runs": [
       {
         "batch_queries": ["<q1>", "<q2>", "<q3>"],
-        "run_dir": "searching_results/run_YYYYmmdd_HHMMSS",
-        "saved_files": ["<file path>"]
+        "run_dir": "searching_results/run_YYYYmmdd_HHMMSS"
       }
     ],
     "evidence": [
       {
-        "id": "<stable local id / short ref>",
         "title": "<paper title>",
-        "where_found": "<section/paragraph hint or index hit>",
         "quote": "<short verbatim or close paraphrase>",
         "why_relevant": "<1 sentence>",
-        "link": "<URL if available>"
       }
     ]
   },
