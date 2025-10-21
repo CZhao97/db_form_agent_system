@@ -4,7 +4,6 @@
 FullTextJournalSearchTool
 - PubMed/PMC (JATS full text when available)
 - arXiv (PDF to text)
-- Crossref (metadata + direct PDF when provided)
 - bioRxiv (API + JATS source XML parsing)
 
 Usage:
@@ -77,7 +76,6 @@ class FullTextJournalSearchInput(BaseModel):
     max_results: int = Field(20, description="Maximum number of results to return (per source)")
     include_preprints: bool = Field(True, description="Include arXiv/bioRxiv (PDF/JATS parsing)")
     include_pubmed: bool = Field(True, description="Include PubMed/PMC")
-    include_crossref: bool = Field(False, description="Include Crossref (API on/off)")
     include_biorxiv: bool = Field(True, description="Include bioRxiv (API on/off)")
 
 
@@ -127,14 +125,6 @@ def first(*vals: Optional[str]) -> str:
     return ""
 
 
-def extract_year_from_crossref(item: dict) -> str:
-    p = item.get("published-print", {}).get("date-parts") or item.get("published-online", {}).get("date-parts")
-    if p and p[0]: return str(p[0][0])
-    issued = item.get("issued", {}).get("date-parts")
-    if issued and issued[0]: return str(issued[0][0])
-    return ""
-
-
 def strip_html_tags(s: str) -> str:
     if not s: return ""
     s = re.sub(r"<[^>]+>", " ", s)
@@ -177,7 +167,7 @@ def sections_to_markdown(sections: List[Dict[str, str]]) -> str:
 # ----------------------------- Main Tool -----------------------------
 class FullTextJournalSearchTool(BaseTool):
     name: str = "fulltext_journal_search"
-    description: str = "Fetch articles from PubMed/PMC, Crossref, and (optionally) arXiv/bioRxiv; save full text when available."
+    description: str = "Fetch articles from PubMed/PMC, and (optionally) arXiv/bioRxiv; save full text when available."
     args_schema: Type[FullTextJournalSearchInput] = FullTextJournalSearchInput
 
     _entrez_email: str = "laozc@student.ubc.ca"
@@ -188,7 +178,6 @@ class FullTextJournalSearchTool(BaseTool):
     # exposed flags
     include_pubmed: bool = True
     include_preprints: bool = True
-    include_crossref: bool = True
     include_biorxiv: bool = True
 
     results_base_dir: Optional[pathlib.Path] = None
@@ -199,7 +188,6 @@ class FullTextJournalSearchTool(BaseTool):
         self._current_run_assets_dir: Optional[pathlib.Path] = None
         self.include_pubmed = data.get("include_pubmed", True)
         self.include_preprints = data.get("include_preprints", True)
-        self.include_crossref = data.get("include_crossref", True)
         self.include_biorxiv = data.get("include_biorxiv", True)
 
     # ---------------- Entrez Helpers ----------------
@@ -522,58 +510,6 @@ class FullTextJournalSearchTool(BaseTool):
             log.debug(f"bioRxiv JATS fetch/parse failed for {doi}v{version or ''}: {e}")
             return "", [], None
 
-    # ---------------- Crossref ----------------
-    def search_crossref(self, query: str, max_results: int) -> List[Dict]:
-        results: List[Dict] = []
-        if not query:
-            return results
-        try:
-            url = "https://api.crossref.org/works"
-            params = {"query": query, "rows": max_results, "sort": "relevance", "order": "desc"}
-            r = self._http.get(url, params=params, timeout=30); r.raise_for_status()
-            data = r.json()
-            for item in data.get("message", {}).get("items", []):
-                title = " ".join(item.get("title", []) or [])
-                if not title:
-                    continue
-                authors_fmt = []
-                for a in item.get("author", []) or []:
-                    given, family = a.get("given",""), a.get("family","")
-                    if given and family: authors_fmt.append(f"{given} {family}")
-                    elif family: authors_fmt.append(family)
-                author_str = ", ".join(authors_fmt[:3]) + (" et al." if len(authors_fmt) > 3 else "")
-                journal = " ".join(item.get("container-title", []) or [])
-                pubyear = extract_year_from_crossref(item)
-                doi = item.get("DOI","") or ""
-                landing = item.get("URL","") or ""
-                abstract = strip_html_tags(item.get("abstract",""))
-
-                pdf_url = ""
-                for link in item.get("link", []) or []:
-                    if link.get("content-type","").lower() == "application/pdf" and link.get("URL"):
-                        pdf_url = link["URL"]; break
-
-                results.append({
-                    "source": "CrossRef",
-                    "ids": {"doi": doi},
-                    "title": title,
-                    "authors": author_str,
-                    "journal": journal,
-                    "pubdate": pubyear,
-                    "doi": doi,
-                    "url": landing,
-                    "abstract": abstract,
-                    "pdf_url": pdf_url,
-                    "full_text": "",
-                    "sections": [],
-                    "pdf_path": "",
-                    "html_path": "",
-                    "has_fulltext": False,
-                })
-        except Exception as e:
-            log.error(f"CrossRef search error: {e}")
-        return results
-
     # ---------------- Fetchers & Parsers ----------------
     def download_to_path(self, url: str, path: pathlib.Path) -> bool:
         try:
@@ -722,7 +658,7 @@ class FullTextJournalSearchTool(BaseTool):
         """
         Backward-compatible signature for LangChain Tool.
         - query: str (can be JSON list or '||'-separated)
-        - returns: None
+        - returns: List[str] of saved JSON file paths with full text
 
         The include_* flags on the instance control which sources are searched.
         """
@@ -744,6 +680,7 @@ class FullTextJournalSearchTool(BaseTool):
 
         if not queries:
             log.info("No query provided.")
+            return []
 
         # session/run dir handling
         all_saved_files: List[str] = []
@@ -779,13 +716,6 @@ class FullTextJournalSearchTool(BaseTool):
                 except Exception as e:
                     log.error(f"PubMed/PMC search error for '{q}': {e}")
 
-            if self.include_crossref:
-                log.info(f"[{idx}/{len(queries)}] Searching Crossref…")
-                try:
-                    all_results.extend(self.search_crossref(q, max_results))
-                except Exception as e:
-                    log.error(f"Crossref search error for '{q}': {e}")
-
             if self.include_preprints:
                 log.info(f"[{idx}/{len(queries)}] Searching arXiv…")
                 try:
@@ -811,7 +741,7 @@ class FullTextJournalSearchTool(BaseTool):
 
             source = p.get("source", "")
             pdf_url = p.get("pdf_url") or ""
-            # html_url = p.get("html_url") if "html_url" in p else ""
+            html_url = p.get("html_url") if "html_url" in p else ""
 
             # bioRxiv JATS (preferred over PDF because structure)
             if source == "bioRxiv":
@@ -851,7 +781,7 @@ class FullTextJournalSearchTool(BaseTool):
             #         log.debug(f"HTML fetch/parse failed: {e}")
 
         # Sort papers: fulltext first, then by source priority
-        priority = {"PubMed": 0, "CrossRef": 1, "bioRxiv": 2, "arXiv": 3}
+        priority = {"PubMed": 0, "bioRxiv": 1, "arXiv": 2}
         papers.sort(key=lambda x: (not x.get("has_fulltext", False), priority.get(x.get("source", ""), 99)))
 
         # ONLY save papers with full text
@@ -863,3 +793,4 @@ class FullTextJournalSearchTool(BaseTool):
         all_saved_files.extend(saved_files)
 
         log.info(f"Completed {len(queries)} search run(s). Total saved files: {len(all_saved_files)}")
+        return all_saved_files
