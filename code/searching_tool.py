@@ -28,42 +28,12 @@ from requests.adapters import HTTPAdapter
 from urllib3.util.retry import Retry
 from pydantic import BaseModel, Field
 
-# Optional dependencies / fail gracefully
-try:
-    from Bio import Entrez
-except Exception:
-    Entrez = None  # type: ignore
-
-try:
-    from bs4 import BeautifulSoup
-except Exception:
-    BeautifulSoup = None  # type: ignore
-
-try:
-    import pdfplumber
-except Exception:
-    pdfplumber = None  # type: ignore
-
-try:
-    from pdfminer.high_level import extract_text as pdf_extract_text
-except Exception:
-    pdf_extract_text = None  # type: ignore
-
-try:
-    import fitz  # PyMuPDF
-except Exception:
-    fitz = None  # type: ignore
-
-# LangChain BaseTool (graceful fallback if not installed)
-try:
-    from langchain.tools import BaseTool
-except Exception:
-    class BaseTool:  # minimal shim
-        name: str = ""
-        description: str = ""
-        args_schema: Type[BaseModel] = BaseModel
-        def __init__(self, **kwargs): pass
-        def _run(self, *args, **kwargs): raise NotImplementedError
+from Bio import Entrez
+from bs4 import BeautifulSoup
+import pdfplumber
+from pdfminer.high_level import extract_text as pdf_extract_text
+import fitz  # PyMuPDF
+from langchain.tools import BaseTool
 
 log = logging.getLogger("fulltext_journal_search")
 if not logging.getLogger().hasHandlers():
@@ -571,23 +541,24 @@ class FullTextJournalSearchTool(BaseTool):
             elif pdf_extract_text is not None:
                 text = pdf_extract_text(str(pdf_path)) or ""
 
-            if fitz is not None:
-                try:
-                    doc = fitz.open(str(pdf_path))
-                    for i in range(len(doc)):
-                        for img in doc.get_page_images(i):
-                            xref = img[0]
-                            pix = fitz.Pixmap(doc, xref)
-                            img_ext = "png" if pix.alpha else "jpg"
-                            fname = f"{pdf_path.stem}_p{i+1}_img{xref}.{img_ext}"
-                            fpath = assets_dir / fname
-                            if pix.alpha:
-                                pix = fitz.Pixmap(fitz.csRGB, pix)
-                            pix.save(str(fpath))
-                            figures.append(str(fpath))
-                    doc.close()
-                except Exception:
-                    pass
+            # Commented out: Image extraction from PDF
+            # if fitz is not None:
+            #     try:
+            #         doc = fitz.open(str(pdf_path))
+            #         for i in range(len(doc)):
+            #             for img in doc.get_page_images(i):
+            #                 xref = img[0]
+            #                 pix = fitz.Pixmap(doc, xref)
+            #                 img_ext = "png" if pix.alpha else "jpg"
+            #                 fname = f"{pdf_path.stem}_p{i+1}_img{xref}.{img_ext}"
+            #                 fpath = assets_dir / fname
+            #                 if pix.alpha:
+            #                     pix = fitz.Pixmap(fitz.csRGB, pix)
+            #                 pix.save(str(fpath))
+            #                 figures.append(str(fpath))
+            #         doc.close()
+            #     except Exception:
+            #         pass
         except Exception as e:
             log.debug(f"PDF multimodal extraction failed {pdf_path}: {e}")
         return text, tables, figures
@@ -794,3 +765,4 @@ class FullTextJournalSearchTool(BaseTool):
 
         log.info(f"Completed {len(queries)} search run(s). Total saved files: {len(all_saved_files)}")
         return all_saved_files
+

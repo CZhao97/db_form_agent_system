@@ -8,8 +8,8 @@ from langchain.tools import BaseTool
 # Embeddings & Vector store (LangChain)
 from langchain_community.embeddings import SentenceTransformerEmbeddings
 from langchain_community.vectorstores import FAISS
-from langchain.docstore.document import Document
-from langchain.text_splitter import RecursiveCharacterTextSplitter
+from langchain_core.documents import Document
+from langchain_text_splitters import RecursiveCharacterTextSplitter
 
 log = logging.getLogger("fulltext_vector_tools")
 if not log.handlers:
@@ -20,22 +20,6 @@ _VECTOR_REGISTRY: Dict[str, FAISS] = {}  # key: run_dir absolute path -> FAISS s
 
 
 # -------------------- Utility helpers --------------------
-def _detect_run_dir(path_like: str) -> str:
-    """
-    Accept a run_dir OR any file path inside it and normalize to the run_dir path.
-    Run dirs look like: searching_results/run_YYYYmmdd_HHMMSS[_idx]
-    """
-    p = pathlib.Path(path_like).resolve()
-    if p.is_dir() and p.name.startswith("run_"):
-        return str(p)
-    # Walk up to find run_*
-    for parent in [p] + list(p.parents):
-        if parent.is_dir() and parent.name.startswith("run_") and parent.parent.name == "searching_results":
-            return str(parent)
-    # Fallback: if someone passed 'searching_results/run_...' string that doesn't exist yet
-    if "searching_results" in str(p).replace("\\","/"):
-        return str(p)
-    raise ValueError(f"Could not locate a run_* directory from: {path_like}")
 
 def _iter_paper_jsons(run_dir: str) -> List[pathlib.Path]:
     rd = pathlib.Path(run_dir)
@@ -90,6 +74,20 @@ class FullTextIndexTool(BaseTool):
         "embed, and build a FAISS vector index for retrieval."
     )
     args_schema: Type[BaseModel] = FullTextIndexInput
+    # optional base dir that can be provided at construction time so callers
+    # that only know the top-level `searching_results` path can pass it and
+    # allow run_path resolution to succeed.
+    results_base_dir: str = None
+
+    def __init__(self, results_base_dir: str = None, **data):
+        super().__init__(**(data or {}))
+        self.results_base_dir = str(results_base_dir) if results_base_dir else None
+
+    def _resolve_run_dir(self, run_path: str) -> str:
+        base_path = pathlib.Path(self.results_base_dir) / run_path if self.results_base_dir else pathlib.Path(run_path)
+        if base_path.is_file():
+            return str(base_path.parent)
+        return str(base_path)
 
     def _run(
         self,
@@ -100,7 +98,7 @@ class FullTextIndexTool(BaseTool):
         persist: bool = True,
     ) -> str:
         try:
-            run_dir = _detect_run_dir(run_path)
+            run_dir = self._resolve_run_dir(run_path)
         except Exception as e:
             return json.dumps({"error": True, "message": str(e)})
 
@@ -170,6 +168,17 @@ class FullTextQueryTool(BaseTool):
         "Returns top-k text snippets with metadata for grounding and citation."
     )
     args_schema: Type[BaseModel] = FullTextQueryInput
+    results_base_dir: Optional[str] = None
+
+    def __init__(self, results_base_dir: Optional[str] = None, **data):
+        super().__init__(**(data or {}))
+        self.results_base_dir = str(results_base_dir) if results_base_dir else None
+
+    def _resolve_run_dir(self, run_path: str) -> str:
+        base_path = pathlib.Path(self.results_base_dir) / run_path if self.results_base_dir else pathlib.Path(run_path)
+        if base_path.is_file():
+            return str(base_path.parent)
+        return str(base_path)
 
     def _load_index(self, run_dir: str) -> Optional[FAISS]:
         # 1) in-memory cache
@@ -189,7 +198,7 @@ class FullTextQueryTool(BaseTool):
 
     def _run(self, run_path: str, query: str, k: int = 5) -> str:
         try:
-            run_dir = _detect_run_dir(run_path)
+            run_dir = self._resolve_run_dir(run_path)
         except Exception as e:
             return json.dumps({"error": True, "message": str(e)})
 
