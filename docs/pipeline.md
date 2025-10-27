@@ -103,10 +103,12 @@ Each JSON file contains the keys documented in the tool docstring (source, title
 from fulltext_vector_tools import FullTextIndexTool, FullTextQueryTool
 
 run_dir = "searching_results/run_20251009_000906"
-index_tool = FullTextIndexTool()
+# prefer passing the project-wide results base so tools can resolve run dirs reliably
+base = "/home/chen/GNPS_SIM/agent/db_form_agent_system/searching_results"
+index_tool = FullTextIndexTool(results_base_dir=base)
 print(index_tool._run(run_path=run_dir))
 
-query_tool = FullTextQueryTool()
+query_tool = FullTextQueryTool(results_base_dir=base)
 print(query_tool._run(run_path=run_dir, query="oxidized phospholipid biomarkers", k=5))
 ```
 
