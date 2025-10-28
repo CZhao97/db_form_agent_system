@@ -42,11 +42,13 @@ if not logging.getLogger().hasHandlers():
 
 # ----------------------------- Models & Utilities -----------------------------
 class FullTextJournalSearchInput(BaseModel):
-    query: str = Field(..., description="Academic search terms, '||' separated or JSON list for multi-query")
+    query: str | List[str] = Field(..., description="Academic search terms, '||' separated or JSON list for multi-query")
     max_results: int = Field(20, description="Maximum number of results to return (per source)")
-    include_preprints: bool = Field(True, description="Include arXiv/bioRxiv (PDF/JATS parsing)")
+    include_preprints: bool = Field(True, description="Include bioRxiv (PDF/JATS parsing)")
     include_pubmed: bool = Field(True, description="Include PubMed/PMC")
     include_biorxiv: bool = Field(True, description="Include bioRxiv (API on/off)")
+    include_arxiv: bool = Field(False, description="Include arXiv (off by default, physics/math focus)")
+
 
 
 def make_requests_session(total_retries: int = 5, backoff: float = 0.5,
@@ -149,6 +151,7 @@ class FullTextJournalSearchTool(BaseTool):
     include_pubmed: bool = True
     include_preprints: bool = True
     include_biorxiv: bool = True
+    include_arxiv: bool = False
 
     results_base_dir: Optional[pathlib.Path] = None
 
@@ -159,6 +162,7 @@ class FullTextJournalSearchTool(BaseTool):
         self.include_pubmed = data.get("include_pubmed", True)
         self.include_preprints = data.get("include_preprints", True)
         self.include_biorxiv = data.get("include_biorxiv", True)
+        self.include_arxiv = data.get("include_arxiv", False) # Default to False
 
     # ---------------- Entrez Helpers ----------------
     def _init_entrez(self) -> None:
@@ -625,29 +629,32 @@ class FullTextJournalSearchTool(BaseTool):
         return saved_files, str(index_csv.resolve()), str(index_ndjson.resolve())
 
     # ---------------- Orchestrator ----------------
-    def _run(self, query: str, max_results: int = 20, include_preprints: bool = True) -> List[str]:
+    def _run(self, query: str | List[str], max_results: int = 20, include_preprints: bool = True) -> str:
         """
         Backward-compatible signature for LangChain Tool.
-        - query: str (can be JSON list or '||'-separated)
-        - returns: List[str] of saved JSON file paths with full text
+        - query: str | List[str] (can be JSON list, '||'-separated, or a list of strings)
+        - returns: str summarizing the number of papers found.
 
         The include_* flags on the instance control which sources are searched.
         """
         # parse multi-query inputs
         queries: List[str] = []
-        q_str = (query or "").strip()
-        if q_str.startswith("[") and q_str.endswith("]"):
-            try:
-                parsed = json.loads(q_str)
-                if isinstance(parsed, list) and all(isinstance(x, str) for x in parsed):
-                    queries = [x.strip() for x in parsed if x and x.strip()]
-            except Exception:
-                queries = [q_str]
-        if not queries:
-            if "||" in q_str:
-                queries = [x.strip() for x in q_str.split("||") if x and x.strip()]
-            else:
-                queries = [q_str] if q_str else []
+        if isinstance(query, list):
+            queries = [q.strip() for q in query if q and q.strip()]
+        else:
+            q_str = (query or "").strip()
+            if q_str.startswith("[") and q_str.endswith("]"):
+                try:
+                    parsed = json.loads(q_str)
+                    if isinstance(parsed, list) and all(isinstance(x, str) for x in parsed):
+                        queries = [x.strip() for x in parsed if x and x.strip()]
+                except Exception:
+                    queries = [q_str]
+            if not queries:
+                if "||" in q_str:
+                    queries = [x.strip() for x in q_str.split("||") if x and x.strip()]
+                else:
+                    queries = [q_str] if q_str else []
 
         if not queries:
             log.info("No query provided.")
@@ -687,7 +694,7 @@ class FullTextJournalSearchTool(BaseTool):
                 except Exception as e:
                     log.error(f"PubMed/PMC search error for '{q}': {e}")
 
-            if self.include_preprints:
+            if self.include_preprints and self.include_arxiv:
                 log.info(f"[{idx}/{len(queries)}] Searching arXiv…")
                 try:
                     all_results.extend(self.search_arxiv(q, max_results))
@@ -764,5 +771,5 @@ class FullTextJournalSearchTool(BaseTool):
         all_saved_files.extend(saved_files)
 
         log.info(f"Completed {len(queries)} search run(s). Total saved files: {len(all_saved_files)}")
-        return all_saved_files
+        return f"Total Papers Found: {len(all_saved_files)}. Run_dir: {run_dir}"
 
