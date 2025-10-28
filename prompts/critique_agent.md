@@ -38,7 +38,6 @@ Use a tool **only** when a very small, decisive check could flip your decision.
 
 ## OUTPUT (return ONLY this JSON)
 
-```json
 {
   "critique": {
     "decision": "approve|clarify",
@@ -54,7 +53,7 @@ Use a tool **only** when a very small, decisive check could flip your decision.
     "stop_reason": "''|APPROVED|NO_NEW_EVIDENCE|TOOL_UNAVAILABLE"
   }
 }
-```
+
 
 ## OUTPUT REQUIREMENTS
 

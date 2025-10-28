@@ -105,7 +105,7 @@ If a batch yields **0 full-text** papers, immediately produce the next batch wit
         "batch_queries": ["<q1>", "<q2>", "<q3>"],
       }
     ],
-    "run_dir": "<searching_results/run_...>",
+    "run_dir": "<Path to run directory>",
     "evidence": [
       {
         "id": "<stable local id / short ref>",
