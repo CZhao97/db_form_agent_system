@@ -1,0 +1,31 @@
+Name,Endogenous,claim
+"DG(20:3(5Z,8Z,11Z)/20:3(5Z,8Z,11Z)/0:0)",Yes,Unclear
+"TG(16:0/16:0/22:6(4Z,7Z,10Z,13Z,16Z,19Z))",Yes,Plausible Endogenous
+"PC(18:2(9Z,12Z)/22:2(13Z,16Z))",Yes,Unclear
+Dihydrofolic acid,Yes,Endogenous
+"DG(22:2(13Z,16Z)/16:0/0:0)",Yes,Unclear
+"8,9-DiHETrE",Yes,Plausible Endogenous
+L-Kynurenine,Yes,Endogenous
+"PC(18:3(9Z,12Z,15Z)/P-18:1(11Z))",Yes,Unclear
+3-Hydroxy-9Z-octadecenoylcarnitine,Yes,Unclear
+Pseudouridine,Yes,Endogenous
+16-a-Hydroxypregnenolone,Yes,Endogenous
+Pyridoxine 5'-phosphate,Yes,Exogenous
+O-Acetylserine,Yes,Exogenous
+DG(16:1(9Z)/20:0/0:0),Yes,Unclear
+3-Methylhistidine,Yes,Endogenous
+DG(20:0/18:1(9Z)/0:0),Yes,Unclear
+"PC(20:4(8Z,11Z,14Z,17Z)/22:0)",Yes,Unclear
+TG(16:0/18:0/18:1(9Z)),Yes,Unclear
+"PC(20:2(11Z,14Z)/P-18:1(9Z))",Yes,Unclear
+"MG(0:0/18:2(9Z,12Z)/0:0)",Yes,Plausible Endogenous
+"PG(18:2(9Z,12Z)/18:1(9Z))",Yes,Unclear
+Propionylglycine,Yes,Plausible Endogenous
+Dolichol-20,Yes,Endogenous
+"PC(22:2(13Z,16Z)/18:0)",Yes,Unclear
+"PC(20:3(5Z,8Z,11Z)/14:0)",Yes,Unclear
+"PC(16:0/18:3(6Z,9Z,12Z))",Yes,Unclear
+5alpha-Cholest-8-en-3beta-ol,Yes,Unclear
+Potassium,No,Endogenous
+alpha-Linolenic acid,No,Exogenous
+Gallium,No,No
