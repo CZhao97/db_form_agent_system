@@ -108,26 +108,55 @@ def _split_text(text: str, chunk_size: int, chunk_overlap: int, by_paragraph: bo
     text = (text or "").strip()
     if not text:
         return []
+
+    def _merge_short_chunks(chunks: List[str], min_chars: int = 80) -> List[str]:
+        merged: List[str] = []
+        pending = ""
+        for chunk in chunks:
+            chunk = chunk.strip()
+            if not chunk:
+                continue
+            if len(chunk) < min_chars:
+                pending = f"{pending}\n\n{chunk}".strip() if pending else chunk
+                continue
+            if pending:
+                chunk = f"{pending}\n\n{chunk}"
+                pending = ""
+            merged.append(chunk)
+        if pending:
+            if merged:
+                merged[-1] = f"{merged[-1]}\n\n{pending}"
+            else:
+                merged.append(pending)
+        return merged
+
+    splitter = RecursiveCharacterTextSplitter(
+        chunk_size=chunk_size,
+        chunk_overlap=chunk_overlap,
+        separators=["\n\n", "\n", ". ", " "],
+        length_function=len,
+    )
+
     if by_paragraph:
         paragraphs = [blk.strip() for blk in re.split(r"\n\s*\n", text) if blk.strip()]
-        splitter = RecursiveCharacterTextSplitter(
-            chunk_size=chunk_size,
-            chunk_overlap=chunk_overlap,
-            separators=["\n\n", "\n", ". ", " "],
-            length_function=len,
-        )
+        combined_paragraphs: List[str] = []
+        i = 0
+        min_paragraph_chars = 120
+        while i < len(paragraphs):
+            para = paragraphs[i]
+            while len(para) < min_paragraph_chars and (i + 1) < len(paragraphs):
+                i += 1
+                para = f"{para}\n\n{paragraphs[i]}"
+            combined_paragraphs.append(para)
+            i += 1
+
         chunks: List[str] = []
-        for para in paragraphs:
+        for para in combined_paragraphs:
             chunks.extend(splitter.split_text(para))
-        return chunks
-    else:
-        splitter = RecursiveCharacterTextSplitter(
-            chunk_size=chunk_size,
-            chunk_overlap=chunk_overlap,
-            separators=["\n\n", "\n", ". ", " "],
-            length_function=len,
-        )
-        return splitter.split_text(text)
+        return _merge_short_chunks(chunks)
+
+    chunks = splitter.split_text(text)
+    return _merge_short_chunks(chunks)
 
 # -------------------- Tool 1: Build index --------------------
 class FullTextIndexInput(BaseModel):
