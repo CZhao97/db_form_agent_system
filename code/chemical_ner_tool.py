@@ -341,13 +341,21 @@ def extract_chemicals_with_nen_batch(
     t1 = time.time()
     print(f"[NER] NER complete in {t1-t0:.2f}s")
 
-    print(f"[NER] Running Entity Linker on {len(all_chunks)} chunks (batch_size={linker_mini_batch_size})...")
-    if linker_device.type == "cuda":
-        with torch.inference_mode(), torch.cuda.amp.autocast(enabled=use_fp16):
-            linker.predict(all_chunks, batch_size=linker_mini_batch_size)
+    # --- OPTIMIZATION: Only run linker on chunks that have entities ---
+    chunks_with_entities = [c for c in all_chunks if len(c.get_spans("ner")) > 0]
+    print(f"[NER] {len(chunks_with_entities)}/{len(all_chunks)} chunks have entities. Running linker only on those.")
+
+    if chunks_with_entities:
+        print(f"[NER] Running Entity Linker on {len(chunks_with_entities)} chunks (batch_size={linker_mini_batch_size})...")
+        if linker_device.type == "cuda":
+            with torch.inference_mode(), torch.cuda.amp.autocast(enabled=use_fp16):
+                linker.predict(chunks_with_entities, batch_size=linker_mini_batch_size)
+        else:
+            with torch.inference_mode():
+                linker.predict(chunks_with_entities, batch_size=linker_mini_batch_size)
     else:
-        with torch.inference_mode():
-            linker.predict(all_chunks, batch_size=linker_mini_batch_size)
+        print("[NER] No entities found. Skipping linker.")
+
     t2 = time.time()
     print(f"[NER] Entity Linking complete in {t2-t1:.2f}s")
 
@@ -458,8 +466,8 @@ class ChemicalNerTool(BaseTool):
                     text = data.get('full_text') or data.get('abstract') or data.get('title', '')
 
                 if text and isinstance(text, str) and text.strip():
-                    # Truncate very long texts to avoid memory issues (keep first 10000 chars)
-                    texts.append(text.strip()[:10000])
+                    # No truncation as requested. The chunking logic handles large texts.
+                    texts.append(text.strip())
                 else:
                     print(f"[{self.name}] Warning: No valid text found in {file_path}")
 

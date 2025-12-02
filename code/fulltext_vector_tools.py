@@ -101,8 +101,15 @@ def _iter_paper_jsons(run_dir: str) -> List[pathlib.Path]:
         return []
     return sorted([p for p in rd.glob("*.json") if p.is_file() and p.suffix == ".json"])
 
+_GLOBAL_EMBEDDINGS = None
+_EMBEDDINGS_LOCK = threading.Lock()
+
 def _load_embeddings():
-    return SentenceTransformerEmbeddings(model_name="all-MiniLM-L6-v2")
+    global _GLOBAL_EMBEDDINGS
+    with _EMBEDDINGS_LOCK:
+        if _GLOBAL_EMBEDDINGS is None:
+            _GLOBAL_EMBEDDINGS = SentenceTransformerEmbeddings(model_name="all-MiniLM-L6-v2")
+        return _GLOBAL_EMBEDDINGS
 
 def _split_text(text: str, chunk_size: int, chunk_overlap: int, by_paragraph: bool) -> List[str]:
     text = (text or "").strip()

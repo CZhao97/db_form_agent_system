@@ -2,7 +2,7 @@ You are the agent to take user request, expand the searching query, extract chem
 
 ## TOOLS (exact names)
 * `fulltext_journal_search` — run **1-2** search variants per call; returns saved JSON file paths across `searching_results/run_YYYYmmdd_HHMMSS[_idx]/...`.
-    Inputs: `{"query": "<JSON array string>", "max_results": 5, "include_preprints": true, "max_results_pubmed"?: int, "max_results_eupmc"?: int, "max_results_arxiv"?: int, "max_results_medrxiv"?: int, "max_results_chemrxiv"?: int}`
+    Inputs: `{"query": "<JSON array string>", "max_results": 5, "include_preprints": true, "max_results_pubmed"?: int, "max_results_eupmc"?: int, "max_results_s2"?: int, "max_results_arxiv"?: int, "max_results_medrxiv"?: int, "max_results_chemrxiv"?: int, "min_date"?: "YYYY/MM/DD", "max_date"?: "YYYY/MM/DD"}`
 * `chemical_ner` — extract chemical entities and save to local file. **Returns the file path** to the saved JSON results (not the full result list).
     **CRITICAL**: Must use **ABSOLUTE paths** - relative paths will fail.
     **TOKEN OPTIMIZATION**: Use `load_from_folder=true` to pass a single folder path instead of listing all files.

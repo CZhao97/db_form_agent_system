@@ -94,11 +94,13 @@ upper_stream_tools = [FullTextJournalSearchTool(
         results_base_dir=BASE_RESULTS_DIR,
         include_pubmed=True,
         include_preprints=False,
+        include_s2=True,
         include_arxiv=True,
         include_medrxiv=True,
         include_eupmc=True,
         use_pubmed_free_fulltext_bias=True,
         max_parallel_downloads=6,
+        max_parallel_docling=6,
         min_date=MIN_DATE,  # Date range filter
         max_date=MAX_DATE,  # Date range filter
     ), ChemicalNerTool()]
@@ -330,7 +332,7 @@ def query_generation_node(state: UpperAgentState) -> dict:
         return {"downstream_states": [], "downstream_configs": []}
 
     # Randomly choose chemicals instead of top ranked
-    sample_size = min(20, len(df))
+    sample_size = min(10, len(df))
     top_chemicals = df.sample(n=sample_size)
     chemical_names = []
     for entry in top_chemicals['unique_mentions']:
@@ -516,11 +518,13 @@ down_stream_tools = [
         results_base_dir=BASE_RESULTS_DIR,
         include_pubmed=True,
         include_preprints=False,
+        include_s2=True,
         include_arxiv=True,
         include_medrxiv=True,
         include_eupmc=True,
         use_pubmed_free_fulltext_bias=True,
         max_parallel_downloads=6,
+        max_parallel_docling=6,
         min_date=MIN_DATE,  # Date range filter
         max_date=MAX_DATE,  # Date range filter
     ),

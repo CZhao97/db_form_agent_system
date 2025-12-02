@@ -1,0 +1,519 @@
+{
+  "penta-": [
+    "Is penta- known to be an experimentally confirmed disinfection byproduct? Answer: \"Is a DBP\" or \"Is not a DBP\"",
+    [
+      "penta-",
+      "octa- and deca-BDE"
+    ]
+  ],
+  "Re": [
+    "Is Re known to be an experimentally confirmed disinfection byproduct? Answer: \"Is a DBP\" or \"Is not a DBP\"",
+    [
+      "Re"
+    ]
+  ],
+  "poly(diallyldimethylammonium chloride)": [
+    "Is poly(diallyldimethylammonium chloride) known to be an experimentally confirmed disinfection byproduct? Answer: \"Is a DBP\" or \"Is not a DBP\"",
+    [
+      "poly(diallyldimethylammonium chloride)",
+      "poly-(alkenyl-based di-ionic IL)-"
+    ]
+  ],
+  "nortriptyline": [
+    "Is nortriptyline known to be an experimentally confirmed disinfection byproduct? Answer: \"Is a DBP\" or \"Is not a DBP\"",
+    [
+      "nortriptyline"
+    ]
+  ],
+  "DDNU": [
+    "Is DDNU known to be an experimentally confirmed disinfection byproduct? Answer: \"Is a DBP\" or \"Is not a DBP\"",
+    [
+      "DDNU"
+    ]
+  ],
+  "2-amino-pyrimidin-5-ol": [
+    "Is 2-amino-pyrimidin-5-ol known to be an experimentally confirmed disinfection byproduct? Answer: \"Is a DBP\" or \"Is not a DBP\"",
+    [
+      "2-amino-pyrimidin-5-ol"
+    ]
+  ],
+  "LIN": [
+    "Is LIN known to be an experimentally confirmed disinfection byproduct? Answer: \"Is a DBP\" or \"Is not a DBP\"",
+    [
+      "LIN"
+    ]
+  ],
+  "aminoacetals": [
+    "Is aminoacetals known to be an experimentally confirmed disinfection byproduct? Answer: \"Is a DBP\" or \"Is not a DBP\"",
+    [
+      "aminoacetals"
+    ]
+  ],
+  "BPG": [
+    "Is BPG known to be an experimentally confirmed disinfection byproduct? Answer: \"Is a DBP\" or \"Is not a DBP\"",
+    [
+      "BPG"
+    ]
+  ],
+  "ACTrichloroethylene0.21.024.0": [
+    "Is squalene known to be an experimentally confirmed disinfection byproduct? Answer: \"Is a DBP\" or \"Is not a DBP\"",
+    [
+      "ACTrichloroethylene0.21.024.0",
+      "squalene"
+    ]
+  ],
+  "N\u03b5-(carboxymethyl)lysine": [
+    "Is N\u03b5-(carboxymethyl)lysine known to be an experimentally confirmed disinfection byproduct? Answer: \"Is a DBP\" or \"Is not a DBP\"",
+    [
+      "N\u03b5-(carboxymethyl)lysine"
+    ]
+  ],
+  "DHP": [
+    "Is DHP known to be an experimentally confirmed disinfection byproduct? Answer: \"Is a DBP\" or \"Is not a DBP\"",
+    [
+      "DHP",
+      "DHXP"
+    ]
+  ],
+  "heme": [
+    "Is heme known to be an experimentally confirmed disinfection byproduct? Answer: \"Is a DBP\" or \"Is not a DBP\"",
+    [
+      "heme",
+      "heme b\u2010containing",
+      "heme b\u2010dependent",
+      "heme iron",
+      "heme\u2010binding",
+      "heme\u2010containing"
+    ]
+  ],
+  "iodo- HALs": [
+    "Is iodo- HALs known to be an experimentally confirmed disinfection byproduct? Answer: \"Is a DBP\" or \"Is not a DBP\"",
+    [
+      "iodo- HALs"
+    ]
+  ],
+  "Dec602": [
+    "Is Dec602 known to be an experimentally confirmed disinfection byproduct? Answer: \"Is a DBP\" or \"Is not a DBP\"",
+    [
+      "Dec602",
+      "Dechlorane 602"
+    ]
+  ],
+  "prasugrel": [
+    "Is prasugrel known to be an experimentally confirmed disinfection byproduct? Answer: \"Is a DBP\" or \"Is not a DBP\"",
+    [
+      "prasugrel"
+    ]
+  ],
+  "SQ28603": [
+    "Is SQ28603 known to be an experimentally confirmed disinfection byproduct? Answer: \"Is a DBP\" or \"Is not a DBP\"",
+    [
+      "SQ28603"
+    ]
+  ],
+  "cyclohexanone": [
+    "Is cyclohexanone known to be an experimentally confirmed disinfection byproduct? Answer: \"Is a DBP\" or \"Is not a DBP\"",
+    [
+      "cyclohexanone"
+    ]
+  ],
+  "4DHB": [
+    "Is 4DHB known to be an experimentally confirmed disinfection byproduct? Answer: \"Is a DBP\" or \"Is not a DBP\"",
+    [
+      "4DHB"
+    ]
+  ],
+  "1": [
+    "Is 1,8-naphthalimide known to be an experimentally confirmed disinfection byproduct? Answer: \"Is a DBP\" or \"Is not a DBP\"",
+    [
+      "1",
+      "8-naphthalimide",
+      "8-(4-aminophenyl)-7H-acenaphtho[1",
+      "2-d]imidazole"
+    ]
+  ],
+  "carbonyl compounds": [
+    "Is carbonyl compounds known to be an experimentally confirmed disinfection byproduct? Answer: \"Is a DBP\" or \"Is not a DBP\"",
+    [
+      "carbonyl compounds",
+      "carbonyls"
+    ]
+  ],
+  "azolates": [
+    "Is azolates known to be an experimentally confirmed disinfection byproduct? Answer: \"Is a DBP\" or \"Is not a DBP\"",
+    [
+      "azolates",
+      "azole",
+      "azoles"
+    ]
+  ],
+  "bDPP": [
+    "Is bDPP known to be an experimentally confirmed disinfection byproduct? Answer: \"Is a DBP\" or \"Is not a DBP\"",
+    [
+      "bDPP"
+    ]
+  ],
+  "all-trans AX": [
+    "Is all-trans AX known to be an experimentally confirmed disinfection byproduct? Answer: \"Is a DBP\" or \"Is not a DBP\"",
+    [
+      "all-trans AX",
+      "all-trans-retinoic acid",
+      "retinoic acid",
+      "retinoid acid"
+    ]
+  ],
+  "calcium saccharin": [
+    "Is calcium saccharin known to be an experimentally confirmed disinfection byproduct? Answer: \"Is a DBP\" or \"Is not a DBP\"",
+    [
+      "calcium saccharin",
+      "saccharin",
+      "saccharins",
+      "salt of saccharin",
+      "sodium and calcium salt of saccharin",
+      "sodium saccharin"
+    ]
+  ],
+  "PNMAM": [
+    "Is PNMAM known to be an experimentally confirmed disinfection byproduct? Answer: \"Is a DBP\" or \"Is not a DBP\"",
+    [
+      "PNMAM"
+    ]
+  ],
+  "toxaphene": [
+    "Is toxaphene known to be an experimentally confirmed disinfection byproduct? Answer: \"Is a DBP\" or \"Is not a DBP\"",
+    [
+      "toxaphene"
+    ]
+  ],
+  "MCHP": [
+    "Is MCHP known to be an experimentally confirmed disinfection byproduct? Answer: \"Is a DBP\" or \"Is not a DBP\"",
+    [
+      "MCHP",
+      "MCHxP"
+    ]
+  ],
+  "OTA": [
+    "Is OTA known to be an experimentally confirmed disinfection byproduct? Answer: \"Is a DBP\" or \"Is not a DBP\"",
+    [
+      "OTA"
+    ]
+  ],
+  "APEO": [
+    "Is APEO known to be an experimentally confirmed disinfection byproduct? Answer: \"Is a DBP\" or \"Is not a DBP\"",
+    [
+      "APEO",
+      "APEOs",
+      "APEs",
+      "apple"
+    ]
+  ],
+  "CCl3": [
+    "Is CCl3 known to be an experimentally confirmed disinfection byproduct? Answer: \"Is a DBP\" or \"Is not a DBP\"",
+    [
+      "CCl3",
+      "CCl3F"
+    ]
+  ],
+  "NaDCCA": [
+    "Is NaDCCA known to be an experimentally confirmed disinfection byproduct? Answer: \"Is a DBP\" or \"Is not a DBP\"",
+    [
+      "NaDCCA"
+    ]
+  ],
+  "phosgene": [
+    "Is phosgene known to be an experimentally confirmed disinfection byproduct? Answer: \"Is a DBP\" or \"Is not a DBP\"",
+    [
+      "phosgene"
+    ]
+  ],
+  "carbamazepine 10": [
+    "Is carbamazepine 10 known to be an experimentally confirmed disinfection byproduct? Answer: \"Is a DBP\" or \"Is not a DBP\"",
+    [
+      "carbamazepine 10",
+      "11-epoxide",
+      "carbamazepine 10",
+      "11-epoxy"
+    ]
+  ],
+  "polyanhydrides": [
+    "Is polyanhydrides known to be an experimentally confirmed disinfection byproduct? Answer: \"Is a DBP\" or \"Is not a DBP\"",
+    [
+      "polyanhydrides"
+    ]
+  ],
+  "FAD": [
+    "Is FAD known to be an experimentally confirmed disinfection byproduct? Answer: \"Is a DBP\" or \"Is not a DBP\"",
+    [
+      "FAD"
+    ]
+  ],
+  "BBP": [
+    "Is BBP known to be an experimentally confirmed disinfection byproduct? Answer: \"Is a DBP\" or \"Is not a DBP\"",
+    [
+      "BBP",
+      "BBzP"
+    ]
+  ],
+  "4-propylphenol": [
+    "Is 4-propylphenol known to be an experimentally confirmed disinfection byproduct? Answer: \"Is a DBP\" or \"Is not a DBP\"",
+    [
+      "4-propylphenol"
+    ]
+  ],
+  "THAs": [
+    "Is THAs known to be an experimentally confirmed disinfection byproduct? Answer: \"Is a DBP\" or \"Is not a DBP\"",
+    [
+      "THAs"
+    ]
+  ],
+  "dicyclohexylurea": [
+    "Is dicyclohexylurea known to be an experimentally confirmed disinfection byproduct? Answer: \"Is a DBP\" or \"Is not a DBP\"",
+    [
+      "dicyclohexylurea"
+    ]
+  ],
+  "BZT": [
+    "Is BZT known to be an experimentally confirmed disinfection byproduct? Answer: \"Is a DBP\" or \"Is not a DBP\"",
+    [
+      "BZT"
+    ]
+  ],
+  "C4H6ClN5": [
+    "Is C4H6ClN5 known to be an experimentally confirmed disinfection byproduct? Answer: \"Is a DBP\" or \"Is not a DBP\"",
+    [
+      "C4H6ClN5",
+      "Cl-HNMs"
+    ]
+  ],
+  "EHgC2H5Hg1+)": [
+    "Is EHgC2H5Hg1+) known to be an experimentally confirmed disinfection byproduct? Answer: \"Is a DBP\" or \"Is not a DBP\"",
+    [
+      "EHgC2H5Hg1+)"
+    ]
+  ],
+  "perindoprilate": [
+    "Is perindoprilate known to be an experimentally confirmed disinfection byproduct? Answer: \"Is a DBP\" or \"Is not a DBP\"",
+    [
+      "perindoprilate",
+      "sulphone15280-07-998"
+    ]
+  ],
+  "2-chloroacrylic acid": [
+    "Is 2-chloroacrylic acid known to be an experimentally confirmed disinfection byproduct? Answer: \"Is a DBP\" or \"Is not a DBP\"",
+    [
+      "2-chloroacrylic acid"
+    ]
+  ],
+  "N (6)-methyl-lysine": [
+    "Is N (6)-methyl-lysine known to be an experimentally confirmed disinfection byproduct? Answer: \"Is a DBP\" or \"Is not a DBP\"",
+    [
+      "N (6)-methyl-lysine",
+      "N6-methyl-lysine"
+    ]
+  ],
+  "fluorenone": [
+    "Is fluorenone known to be an experimentally confirmed disinfection byproduct? Answer: \"Is a DBP\" or \"Is not a DBP\"",
+    [
+      "fluorenone"
+    ]
+  ],
+  "Sodium oxalate": [
+    "Is Sodium oxalate known to be an experimentally confirmed disinfection byproduct? Answer: \"Is a DBP\" or \"Is not a DBP\"",
+    [
+      "Sodium oxalate",
+      "oxalate-ammonium oxalate-extractable",
+      "oxalic acid",
+      "oxoammonium salt",
+      "potassium oxalate"
+    ]
+  ],
+  "Glycyrrhizic acid": [
+    "Is Glycyrrhizic acid known to be an experimentally confirmed disinfection byproduct? Answer: \"Is a DBP\" or \"Is not a DBP\"",
+    [
+      "Glycyrrhizic acid",
+      "glycyrrhizin"
+    ]
+  ],
+  "EETs": [
+    "Is EETs known to be an experimentally confirmed disinfection byproduct? Answer: \"Is a DBP\" or \"Is not a DBP\"",
+    [
+      "EETs",
+      "EEs"
+    ]
+  ],
+  "EtP": [
+    "Is EtP known to be an experimentally confirmed disinfection byproduct? Answer: \"Is a DBP\" or \"Is not a DBP\"",
+    [
+      "EtP"
+    ]
+  ],
+  "Glu-d2": [
+    "Is Glu-d2 known to be an experimentally confirmed disinfection byproduct? Answer: \"Is a DBP\" or \"Is not a DBP\"",
+    [
+      "Glu-d2"
+    ]
+  ],
+  "QACs": [
+    "Is QACs known to be an experimentally confirmed disinfection byproduct? Answer: \"Is a DBP\" or \"Is not a DBP\"",
+    [
+      "QACs",
+      "QASs"
+    ]
+  ],
+  "bromomethanesulfonic acid": [
+    "Is bromomethanesulfonic acid known to be an experimentally confirmed disinfection byproduct? Answer: \"Is a DBP\" or \"Is not a DBP\"",
+    [
+      "bromomethanesulfonic acid"
+    ]
+  ],
+  "thiazide": [
+    "Is thiazide known to be an experimentally confirmed disinfection byproduct? Answer: \"Is a DBP\" or \"Is not a DBP\"",
+    [
+      "thiazide",
+      "ylide"
+    ]
+  ],
+  "monoterpene": [
+    "Is monoterpene known to be an experimentally confirmed disinfection byproduct? Answer: \"Is a DBP\" or \"Is not a DBP\"",
+    [
+      "monoterpene",
+      "monoterpene hydrocarbons",
+      "monoterpenes",
+      "monoterpenes alcohols",
+      "monoterpenoid",
+      "monoterpenoid-based",
+      "monoterpenoids",
+      "monoterpens",
+      "oxygenated monoterpenoids",
+      "phenolic monoterpenoid"
+    ]
+  ],
+  "acetaminophen": [
+    "Is acetaminophen known to be an experimentally confirmed disinfection byproduct? Answer: \"Is a DBP\" or \"Is not a DBP\"",
+    [
+      "acetaminophen",
+      "paracetamol"
+    ]
+  ],
+  "Trichloroacetic Acids": [
+    "Is Trichloroacetic Acids known to be an experimentally confirmed disinfection byproduct? Answer: \"Is a DBP\" or \"Is not a DBP\"",
+    [
+      "Trichloroacetic Acids",
+      "dichloro- and trichloro-acetic acids",
+      "trichloracetic acid",
+      "trichloro acetic acid",
+      "trichloroacetic",
+      "trichloroacetic  acid",
+      "trichloroacetic acid",
+      "trichloroacetic acid.20"
+    ]
+  ],
+  "arabinan": [
+    "Is arabinan known to be an experimentally confirmed disinfection byproduct? Answer: \"Is a DBP\" or \"Is not a DBP\"",
+    [
+      "arabinan"
+    ]
+  ],
+  "bis-1": [
+    "Is bis-1 known to be an experimentally confirmed disinfection byproduct? Answer: \"Is a DBP\" or \"Is not a DBP\"",
+    [
+      "bis-1",
+      "3-(alkylimino)isoindoles",
+      "bis-1",
+      "3-(arylimino)isoindoles",
+      "bis-1",
+      "3-(arylimino)isoindoline"
+    ]
+  ],
+  "tert-BuLi": [
+    "Is tert-BuLi known to be an experimentally confirmed disinfection byproduct? Answer: \"Is a DBP\" or \"Is not a DBP\"",
+    [
+      "tert-BuLi"
+    ]
+  ],
+  "ROSs": [
+    "Is ROSs known to be an experimentally confirmed disinfection byproduct? Answer: \"Is a DBP\" or \"Is not a DBP\"",
+    [
+      "ROSs"
+    ]
+  ],
+  "Retinyl palmitate122": [
+    "Is Retinyl palmitate122 known to be an experimentally confirmed disinfection byproduct? Answer: \"Is a DBP\" or \"Is not a DBP\"",
+    [
+      "Retinyl palmitate122",
+      "chocolate",
+      "retinyl  palmitate",
+      "retinyl palmitate",
+      "5"
+    ]
+  ],
+  "S-nitrosothiol": [
+    "Is S-nitrosothiol known to be an experimentally confirmed disinfection byproduct? Answer: \"Is a DBP\" or \"Is not a DBP\"",
+    [
+      "S-nitrosothiol",
+      "S-nitrosothiols"
+    ]
+  ],
+  "phospholipid lecithin": [
+    "Is phospholipid lecithin known to be an experimentally confirmed disinfection byproduct? Answer: \"Is a DBP\" or \"Is not a DBP\"",
+    [
+      "phospholipid lecithin"
+    ]
+  ],
+  "bis(trimethylsilyl)(dimethoxymethyl)phosphonate": [
+    "Is bis(trimethylsilyl)(dimethoxymethyl)phosphonate known to be an experimentally confirmed disinfection byproduct? Answer: \"Is a DBP\" or \"Is not a DBP\"",
+    [
+      "bis(trimethylsilyl)(dimethoxymethyl)phosphonate"
+    ]
+  ],
+  "Glu4": [
+    "Is Glu4 known to be an experimentally confirmed disinfection byproduct? Answer: \"Is a DBP\" or \"Is not a DBP\"",
+    [
+      "Glu4"
+    ]
+  ],
+  "t-amyl methyl ether": [
+    "Is t-amyl methyl ether known to be an experimentally confirmed disinfection byproduct? Answer: \"Is a DBP\" or \"Is not a DBP\"",
+    [
+      "t-amyl methyl ether"
+    ]
+  ],
+  "Reactive Blue 21": [
+    "Is Reactive Blue 21 known to be an experimentally confirmed disinfection byproduct? Answer: \"Is a DBP\" or \"Is not a DBP\"",
+    [
+      "Reactive Blue 21"
+    ]
+  ],
+  "mesitylene": [
+    "Is mesitylene known to be an experimentally confirmed disinfection byproduct? Answer: \"Is a DBP\" or \"Is not a DBP\"",
+    [
+      "mesitylene"
+    ]
+  ],
+  "LBP": [
+    "Is LBP known to be an experimentally confirmed disinfection byproduct? Answer: \"Is a DBP\" or \"Is not a DBP\"",
+    [
+      "LBP"
+    ]
+  ],
+  "d-glucopyranoside": [
+    "Is d-glucopyranoside known to be an experimentally confirmed disinfection byproduct? Answer: \"Is a DBP\" or \"Is not a DBP\"",
+    [
+      "d-glucopyranoside",
+      "\u03b2-d-glucopyranose",
+      "\u03b2-d-glucopyranosyl"
+    ]
+  ],
+  "BTA": [
+    "Is BTA known to be an experimentally confirmed disinfection byproduct? Answer: \"Is a DBP\" or \"Is not a DBP\"",
+    [
+      "BTA"
+    ]
+  ],
+  "DSF": [
+    "Is DSF known to be an experimentally confirmed disinfection byproduct? Answer: \"Is a DBP\" or \"Is not a DBP\"",
+    [
+      "DSF"
+    ]
+  ]
+}
