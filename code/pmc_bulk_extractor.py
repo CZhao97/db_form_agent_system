@@ -121,8 +121,82 @@ def parse_and_extract(tar_path):
                         
                         body = root.find(".//body")
                         body_text = ""
-                        if body:
-                            body_text = "\n".join("".join(p.itertext()) for p in body.findall(".//p"))
+
+                        def clean_text(element_text):
+                            if not element_text: return ""
+                            return re.sub(r'\s+', ' ', element_text).strip()
+
+                        def parse_table(table_node):
+                            rows = []
+                            # thead
+                            thead = table_node.find("thead")
+                            if thead is not None:
+                                for tr in thead.findall("tr"):
+                                    cells = [clean_text("".join(th.itertext())) for th in tr.findall("th")]
+                                    if not cells: cells = [clean_text("".join(td.itertext())) for td in tr.findall("td")]
+                                    rows.append("| " + " | ".join(cells) + " |")
+                                    rows.append("| " + " | ".join(["---"] * len(cells)) + " |")
+                            # tbody
+                            tbody = table_node.find("tbody")
+                            if tbody is not None:
+                                for tr in tbody.findall("tr"):
+                                    cells = [clean_text("".join(td.itertext())) for td in tr.findall("td")]
+                                    rows.append("| " + " | ".join(cells) + " |")
+                            return "\n".join(rows)
+
+                        if body is not None:
+                            sections_text = []
+                            # Try to find top-level sections
+                            secs = body.findall("./sec")
+                            
+                            if secs:
+                                for sec in secs:
+                                    sec_title = clean_text(sec.findtext("title"))
+                                    if sec_title:
+                                        sections_text.append(f"\n## {sec_title}")
+                                    
+                                    # Get all paragraphs in this section (flattened)
+                                    text_parts = [clean_text("".join(p.itertext())) for p in sec.findall(".//p")]
+                                    
+                                    # Get all tables in this section
+                                    tables = []
+                                    for tw in sec.findall(".//table-wrap"):
+                                        label = clean_text(tw.findtext("label"))
+                                        caption = clean_text("".join(tw.find("caption").itertext())) if tw.find("caption") is not None else ""
+                                        t_content = ""
+                                        table_node = tw.find("table")
+                                        if table_node is not None:
+                                            t_content = parse_table(table_node)
+                                        table_str = f"\n\n**Table: {label}**\n*{caption}*\n{t_content}\n"
+                                        tables.append(table_str)
+                                    
+                                    sec_content = "\n".join(part for part in text_parts if part)
+                                    if tables:
+                                        sec_content += "\n" + "\n".join(tables)
+                                    
+                                    if sec_content:
+                                        sections_text.append(sec_content)
+                            else:
+                                # No sections, just grab everything from body
+                                text_parts = [clean_text("".join(p.itertext())) for p in body.findall(".//p")]
+                                
+                                tables = []
+                                for tw in body.findall(".//table-wrap"):
+                                    label = clean_text(tw.findtext("label"))
+                                    caption = clean_text("".join(tw.find("caption").itertext())) if tw.find("caption") is not None else ""
+                                    t_content = ""
+                                    table_node = tw.find("table")
+                                    if table_node is not None:
+                                        t_content = parse_table(table_node)
+                                    table_str = f"\n\n**Table: {label}**\n*{caption}*\n{t_content}\n"
+                                    tables.append(table_str)
+                                
+                                body_content = "\n".join(part for part in text_parts if part)
+                                if tables:
+                                    body_content += "\n" + "\n".join(tables)
+                                sections_text.append(body_content)
+
+                            body_text = "\n\n".join(sections_text)
                         
                         full_content = f"Title: {title}\nYear: {pub_year}\n\n{body_text}"
                         

@@ -1,14 +1,15 @@
-
 # -------------------- stdlib --------------------
 from pathlib import Path
 import re, logging, warnings, sqlite3, os, time, random, pickle, requests
 import json
 import copy
-from typing import Any, Dict, List, Optional, TypedDict
+import operator
+from typing import Any, Dict, List, Optional, TypedDict, Annotated
 
 # -------------------- langchain / langgraph --------------------
 from langgraph.checkpoint.memory import MemorySaver
 from langgraph.graph import StateGraph, END
+from langgraph.constants import Send
 # Suppress LangGraph deprecation warning for create_react_agent
 import warnings
 with warnings.catch_warnings():
@@ -50,6 +51,8 @@ MAX_ITERATIONS_E2E = 100
 BASE_RESULTS_DIR = "/home/chen/GNPS_SIM/agent/db_form_agent_system/searching_results"
 MIN_DATE = "1970"
 MAX_DATE = "2025"
+SEARCH_LIMIT = 2000
+TARGET_PAPERS = 2000
 
 def _vprint(*args, **kwargs):
     if os.getenv("NODE_LOGS", "1") in ("1", "true", "TRUE", "yes", "YES"):
@@ -86,7 +89,10 @@ class UpperAgentState(TypedDict):
 # --- PROMPT --- #
 PROMPTS_DIR = Path("/home/chen/GNPS_SIM/agent/db_form_agent_system/prompts")
 UPPER_STREAM_PROMPT_PATH = PROMPTS_DIR / "upper_stream_agent.md"
-UPPER_STREAM_AGENT_PROMPT = SystemMessage(content=UPPER_STREAM_PROMPT_PATH.read_text(encoding="utf-8"))
+upper_prompt_text = UPPER_STREAM_PROMPT_PATH.read_text(encoding="utf-8")
+upper_prompt_text = upper_prompt_text.replace("__SEARCH_LIMIT__", str(SEARCH_LIMIT))
+upper_prompt_text = upper_prompt_text.replace("__TARGET_PAPERS__", str(TARGET_PAPERS))
+UPPER_STREAM_AGENT_PROMPT = SystemMessage(content=upper_prompt_text)
 
 # --- TOOLS & MODEL --- #
 upper_stream_model = ChatOpenRouter(model_name="google/gemini-2.5-flash", temperature=0.0)
@@ -95,8 +101,8 @@ upper_stream_tools = [FullTextJournalSearchTool(
         include_pubmed=True,
         include_preprints=False,
         include_s2=True,
-        include_arxiv=True,
-        include_medrxiv=True,
+        include_arxiv=False,
+        include_medrxiv=False,
         include_eupmc=True,
         use_pubmed_free_fulltext_bias=True,
         max_parallel_downloads=6,
@@ -145,11 +151,7 @@ def upper_should_continue(state: UpperAgentState):
     return "agent"
 
 # --- WORKFLOW --- #
-upper_workflow = StateGraph(UpperAgentState)
-upper_workflow.add_node("agent", upper_stream_agent_node)
-upper_workflow.set_entry_point("agent")
-upper_workflow.add_conditional_edges("agent", upper_should_continue)
-upper_app = upper_workflow.compile(checkpointer=upper_stream_memory)
+# upper_workflow definition removed as it is integrated into full_workflow
 
 print("✓ Upper-Stream Agent Defined")
 
@@ -173,127 +175,6 @@ def extract_final_output(messages):
                 pass
     
     return {"raw_output": last_content}
-
-def run_upper_stream_agent(query: str, base_results_dir: str = None):
-    """
-    Run the upper-stream agent on a user query.
-    
-    Args:
-        query: User request (e.g., "form a database of compounds found in hairs")
-        base_results_dir: Base directory for results (default: searching_results/)
-    
-    Returns:
-        dict: Final output with expanded_queries, literature_summary, chemical_candidates, etc.
-    """
-    if base_results_dir is None:
-        base_results_dir = "/home/chen/GNPS_SIM/agent/db_form_agent_system/searching_results"
-
-    
-    # Create session directory
-    query_timestamp = time.strftime("%Y%m%d_%H%M%S", time.gmtime())
-    micros = f"{int(time.time_ns() % 1_000_000):06d}"
-    nonce = f"{random.randint(0, 9999):04d}"
-
-    os.environ["LANGCHAIN_PROJECT"] = f"Upper Agent Run - {query_timestamp}"
-    
-    session_dir_rel = f"upper_stream_{query_timestamp}_{micros}_{nonce}"
-    session_dir_abs = f"{base_results_dir}/{session_dir_rel}"
-    
-    # Create dedicated literature searching folder
-    literature_dir = os.path.join(session_dir_abs, "literature_searching")
-    os.makedirs(literature_dir, exist_ok=True)
-    
-    os.makedirs(session_dir_abs, exist_ok=True)
-    _vprint(f"\n📁 Session directory: {session_dir_abs}")
-    _vprint(f"📁 Literature searching directory: {literature_dir}")
-    
-    # Initialize state
-    init_state: UpperAgentState = {
-        'messages': [HumanMessage(content=query)],
-        'original_query': query,
-        'search_session_dir': literature_dir,  # Use literature_dir for search tools
-        'iteration_count': 0,
-        'last_output': None,
-    }
-    
-    thread_id = f"upper_stream_{query_timestamp}_{random.randint(1000, 9999)}"
-    cfg: RunnableConfig = {
-        'configurable': {
-            'thread_id': thread_id,
-            'search_session_dir': literature_dir,  # Use literature_dir for search tools
-        },
-        'recursion_limit': MAX_ITERATIONS_UPPER,
-    }
-    
-    # Seed tool context
-    try:
-        FullTextJournalSearchTool.set_session_dir(literature_dir)
-    except Exception:
-        pass
-    
-    _vprint(f"\n🚀 Starting upper-stream agent for query: {query}\n")
-    
-    final_state = None
-    try:
-        start_time = time.time()
-        
-        for event in upper_app.stream(init_state, config=cfg):
-            for v in event.values():
-                final_state = v
-                try:
-                    content = v['messages'][-1].content
-                    try:
-                        obj = json.loads(content)
-                        _vprint(json.dumps(obj, indent=2))
-                    except json.JSONDecodeError:
-                        _vprint(content)
-                except Exception:
-                    _vprint(str(v))
-        
-        end_time = time.time()
-        _vprint(f"\n✅ Agent completed in {end_time - start_time:.2f} seconds")
-        
-    except GraphRecursionError as ge:
-        _vprint(f"\n[GraphRecursionError] {ge}")
-    except KeyboardInterrupt:
-        _vprint("\n⚠️ Interrupted by user.")
-    except Exception as e:
-        _vprint(f"\n[ERROR] Agent execution failed: {e}")
-        import traceback
-        traceback.print_exc()
-    
-    # Extract final output
-    if final_state and final_state.get('messages'):
-        output = extract_final_output(final_state['messages'])
-        output['session_directory'] = session_dir_abs
-        output['original_query'] = query
-        
-        # Save summary
-        summary_path = Path(session_dir_abs) / "agent_summary.json"
-        try:
-            with open(summary_path, "w") as f:
-                json.dump(output, f, indent=2)
-            _vprint(f"\n📄 Summary saved to: {summary_path}")
-        except Exception as e:
-            _vprint(f"\n[WARN] Could not save summary: {e}")
-        
-        return output
-    
-    return {"error": "No final state produced", "session_directory": session_dir_abs}
-
-# user_query = "form a database of compounds found in hairs"
-# try:
-#     result = run_upper_stream_agent(user_query)
-# finally:
-#     # ✅ Force-upload any pending spans/traces before the cell finishes
-#     wait_for_all_tracers()
-#     # If you also use the LangSmith Client somewhere, you can flush it too:
-#     # client.flush()
-#     print("✓ Traces flushed to LangSmith")
-# print("\n" + "="*60)
-# print("FINAL OUTPUT")
-# print("="*60)
-# print(json.dumps(result, indent=2))
 
 # %% [markdown]
 # ## 3. Middle Component: Query Generation Node
@@ -326,18 +207,46 @@ def query_generation_node(state: UpperAgentState) -> dict:
 
     # 2. Load NER results and extract chemical name clusters (list of lists)
     ner_data = load_ner_results(ner_results_file)
+
+    # If merged_output is empty (due to offline optimization) but per_file_results exists,
+    # aggregate them on-the-fly so the agent can see the chemicals.
+    if not ner_data.get("merged_output") and ner_data.get("per_file_results"):
+        _vprint("Merged output missing. Aggregating per-file results for query generation...")
+        aggregated_output = {}
+        for file_entry in ner_data["per_file_results"]:
+            entities = file_entry.get("entities", {})
+            for kb_id, details in entities.items():
+                if kb_id not in aggregated_output:
+                    aggregated_output[kb_id] = {"mentions": [], "synonyms": details.get("synonyms", [])}
+                
+                # Extract mentions from the per-file structure
+                # In per_file_results, mentions are typically a list of strings: ["Mention (Context...)", ...]
+                mentions = details.get("mentions", [])
+                aggregated_output[kb_id]["mentions"].extend(mentions)
+        
+        # Reformat to match ner_results_to_dataframe expectation:
+        # { kb_id: { "mentions": [{"text": ["m1", "m2"]}] } }
+        final_aggregated = {}
+        for kb_id, data in aggregated_output.items():
+            unique_mentions = sorted(list(set(data["mentions"])))
+            final_aggregated[kb_id] = {
+                "synonyms": data["synonyms"],
+                "mentions": [{"text": unique_mentions}]
+            }
+        ner_data["merged_output"] = final_aggregated
+
     df = ner_results_to_dataframe(ner_data, include_synonyms=False)
     if df.empty:
         log.warning("No chemical entities found in NER results.")
         return {"downstream_states": [], "downstream_configs": []}
 
     # Randomly choose chemicals instead of top ranked
-    sample_size = min(10, len(df))
+    sample_size = min(100, len(df))
     top_chemicals = df.sample(n=sample_size)
     chemical_names = []
     for entry in top_chemicals['unique_mentions']:
         if isinstance(entry, str):
-            chemical_names.append([name.strip() for name in entry.split(',') if name.strip()])
+            chemical_names.append([name.strip() for name in entry.split(' ||| ') if name.strip()])
 
     if not chemical_names:
         log.warning("No chemical name clusters to generate queries for.")
@@ -350,10 +259,24 @@ def query_generation_node(state: UpperAgentState) -> dict:
 
     # 3. Use LLM to generate queries based on the clusters
     original_query = state['original_query']
-    input_content = json.dumps({
+    refined_definition = state.get("refined_definition")
+    
+    input_data = {
         "original_query": original_query,
         "chemical_names": chemical_names
-    })
+    }
+    
+    if refined_definition:
+        input_data["refined_definition"] = refined_definition
+        input_data["instruction"] = (
+            "For each chemical, generate a detailed query that explicitly includes the 'refined_definition'. "
+            "The query MUST follow this format:\n"
+            "\"According to the following definition, decide whether [Chemical Name] is a [Target Entity]:\n"
+            f"{refined_definition}\n\n"
+            "Based on the peer-reviewed literature, is [Chemical Name] a [Target Entity] under this definition?\""
+        )
+
+    input_content = json.dumps(input_data)
     
     query_generator_model = ChatOpenRouter(model_name="google/gemini-2.5-flash", temperature=0.0)
     QUERY_GENERATOR_PROMPT_PATH = PROMPTS_DIR / "query_generator_agent.md"
@@ -400,6 +323,8 @@ def query_generation_node(state: UpperAgentState) -> dict:
             'last_critique_json': None,
             'claim_history': [],
             'confidence_history': [],
+            'consecutive_no_new_evidence': 0,
+            'consecutive_tool_unavailable': 0,
         }
         all_init_states.append(init_state)
         all_configs.append({'recursion_limit': MAX_ITERATIONS_DOWN})
@@ -408,74 +333,6 @@ def query_generation_node(state: UpperAgentState) -> dict:
 
 print("✓ Middle Component (Query Generation Node) Defined")
 
-
-# %%
-# # This cell demonstrates how to load the NER results and generate queries,
-# # assuming the `run_upper_stream_agent` cell has been executed and `result` is in memory.
-
-# # 1. Get the NER results file from the previous run's output
-# ner_results_file = None
-# if result and 'session_directory' in result:
-#     # The ChemicalNerTool saves the file with a standard name in the session directory
-#     potential_path = Path(result['session_directory']) / 'ner_results' / 'chemical_ner_results.json'
-#     if potential_path.exists():
-#         ner_results_file = str(potential_path)
-#         print(f"✅ Found NER results file: {ner_results_file}")
-#     else:
-#         print(f"❌ Error: NER results file not found at {potential_path}")
-# else:
-#     print("❌ Error: 'session_directory' not found in the upper-stream agent's result. Please run the previous cell.")
-
-# generated_queries = []
-# if ner_results_file:
-#     # 2. Load NER results and extract top chemical names
-#     ner_data = load_ner_results(ner_results_file)
-#     df = ner_results_to_dataframe(ner_data, include_synonyms=False)
-    
-#     if df.empty:
-#         print("⚠️ Warning: No chemical entities found in NER results.")
-#     else:
-#         top_chemicals = df.sort_values(by="mention_count", ascending=False).head(5)
-#         chemical_names = []
-#         for entry in top_chemicals['unique_mentions']:
-#             if isinstance(entry, str):
-#                 chemical_names.append([name.strip() for name in entry.split(',') if name.strip()])
-        
-#         print(f"\n🧪 Extracted chemical name clusters: {chemical_names}")
-
-#         if chemical_names:
-#             # 3. Use LLM to generate queries based on the top chemicals
-#             original_query = result.get('original_query', user_query)  # Fallback to the initial user_query
-#             input_content = json.dumps({
-#                 "original_query": original_query,
-#                 "chemical_names": chemical_names
-#             })
-            
-#             # Setup for the query generator LLM call
-#             query_generator_model = ChatOpenRouter(model_name="google/gemini-2.5-flash", temperature=0.0)
-#             QUERY_GENERATOR_PROMPT_PATH = PROMPTS_DIR / "query_generator_agent.md"
-#             QUERY_GENERATOR_PROMPT = SystemMessage(content=QUERY_GENERATOR_PROMPT_PATH.read_text(encoding="utf-8"))
-            
-#             message = HumanMessage(content=input_content)
-#             response = query_generator_model.invoke([QUERY_GENERATOR_PROMPT, message])
-            
-#             try:
-#                 # Extract the JSON part from the LLM's response
-#                 match = re.search(r'\{[\s\S]*\}', response.content)
-#                 if not match:
-#                     raise json.JSONDecodeError("No JSON object found in LLM response.", response.content, 0)
-                
-#                 output_json = json.loads(match.group(0))
-#                 generated_queries = output_json.get("queries", [])
-                
-#                 print("\n🔍 Generated Queries for Down-Stream Agent:")
-#                 print(json.dumps(generated_queries, indent=2))
-                
-#             except (json.JSONDecodeError, AttributeError) as e:
-#                 print(f"\n❌ Error: Failed to parse queries from LLM output: {e}")
-#                 print(f"LLM Raw Response:\n---\n{response.content}\n---")
-#         else:
-#             print("⚠️ Warning: No chemical names to generate queries for.")
 
 # %% [markdown]
 # ## 4. Down-Stream Agent Definition
@@ -930,17 +787,6 @@ def down_should_continue(state: DownAgentState):
 
     return "researcher"
 
-# --- WORKFLOW --- #
-down_workflow = StateGraph(DownAgentState)
-down_workflow.add_node("researcher", researcher_node)
-down_workflow.add_node("critique", critique_node)
-down_workflow.set_entry_point("researcher")
-down_workflow.add_edge("researcher", "critique")
-down_workflow.add_conditional_edges("critique", down_should_continue)
-down_app = down_workflow.compile(checkpointer=downstream_memory)
-
-print("✓ Down-Stream Agent Defined")
-
 # %% [markdown]
 # ## 5. Full Workflow Definition & Execution
 # 
@@ -960,17 +806,186 @@ class FullWorkflowState(TypedDict):
     # State to hold the inputs for the downstream batch
     downstream_states: List[dict]
     downstream_configs: List[dict]
+    
+    # HITL Definition
+    refined_definition: Optional[str]
+    
+    # Refinement State
+    refinement_messages: List[HumanMessage | AIMessage | SystemMessage]
+    is_satisfied: bool
+    
+    # Final Reports from Downstream
+    final_reports: Annotated[List[dict], operator.add]
 
-# We keep the downstream agent as its own graph (down_app)
-#. and call it from the full runner, but treat the whole
-#. thing conceptually as one end-to-end workflow.
+# Prompt for the refinement agent
+REFINEMENT_PROMPT_PATH = PROMPTS_DIR / "refinement_agent.md"
+REFINEMENT_PROMPT = REFINEMENT_PROMPT_PATH.read_text(encoding="utf-8")
+
+refinement_model = ChatOpenRouter(model_name="google/gemini-2.5-flash", temperature=0.0)
+
+def refinement_agent_node(state: FullWorkflowState):
+    _vprint("\n----- Refinement Agent Node -----")
+    
+    # If we already have a final definition, just pass through (shouldn't happen if graph logic is correct)
+    if state.get("is_satisfied"):
+        return {}
+
+    # Invoke the model
+    messages = state["refinement_messages"]
+    response = refinement_model.invoke(messages)
+    content = response.content
+    
+    # Check if the model produced a final definition JSON
+    final_def = None
+    try:
+        # Look for JSON block
+        match = re.search(r'\{[\s\S]*\}', content)
+        if match:
+            data = json.loads(match.group(0))
+            if "final_definition" in data:
+                final_def = data["final_definition"]
+    except Exception:
+        pass
+        
+    # Fallback: Check for plain text "final definition" marker
+    if not final_def:
+        lower_content = content.lower()
+        if "final_definition" in lower_content or "final definition" in lower_content:
+            final_def = content
+
+    if final_def:
+        _vprint(f"\nRefinement Agent finalized definition:\n{final_def}")
+        
+        # Construct the refined input for the upper stream agent
+        refined_input = f"{state['original_query']}\n\nRefined Definition/Criteria:\n{final_def}"
+        
+        return {
+            "refinement_messages": messages + [AIMessage(content=content)],
+            "refined_definition": final_def,
+            "is_satisfied": True,
+            "messages": [HumanMessage(content=refined_input)]
+        }
+    else:
+        _vprint(f"\nRefinement Agent proposes/asks:\n{content}")
+        return {
+            "refinement_messages": messages + [AIMessage(content=content)],
+            "is_satisfied": False
+        }
+
+def human_feedback_node(state: FullWorkflowState):
+    _vprint("\n----- Waiting for Human Feedback -----")
+    
+    # Interrupt execution to get user input
+    # The value returned by input() will be the user's input string
+    print("\n[Human Feedback Required]")
+    user_input = ""
+    while not user_input.strip():
+        try:
+            user_input = input("Please provide your feedback or confirmation: ")
+        except EOFError:
+            _vprint("\n[End of Input detected]")
+            user_input = "exit"
+            break
+    
+    _vprint(f"\nUser provided: {user_input}")
+    
+    return {
+        "refinement_messages": state["refinement_messages"] + [HumanMessage(content=user_input)]
+    }
+
+def should_continue_refinement(state: FullWorkflowState):
+    if state.get("is_satisfied"):
+        return "upper_stream_agent"
+    return "human_feedback"
+
+# --- DOWNSTREAM SUBGRAPH DEFINITION --- #
+# This subgraph is used for parallel execution of downstream agents
+down_workflow = StateGraph(DownAgentState)
+down_workflow.add_node("researcher", researcher_node)
+down_workflow.add_node("critique", critique_node)
+down_workflow.set_entry_point("researcher")
+down_workflow.add_edge("researcher", "critique")
+down_workflow.add_conditional_edges("critique", down_should_continue)
+down_app = down_workflow.compile(checkpointer=downstream_memory)
+
+def downstream_driver(state: DownAgentState):
+    """
+    Driver node that executes the downstream agent workflow for a single query.
+    This node is intended to be called via Send() in parallel.
+    """
+    query = state["original_query"]
+    _vprint(f"\n>>> Starting Downstream Agent for: {query[:50]}...")
+    
+    # Generate a unique thread_id for this run to avoid collisions in the shared checkpointer
+    thread_id = f"down_{hash(query)}_{random.randint(0, 9999)}"
+    config = {"configurable": {"thread_id": thread_id}}
+    
+    # Invoke the downstream app (which is a compiled graph)
+    # We use the global down_app defined earlier
+    try:
+        final_state = down_app.invoke(state, config=config)
+    except Exception as e:
+        log.error(f"Downstream agent failed for query '{query}': {e}")
+        return {"final_reports": [{
+            "query": query,
+            "claim": "Error",
+            "confidence_score": 0.0,
+            "explanation": f"Agent execution failed: {e}",
+            "stop_reason": "ERROR",
+            "results_dir": state.get("search_session_dir")
+        }]}
+    
+    # Extract report
+    claim = determine_final_claim(final_state["messages"])
+    score = determine_confidence_score(final_state["messages"])
+    explanation = determine_explanation(final_state["messages"])
+    stop_reason = (final_state.get("stop_history") or [{}])[-1].get("stop_reason", "COMPLETED")
+    
+    report = {
+        "query": query,
+        "claim": claim,
+        "confidence_score": score,
+        "explanation": explanation,
+        "stop_reason": stop_reason,
+        "results_dir": state.get("search_session_dir")
+    }
+    return {"final_reports": [report]}
+
+def route_to_downstream(state: FullWorkflowState):
+    """
+    Conditional edge function to map downstream states to the downstream driver.
+    """
+    downstream_states = state.get("downstream_states", [])
+    if not downstream_states:
+        return []
+    
+    return [Send("downstream_driver", s) for s in downstream_states]
 
 # Combine the upper and middle nodes into a single graph
 full_workflow = StateGraph(FullWorkflowState)
+
+# Add nodes
+full_workflow.add_node("refinement_agent", refinement_agent_node)
+full_workflow.add_node("human_feedback", human_feedback_node)
 full_workflow.add_node("upper_stream_agent", upper_stream_agent_node)
 full_workflow.add_node("query_generation", query_generation_node)
+full_workflow.add_node("downstream_driver", downstream_driver)
 
-full_workflow.set_entry_point("upper_stream_agent")
+# Set entry point
+full_workflow.set_entry_point("refinement_agent")
+
+# Edges for refinement
+full_workflow.add_conditional_edges(
+    "refinement_agent",
+    should_continue_refinement,
+    {
+        "human_feedback": "human_feedback",
+        "upper_stream_agent": "upper_stream_agent"
+    }
+)
+full_workflow.add_edge("human_feedback", "refinement_agent")
+
+# Edges for upper stream
 full_workflow.add_conditional_edges(
     "upper_stream_agent",
     upper_should_continue,
@@ -979,7 +994,12 @@ full_workflow.add_conditional_edges(
         END: "query_generation",
     },
 )
-full_workflow.add_edge("query_generation", END)
+
+# Edge for query generation -> downstream
+full_workflow.add_conditional_edges("query_generation", route_to_downstream, ["downstream_driver"])
+
+# Downstream driver ends the flow (results are aggregated in state)
+full_workflow.add_edge("downstream_driver", END)
 
 # Compile the combined app with the upper-stream's checkpointer
 full_app = full_workflow.compile(checkpointer=upper_stream_memory)
@@ -988,12 +1008,10 @@ full_app = full_workflow.compile(checkpointer=upper_stream_memory)
 def run_full_pipeline(original_query: str, max_concurrency: int = 2):
     """Orchestrates the entire agent pipeline: Upper -> Middle -> Downstream.
 
-    The upper-stream and middle components are modeled as a LangGraph (full_app),
-    and the downstream dual-agent loop is executed in parallel via down_app.batch
-    with configurable max_concurrency, as before.
+    Now executed as a single LangGraph workflow using Send() for parallel downstream execution.
     """
     
-    # === 1. SETUP AND RUN THE COMBINED UPPER-MIDDLE WORKFLOW ===
+    # === 1. SETUP AND RUN THE COMBINED WORKFLOW ===
     _vprint(f"\n{'='*60}\n🚀 STARTING FULL WORKFLOW\n{'='*60}")
     
     run_timestamp = time.strftime("%Y%m%d_%H%M%S")
@@ -1023,77 +1041,30 @@ def run_full_pipeline(original_query: str, max_concurrency: int = 2):
         "last_output": None,
         "downstream_states": [],
         "downstream_configs": [],
+        "refined_definition": None,
+        "refinement_messages": [
+            SystemMessage(content=REFINEMENT_PROMPT),
+            HumanMessage(content=f"User Query: {original_query}")
+        ],
+        "is_satisfied": False,
+        "final_reports": []
     }
     
-    _vprint("\n--- PHASE 1: Upper-Stream Agent + Query Generation ---")
-    # This invocation runs the upper agent and then the query generation node
-    final_upper_middle_state = full_app.invoke(initial_state, config=config)
+    _vprint("\n--- Executing Unified Workflow ---")
+    # This invocation runs everything: Refinement -> Upper -> Query Gen -> Downstream (Parallel)
+    final_state = full_app.invoke(initial_state, config=config)
     
-    downstream_states = final_upper_middle_state.get("downstream_states", [])
-    downstream_configs = final_upper_middle_state.get("downstream_configs", [])
-
-    if not downstream_states:
-        log.warning("Workflow halted: No states produced for the downstream agent.")
-        return {"error": "No downstream queries generated"}
-
-    _vprint(f"\n✅ Phase 1 complete. {len(downstream_states)} queries generated.")
-
-    # === 2. RUN DOWN-STREAM AGENT (BATCH) ===
-    _vprint(f"\n{'='*60}\n--- PHASE 2: Down-Stream Agent (Batch of {len(downstream_states)}) ---\n{'='*60}")
-    
-    # Add thread_id to each downstream config
-    for i, cfg in enumerate(downstream_configs):
-        cfg["configurable"] = {"thread_id": f"{thread_id}_downstream_{i}"}
-
-    # Correctly pass the list of configs and max_concurrency as a keyword argument
-    final_downstream_states = down_app.batch(
-        downstream_states,
-        downstream_configs,
-        # max_concurrency=max_concurrency,
-    )
-    
-    # === 3. PROCESS AND DISPLAY FINAL RESULTS ===
+    # === 2. PROCESS AND DISPLAY FINAL RESULTS ===
     _vprint(f"\n{'='*60}\n🏁 END-TO-END WORKFLOW COMPLETE 🏁\n{'='*60}")
     
-    all_results_data = []
-    for final_state in final_downstream_states:
-        if not final_state:
-            all_results_data.append({
-                "query": "UNKNOWN (State was None)",
-                "claim": "Error",
-                "explanation": "Batch run returned a None state.",
-                "stop_reason": "BATCH_ERROR",
-                "results_dir": None,
-            })
-            continue
-
-        query = final_state.get("original_query", "Unknown Query")
-        abs_path = final_state.get("search_session_dir", "")
-        rel_path = abs_path.replace(str(session_dir) + "/", "") if abs_path else ""
-
-        claim, score, explanation, stop_reason = (
-            "Error",
-            0.0,
-            "Batch run failed to produce messages.",
-            "BATCH_ERROR",
-        )
-
-        if final_state.get("messages"):
-            claim = determine_final_claim(final_state["messages"])
-            score = determine_confidence_score(final_state["messages"]) or 0.0
-            explanation = determine_explanation(final_state["messages"])
-
-        if final_state.get("stop_history"):
-            stop_reason = (final_state["stop_history"][-1] or {}).get("stop_reason", "COMPLETED")
-
-        all_results_data.append({
-            "query": query,
-            "claim": claim,
-            "confidence_score": score,
-            "explanation": explanation,
-            "stop_reason": stop_reason,
-            "results_dir": rel_path,
-        })
+    all_results_data = final_state.get("final_reports", [])
+    
+    # If no reports, check if we halted early
+    if not all_results_data:
+        log.warning("Workflow completed but no final reports were produced.")
+        # Check if downstream states were generated
+        if not final_state.get("downstream_states"):
+             log.warning("No downstream queries were generated.")
 
     print("\n--- Final Verified Claims ---")
     print(json.dumps(all_results_data, indent=2))
@@ -1105,7 +1076,7 @@ def run_full_pipeline(original_query: str, max_concurrency: int = 2):
     
     return {
         "session_directory": str(session_dir),
-        "queries_generated": len(downstream_states),
+        "queries_generated": len(final_state.get("downstream_states", [])),
         "results": all_results_data,
     }
 
@@ -1148,8 +1119,6 @@ try:
 finally:
     wait_for_all_tracers()
     print("\n✓ All traces flushed to LangSmith")
-
-# %%
 
 
 

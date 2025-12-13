@@ -6,6 +6,8 @@ import json
 import requests
 from pathlib import Path
 from contextvars import ContextVar
+import os
+os.environ["TOKENIZERS_PARALLELISM"] = "false"
 
 # ---------------- third-party libs ----------------
 import flair
@@ -17,10 +19,44 @@ from flair.models import EntityMentionLinker
 # NEW: PubChemPy for synonyms
 import pubchempy as pcp
 
+# Optimization for Ampere+ GPUs
+try:
+    torch.set_float32_matmul_precision('high')
+except Exception:
+    pass
+
 # --- Pydantic and LangChain Imports ---
 from pydantic import BaseModel, Field
 from langchain.tools import BaseTool
 from langchain_core.runnables import RunnableConfig
+
+# --- LanceDB Integration ---
+try:
+    import lancedb
+    # Try to import the model definition from the build script
+    # We assume build_offline_db.py is in the same directory
+    import sys
+    current_dir = os.path.dirname(os.path.abspath(__file__))
+    if current_dir not in sys.path:
+        sys.path.append(current_dir)
+    from build_offline_db import PaperChunk, TABLE_NAME, text_splitter
+except ImportError:
+    lancedb = None
+    PaperChunk = None
+    TABLE_NAME = "papers_index"
+    text_splitter = None
+
+# Fallback for text_splitter if import failed
+if text_splitter is None:
+    try:
+        from langchain_text_splitters import RecursiveCharacterTextSplitter
+        text_splitter = RecursiveCharacterTextSplitter(
+            chunk_size=1000,
+            chunk_overlap=200,
+            length_function=len,
+        )
+    except ImportError:
+        pass # Will handle later if needed
 
 # --- Context variable for session directory ---
 _session_dir_var: ContextVar[Optional[str]] = ContextVar("chemical_ner_session_dir", default=None)
@@ -158,33 +194,53 @@ def _split_into_sentences(text: str) -> List[str]:
     # Filter empty and clean
     return [s.strip() for s in sentences if s.strip()]
 
-def _pack_sentences(sentences: List[str], max_chars: int = 2500) -> List[str]:
+def _pack_sentences_with_offsets(sentences: List[str], max_chars: int = 1500) -> List[Tuple[str, List[Tuple[int, int]]]]:
     """
-    Greedy packer: groups sentences so each chunk <= max_chars.
-    Increased from 1200 to 2500 to reduce number of chunks (fewer Sentence objects).
-    Using chars is a good proxy for tokens; keeps chunks ~500–800 tokens.
+    Packer that returns chunks of sentences, each respecting max_chars limit.
     """
-    chunks: List[str] = []
-    cur: List[str] = []
-    cur_len = 0
+    if not sentences:
+        return []
+
+    chunks = []
+    current_sents = []
+    current_len = 0
+    
     for s in sentences:
-        sl = len(s)
-        if sl > max_chars:
-            # very long single sentence → flush current and add alone (truncate slightly)
-            if cur:
-                chunks.append(" ".join(cur))
-                cur, cur_len = [], 0
-            chunks.append(s[:max_chars])
-            continue
-        if cur_len + (1 if cur else 0) + sl <= max_chars:
-            cur.append(s)
-            cur_len += (1 if cur_len > 0 else 0) + sl
-        else:
-            chunks.append(" ".join(cur))
-            cur, cur_len = [s], sl
-    if cur:
-        chunks.append(" ".join(cur))
+        slen = len(s)
+        # If adding this sentence exceeds max_chars, and we have something in buffer, flush buffer
+        if current_len + slen + 1 > max_chars and current_sents:
+            chunk_text = " ".join(current_sents)
+            offsets = []
+            pos = 0
+            for cs in current_sents:
+                offsets.append((pos, pos + len(cs)))
+                pos += len(cs) + 1
+            chunks.append((chunk_text, offsets))
+            
+            current_sents = []
+            current_len = 0
+        
+        current_sents.append(s)
+        current_len += slen + 1
+        
+    # Flush remaining
+    if current_sents:
+        chunk_text = " ".join(current_sents)
+        offsets = []
+        pos = 0
+        for cs in current_sents:
+            offsets.append((pos, pos + len(cs)))
+            pos += len(cs) + 1
+        chunks.append((chunk_text, offsets))
+        
     return chunks
+
+def _pack_sentences(sentences: List[str]) -> List[str]:
+    """
+    Legacy wrapper for _pack_sentences_with_offsets.
+    """
+    packed = _pack_sentences_with_offsets(sentences)
+    return [p[0] for p in packed]
 
 # ---------------- Model loading (tuned) ----------------
 def _load_and_prepare_models(
@@ -225,25 +281,68 @@ def _load_and_prepare_models(
             pass
 
     ner = Classifier.load(ner_model_name)
-    linker = EntityMentionLinker.load(linker_model_name)
+    
+    if linker_model_name:
+        linker = EntityMentionLinker.load(linker_model_name)
+        linker.to(linker_device)
+    else:
+        linker = None
 
     ner.to(ner_device)
-    linker.to(linker_device)
+    
+    # OPTIMIZATION: PyTorch 2.0 Compile
+    # We use 'reduce-overhead' mode if available, or default.
+    # We catch errors to fallback to eager mode.
+    if hasattr(torch, "compile"):
+        print(f"[model] Attempting to compile models with torch.compile on {ner_device}...")
+        try:
+            # Compile the underlying transformer embeddings
+            def compile_transformer(model):
+                if hasattr(model, "embeddings"):
+                    from flair.embeddings import TransformerWordEmbeddings, TransformerDocumentEmbeddings
+                    
+                    # Handle StackedEmbeddings
+                    embeddings = model.embeddings
+                    if hasattr(embeddings, "embeddings"):
+                        embed_list = embeddings.embeddings
+                    else:
+                        embed_list = [embeddings]
+                        
+                    for emb in embed_list:
+                        if isinstance(emb, (TransformerWordEmbeddings, TransformerDocumentEmbeddings)):
+                            if hasattr(emb, "model"):
+                                print(f"[model] Compiling Transformer embedding in {type(model).__name__}")
+                                # mode="reduce-overhead" is good for small batches, "max-autotune" for speed but slow compile
+                                # default is a good balance.
+                                emb.model = torch.compile(emb.model)
+
+            compile_transformer(ner)
+            
+            # Linker usually has a transformer in 'model' or 'word_embeddings'
+            if linker and hasattr(linker, "model"):
+                 print(f"[model] Compiling Linker underlying model")
+                 linker.model = torch.compile(linker.model)
+            
+        except Exception as e:
+            print(f"[model] Compilation warning: {e}")
 
     ner.eval()
-    linker.eval()
+    if linker:
+        linker.eval()
 
     if warmup:
         try:
             s = Sentence(warmup_text)
             if ner_device.type == "cuda":
-                with torch.inference_mode(), torch.cuda.amp.autocast(enabled=use_fp16):
+                with torch.inference_mode(), torch.amp.autocast('cuda', enabled=use_fp16):
                     ner.predict([s], mini_batch_size=1)
-                    linker.predict([s], batch_size=1)
+                    if linker:
+                        linker.predict([s], batch_size=1)
             else:
                 with torch.inference_mode():
                     ner.predict([s], mini_batch_size=1)
-                    linker.predict([s], batch_size=1)
+                    if linker:
+                        linker.predict([s], batch_size=1)
         except Exception:
             pass
 
@@ -260,7 +359,7 @@ def _load_and_prepare_models(
     except Exception:
         nd = None
     try:
-        ld = next(linker.parameters()).device if any(True for _ in linker.parameters()) else None
+        ld = next(linker.parameters()).device if linker and any(True for _ in linker.parameters()) else None
     except Exception:
         ld = None
     print(f"[model] ner -> {ner_device} (params on {nd}), linker -> {linker_device} (params on {ld})")
@@ -278,7 +377,8 @@ def extract_chemicals_with_nen_batch(
     verbose: bool = False,
     ner_mini_batch_size: int = 16,       # Reduced to prevent hanging
     linker_mini_batch_size: int = 32,    # Reduced to prevent hanging
-    max_chunk_chars: int = 3000,         # Larger chunks = fewer total chunks
+    max_chunk_chars: int = 1500,         # Reverted to 1500 for better throughput
+    disable_linking: bool = False        # NEW: Option to skip linking for speed
 ) -> List[MergedResultDict]:
     """
     Batch processing version of chemical extraction + NEN with:
@@ -293,9 +393,15 @@ def extract_chemicals_with_nen_batch(
     if not texts:
         return []
 
+    # Filter texts to focus on Results/Discussion if present
+    processed_texts = [_filter_relevant_sections(t) for t in texts]
+
+    # Only load linker if we are going to use it
+    actual_linker_name = None if disable_linking else linker_model_name
+    
     ner, linker, ner_device, linker_device = _load_and_prepare_models(
         ner_model_name=ner_model_name,
-        linker_model_name=linker_model_name,
+        linker_model_name=actual_linker_name,
         ner_gpu=ner_gpu,
         linker_gpu=linker_gpu,
         use_fp16=use_fp16,
@@ -308,15 +414,18 @@ def extract_chemicals_with_nen_batch(
     
     all_chunks: List[Sentence] = []
     doc_index: List[int] = []
+    chunk_offsets: List[List[Tuple[int, int]]] = []
 
-    for i, text in enumerate(texts):
+    for i, text in enumerate(processed_texts):
         if not isinstance(text, str) or not text.strip():
             continue
         sents = _split_into_sentences(text)
-        chunks = _pack_sentences(sents, max_chars=max_chunk_chars)
-        for ch in chunks:
-            all_chunks.append(Sentence(ch))
+        # Use max_chars to keep chunks small for faster Transformer inference
+        packed = _pack_sentences_with_offsets(sents, max_chars=max_chunk_chars)
+        for ch_text, offsets in packed:
+            all_chunks.append(Sentence(ch_text))
             doc_index.append(i)
+            chunk_offsets.append(offsets)
         
         # Progress indicator every 50 docs
         if (i + 1) % 50 == 0 or (i + 1) == len(texts):
@@ -331,13 +440,18 @@ def extract_chemicals_with_nen_batch(
     # ---- predict NER + linker in bigger batches with autocast ----
     t0 = time.time()
     print(f"[NER] Running NER model on {len(all_chunks)} chunks (batch_size={ner_mini_batch_size})...")
+
+    # OPTIMIZATION: Sort chunks by length to minimize padding overhead during inference.
+    # Since Sentence objects are modified in-place, we can create a sorted list, predict on it,
+    # and the original 'all_chunks' list will reflect the changes.
+    sorted_chunks = sorted(all_chunks, key=lambda s: len(s.to_plain_string()), reverse=True)
     
     if ner_device.type == "cuda":
-        with torch.inference_mode(), torch.cuda.amp.autocast(enabled=use_fp16):
-            ner.predict(all_chunks, mini_batch_size=ner_mini_batch_size, verbose=True)
+        with torch.inference_mode(), torch.amp.autocast('cuda',enabled=use_fp16):
+            ner.predict(sorted_chunks, mini_batch_size=ner_mini_batch_size, verbose=verbose)
     else:
         with torch.inference_mode():
-            ner.predict(all_chunks, mini_batch_size=ner_mini_batch_size, verbose=True)
+            ner.predict(sorted_chunks, mini_batch_size=ner_mini_batch_size, verbose=verbose)
     t1 = time.time()
     print(f"[NER] NER complete in {t1-t0:.2f}s")
 
@@ -345,14 +459,19 @@ def extract_chemicals_with_nen_batch(
     chunks_with_entities = [c for c in all_chunks if len(c.get_spans("ner")) > 0]
     print(f"[NER] {len(chunks_with_entities)}/{len(all_chunks)} chunks have entities. Running linker only on those.")
 
-    if chunks_with_entities:
+    if chunks_with_entities and linker:
+        # Sort linker chunks as well
+        sorted_linker_chunks = sorted(chunks_with_entities, key=lambda s: len(s.to_plain_string()), reverse=True)
+        
         print(f"[NER] Running Entity Linker on {len(chunks_with_entities)} chunks (batch_size={linker_mini_batch_size})...")
         if linker_device.type == "cuda":
-            with torch.inference_mode(), torch.cuda.amp.autocast(enabled=use_fp16):
-                linker.predict(chunks_with_entities, batch_size=linker_mini_batch_size)
+            with torch.inference_mode(), torch.amp.autocast('cuda', enabled=use_fp16):
+                linker.predict(sorted_linker_chunks, batch_size=linker_mini_batch_size)
         else:
             with torch.inference_mode():
-                linker.predict(chunks_with_entities, batch_size=linker_mini_batch_size)
+                linker.predict(sorted_linker_chunks, batch_size=linker_mini_batch_size)
+    elif not linker:
+        print("[NER] Linker disabled. Skipping linking.")
     else:
         print("[NER] No entities found. Skipping linker.")
 
@@ -372,23 +491,51 @@ def extract_chemicals_with_nen_batch(
     # ---- aggregate results back per document ----
     per_doc: List[MergedResultDict] = [dict() for _ in texts]
 
-    for chunk, doc_i in zip(all_chunks, doc_index):
+    for chunk, doc_i, offsets in zip(all_chunks, doc_index, chunk_offsets):
         out_dict = per_doc[doc_i]
+        chunk_plain = chunk.to_plain_string()
 
         for span in chunk.get_spans("ner"):
             if (span.tag or "").lower() != "chemical":
                 continue
 
+            mention_text: str = span.text
+            
             kb_id: Optional[str] = None
             link_labels = span.get_labels("link")
             if link_labels:
                 top = max(link_labels, key=lambda l: l.score)
                 kb_id = top.value  # e.g., "MESH:D000082"
+            
+            # Fallback if no linker or no link found: use normalized text
+            if not kb_id:
+                kb_id = f"TEXT:{mention_text.upper()}"
+            
+            # Extract context sentence
+            context_sentence = mention_text
+            start = span.start_position
+            end = span.end_position
+            for (s_start, s_end) in offsets:
+                if s_start <= start and end <= s_end:
+                    context_sentence = chunk_plain[s_start:s_end]
+                    break
+            
+            # Format: "Mention (Context: Sentence)"
+            combined_text = f"{mention_text} (Context: {context_sentence})"
 
-            mention_text: str = span.text
             if kb_id not in out_dict:
                 out_dict[kb_id] = {"synonyms": [], "mentions": []}
-            out_dict[kb_id]["mentions"].append(mention_text)
+            
+            # Avoid duplicates (case-insensitive check on the full string)
+            is_dup = False
+            combined_lower = combined_text.lower()
+            for existing in out_dict[kb_id]["mentions"]:
+                if existing.lower() == combined_lower:
+                    is_dup = True
+                    break
+            
+            if not is_dup:
+                out_dict[kb_id]["mentions"].append(combined_text)
 
     return per_doc
 
@@ -411,6 +558,7 @@ class ChemicalNerInput(BaseModel):
     get_synonyms: bool = Field(False, description="If true, resolve MeSH→CID and fetch PubChem synonyms.")
     load_from_json: bool = Field(False, description="If true, treat 'texts' as file paths to JSON files and extract 'full_text' field from each.")
     load_from_folder: bool = Field(False, description="If true, treat 'texts[0]' as a folder path and load all JSON files from that directory.")
+    offline_index_path: Optional[str] = Field("/home/chen/GNPS_SIM/agent/db_form_agent_system/pmc_lancedb_index", description="Path to the offline LanceDB index. If provided, new results will be added to the DB.")
 
 class ChemicalNerTool(BaseTool):
     """
@@ -445,9 +593,10 @@ class ChemicalNerTool(BaseTool):
         self.ncbi_email = ncbi_email
         self.ncbi_tool = "flair_nen_to_synonyms_agent_tool"
 
-    def _load_texts_from_json_files(self, file_paths: List[str]) -> List[str]:
+    def _load_texts_from_json_files(self, file_paths: List[str]) -> List[Dict[str, str]]:
         """
         Load text content from JSON files.
+        Returns list of dicts: {"file": filename, "text": content}
         """
         texts = []
         for file_path in file_paths:
@@ -467,7 +616,11 @@ class ChemicalNerTool(BaseTool):
 
                 if text and isinstance(text, str) and text.strip():
                     # No truncation as requested. The chunking logic handles large texts.
-                    texts.append(text.strip())
+                    texts.append({
+                        "file": str(path), 
+                        "text": text.strip(),
+                        "raw_data": data  # Store raw data for offline DB update
+                    })
                 else:
                     print(f"[{self.name}] Warning: No valid text found in {file_path}")
 
@@ -476,7 +629,7 @@ class ChemicalNerTool(BaseTool):
 
         return texts
 
-    def _load_texts_from_folder(self, folder_path: str) -> List[str]:
+    def _load_texts_from_folder(self, folder_path: str) -> List[Dict[str, str]]:
         """
         Load text content from all JSON files in a folder.
         """
@@ -492,7 +645,8 @@ class ChemicalNerTool(BaseTool):
                 return []
 
             # Find all JSON files in the folder (non-recursive)
-            json_files = sorted(folder.glob("*.json"))
+            # Exclude .ner_cache.json files
+            json_files = sorted([f for f in folder.glob("*.json") if not f.name.endswith(".ner_cache.json")])
 
             if not json_files:
                 print(f"[{self.name}] Warning: No JSON files found in {folder_path}")
@@ -510,16 +664,18 @@ class ChemicalNerTool(BaseTool):
 
     def _run(
         self,
-        texts: List[str],
+        texts: List[Any], # Can be List[str] or List[Dict] depending on input
         get_synonyms: bool = False,
         load_from_json: bool = False,
         load_from_folder: bool = False,
         config: Optional[RunnableConfig] = None,
+        offline_index_path: Optional[str] = "/home/chen/GNPS_SIM/agent/db_form_agent_system/pmc_lancedb_index",
         **kwargs
     ) -> str:
         """The core logic of the tool."""
 
         session_dir: Optional[str] = None
+        input_data: List[Dict[str, str]] = [] # List of {"file": ..., "text": ...}
 
         try:
             # Priority: load_from_folder > load_from_json > direct text
@@ -532,67 +688,126 @@ class ChemicalNerTool(BaseTool):
                 folder_path = Path(texts[0]).resolve()
                 session_dir = str(folder_path)
                 print(f"[{self.name}] Loading all JSON files from folder: {folder_path}")
-                input_texts = self._load_texts_from_folder(str(folder_path))
-                print(f"[{self.name}] Loaded {len(input_texts)} text documents from folder")
+                input_data = self._load_texts_from_folder(str(folder_path))
+                print(f"[{self.name}] Loaded {len(input_data)} text documents from folder")
             elif load_from_json:
                 resolved_files = [Path(p).resolve() for p in texts]
                 if resolved_files:
                     session_dir = str(resolved_files[0].parent)
                 print(f"[{self.name}] Loading texts from {len(texts)} JSON files...")
-                input_texts = self._load_texts_from_json_files([str(p) for p in resolved_files])
-                print(f"[{self.name}] Loaded {len(input_texts)} text documents")
+                input_data = self._load_texts_from_json_files([str(p) for p in resolved_files])
+                print(f"[{self.name}] Loaded {len(input_data)} text documents")
             else:
-                input_texts = texts
+                # Direct text input
+                if texts and isinstance(texts[0], dict) and "file" in texts[0] and "text" in texts[0]:
+                    # Already in the correct format: [{"file": "...", "text": "..."}]
+                    input_data = texts
+                else:
+                    # List of strings -> assign dummy filenames
+                    input_data = [{"file": f"text_{i}.txt", "text": t} for i, t in enumerate(texts)]
 
             if not session_dir:
                 session_dir = self.get_session_dir()
 
-            if not input_texts:
+            if not input_data:
                 return json.dumps({
                     "error": True,
                     "message": "No valid texts found to process"
                 })
 
-            # Step 1: Run batch NER and Linking (now chunked & optimized)
-            # Process in smaller document batches to prevent hanging
-            doc_batch_size = 25  # Process 25 docs at a time (reduced from 50 if still hanging)
-            print(f"[{self.name}] Processing {len(input_texts)} documents with chemical NER...")
-            print(f"[{self.name}] Using document batches of {doc_batch_size} to prevent memory issues")
-            t_start = time.time()
+            # Check for cached NER results to skip processing
+            final_results_map = {} # index -> entities
+            docs_to_process = [] # list of (index, text)
             
-            results_per_doc = []
-            for batch_idx in range(0, len(input_texts), doc_batch_size):
-                batch_end = min(batch_idx + doc_batch_size, len(input_texts))
-                batch_texts = input_texts[batch_idx:batch_end]
-                
-                print(f"[{self.name}] Processing document batch {batch_idx//doc_batch_size + 1}/{(len(input_texts)-1)//doc_batch_size + 1} (docs {batch_idx+1}-{batch_end})")
-                
-                batch_results = extract_chemicals_with_nen_batch(
-                    batch_texts,
-                    ner_gpu=0,
-                    linker_gpu=1,
-                    use_fp16=True,
-                    verbose=True,  # Enable verbose timing
-                    ner_mini_batch_size=8,     # Further reduced to 8 (from 16)
-                    linker_mini_batch_size=16,  # Further reduced to 16 (from 32)
-                    max_chunk_chars=3000        # Bigger chunks = fewer Sentence objects
-                )
-                results_per_doc.extend(batch_results)
-                
-                # Clear GPU cache between batches
-                if torch.cuda.is_available():
-                    torch.cuda.empty_cache()
+            print(f"[{self.name}] Checking for cached NER results...")
             
-            t_ner = time.time() - t_start
-            print(f"[{self.name}] NER+Linking completed in {t_ner:.2f}s ({t_ner/len(input_texts):.2f}s per doc)")
+            for idx, item in enumerate(input_data):
+                file_path = item.get("file")
+                text = item.get("text", "")
+                
+                found_cache = False
+                if file_path and file_path.endswith(".json"):
+                    # Check for sidecar file: [filename].ner_cache.json
+                    cache_path = Path(file_path).with_suffix(".ner_cache.json")
+                    if cache_path.exists():
+                        try:
+                            with open(cache_path, "r", encoding="utf-8") as f:
+                                cached_entities = json.load(f)
+                            # Validate it looks like a dict (MergedResultDict)
+                            if isinstance(cached_entities, dict):
+                                final_results_map[idx] = cached_entities
+                                found_cache = True
+                        except Exception as e:
+                            print(f"[{self.name}] Error reading cache {cache_path}: {e}")
+                
+                if not found_cache:
+                    docs_to_process.append((idx, text))
+            
+            print(f"[{self.name}] Found {len(final_results_map)} cached documents. {len(docs_to_process)} documents need NER.")
+
+            # Extract just the texts for processing
+            input_texts_to_process = [d[1] for d in docs_to_process]
+            
+            results_from_model = []
+            
+            if input_texts_to_process:
+                # Step 1: Run batch NER and Linking (now chunked & optimized)
+                # Process in smaller document batches to prevent hanging
+                doc_batch_size = 25  # Process 25 docs at a time (reduced from 50 if still hanging)
+                print(f"[{self.name}] Processing {len(input_texts_to_process)} documents with chemical NER...")
+                print(f"[{self.name}] Using document batches of {doc_batch_size} to prevent memory issues")
+                t_start = time.time()
+                
+                for batch_idx in range(0, len(input_texts_to_process), doc_batch_size):
+                    batch_end = min(batch_idx + doc_batch_size, len(input_texts_to_process))
+                    batch_texts = input_texts_to_process[batch_idx:batch_end]
+                    
+                    print(f"[{self.name}] Processing document batch {batch_idx//doc_batch_size + 1}/{(len(input_texts_to_process)-1)//doc_batch_size + 1} (docs {batch_idx+1}-{batch_end})")
+                    
+                    batch_results = extract_chemicals_with_nen_batch(
+                        batch_texts,
+                        ner_gpu=0,
+                        linker_gpu=1,
+                        use_fp16=True,
+                        verbose=True,  # Enable verbose timing
+                        ner_mini_batch_size=32,     # Increased for speed
+                        linker_mini_batch_size=64,  # Increased for speed
+                    )
+                    results_from_model.extend(batch_results)
+                    
+                    # Clear GPU cache between batches
+                    if torch.cuda.is_available():
+                        torch.cuda.empty_cache()
+                
+                t_ner = time.time() - t_start
+                print(f"[{self.name}] NER+Linking completed in {t_ner:.2f}s ({t_ner/len(input_texts_to_process):.2f}s per doc)")
+            
+            # Merge model results back into final map
+            for i, (original_idx, _) in enumerate(docs_to_process):
+                final_results_map[original_idx] = results_from_model[i]
+            
+            # Reconstruct results_per_doc in original order
+            results_per_doc = [final_results_map[i] for i in range(len(input_data))]
+
+            # Step 1.5: Construct per-file results list (User Request)
+            per_file_results = []
+            for i, res in enumerate(results_per_doc):
+                per_file_results.append({
+                    "file": input_data[i]["file"],
+                    "entities": res
+                })
 
             # Step 2: Merge all mentions from all texts
-            final_merged_data = merge_batch_results(results_per_doc)
+            # final_merged_data = merge_batch_results(results_per_doc)
+            # User requested NO merging between files for now.
+            final_merged_data = {}
 
             # Step 3: Populate synonyms (if requested)
             mesh_to_syns_cache: Dict[str, List[str]] = {}
 
             if get_synonyms:
+                # Note: If final_merged_data is empty (no global merge), this won't fetch synonyms.
+                # If synonyms are needed per-file, we would need to iterate per_file_results.
                 mesh_ids_to_fetch = [
                     kb_id for kb_id in final_merged_data.keys()
                     if kb_id and isinstance(kb_id, str) and kb_id.startswith("MESH:")
@@ -647,6 +862,69 @@ class ChemicalNerTool(BaseTool):
                     "synonyms": value_dict.get("synonyms", []) if get_synonyms else [],
                     "mentions": [{"text": unique_mentions}]
                 }
+            
+            # If global merge is disabled, count mentions from per-file results for reporting
+            if total_mention_count == 0 and per_file_results:
+                for entry in per_file_results:
+                    for kb_id, val in entry["entities"].items():
+                        total_mention_count += len(val.get("mentions", []))
+
+            # --- Step 5: Update Offline DB (if requested) ---
+            # offline_index_path is passed as argument
+            
+            if offline_index_path and lancedb and PaperChunk and text_splitter:
+                db_path = offline_index_path
+                print(f"[{self.name}] Updating offline DB at {db_path} with {len(docs_to_process)} new documents...")
+                try:
+                    db = lancedb.connect(db_path)
+                    if TABLE_NAME in db.table_names():
+                        tbl = db.open_table(TABLE_NAME)
+                        
+                        new_chunks = []
+                        for idx, text in docs_to_process:
+                            # Get metadata from raw_data
+                            raw = input_data[idx].get("raw_data", {})
+                            # If raw_data is missing (e.g. direct text input), try to infer or use defaults
+                            
+                            # Extract metadata
+                            title = raw.get("title", "Unknown Title")
+                            year = raw.get("year", "Unknown Year")
+                            source = raw.get("source", "Unknown Source")
+                            
+                            # Use filename as doc_id if no explicit id
+                            fpath = input_data[idx].get("file", "")
+                            doc_id = Path(fpath).name if fpath else f"doc_{time.time()}_{idx}"
+                            
+                            # Get NER results
+                            ner_res = final_results_map.get(idx, {})
+                            ner_json = json.dumps(ner_res)
+                            
+                            # Chunking
+                            chunks = text_splitter.split_text(text)
+                            for i, chunk_text in enumerate(chunks):
+                                contextualized_text = f"Title: {title}. {chunk_text}"
+                                new_chunks.append({
+                                    "text": contextualized_text,
+                                    "doc_id": doc_id,
+                                    "title": title,
+                                    "year": str(year),
+                                    "source": source,
+                                    "chunk_id": i,
+                                    "ner_results": ner_json
+                                })
+                        
+                        if new_chunks:
+                            print(f"[{self.name}] Adding {len(new_chunks)} chunks to offline DB...")
+                            tbl.add(new_chunks)
+                            print(f"[{self.name}] Offline DB update complete.")
+                        else:
+                            print(f"[{self.name}] No new chunks to add.")
+                    else:
+                        print(f"[{self.name}] Warning: Table '{TABLE_NAME}' not found in offline DB. Skipping update.")
+                except Exception as e:
+                    print(f"[{self.name}] Error updating offline DB: {e}")
+                    import traceback
+                    traceback.print_exc()
 
             # Save to file in session directory (derived from inputs when possible)
             def _count_mentions(data: Dict[Optional[str], Dict[str, Any]]) -> int:
@@ -673,35 +951,44 @@ class ChemicalNerTool(BaseTool):
                         with open(output_path, "r", encoding="utf-8") as f:
                             existing_data = json.load(f)
 
-                        existing_merged = existing_data.get("merged", {})
-                        for kb_id, value_dict in reformatted_merged_data.items():
-                            if kb_id in existing_merged:
-                                existing_mentions_flat = [
-                                    mention
-                                    for bucket in existing_merged[kb_id].get("mentions", []) or []
-                                    for mention in bucket.get("text", []) or []
-                                ]
-                                new_mentions_flat = [
-                                    mention
-                                    for bucket in value_dict.get("mentions", []) or []
-                                    for mention in bucket.get("text", []) or []
-                                ]
-                                combined_mentions = sorted({*existing_mentions_flat, *new_mentions_flat})
-                                existing_merged[kb_id]["mentions"] = [{"text": combined_mentions}]
+                        # 1. Merge Global Output - SKIPPED as per user request
+                        # We preserve existing merged output if it exists, but don't add to it
+                        merged_output = existing_data.get("merged_output", {})
+                        
+                        # If we were merging, we would do this:
+                        # for kb_id, value_dict in reformatted_merged_data.items():
+                        #     if kb_id in existing_merged:
+                        #         ...
+                        #     else:
+                        #         existing_merged[kb_id] = value_dict
+                        # merged_output = existing_merged
 
-                                existing_syns = existing_merged[kb_id].get("synonyms", []) or []
-                                new_syns = value_dict.get("synonyms", []) or []
-                                combined_syns = sorted({*existing_syns, *new_syns})
-                                existing_merged[kb_id]["synonyms"] = list(combined_syns)
+                        # 2. Append Per-File Results
+                        existing_per_file = existing_data.get("per_file_results", [])
+                        # Optional: Check for duplicates based on filename to avoid double-adding if re-run
+                        existing_filenames = {entry.get("file") for entry in existing_per_file}
+                        
+                        for new_entry in per_file_results:
+                            if new_entry["file"] not in existing_filenames:
+                                existing_per_file.append(new_entry)
                             else:
-                                existing_merged[kb_id] = value_dict
+                                # If file already exists, we might want to update it or skip. 
+                                # For now, let's skip to avoid duplication, assuming files are processed once.
+                                print(f"[{self.name}] Warning: Results for {new_entry['file']} already exist. Skipping append.")
+                        
+                        per_file_results = existing_per_file
 
-                        merged_output = existing_merged
                     except Exception as e:
                         print(f"[{self.name}] Warning: Could not merge with existing file. Overwriting. Error: {e}")
                         merged_output = reformatted_merged_data
 
                 mention_count = _count_mentions(merged_output)
+
+                # Fix: If merged_output is empty (disabled), count from per_file_results
+                if mention_count == 0 and per_file_results:
+                    for entry in per_file_results:
+                        for kb_id, val in entry.get("entities", {}).items():
+                            mention_count += len(val.get("mentions", []))
 
                 final_output_dict = {
                     "error": False,
@@ -714,7 +1001,8 @@ class ChemicalNerTool(BaseTool):
                     "error": False,
                     "results_file": str(output_path),
                     "mention_count": mention_count,
-                    "merged_output": merged_output
+                    "merged_output": merged_output,
+                    "per_file_results": per_file_results
                 }
 
                 with open(output_path, "w", encoding="utf-8") as f:
@@ -734,3 +1022,35 @@ class ChemicalNerTool(BaseTool):
             return json.dumps({"error": True, "message": str(e)})
 
 # -------------------- END OF TOOL DEFINITION --------------------
+def _filter_relevant_sections(text: str) -> str:
+    """
+    If text contains 'Results' or 'Discussion' sections (marked by '## '),
+    return only those sections. Otherwise return full text.
+    """
+    if not text:
+        return ""
+    
+    lines = text.split('\n')
+    relevant_parts = []
+    in_relevant_section = False
+    found_any_relevant = False
+    
+    for line in lines:
+        stripped = line.strip()
+        if stripped.startswith("## "):
+            title = stripped[3:].lower()
+            # Check for keywords
+            if "result" in title or "discus" in title:
+                in_relevant_section = True
+                found_any_relevant = True
+                relevant_parts.append(line)
+            else:
+                in_relevant_section = False
+        elif in_relevant_section:
+            relevant_parts.append(line)
+            
+    if found_any_relevant:
+        return "\n".join(relevant_parts)
+    return text
+
+
