@@ -58,3 +58,5 @@ searching_results
 scripts
 
 *.csv
+*.log
+*.json

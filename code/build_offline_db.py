@@ -21,7 +21,8 @@ from langchain_text_splitters import RecursiveCharacterTextSplitter
 
 # --- Configuration ---
 # Use absolute path for DB to avoid confusion
-LANCEDB_URI = os.path.abspath("./pmc_lancedb_index")
+# LANCEDB_URI = os.path.abspath("./pmc_lancedb_index")
+LANCEDB_URI = "/data/chen/GNPS_SIM/pmc_lancedb_index"
 TABLE_NAME = "papers_index"
 EMBEDDING_MODEL_NAME = "sentence-transformers/all-MiniLM-L6-v2"
 # Use the path where the user seems to have data

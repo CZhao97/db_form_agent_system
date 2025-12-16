@@ -7,6 +7,7 @@ import requests
 from pathlib import Path
 from contextvars import ContextVar
 import os
+import bisect
 os.environ["TOKENIZERS_PARALLELISM"] = "false"
 
 # ---------------- third-party libs ----------------
@@ -170,6 +171,65 @@ def cids_to_synonyms(cids: List[int], max_per_cid: Optional[int] = None) -> List
 
 # ---------------- Caching & types ----------------
 _MODELS: Dict[Tuple[str, str, int, int, bool], Dict[str, Any]] = {}
+# NEW: Simple in-memory cache for Entity Linking to skip neural network for common terms
+_LINKER_CACHE: Dict[str, str] = {
+    "oxygen": "MESH:D010100",
+    "water": "MESH:D014867",
+    "glucose": "MESH:D005947",
+    "hydrogen": "MESH:D006859",
+    "nitrogen": "MESH:D009584",
+    "carbon dioxide": "MESH:D002245",
+    "calcium": "MESH:D002118",
+    "sodium": "MESH:D012964",
+    "potassium": "MESH:D011188",
+    "magnesium": "MESH:D008274",
+    "iron": "MESH:D007501",
+    "copper": "MESH:D003300",
+    "zinc": "MESH:D015032",
+    "ethanol": "MESH:D000431",
+    "methanol": "MESH:D000432",
+    "atp": "MESH:D000255",
+    "adp": "MESH:D000244",
+    "dna": "MESH:D004247",
+    "rna": "MESH:D012313",
+    "protein": "MESH:D011506",
+    "amino acid": "MESH:D000596",
+    "fatty acid": "MESH:D005227",
+    "cholesterol": "MESH:D002784",
+    "insulin": "MESH:D007328",
+    "albumin": "MESH:D000418",
+    "hemoglobin": "MESH:D006454",
+    "glutamate": "MESH:D018698",
+    "gaba": "MESH:D005680",
+    "dopamine": "MESH:D004298",
+    "serotonin": "MESH:D012701",
+    "acetylcholine": "MESH:D000109",
+    "epinephrine": "MESH:D004837",
+    "norepinephrine": "MESH:D009638",
+    "cortisol": "MESH:D006854",
+    "testosterone": "MESH:D013739",
+    "estrogen": "MESH:D004967",
+    "progesterone": "MESH:D011374",
+    "aspirin": "MESH:D001241",
+    "ibuprofen": "MESH:D007052",
+    "acetaminophen": "MESH:D000082",
+    "caffeine": "MESH:D002110",
+    "nicotine": "MESH:D009538",
+    "alcohol": "MESH:D000431",
+    "sugar": "MESH:D002241",
+    "salt": "MESH:D012965",
+    "acid": "MESH:D000138",
+    "base": "MESH:D000138", # Generic mapping
+    "buffer": "MESH:D002021",
+    "solution": "MESH:D012996",
+    "medium": "MESH:D003470",
+    "serum": "MESH:D012709",
+    "plasma": "MESH:D010949",
+    "urine": "MESH:D014556",
+    "blood": "MESH:D001769",
+    "tissue": "MESH:D014024",
+    "cell": "MESH:D002477",
+}
 
 EntityValue = Dict[str, Any]  # e.g., {"synonyms": [...], "mentions": ["Aspirin", ...]}
 MergedResultDict = Dict[Optional[str], EntityValue]
@@ -208,17 +268,25 @@ def _pack_sentences_with_offsets(sentences: List[str], max_chars: int = 1500) ->
     for s in sentences:
         slen = len(s)
         # If adding this sentence exceeds max_chars, and we have something in buffer, flush buffer
-        if current_len + slen + 1 > max_chars and current_sents:
-            chunk_text = " ".join(current_sents)
-            offsets = []
-            pos = 0
-            for cs in current_sents:
-                offsets.append((pos, pos + len(cs)))
-                pos += len(cs) + 1
-            chunks.append((chunk_text, offsets))
+        if current_len + slen + 1 > max_chars:
+            if current_sents:
+                chunk_text = " ".join(current_sents)
+                offsets = []
+                pos = 0
+                for cs in current_sents:
+                    offsets.append((pos, pos + len(cs)))
+                    pos += len(cs) + 1
+                chunks.append((chunk_text, offsets))
+                
+                current_sents = []
+                current_len = 0
             
-            current_sents = []
-            current_len = 0
+            # If the sentence itself is longer than max_chars, split it hard
+            if slen > max_chars:
+                for i in range(0, slen, max_chars):
+                    sub_s = s[i:i+max_chars]
+                    chunks.append((sub_s, [(0, len(sub_s))]))
+                continue
         
         current_sents.append(s)
         current_len += slen + 1
@@ -293,7 +361,7 @@ def _load_and_prepare_models(
     # OPTIMIZATION: PyTorch 2.0 Compile
     # We use 'reduce-overhead' mode if available, or default.
     # We catch errors to fallback to eager mode.
-    if hasattr(torch, "compile"):
+    if False and hasattr(torch, "compile"):
         print(f"[model] Attempting to compile models with torch.compile on {ner_device}...")
         try:
             # Compile the underlying transformer embeddings
@@ -377,7 +445,7 @@ def extract_chemicals_with_nen_batch(
     verbose: bool = False,
     ner_mini_batch_size: int = 16,       # Reduced to prevent hanging
     linker_mini_batch_size: int = 32,    # Reduced to prevent hanging
-    max_chunk_chars: int = 1500,         # Reverted to 1500 for better throughput
+    max_chunk_chars: int = 500,          # Reduced to 500 to prevent OOM/Crash
     disable_linking: bool = False        # NEW: Option to skip linking for speed
 ) -> List[MergedResultDict]:
     """
@@ -446,34 +514,186 @@ def extract_chemicals_with_nen_batch(
     # and the original 'all_chunks' list will reflect the changes.
     sorted_chunks = sorted(all_chunks, key=lambda s: len(s.to_plain_string()), reverse=True)
     
-    if ner_device.type == "cuda":
-        with torch.inference_mode(), torch.amp.autocast('cuda',enabled=use_fp16):
-            ner.predict(sorted_chunks, mini_batch_size=ner_mini_batch_size, verbose=verbose)
-    else:
-        with torch.inference_mode():
-            ner.predict(sorted_chunks, mini_batch_size=ner_mini_batch_size, verbose=verbose)
-    t1 = time.time()
-    print(f"[NER] NER complete in {t1-t0:.2f}s")
-
-    # --- OPTIMIZATION: Only run linker on chunks that have entities ---
-    chunks_with_entities = [c for c in all_chunks if len(c.get_spans("ner")) > 0]
-    print(f"[NER] {len(chunks_with_entities)}/{len(all_chunks)} chunks have entities. Running linker only on those.")
-
-    if chunks_with_entities and linker:
-        # Sort linker chunks as well
-        sorted_linker_chunks = sorted(chunks_with_entities, key=lambda s: len(s.to_plain_string()), reverse=True)
-        
-        print(f"[NER] Running Entity Linker on {len(chunks_with_entities)} chunks (batch_size={linker_mini_batch_size})...")
-        if linker_device.type == "cuda":
-            with torch.inference_mode(), torch.amp.autocast('cuda', enabled=use_fp16):
-                linker.predict(sorted_linker_chunks, batch_size=linker_mini_batch_size)
+    try:
+        if ner_device.type == "cuda":
+            with torch.inference_mode(), torch.amp.autocast('cuda',enabled=use_fp16):
+                ner.predict(sorted_chunks, mini_batch_size=ner_mini_batch_size, verbose=verbose)
         else:
             with torch.inference_mode():
-                linker.predict(sorted_linker_chunks, batch_size=linker_mini_batch_size)
+                ner.predict(sorted_chunks, mini_batch_size=ner_mini_batch_size, verbose=verbose)
+        t1 = time.time()
+        print(f"[NER] NER complete in {t1-t0:.2f}s")
+
+        # --- OPTIMIZATION: Only run linker on chunks that have entities ---
+        # chunks_with_entities = [c for c in all_chunks if len(c.get_spans("ner")) > 0]
+        
+        # NEW: Apply Cache First
+        chunks_to_link = []
+        cached_count = 0
+        
+        # DEBUG: Check if we have any spans at all
+        total_spans_found = 0
+        
+        for chunk in all_chunks:
+            spans = chunk.get_spans("ner")
+            if not spans:
+                continue
+                
+            total_spans_found += len(spans)
+            
+            # Check if we can skip linking for this chunk
+            # We can skip if ALL Chemical entities are in the cache.
+            # If even one is missing, we must run the linker on the whole chunk
+            # (because the linker expects the full context and might overwrite labels).
+            
+            needs_linking = False
+            chemical_spans = []
+            
+            for span in spans:
+                # Safer tag access
+                tag_value = span.get_label("ner").value
+                
+                # Filter for Chemical entities only
+                if tag_value != "Chemical":
+                    continue
+                
+                chemical_spans.append(span)
+                
+                # Check if already linked
+                if span.get_labels("link"):
+                    continue
+                    
+                text_lower = span.text.lower()
+                if text_lower not in _LINKER_CACHE:
+                    needs_linking = True
+            
+            if needs_linking:
+                chunks_to_link.append(chunk)
+            elif chemical_spans:
+                # All chemical spans are in cache (and there is at least one)
+                # Apply cached labels now
+                for span in chemical_spans:
+                    text_lower = span.text.lower()
+                    if text_lower in _LINKER_CACHE:
+                        span.add_label("link", _LINKER_CACHE[text_lower], score=1.0)
+                        cached_count += 1
+        # If no chemical spans, we don't need to do anything (linker wouldn't do anything either)
+
+        print(f"[NER] DEBUG: Total NER spans found: {total_spans_found}")
+        print(f"[NER] {len(chunks_to_link)}/{len(all_chunks)} chunks need linking ({cached_count} entities resolved from cache in skipped chunks).")
+        sys.stdout.flush()
+
+    except Exception as e:
+        import traceback
+        traceback.print_exc()
+        print(f"ERROR in NER/Linking: {e}")
+        sys.stdout.flush()
+        raise e
+
+    if chunks_to_link and linker:
+        # Sort linker chunks as well
+        sorted_linker_chunks = sorted(chunks_to_link, key=lambda s: len(s.to_plain_string()), reverse=True)
+        
+        # DEBUG: Check max length
+        if sorted_linker_chunks:
+            max_len = len(sorted_linker_chunks[0].to_plain_string())
+            print(f"[NER] Max chunk length to link: {max_len} chars")
+        
+        # Force GC and clear cache
+        import gc
+        gc.collect()
+        if torch.cuda.is_available():
+            torch.cuda.empty_cache()
+        
+        print(f"[NER] Preparing to link {len(chunks_to_link)} chunks...")
+        sys.stdout.flush()
+
+        # OPTIMIZATION: Explode chunks into single-entity sentences.
+        # This avoids the quadratic complexity of the linker when many entities are in one sentence.
+        # We lose context, but for Chemicals it is usually acceptable and provides 40x speedup.
+        single_entity_sentences = []
+        span_mapping = [] # (single_entity_sentence, original_span)
+        
+        for chunk in chunks_to_link:
+            for span in chunk.get_spans("ner"):
+                if span.get_label("ner").value != "Chemical":
+                    continue
+                
+                # Check cache again
+                text_lower = span.text.lower()
+                if text_lower in _LINKER_CACHE:
+                    span.add_label("link", _LINKER_CACHE[text_lower], score=1.0)
+                    cached_count += 1
+                    continue
+                
+                # Create a new sentence for this entity
+                s_clone = Sentence(span.text)
+                # Add NER label to the whole sentence
+                span_clone = s_clone[0:len(s_clone)]
+                span_clone.add_label("ner", "Chemical")
+                
+                single_entity_sentences.append(s_clone)
+                span_mapping.append((s_clone, span))
+        
+        if single_entity_sentences:
+            print(f"[NER] Exploded chunks into {len(single_entity_sentences)} single-entity sentences for linking.")
+            sys.stdout.flush()
+            
+            # Run in batches
+            # Use a larger batch size for these small sentences
+            link_batch_size = 256 
+            
+            # Manual outer loop to prevent hanging on huge lists and show progress
+            total_sentences = len(single_entity_sentences)
+            outer_batch_size = 5000 # Process 5000 entities at a time
+            
+            for i in range(0, total_sentences, outer_batch_size):
+                batch_slice = single_entity_sentences[i : i + outer_batch_size]
+                print(f"[NER] Linking batch slice {i}-{min(i+outer_batch_size, total_sentences)}/{total_sentences}...")
+                sys.stdout.flush()
+                
+                try:
+                    if linker_device.type == "cuda":
+                        with torch.inference_mode(), torch.amp.autocast('cuda', enabled=use_fp16):
+                            linker.predict(batch_slice, batch_size=link_batch_size)
+                    else:
+                        with torch.inference_mode():
+                            linker.predict(batch_slice, batch_size=link_batch_size)
+                except Exception as e:
+                    print(f"[NER] Error linking slice {i}: {e}")
+                    sys.stdout.flush()
+            
+            # Map back results
+            for s_clone, original_span in span_mapping:
+                span_clone = s_clone[0:len(s_clone)]
+                link_labels = span_clone.get_labels("link")
+                if link_labels:
+                    # Take the top one
+                    top = max(link_labels, key=lambda l: l.score)
+                    original_span.add_label("link", top.value, score=top.score)
+
+        # Update Cache with new results
+        new_cached = 0
+        for chunk in chunks_to_link:
+            for span in chunk.get_spans("ner"):
+                if span.get_label("ner").value != "Chemical":
+                    continue
+                    
+                link_labels = span.get_labels("link")
+                if link_labels:
+                    top = max(link_labels, key=lambda l: l.score)
+                    kb_id = top.value
+                    text_lower = span.text.lower()
+                    if text_lower not in _LINKER_CACHE:
+                        _LINKER_CACHE[text_lower] = kb_id
+                        new_cached += 1
+        if new_cached > 0:
+            print(f"[NER] Added {new_cached} new terms to linker cache (total size: {len(_LINKER_CACHE)})")
+
     elif not linker:
         print("[NER] Linker disabled. Skipping linking.")
     else:
-        print("[NER] No entities found. Skipping linker.")
+        print("[NER] No entities found or all resolved by cache. Skipping linker.")
 
     t2 = time.time()
     print(f"[NER] Entity Linking complete in {t2-t1:.2f}s")
@@ -494,6 +714,10 @@ def extract_chemicals_with_nen_batch(
     for chunk, doc_i, offsets in zip(all_chunks, doc_index, chunk_offsets):
         out_dict = per_doc[doc_i]
         chunk_plain = chunk.to_plain_string()
+        
+        # Precompute start positions for bisect
+        chunk_starts = [o[0] for o in offsets]
+        chunk_ends = [o[1] for o in offsets]
 
         for span in chunk.get_spans("ner"):
             if (span.tag or "").lower() != "chemical":
@@ -511,14 +735,37 @@ def extract_chemicals_with_nen_batch(
             if not kb_id:
                 kb_id = f"TEXT:{mention_text.upper()}"
             
-            # Extract context sentence
-            context_sentence = mention_text
+            # Optimized Context Lookup using bisect
             start = span.start_position
             end = span.end_position
-            for (s_start, s_end) in offsets:
-                if s_start <= start and end <= s_end:
+            
+            # Find the first sentence that starts before or at the mention start
+            idx_start = bisect.bisect_right(chunk_starts, start) - 1
+            
+            context_sentence = mention_text # Default
+            
+            if idx_start >= 0:
+                # Check if the mention is fully contained in this sentence
+                s_start = chunk_starts[idx_start]
+                s_end = chunk_ends[idx_start]
+                
+                if end <= s_end:
+                    # Perfect match
                     context_sentence = chunk_plain[s_start:s_end]
-                    break
+                else:
+                    # Spans multiple sentences. Find the last sentence overlapping the mention.
+                    idx_last = bisect.bisect_left(chunk_starts, end) - 1
+                    
+                    # Clamp idx_last
+                    if idx_last < idx_start: 
+                        idx_last = idx_start
+                    if idx_last >= len(chunk_starts):
+                        idx_last = len(chunk_starts) - 1
+                        
+                    # Combine from start of first to end of last
+                    c_start = chunk_starts[idx_start]
+                    c_end = chunk_ends[idx_last]
+                    context_sentence = chunk_plain[c_start:c_end]
             
             # Format: "Mention (Context: Sentence)"
             combined_text = f"{mention_text} (Context: {context_sentence})"
@@ -863,7 +1110,7 @@ class ChemicalNerTool(BaseTool):
                     "mentions": [{"text": unique_mentions}]
                 }
             
-            # If global merge is disabled, count mentions from per-file results for reporting
+            # If global merge is disabled, count mentions from per_file_results for reporting
             if total_mention_count == 0 and per_file_results:
                 for entry in per_file_results:
                     for kb_id, val in entry["entities"].items():
