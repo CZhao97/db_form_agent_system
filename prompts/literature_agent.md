@@ -16,7 +16,7 @@ Return ONLY a single JSON object as the final message—no prose outside JSON.
 * `compound_database` — canonicalize chemical identity.
     Inputs: `{"compound_name"?: str, "formula"?: str, "smiles"?: str, "mass"?: float}`
 * `fulltext_journal_search` — run **2–3** search variants per call; returns saved JSON file paths across `searching_results/run_YYYYmmdd_HHMMSS[_idx]/...`.
-    Inputs: `{"query": "<JSON array string>", "max_results": 200, "include_preprints": False, "include_s2": True, "include_arxiv": True, "include_medrxiv": True, "include_chemrxiv": True, "max_results_pubmed"?: int, "max_results_eupmc"?: int, "max_results_s2"?: int, "max_results_arxiv"?: int, "max_results_medrxiv"?: int, "max_results_chemrxiv"?: int, "min_date"?: "YYYY/MM/DD", "max_date"?: "YYYY/MM/DD"}`
+    Inputs: `{"query": "<JSON array string>", "max_results": 200, "include_preprints": False, "include_s2": True, "include_arxiv": False, "include_medrxiv": False, "include_chemrxiv": False, "max_results_pubmed"?: int, "max_results_eupmc"?: int, "max_results_s2"?: int, "max_results_arxiv"?: int, "max_results_medrxiv"?: int, "max_results_chemrxiv"?: int, "min_date"?: "YYYY/MM/DD", "max_date"?: "YYYY/MM/DD"}`
 * `fulltext_index` — build index for a chosen run dir (idempotent).
     Inputs: `{"run_path": "searching_results/run_YYYYmmdd_HHMMSS[_idx]"}`
 * `fulltext_query` — retrieve **top-k** evidence snippets.
