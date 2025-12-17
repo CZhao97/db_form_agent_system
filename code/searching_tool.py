@@ -270,8 +270,8 @@ class FullTextJournalSearchTool(BaseTool):
     args_schema: Type[FullTextJournalSearchInput] = FullTextJournalSearchInput
 
     _entrez_email: str = "laozc@student.ubc.ca"
-    _max_retries: int = 3
-    _backoff_base: float = 1.5
+    _max_retries: int = 5
+    _backoff_base: float = 2.0
     _http: requests.Session
 
     include_pubmed: bool = True
@@ -284,10 +284,11 @@ class FullTextJournalSearchTool(BaseTool):
     use_pubmed_free_fulltext_bias: bool = True
 
     # parallel knobs (default overridden by input if provided)
-    max_parallel_downloads: int = 6  # legacy
-    max_search_workers: int = 8
-    max_phase1_workers: int = 12
-    max_parallel_docling: int = 4
+    # parallel knobs (default overridden by input if provided)
+    max_parallel_downloads: int = 2  # legacy
+    max_search_workers: int = 2
+    max_phase1_workers: int = 4
+    max_parallel_docling: int = 2
 
     results_base_dir: Optional[pathlib.Path] = None
     
@@ -402,7 +403,11 @@ class FullTextJournalSearchTool(BaseTool):
             except Exception as exc:
                 last_err = exc
                 log.warning(f"Entrez network error {description} (attempt {attempt}/{self._max_retries}): {exc}")
-                time.sleep(self._backoff_base ** (attempt - 1))
+                # Exponential backoff with jitter
+                sleep_time = (self._backoff_base ** attempt) + (random.random() * 0.5)
+                if "429" in str(exc):
+                    sleep_time += 5  # Extra penalty for rate limits
+                time.sleep(sleep_time)
                 continue
             finally:
                 if handle is not None and hasattr(handle, "close"):
@@ -429,7 +434,12 @@ class FullTextJournalSearchTool(BaseTool):
             except Exception as exc:
                 last_err = exc
                 log.warning(f"Entrez network error {description} (attempt {attempt}/{self._max_retries}): {exc}")
-                time.sleep(self._backoff_base ** (attempt - 1))
+                # Exponential backoff with jitter
+                sleep_time = (self._backoff_base ** attempt) + (random.random() * 0.5)
+                if "429" in str(exc):
+                    sleep_time += 5
+                time.sleep(sleep_time)
+                continue
             finally:
                 if handle is not None and hasattr(handle, "close"):
                     try: handle.close()
@@ -465,6 +475,7 @@ class FullTextJournalSearchTool(BaseTool):
             if isinstance(search, dict):
                 pmids = search.get("IdList", []) or search.get("Idlist", []) or []
             pmids = [str(x) for x in pmids if x]
+            log.info(f"PubMed search for '{q_term}' found {len(pmids)} PMIDs: {pmids[:10]}...")
             if not pmids:
                 return results
 
@@ -1617,6 +1628,9 @@ class FullTextJournalSearchTool(BaseTool):
         if not queries:
             log.info("No query provided.")
             return "No query provided. Nothing to search."
+            
+        log.info(f"Searching for queries: {queries}")
+
 
         # ---- Resolve session dir
         session_dir = _SESSION_DIR_CVAR.get()
