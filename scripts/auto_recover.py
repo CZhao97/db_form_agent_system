@@ -20,7 +20,7 @@ TEMP_RECOMPUTE_DIR = "/data/chen/temp_recompute_batch"
 RECOMPUTE_OUTPUT_DIR = "/data/chen/temp_recompute_results"
 
 # Scripts
-NER_SCRIPT_PATH = "code/build_offline_db.py"  # Path relative to where you run this script
+NER_SCRIPT_PATH = "code/build_offline_db.py"
 
 # Tuning
 BATCH_SIZE = 10000
@@ -54,7 +54,7 @@ def step_1_rescue_data(db):
     current_offset = 0
     if dest_tbl:
         current_offset = dest_tbl.count_rows()
-        log(f"Resuming rescue from row {current_offset}...")
+        log(f"Resuming rescue from offset {current_offset}...")
 
     rescued_count = 0
     skipped_count = 0
@@ -107,33 +107,44 @@ def step_2_find_missing(dest_tbl):
     # We fetch in chunks to avoid OOM if the list is huge
     db_files = set()
     try:
-        # Try 'file' first
-        df_iter = dest_tbl.search().select(["file"]).limit(None).to_pandas()
-        db_files = set(df_iter["file"].tolist())
-    except:
-        # Try 'filename' fallback
-        log("Column 'file' not found, trying 'filename'...")
-        df_iter = dest_tbl.search().select(["filename"]).limit(None).to_pandas()
-        db_files = set(df_iter["filename"].tolist())
+        # Use 'doc_id' which stores the filename
+        df_iter = dest_tbl.search().select(["doc_id"]).limit(None).to_pandas()
+        db_files = set(df_iter["doc_id"].tolist())
+    except Exception as e:
+        log(f"Error fetching file list: {e}")
+        return []
 
     log(f"DB contains {len(db_files)} unique files.")
 
-    # 2. Get files on disk
+    # 2. Scan disk and find missing
     log(f"Scanning source directory: {SOURCE_TEXT_DIR}")
-    disk_files = set(os.path.basename(f) for f in glob.glob(os.path.join(SOURCE_TEXT_DIR, "*.txt")))
-    log(f"Disk contains {len(disk_files)} files.")
+    missing_files = []
+    scanned_count = 0
+    
+    try:
+        with os.scandir(SOURCE_TEXT_DIR) as it:
+            for entry in it:
+                if entry.name.endswith('.txt') and entry.is_file():
+                    scanned_count += 1
+                    if entry.name not in db_files:
+                        missing_files.append(entry.name)
+                    
+                    if scanned_count % 100000 == 0:
+                        print(f"Scanned {scanned_count} files... Found {len(missing_files)} missing so far.", end='\r')
+                        sys.stdout.flush()
+    except Exception as e:
+        log(f"Error scanning directory: {e}")
 
-    # 3. Diff
-    missing_files = list(disk_files - db_files)
-    log(f"Found {len(missing_files)} missing files that need re-computation.")
+    print("") # Newline after progress
+    log(f"Total scanned: {scanned_count}. Found {len(missing_files)} missing files that need re-computation.")
     
     return missing_files
 
-def step_3_recompute(missing_files):
+def step_3_recompute_parallel(missing_files):
     """
-    Sets up a temp directory with missing files and runs the NER script.
+    Sets up a temp directory with missing files and runs the build script in parallel.
     """
-    log("--- STEP 3: RECOMPUTE MISSING DATA ---")
+    log("--- STEP 3: RECOMPUTE MISSING DATA (PARALLEL) ---")
     
     if not missing_files:
         log("No files missing. Skipping recompute.")
@@ -153,34 +164,51 @@ def step_3_recompute(missing_files):
         else:
             log(f"Warning: Source file {src} not found!")
 
-    # 2. Run the NER Builder Script
-    # We call the user's existing script but point it to the temp dir
-    cmd = [
-        sys.executable, NER_SCRIPT_PATH,
-        "--input_dir", TEMP_RECOMPUTE_DIR,
-        "--db_uri", DB_URI,
-        "--table_name", RESCUED_TABLE,
-        "--shard_id", "0",
-        "--num_shards", "1",
-        "--gpu_id", "0", # Uses GPU 0 by default
-        "--file_batch_size", "100"
-    ]
+    # 2. Determine Sharding
+    num_files = len(missing_files)
+    # Heuristic: at least 100 files per shard, max 2 shards (Reduced for stability)
+    num_shards = max(1, min(2, num_files // 100))
     
-    log(f"Launching NER script: {' '.join(cmd)}")
-    try:
-        subprocess.run(cmd, check=True)
-        log("Re-computation finished successfully.")
-    except subprocess.CalledProcessError as e:
-        log(f"NER script failed with error code {e.returncode}")
-        sys.exit(1)
-
-def step_4_merge_results(db):
-    """
-    Reads JSON outputs from step 3 and inserts them into the LanceDB table.
-    """
-    log("--- STEP 4: MERGE RESULTS ---")
-    log("Step 4 is now handled directly by the recompute step (build_offline_db.py).")
-    return
+    log(f"Launching {num_shards} parallel shards for recomputation...")
+    
+    # Set PyTorch Env Var
+    env = os.environ.copy()
+    env["PYTORCH_CUDA_ALLOC_CONF"] = "expandable_segments:True"
+    
+    processes = []
+    for i in range(num_shards):
+        real_gpu_id = i % 2 # Alternate between GPU 0 and 1
+        
+        # We set CUDA_VISIBLE_DEVICES so that 'cuda' always maps to the desired GPU
+        # and the script sees it as 'device 0'.
+        shard_env = env.copy()
+        shard_env["CUDA_VISIBLE_DEVICES"] = str(real_gpu_id)
+        
+        cmd = [
+            sys.executable, NER_SCRIPT_PATH,
+            "--input_dir", TEMP_RECOMPUTE_DIR,
+            "--table_name", RESCUED_TABLE,
+            "--shard_id", str(i),
+            "--num_shards", str(num_shards),
+            "--gpu_id", "0", # Since we mask with CUDA_VISIBLE_DEVICES, the script should use 0
+            "--file_batch_size", "50",   # Reduced for stability
+            "--ner_batch_size", "32",    # Reduced for stability
+            "--linker_batch_size", "8",  # Reduced for stability
+            "--skip_index"               # Prevent redundant indexing (Hang fix)
+        ]
+        
+        log(f"Launching Shard {i} on GPU {real_gpu_id}...")
+        p = subprocess.Popen(cmd, env=shard_env)
+        processes.append(p)
+    
+    # Wait for completion
+    for i, p in enumerate(processes):
+        p.wait()
+        if p.returncode != 0:
+            log(f"Shard {i} failed with exit code {p.returncode}")
+            # We don't exit immediately, let others finish, but this is an error state
+    
+    log("Recomputation complete.")
 
 def main():
     log("Starting Auto-Recovery...")
@@ -196,18 +224,14 @@ def main():
     
     # 3. Recompute
     if missing_files:
-        step_3_recompute(missing_files)
-        
-        # 4. Merge (Placeholder logic - requires schema knowledge)
-        # If your NER script produces JSONs, you likely need to run your INGESTER on `RECOMPUTE_OUTPUT_DIR`.
-        log("Recompute complete. Data should be in table.")
+        step_3_recompute_parallel(missing_files)
     else:
-        log("No data was missing. Proceeding to indexing.")
-        step_4_merge_results(db) # Mainly for indexing if no missing files
+        log("No data was missing.")
 
     log("Recovery Workflow Complete.")
     log(f"Your clean data is in table: '{RESCUED_TABLE}'")
-    log("Verify it, then delete the old table and rename the new one.")
+    log("Step 4 (FTS Indexing) has been removed from this script to prevent hangs.")
+    log("Please run 'scripts/finalize_recovery.py' to swap tables and build the index efficiently.")
 
 if __name__ == "__main__":
     main()

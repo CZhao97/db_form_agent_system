@@ -14,7 +14,7 @@ log = logging.getLogger("offline_paper_tool")
 class OfflinePaperSearchInput(BaseModel):
     query: str = Field(..., description="Natural language query to search in the offline paper database.")
     k: int = Field(5, description="Number of results to return.")
-    index_path: Optional[str] = Field(None, description="Path to the LanceDB index directory. Defaults to './pmc_lancedb_index'.")
+    index_path: Optional[str] = Field(None, description="Path to the LanceDB index directory. Defaults to '/data/chen/GNPS_SIM/pmc_lancedb_index'.")
 
 class OfflinePaperSearchTool(BaseTool):
     name: str = "offline_paper_search"
@@ -28,10 +28,10 @@ class OfflinePaperSearchTool(BaseTool):
     _db: Optional[lancedb.DBConnection] = None
     _table: Optional[lancedb.table.Table] = None
     _reranker: Optional[RRFReranker] = None
-    _index_path: str = "./pmc_lancedb_index"
+    _index_path: str = "/data/chen/GNPS_SIM/pmc_lancedb_index"
     _table_name: str = "papers_index"
 
-    def __init__(self, index_path: str = "./pmc_lancedb_index", **data):
+    def __init__(self, index_path: str = "/data/chen/GNPS_SIM/pmc_lancedb_index", **data):
         super().__init__(**data)
         self._index_path = index_path
 

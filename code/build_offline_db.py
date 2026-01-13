@@ -32,12 +32,6 @@ CHUNK_SIZE = 1000
 CHUNK_OVERLAP = 200
 # BATCH_SIZE removed here, will be an argument
 
-# Default Configuration (can be overridden by args)
-DEFAULT_LANCEDB_URI = "/data/chen/GNPS_SIM/pmc_lancedb_index"
-DEFAULT_TABLE_NAME = "papers_index"
-DEFAULT_INPUT_DIR = "/data/chen/pubmed_corpus/pmc_extracted_text"
-
-
 # Ensure clean start
 # if os.path.exists(LANCEDB_URI):
 #     print(f"Removing existing database at {LANCEDB_URI}...")
@@ -75,7 +69,7 @@ text_splitter = RecursiveCharacterTextSplitter(
     length_function=len,
 )
 
-def build_database(limit: int = None, shard_id: int = 0, num_shards: int = 1, gpu_id: int = 0, file_batch_size: int = 1000, ner_batch_size: int = 256, linker_batch_size: int = 1024, input_dir: str = DEFAULT_INPUT_DIR, db_uri: str = DEFAULT_LANCEDB_URI, table_name: str = DEFAULT_TABLE_NAME):
+def build_database(limit: int = None, shard_id: int = 0, num_shards: int = 1, gpu_id: int = 0, file_batch_size: int = 1000, ner_batch_size: int = 256, linker_batch_size: int = 1024, skip_index: bool = False):
     # Import here to avoid circular dependency
     try:
         from chemical_ner_tool import extract_chemicals_with_nen_batch, _filter_relevant_sections
@@ -88,27 +82,26 @@ def build_database(limit: int = None, shard_id: int = 0, num_shards: int = 1, gp
     # Only remove if we are starting fresh and not just appending/resuming
     # For this script, we'll assume overwrite if limit is small (test), or append if full run?
     # Let's stick to overwrite for now to be safe, or handle existing DB gracefully.
-    # Let's stick to overwrite for now to be safe, or handle existing DB gracefully.
-    if limit and limit < 10000 and os.path.exists(db_uri) and shard_id == 0 and num_shards == 1:
-         print(f"Removing existing database at {db_uri} for test run...")
-         shutil.rmtree(db_uri)
+    if limit and limit < 10000 and os.path.exists(LANCEDB_URI) and shard_id == 0 and num_shards == 1:
+         print(f"Removing existing database at {LANCEDB_URI} for test run...")
+         shutil.rmtree(LANCEDB_URI)
 
-    print(f"Connecting to LanceDB at {db_uri}...")
-    db = lancedb.connect(db_uri)
+    print(f"Connecting to LanceDB at {LANCEDB_URI}...")
+    db = lancedb.connect(LANCEDB_URI)
     
     # Create table if not exists, else open it
-    if table_name in db.table_names():
-        tbl = db.open_table(table_name)
+    if TABLE_NAME in db.table_names():
+        tbl = db.open_table(TABLE_NAME)
     else:
-        tbl = db.create_table(table_name, schema=PaperChunk, mode="overwrite")
+        tbl = db.create_table(TABLE_NAME, schema=PaperChunk, mode="overwrite")
 
     # --- 2. Data Preparation ---
-    current_input_dir = input_dir
+    current_input_dir = INPUT_DIR
     print(f"Scanning {current_input_dir} for text files...")
     if not os.path.exists(current_input_dir):
         print(f"Error: Input directory {current_input_dir} does not exist.")
-        # Fallback logic if needed, or just fail
-
+        current_input_dir = "./pmc_extracted_text"
+        print(f"Trying local directory: {current_input_dir}")
 
     # Use iglob for iterator if possible, but we need sort/slice for deterministic behavior
     # For 6M files, glob might be slow.
@@ -277,20 +270,23 @@ def build_database(limit: int = None, shard_id: int = 0, num_shards: int = 1, gp
               f"Total Est (for {total_files} files): {(total_files * avg_time_per_file)/3600:.1f} hours")
 
     # Create FTS Index at the end
-    print("Building FTS Index...")
-    tbl.create_fts_index("text", replace=True)
-    print("Indexing complete.")
+    if not skip_index:
+        print("Building FTS Index...")
+        tbl.create_fts_index("text", replace=True)
+        print("Indexing complete.")
+    else:
+        print("Skipping FTS Index build as requested.")
 
 # --- 4. Search Demo ---
-def search_papers(query, db_uri=DEFAULT_LANCEDB_URI, table_name=DEFAULT_TABLE_NAME):
+def search_papers(query):
     print(f"\n--- Running Hybrid Search for: '{query}' ---")
     
-    db = lancedb.connect(db_uri)
-    if table_name not in db.table_names():
-        print(f"Table {table_name} not found.")
+    db = lancedb.connect(LANCEDB_URI)
+    if TABLE_NAME not in db.table_names():
+        print(f"Table {TABLE_NAME} not found.")
         return
 
-    tbl = db.open_table(table_name)
+    tbl = db.open_table(TABLE_NAME)
     
     results = (
         tbl.search(query, query_type="hybrid")
@@ -325,11 +321,17 @@ if __name__ == "__main__":
     parser.add_argument("--file_batch_size", type=int, default=2000, help="Number of files to read per batch.")
     parser.add_argument("--ner_batch_size", type=int, default=320, help="Mini-batch size for NER model.")
     parser.add_argument("--linker_batch_size", type=int, default=2048, help="Mini-batch size for Linker model.")
-    parser.add_argument("--input_dir", type=str, default=DEFAULT_INPUT_DIR, help="Directory containing text files.")
-    parser.add_argument("--db_uri", type=str, default=DEFAULT_LANCEDB_URI, help="LanceDB URI.")
-    parser.add_argument("--table_name", type=str, default=DEFAULT_TABLE_NAME, help="Table name.")
+    
+
+    parser.add_argument("--input_dir", type=str, default="/data/chen/pubmed_corpus/pmc_extracted_text", help="Directory containing text files to process.")
+    parser.add_argument("--table_name", type=str, default="papers_index", help="Name of the LanceDB table to write to.")
+    parser.add_argument("--skip_index", action="store_true", help="Skip building FTS index at the end.")
     
     args = parser.parse_args()
+    
+    # Update global config from args
+    INPUT_DIR = args.input_dir
+    TABLE_NAME = args.table_name
     
     build_database(
         limit=args.limit, 
@@ -339,13 +341,10 @@ if __name__ == "__main__":
         file_batch_size=args.file_batch_size,
         ner_batch_size=args.ner_batch_size,
         linker_batch_size=args.linker_batch_size,
-        input_dir=args.input_dir,
-        db_uri=args.db_uri,
-        table_name=args.table_name
+        skip_index=args.skip_index
     )
     
     # Only run search demo if we are running the first shard or a small test
-    # Only run search demo if we are running the first shard or a small test
     if args.shard_id == 0 and (args.limit is not None and args.limit < 1000):
-        search_papers("chronic pain stress", db_uri=args.db_uri, table_name=args.table_name)
-        search_papers("brucellosis", db_uri=args.db_uri, table_name=args.table_name)
+        search_papers("chronic pain stress")
+        search_papers("brucellosis")

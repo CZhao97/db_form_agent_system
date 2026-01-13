@@ -805,7 +805,7 @@ class ChemicalNerInput(BaseModel):
     get_synonyms: bool = Field(False, description="If true, resolve MeSH→CID and fetch PubChem synonyms.")
     load_from_json: bool = Field(False, description="If true, treat 'texts' as file paths to JSON files and extract 'full_text' field from each.")
     load_from_folder: bool = Field(False, description="If true, treat 'texts[0]' as a folder path and load all JSON files from that directory.")
-    offline_index_path: Optional[str] = Field("/home/chen/GNPS_SIM/agent/db_form_agent_system/pmc_lancedb_index", description="Path to the offline LanceDB index. If provided, new results will be added to the DB.")
+    offline_index_path: Optional[str] = Field("/data/chen/GNPS_SIM/pmc_lancedb_index", description="Path to the offline LanceDB index. If provided, new results will be added to the DB.")
 
 class ChemicalNerTool(BaseTool):
     """
@@ -916,7 +916,7 @@ class ChemicalNerTool(BaseTool):
         load_from_json: bool = False,
         load_from_folder: bool = False,
         config: Optional[RunnableConfig] = None,
-        offline_index_path: Optional[str] = "/home/chen/GNPS_SIM/agent/db_form_agent_system/pmc_lancedb_index",
+        offline_index_path: Optional[str] = "/data/chen/GNPS_SIM/pmc_lancedb_index",
         **kwargs
     ) -> str:
         """The core logic of the tool."""
@@ -987,6 +987,22 @@ class ChemicalNerTool(BaseTool):
                         except Exception as e:
                             print(f"[{self.name}] Error reading cache {cache_path}: {e}")
                 
+                # NEW: Check if the input item itself has cached results (from searching_tool offline hit)
+                if not found_cache and item.get("cached_ner_results"):
+                    try:
+                        cval = item.get("cached_ner_results")
+                        if isinstance(cval, str):
+                            cached_entities = json.loads(cval)
+                        else:
+                            cached_entities = cval
+                        
+                        if isinstance(cached_entities, dict) and cached_entities:
+                             final_results_map[idx] = cached_entities
+                             found_cache = True
+                             # print(f"[{self.name}] hit memory cache for {idx}")
+                    except Exception as e:
+                         print(f"[{self.name}] Error parsing cached_ner_results for {idx}: {e}")
+
                 if not found_cache:
                     docs_to_process.append((idx, text))
             

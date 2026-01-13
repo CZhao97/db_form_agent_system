@@ -18,7 +18,7 @@ Use a tool **only** when a very small, decisive check could flip your decision.
 * `compound_database` — canonicalize identity. Inputs: `{"compound_name"?: str, "formula"?: str, "smiles"?: str, "mass"?: float}`
 * `fulltext_index` — build index for a cited `run_dir` (idempotent). Inputs: `{"run_path": "searching_results/run_YYYYmmdd_HHMMSS[_idx]"}`
 * `fulltext_query` — retrieve top-k snippets from that index. Inputs: `{"run_path": "...", "query": str, "k": 5}`
-* `fulltext_journal_search` — **only if** a single missing lookup is decisive and not in any indexed run. Inputs: `{"query": "<JSON array string>", "max_results": 25, "include_preprints": true}`
+* `fulltext_journal_search` — **only if** a missing lookup is decisive. searches Online + **Offline LanceDB**. Inputs: `{"query": "<JSON array string>", "max_results": 25, "include_offline_search": True, "enable_offline_keyword": False, ...}`
 
 **Tool etiquette**
 

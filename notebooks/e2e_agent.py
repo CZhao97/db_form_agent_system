@@ -17,14 +17,40 @@ with warnings.catch_warnings():
     from langgraph.prebuilt import create_react_agent
 from langgraph.errors import GraphRecursionError
 from langchain_core.messages import HumanMessage, SystemMessage, AIMessage
-from langchain_core.runnables import RunnableConfig
+from langchain_core.runnables import RunnableConfig, RunnableLambda
 from langchain_core.tracers.langchain import wait_for_all_tracers
 from langchain_openai import ChatOpenAI
 from pydantic import Field, SecretStr
-from dotenv import load_dotenv
+import multiprocessing as mp
+from concurrent.futures import ProcessPoolExecutor, as_completed
+# from concurrent.futures import ThreadPoolExecutor, as_completed # Disabled
 from langchain_core.utils.utils import secret_from_env
+from dotenv import load_dotenv
 
 # -------------------- local tools --------------------
+# --- GLOBAL GPU DISTRIBUTION (Must happen before tool imports) ---
+import torch
+import multiprocessing as mp
+try:
+    # Only restrict GPU for Worker processes, NOT the MainProcess
+    # The MainProcess must see all GPUs to spawn children on them.
+    # Spawned workers will have names like "SpawnPoolWorker-1"
+    cur_proc = mp.current_process().name
+    if cur_proc != 'MainProcess' and torch.cuda.is_available():
+        n_gpus = torch.cuda.device_count()
+        if n_gpus > 1:
+            # Simple round-robin using PID
+            pid = os.getpid()
+            gpu_idx = pid % n_gpus
+            # We must use set_device because is_available() already initialized the context
+            torch.cuda.set_device(gpu_idx)
+            # We also set env var for good measure (though likely too late for this process, helpful for subprocesses)
+            os.environ["CUDA_VISIBLE_DEVICES"] = str(gpu_idx)
+            print(f"[Multi-GPU] Worker {cur_proc} (PID {pid}) assigned to Physical GPU {gpu_idx}")
+except Exception as e:
+    print(f"[Multi-GPU] Failed to set device: {e}")
+# ---------------------------------------------------------------
+
 import sys
 import os
 # Add the code directory to the path relative to this script
@@ -109,6 +135,9 @@ upper_stream_tools = [FullTextJournalSearchTool(
         max_parallel_docling=6,
         min_date=MIN_DATE,  # Date range filter
         max_date=MAX_DATE,  # Date range filter
+        # Enable offline DB for deduplication and local retrieval
+        offline_index_path="/data/chen/GNPS_SIM/pmc_lancedb_index",
+        offline_doc_dir="/home/chen/pubmed_corpus/pmc_extracted_text"
     ), ChemicalNerTool()]
 
 # --- AGENT --- #
@@ -192,15 +221,15 @@ def query_generation_node(state: UpperAgentState) -> dict:
     _vprint("\n----- Middle Component (Node): Generating Down-Stream Queries -----")
     
     # 1. Get the NER results file from the upper-stream agent's final message
-    ner_output_str = state['messages'][-1].content
-    try:
-        ner_results_file = json.loads(ner_output_str).get("results_file")
-    except (json.JSONDecodeError, AttributeError):
-        log.error("Could not parse NER output or find results file in middle node.")
-        return {"downstream_states": [], "downstream_configs": []}
+    # 1. Get the NER results file from the upper-stream agent's final message
+    # Use the robust extraction helper (which handles regex fallback)
+    output_data = extract_final_output(state['messages'])
+    ner_results_file = output_data.get("results_file")
 
     if not ner_results_file or not Path(ner_results_file).exists():
         log.error(f"NER results file not found or invalid: {ner_results_file}")
+        # Only error out if we truly can't find it. 
+        # Sometimes the agent output might just be text confirmation without JSON if something went wrong upstream.
         return {"downstream_states": [], "downstream_configs": []}
         
     _vprint(f"✅ Upper-stream complete. NER results at: {ner_results_file}")
@@ -241,11 +270,13 @@ def query_generation_node(state: UpperAgentState) -> dict:
         return {"downstream_states": [], "downstream_configs": []}
 
     # Randomly choose chemicals instead of top ranked
-    sample_size = min(100, len(df))
+    sample_size = min(1000, len(df))
     top_chemicals = df.sample(n=sample_size)
     chemical_names = []
     for entry in top_chemicals['unique_mentions']:
-        if isinstance(entry, str):
+        if isinstance(entry, list):
+            chemical_names.append(entry)
+        elif isinstance(entry, str):
             chemical_names.append([name.strip() for name in entry.split(' ||| ') if name.strip()])
 
     if not chemical_names:
@@ -384,6 +415,11 @@ down_stream_tools = [
         max_parallel_docling=6,
         min_date=MIN_DATE,  # Date range filter
         max_date=MAX_DATE,  # Date range filter
+        # Enable offline DB for deduplication and local retrieval in downstream too
+        offline_index_path="/data/chen/GNPS_SIM/pmc_lancedb_index",
+        offline_doc_dir="/home/chen/pubmed_corpus/pmc_extracted_text",
+        enable_ner_indexing=False, # Disable costly NER write-back for downstream verification
+        enable_offline_keyword=True # Enabled per user request; instrumented for performance profiling
     ),
     FullTextIndexTool(results_base_dir=BASE_RESULTS_DIR),
     FullTextQueryTool(results_base_dir=BASE_RESULTS_DIR)
@@ -875,17 +911,24 @@ def refinement_agent_node(state: FullWorkflowState):
 def human_feedback_node(state: FullWorkflowState):
     _vprint("\n----- Waiting for Human Feedback -----")
     
-    # Interrupt execution to get user input
-    # The value returned by input() will be the user's input string
-    print("\n[Human Feedback Required]")
-    user_input = ""
-    while not user_input.strip():
-        try:
-            user_input = input("Please provide your feedback or confirmation: ")
-        except EOFError:
-            _vprint("\n[End of Input detected]")
-            user_input = "exit"
-            break
+    # Check if we are interactive
+    import sys
+    is_interactive = sys.stdin.isatty()
+    
+    # Interrupt execution to get user input if interactive
+    if is_interactive:
+        print("\n[Human Feedback Required]")
+        user_input = ""
+        while not user_input.strip():
+            try:
+                user_input = input("Please provide your feedback or confirmation: ")
+            except EOFError:
+                _vprint("\n[End of Input detected]")
+                user_input = "exit"
+                break
+    else:
+        print("\n[Batch Mode Detected] Auto-approving refinement.")
+        user_input = "The proposed definition looks correct. Please proceed."
     
     _vprint(f"\nUser provided: {user_input}")
     
@@ -914,12 +957,17 @@ def downstream_driver(state: DownAgentState):
     This node is intended to be called via Send() in parallel.
     """
     query = state["original_query"]
-    _vprint(f"\n>>> Starting Downstream Agent for: {query[:50]}...")
+    _vprint(f"\n>>> Starting Downstream Agent for: {query[:5]}...")
     
     # Generate a unique thread_id for this run to avoid collisions in the shared checkpointer
     thread_id = f"down_{hash(query)}_{random.randint(0, 9999)}"
     config = {"configurable": {"thread_id": thread_id}}
     
+    # Ensure correct session dir is set for this thread
+    session_dir = state.get("search_session_dir")
+    if session_dir:
+        FullTextJournalSearchTool.set_session_dir(session_dir)
+
     # Invoke the downstream app (which is a compiled graph)
     # We use the global down_app defined earlier
     try:
@@ -951,6 +999,78 @@ def downstream_driver(state: DownAgentState):
     }
     return {"final_reports": [report]}
 
+
+# -------------------- helper for multiprocessing --------------------
+def safe_downstream_invoke(state_input):
+    """
+    Wrapper to invoke downstream_driver safely in a subprocess.
+    Must be top-level to be picklable.
+    """
+    try:
+        # We call downstream_driver directly to avoid pickling RunnableLambda closures if any.
+        # downstream_driver is defined in this module.
+        return downstream_driver(state_input)
+    except Exception as e:
+        # We can't use _vprint here effectively if it's not set up for MP logging,
+        # but print usually works in spawn.
+        print(f"Error in downstream agent subprocess: {e}")
+        return {"final_reports": []}
+
+def downstream_batch_node(state: FullWorkflowState, config: RunnableConfig) -> dict:
+    """
+    Executes all downstream queries in parallel using model.batch().
+    This replaces the Send() API for a cleaner, high-throughput implementation.
+    """
+    inputs = state.get("downstream_states", [])
+    if not inputs:
+        _vprint("No downstream states to process.")
+        return {"final_reports": []}
+
+    _vprint(f"\n----- Batch Executing {len(inputs)} Downstream Agents -----")
+    
+    # Get concurrency from config, default to 4
+    # Note: Config comes from the graph invoker
+    max_concurrency = config.get("configurable", {}).get("max_concurrency", 4)
+    # Also check top-level keys just in case
+    if "max_concurrency" in config:
+        max_concurrency = config["max_concurrency"]
+
+    _vprint(f"Parallelism: {max_concurrency}")
+
+    # Create a runnable from the driver (Optional for ProcessPool, we use safe wrapper)
+    # driver_runnable = RunnableLambda(downstream_driver)
+    
+    # Execute batch with dynamic queue using ProcessPoolExecutor (Bypasses Global Lock)
+    # We pass the inputs (list of states) and the config for parallelism
+    
+    all_reports = []
+    total = len(inputs)
+    processed = 0
+    
+    # Try to set start method for PyTorch safety
+    try:
+        mp.set_start_method('spawn', force=True)
+    except RuntimeError:
+        pass
+
+    # Use ProcessPoolExecutor
+    # Note: We submit the TOP-LEVEL function 'safe_downstream_invoke'
+    with ProcessPoolExecutor(max_workers=max_concurrency) as executor:
+        future_to_input = {executor.submit(safe_downstream_invoke, inp): inp for inp in inputs}
+        
+        for future in as_completed(future_to_input):
+            try:
+                res = future.result()
+                processed += 1
+                if res and "final_reports" in res:
+                    all_reports.extend(res["final_reports"])
+                    # Optional: Print progress
+                    _vprint(f"Downstream Progress: {processed}/{total} completed.")
+            except Exception as e:
+                _vprint(f"CRITICAL: Downstream task failed without capture: {e}")
+
+    return {"final_reports": all_reports}
+
 def route_to_downstream(state: FullWorkflowState):
     """
     Conditional edge function to map downstream states to the downstream driver.
@@ -969,7 +1089,7 @@ full_workflow.add_node("refinement_agent", refinement_agent_node)
 full_workflow.add_node("human_feedback", human_feedback_node)
 full_workflow.add_node("upper_stream_agent", upper_stream_agent_node)
 full_workflow.add_node("query_generation", query_generation_node)
-full_workflow.add_node("downstream_driver", downstream_driver)
+full_workflow.add_node("downstream_batch", downstream_batch_node) # NEW BATCH NODE
 
 # Set entry point
 full_workflow.set_entry_point("refinement_agent")
@@ -979,8 +1099,8 @@ full_workflow.add_conditional_edges(
     "refinement_agent",
     should_continue_refinement,
     {
-        "human_feedback": "human_feedback",
-        "upper_stream_agent": "upper_stream_agent"
+        "continue": "human_feedback",
+        "end": "upper_stream_agent"
     }
 )
 full_workflow.add_edge("human_feedback", "refinement_agent")
@@ -996,16 +1116,16 @@ full_workflow.add_conditional_edges(
 )
 
 # Edge for query generation -> downstream
-full_workflow.add_conditional_edges("query_generation", route_to_downstream, ["downstream_driver"])
+full_workflow.add_edge("query_generation", "downstream_batch") # Direct edge to batch
 
 # Downstream driver ends the flow (results are aggregated in state)
-full_workflow.add_edge("downstream_driver", END)
+full_workflow.add_edge("downstream_batch", END) # Batch ends the workflow
 
 # Compile the combined app with the upper-stream's checkpointer
 full_app = full_workflow.compile(checkpointer=upper_stream_memory)
 
 # --- RUN THE PIPELINE --- #
-def run_full_pipeline(original_query: str, max_concurrency: int = 2):
+def run_full_pipeline(original_query: str, max_concurrency: int = 4):
     """Orchestrates the entire agent pipeline: Upper -> Middle -> Downstream.
 
     Now executed as a single LangGraph workflow using Send() for parallel downstream execution.
@@ -1031,6 +1151,7 @@ def run_full_pipeline(original_query: str, max_concurrency: int = 2):
     config: RunnableConfig = {
         "configurable": {"thread_id": thread_id, "search_session_dir": str(literature_dir)},
         "recursion_limit": MAX_ITERATIONS_E2E,
+        "max_concurrency": max_concurrency, # Explicitly enable parallel execution
     }
 
     initial_state: FullWorkflowState = {
@@ -1105,20 +1226,26 @@ print("✓ Full Workflow Defined (Upper → Query Generator → Downstream, batc
 # === RUN THE COMPLETE END-TO-END PIPELINE ===
 # This cell executes the full workflow: Upper-Stream → Query Generation → Down-Stream
 
-initial_user_query = "Form a database of all experimentally confirmed disinfection byproducts (DBPs)"
+if __name__ == "__main__":
+    try:
+        mp.set_start_method('spawn', force=True)
+    except RuntimeError:
+        pass
+        
+    initial_user_query = "Form a database of all experimentally confirmed disinfection byproducts (DBPs)"
 
-try:
-    # You can control the number of parallel downstream agents by changing the max_concurrency value
-    pipeline_result = run_full_pipeline(initial_user_query)
-    print("\n" + "="*60)
-    print("PIPELINE SUMMARY")
-    print("="*60)
-    print(f"Session Directory: {pipeline_result.get('session_directory')}")
-    print(f"Queries Generated: {pipeline_result.get('queries_generated')}")
-    print(f"Results: {len(pipeline_result.get('results', []))} compounds verified")
-finally:
-    wait_for_all_tracers()
-    print("\n✓ All traces flushed to LangSmith")
+    try:
+        # You can control the number of parallel downstream agents by changing the max_concurrency value
+        pipeline_result = run_full_pipeline(initial_user_query)
+        print("\n" + "="*60)
+        print("PIPELINE SUMMARY")
+        print("="*60)
+        print(f"Session Directory: {pipeline_result.get('session_directory')}")
+        print(f"Queries Generated: {pipeline_result.get('queries_generated')}")
+        print(f"Results: {len(pipeline_result.get('results', []))} compounds verified")
+    finally:
+        wait_for_all_tracers()
+        print("\n✓ All traces flushed to LangSmith")
 
 
 

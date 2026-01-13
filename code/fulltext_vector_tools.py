@@ -9,6 +9,8 @@ from langchain.tools import BaseTool
 
 from langchain_community.embeddings import SentenceTransformerEmbeddings
 from langchain_community.vectorstores import FAISS
+from langchain_community.retrievers import BM25Retriever
+from langchain.retrievers import EnsembleRetriever
 from langchain_core.documents import Document
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 from langchain_core.runnables import RunnableConfig
@@ -363,9 +365,49 @@ class FullTextQueryTool(BaseTool):
             return json.dumps({"error": True, "message": f"No index found for {run_dir}. Build it with fulltext_index first."})
 
         try:
-            docs_and_scores = vectordb.similarity_search_with_score(query, k=k)
+            # --- HYBRID SEARCH UPGRADE ---
+            # 1. Recover documents from FAISS docstore
+            # FAISS.docstore._dict is {id: Document}
+            if hasattr(vectordb, "docstore") and hasattr(vectordb.docstore, "_dict"):
+                all_docs = list(vectordb.docstore._dict.values())
+            else:
+                # Fallback if internal structure changes or is different type
+                all_docs = []
+            
+            # 2. Build transient BM25 (Keyword) Index
+            # This is fast (<0.5s) for the typical 500-1000 chunks in a session.
+            if all_docs and len(all_docs) > 0:
+                bm25_retriever = BM25Retriever.from_documents(all_docs)
+                bm25_retriever.k = k
+                
+                faiss_retriever = vectordb.as_retriever(search_kwargs={"k": k})
+                
+                # 3. Ensemble (Hybrid)
+                # Equal weight to Semantic (Concept) and Keyword (Precision)
+                ensemble_retriever = EnsembleRetriever(
+                    retrievers=[bm25_retriever, faiss_retriever],
+                    weights=[0.5, 0.5]
+                )
+                
+                # 4. Search
+                # Ensemble returns a List[Document], scores are merged internally but not exposed directly.
+                # Use standard invocation
+                retrieved_docs = ensemble_retriever.invoke(query)
+                
+                # Mock scores since Ensemble doesn't preserve raw scores easily
+                # We prioritize the ranked order returned by Ensemble
+                docs_and_scores = [(d, 1.0 - (i * 0.01)) for i, d in enumerate(retrieved_docs)]
+                
+            else:
+                # Fallback to pure vector if docstore extraction fails
+                docs_and_scores = vectordb.similarity_search_with_score(query, k=k)
+
         except Exception as e:
-            return json.dumps({"error": True, "message": f"Search failed: {e}"})
+            log.warning(f"Hybrid search failed ({e}), falling back to vector only.")
+            try:
+                docs_and_scores = vectordb.similarity_search_with_score(query, k=k)
+            except Exception as e2:
+                 return json.dumps({"error": True, "message": f"Search failed: {e2}"})
 
         results: List[Dict[str, Any]] = []
         for doc, score in docs_and_scores:

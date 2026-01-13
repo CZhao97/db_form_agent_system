@@ -214,3 +214,13 @@ wrapt==2.0.1
 xxhash==3.6.0
 yarl==1.20.1
 zstandard==0.25.0
+pyab3p
+springernature-api-client
+spacy
+thinc
+docling
+docling-parse
+docling-core
+rapidocr-onnxruntime
+onnxruntime
+lancedb
