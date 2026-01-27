@@ -28,27 +28,56 @@ from langchain_core.utils.utils import secret_from_env
 from dotenv import load_dotenv
 
 # -------------------- local tools --------------------
-# --- GLOBAL GPU DISTRIBUTION (Must happen before tool imports) ---
+# --- GLOBAL GPU DISTRIBUTION (Helper) ---
 import torch
 import multiprocessing as mp
-try:
-    # Only restrict GPU for Worker processes, NOT the MainProcess
-    # The MainProcess must see all GPUs to spawn children on them.
-    # Spawned workers will have names like "SpawnPoolWorker-1"
-    cur_proc = mp.current_process().name
-    if cur_proc != 'MainProcess' and torch.cuda.is_available():
+import os
+
+def setup_gpu_worker(gpu_id: int = None):
+    """
+    Explicitly set the GPU for this worker process.
+    If gpu_id is None, it falls back to PID % n_gpus mechanism.
+    """
+    try:
+        if gpu_id is not None:
+             # Attempt to mask other GPUs
+             os.environ["CUDA_VISIBLE_DEVICES"] = str(gpu_id)
+        
+        if not torch.cuda.is_available():
+            print(f"[Multi-GPU] CUDA not available.")
+            return
+
         n_gpus = torch.cuda.device_count()
-        if n_gpus > 1:
-            # Simple round-robin using PID
-            pid = os.getpid()
-            gpu_idx = pid % n_gpus
-            # We must use set_device because is_available() already initialized the context
-            torch.cuda.set_device(gpu_idx)
-            # We also set env var for good measure (though likely too late for this process, helpful for subprocesses)
-            os.environ["CUDA_VISIBLE_DEVICES"] = str(gpu_idx)
-            print(f"[Multi-GPU] Worker {cur_proc} (PID {pid}) assigned to Physical GPU {gpu_idx}")
-except Exception as e:
-    print(f"[Multi-GPU] Failed to set device: {e}")
+        current_pid = os.getpid()
+        
+        if n_gpus >= 1:
+            if gpu_id is None:
+                # Fallback / Auto-assign
+                gpu_id = current_pid % n_gpus
+                torch.cuda.set_device(gpu_id)
+                print(f"[Multi-GPU] Worker {current_pid} auto-assigned to Physical GPU {gpu_id}")
+            else:
+                # We have a target GPU ID.
+                # Check if masking worked.
+                if n_gpus == 1:
+                    # Masking worked! We are on a virtual 1-GPU system.
+                    torch.cuda.set_device(0)
+                    print(f"[Multi-GPU] Worker {current_pid} masked successfully. Using Virtual GPU 0 (Physical {gpu_id})")
+                else:
+                    # Masking failed (likely initialized early). Use explicit ID.
+                    # Ensure the ID is valid
+                    if gpu_id < n_gpus:
+                        torch.cuda.set_device(gpu_id)
+                        print(f"[Multi-GPU] Worker {current_pid} masking failed (saw {n_gpus} GPUs). Explicitly set to Physical GPU {gpu_id}")
+                    else:
+                        print(f"[Multi-GPU] Worker {current_pid} ERROR: Target GPU {gpu_id} >= Available {n_gpus}. Fallback to 0.")
+                        torch.cuda.set_device(0)
+
+    except Exception as e:
+        print(f"[Multi-GPU] Failed to set device: {e}")
+
+# DO NOT RUN AUTOMATICALLY AT IMPORT TIME
+# The calling script must call setup_gpu_worker() explicitly inside the process.
 # ---------------------------------------------------------------
 
 import sys
@@ -74,7 +103,7 @@ os.environ["LANGCHAIN_CALLBACKS_BACKGROUND"] = "false"
 MAX_ITERATIONS_UPPER = 50
 MAX_ITERATIONS_DOWN = 30
 MAX_ITERATIONS_E2E = 100
-BASE_RESULTS_DIR = "/home/chen/GNPS_SIM/agent/db_form_agent_system/searching_results"
+BASE_RESULTS_DIR = "/home/chen/GNPS_SIM/agent/searching_results"
 MIN_DATE = "1970"
 MAX_DATE = "2025"
 SEARCH_LIMIT = 2000
@@ -270,7 +299,7 @@ def query_generation_node(state: UpperAgentState) -> dict:
         return {"downstream_states": [], "downstream_configs": []}
 
     # Randomly choose chemicals instead of top ranked
-    sample_size = min(1000, len(df))
+    sample_size = min(200, len(df))
     top_chemicals = df.sample(n=sample_size)
     chemical_names = []
     for entry in top_chemicals['unique_mentions']:
@@ -300,11 +329,11 @@ def query_generation_node(state: UpperAgentState) -> dict:
     if refined_definition:
         input_data["refined_definition"] = refined_definition
         input_data["instruction"] = (
-            "For each chemical, generate a detailed query that explicitly includes the 'refined_definition'. "
-            "The query MUST follow this format:\n"
-            "\"According to the following definition, decide whether [Chemical Name] is a [Target Entity]:\n"
-            f"{refined_definition}\n\n"
-            "Based on the peer-reviewed literature, is [Chemical Name] a [Target Entity] under this definition?\""
+            "Filter the provided chemical clusters based on the definition and context. "
+            "Return a JSON object with: \n"
+            "1. 'candidates': A list of the filtered, canonical chemical names.\n"
+            "2. 'demo_query': A single full example query for the FIRST candidate only, following the template rules.\n"
+            "Do NOT generate full queries for the other candidates."
         )
 
     input_content = json.dumps(input_data)
@@ -321,9 +350,21 @@ def query_generation_node(state: UpperAgentState) -> dict:
         if not match:
             raise json.JSONDecodeError("No JSON object found in LLM response for query generation.", response.content, 0)
         output_json = json.loads(match.group(0))
-        downstream_queries = output_json.get("queries", [])
+        candidates = output_json.get("candidates", [])
+        
+        # Manual Template Injection
+        downstream_queries = []
+        for chemical in candidates:
+            query_text = (
+                f"According to the following definition, decide whether '{chemical}' is a 'experimentally confirmed disinfection byproduct (DBP)':\n"
+                f"{refined_definition}\n\n"
+                "Based on the peer-reviewed literature, is '{chemical}' a 'experimentally confirmed disinfection byproduct (DBP)' under this definition?"
+            )
+            downstream_queries.append(query_text)
+            
     except (json.JSONDecodeError, AttributeError) as e:
         log.error(f"Failed to parse query generator LLM output: {e}")
+        log.error(f"RAW LLM OUTPUT:\n{response.content}")
         return {"downstream_states": [], "downstream_configs": []}
 
     if not downstream_queries:
@@ -399,23 +440,24 @@ CRITIQUE_AGENT_PROMPT = SystemMessage(content=CRITIQUE_PROMPT_PATH.read_text(enc
 
 # --- MODELS & TOOLS --- #
 research_model = ChatOpenRouter(model_name="google/gemini-2.5-flash", temperature=0.0)
-evaluator_model = ChatOpenRouter(model_name="openai/gpt-4o-mini", temperature=0.0)
+evaluator_model = ChatOpenRouter(model_name="openai/gpt-5-mini", temperature=0.0)
 down_stream_tools = [
     CompoundDatabaseTool(),
     FullTextJournalSearchTool(
         results_base_dir=BASE_RESULTS_DIR,
-        include_pubmed=True,
+        include_pubmed=os.environ.get("INCLUDE_ONLINE_SEARCH", "True") == "True",
         include_preprints=False,
-        include_s2=True,
-        include_arxiv=True,
-        include_medrxiv=True,
-        include_eupmc=True,
+        include_s2=os.environ.get("INCLUDE_ONLINE_SEARCH", "True") == "True",
+        include_arxiv=os.environ.get("INCLUDE_ONLINE_SEARCH", "True") == "True",
+        include_medrxiv=os.environ.get("INCLUDE_ONLINE_SEARCH", "True") == "True",
+        include_eupmc=os.environ.get("INCLUDE_ONLINE_SEARCH", "True") == "True",
         use_pubmed_free_fulltext_bias=True,
         max_parallel_downloads=6,
         max_parallel_docling=6,
         min_date=MIN_DATE,  # Date range filter
         max_date=MAX_DATE,  # Date range filter
         # Enable offline DB for deduplication and local retrieval in downstream too
+        include_offline_search=os.environ.get("INCLUDE_OFFLINE_SEARCH", "True") == "True",
         offline_index_path="/data/chen/GNPS_SIM/pmc_lancedb_index",
         offline_doc_dir="/home/chen/pubmed_corpus/pmc_extracted_text",
         enable_ner_indexing=False, # Disable costly NER write-back for downstream verification
@@ -446,7 +488,13 @@ def _last_researcher_json(messages):
         return ""
     for msg in reversed(messages):
         content = getattr(msg, "content", "") or ""
-        if '"synthesis"' in content:
+        if '"synthesis"' in content or '"verdict_statement"' in content:
+            return content
+        # Fallback: capture any JSON-looking content
+        if content.lstrip().startswith("{") and content.rstrip().endswith("}"):
+            # SAFETY CHECK: Ensure this isn't a critique blob
+            if '"critique"' in content:
+                 continue # Skip critique messages
             return content
     return ""
 
@@ -456,17 +504,32 @@ def determine_final_claim(messages):
         return "Unclear"
     try:
         obj = json.loads(blob)
-        syn = obj.get("synthesis", {}) if isinstance(obj, dict) else {}
-        claim_raw = syn.get("claim")
-        if isinstance(claim_raw, str) and claim_raw.strip():
-            return claim_raw.strip()
+        if isinstance(obj, dict):
+            # 1. Check for "verdict_statement" -> "claim" (New Schema)
+            vs = obj.get("verdict_statement")
+            if isinstance(vs, dict):
+                claim = vs.get("claim")
+                if claim: return claim.strip()
+            
+            # 2. Check for top-level "claim" (Fallback)
+            claim = obj.get("claim")
+            if claim: return claim.strip()
+
+            # 3. Check for "synthesis" -> "claim" (Old Schema)
+            syn = obj.get("synthesis")
+            if isinstance(syn, dict):
+                claim = syn.get("claim")
+                if claim: return claim.strip()
     except Exception:
         pass
+
+    # Regex fallback: Look for "claim": "VALUE"
+    # We use a pattern that matches nested or flat structures
+    # It looks for "claim" followed by colon and a string in quotes
     m = re.search(r'"claim"\s*:\s*"([^"]+)"', blob)
     if m:
-        candidate = m.group(1).strip()
-        if candidate:
-            return candidate
+        return m.group(1).strip()
+    
     return "Unclear"
 
 def _safe_float(x):
@@ -588,6 +651,7 @@ def researcher_node(state: DownAgentState, config: RunnableConfig):
     ai_content = ""
     if 'messages' in result and isinstance(result['messages'], list) and result['messages']:
         ai_content = result['messages'][-1].content
+        print(f"\n[Researcher Output]:\n{ai_content}\n")
     else:
         _vprint("[ERROR] Agent executor did not return expected messages list.")
         ai_content = (
@@ -644,6 +708,7 @@ def critique_node(state: DownAgentState, config: RunnableConfig):
     critique_result = critique_agent_executor.invoke({"messages": [HumanMessage(content=critique_input)]}, config=tool_config)
 
     critique_content = critique_result['messages'][-1].content
+    print(f"\n[Critique Output]:\n{critique_content}\n")
     raw = (critique_content or "").strip()
 
     parsed: dict | None = None
@@ -970,8 +1035,14 @@ def downstream_driver(state: DownAgentState):
 
     # Invoke the downstream app (which is a compiled graph)
     # We use the global down_app defined earlier
+    token_stats = {"tokens": 0, "cost": 0.0}
     try:
-        final_state = down_app.invoke(state, config=config)
+        from langchain_community.callbacks import get_openai_callback
+        with get_openai_callback() as cb:
+            final_state = down_app.invoke(state, config=config)
+        token_stats["tokens"] = cb.total_tokens
+        token_stats["cost"] = round(cb.total_cost, 6)
+
     except Exception as e:
         log.error(f"Downstream agent failed for query '{query}': {e}")
         return {"final_reports": [{
@@ -980,7 +1051,9 @@ def downstream_driver(state: DownAgentState):
             "confidence_score": 0.0,
             "explanation": f"Agent execution failed: {e}",
             "stop_reason": "ERROR",
-            "results_dir": state.get("search_session_dir")
+            "results_dir": state.get("search_session_dir"),
+            "tokens_used": 0,
+            "cost_usd": 0.0
         }]}
     
     # Extract report
@@ -995,7 +1068,9 @@ def downstream_driver(state: DownAgentState):
         "confidence_score": score,
         "explanation": explanation,
         "stop_reason": stop_reason,
-        "results_dir": state.get("search_session_dir")
+        "results_dir": state.get("search_session_dir"),
+        "tokens_used": token_stats["tokens"],
+        "cost_usd": token_stats["cost"]
     }
     return {"final_reports": [report]}
 

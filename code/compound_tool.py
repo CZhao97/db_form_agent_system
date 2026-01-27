@@ -98,6 +98,9 @@ class CompoundDatabaseTool(BaseTool):
         # --- Early validation / environment checks ---
         if not any([compound_name, mass, formula, smiles]):
             return json.dumps({"error": True, "message": "Please provide at least one of: compound_name, mass, formula, or smiles."})
+        
+        # [DEBUG] Log the tool invocation
+        log.info(f"CompoundDatabaseTool called with: name='{compound_name}', mass={mass}, formula='{formula}', smiles='{smiles}'")
 
         if not pcp and not smiles:
             return json.dumps({"error": True, "message": "PubChemPy not installed and no SMILES provided. Install pubchempy or provide SMILES."})
@@ -177,8 +180,8 @@ class CompoundDatabaseTool(BaseTool):
         # harvest synonyms if present (only _search_by_name populates them)
         try:
             syn_set = {s for r in results for s in (r.get('synonyms') or []) if isinstance(s, str) and s.strip()}
-            # keep 20 max, de-duplicated
-            payload["synonyms"] = list(dict.fromkeys([s.strip() for s in syn_set]))[:20]
+            # keep 50 max (User requested "all")
+            payload["synonyms"] = list(dict.fromkeys([s.strip() for s in syn_set]))[:50]
         except Exception:
             payload["synonyms"] = []
 
@@ -226,6 +229,11 @@ class CompoundDatabaseTool(BaseTool):
             # If still nothing meaningful, return a clean error
             if not payload["smiles_analysis"]:
                 return json.dumps({"error": True, "message": "No compounds found. Try a different query."})
+
+        if payload["synonyms"]:
+             log.info(f"CompoundDatabaseTool found {len(payload['synonyms'])} synonyms for {payload.get('primary', {}).get('name', 'unknown')}")
+        else:
+             log.info("CompoundDatabaseTool found 0 synonyms.")
 
         return json.dumps(payload, ensure_ascii=False)
 

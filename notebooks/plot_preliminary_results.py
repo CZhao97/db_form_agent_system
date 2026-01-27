@@ -44,18 +44,36 @@ def main():
     # Agent Label Mapping
     def map_agent_label(x):
         x = str(x).lower().strip()
-        if "yes" in x or "confirmed" in x: return "Confirmed"
-        if "no" in x and "not" not in x: return "Not Confirmed"  # "No"
+        if "yes" in x or "confirmed" in x and "not" not in x: return "Confirmed"
+        if "no" in x and "not" not in x and "formation" not in x: return "Not Confirmed"  # "No"
         if "not confirmed" in x: return "Not Confirmed"
         if "unclear" in x: return "Unclear"
+        if "error" in x: return "Error"
         return "Other"
 
-    df['Agent_Label'] = df['normalized_prediction'].apply(map_agent_label)
+    # Use 'normalized_prediction' if 'agent_verdict' is weird, but 'agent_verdict' seems to have the raw text.
+    # The normalization in the main script might be imperfect.
+    # Let's use 'normalized_prediction' but if it is 'Unclear' and verdict says 'Not Confirmed', fix it.
     
-    # Ground Truth (Model Prediction) - Assuming this is the Ground Truth or Reference
-    # If standard ground truth columns like "Literature on..." exist, we might check them.
-    # But user asked for plots, presumably comparing Agent vs something.
-    # Let's inspect 'Model Prediction' cleaning.
+    def intelligent_label(row):
+        norm = str(row.get('normalized_prediction', '')).lower()
+        verdict = str(row.get('agent_verdict', '')).lower()
+        
+        # Priority 1: Clear normalization
+        if norm == 'yes': return "Confirmed"
+        if norm == 'no': return "Not Confirmed"
+        
+        # Priority 2: Verdict Text Fallback
+        if "not confirmed" in verdict: return "Not Confirmed"
+        if "confirmed" in verdict and "not" not in verdict: return "Confirmed"
+        if "unclear" in verdict: return "Unclear"
+        
+        return "Unclear"
+
+    df['Agent_Label'] = df.apply(intelligent_label, axis=1)
+    
+    # Ground Truth cleaning
+    # Model Prediction often has extra text.
     df['Ref_Label'] = df['Model Prediction'].apply(extract_label)
 
     # Filter out weird ones

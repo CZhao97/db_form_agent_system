@@ -6,6 +6,7 @@ import time
 import argparse
 from pathlib import Path
 from dotenv import load_dotenv
+# import torch (Moved to main)
 import multiprocessing as mp
 from concurrent.futures import ProcessPoolExecutor, as_completed
 # from concurrent.futures import ThreadPoolExecutor, as_completed # Disabled
@@ -24,18 +25,18 @@ if current_dir not in sys.path:
     sys.path.append(current_dir)
 
 # --- IMPORTS ---
-# --- IMPORTS ---
-try:
-    from e2e_agent import (
-        down_app, 
-        determine_final_claim, 
-        FullTextJournalSearchTool, 
-        HumanMessage
-    )
-    print("Successfully imported e2e_agent components.")
-except ImportError as e:
-    print(f"CRITICAL ERROR: Could not import e2e_agent. Make sure e2e_agent.py is in key path. {e}")
-    sys.exit(1)
+# --- IMPORTS (Moved to local scope for Multi-GPU safety) ---
+# try:
+#     from e2e_agent import (
+#         down_app, 
+#         determine_final_claim, 
+#         FullTextJournalSearchTool, 
+#         HumanMessage
+#     )
+#     print("Successfully imported e2e_agent components.")
+# except ImportError as e:
+#     print(f"CRITICAL ERROR: Could not import e2e_agent. Make sure e2e_agent.py is in key path. {e}")
+#     sys.exit(1)
 
 load_dotenv()
 
@@ -43,13 +44,28 @@ def evaluate_compound(compound_name: str, base_results_dir: str = "../searching_
     """
     Run downstream agent verification for a single compound.
     """
-    # -----------------------------
     if not isinstance(compound_name, str) or not compound_name.strip():
         return {
             "input_compound": str(compound_name),
             "agent_verdict": "Skipped (Empty)",
             "normalized_prediction": "N/A",
             "session_dir": ""
+        }
+        
+    # Lazy Import to ensure GPU env vars are set BEFORE loading torch/models
+    try:
+        from e2e_agent import (
+            down_app, 
+            determine_final_claim, 
+            FullTextJournalSearchTool, 
+            HumanMessage
+        )
+    except ImportError as e:
+        return {
+             "input_compound": compound_name,
+             "agent_verdict": "Error",
+             "normalized_prediction": f"Import Error: {e}",
+             "session_dir": ""
         }
 
     session_id = f"eval_{uuid.uuid4().hex[:8]}"
@@ -62,16 +78,13 @@ def evaluate_compound(compound_name: str, base_results_dir: str = "../searching_
     # Strict Definition
     definition = (
         "A disinfection byproduct (DBP) is a chemical compound that is formed incidentally "
-        "by the reaction of a disinfectant with organic and inorganic matter present in water. "
-        "To be considered 'experimentally confirmed', there must be clear evidence from a peer-reviewed "
-        "study demonstrating its formation during a disinfection process."
+        "by the reaction of a disinfectant with organic and inorganic matter present in water."
     )
     
     # Query
     query_text = (
         f"According to the definition provided below, decide whether '{compound_name}' is a confirmed DBP:\n"
         f"\"{definition}\"\n\n"
-        f"Is there peer-reviewed evidence that '{compound_name}' is formed during water disinfection? "
         "Answer 'Confirmed DBP' or 'Not Confirmed DBP'."
     )
     
@@ -96,14 +109,36 @@ def evaluate_compound(compound_name: str, base_results_dir: str = "../searching_
         print(f" [Error: {e}]")
         claim = "Error"
     
-    # Normalize
-    predicted = "Unclear"
-    c_low = str(claim).lower()
-    if "not confirmed" in c_low:
-        predicted = "No"
-    elif "confirmed" in c_low:
-        predicted = "Yes"
-        
+    # ROBUST VERDICT EXTRACTION
+    predicted = str(claim) 
+    
+    # 1. Try treating it as a JSON blob
+    try:
+        if "{" in predicted:
+            # Extract purely the JSON part
+            start = predicted.find("{")
+            end = predicted.rfind("}") + 1
+            json_str = predicted[start:end]
+            data = json.loads(json_str)
+            
+            # Check nested "verdict_statement" -> "claim"
+            if isinstance(data, dict):
+                vs = data.get("verdict_statement")
+                if isinstance(vs, dict) and "claim" in vs:
+                     predicted = vs["claim"]
+                elif "claim" in data:
+                     predicted = data["claim"]
+    except:
+         pass
+
+    # 2. If it still looks like a JSON string or wasn't parsed, try regex
+    # This catches: "claim": "Confirmed" buried in text
+    if "{" in str(predicted) or len(str(predicted)) > 50:
+         import re
+         m = re.search(r'"claim"\s*:\s*"([^"]+)"', str(claim))
+         if m:
+             predicted = m.group(1).strip()
+    
     return {
         "input_compound": compound_name,
         "agent_verdict": claim,
@@ -135,10 +170,38 @@ def process_one(task_data):
 # Let's fix process_one to take a tuple including output_dir.
 
 def process_one_safe(args_tuple):
-    compound, original_row, run_dir = args_tuple
+    # Unpack args (now includes gpu_queue)
+    if len(args_tuple) == 4:
+        compound, original_row, run_dir, gpu_queue = args_tuple
+    else:
+        # Fallback for old calls if any
+        compound, original_row, run_dir = args_tuple
+        gpu_queue = None
+
+    # Setup GPU for this single task (since process will die after)
+    gpu_id = None
+    if gpu_queue:
+        try:
+            # Get ID with timeout (should be instant if queue size == workers)
+            gpu_id = gpu_queue.get(timeout=10)
+        except Exception:
+            gpu_id = None
+            
+    # Initialize GPU
     try:
-        # Invoke directly
-        res = evaluate_compound(compound, base_results_dir=run_dir)
+        from e2e_agent import setup_gpu_worker
+        setup_gpu_worker(gpu_id)
+    except ImportError:
+        pass
+
+    try:
+        # Invoke directly with token/cost tracking
+        from langchain_community.callbacks import get_openai_callback
+        with get_openai_callback() as cb:
+            res = evaluate_compound(compound, base_results_dir=run_dir)
+        # Add token and cost info to the result dict
+        res["tokens_used"] = cb.total_tokens
+        res["cost_usd"] = round(cb.total_cost, 6)
         original_row.update(res)
         return original_row
     except Exception as e:
@@ -150,6 +213,10 @@ def process_one_safe(args_tuple):
             "session_dir": ""
         })
         return original_row
+    finally:
+        # CRITICAL: Return the GPU ID to the queue for the next worker
+        if gpu_queue and gpu_id is not None:
+             gpu_queue.put(gpu_id)
 
 def main():
     # Use 'spawn' for safe PyTorch/CUDA multiprocessing
@@ -157,6 +224,8 @@ def main():
         mp.set_start_method('spawn', force=True)
     except RuntimeError:
         pass
+    
+    import torch # Delayed import
 
     parser = argparse.ArgumentParser(description="Run Evaluation on DBPs (Parallel)")
     parser.add_argument("--input", default="/home/chen/GNPS_SIM/agent/db_form_agent_system/notebooks/dbp_gemini_flash_2_5_results.xlsx", help="Input Excel file")
@@ -170,8 +239,18 @@ def main():
         print(f"Input file not found: {args.input}")
         return
 
+    # --- TARGETED TESTING (DISABLED - FULL RUN) ---
+    # print("Running TARGETED TEST on known difficult cases...")
+    # target_compounds = ["4-Bromophenol", "Iodoacetonitrile", "2,4,6-Tribromo-1,4-benzoquinone", "Chloroform", "Hexanal"]
+    # df = pd.DataFrame({'IUPAC name': target_compounds})
+    # ---------------------------------------
+    
+    # --- FULL DATASET LOADING ---
     print(f"Loading {args.input}...")
-    df = pd.read_excel(args.input)
+    if args.input.endswith(".csv"):
+        df = pd.read_csv(args.input)
+    else:
+        df = pd.read_excel(args.input)
     
     if 'IUPAC name' not in df.columns:
         print(f"Column 'IUPAC name' not found. Columns: {df.columns.tolist()}")
@@ -182,6 +261,12 @@ def main():
     if args.limit > 0:
         df = df.head(args.limit)
         print(f"Limiting to first {args.limit} rows.")
+    # ----------------------------
+
+    # Set LangSmith Project
+    os.environ["LANGCHAIN_TRACING_V2"] = "true"
+    time_str = time.strftime("%Y%m%d_%H%M%S")   
+    os.environ["LANGCHAIN_PROJECT"] = f"SOTA_VERIFICATION_RUN_{time_str}"
     results = []
     processed_compounds = set()
     
@@ -193,8 +278,8 @@ def main():
     if os.path.exists(output_file):
         try:
             existing_df = pd.read_csv(output_file)
-            if "input_compound" in existing_df.columns: # Assuming 'input_compound' is the column for compound names in the output
-                processed_compounds = set(existing_df["input_compound"].unique())
+            if "IUPAC name" in existing_df.columns: # Found previously processed output
+                processed_compounds = set(existing_df["IUPAC name"].unique())
                 results = existing_df.to_dict('records')
                 print(f"Resuming from {output_file}. Found {len(processed_compounds)} already processed.")
         except Exception as e:
@@ -223,41 +308,73 @@ def main():
     print("\nStarting Dynamic Queue Evaluation...")
     processed = 0
     
+    # Create a Manager Queue for GPU distribution
+    manager = mp.Manager()
+    gpu_queue = manager.Queue()
+    n_gpus = torch.cuda.device_count()
+    print(f"\n[DEBUG] Main Process detected {n_gpus} GPUs via torch.cuda.device_count()")
+    if n_gpus == 0: 
+        print("[DEBUG] Warning: No GPUs detected. Fallback to n_gpus=1 (CPU/Mock).")
+        n_gpus = 1
+    
+    # Populate queue with round-robin IDs [0, 1, 0, 1, ...]
+    print(f"[DEBUG] Populating GPU Queue for {args.workers} workers...")
+    for i in range(args.workers):
+        gid = i % n_gpus
+        gpu_queue.put(gid)
+        print(f"[DEBUG] Queue Item {i}: {gid}")
+
     # We need a map from future to input data to reconstruct rows
     # Pre-calculate the full list of inputs with their metadata
     tasks = []
     for _, row in df.iterrows():
         input_compound = row['IUPAC name']
-        # Pass Tuple: (Compound, RowDict, RunDir)
-        tasks.append((input_compound, row.to_dict(), run_dir))
+        # Pass Tuple: (Compound, RowDict, RunDir, GPU_Queue)
+        tasks.append((input_compound, row.to_dict(), run_dir, gpu_queue))
 
-    # Use ProcessPoolExecutor for dynamic scheduling (True Parallelism)
-    with ProcessPoolExecutor(max_workers=args.workers) as executor:
-        # Submit all tasks at once; executor handles the queue
-        # Note: We submit 'process_one_safe' which is TOP LEVEL.
-        future_to_compound = {
-            executor.submit(process_one_safe, task): task[0] 
-            for task in tasks
-        }
-        
-        for future in as_completed(future_to_compound):
-            compound_name = future_to_compound[future]
-            try:
-                result_row = future.result()
-                results.append(result_row)
-                processed += 1
-                
-                # Print status
-                print(f"[{processed}/{len(df)}] {result_row['input_compound']}: {result_row['agent_verdict']}")
-                
-                # Incremental save (save after every item strictly)
-                pd.DataFrame(results).to_csv(args.output, index=False)
-                
-            except Exception as exc:
-                print(f"Generated an exception for {compound_name}: {exc}")
+    # Use multiprocessing.Pool with maxtasksperchild=1 to prevent memory accumulation (OOM)
+    # This forces the worker process to exit and restart after processing exactly one item, 
+    # ensuring all memory (GPU context, global caches) is released.
+    print(f"\n[System] Initialization complete. Starting Pool with maxtasksperchild=1 for stability.")
+    
+    try:
+        with mp.Pool(processes=args.workers, maxtasksperchild=1) as pool:
+            # imap_unordered yields results as soon as they are ready
+            for result_row in pool.imap_unordered(process_one_safe, tasks):
+                try:
+                    results.append(result_row)
+                    processed += 1
+                    
+                    # Print status
+                    comp_name = result_row.get('input_compound', 'Unknown')
+                    verdict = result_row.get('agent_verdict', 'Error')
+                    print(f"[{processed}/{len(df)}] {comp_name}: {verdict}")
+                    
+                    # Incremental save (Robust against crashes)
+                    save_df = pd.DataFrame(results)
+                    # Filter columns to keep IUPAC name, agent_verdict, and normalized_prediction
+                    keep_cols = [c for c in ['IUPAC name', 'agent_verdict', 'normalized_prediction'] if c in save_df.columns]
+                    if keep_cols:
+                         save_df = save_df[keep_cols]
+                    save_df.to_csv(args.output, index=False)
+                    
+                except Exception as exc:
+                    print(f"Error handling result in main loop: {exc}")
+    except Exception as e:
+        print(f"Critical Pool Error: {e}")
+        # Save whatever we have
+        save_df = pd.DataFrame(results)
+        keep_cols = [c for c in ['IUPAC name', 'agent_verdict', 'normalized_prediction'] if c in save_df.columns]
+        if keep_cols:
+            save_df = save_df[keep_cols]
+        save_df.to_csv(args.output, index=False)
 
     # Final save
-    pd.DataFrame(results).to_csv(args.output, index=False)
+    save_df = pd.DataFrame(results)
+    keep_cols = [c for c in ['IUPAC name', 'agent_verdict', 'normalized_prediction'] if c in save_df.columns]
+    if keep_cols:
+        save_df = save_df[keep_cols]
+    save_df.to_csv(args.output, index=False)
     print(f"\nDone. Results saved to {args.output}")
 
 if __name__ == "__main__":

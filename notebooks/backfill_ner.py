@@ -110,6 +110,10 @@ def backfill_ner(limit: int = None, processing_batch_size: int = 64, dry_run: bo
         candidates = df_batch[mask_empty].copy()
         
         if candidates.empty:
+            current_scanned = current_offset + (batch_arrow.num_rows if hasattr(batch_arrow, 'num_rows') else len(df_batch))
+            # Rough estimate of progress
+            if (current_scanned // scan_batch_size) % 50 == 0:
+               print(f"[Heartbeat] Scanned ~{current_scanned} rows... (No missing NER found yet)")
             continue
             
         # Limit handling within batch

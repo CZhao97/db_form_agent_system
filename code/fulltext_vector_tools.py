@@ -15,6 +15,14 @@ from langchain_core.documents import Document
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 from langchain_core.runnables import RunnableConfig
 
+try:
+    from sentence_transformers import CrossEncoder
+except ImportError:
+    CrossEncoder = None
+from langchain_core.documents import Document
+from langchain_text_splitters import RecursiveCharacterTextSplitter
+from langchain_core.runnables import RunnableConfig
+
 log = logging.getLogger("fulltext_vector_tools")
 if not log.handlers:
     logging.basicConfig(level=logging.INFO, format="%(asctime)s | %(levelname)s | %(message)s")
@@ -23,7 +31,8 @@ _VECTOR_REGISTRY: Dict[str, FAISS] = {}
 _REGISTRY_LOCK = threading.Lock()
 
 # ContextVar shared with searching tool to carry session dir
-_SESSION_DIR_CVAR: ContextVar[Optional[str]] = ContextVar("SEARCH_SESSION_DIR", default=None)
+# ContextVar shared with searching tool to carry session dir
+from searching_tool import _SESSION_DIR_CVAR
 
 # ---- (Optional) deep finder retained as a fallback utility ----
 def _deep_find_session_dir(obj: Any, visited: Set[int] | None = None, depth: int = 0, max_depth: int = 7) -> Optional[str]:
@@ -112,6 +121,20 @@ def _load_embeddings():
         if _GLOBAL_EMBEDDINGS is None:
             _GLOBAL_EMBEDDINGS = SentenceTransformerEmbeddings(model_name="all-MiniLM-L6-v2")
         return _GLOBAL_EMBEDDINGS
+
+_GLOBAL_CROSS_ENCODER = None
+_CROSS_ENCODER_LOCK = threading.Lock()
+
+def _load_cross_encoder():
+    global _GLOBAL_CROSS_ENCODER
+    with _CROSS_ENCODER_LOCK:
+        if _GLOBAL_CROSS_ENCODER is None and CrossEncoder:
+            try:
+                # Use a fast, high-quality reranker
+                _GLOBAL_CROSS_ENCODER = CrossEncoder('cross-encoder/ms-marco-MiniLM-L-6-v2')
+            except Exception as e:
+                log.warning(f"Failed to load CrossEncoder: {e}")
+        return _GLOBAL_CROSS_ENCODER
 
 def _split_text(text: str, chunk_size: int, chunk_overlap: int, by_paragraph: bool) -> List[str]:
     text = (text or "").strip()
@@ -235,7 +258,15 @@ class FullTextIndexTool(BaseTool):
 
         papers = _iter_paper_jsons(run_dir)
         if not papers:
-            return json.dumps({"error": True, "message": f"No paper JSON files found in {run_dir}."})
+            return json.dumps({
+                "error": False,
+                "message": f"No paper JSON files found in {run_dir}. Nothing to index.",
+                "run_dir": run_dir,
+                "docs_indexed": 0,
+                "papers": 0,
+                "persisted": False,
+                "index_path": ""
+            })
         
         docs: List[Document] = []
         for fp in papers:
@@ -339,7 +370,7 @@ class FullTextQueryTool(BaseTool):
         self, 
         run_path: str, 
         query: str, 
-        k: int = 5, 
+        k: int = 20, 
         config: Optional[RunnableConfig] = None,
         **kwargs
     ) -> str:
@@ -367,20 +398,21 @@ class FullTextQueryTool(BaseTool):
         try:
             # --- HYBRID SEARCH UPGRADE ---
             # 1. Recover documents from FAISS docstore
-            # FAISS.docstore._dict is {id: Document}
             if hasattr(vectordb, "docstore") and hasattr(vectordb.docstore, "_dict"):
                 all_docs = list(vectordb.docstore._dict.values())
             else:
-                # Fallback if internal structure changes or is different type
                 all_docs = []
             
+            # Use wider net for Reranking (fetch 50, return k)
+            # If k is already large (>20), scale up proportionally
+            k_fetch = max(50, k * 2)
+            
             # 2. Build transient BM25 (Keyword) Index
-            # This is fast (<0.5s) for the typical 500-1000 chunks in a session.
             if all_docs and len(all_docs) > 0:
                 bm25_retriever = BM25Retriever.from_documents(all_docs)
-                bm25_retriever.k = k
+                bm25_retriever.k = k_fetch
                 
-                faiss_retriever = vectordb.as_retriever(search_kwargs={"k": k})
+                faiss_retriever = vectordb.as_retriever(search_kwargs={"k": k_fetch})
                 
                 # 3. Ensemble (Hybrid)
                 # Equal weight to Semantic (Concept) and Keyword (Precision)
@@ -390,17 +422,35 @@ class FullTextQueryTool(BaseTool):
                 )
                 
                 # 4. Search
-                # Ensemble returns a List[Document], scores are merged internally but not exposed directly.
-                # Use standard invocation
                 retrieved_docs = ensemble_retriever.invoke(query)
                 
-                # Mock scores since Ensemble doesn't preserve raw scores easily
-                # We prioritize the ranked order returned by Ensemble
-                docs_and_scores = [(d, 1.0 - (i * 0.01)) for i, d in enumerate(retrieved_docs)]
+                # Mock scores initially
+                docs_and_scores = [(d, 1.0) for d in retrieved_docs]
                 
             else:
-                # Fallback to pure vector if docstore extraction fails
-                docs_and_scores = vectordb.similarity_search_with_score(query, k=k)
+                # Fallback to pure vector
+                docs_and_scores = vectordb.similarity_search_with_score(query, k=k_fetch)
+
+            # --- CROSS-ENCODER RERANKING ---
+            reranker = _load_cross_encoder()
+            if reranker and docs_and_scores:
+                # Input pairs: [[query, snippet1], [query, snippet2], ...]
+                pairs = [[query, d.page_content] for d, _ in docs_and_scores]
+                try:
+                    scores = reranker.predict(pairs)
+                    # Re-pair docs with new scores
+                    reranked = []
+                    for i, (doc, old_score) in enumerate(docs_and_scores):
+                        reranked.append((doc, float(scores[i])))
+                    
+                    # Sort by new score descending
+                    reranked.sort(key=lambda x: x[1], reverse=True)
+                    docs_and_scores = reranked
+                except Exception as e:
+                    log.warning(f"Reranking failed: {e}")
+            
+            # Slice to final k requested by user
+            docs_and_scores = docs_and_scores[:k]
 
         except Exception as e:
             log.warning(f"Hybrid search failed ({e}), falling back to vector only.")

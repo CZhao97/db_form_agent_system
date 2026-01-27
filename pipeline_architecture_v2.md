@@ -131,12 +131,14 @@ graph TD
 ### 5.1. Literature Agent (`literature_agent.md`)
 *   **Role**: The "Researcher".
 *   **Tools**:
+    *   `CompoundDatabaseTool`: Resolves chemical names/IDs.
     *   `OfflinePaperSearchTool`: Checks local DB first.
     *   `FullTextJournalSearchTool`: Checks online if local fails.
-*   **Logic**:
-    1.  Searches for the specific question.
-    2.  Reads full-text content.
-    3.  Extracts specific quotes confirming the definition matches.
+*   **Logic (Hybrid Query Expansion)**:
+    1.  **Resolve**: Calls `CompoundDatabaseTool` for formal synonyms (CAS, IUPAC).
+    2.  **Brainstorm**: Uses LLM knowledge for abbreviations/slang (e.g., "TBBQ").
+    3.  **Search**: Executes hybrid search (Offline semantic + Online boolean) using the combined synonym set.
+    4.  **Extract**: Reads full-text and extracts quotes.
 
 ### 5.2. Critique Agent (`critique_agent.md`)
 *   **Role**: The "Reviewer".

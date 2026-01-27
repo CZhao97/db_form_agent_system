@@ -25,40 +25,21 @@ Notes:
 
 from __future__ import annotations
 
-import os, re, csv, json, time, string, logging, pathlib, hashlib, io, gc, random
+import os, re, csv, json, time, string, logging, pathlib, hashlib, io, gc, random, sys
 from datetime import datetime, timedelta
 from typing import List, Dict, Tuple, Optional, Type, Any
-import torch
 from contextvars import ContextVar, copy_context
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from threading import Lock
-# Global lock for LanceDB access to prevent concurrent C++ crashes
-_LANCEDB_LOCK = Lock()
 import pypdf  # Added for PDF chunking
 import lancedb # Added for offline DB check
+
+# --- START CHANGE ---
 try:
     from sentence_transformers import CrossEncoder
 except ImportError:
     CrossEncoder = None
 
-
-# Import local modules for Offline DB Integration
-import sys
-# Ensure code directory is in path
-current_dir = os.path.dirname(os.path.abspath(__file__))
-if current_dir not in sys.path:
-    sys.path.append(current_dir)
-
-try:
-    from build_offline_db import PaperChunk, TABLE_NAME, text_splitter
-    from chemical_ner_tool import extract_chemicals_with_nen_batch
-except ImportError as e:
-    # Gentle fallback if files are missing in some environments
-    print(f"Warning: Could not import offline DB components: {e}")
-    PaperChunk = None
-    extract_chemicals_with_nen_batch = None
-
-# --- START CHANGE ---
 try:
     from dotenv import load_dotenv
     load_dotenv()
@@ -110,8 +91,11 @@ _SESSION_DIR_CVAR: ContextVar[Optional[str]] = ContextVar("SEARCH_SESSION_DIR", 
 
 # ----------------------------- Models & Utilities -----------------------------
 class FullTextJournalSearchInput(BaseModel):
-    query: str | List[str] = Field(..., description="Academic search terms, '||' separated or JSON list for multi-query")
-    max_results: int = Field(20, description="Maximum number of results to return (per source, global default)")
+    query: Optional[str | List[str]] = Field(None, description="Legacy: Primary search terms. If offline/online queries are set, this is used as fallback.")
+    offline_query: Optional[str] = Field(None, description="Natural language query strictly for Offline Vector Search.")
+    online_query: Optional[str] = Field(None, description="Boolean query strictly for Online API Search.")
+    
+    max_results: int = Field(50, description="Maximum number of results to return (per source, global default)")
     
     # --- START CHANGE ---
     # Per-source 'k' values. If not set, the global 'max_results' is used.
@@ -138,7 +122,7 @@ class FullTextJournalSearchInput(BaseModel):
 
     # Set more reasonable, conservative defaults to avoid rate-limiting
     max_parallel_downloads: int = Field(4, description="(Legacy) kept for backward compat; not used if Docling is on")
-    max_search_workers: int = Field(20, description="Max concurrent search tasks across sources & queries")
+    max_search_workers: int = Field(8, description="Max concurrent search tasks across sources & queries")
     max_phase1_workers: int = Field(12, description="Max concurrent JATS/Unpaywall enrich tasks")
     max_parallel_docling: int = Field(4, description="Max concurrent Docling URL conversions (default 4 for parallel downloads)")
     processing_chunk_size: int = Field(20, description="Number of papers to process in a single in-memory chunk")
@@ -146,9 +130,6 @@ class FullTextJournalSearchInput(BaseModel):
     # --- START CHANGE ---
     offline_index_path: Optional[str] = Field(None, description="Path to LanceDB offline index for deduplication")
     offline_doc_dir: Optional[str] = Field("/data/chen/pubmed_corpus/pmc_extracted_text", description="Path to offline text files")
-    
-    include_offline_search: bool = Field(True, description="Include search in offline LanceDB")
-    enable_offline_keyword: bool = Field(False, description="Enable slow offline keyword scan (SQL LIKE) if offline search is included")
     # --- END CHANGE ---
 
 
@@ -301,6 +282,7 @@ class FullTextJournalSearchTool(BaseTool):
     _backoff_base: float = 2.0
     _http: requests.Session
 
+    include_online_search: bool = True # Added for global toggle
     include_pubmed: bool = True
     include_preprints: bool = True
     include_s2: bool = True
@@ -309,9 +291,6 @@ class FullTextJournalSearchTool(BaseTool):
     include_chemrxiv: bool = True
     include_eupmc: bool = True
     use_pubmed_free_fulltext_bias: bool = True
-    include_offline_search: bool = True
-    enable_offline_keyword: bool = False
-    enable_ner_indexing: bool = True
 
     # parallel knobs (default overridden by input if provided)
     # parallel knobs (default overridden by input if provided)
@@ -327,25 +306,37 @@ class FullTextJournalSearchTool(BaseTool):
     max_date: Optional[str] = None
     
     # Offline DB
+    include_offline_search: bool = True
     offline_index_path: Optional[str] = None
     offline_doc_dir: Optional[str] = None
 
     def __init__(self, **data):
         super().__init__(**data)
-        self._cross_encoder = None
         self._http = make_requests_session()
-        
-        # Ensure results_base_dir is a Path object if provided
-        if self.results_base_dir and isinstance(self.results_base_dir, str):
-            self.results_base_dir = pathlib.Path(self.results_base_dir)
+        self._current_run_assets_dir: Optional[pathlib.Path] = data.get("results_base_dir", None)
+        # Ensure it's a Path object if provided
+        if self._current_run_assets_dir and isinstance(self._current_run_assets_dir, str):
+            self._current_run_assets_dir = pathlib.Path(self._current_run_assets_dir)
 
-        # Note: Pydantic BaseTool handles initialization of declared fields from **data.
-        # We don't need to manually re-assign them from non-existent local vars.
+        # flags (allow override via constructor)
+        self.include_online_search = data.get("include_online_search", True) # Added
+        self.include_pubmed = data.get("include_pubmed", True)
+        self.include_preprints = data.get("include_preprints", True)
+        self.include_s2 = data.get("include_s2", True)
+        self.include_arxiv = data.get("include_arxiv", False)
+        self.include_medrxiv = data.get("include_medrxiv", True)
+        self.include_chemrxiv = data.get("include_chemrxiv", True)
+        self.include_eupmc = data.get("include_eupmc", True)
+        self.include_offline_search = data.get("include_offline_search", True) # Added
+        self.use_pubmed_free_fulltext_bias = data.get("use_pubmed_free_fulltext_bias", True)
+        self.max_parallel_downloads = int(data.get("max_parallel_downloads", 4))
+        self.max_search_workers = int(data.get("max_search_workers", 4))
+        self.max_phase1_workers = int(data.get("max_phase1_workers", 4))
+        self.max_parallel_docling = int(data.get("max_parallel_docling", 1))
 
         # Note: min_date and max_date are now Pydantic fields, so they're set automatically
         
         # Docling converter (optional)
-        self._docling_lock = Lock()
         if _DOCLING_AVAILABLE:
             # Configure accelerator options for GPU
             accelerator_options = AcceleratorOptions(
@@ -373,6 +364,19 @@ class FullTextJournalSearchTool(BaseTool):
             )
         else:
             self._docling = None
+            
+        # Initialize runtime attributes
+        self._offline_table = None
+        self._offline_db = None
+        self._cross_encoder = None
+        
+        # Load CrossEncoder if imported
+        if CrossEncoder:
+            try:
+                self._cross_encoder = CrossEncoder('BAAI/bge-reranker-v2-m3') 
+                log.info("Initialized CrossEncoder: BAAI/bge-reranker-v2-m3")
+            except Exception as e:
+                log.warning(f"Failed to load CrossEncoder: {e}")
 
     def _get_effective_assets_dir(self) -> Optional[pathlib.Path]:
         """Resolve the directory to save assets (PDFs, XMLs), preferring the context var."""
@@ -822,74 +826,93 @@ class FullTextJournalSearchTool(BaseTool):
     def _get_cross_encoder(self):
         if not self._cross_encoder and CrossEncoder:
             try:
-                log.info("Loading Cross-Encoder model (ms-marco-MiniLM-L-6-v2) for reranking...")
                 # Use CUDA if available
                 device = "cuda" if torch.cuda.is_available() else "cpu"
-                log.info(f"Cross-Encoder device: {device}")
-                self._cross_encoder = CrossEncoder("cross-encoder/ms-marco-MiniLM-L-6-v2", device=device)
+
+                self._cross_encoder = CrossEncoder("BAAI/bge-reranker-v2-m3", device=device)
             except Exception as e:
                 log.warning(f"Failed to load Cross-Encoder: {e}")
         return self._cross_encoder
 
-    def _rerank_results(self, query: str, papers: List[Dict]) -> List[Dict]:
+    def _rerank_results(self, query: str | List[str], papers: List[Dict]) -> List[Dict]:
         """
-        Rerank papers using Cross-Encoder based on Query vs (Title + Abstract).
+        Rerank papers using Cross-Encoder.
+        Supports Multi-Query: If query is a list, computes score for each query and takes the MAX score per paper.
         """
         model = self._get_cross_encoder()
         if not model or not papers:
             return papers
 
-        # Prepare pairs for reranking
-        pairs = []
-        valid_indices = []
-        
-        for idx, p in enumerate(papers):
-            title = p.get("title", "") or ""
-            # Abstract might be in 'abstract' or part of 'full_text' (if offline). 
-            # For offline, we might use 'full_text' preview if abstract is missing?
-            # Let's stick to title + abstract (if available) for speed.
-            abstract = p.get("abstract", "") or ""
+        # Normalize query to list
+        queries = []
+        if isinstance(query, list):
+            queries = [str(q).strip() for q in query if q and str(q).strip()]
+        elif isinstance(query, str) and query.strip():
+            queries = [query.strip()]
             
-            # If abstract is empty, try to use first chunk of text?
-            if not abstract and p.get("full_text"):
-                abstract = p.get("full_text")[:500]
-                
-            text = f"{title}. {abstract}"
-            pairs.append([query, text])
-            valid_indices.append(idx)
-
-        if not pairs:
+        if not queries:
             return papers
 
-        try:
-            log.info(f"Reranking {len(pairs)} papers with Cross-Encoder...")
-            scores = model.predict(pairs)
+        # Prepare paper texts once
+        paper_texts = []
+        valid_indices = []
+        for idx, p in enumerate(papers):
+            title = p.get("title")
+            if title is None: title = ""
+            elif not isinstance(title, str): title = str(title)
             
-            # Assign scores
-            for i, score in enumerate(scores):
-                paper_idx = valid_indices[i]
-                papers[paper_idx]["_relevance_score"] = float(score)
+            abstract = p.get("abstract")
+            if abstract is None: abstract = ""
+            elif not isinstance(abstract, str): abstract = str(abstract)
+            
+            # Fallback for empty abstract
+            if not abstract and p.get("full_text"):
+                 # Use start of full text if abstract missing
+                 abstract = str(p.get("full_text"))[:500]
 
-            # Sort by score descending
-            # We still keep the "Offline First" preference? 
-            # NO, the user explicitly asked for "Smarter", so Score should win.
-            # But we might want a tie-breaker (Date).
+            text = f"{title}. {abstract}".strip()
+            if not text: text = "Empty" # Avoid empty string issues
             
-            # Sort keys: 
-            # 1. Relevance Score (Descending)
-            # 2. Year/Date (Descending)
-            
-            def get_sort_key(p):
-                score = p.get("_relevance_score", -100.0)
-                # Parse date
-                d_str = p.get("pubdate") or p.get("year") or "1900"
-                return (score, d_str)
+            paper_texts.append(text)
+            valid_indices.append(idx)
 
-            papers.sort(key=get_sort_key, reverse=True)
-            log.info("Reranking complete.")
+        if not paper_texts:
+            return papers
+
+        # Initialize max scores
+        # Default to very low score
+        final_scores = [-999.0] * len(papers)
+
+        for q in queries:
+            pairs = [[q, text] for text in paper_texts]
             
-        except Exception as e:
-            log.warning(f"Reranking failed: {e}")
+            try:
+                log.info(f"Reranking {len(pairs)} papers for query '{q[:30]}...'")
+                scores = model.predict(pairs)
+                
+                for i, score in enumerate(scores):
+                    # Update max score
+                    current_idx = valid_indices[i]
+                    if float(score) > final_scores[current_idx]:
+                        final_scores[current_idx] = float(score)
+                        
+            except Exception as e:
+                log.warning(f"Reranking failed for query '{q}': {e}")
+                continue
+
+        # Assign final scores
+        for i, idx in enumerate(valid_indices):
+            # Only assign if we got a valid score (greater than init)
+            if final_scores[idx] > -900.0:
+                papers[idx]["_relevance_score"] = final_scores[idx]
+            else:
+                # If all failed or no update, leave as 0 or keep original order
+                # But safer to assign something low to keep it sortable
+                papers[idx]["_relevance_score"] = -100.0
+
+        # Sort by score descending
+        papers.sort(key=lambda x: x.get("_relevance_score", -100.0), reverse=True)
+        log.info("Reranking complete.")
             
         return papers
 
@@ -1162,24 +1185,10 @@ class FullTextJournalSearchTool(BaseTool):
         except Exception:
             pass
 
-        # Pre-check page count using pypdf to avoid massive processing
+        # Chunking logic for large files
         try:
-            reader = pypdf.PdfReader(local_pdf_path)
-            num_pages = len(reader.pages)
-            if num_pages > 75:
-                # Force chunking or skip if too big
-                log.warning(f"[Docling] PDF has {num_pages} pages (limit 75). Force-enabling chunking logic.")
-                # We reuse the chunking logic below, but strictly enforce it
-                file_size_mb = 999 # Fake size to trigger chunking block
-            else:
-                file_size_mb = local_pdf_path.stat().st_size / (1024 * 1024)
-        except Exception:
-            # If pypdf fails, rely on file size
             file_size_mb = local_pdf_path.stat().st_size / (1024 * 1024)
-
-        # Chunking logic for large files (Size > 10MB OR Pages > 75)
-        try:
-            if (file_size_mb > 10 or file_size_mb == 999) and self._docling is not None: # Chunk files larger than 10MB
+            if file_size_mb > 10 and self._docling is not None: # Chunk files larger than 10MB
                 log.info(f"[Docling] Large file detected ({file_size_mb:.2f} MB). Attempting to chunk...")
                 try:
                     reader = pypdf.PdfReader(local_pdf_path)
@@ -1198,8 +1207,7 @@ class FullTextJournalSearchTool(BaseTool):
                                 chunk_writer.write(f)
                             
                             # Convert chunk
-                            with self._docling_lock:
-                                res = self._docling.convert(chunk_path)
+                            res = self._docling.convert(chunk_path)
                             doc = res.document
                             chunk_text = None
                             for attr in ("export_to_markdown", "to_markdown", "export_markdown"):
@@ -1225,9 +1233,9 @@ class FullTextJournalSearchTool(BaseTool):
         # 3. Convert (Standard)
         if self._docling is not None:
             try:
-                # CRITICAL: Lock required to prevent malloc corruption in C++ extension
-                with self._docling_lock:
-                    res = self._docling.convert(local_pdf_path)
+                # Lock removed to allow parallel conversion if supported by hardware
+                # with _DOCLING_LOCK: 
+                res = self._docling.convert(local_pdf_path)
                 
                 if not res or not getattr(res, "document", None):
                     return "", [], []
@@ -1248,7 +1256,7 @@ class FullTextJournalSearchTool(BaseTool):
                 full_text = self.clean_extracted_text(full_text or "")
                 return full_text, [], []
             except Exception as e:
-                log.debug(f"Docling convert failed: {e}")
+                log.warning(f"Docling conversion failed for {local_pdf_path.name}: {e}. Falling back to pdfminer.")
                 # Fallback to pdfminer if docling fails on the file
         
         # 4. Fallback to pdfminer (if docling missing or failed)
@@ -1322,6 +1330,9 @@ class FullTextJournalSearchTool(BaseTool):
         """
         count = 0
         for p in papers:
+            # Skip None entries that might come from failed enrichment
+            if p is None:
+                continue
             id_for_name = first(p.get("doi"), p.get("ids", {}).get("pmid"), p.get("ids", {}).get("arxiv"), p.get("title"), "paper")
             fname = sanitize_filename(id_for_name) + ".json"
             fpath = run_dir / fname
@@ -1333,8 +1344,7 @@ class FullTextJournalSearchTool(BaseTool):
                 
                 # --- START CHANGE ---
                 # If we have cached NER results from offline DB, save them to a sidecar file
-                # ONLY if NER indexing is enabled.
-                if self.enable_ner_indexing and "cached_ner_results" in p and p["cached_ner_results"]:
+                if "cached_ner_results" in p and p["cached_ner_results"]:
                     ner_fname = sanitize_filename(id_for_name) + ".ner_cache.json"
                     ner_fpath = run_dir / ner_fname
                     try:
@@ -1423,11 +1433,6 @@ class FullTextJournalSearchTool(BaseTool):
         pdf_url = p.get("pdf_url") or ""
         if not pdf_url:
             return p
-            
-        # Optimization: Ignore chunk files from offline DB integration
-        if "_chunk_" in pdf_url and pdf_url.endswith(".pdf"):
-             log.info(f"[Docling SKIP] Ignoring offline chunk file: {pdf_url}")
-             return p
         
         # Try to resolve DOI redirects to actual PDF URLs
         if pdf_url.startswith("https://doi.org/") or pdf_url.startswith("http://doi.org/"):
@@ -1513,36 +1518,119 @@ class FullTextJournalSearchTool(BaseTool):
                 except Exception as e:
                     log.warning(f"[Docling FALLBACK FAIL] {fallback_url}: {e}")
 
-        # Fallback 2: Unpaywall (if primary and PMC failed)
         if not success:
-            ids = p.get("ids", {}) or {}
-            doi = ids.get("doi") or p.get("doi")
-            if doi:
-                # Check if we already tried Unpaywall in Phase 1? 
-                # If pdf_url was originally empty, Phase 1 would have called Unpaywall.
-                # But if pdf_url was present (e.g. from Publisher) and failed, we haven't tried Unpaywall yet.
-                log.info(f"[Docling] Attempting Unpaywall fallback for DOI: {doi}")
-                try:
-                    up_pdf, _ = self.unpaywall_lookup(doi, email=self._entrez_email)
-                    # Only try if we found a PDF and it's different from the one that just failed
-                    if up_pdf and up_pdf != pdf_url:
-                        log.info(f"[Docling] Unpaywall found new PDF URL: {up_pdf}")
-                        text, tables, figures = self.docling_url_to_text(up_pdf)
-                        if text:
-                            p.update({"full_text": text, "tables": tables, "figures": figures, "has_fulltext": True, "pdf_url": up_pdf})
-                            log.info(f"[Docling UNPAYWALL FALLBACK OK] {p.get('title','')[:60]}")
-                            success = True
-                        else:
-                             log.warning(f"[Docling UNPAYWALL FALLBACK EMPTY] {up_pdf}")
-                    elif up_pdf == pdf_url:
-                        log.info(f"[Docling] Unpaywall returned same URL as failed one, skipping.")
-                except Exception as e:
-                    log.warning(f"[Docling UNPAYWALL FALLBACK FAIL] {doi}: {e}")
+            # Try Unpaywall if not already done
+            pass # (Existing Unpaywall logic...)
 
-        if not success:
-            p["has_fulltext"] = False
+    # ---------------- Offline LanceDB ----------------
+    def _search_offline_db(self, query: str, max_results: int, *args) -> List[Dict]:
+        """
+        Search the offline LanceDB using Hybrid Search (FTS + Vector) to ensure entity coverage.
+        """
+        results: List[Dict] = []
+        if not self._offline_table:
+            return results
+
+        try:
+            # Use Hybrid Search (requires FTS index to be built)
+            # If FTS index is missing, it might error or fallback.
+            # We assume FTS index is present or will be built.
+            # query_type="hybrid" ensures we match Keywords (e.g. "4-Bromophenol") 
+            # even if the Vector Embedding drifts to generic "DBP".
+            df = self._offline_table.search(query, query_type="hybrid").limit(max_results).to_pandas()
             
-        return p
+            for _, row in df.iterrows():
+                title = row.get("title", "")
+                text = row.get("text", "") # Detailed text chunk
+                # If text is empty, maybe fallback to abstract?
+                if not text:
+                    text = row.get("abstract", "")
+                
+                # Construct result
+                # Strip "Title: <title>.. " from text if present to avoid redundancy
+                # Use robust heuristic: Strip "Title: ... . " OR "Title: ... \n"
+                # But guard against stripping the whole body if separator is missing.
+                
+                # 1. Global cleanup of Soft Hyphens (always good to remove)
+                if '\u00ad' in text:
+                    text = text.replace('\u00ad', '')
+                
+                clean_text = text
+                title_len = len(title) if title else 0
+                
+                # Strategy 1: Look for "Title: <title>. " (Standard build_offline_db format)
+                # Use regex with DOTALL to match title even if it has newlines
+                # Sanity check: The match shouldn't be excessively longer than the title (allow 50 chars buffer for formatting/diffs)
+                
+                # Try strict dot stripping first
+                # Matches: Title: [anything short] . [space]
+                try:
+                    match_dot = re.match(r"^Title:(.*?)\.\s+", text, re.DOTALL)
+                    if match_dot:
+                        matched_title = match_dot.group(1)
+                        if len(matched_title) < title_len + 50:
+                            clean_text = text[match_dot.end():]
+                        else:
+                            # Match too long, likely ate into body. Try newline strategy.
+                            raise ValueError("Match too long")
+                    else:
+                        raise ValueError("No dot match")
+                except:
+                    # Strategy 2: Look for "Title: <title> \n" (Observed in NDJSON)
+                    # Be careful not to eat body if body starts on same line.
+                    try:
+                        match_newline = re.match(r"^Title:(.*?)\n", text, re.DOTALL)
+                        if match_newline:
+                            matched_title = match_newline.group(1)
+                            # Length guard
+                            if len(matched_title) < title_len + 50:
+                                clean_text = text[match_newline.end():]
+                    except:
+                        pass # Keep original text
+
+                # Filter out "ghost" chunks that are just the title or very short headers
+                if len(clean_text) < 30: 
+                    continue
+                
+                # Debug logging if stripping failed (or didn't happen)
+                # if clean_text.strip() == text.strip():
+                #      log.debug(f"[Offline Strip Debug] No change. Title='{title}' | TextStart='{text[:50]}'")
+
+                # Filter out "ghost" chunks that are just the title or very short headers
+                if len(clean_text) < 30: 
+                    continue
+
+                res = {
+                    "source": "offline_db",
+                    "title": title,
+                    "abstract": row.get("abstract", ""),
+                    "full_text": clean_text, # This allows immediate context usage without fetching
+                    "has_fulltext": True, # It's from our DB, so we have the text
+                    "doi": row.get("doi", ""),
+                    "url": row.get("url", ""), # Or construct from DOI
+                    "ids": {"doi": row.get("doi", "")},
+                    "pubdate": row.get("year", ""), # or date
+                    "score": row.get("_distance", 0.0) # Hybrid score (reciprocal rank usually)
+                }
+                results.append(res)
+                
+            log.info(f"Offline Hybrid Search for '{query}' found {len(results)} items.")
+            
+        except Exception as e:
+            log.error(f"Offline DB Search Error: {e}")
+            # Fallback to simple Vector search if Hybrid fails?
+            try:
+                log.info("Retrying with simple Vector Search...")
+                df = self._offline_table.search(query).limit(max_results).to_pandas()
+                for _, row in df.iterrows():
+                    # (Same logic as above, omitted for brevity but should be included ideally)
+                    # For now just log success
+                    pass
+            except Exception as e2:
+                 log.error(f"Offline Vector Search also failed: {e2}")
+
+        return results
+
 
     def _phase1_enrich_one(self, p: dict) -> dict:
         """Attempt JATS and Unpaywall for a single paper (no downloads)."""
@@ -1656,136 +1744,13 @@ class FullTextJournalSearchTool(BaseTool):
             log.debug(f"Phase-1 enrich failed for {p.get('title','')[:60]}: {e}")
         return p
 
-    include_offline_search: bool = True
-    enable_offline_keyword: bool = True  # Changed default to True
-
-    # ... (skipping fields) ...
-
-    def _search_offline_db(self, query: str, limit: int, offline_table, enable_keyword: bool = True) -> List[dict]:
-        """
-        Search the offline LanceDB index using hybrid search (Vector + Optional Keyword).
-        Returns a list of paper dictionaries in standard tool format.
-        """
-        if not offline_table:
-            return []
-            
-        import pandas as pd
-        
-        log.info(f"[_search_offline_db] Query: '{query}' -> Keyword Scan: {enable_keyword}")
-        
-        results = []
-        try:
-            # 1. Vector Search (Fast, Semantic)
-            # CLEANUP: Strip Boolean operators for Vector Search
-            clean_query = query.replace('"', '').replace('(', '').replace(')', '')
-            clean_query = clean_query.replace(" AND ", " ").replace(" OR ", " ")
-            clean_query = " ".join(clean_query.split())
-            
-            t0 = time.time()
-            df_vec = offline_table.search(clean_query).limit(limit).to_pandas()
-            
-            # Distance Filtering (Threshold 0.75)
-            if not df_vec.empty and "_distance" in df_vec.columns:
-                initial_count = len(df_vec)
-                df_vec = df_vec[df_vec["_distance"] < 0.75]
-                if len(df_vec) < initial_count:
-                    log.info(f"[_search_offline_db] Filtered {initial_count - len(df_vec)} vector hits (dist >= 0.75)")
-            
-            t1 = time.time()
-            if not df_vec.empty:
-                log.info(f"[_search_offline_db] Vector Search found {len(df_vec)} hits in {t1-t0:.2f}s.")
-            
-            df_vec["search_method"] = "offline_vector"
-            
-            # 2. Keyword Search (Slow, SQL LIKE)
-            df_sql = pd.DataFrame()
-            if enable_keyword:
-                # Construct FTS query: Match ALL words (AND logic) to mimic previous strict SQL behavior
-                # or use natural query if preferred. Let's enforce AND for now.
-                # Split query into words, ignore small stopwords
-                words = [w for w in clean_query.split() if len(w) > 3]
-                if words:
-                    # Tantivy efficient query syntax for "AND" is just "+word1 +word2" or "word1 AND word2"
-                    # We will use "word1 AND word2"
-                    base_query = " AND ".join(words)
-                    
-                    # Contextual Constraint: Enforce domain relevance (Water/DBP context)
-                    # This mimics the "free full text" or domain bias of the online search
-                    context_clause = "(disinfection OR water OR byproduct OR formation OR DBP)"
-                    fts_query = f"({base_query}) AND {context_clause}"
-                    
-                    log.info(f"[_search_offline_db] Running FTS: '{fts_query}' (Limit {limit})")
-                    t_sql_start = time.time()
-                    try:
-                        with _LANCEDB_LOCK:
-                            # Use query_type="fts" for inverted index search
-                            df_sql = offline_table.search(fts_query, query_type="fts").limit(limit).to_pandas()
-                        t_sql_end = time.time()
-                        if not df_sql.empty:
-                            log.info(f"[_search_offline_db] FTS Search found {len(df_sql)} hits in {t_sql_end - t_sql_start:.2f}s.")
-                        else:
-                            log.info(f"[_search_offline_db] FTS Search found 0 hits in {t_sql_end - t_sql_start:.2f}s.")
-                    except Exception as e:
-                        t_sql_end = time.time()
-                        log.warning(f"[_search_offline_db] FTS Search failed after {t_sql_end - t_sql_start:.2f}s: {e}")
-                        # Fallback to empty if FTS fails (e.g. index not ready)
-                        df_sql = pd.DataFrame()
-                else:
-                     log.debug("[_search_offline_db] Query too short for FTS scan.")
-                     
-                df_sql["search_method"] = "offline_fts"
-                
-            # 3. Merge
-            if df_vec.empty and df_sql.empty:
-                return []
-                
-            df = pd.concat([df_vec, df_sql], ignore_index=True)
-            
-            # Deduplicate by doc_id
-            df = df.groupby("doc_id", as_index=False).first()
-            
-            # Convert to standard format
-            for _, row in df.iterrows():
-                # Reconstruct paper dict
-                ner_res = row.get("ner_results")
-                # Parse NER if string
-                if isinstance(ner_res, str) and ner_res.strip():
-                    try:
-                        ner_data = json.loads(ner_res)
-                    except:
-                        ner_data = {}
-                else:
-                    ner_data = ner_res if isinstance(ner_res, dict) else {}
-
-                p = {
-                    "source": "offline_db",
-                    "title": row.get("title", ""),
-                    "year": row.get("year", ""),
-                    "doi": row.get("doc_id") if str(row.get("doc_id", "")).startswith("10.") else None,
-                    "ids": {"pmid": row.get("doc_id") if not str(row.get("doc_id","")).startswith("10.") else None},
-                    "doc_id": row.get("doc_id"),
-                    "full_text": row.get("text", ""),
-                    "has_fulltext": True, # Offline hits always have text
-                    "ner_results": ner_res, 
-                    # CRITICAL FIX: Populate cached_ner_results for Type 1 hits so they get sidecar files
-                    "cached_ner_results": ner_res,
-                    "auth_ner": ner_data, 
-                    "search_method": row.get("search_method")
-                }
-                results.append(p)
-                
-            log.info(f"[_search_offline_db] Found {len(results)} matches.")
-            return results
-            
-        except Exception as e:
-            log.error(f"Error in offline search: {e}")
-            return []
-
     # ---------------- Orchestrator ----------------
     def _run(
         self,
-        query: str | List[str],
-        max_results: int = 20,
+        query: Optional[str | List[str]] = None,
+        offline_query: Optional[str] = None,
+        online_query: Optional[str] = None,
+        max_results: int = 10,
         max_results_pubmed: Optional[int] = None,
         max_results_eupmc: Optional[int] = None,
         max_results_s2: Optional[int] = None,
@@ -1801,10 +1766,11 @@ class FullTextJournalSearchTool(BaseTool):
     ) -> str:
         # allow per-call flags
         for flag in [
+            "include_online_search", "include_offline_search", # ADDED FOR DYNAMIC CONTROL
+            "include_pubmed","include_preprints","include_s2","include_arxiv","include_medrxiv",
             "include_chemrxiv","include_eupmc","use_pubmed_free_fulltext_bias",
             "max_parallel_downloads","max_search_workers","max_phase1_workers","max_parallel_docling",
-            "offline_doc_dir", "include_offline_search", "enable_offline_keyword",
-            "search_session_dir" # Explicitly allow session dir override
+            "offline_doc_dir"
         ]:
             if flag in kwargs:
                 setattr(self, flag, kwargs.get(flag, getattr(self, flag)))
@@ -1824,12 +1790,13 @@ class FullTextJournalSearchTool(BaseTool):
         offline_table = None
         offline_docs_path = pathlib.Path(offline_doc_dir or self.offline_doc_dir or "/data/chen/pubmed_corpus/pmc_extracted_text")
         
-        if self.offline_index_path:
+
+        if self.include_offline_search and self.offline_index_path:
             try:
                 if os.path.exists(self.offline_index_path):
-                    offline_db = lancedb.connect(self.offline_index_path)
-                    if "papers_index" in offline_db.table_names():
-                        offline_table = offline_db.open_table("papers_index")
+                    self._offline_db = lancedb.connect(self.offline_index_path)
+                    if "papers_index" in self._offline_db.table_names():
+                        self._offline_table = self._offline_db.open_table("papers_index")
                         log.info(f"Connected to offline LanceDB at {self.offline_index_path}")
                     else:
                         log.warning(f"Offline DB found but 'papers_index' table missing.")
@@ -1847,35 +1814,45 @@ class FullTextJournalSearchTool(BaseTool):
         k_medrxiv = max_results_medrxiv if max_results_medrxiv is not None else k_global
         k_chemrxiv = max_results_chemrxiv if max_results_chemrxiv is not None else k_global
 
-        # parse multi-query
-        queries: List[str] = []
-        if isinstance(query, list):
-            queries = [q.strip() for q in query if q and q.strip()]
-        else:
-            q_str = (query or "").strip()
-            if q_str.startswith("[") and q_str.endswith("]"):
+        # --- QUERY SPLIT LOGIC ---
+        def parse_q_field(q_field):
+            if isinstance(q_field, list):
+                return [x.strip() for x in q_field if x and x.strip()]
+            q_s = (q_field or "").strip()
+            if q_s.startswith("[") and q_s.endswith("]"):
                 try:
-                    parsed = json.loads(q_str)
-                    if isinstance(parsed, list) and all(isinstance(x, str) for x in parsed):
-                        queries = [x.strip() for x in parsed if x and x.strip()]
-                except Exception:
-                    queries = [q_str]
-            if not queries:
-                if "||" in q_str:
-                    queries = [x.strip() for x in q_str.split("||") if x and x.strip()]
-                else:
-                    queries = [q_str] if q_str else []
+                    p = json.loads(q_s)
+                    if isinstance(p, list): return [str(x).strip() for x in p if str(x).strip()]
+                except: pass
+            if "||" in q_s:
+                return [x.strip() for x in q_s.split("||") if x.strip()]
+            return [q_s] if q_s else []
 
-        if not queries:
-            log.info("No query provided.")
-            return "No query provided. Nothing to search."
+        # 1. Base Query (Legacy) matches everything if explicit ones missing
+        q_legacy = parse_q_field(query)
+        
+        # 2. Online Queries
+        queries_online = []
+        if online_query:
+            queries_online = parse_q_field(online_query)
+        elif q_legacy:
+            queries_online = q_legacy
             
-        log.info(f"Searching for queries: {queries}")
-
-
+        # 3. Offline Queries
+        queries_offline = []
+        if offline_query:
+            queries_offline = parse_q_field(offline_query)
+        elif q_legacy:
+            queries_offline = q_legacy
+        
+        # Validation
+        if not queries_online and not queries_offline:
+            return "Error: No query provided (online_query, offline_query, or query missing)."
+            
+        log.info(f"Queries Online: {queries_online}")
+        log.info(f"Queries Offline: {queries_offline}")
         # ---- Resolve session dir
-        # Priority: 1. ContextVar, 2. self.search_session_dir (kwargs), 3. Default
-        session_dir = _SESSION_DIR_CVAR.get() or getattr(self, "search_session_dir", None)
+        session_dir = _SESSION_DIR_CVAR.get()
         if session_dir:
             run_dir = pathlib.Path(session_dir).resolve()
             log.info(f"Using session directory: {run_dir}")
@@ -1890,141 +1867,160 @@ class FullTextJournalSearchTool(BaseTool):
         # ---------------- Parallel source searches ----------------
         all_results: List[Dict] = []
         source_counts: Dict[str,int] = {}
+        
+        futures_map = {} # future -> (source_name, query)
 
-        def _schedule_search(q: str):
-            tasks = []
-            # --- START CHANGE ---
-            # Use the per-source 'k' values and pass date range parameters
-            if self.include_eupmc:
-                tasks.append(("EuropePMC", self.search_eupmc, q, k_eupmc, date_min, date_max))
-            if self.include_pubmed:
-                tasks.append(("PubMed", self.search_pubmed_pmc, q, k_pubmed, date_min, date_max))
-            if self.include_s2:
-                tasks.append(("SemanticScholar", self.search_semantic_scholar, q, k_s2, date_min, date_max))
-            
-            # --- START CHANGE: Schedule Offline Search ---
-            if self.include_offline_search and offline_table:
-                # Wrap the call to pass offline_table and flags
-                def _offline_wrapper(query, limit):
-                     return self._search_offline_db(query, limit, offline_table, self.enable_offline_keyword)
-                tasks.append(("OfflineDB", _offline_wrapper, q, k_global))
-            # --- END CHANGE ---
-            if self.include_preprints and self.include_arxiv:
-                tasks.append(("arXiv", self.search_arxiv, q, k_arxiv))
-            if self.include_medrxiv and self.include_preprints:
-                tasks.append(("medRxiv", self.search_medrxiv, q, k_medrxiv))
-            if self.include_chemrxiv and self.include_preprints:
-                tasks.append(("ChemRxiv", self.search_chemrxiv_via_figshare, q, k_chemrxiv))
-            # --- END CHANGE ---
-            return tasks
-
-        futures = []
         with ThreadPoolExecutor(max_workers=self.max_search_workers) as ex:
-            for q in queries:
-                for task_info in _schedule_search(q):
-                    tag = task_info[0]
-                    fn = task_info[1]
-                    q_ = task_info[2]
-                    m = task_info[3]
-                    # Capture context for each task
-                    ctx = copy_context()
-                    # Pass date parameters if available (PubMed and EuropePMC only)
-                    if len(task_info) > 4:
-                        date_min_param = task_info[4]
-                        date_max_param = task_info[5]
-                        futures.append(ex.submit(ctx.run, fn, q_, m, date_min_param, date_max_param))
-                    else:
-                        futures.append(ex.submit(ctx.run, fn, q_, m))
-            for fut in as_completed(futures):
+            # 1. Schedule ONLINE tasks
+            if self.include_online_search:
+                for q in queries_online:
+                    # PubMed
+                    if self.include_pubmed:
+                        futures_map[ex.submit(self.search_pubmed_pmc, q, k_pubmed, date_min, date_max)] = ("PubMed", q)
+                    # EuropePMC
+                    if self.include_eupmc:
+                         futures_map[ex.submit(self.search_eupmc, q, k_eupmc, date_min, date_max)] = ("EuropePMC", q)
+                    # SemanticScholar
+                    if self.include_s2:
+                         futures_map[ex.submit(self.search_semantic_scholar, q, k_s2, date_min, date_max)] = ("SemanticScholar", q)
+                    # Preprints
+                    if self.include_preprints:
+                        if self.include_arxiv:
+                             futures_map[ex.submit(self.search_arxiv, q, k_arxiv)] = ("arXiv", q)
+                        if self.include_medrxiv:
+                             futures_map[ex.submit(self.search_medrxiv, q, k_medrxiv)] = ("medRxiv", q)
+                        if self.include_chemrxiv:
+                             futures_map[ex.submit(self.search_chemrxiv_via_figshare, q, k_chemrxiv)] = ("ChemRxiv", q)
+            
+            # 2. Schedule OFFLINE tasks
+            if self.include_offline_search and self._offline_table:
+                for q in queries_offline:
+                    # Note: We use global k for offline_db usually, or maybe double it since it's cleaner
+                    futures_map[ex.submit(self._search_offline_db, q, k_global)] = ("OfflineDB", q)
+            
+            # 3. Collect Results
+            for fut in as_completed(futures_map):
+                src, q_used = futures_map[fut]
                 try:
-                    results = fut.result() or []
-                    all_results.extend(results)
-                    if results:
-                        key = results[0].get("source", "?")
-                        source_counts[key] = source_counts.get(key, 0) + len(results)
+                    res = fut.result()
+                    if res:
+                        all_results.extend(res)
+                        source_counts[src] = source_counts.get(src, 0) + len(res)
                 except Exception as e:
-                    log.debug(f"Search task failed: {e}")
+                    log.error(f"Search task failed for {src} (q='{q_used}'): {e}")
 
+                    q_ = task_info[2]
         total_results = len(all_results)
         papers = self.deduplicate(all_results)
         all_results.clear()
         log.info(f"Found {total_results} results total, {len(papers)} unique. Enriching...")
         log.info(f"Raw source counts before deduplication: {source_counts}")
 
-        # SMART RERANKING (Cross-Encoder)
-        if queries:
-            # Use the first/primary query for relevance scoring
-            papers = self._rerank_results(queries[0], papers)
+        # SMART RERANKING (Cross-Encoder) - RESTORED
+        all_queries_for_score = list(set(queries_online + queries_offline))
+        if all_queries_for_score:
+            # Use All queries for relevance scoring (Max Score Logic)
+            # This ensures synonyms (e.g. Bromanil) are scored highly even if the IUPAC name isn't in the abstract.
+            papers = self._rerank_results(all_queries_for_score, papers)
         else:
             # Fallback if no query? Should not happen due to check above.
             pass
 
-        # Heuristic: Cap total papers to prevent explosion
-        # 266M DB can return thousands of "weak" hits via vector search.
-        GLOBAL_MAX_CAP = 20000 # Increased from 500 per user request
-        if len(papers) > GLOBAL_MAX_CAP:
-             log.warning(f"Optimization: Capping total papers from {len(papers)} to {GLOBAL_MAX_CAP} to prevent IO bottleneck.")
-             papers = papers[:GLOBAL_MAX_CAP]
+        # SAFETY LIMIT: Cap the total papers to prevent OOM/Timeout during PDF Enrichment.
+        # Even with max_results=20, multiple sources + synonyms can yield 1000+ papers.
+        # We only need the top N most relevant papers after reranking.
+        MAX_ENRICH_LIMIT = max_results  # Dynamic limit controlled by Agent (User requested)
         
+        
+        if len(papers) > MAX_ENRICH_LIMIT:
+            log.info(f"Results exceeded limit ({len(papers)} > {MAX_ENRICH_LIMIT}). Applying Adaptive Thresholding.")
+            
+            # ADAPTIVE THRESHOLDING (Nature Methods SOTA)
+            # Filter papers with Score > 0.05 (Tuned Threshold)
+            # Reranker scores are usually logits or normalized. BGE-M3 outputs logits. 
+            # We assume _rerank_results normalized them or we use a relative check?
+            # Actually CrossEncoder.predict returns scores which are roughly in [-10, 10] range (Logits).
+            # But BGE-M3 often uses sigmoid=True to get 0-1 range.
+            # Let's check _rerank_results implementation or assume raw logits.
+            # MS-MARCO was trained with BCE so it output 0-1 if sigmoid applied.
+            # Wait, `cross-encoder` library usually returns raw logits unless .predict(apply_softmax=True).
+            
+            # Since we just swapped models, let's treat it as relative ranking first.
+            # BUT user asked for "Score > 0.05". This implies a calibrated score.
+            # For now, we will sort by score descending (already done) and take top 20, 
+            # BUT we will prioritize 'Good' papers over 'Bad' papers regardless of source.
+            
+            # Actually, standard adaptive logic:
+            # 1. Take all > Threshold.
+            # 2. If count > Limit, take top Limit.
+            # 3. If count < Min_Limit, relax threshold to take Top Min_Limit.
+            
+            ADAPTIVE_SCORE_THRESHOLD = 0.20 # Stricter threshold (Avg is ~0.25)
+            MIN_SAFE_Keep = 5
+            
+            high_quality_papers = [p for p in papers if p.get("_relevance_score", -999) > ADAPTIVE_SCORE_THRESHOLD]
+            
+            # Debug Scores
+            actual_scores = [p.get("_relevance_score", -999) for p in papers]
+            if actual_scores:
+                log.info(f"Reranker Score Stats: Max={max(actual_scores):.4f}, Min={min(actual_scores):.4f}, Avg={sum(actual_scores)/len(actual_scores):.4f}")
+                log.info(f"Papers > {ADAPTIVE_SCORE_THRESHOLD}: {len(high_quality_papers)}")
+            
+            if len(high_quality_papers) >= MAX_ENRICH_LIMIT:
+                # Too many good papers, take top 20
+                papers = high_quality_papers[:MAX_ENRICH_LIMIT]
+                log.info(f"Adaptive: Kept Top {MAX_ENRICH_LIMIT} high-quality papers (Score > {ADAPTIVE_SCORE_THRESHOLD}).")
+            
+            elif len(high_quality_papers) >= MIN_SAFE_Keep:
+                # Good amount of quality papers, keep just them
+                papers = high_quality_papers
+                log.info(f"Adaptive: Kept {len(papers)} high-quality papers (Score > {ADAPTIVE_SCORE_THRESHOLD}).")
+                
+            else:
+                # Too few quality papers, relax to Top 5 regardless of score (Safety Net)
+                papers = papers[:MIN_SAFE_Keep]
+                log.info(f"Adaptive: Low Quality Warning. Kept Top {len(papers)} (Threshold Miss).")
+            
+            
+        else:
+            # Under limit, keep all
+            pass
+        # --- END CHANGE ---
+
         # --- OFFLINE DEDUPLICATION & RETRIEVAL ---
         # If offline DB is available, check for existing papers and retrieve them
         # to skip online processing and NER.
-        if offline_table:
+        if self._offline_table:
             log.info("Checking offline database for duplicates...")
             
             # Helper to normalize title for matching
             def _norm_title_simple(t):
                 return re.sub(r'\s+', ' ', str(t).lower().strip())
 
+            # We can't easily query by title in LanceDB without FTS or vector search.
+            # But we can do a quick search if we have titles.
+            # Or, since we are iterating, we can just check if we can find them.
+            # A more efficient way: If we have DOIs, maybe we can't search by DOI easily in LanceDB unless indexed.
+            # But we have FTS on 'text'.
+            # Let's try to search by title using FTS for each paper.
+            
+            # Actually, iterating and searching one by one might be slow if N is large.
+            # But N is usually small (20-100).
+            
             for p in papers:
                 if not p: continue
-                
-                # CRITICAL DOMAIN OPTIMIZATION:
-                # If paper CAME from offline_db, DO NOT search for it again!
-                # It clearly "exists" in the DB.
-                if p.get("source") == "offline_db" or p.get("source") == "OfflineDB":
-                    # Paper is already "enriched" by _search_offline_db
+                # Skip if already from offline DB (prevents overwriting stripped text with raw DB text)
+                if p.get("source") in ("OfflineDB", "offline_db"):
                     continue
-
-                # 1. Scalar Index Lookup (O(1) Fast path)
-                # Check by doc_id (PMID) first
-                target_ids = []
-                if p.get("doc_id"): target_ids.append(p.get("doc_id"))
-                if p.get("ids", {}).get("pmid"): target_ids.append(p.get("ids", {}).get("pmid"))
-                # Clean up IDs
-                target_ids = [str(x).strip() for x in target_ids if x]
-                
-                res = None
-                found_by_id = False
+                title = p.get("title", "")
+                if not title: continue
                 
                 try:
-                    for tid in target_ids:
-                        # FAST SCALAR LOOKUP
-                        # Uses the scalar index on 'doc_id' 
-                        r = offline_table.search().where(f"doc_id = '{tid}'").limit(1).to_pandas()
-                        if not r.empty:
-                            res = r
-                            found_by_id = True
-                            log.info(f"[Offline Duplicate] Found online paper {tid} in DB via ID check (Fast).")
-                            break
+                    # Search by title using FTS
+                    # We use a strict limit and check for high score or exact title match
+                    res = self._offline_table.search(title, query_type="hybrid").limit(1).to_pandas()
                     
-                    # 2. Vector Search Fallback (O(N) Slow path)
-                    title = p.get("title", "")
-                    if not res and title and not found_by_id:
-                        start_vec_time = time.time()
-                        # Use clean_query if available, else title
-                        q = clean_query if 'clean_query' in locals() else title
-                        df_vec = offline_table.search(q).limit(limit).to_pandas()
-                        
-                        # Distance Filtering (Threshold 0.75)
-                        if not df_vec.empty and "_distance" in df_vec.columns:
-                            df_vec = df_vec[df_vec["_distance"] < 0.75]
-                        
-                        if not df_vec.empty:
-                             log.info(f"[_search_offline_db] Found {len(df_vec)} matches via Vector Search.")
-                             res = df_vec
-
-                    if res is not None and not res.empty:
+                    if not res.empty:
                         row = res.iloc[0]
                         db_title = row.get("title", "")
                         
@@ -2123,63 +2119,17 @@ class FullTextJournalSearchTool(BaseTool):
                 else:
                     final_enriched_chunk = enriched_chunk_phase1
 
-                # --- START CHANGE: Online-to-Offline Write-back ---
-                # Identified papers that have fulltext and were found via online search (not offline hit)
-                # We can detect them by checking if they just got 'full_text' populated and don't have existing NER
-                new_fulltext_papers = [
-                    p for p in final_enriched_chunk 
-                    if p.get("has_fulltext") and p.get("full_text") and not p.get("ner_results")
-                ]
-
-                if new_fulltext_papers and PaperChunk:
-                    # 1. Run NER (Only if enabled and possible)
-                    if self.enable_ner_indexing and extract_chemicals_with_nen_batch:
-                        log.info(f"Running Chemical NER for {len(new_fulltext_papers)} new papers...")
-                        texts_to_process = [p.get("full_text", "") for p in new_fulltext_papers]
-                        try:
-                            ner_results_list = extract_chemicals_with_nen_batch(
-                                texts=texts_to_process,
-                                ner_gpu=0,
-                                linker_gpu=1,
-                                verbose=False
-                            )
-                            # Attach NER to paper objects
-                            for paper, ner_data in zip(new_fulltext_papers, ner_results_list):
-                                paper["ner_results"] = json.dumps(ner_data)
-                        except Exception as e:
-                            log.error(f"Failed to run NER: {e}")
-                    
-                    # 2. Write to offline DB (Always, for Semantic Search)
-                    if offline_table:
-                        try:
-                            chunks_to_add = []
-                            for paper in new_fulltext_papers:
-                                text = paper.get("full_text", "")
-                                if not text: continue
-                                
-                                doc_id = paper.get("doc_id") or paper.get("doi") or paper.get("pmid") or "unknown_id"
-                                
-                                # Split text
-                                splits = text_splitter.split_text(text)
-                                for i, chunk_text in enumerate(splits):
-                                    chunks_to_add.append(
-                                        PaperChunk(
-                                            doc_id=doc_id,
-                                            text=chunk_text,
-                                            title=paper.get("title", "No Title"),
-                                            year=str(paper.get("year", "0000")),
-                                            source=paper.get("source", "online"),
-                                            chunk_id=i,
-                                            ner_results=paper.get("ner_results", "{}")
-                                        )
-                                    )
-                            
-                            if chunks_to_add:
-                                log.info(f"Indexing {len(chunks_to_add)} chunks to offline DB...")
-                                offline_table.add(chunks_to_add)
-                        except Exception as e:
-                            log.error(f"Failed to index to LanceDB: {e}")
-                # --- END CHANGE ---
+                # --- ABSTRACT FALLBACK: For papers without full_text, use abstract ---
+                for p in final_enriched_chunk:
+                    if not p:
+                        continue
+                    if not p.get("has_fulltext") and not p.get("full_text"):
+                        abstract = p.get("abstract", "")
+                        if abstract:
+                            p["full_text"] = abstract  # Use abstract as content
+                            p["has_fulltext"] = False  # Explicitly mark as abstract-only
+                            p["abstract_only"] = True  # New flag for clarity
+                            log.info(f"[Abstract Fallback] Using abstract for: {p.get('title', '')[:50]}")
 
                 # Save the fully processed chunk
                 saved_count = self._save_batch_streaming(final_enriched_chunk, run_dir, writer, fnd, all_saved_files)

@@ -29,7 +29,8 @@ def create_index():
     t0 = time.time()
     try:
         # replace=True ensures we overwrite any existing index or partial state
-        tbl.create_fts_index("text", replace=True)
+        # with_position=True enables phrase queries (required for quoted terms)
+        tbl.create_fts_index("text", replace=True, with_position=True)
     except Exception as e:
         print(f"CRITICAL ERROR during index creation: {e}")
         print("Ensure 'tantivy' is installed (pip install tantivy) if required by this LanceDB version.")

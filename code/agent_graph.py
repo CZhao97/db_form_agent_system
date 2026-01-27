@@ -51,7 +51,7 @@ class ChatOpenRouter(ChatOpenAI):
 
 def _init_models():
     research_model = ChatOpenRouter(model_name="google/gemini-2.5-flash", temperature=0.0)
-    evaluator_model = ChatOpenRouter(model_name="openai/gpt-4o-mini", temperature=0.0)
+    evaluator_model = ChatOpenRouter(model_name="openai/gpt-5-mini", temperature=0.0)
     return research_model, evaluator_model
 
 # -------------------- prompts --------------------
