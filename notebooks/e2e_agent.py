@@ -488,13 +488,15 @@ def _last_researcher_json(messages):
         return ""
     for msg in reversed(messages):
         content = getattr(msg, "content", "") or ""
+        
+        # SAFETY CHECK: Skip critique messages heavily
+        if '"critique"' in content:
+             continue 
+             
         if '"synthesis"' in content or '"verdict_statement"' in content:
             return content
         # Fallback: capture any JSON-looking content
         if content.lstrip().startswith("{") and content.rstrip().endswith("}"):
-            # SAFETY CHECK: Ensure this isn't a critique blob
-            if '"critique"' in content:
-                 continue # Skip critique messages
             return content
     return ""
 

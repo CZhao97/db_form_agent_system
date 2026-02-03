@@ -99,7 +99,10 @@ def evaluate_compound(compound_name: str, base_results_dir: str = "../searching_
         "consecutive_tool_unavailable": 0
     }
     
-    config = {"configurable": {"thread_id": session_id}}
+    config = {
+        "configurable": {"thread_id": session_id},
+        "recursion_limit": int(os.environ.get("AGENT_RECURSION_LIMIT", 25))
+    }
     
     try:
         # Invoke downstream app directly

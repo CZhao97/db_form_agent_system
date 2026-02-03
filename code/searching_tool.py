@@ -37,6 +37,7 @@ import lancedb # Added for offline DB check
 # --- START CHANGE ---
 try:
     from sentence_transformers import CrossEncoder
+    import torch
 except ImportError:
     CrossEncoder = None
 
@@ -1647,7 +1648,7 @@ class FullTextJournalSearchTool(BaseTool):
             sections = []
 
             # 1) Europe PMC JATS fullTextXML
-            if source.startswith("EuropePMC:") and ids.get("eupmc_id"):
+            if self.include_online_search and source.startswith("EuropePMC:") and ids.get("eupmc_id"):
                 src_tag = source.split(":",1)[1]
                 full_text, sections, xml_path = self.eupmc_fulltext_jats(src_tag, ids["eupmc_id"])
                 if full_text:
@@ -1658,7 +1659,7 @@ class FullTextJournalSearchTool(BaseTool):
             # 2) PubMed Central via PMID/PMCID (for papers with PMC access)
             pmid = ids.get("pmid") or ""
             pmcid = ids.get("pmcid") or ""
-            if (pmid or pmcid) and not full_text:
+            if self.include_online_search and (pmid or pmcid) and not full_text:
                 try:
                     # get_pmc_fulltext uses elink, which is best with PMID
                     full_text, sections, fetched_pmcid = self.get_pmc_fulltext(pmid)

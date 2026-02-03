@@ -7,6 +7,7 @@ import re
 import math
 from pathlib import Path
 import warnings
+import time
 
 # Suppress warnings
 warnings.filterwarnings("ignore")
@@ -43,6 +44,8 @@ class ChatOpenRouter(ChatOpenAI):
         super().__init__(base_url="https://openrouter.ai/api/v1", openai_api_key=openai_api_key, **kwargs)
 
 def run_batch_generation():
+    run_timestamp = time.strftime("%Y%m%d_%H%M%S")
+    os.environ["LANGCHAIN_PROJECT"] = f"Query Generation Agent Run - {run_timestamp}"
     # Paths
     BASE_DIR = Path("/home/chen/GNPS_SIM/agent/db_form_agent_system")
     NER_RESULTS_FILE = BASE_DIR / "agent/searching_results/e2e_run_20260125_130247/literature_searching/chemical_ner_results.json"
@@ -141,15 +144,7 @@ def run_batch_generation():
     # The recovery script used:
     original_query = "Form a database of all experimentally confirmed disinfection byproducts (DBPs)"
     refined_definition = (
-        "An \"experimentally confirmed disinfection byproduct (DBP)\" is a chemical compound that constitutes a \"known\" or \"proven\" DBP "
-        "if and only if the text explicitly reports its formation or detection as a direct result of a disinfection process "
-        "(e.g., chlorination, ozonation, chloramination, UV treatment) applied to water, wastewater, or swimming pool water. "
-        "The text must inherently link the compound to the disinfection context (e.g., \"formed during chlorination,\" \"identified as a DBP,\" "
-        "\"detected in chlorinated water\").\n\n"
-        "Exclude:\n"
-        "- Precursors (unless explicitly stated they converted to DBPs in the study)\n"
-        "- Theoretical predictions without experimental confirmation in the text\n"
-        "- Chemicals present only as background contaminants not linked to disinfection"
+        "A confirmed disinfection byproduct (DBP) is any compound that is formed during drinking-water–relevant disinfection or oxidation processes (e.g., chlorination, chloramination, bromination, ozonation, UV, PMS, etc.) of natural organic matter or anthropogenic organic precursors (e.g., pharmaceuticals, contrast media, pesticides, bisphenol A, triclosan, etc.)"
     )
     
     # Output file (JSONL for incremental saving)
