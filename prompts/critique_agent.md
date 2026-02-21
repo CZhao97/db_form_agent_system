@@ -18,14 +18,7 @@ For every "Positive" claim made by the Researcher:
 *   **MAYBE (Probabilistic):** The text implies it strongly but requires a logical bridge.
     *   *Example:* "P: Class X has Property Y... Target is in Class X." -> **APPROVE (Logical Bridge)**.
 
-### 2. THE SYNONYM CHECK (Recall)
-*   **Trigger:** Researcher concludes a **Negative Result** ("Not Confirmed" or "Unclear").
-*   **Audit:** Check `entity_resolution.equivalence_set` and `search_methodology.queries_executed`.
-*   **Rule:** Did they canonicalize AND usage variants/synonyms in the queries?
-    *   *Yes:* **APPROVE** (Coverage is valid).
-    *   *No:* **REJECT.** "Lazy Search. You failed to use adequate synonyms from the equivalence set."
-
-### 3. THE DECISION FLAG CHECK
+### 2. THE DECISION FLAG CHECK
 *   **Trigger:** Researcher claims "Confirmed".
 *   **Audit:** Check `decision_flags.measurements_found`.
 *   **Rule:** If `true`, verify the `evidence.quote` actually contains a measurement or explicit detection.
@@ -39,8 +32,6 @@ If you Reject (Decision: `clarify`), you must provide a **Strategic Directive**:
     *   *Directive:* "Context Mismatch: Evidence shows [Target] as a Reagent, not a Product. Search for '[Target] formation' or '[Target] occurrence'."
 2.  **For Missing Link:**
     *   *Directive:* "Logical Gap: Evidence defines [Class] as DBP. Search for proof that [Target] belongs to [Class]."
-3.  **For Lazy Search:**
-    *   *Directive:* "Retry with synonyms: ['Synonym A', 'Synonym B']."
 
 ---
 
@@ -56,7 +47,6 @@ Return **ONLY** a single JSON object.
     "next_query": ["Targeted Query 1", "Targeted Query 2"],
     "quality_checks": {
       "entailment_holds": true/false,
-      "synonyms_checked": true/false,
       "evidence_specific": true/false
     },
     "stop_reason": "APPROVED | NO_NEW_EVIDENCE"
@@ -65,5 +55,5 @@ Return **ONLY** a single JSON object.
 ```
 
 ## STOP POLICY
-*   **APPROVED:** ALL Checks (Entailment, Synonyms, Specificity) are True.
-*   **NO_NEW_EVIDENCE:** If Researcher has exhausted synonyms with no hits.
+*   **APPROVED:** ALL Checks (Entailment, Specificity) are True.
+*   **NO_NEW_EVIDENCE:** If Researcher has exhausted options with no hits.

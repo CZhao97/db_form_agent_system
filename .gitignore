@@ -39,6 +39,7 @@ venv/
 # Log files (specific extensions)
 *.log
 reflection_*.txt
+agent/
 
 # IDE files
 .vscode/
@@ -48,6 +49,7 @@ reflection_*.txt
 
 # OS files
 .DS_Store
+backfill_results_parquet/
 Thumbs.db
 
 
@@ -58,3 +60,7 @@ searching_results
 *.csv
 *.log
 *.json
+
+docs/
+logs/
+results/

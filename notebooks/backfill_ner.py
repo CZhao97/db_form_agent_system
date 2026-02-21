@@ -62,10 +62,21 @@ def backfill_ner(limit: int = None, processing_batch_size: int = 64, dry_run: bo
     print("Using Limit/Offset Pagination for safe streaming...")
     iterator = [] 
     
-    # Calculate smart start offset if not provided
-    # If we assume we only care about recent additions, we can start near the end.
+    # Calculate smart start/end offset based on sharding
     start_offset = 0
-    if args.offset is not None:
+    end_offset = total_rows
+    
+    if args.num_shards > 1:
+        # Partition the total rows
+        chunk_size = total_rows // args.num_shards
+        start_offset = args.shard_id * chunk_size
+        # The last shard takes the remainder
+        if args.shard_id == args.num_shards - 1:
+            end_offset = total_rows
+        else:
+            end_offset = (args.shard_id + 1) * chunk_size
+        print(f"Shard {args.shard_id}/{args.num_shards}: Processing range {start_offset} to {end_offset} (Size: {end_offset - start_offset})")
+    elif args.offset is not None:
          start_offset = args.offset
     elif args.scan_tail:
          # Start 200k rows from end (safe buffer)
@@ -76,21 +87,24 @@ def backfill_ner(limit: int = None, processing_batch_size: int = 64, dry_run: bo
     def batch_generator():
         current_offset = start_offset
         while True:
-            # Check if we exceeded total rows 
-            if current_offset >= total_rows:
+            # Check if we exceeded total rows or end of shard
+            if current_offset >= end_offset:
                 break
+            
+            # Adjust batch size for last chunk
+            effective_limit = min(scan_batch_size, end_offset - current_offset)
                 
             try:
                 # Use search().limit().offset() to verify safe fetching
-                arrow_batch = tbl.search().limit(scan_batch_size).offset(current_offset).to_arrow()
+                arrow_batch = tbl.search().limit(effective_limit).offset(current_offset).to_arrow()
                 if arrow_batch.num_rows == 0:
                     break
                     
-                yield arrow_batch
+                yield arrow_batch, current_offset
                 current_offset += arrow_batch.num_rows
                 
-                # Safety break
-                if arrow_batch.num_rows < scan_batch_size:
+                # Safety break if we got fewer rows than requested (end of table)
+                if arrow_batch.num_rows < effective_limit:
                     break
             except Exception as e:
                 print(f"Pagination failed at offset {current_offset}: {e}")
@@ -98,7 +112,7 @@ def backfill_ner(limit: int = None, processing_batch_size: int = 64, dry_run: bo
                 
     iterator = batch_generator()
     
-    for batch_arrow in iterator:
+    for batch_arrow, batch_offset in iterator:
         if limit and processed_count >= limit:
             break
             
@@ -110,7 +124,7 @@ def backfill_ner(limit: int = None, processing_batch_size: int = 64, dry_run: bo
         candidates = df_batch[mask_empty].copy()
         
         if candidates.empty:
-            current_scanned = current_offset + (batch_arrow.num_rows if hasattr(batch_arrow, 'num_rows') else len(df_batch))
+            current_scanned = batch_offset + (batch_arrow.num_rows if hasattr(batch_arrow, 'num_rows') else len(df_batch))
             # Rough estimate of progress
             if (current_scanned // scan_batch_size) % 50 == 0:
                print(f"[Heartbeat] Scanned ~{current_scanned} rows... (No missing NER found yet)")
@@ -136,8 +150,8 @@ def backfill_ner(limit: int = None, processing_batch_size: int = 64, dry_run: bo
                     ner_results_list = extract_chemicals_with_nen_batch(
                         sub_texts, 
                         verbose=False,
-                        ner_gpu=0,
-                        linker_gpu=0,
+                        ner_gpu=args.gpu_id, # Use specific GPU
+                        linker_gpu=args.gpu_id,
                         ner_mini_batch_size=len(sub_texts),
                         disable_linking=False
                     )
@@ -148,13 +162,6 @@ def backfill_ner(limit: int = None, processing_batch_size: int = 64, dry_run: bo
                 ner_results_list = [{"chemicals": ["DRY_RUN_CHEM"]}] * len(sub_texts)
                 
             # Perform Updates
-            # Updating row-by-row or batch-update?
-            # tbl.update(where=..., values=...) 
-            # Constructing a large WHERE clause is inefficient. 
-            # We will try to loop updates. This is slow but safe for now.
-            # Optimization: If many updates, maybe create a new partial table and merge? 
-            # For now, let's just do individual updates as the number of "Missing NER" rows is likely small compared to total DB.
-            
             for idx, (_, row) in enumerate(sub_batch.iterrows()):
                 res = ner_results_list[idx]
                 doc_id = row['doc_id']
@@ -169,7 +176,6 @@ def backfill_ner(limit: int = None, processing_batch_size: int = 64, dry_run: bo
                 if not dry_run:
                     # Update specific row
                     # Double quotes for SQL string literals
-                    # Using parameter substitution if possible, but LanceDB python string SQL is standard.
                     where_clause = f"doc_id = '{doc_id}' AND chunk_id = {chunk_id}"
                     try:
                         tbl.update(where=where_clause, values={"ner_results": final_json})
@@ -193,6 +199,9 @@ if __name__ == "__main__":
     parser.add_argument("--dry_run", action="store_true", help="Run without saving changes.")
     parser.add_argument("--offset", type=int, default=None, help="Start scanning from this offset.")
     parser.add_argument("--scan_tail", action="store_true", help="Start from the end of the DB (last 200k rows) to find recent additions.")
+    parser.add_argument("--shard_id", type=int, default=0, help="Shard ID (0-indexed).")
+    parser.add_argument("--num_shards", type=int, default=1, help="Total number of shards.")
+    parser.add_argument("--gpu_id", type=int, default=0, help="GPU ID to use.")
     
     args = parser.parse_args()
     

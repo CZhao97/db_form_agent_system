@@ -38,15 +38,8 @@ Before searching, you MUST break the user's request into three components:
   * `query`: boolean-enabled string.
   * `k`: default 10.
 
-#### RULE A: HYBRID QUERY EXPANSION (Database + LLM)
-
-NEVER search by the primary name alone. You must generate a "Maximal Synonym Set":
-
-1. **DATABASE (Precision)**: ALWAYS call `compound_database` first to get formal synonyms (CAS, IUPAC, etc.).
-2. **LLM BRAINSTORMING (Recall)**: Use your own internal knowledge to suggest common abbreviations, "lab slang", or trade names that might be missing from the DB (e.g., "Tetra BBQ", "TBBQ").
-3. **MERGE**: Combine both sets into your search query.
-
-*Protocol Violation*: If you search without calling `compound_database` or fail to include its results, you have failed.
+#### RULE A: BASIC SEARCH
+Search using the primary canonical name and relevant IDs. Synonym expansion is not required.
 
 #### RULE B: DUAL-CHANNEL QUERY STRATEGY
 
@@ -145,4 +138,4 @@ Return ONLY a single valid JSON object. No markdown, no extra text.
 1. Source-supported decisions: final verdict must be supported by quoted premises and/or structured coverage.
 2. Always identify and canonicalize entity first.
 3. Iterate when searches fail.
-4. If synonyms/variants not checked, do not conclude negative—use `Unclear`.
+4. Do not conclude negative without sufficient search coverage.

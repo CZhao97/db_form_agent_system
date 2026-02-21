@@ -148,22 +148,27 @@ def run_batch_generation():
     )
     
     # Output file (JSONL for incremental saving)
-    OUTPUT_FILE = BASE_DIR / "agent/searching_results/e2e_run_20260125_130247/recovered_queries_test_200.jsonl"
+    # BATCH TRACKING FILE
+    BATCH_LOG_FILE = BASE_DIR / "agent/searching_results/e2e_run_20260125_130247/batch_progress.log"
     
-    # Check if file exists to resume? For now, we overwrite or append if we implemented resume logic.
-    # We will just overwrite for this run.
-    with open(OUTPUT_FILE, 'w') as f:
-        pass
-
-    # LIMIT FOR TEST
-    all_input_clusters = all_input_clusters[:200]
-    total_chemicals = len(all_input_clusters)
-    log.info(f"Test Mode: Processing first {total_chemicals} clusters.")
+    # Resume Logic
+    completed_batches = set()
+    if BATCH_LOG_FILE.exists():
+        with open(BATCH_LOG_FILE, 'r') as f:
+            for line in f:
+                if line.strip().isdigit():
+                    completed_batches.add(int(line.strip()))
+    
+    log.info(f"Resume: Found {len(completed_batches)} completed batches.")
 
     all_downstream_queries = []
     
     for i in range(batches):
+        if i in completed_batches:
+            continue
+            
         start_idx = i * BATCH_SIZE
+
         end_idx = min((i + 1) * BATCH_SIZE, total_chemicals)
         batch_clusters = all_input_clusters[start_idx:end_idx]
         
@@ -218,11 +223,15 @@ def run_batch_generation():
                         
                 log.info(f"  -> Extracted {len(candidates)} candidates. Generated {len(generated_queries)} queries. Saved to {OUTPUT_FILE}")
             else:
-                log.error(f"  -> Failed to find JSON in batch {i+1}")
+                log.error(f"  -> Failed to find JSON in batch {i}")
                 log.debug(response.content[:500])
                 
+            # Log completion of this batch
+            with open(BATCH_LOG_FILE, 'a') as f:
+                f.write(f"{i}\n")
+                
         except Exception as e:
-            log.error(f"  -> Error in batch {i+1}: {e}")
+            log.error(f"  -> Error in batch {i}: {e}")
             
     log.info("Done.")
 

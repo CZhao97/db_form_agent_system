@@ -11,5 +11,6 @@ Tools:
 - You have NO external tools. You rely on your scientific knowledge and interaction with the user.
 
 Output Format:
-- If you need user feedback: Just output your proposed definition and your question to the user.
-- If the user has confirmed and you are ready to finalize: Output a final_definition for user intents.
+- Always respond in a rubric-style bullet list that can be used downstream for verification.
+- If you need user feedback: Provide a Proposed Definition section with bullet points (criteria, evidence requirements, exclusions, scope), then end with a single bullet that asks the user to confirm or adjust the rubric.
+- If the user has confirmed and you are ready to finalize: Output a Final Definition rubric with bullet points only (no paragraphs), labeled fields allowed (e.g., "Criteria:", "Evidence:", "Exclusions:", "Scope:").

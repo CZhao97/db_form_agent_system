@@ -84,11 +84,12 @@ import sys
 import os
 # Add the code directory to the path relative to this script
 sys.path.append(os.path.join(os.path.dirname(__file__), '../code'))
-from chemical_ner_tool import ChemicalNerTool
 from searching_tool import FullTextJournalSearchTool
 from compound_tool import CompoundDatabaseTool
 from fulltext_vector_tools import FullTextIndexTool, FullTextQueryTool
 from ner_results_viewer import load_ner_results, ner_results_to_dataframe
+from inspection_tool import InspectSearchResultsTool
+from chemical_ner_tool import ChemicalNerTool
 
 # -------------------- logging & environment --------------------
 logging.basicConfig(level=logging.WARNING, format='%(levelname)s | %(name)s | %(message)s')
@@ -106,8 +107,8 @@ MAX_ITERATIONS_E2E = 100
 BASE_RESULTS_DIR = "/home/chen/GNPS_SIM/agent/searching_results"
 MIN_DATE = "1970"
 MAX_DATE = "2025"
-SEARCH_LIMIT = 2000
-TARGET_PAPERS = 2000
+SEARCH_LIMIT = int(os.environ.get("SEARCH_LIMIT", "2000"))
+TARGET_PAPERS = int(os.environ.get("TARGET_PAPERS", "2000"))
 
 def _vprint(*args, **kwargs):
     if os.getenv("NODE_LOGS", "1") in ("1", "true", "TRUE", "yes", "YES"):
@@ -154,12 +155,12 @@ upper_stream_model = ChatOpenRouter(model_name="google/gemini-2.5-flash", temper
 upper_stream_tools = [FullTextJournalSearchTool(
         results_base_dir=BASE_RESULTS_DIR,
         include_pubmed=True,
-        include_preprints=False,
+        include_preprints=True,
         include_s2=True,
-        include_arxiv=False,
-        include_medrxiv=False,
+        include_arxiv=True,
+        include_medrxiv=True,
         include_eupmc=True,
-        use_pubmed_free_fulltext_bias=True,
+        use_pubmed_free_fulltext_bias=False,
         max_parallel_downloads=6,
         max_parallel_docling=6,
         min_date=MIN_DATE,  # Date range filter
@@ -167,7 +168,9 @@ upper_stream_tools = [FullTextJournalSearchTool(
         # Enable offline DB for deduplication and local retrieval
         offline_index_path="/data/chen/GNPS_SIM/pmc_lancedb_index",
         offline_doc_dir="/home/chen/pubmed_corpus/pmc_extracted_text"
-    ), ChemicalNerTool()]
+    ), 
+    InspectSearchResultsTool(),
+    ChemicalNerTool()]
 
 # --- AGENT --- #
 # Add a checkpointer to the agent
@@ -298,24 +301,53 @@ def query_generation_node(state: UpperAgentState) -> dict:
         log.warning("No chemical entities found in NER results.")
         return {"downstream_states": [], "downstream_configs": []}
 
-    # Randomly choose chemicals instead of top ranked
-    sample_size = min(200, len(df))
-    top_chemicals = df.sample(n=sample_size)
-    chemical_names = []
-    for entry in top_chemicals['unique_mentions']:
-        if isinstance(entry, list):
-            chemical_names.append(entry)
-        elif isinstance(entry, str):
-            chemical_names.append([name.strip() for name in entry.split(' ||| ') if name.strip()])
-
-    if not chemical_names:
-        log.warning("No chemical name clusters to generate queries for.")
+    # Directly sample from the merged output dictionary to preserve full context (mentions)
+    merged = ner_data.get("merged_output", {})
+    all_keys = list(merged.keys())
+    
+    if not all_keys:
+        log.warning("No chemical entities found in NER results (merged_output empty).")
         return {"downstream_states": [], "downstream_configs": []}
+        
+    sample_size = min(200, len(all_keys))
+    sampled_keys = random.sample(all_keys, sample_size)
+    
+    entity_data = []
+    
+    for kid in sampled_keys:
+        val = merged[kid]
+        
+        # 1. Gather names (Synonyms + Parsed from mentions)
+        names = set(val.get("synonyms", []))
+        raw_mentions = val.get("mentions", [])
+        
+        # Parse names from mentions "Name (Context: ...)" if needed
+        # (The mention string is typically "Name (Context: ...)")
+        # We want to provide the cleaner names to the agent as well.
+        for m in raw_mentions:
+            # Heuristic: split on " (Context:"
+            if " (Context:" in m:
+                candidate_name = m.split(" (Context:")[0].strip()
+                if candidate_name:
+                    names.add(candidate_name)
+            else:
+                # If no context marker, treat whole string as name/mention
+                names.add(m)
+                
+        # 2. Add to list
+        entity_data.append({
+            "id": kid,
+            "names": list(names),
+            "mentions": raw_mentions
+        })
 
-    _vprint("Selected chemical clusters:")
-    for cluster in chemical_names:
-        if cluster:
-            _vprint(f"  - {cluster}")
+    if not entity_data:
+        log.warning("No entity data constructed.")
+        return {"downstream_states": [], "downstream_configs": []}
+        
+    _vprint("Selected entity examples:")
+    for i, e in enumerate(entity_data[:3]): # Show first 3
+         _vprint(f"  - ID: {e['id']}, Names: {e['names']}")
 
     # 3. Use LLM to generate queries based on the clusters
     original_query = state['original_query']
@@ -323,17 +355,14 @@ def query_generation_node(state: UpperAgentState) -> dict:
     
     input_data = {
         "original_query": original_query,
-        "chemical_names": chemical_names
+        "entity_data": entity_data
     }
     
     if refined_definition:
         input_data["refined_definition"] = refined_definition
         input_data["instruction"] = (
             "Filter the provided chemical clusters based on the definition and context. "
-            "Return a JSON object with: \n"
-            "1. 'candidates': A list of the filtered, canonical chemical names.\n"
-            "2. 'demo_query': A single full example query for the FIRST candidate only, following the template rules.\n"
-            "Do NOT generate full queries for the other candidates."
+            "Return a JSON object with a 'queries' list containing the full verification questions for each selected candidate."
         )
 
     input_content = json.dumps(input_data)
@@ -350,17 +379,19 @@ def query_generation_node(state: UpperAgentState) -> dict:
         if not match:
             raise json.JSONDecodeError("No JSON object found in LLM response for query generation.", response.content, 0)
         output_json = json.loads(match.group(0))
-        candidates = output_json.get("candidates", [])
-        
-        # Manual Template Injection
-        downstream_queries = []
-        for chemical in candidates:
-            query_text = (
-                f"According to the following definition, decide whether '{chemical}' is a 'experimentally confirmed disinfection byproduct (DBP)':\n"
-                f"{refined_definition}\n\n"
-                "Based on the peer-reviewed literature, is '{chemical}' a 'experimentally confirmed disinfection byproduct (DBP)' under this definition?"
-            )
-            downstream_queries.append(query_text)
+        if "queries" in output_json:
+            downstream_queries = output_json["queries"]
+        else:
+            # Fallback: try candidates if queries missing (backward compat)
+            candidates = output_json.get("candidates", [])
+            downstream_queries = []
+            for chemical in candidates:
+                query_text = (
+                    f"According to the following definition, decide whether '{chemical}' is a 'experimentally confirmed disinfection byproduct (DBP)':\n"
+                    f"{refined_definition}\n\n"
+                    "Based on the peer-reviewed literature, is '{chemical}' a 'experimentally confirmed disinfection byproduct (DBP)' under this definition?"
+                )
+                downstream_queries.append(query_text)
             
     except (json.JSONDecodeError, AttributeError) as e:
         log.error(f"Failed to parse query generator LLM output: {e}")
@@ -678,6 +709,45 @@ def critique_node(state: DownAgentState, config: RunnableConfig):
     if not last_researcher_json:
         last_researcher_json = (state["messages"][-1].content if state.get("messages") else "").strip()
 
+    # --- ABLATION: DISABLE CRITIQUE AGENT ---
+    import os
+    env_val = os.environ.get("ENABLE_CRITIQUE_AGENT", "True")
+    print(f"[DEBUG:CRITIQUE_NODE] ENABLE_CRITIQUE_AGENT={env_val}")
+    
+    if env_val == "False":
+        _vprint("-----Critique Node Bypassed (Ablation: ENABLE_CRITIQUE_AGENT=False)-----")
+        # Auto-approve whatever the researcher said to stop the loop
+        dummy_content = json.dumps({
+            "critique": {"decision": "APPROVE", "explanation": "Auto-approved by ablation."},
+            "stop_reason": "APPROVED"
+        })
+        
+        # Manually extract claims to support the history update
+        # Manually extract claims to support the history update
+        msgs = state.get("messages", [])
+        claim = determine_final_claim(msgs)
+        confidence = determine_confidence_score(msgs)
+        
+        history = copy.deepcopy(state.get("stop_history", []))
+        history.append({
+            "claim": claim,
+            "confidence_score": confidence,
+            "supporting_sources": [],
+            "tool_name": None,
+            "stop_reason": "APPROVED",
+        })
+        
+        return {
+            "messages": state["messages"] + [AIMessage(content=dummy_content)],
+            "stop_history": history,
+            "consecutive_no_new_evidence": state.get("consecutive_no_new_evidence", 0),
+            "consecutive_tool_unavailable": state.get("consecutive_tool_unavailable", 0),
+            "last_researcher_json": last_researcher_json,
+            "last_critique_json": dummy_content,
+            "claim_history": state.get("claim_history", []) + [claim],
+            "confidence_history": state.get("confidence_history", []) + [confidence],
+        }
+
     critique_input = f"Researcher output JSON:\n{last_researcher_json}"
 
     session_dir = state.get("search_session_dir")
@@ -744,6 +814,8 @@ def critique_node(state: DownAgentState, config: RunnableConfig):
         candidate_tool = parsed.get("tool_name")
         if isinstance(candidate_tool, str) and candidate_tool.strip():
             tool_name = candidate_tool.strip()
+
+
 
     def _extract_claim_and_confidence(messages):
         blob = _last_researcher_json(messages)
@@ -1005,8 +1077,8 @@ def human_feedback_node(state: FullWorkflowState):
 
 def should_continue_refinement(state: FullWorkflowState):
     if state.get("is_satisfied"):
-        return "upper_stream_agent"
-    return "human_feedback"
+        return "end"
+    return "continue"
 
 # --- DOWNSTREAM SUBGRAPH DEFINITION --- #
 # This subgraph is used for parallel execution of downstream agents
