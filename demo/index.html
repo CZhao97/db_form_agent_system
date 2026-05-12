@@ -35,7 +35,7 @@
         <h2>Dynamic literature construction + predicate-state verification</h2>
         <p>Instead of asking an LLM to simply list plausible compounds, DB-Curator treats every candidate as an evidence contract: required predicates must be supported, exclusion predicates must not be triggered, and unresolved predicates drive follow-up retrieval.</p>
         <div class="state-chips" aria-label="Predicate states">
-          <span>Supported</span><span>Unresolved</span><span>Excluded</span><span>Evidence-limited</span>
+          <span>Supported</span><span>Unresolved</span><span>Explicit negative</span><span>Evidence-limited</span>
         </div>
       </aside>
     </section>
@@ -71,13 +71,20 @@
           <p class="eyebrow">Reported benchmark results</p>
           <h2>Evidence grounding is the bottleneck DB-Curator is built to solve.</h2>
         </div>
-        <span class="context-badge">Paper-scale results, not toy-demo output</span>
+        <span class="context-badge">Manuscript results · not browser toy output</span>
       </div>
       <div class="result-grid">
         <article><strong>1,887</strong><span>candidate rows tested across five controlled curation benchmarks</span></article>
         <article><strong>977</strong><span>entries assigned Confirmed labels by DB-Curator</span></article>
         <article><strong>7,430 / 7,453</strong><span>cited primary-paper references with quote or local-context support</span></article>
         <article><strong>68</strong><span>literature-supported compounds absent from benchmarks but accepted by human experts</span></article>
+      </div>
+      <div class="baseline-panel" aria-label="DB-Curator versus zero-shot baseline comparison">
+        <div class="baseline-head"><span>Metric</span><span>DB-Curator</span><span>Zero-shot baseline</span></div>
+        <div><span>Fixed-cohort supported references</span><strong>2,166 / 2,166</strong><strong>11 / 257</strong></div>
+        <div><span>Benchmark-scale Confirmed labels</span><strong>977 / 1,887</strong><strong>375 / 1,887</strong></div>
+        <div><span>Benchmark-scale supported references</span><strong>7,430 / 7,453</strong><strong>6 / 2,291</strong></div>
+        <div><span>Benchmark-missing valid compounds</span><strong>68</strong><strong>weak provenance</strong></div>
       </div>
       <p class="panel-note">These values summarize the manuscript evaluation. The interactive lab below uses deterministic toy data so visitors can safely explore the pipeline without API keys or long-running jobs.</p>
     </section>
@@ -86,9 +93,9 @@
       <div class="section-heading">
         <div>
           <p class="eyebrow">Interactive toy demo</p>
-          <h2>Run individual skills or the full curation loop.</h2>
+          <h2>Run workflow stages or the full curation loop.</h2>
         </div>
-        <span class="lab-badge">Browser-only · deterministic · no API key</span>
+        <span class="lab-badge">Toy mode · deterministic browser simulation · no live LLM calls</span>
       </div>
       <div class="lab-grid">
         <div class="lab-input-card">
@@ -103,18 +110,21 @@
             <button class="run-button" id="runFullPipeline">Run full pipeline</button>
             <button class="ghost-run" id="resetLab">Reset</button>
           </div>
-          <p class="lab-note">Use the skill buttons to inspect each intermediate object: refined rubric, evolving paper set, candidate queue, and predicate-level evidence decision.</p>
+          <p class="lab-note">Recommended path: run the full pipeline, click the evidence-limited candidate, compare supported versus unresolved predicates, then inspect the Critique step.</p>
         </div>
         <div class="skill-board" id="skillBoard">
-          <button class="skill-card" data-skill="refine"><span>Skill 1</span><strong>Intent refinement</strong><small>Build a rubric from a vague request</small></button>
-          <button class="skill-card" data-skill="search"><span>Skill 2</span><strong>Dynamic literature</strong><small>Construct a paper set around the topic</small></button>
-          <button class="skill-card" data-skill="discover"><span>Skill 3</span><strong>Candidate discovery</strong><small>Extract, normalize and rank entities</small></button>
-          <button class="skill-card" data-skill="verify"><span>Skill 4</span><strong>Predicate verification</strong><small>Audit candidates against evidence</small></button>
+          <button class="skill-card" data-skill="refine"><span>Stage 1</span><strong>Intent refinement</strong><small>Build a rubric from a vague request</small></button>
+          <button class="skill-card" data-skill="search"><span>Stage 2</span><strong>Dynamic literature construction</strong><small>Construct a paper set around the topic</small></button>
+          <button class="skill-card" data-skill="discover"><span>Stage 3</span><strong>Candidate discovery</strong><small>Extract, normalize and rank entities</small></button>
+          <button class="skill-card" data-skill="verify"><span>Stage 4</span><strong>Predicate-state verification</strong><small>Audit candidates against evidence</small></button>
         </div>
       </div>
       <div class="lab-status-grid">
-        <div class="lab-flow" id="labFlow"></div>
-        <pre class="lab-output" id="labOutput">Click a skill or run the full pipeline.</pre>
+        <div>
+          <div class="toy-mode-callout"><strong>Toy mode:</strong> deterministic browser simulation. No live literature search, no API calls, and no LLM inference.</div>
+          <div class="lab-flow" id="labFlow"></div>
+        </div>
+        <pre class="lab-output" id="labOutput">Click a workflow stage or run the full pipeline.</pre>
       </div>
     </section>
 
@@ -124,7 +134,7 @@
           <p class="eyebrow">Demo result viewer</p>
           <h2>Inspect a sample run or upload your own exported JSON.</h2>
         </div>
-        <span class="context-badge">Values below describe the loaded run only</span>
+        <div class="viewer-actions"><span class="context-badge">Values below describe the loaded run only</span><button class="download-button" id="downloadRun">Download current run JSON</button></div>
       </div>
       <section class="loaded-run panel">
         <div class="loaded-grid">
@@ -147,8 +157,8 @@
             <select id="labelFilter" aria-label="Filter by label">
               <option value="all">All labels</option>
               <option value="Confirmed">Confirmed</option>
-              <option value="Insufficient Direct Evidence">Need evidence</option>
-              <option value="Explicit Negative Evidence">Excluded</option>
+              <option value="Insufficient Direct Evidence">Evidence-limited</option>
+              <option value="Explicit Negative Evidence">Explicit negative</option>
             </select>
           </div>
           <div class="candidate-list" id="candidateList"></div>
@@ -157,7 +167,7 @@
           <article class="panel candidate-detail" id="candidateDetail"></article>
           <div class="detail-grid">
             <article class="panel"><div class="section-heading compact"><p class="eyebrow">Rubric state</p><h2>Predicate audit</h2></div><div id="rubricMatrix" class="rubric-matrix"></div></article>
-            <article class="panel"><div class="section-heading compact"><p class="eyebrow">Evidence provenance</p><h2>Cited support</h2></div><div id="evidenceCards" class="evidence-cards"></div></article>
+            <article class="panel"><div class="section-heading compact"><p class="eyebrow">Evidence provenance</p><h2>Cited support</h2></div><div class="quality-legend"><span><b class="dot direct-dot"></b>Direct</span><span><b class="dot near-dot"></b>Near miss</span><span><b class="dot negative-dot"></b>Explicit negative</span></div><div id="evidenceCards" class="evidence-cards"></div></article>
           </div>
         </section>
       </section>

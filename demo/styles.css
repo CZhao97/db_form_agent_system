@@ -238,3 +238,79 @@ main { padding: 0 clamp(18px, 4vw, 68px) 76px; }
   h1 { font-size: 3rem; }
   .context-badge, .lab-badge { display: none; }
 }
+
+/* Public-demo hardening and polish */
+body { font-family: "Aptos", "Segoe UI", "Helvetica Neue", Arial, sans-serif; }
+h1, .concept-card h2 { font-family: Georgia, "Iowan Old Style", "Palatino Linotype", serif; }
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible,
+.upload-button:focus-within {
+  outline: 3px solid var(--gold);
+  outline-offset: 3px;
+}
+.baseline-panel {
+  margin-top: 18px;
+  overflow: hidden;
+  border: 1px solid rgba(42, 58, 54, 0.14);
+  border-radius: 22px;
+  background: rgba(255,255,255,.48);
+}
+.baseline-panel > div {
+  display: grid;
+  grid-template-columns: minmax(220px, 1.25fr) minmax(150px, .75fr) minmax(150px, .75fr);
+  gap: 12px;
+  align-items: center;
+  padding: 13px 16px;
+  border-top: 1px solid rgba(42, 58, 54, 0.1);
+}
+.baseline-panel > div:first-child { border-top: 0; }
+.baseline-panel .baseline-head {
+  background: rgba(47,111,98,.1);
+  color: var(--moss-dark);
+  font: 900 .72rem/1.2 "Trebuchet MS", Verdana, sans-serif;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+}
+.baseline-panel strong { color: var(--moss-dark); }
+.baseline-panel div strong:last-child { color: #7f4b3a; }
+.toy-mode-callout {
+  margin-bottom: 12px;
+  padding: 13px 15px;
+  border-radius: 18px;
+  border: 1px solid rgba(214,161,61,.35);
+  background: rgba(214,161,61,.12);
+  color: #6f4712;
+  line-height: 1.38;
+}
+.viewer-actions { display: flex; align-items: center; justify-content: flex-end; gap: 10px; flex-wrap: wrap; }
+.download-button {
+  border: 1px solid rgba(47,111,98,.22);
+  background: rgba(255,255,255,.7);
+  color: var(--moss-dark);
+  border-radius: 999px;
+  padding: 10px 12px;
+  cursor: pointer;
+  font: 800 .68rem/1 "Trebuchet MS", Verdana, sans-serif;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+}
+.quality-legend {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin: -4px 0 14px;
+  color: var(--muted);
+  font-size: .86rem;
+}
+.quality-legend span { display: inline-flex; align-items: center; gap: 6px; }
+.dot { width: 9px; height: 9px; border-radius: 50%; display: inline-block; }
+.direct-dot { background: var(--moss); }
+.near-dot { background: var(--gold); }
+.negative-dot { background: var(--coral); }
+@media (max-width: 760px) {
+  .baseline-panel > div { grid-template-columns: 1fr; gap: 4px; }
+  .viewer-actions { justify-content: flex-start; }
+}
