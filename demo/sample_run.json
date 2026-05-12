@@ -1,0 +1,128 @@
+{
+  "run_id": "demo-dbp-001",
+  "topic": "Disinfection byproducts in treated water",
+  "user_request": "Form a database of experimentally supported disinfection byproducts.",
+  "refined_definition": "A disinfection byproduct is a specific chemical compound formed during a water disinfection or oxidation process when disinfectants or oxidants react with precursors in real or simulated water matrices, with evidence attributing formation to that treatment process.",
+  "summary": {
+    "literature_records": 42,
+    "candidate_mentions": 1185,
+    "normalized_candidates": 126,
+    "verification_queue": 18,
+    "confirmed": 9,
+    "evidence_limited": 6,
+    "excluded": 3,
+    "primary_papers": 31,
+    "quote_supported_refs": 29
+  },
+  "stages": [
+    {"name": "Intent refinement", "state": "complete", "count": 5, "note": "User request converted into mandatory and exclusionary predicates."},
+    {"name": "Dynamic literature", "state": "complete", "count": 42, "note": "Broad topic search plus candidate-triggered follow-up retrieval."},
+    {"name": "Candidate funnel", "state": "complete", "count": 18, "note": "NER, grounding, ranking and LLM triage reduce noisy mentions."},
+    {"name": "Predicate verification", "state": "active", "count": 18, "note": "Researcher-Critique loop checks each candidate against evidence."}
+  ],
+  "literature": [
+    {"id": "P1", "title": "Formation of halogenated aldehydes during chlorination of drinking water", "year": 2022, "source": "Europe PMC", "kind": "primary paper", "status": "indexed", "used_by": ["C1", "C2"]},
+    {"id": "P2", "title": "Iodo-phenolic disinfection byproducts in chloraminated source waters", "year": 2024, "source": "Publisher PDF", "kind": "primary paper", "status": "full text", "used_by": ["C3"]},
+    {"id": "P3", "title": "Screening nitrogenous DBPs by high-resolution mass spectrometry", "year": 2021, "source": "Semantic Scholar", "kind": "primary paper", "status": "abstract only", "used_by": ["C4", "C5"]},
+    {"id": "P4", "title": "Transformation of dissolved organic matter during ozonation", "year": 2023, "source": "PubMed", "kind": "context paper", "status": "indexed", "used_by": ["C6"]},
+    {"id": "P5", "title": "Benchmark list of regulated disinfection byproducts", "year": 2020, "source": "local corpus", "kind": "benchmark/context", "status": "metadata", "used_by": ["C1", "C2", "C3"]}
+  ],
+  "candidates": [
+    {
+      "id": "C1",
+      "name": "Chloroform",
+      "synonyms": ["Trichloromethane", "TCM"],
+      "formula": "CHCl3",
+      "label": "Confirmed",
+      "confidence": 0.94,
+      "mentions": 67,
+      "papers": ["P1", "P5"],
+      "iteration_count": 2,
+      "rubric": [
+        {"criterion": "Specific chemical identity", "state": "supported", "evidence": "CAS and formula match trichloromethane."},
+        {"criterion": "Disinfection formation", "state": "supported", "evidence": "Paper P1 reports formation during chlorination."},
+        {"criterion": "Water matrix", "state": "supported", "evidence": "Experiment used treated drinking water."},
+        {"criterion": "Not reagent/context-only", "state": "supported", "evidence": "Reported as measured DBP, not an input reagent."}
+      ],
+      "evidence": [
+        {"paper": "P1", "quote": "chloroform increased after chlorination of the source-water organic matter", "supports": "Disinfection formation", "quality": "direct"},
+        {"paper": "P5", "quote": "trihalomethanes including chloroform are regulated DBPs", "supports": "Specific identity", "quality": "context"}
+      ],
+      "iterations": [
+        {"round": 1, "agent": "Researcher", "action": "candidate-specific search", "result": "Found chlorination paper and benchmark context."},
+        {"round": 1, "agent": "Critique", "action": "predicate audit", "result": "Requested direct water-matrix support."},
+        {"round": 2, "agent": "Researcher", "action": "follow-up retrieval", "result": "Retrieved full text with treated-water context."},
+        {"round": 2, "agent": "Critique", "action": "final check", "result": "All mandatory predicates supported."}
+      ]
+    },
+    {
+      "id": "C2",
+      "name": "Trichloroacetaldehyde",
+      "synonyms": ["Chloral", "2,2,2-trichloroethanal"],
+      "formula": "C2HCl3O",
+      "label": "Confirmed",
+      "confidence": 0.88,
+      "mentions": 24,
+      "papers": ["P1", "P5"],
+      "iteration_count": 3,
+      "rubric": [
+        {"criterion": "Specific chemical identity", "state": "supported", "evidence": "Synonyms and formula resolve to chloral."},
+        {"criterion": "Disinfection formation", "state": "supported", "evidence": "Detected after chlorination in P1."},
+        {"criterion": "Water matrix", "state": "supported", "evidence": "Reported in simulated drinking-water experiments."},
+        {"criterion": "Not reagent/context-only", "state": "supported", "evidence": "Measured as product."}
+      ],
+      "evidence": [{"paper": "P1", "quote": "chloral was identified among carbonyl DBPs after chlorination", "supports": "Disinfection formation", "quality": "direct"}],
+      "iterations": [
+        {"round": 1, "agent": "Researcher", "action": "synonym expansion", "result": "Mapped chloral to trichloroacetaldehyde."},
+        {"round": 2, "agent": "Critique", "action": "predicate audit", "result": "Asked whether chloral was a product or reagent."},
+        {"round": 3, "agent": "Researcher", "action": "quote retrieval", "result": "Found product context in result section."}
+      ]
+    },
+    {
+      "id": "C3",
+      "name": "2,4,6-triiodophenol",
+      "synonyms": ["Triiodophenol"],
+      "formula": "C6H3I3O",
+      "label": "Insufficient Direct Evidence",
+      "confidence": 0.51,
+      "mentions": 9,
+      "papers": ["P2"],
+      "iteration_count": 4,
+      "rubric": [
+        {"criterion": "Specific chemical identity", "state": "supported", "evidence": "Exact compound name found."},
+        {"criterion": "Disinfection formation", "state": "unresolved", "evidence": "Paper suggests iodination but formation route is ambiguous in available context."},
+        {"criterion": "Water matrix", "state": "supported", "evidence": "Detected in chloraminated source-water experiment."},
+        {"criterion": "Not reagent/context-only", "state": "unresolved", "evidence": "Available text does not fully separate product from analytical standard."}
+      ],
+      "evidence": [{"paper": "P2", "quote": "iodo-phenolic DBPs were observed in chloraminated waters", "supports": "Water matrix", "quality": "near_miss"}],
+      "iterations": [
+        {"round": 1, "agent": "Researcher", "action": "online search", "result": "Found iodo-phenolic DBP paper."},
+        {"round": 2, "agent": "Critique", "action": "predicate audit", "result": "Formation route not direct enough."},
+        {"round": 3, "agent": "Researcher", "action": "PDF context query", "result": "Recovered matrix context but not route context."},
+        {"round": 4, "agent": "Critique", "action": "stop decision", "result": "Left evidence-limited until formation predicate is directly supported."}
+      ]
+    },
+    {
+      "id": "C4",
+      "name": "Acetonitrile",
+      "synonyms": ["Methyl cyanide"],
+      "formula": "C2H3N",
+      "label": "Explicit Negative Evidence",
+      "confidence": 0.22,
+      "mentions": 31,
+      "papers": ["P3"],
+      "iteration_count": 1,
+      "rubric": [
+        {"criterion": "Specific chemical identity", "state": "supported", "evidence": "Compound identity is clear."},
+        {"criterion": "Disinfection formation", "state": "contradicted", "evidence": "Used as LC solvent in methods."},
+        {"criterion": "Water matrix", "state": "unresolved", "evidence": "No measured-water product context."},
+        {"criterion": "Not reagent/context-only", "state": "contradicted", "evidence": "Methods section uses it as solvent."}
+      ],
+      "evidence": [{"paper": "P3", "quote": "samples were diluted in acetonitrile before injection", "supports": "Exclusion", "quality": "explicit_negative"}],
+      "iterations": [
+        {"round": 1, "agent": "Researcher", "action": "context extraction", "result": "Found methods-only solvent role."},
+        {"round": 1, "agent": "Critique", "action": "exclusion check", "result": "Triggered reagent/solvent exclusion."}
+      ]
+    }
+  ]
+}

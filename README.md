@@ -57,6 +57,19 @@ DB-Curator can use online literature sources, optional local full-text caches, a
 
 The implementation avoids storing secrets in code. API keys should be provided through environment variables or an untracked `.env` file.
 
+
+## Interactive Demo
+
+A static web demo is included in `demo/`. It visualizes the intermediate state of a DB-Curator run, including the candidate funnel, dynamic literature set, predicate-level rubric states, cited evidence, and Researcher--Critique iterations.
+
+Run it locally with:
+
+```bash
+python -m http.server 8000
+```
+
+Then open `http://localhost:8000/demo/`. The demo loads `demo/sample_run.json` by default and can also inspect user-provided run JSON files through the browser.
+
 ## Manuscript Reproduction
 
 The manuscript source and generated figures are in `manuscript/latex/`. To rebuild the main PDF from the public snapshot:

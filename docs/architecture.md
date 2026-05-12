@@ -21,3 +21,8 @@ DB-Curator is a stateful multi-agent workflow for scientific database constructi
 ## Tooling
 
 The public code includes tools for literature search, document parsing, offline indexing, chemical NER, PubChem/RDKit/OPSIN grounding, candidate ranking, and provenance-aware verification.
+
+
+## Demo Schema
+
+The static web demo in `demo/` uses a lightweight JSON representation of a run. It is not a required internal format; it is an export format for visualization. The important fields are `summary`, `stages`, `literature`, and `candidates`. Each candidate can expose `rubric`, `evidence`, and `iterations` for interactive inspection.
