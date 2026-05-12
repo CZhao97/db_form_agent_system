@@ -43,6 +43,73 @@ const labSteps = [
   ['verify', 'Predicate verification', 'Audit candidates against evidence']
 ];
 
+const demoPresets = {
+  dbp: 'Form a database of disinfection byproducts supported by primary literature.',
+  blood: 'Form a database of human blood exposome chemicals reported in blood or systemic circulation and linked to external exposure.',
+  microbial: 'Form a database of microbial natural products with organism context and primary literature evidence.'
+};
+
+function activeScenario() {
+  const text = (lab.prompt?.value || '').toLowerCase();
+  if (text.includes('blood') || text.includes('exposome')) return 'blood';
+  if (text.includes('microbial') || text.includes('natural product')) return 'microbial';
+  return 'dbp';
+}
+
+const scenarioText = {
+  dbp: {
+    definition: 'A database entry must be a specific chemical entity formed during water disinfection and supported by primary literature evidence in a water-treatment or drinking-water context.',
+    mandatory: ['specific chemical identity', 'water disinfection context', 'formation or occurrence evidence', 'not reagent/context-only'],
+    exclusions: ['solvent role only', 'analytical standard only', 'precursor but not DBP'],
+    papers: [
+      ['P1', 'Europe PMC', 'Formation of halogenated aldehydes during chlorination', 'full text', 'broad topic query'],
+      ['P2', 'Semantic Scholar', 'High-resolution screening of nitrogenous DBPs', 'abstract + metadata', 'candidate context query'],
+      ['P3', 'Publisher PDF', 'Iodo-phenolic byproducts in chloraminated water', 'full text', 'critique follow-up'],
+      ['P4', 'Local corpus', 'Benchmark context for regulated DBPs', 'metadata', 'identity grounding']
+    ],
+    candidates: [
+      ['C1', 'Chloroform', 67, 'frequent measured DBP with grounded synonym TCM'],
+      ['C2', 'Trichloroacetaldehyde', 24, 'specific carbonyl DBP with direct chlorination context'],
+      ['C3', '2,4,6-triiodophenol', 9, 'rare candidate requiring follow-up formation evidence'],
+      ['C4', 'Acetonitrile', 31, 'high mention count but likely solvent/context artifact']
+    ]
+  },
+  blood: {
+    definition: 'A database entry must be a specific chemical entity reported in human blood or systemic circulation and linked to external exposure, exposure response, or exposome literature.',
+    mandatory: ['specific chemical identity', 'human blood/systemic matrix', 'exposure-linked context', 'primary literature or biomonitoring evidence'],
+    exclusions: ['method contaminant only', 'non-human matrix only', 'class-level mention only'],
+    papers: [
+      ['P1', 'Europe PMC', 'Human biomonitoring of perfluoroalkyl substances in serum', 'full text', 'broad topic query'],
+      ['P2', 'OpenAlex', 'Blood exposome signatures after dietary exposure', 'metadata', 'topic expansion'],
+      ['P3', 'Publisher PDF', 'Serum detection of organophosphate metabolites', 'full text', 'candidate follow-up'],
+      ['P4', 'Local corpus', 'Population-scale plasma exposomics', 'full text', 'rubric follow-up']
+    ],
+    candidates: [
+      ['C1', 'Perfluorooctanoic acid', 54, 'measured in human serum with exposure context'],
+      ['C2', 'Bisphenol A glucuronide', 18, 'specific metabolite in blood/plasma exposure studies'],
+      ['C3', 'Diethyl phosphate', 11, 'possible exposure metabolite requiring matrix-specific evidence'],
+      ['C4', 'Methanol', 22, 'common reagent/context term likely not releaseable']
+    ]
+  },
+  microbial: {
+    definition: 'A database entry must be a specific natural product produced by a microorganism and supported by organism-linked primary literature evidence.',
+    mandatory: ['specific chemical identity', 'microbial producer context', 'natural product evidence', 'not synthetic analog only'],
+    exclusions: ['plant-only source', 'synthetic intermediate only', 'class-level mention only'],
+    papers: [
+      ['P1', 'Semantic Scholar', 'Genome-guided discovery of bacterial polyketides', 'abstract + metadata', 'broad topic query'],
+      ['P2', 'Europe PMC', 'Isolation of cyclic peptides from Streptomyces species', 'full text', 'organism query'],
+      ['P3', 'Publisher PDF', 'Marine actinomycete metabolites with antimicrobial activity', 'full text', 'candidate follow-up'],
+      ['P4', 'Local corpus', 'Natural product atlas cross-reference context', 'metadata', 'identity grounding']
+    ],
+    candidates: [
+      ['C1', 'Surfactin', 45, 'specific bacterial lipopeptide with producer context'],
+      ['C2', 'Actinomycin D', 32, 'microbial natural product with organism-linked evidence'],
+      ['C3', 'Marinopyrrole A', 8, 'rare marine candidate requiring source verification'],
+      ['C4', 'Palmitic acid', 29, 'common lipid likely contextual rather than topic-specific']
+    ]
+  }
+};
+
 const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
 const writeLab = (title, payload) => { lab.output.textContent = `${title}\n${JSON.stringify(payload, null, 2)}`; };
 
@@ -65,11 +132,12 @@ async function runRefinement() {
   renderLabFlow('refine');
   await sleep(420);
   const request = lab.prompt.value.trim() || 'Form a scientific compound database.';
+  const scenario = scenarioText[activeScenario()];
   lab.state.refined = {
     user_request: request,
-    refined_definition: 'A database entry must be a specific chemical entity in scope for the requested topic and supported by primary literature evidence.',
-    mandatory_predicates: ['specific chemical identity', 'topic-specific context', 'direct paper evidence', 'not reagent/context-only'],
-    exclusion_predicates: ['solvent role only', 'analytical standard only', 'class-level mention only']
+    refined_definition: scenario.definition,
+    mandatory_predicates: scenario.mandatory,
+    exclusion_predicates: scenario.exclusions
   };
   renderLabFlow();
   writeLab('Intent refinement output', lab.state.refined);
@@ -80,12 +148,7 @@ async function runLiteratureSearch() {
   if (!lab.state.refined) await runRefinement();
   renderLabFlow('search');
   await sleep(520);
-  lab.state.papers = [
-    { id: 'P1', source: 'Europe PMC', title: 'Formation of halogenated aldehydes during chlorination', status: 'full text', triggered_by: 'broad topic query' },
-    { id: 'P2', source: 'Semantic Scholar', title: 'High-resolution screening of nitrogenous DBPs', status: 'abstract + metadata', triggered_by: 'candidate context query' },
-    { id: 'P3', source: 'Publisher PDF', title: 'Iodo-phenolic byproducts in chloraminated water', status: 'full text', triggered_by: 'critique follow-up' },
-    { id: 'P4', source: 'Local corpus', title: 'Benchmark context for regulated DBPs', status: 'metadata', triggered_by: 'identity grounding' }
-  ];
+  lab.state.papers = scenarioText[activeScenario()].papers.map(([id, source, title, status, triggered_by]) => ({ id, source, title, status, triggered_by }));
   renderLabFlow();
   writeLab('Dynamic literature construction output', { retrieved_papers: lab.state.papers, key_point: 'The corpus grows from broad, candidate-specific, and critique-triggered searches.' });
   return lab.state.papers;
@@ -95,12 +158,7 @@ async function runCandidateDiscovery() {
   if (!lab.state.papers.length) await runLiteratureSearch();
   renderLabFlow('discover');
   await sleep(520);
-  lab.state.candidates = [
-    { id: 'C1', name: 'Chloroform', mentions: 67, rank_reason: 'frequent measured DBP with grounded synonym TCM' },
-    { id: 'C2', name: 'Trichloroacetaldehyde', mentions: 24, rank_reason: 'specific carbonyl DBP with direct chlorination context' },
-    { id: 'C3', name: '2,4,6-triiodophenol', mentions: 9, rank_reason: 'rare candidate requiring follow-up formation evidence' },
-    { id: 'C4', name: 'Acetonitrile', mentions: 31, rank_reason: 'high mention count but likely solvent/context artifact' }
-  ];
+  lab.state.candidates = scenarioText[activeScenario()].candidates.map(([id, name, mentions, rank_reason]) => ({ id, name, mentions, rank_reason }));
   renderLabFlow();
   writeLab('Candidate discovery output', { raw_mentions: 1185, normalized_candidates: 126, verification_queue: lab.state.candidates });
   return lab.state.candidates;
@@ -110,36 +168,65 @@ async function runPredicateVerification() {
   if (!lab.state.candidates.length) await runCandidateDiscovery();
   renderLabFlow('verify');
   await sleep(620);
+  const names = lab.state.candidates.map(c => c.name);
   lab.state.verified = [
-    { name: 'Chloroform', label: 'Confirmed', predicate_state: ['identity supported', 'formation supported', 'matrix supported'] },
-    { name: 'Trichloroacetaldehyde', label: 'Confirmed', predicate_state: ['identity supported', 'formation supported', 'not reagent'] },
-    { name: '2,4,6-triiodophenol', label: 'Insufficient Direct Evidence', predicate_state: ['identity supported', 'formation unresolved'] },
-    { name: 'Acetonitrile', label: 'Explicit Negative Evidence', predicate_state: ['identity supported', 'solvent exclusion triggered'] }
+    { name: names[0], label: 'Confirmed', predicate_state: ['identity supported', 'topic context supported', 'paper evidence supported'] },
+    { name: names[1], label: 'Confirmed', predicate_state: ['identity supported', 'topic context supported', 'not exclusion-only'] },
+    { name: names[2], label: 'Insufficient Direct Evidence', predicate_state: ['identity supported', 'one mandatory predicate unresolved'] },
+    { name: names[3], label: 'Explicit Negative Evidence', predicate_state: ['identity supported', 'exclusion predicate triggered'] }
   ];
   renderLabFlow();
   writeLab('Predicate verification output', { verified_rows: lab.state.verified, key_point: 'The decision is controlled by predicate states, not by whether the name sounds plausible.' });
   return lab.state.verified;
 }
 
+function demoCandidateDetails(candidate, verified, index) {
+  const isConfirmed = verified.label === 'Confirmed';
+  const isNegative = verified.label === 'Explicit Negative Evidence';
+  const paperId = lab.state.papers[index % Math.max(1, lab.state.papers.length)]?.id || 'P1';
+  return {
+    id: candidate.id,
+    name: candidate.name,
+    synonyms: index === 0 ? ['grounded synonym'] : [],
+    formula: 'demo-only',
+    label: verified.label,
+    confidence: isConfirmed ? .91 - index * .04 : isNegative ? .24 : .55,
+    mentions: candidate.mentions,
+    papers: [paperId],
+    iteration_count: isConfirmed ? 2 : isNegative ? 1 : 4,
+    rubric: [
+      { criterion: 'Specific chemical identity', state: 'supported', evidence: `${candidate.name} was normalized as a candidate entity.` },
+      { criterion: 'Topic-specific context', state: isNegative ? 'contradicted' : 'supported', evidence: isNegative ? 'The strongest context triggers an exclusion predicate.' : 'The retrieved context is aligned with the requested topic.' },
+      { criterion: 'Direct evidence requirement', state: isConfirmed ? 'supported' : 'unresolved', evidence: isConfirmed ? 'A supporting paper context is available in the toy run.' : 'The toy run leaves this item below the Confirmed threshold.' }
+    ],
+    evidence: [
+      { paper: paperId, quote: isNegative ? `${candidate.name} appears as a contextual or exclusion-triggering term.` : `${candidate.name} is discussed in topic-specific scientific context.`, supports: isNegative ? 'Exclusion predicate' : 'Topic and evidence predicates', quality: isNegative ? 'explicit_negative' : isConfirmed ? 'direct' : 'near_miss' }
+    ],
+    iterations: [
+      { round: 1, agent: 'Researcher', action: 'retrieve', result: `Collected evidence context for ${candidate.name}.` },
+      { round: 2, agent: 'Critique', action: isConfirmed ? 'approve' : isNegative ? 'exclude' : 'request follow-up', result: isConfirmed ? 'Required predicates are supported.' : isNegative ? 'An exclusion predicate is triggered.' : 'One mandatory predicate remains unresolved.' }
+    ]
+  };
+}
+
 function labRunToViewer() {
+  const confirmed = lab.state.verified.filter(v => v.label === 'Confirmed').length;
+  const evidenceLimited = lab.state.verified.filter(v => v.label === 'Insufficient Direct Evidence').length;
+  const excluded = lab.state.verified.filter(v => v.label === 'Explicit Negative Evidence').length;
   const run = {
     run_id: 'browser-lab-run',
     topic: 'Browser demo run',
     user_request: lab.state.refined.user_request,
     refined_definition: lab.state.refined.refined_definition,
-    summary: { literature_records: lab.state.papers.length, candidate_mentions: 1185, normalized_candidates: 126, verification_queue: lab.state.candidates.length, confirmed: 2, evidence_limited: 1, excluded: 1, quote_supported_refs: 5 },
+    summary: { literature_records: lab.state.papers.length, candidate_mentions: 1185, normalized_candidates: 126, verification_queue: lab.state.candidates.length, confirmed, evidence_limited: evidenceLimited, excluded, quote_supported_refs: confirmed * 2 + evidenceLimited },
     stages: [
-      { name: 'Intent refinement', state: 'complete', count: 4, note: 'Rubric predicates created from user request.' },
+      { name: 'Intent refinement', state: 'complete', count: lab.state.refined.mandatory_predicates.length, note: 'Rubric predicates created from user request.' },
       { name: 'Dynamic literature', state: 'complete', count: lab.state.papers.length, note: 'Corpus expanded by broad and follow-up queries.' },
       { name: 'Candidate funnel', state: 'complete', count: lab.state.candidates.length, note: 'Candidates ranked for verification.' },
       { name: 'Predicate verification', state: 'complete', count: lab.state.verified.length, note: 'Rows assigned evidence-conditioned labels.' }
     ],
-    literature: lab.state.papers.map((p, i) => ({ id: p.id, title: p.title, year: 2020 + i, source: p.source, kind: 'demo paper', status: p.status, used_by: ['C1', 'C2'].slice(0, i % 2 + 1) })),
-    candidates: [
-      { id: 'C1', name: 'Chloroform', synonyms: ['TCM'], formula: 'CHCl3', label: 'Confirmed', confidence: .94, mentions: 67, papers: ['P1','P4'], iteration_count: 2, rubric: [{ criterion: 'Specific identity', state: 'supported', evidence: 'Synonym and formula grounded.' },{ criterion: 'Formation evidence', state: 'supported', evidence: 'Chlorination context found.' }], evidence: [{ paper: 'P1', quote: 'chloroform increased after chlorination', supports: 'Formation evidence', quality: 'direct' }], iterations: [{ round: 1, agent: 'Researcher', action: 'search', result: 'Found chlorination evidence.' },{ round: 2, agent: 'Critique', action: 'approve', result: 'All predicates supported.' }] },
-      { id: 'C3', name: '2,4,6-triiodophenol', synonyms: ['Triiodophenol'], formula: 'C6H3I3O', label: 'Insufficient Direct Evidence', confidence: .51, mentions: 9, papers: ['P3'], iteration_count: 4, rubric: [{ criterion: 'Specific identity', state: 'supported', evidence: 'Exact name found.' },{ criterion: 'Formation evidence', state: 'unresolved', evidence: 'Formation route remains ambiguous.' }], evidence: [{ paper: 'P3', quote: 'iodo-phenolic byproducts were observed', supports: 'Water matrix', quality: 'near_miss' }], iterations: [{ round: 1, agent: 'Researcher', action: 'retrieve', result: 'Found iodo-phenolic paper.' },{ round: 2, agent: 'Critique', action: 'request follow-up', result: 'Need direct formation evidence.' }] },
-      { id: 'C4', name: 'Acetonitrile', synonyms: ['Methyl cyanide'], formula: 'C2H3N', label: 'Explicit Negative Evidence', confidence: .22, mentions: 31, papers: ['P2'], iteration_count: 1, rubric: [{ criterion: 'Specific identity', state: 'supported', evidence: 'Compound identity clear.' },{ criterion: 'Not reagent/context-only', state: 'contradicted', evidence: 'Used as solvent.' }], evidence: [{ paper: 'P2', quote: 'samples were diluted in acetonitrile', supports: 'Exclusion', quality: 'explicit_negative' }], iterations: [{ round: 1, agent: 'Critique', action: 'exclude', result: 'Solvent role triggers exclusion.' }] }
-    ]
+    literature: lab.state.papers.map((p, i) => ({ id: p.id, title: p.title, year: 2020 + i, source: p.source, kind: 'toy paper record', status: p.status, used_by: lab.state.candidates.slice(0, Math.min(2, lab.state.candidates.length)).map(c => c.id) })),
+    candidates: lab.state.candidates.map((candidate, index) => demoCandidateDetails(candidate, lab.state.verified[index], index))
   };
   setRun(run);
 }
@@ -156,3 +243,13 @@ lab.skillBoard?.addEventListener('click', async event => {
 lab.full?.addEventListener('click', async () => { resetLabState(); await runRefinement(); await runLiteratureSearch(); await runCandidateDiscovery(); await runPredicateVerification(); labRunToViewer(); lab.output.textContent += '\n\nLoaded the generated toy run into the result viewer below.'; });
 lab.reset?.addEventListener('click', resetLabState);
 renderLabFlow();
+
+
+document.querySelectorAll('[data-preset]').forEach(button => {
+  button.addEventListener('click', () => {
+    const value = demoPresets[button.dataset.preset];
+    if (!value) return;
+    lab.prompt.value = value;
+    resetLabState();
+  });
+});

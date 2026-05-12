@@ -1,14 +1,13 @@
 # DB-Curator Web Demo
 
-This static demo visualizes the intermediate state of a DB-Curator run:
+This folder contains a static, browser-only demonstration site for DB-Curator. It is designed for branding, teaching, and lightweight exploration of the pipeline.
 
-- refined user definition;
-- candidate funnel metrics;
-- dynamic literature set;
-- candidate-level labels;
-- predicate/rubric states;
-- cited evidence cards;
-- Researcher-Critique iteration trace.
+The page has two parts:
+
+1. **Academic story page** explaining dynamic literature construction, predicate-state verification, and the reported benchmark-scale results from the manuscript.
+2. **Interactive toy lab** where visitors can run deterministic examples of the major DB-Curator skills and inspect the generated toy run.
+
+The toy lab does not call external APIs and does not reproduce manuscript-scale numbers. It demonstrates the control flow and user experience without requiring API keys, GPUs, or long-running literature retrieval jobs.
 
 ## Run Locally
 
@@ -20,17 +19,20 @@ python -m http.server 8000
 
 Open `http://localhost:8000/demo/`.
 
-The page loads `demo/sample_run.json` by default. Use **Load run JSON** to inspect another run exported in the same schema.
+## What Visitors Can Try
 
+- Choose a toy topic preset: DBP, blood exposome, or microbial natural products.
+- Run individual skills:
+  - intent refinement;
+  - dynamic literature construction;
+  - candidate discovery;
+  - predicate verification.
+- Run the full toy pipeline and load the generated run into the viewer.
+- Inspect candidates, predicate states, cited evidence cards, literature records, and Researcher-Critique trace events.
+- Upload a compatible run JSON export through **Load run JSON**.
 
-## What You Can Run
+## Data Interpretation
 
-The page includes a browser-only deterministic lab. It does not call external APIs, but it demonstrates the DB-Curator control flow:
+The benchmark values shown in the story section are reported manuscript-level evaluation results. The values in the run viewer describe only the currently loaded sample JSON or generated toy run.
 
-1. **Intent refinement** turns a curation request into predicates.
-2. **Dynamic literature construction** builds a paper set around broad and follow-up queries.
-3. **Candidate discovery** simulates entity extraction, grounding, ranking, and triage.
-4. **Predicate verification** assigns candidate-level labels from rubric states.
-5. **Run full pipeline** executes all steps and loads the generated toy run into the result viewer below.
-
-This is meant for branding, teaching, and UI prototyping. A production deployment can replace the deterministic browser functions with backend calls to the real DB-Curator pipeline.
+A production deployment can replace the deterministic browser functions in `app.js` with backend calls to the real DB-Curator pipeline.

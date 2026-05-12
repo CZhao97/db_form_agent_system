@@ -60,7 +60,7 @@ The implementation avoids storing secrets in code. API keys should be provided t
 
 ## Interactive Demo
 
-A static web demo is included in `demo/`. It visualizes the intermediate state of a DB-Curator run, including the candidate funnel, dynamic literature set, predicate-level rubric states, cited evidence, and Researcher--Critique iterations.
+A static web demo is included in `demo/`. It presents DB-Curator as an academic tool story and includes a browser-only toy lab for exploring the major pipeline skills: intent refinement, dynamic literature construction, candidate discovery, and predicate verification.
 
 Run it locally with:
 
@@ -68,7 +68,7 @@ Run it locally with:
 python -m http.server 8000
 ```
 
-Then open `http://localhost:8000/demo/`. The demo loads `demo/sample_run.json` by default and can also inspect user-provided run JSON files through the browser.
+Then open `http://localhost:8000/demo/`. The benchmark values in the story section are manuscript-level results; the run viewer values describe only the loaded sample JSON or generated toy run.
 
 ## Manuscript Reproduction
 

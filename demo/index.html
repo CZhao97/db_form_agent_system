@@ -3,60 +3,113 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>DB-Curator Interactive Demo</title>
+  <title>DB-Curator | Interactive Scientific Curation Demo</title>
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <header class="hero">
+  <header class="site-hero" id="top">
     <nav class="topbar" aria-label="Demo navigation">
-      <div class="brand-mark">DB</div>
-      <div>
-        <p class="eyebrow">DB-Curator demo</p>
-        <h1>Predicate-grounded scientific database construction</h1>
+      <a class="brand" href="#top" aria-label="DB-Curator home"><span>DB</span><strong>DB-Curator</strong></a>
+      <div class="nav-links">
+        <a href="#method">Method</a>
+        <a href="#demoLab">Try the demo</a>
+        <a href="#runViewer">Run viewer</a>
+        <a href="../README.md">Repository</a>
       </div>
-      <div class="top-actions">
-        <label class="upload-button">Load run JSON<input id="jsonUpload" type="file" accept="application/json,.json" /></label>
-        <a class="ghost-button" href="../README.md">Repository</a>
-      </div>
+      <label class="upload-button">Load run JSON<input id="jsonUpload" type="file" accept="application/json,.json" /></label>
     </nav>
+
     <section class="hero-grid">
       <div class="hero-copy">
-        <p class="lede">Explore how an open-ended scientific request becomes a dynamic literature set, a candidate queue, and auditable predicate-level decisions.</p>
-        <div class="request-card"><span>User request</span><strong id="userRequest">Loading...</strong></div>
+        <p class="eyebrow">Predicate-grounded scientific database construction</p>
+        <h1>From open-ended scientific questions to auditable database entries.</h1>
+        <p class="lede">DB-Curator builds a topic-conditioned literature set, discovers candidate compounds, and verifies each entry against user-defined predicates before release.</p>
+        <div class="hero-actions">
+          <a class="primary-link" href="#demoLab">Run toy pipeline</a>
+          <a class="secondary-link" href="#method">See how it works</a>
+        </div>
+        <p class="truth-note">This web demo is intentionally lightweight. It demonstrates the control flow and interaction model in the browser; production runs use LLM agents, literature APIs, local full-text corpora, chemical grounding, and provenance checks.</p>
       </div>
-      <div class="definition-card"><p class="eyebrow">Refined topic definition</p><p id="refinedDefinition"></p></div>
+      <aside class="concept-card" aria-label="Core DB-Curator concept">
+        <p class="eyebrow">Core idea</p>
+        <h2>Dynamic literature construction + predicate-state verification</h2>
+        <p>Instead of asking an LLM to simply list plausible compounds, DB-Curator treats every candidate as an evidence contract: required predicates must be supported, exclusion predicates must not be triggered, and unresolved predicates drive follow-up retrieval.</p>
+        <div class="state-chips" aria-label="Predicate states">
+          <span>Supported</span><span>Unresolved</span><span>Excluded</span><span>Evidence-limited</span>
+        </div>
+      </aside>
     </section>
   </header>
+
   <main>
-    <section class="metrics-strip" id="metricsStrip" aria-label="Run summary metrics"></section>
-    <section class="panel stage-panel">
-      <div class="section-heading"><div><p class="eyebrow">Run state</p><h2>From request to verified rows</h2></div></div>
-      <div class="stage-track" id="stageTrack"></div>
+    <section class="story-strip" id="method" aria-label="Method overview">
+      <article>
+        <span class="step-index">01</span>
+        <h3>Clarify the database scope</h3>
+        <p>The user request is converted into a machine-actionable rubric with mandatory inclusion criteria and exclusion rules.</p>
+      </article>
+      <article>
+        <span class="step-index">02</span>
+        <h3>Construct literature dynamically</h3>
+        <p>Broad topic searches, inspected results, candidate identities, and critique feedback all add evidence to the working corpus.</p>
+      </article>
+      <article>
+        <span class="step-index">03</span>
+        <h3>Discover and ground candidates</h3>
+        <p>Chemical mentions are normalized, ranked, and filtered before expensive entry-level verification.</p>
+      </article>
+      <article>
+        <span class="step-index">04</span>
+        <h3>Verify before release</h3>
+        <p>A Researcher-Critique loop checks candidate claims against paper context and leaves weak cases evidence-limited.</p>
+      </article>
+    </section>
+
+    <section class="results-panel panel" aria-label="Reported paper results">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">Reported benchmark results</p>
+          <h2>Evidence grounding is the bottleneck DB-Curator is built to solve.</h2>
+        </div>
+        <span class="context-badge">Paper-scale results, not toy-demo output</span>
+      </div>
+      <div class="result-grid">
+        <article><strong>1,887</strong><span>candidate rows tested across five controlled curation benchmarks</span></article>
+        <article><strong>977</strong><span>entries assigned Confirmed labels by DB-Curator</span></article>
+        <article><strong>7,430 / 7,453</strong><span>cited primary-paper references with quote or local-context support</span></article>
+        <article><strong>68</strong><span>literature-supported compounds absent from benchmarks but accepted by human experts</span></article>
+      </div>
+      <p class="panel-note">These values summarize the manuscript evaluation. The interactive lab below uses deterministic toy data so visitors can safely explore the pipeline without API keys or long-running jobs.</p>
     </section>
 
     <section class="panel lab-panel" id="demoLab">
       <div class="section-heading">
         <div>
-          <p class="eyebrow">Runnable demo lab</p>
-          <h2>Run DB-Curator skills in the browser</h2>
+          <p class="eyebrow">Interactive toy demo</p>
+          <h2>Run individual skills or the full curation loop.</h2>
         </div>
-        <span class="lab-badge">No API key · deterministic toy run</span>
+        <span class="lab-badge">Browser-only · deterministic · no API key</span>
       </div>
       <div class="lab-grid">
         <div class="lab-input-card">
           <label for="demoPrompt">Scientific curation request</label>
           <textarea id="demoPrompt" rows="5">Form a database of disinfection byproducts supported by primary literature.</textarea>
+          <div class="preset-row" aria-label="Toy input presets">
+            <button class="preset-chip" data-preset="dbp">DBP</button>
+            <button class="preset-chip" data-preset="blood">Blood exposome</button>
+            <button class="preset-chip" data-preset="microbial">Microbial NP</button>
+          </div>
           <div class="lab-actions">
             <button class="run-button" id="runFullPipeline">Run full pipeline</button>
             <button class="ghost-run" id="resetLab">Reset</button>
           </div>
-          <p class="lab-note">This browser demo simulates DB-Curator's control flow for branding and teaching. The production system uses LLMs, literature APIs, chemical NER, grounding tools, and full-text retrieval.</p>
+          <p class="lab-note">Use the skill buttons to inspect each intermediate object: refined rubric, evolving paper set, candidate queue, and predicate-level evidence decision.</p>
         </div>
         <div class="skill-board" id="skillBoard">
           <button class="skill-card" data-skill="refine"><span>Skill 1</span><strong>Intent refinement</strong><small>Build a rubric from a vague request</small></button>
           <button class="skill-card" data-skill="search"><span>Skill 2</span><strong>Dynamic literature</strong><small>Construct a paper set around the topic</small></button>
           <button class="skill-card" data-skill="discover"><span>Skill 3</span><strong>Candidate discovery</strong><small>Extract, normalize and rank entities</small></button>
-          <button class="skill-card" data-skill="verify"><span>Skill 4</span><strong>Predicate verification</strong><small>Audit each candidate against evidence</small></button>
+          <button class="skill-card" data-skill="verify"><span>Skill 4</span><strong>Predicate verification</strong><small>Audit candidates against evidence</small></button>
         </div>
       </div>
       <div class="lab-status-grid">
@@ -65,31 +118,53 @@
       </div>
     </section>
 
-    <section class="workspace">
-      <aside class="candidate-pane panel">
-        <div class="section-heading compact"><p class="eyebrow">Candidate queue</p><h2>Inspect entries</h2></div>
-        <div class="controls">
-          <input id="candidateSearch" type="search" placeholder="Search candidate or synonym" />
-          <select id="labelFilter" aria-label="Filter by label">
-            <option value="all">All labels</option>
-            <option value="Confirmed">Confirmed</option>
-            <option value="Insufficient Direct Evidence">Need evidence</option>
-            <option value="Explicit Negative Evidence">Excluded</option>
-          </select>
+    <section class="run-viewer" id="runViewer">
+      <div class="section-heading viewer-heading">
+        <div>
+          <p class="eyebrow">Demo result viewer</p>
+          <h2>Inspect a sample run or upload your own exported JSON.</h2>
         </div>
-        <div class="candidate-list" id="candidateList"></div>
-      </aside>
-      <section class="detail-pane">
-        <article class="panel candidate-detail" id="candidateDetail"></article>
-        <div class="detail-grid">
-          <article class="panel"><div class="section-heading compact"><p class="eyebrow">Rubric state</p><h2>Predicate audit</h2></div><div id="rubricMatrix" class="rubric-matrix"></div></article>
-          <article class="panel"><div class="section-heading compact"><p class="eyebrow">Evidence provenance</p><h2>Cited support</h2></div><div id="evidenceCards" class="evidence-cards"></div></article>
+        <span class="context-badge">Values below describe the loaded run only</span>
+      </div>
+      <section class="loaded-run panel">
+        <div class="loaded-grid">
+          <div class="request-card"><span>User request</span><strong id="userRequest">Loading...</strong></div>
+          <div class="definition-card"><p class="eyebrow">Refined topic definition</p><p id="refinedDefinition"></p></div>
         </div>
+        <div class="metrics-strip" id="metricsStrip" aria-label="Loaded run summary metrics"></div>
       </section>
-    </section>
-    <section class="lower-grid">
-      <article class="panel literature-panel"><div class="section-heading compact"><p class="eyebrow">Dynamic literature set</p><h2>Papers used by the selected candidate</h2></div><div id="literatureMap" class="literature-map"></div></article>
-      <article class="panel timeline-panel"><div class="section-heading compact"><p class="eyebrow">Researcher-Critique loop</p><h2>Iteration trace</h2></div><div id="iterationTrace" class="timeline"></div></article>
+
+      <section class="panel stage-panel">
+        <div class="section-heading"><div><p class="eyebrow">Run state</p><h2>From request to verified rows</h2></div></div>
+        <div class="stage-track" id="stageTrack"></div>
+      </section>
+
+      <section class="workspace">
+        <aside class="candidate-pane panel">
+          <div class="section-heading compact"><p class="eyebrow">Candidate queue</p><h2>Inspect entries</h2></div>
+          <div class="controls">
+            <input id="candidateSearch" type="search" placeholder="Search candidate or synonym" />
+            <select id="labelFilter" aria-label="Filter by label">
+              <option value="all">All labels</option>
+              <option value="Confirmed">Confirmed</option>
+              <option value="Insufficient Direct Evidence">Need evidence</option>
+              <option value="Explicit Negative Evidence">Excluded</option>
+            </select>
+          </div>
+          <div class="candidate-list" id="candidateList"></div>
+        </aside>
+        <section class="detail-pane">
+          <article class="panel candidate-detail" id="candidateDetail"></article>
+          <div class="detail-grid">
+            <article class="panel"><div class="section-heading compact"><p class="eyebrow">Rubric state</p><h2>Predicate audit</h2></div><div id="rubricMatrix" class="rubric-matrix"></div></article>
+            <article class="panel"><div class="section-heading compact"><p class="eyebrow">Evidence provenance</p><h2>Cited support</h2></div><div id="evidenceCards" class="evidence-cards"></div></article>
+          </div>
+        </section>
+      </section>
+      <section class="lower-grid">
+        <article class="panel literature-panel"><div class="section-heading compact"><p class="eyebrow">Dynamic literature set</p><h2>Papers used by the selected candidate</h2></div><div id="literatureMap" class="literature-map"></div></article>
+        <article class="panel timeline-panel"><div class="section-heading compact"><p class="eyebrow">Researcher-Critique loop</p><h2>Iteration trace</h2></div><div id="iterationTrace" class="timeline"></div></article>
+      </section>
     </section>
   </main>
   <template id="emptyStateTemplate"><div class="empty-state"><strong>No matching candidates</strong><span>Adjust the filter or load another run JSON.</span></div></template>
