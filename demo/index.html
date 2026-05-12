@@ -3,6 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; object-src 'none'; base-uri 'none'; form-action 'none';">
   <title>DB-Curator | Interactive Scientific Curation Demo</title>
   <link rel="stylesheet" href="styles.css" />
 </head>
@@ -25,7 +26,7 @@
         <h1>From open-ended scientific questions to auditable database entries.</h1>
         <p class="lede">DB-Curator builds a topic-conditioned literature set, discovers candidate compounds, and verifies each entry against user-defined predicates before release.</p>
         <div class="hero-actions">
-          <a class="primary-link" href="#demoLab">Run toy pipeline</a>
+          <a class="primary-link" href="#demoLab">Run demo pipeline</a>
           <a class="secondary-link" href="#method">See how it works</a>
         </div>
         <p class="truth-note">This web demo is intentionally lightweight. It demonstrates the control flow and interaction model in the browser; production runs use LLM agents, literature APIs, local full-text corpora, chemical grounding, and provenance checks.</p>
@@ -107,10 +108,11 @@
             <button class="preset-chip" data-preset="microbial">Microbial NP</button>
           </div>
           <div class="lab-actions">
-            <button class="run-button" id="runFullPipeline">Run full pipeline</button>
+            <button class="run-button" id="runFullPipeline">Run simulated browser demo</button>
+            <button class="ghost-run" id="loadPrecomputedRun">Load precomputed walkthrough</button>
             <button class="ghost-run" id="resetLab">Reset</button>
           </div>
-          <p class="lab-note">Recommended path: run the full pipeline, click the evidence-limited candidate, compare supported versus unresolved predicates, then inspect the Critique step.</p>
+          <p class="lab-note">Recommended path: load the walkthrough or run the simulation, click the evidence-limited candidate, compare supported versus unresolved predicates, then inspect the Critique step.</p>
         </div>
         <div class="skill-board" id="skillBoard">
           <button class="skill-card" data-skill="refine"><span>Stage 1</span><strong>Intent refinement</strong><small>Build a rubric from a vague request</small></button>
@@ -121,7 +123,7 @@
       </div>
       <div class="lab-status-grid">
         <div>
-          <div class="toy-mode-callout"><strong>Toy mode:</strong> deterministic browser simulation. No live literature search, no API calls, and no LLM inference.</div>
+          <div class="toy-mode-callout"><strong>Demo modes:</strong> simulation uses deterministic browser logic; precomputed walkthrough replays saved intermediate artifacts. Neither mode performs live literature search or LLM inference.</div>
           <div class="lab-flow" id="labFlow"></div>
         </div>
         <pre class="lab-output" id="labOutput">Click a workflow stage or run the full pipeline.</pre>
@@ -138,10 +140,15 @@
       </div>
       <section class="loaded-run panel">
         <div class="loaded-grid">
-          <div class="request-card"><span>User request</span><strong id="userRequest">Loading...</strong></div>
+          <div class="request-card"><span>User request</span><strong id="userRequest">Loading...</strong><p id="runNotice" class="mini-note"></p></div>
           <div class="definition-card"><p class="eyebrow">Refined topic definition</p><p id="refinedDefinition"></p></div>
         </div>
+        <div class="artifact-grid">
+          <article><p class="eyebrow">Inclusion predicates</p><div id="mandatoryPredicates" class="chip-list"></div></article>
+          <article><p class="eyebrow">Exclusion predicates</p><div id="exclusionPredicates" class="chip-list"></div></article>
+        </div>
         <div class="metrics-strip" id="metricsStrip" aria-label="Loaded run summary metrics"></div>
+        <div class="funnel-panel" id="candidateFunnel" aria-label="Candidate funnel"></div>
       </section>
 
       <section class="panel stage-panel">
@@ -165,10 +172,12 @@
         </aside>
         <section class="detail-pane">
           <article class="panel candidate-detail" id="candidateDetail"></article>
+          <article class="panel why-panel" id="whyPanel"></article>
           <div class="detail-grid">
             <article class="panel"><div class="section-heading compact"><p class="eyebrow">Rubric state</p><h2>Predicate audit</h2></div><div id="rubricMatrix" class="rubric-matrix"></div></article>
             <article class="panel"><div class="section-heading compact"><p class="eyebrow">Evidence provenance</p><h2>Cited support</h2></div><div class="quality-legend"><span><b class="dot direct-dot"></b>Direct</span><span><b class="dot near-dot"></b>Near miss</span><span><b class="dot negative-dot"></b>Explicit negative</span></div><div id="evidenceCards" class="evidence-cards"></div></article>
           </div>
+          <article class="panel final-json-panel"><div class="section-heading compact"><p class="eyebrow">Auditable output</p><h2>Final database-row JSON</h2></div><pre id="rowJson" class="row-json"></pre></article>
         </section>
       </section>
       <section class="lower-grid">
