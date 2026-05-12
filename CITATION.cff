@@ -1,0 +1,15 @@
+cff-version: 1.2.0
+message: "If you use DB-Curator, please cite the associated manuscript."
+title: "DB-Curator: On-demand scientific database curation via deep-research multi-agent literature mining and verification"
+authors:
+  - family-names: Zhao
+    given-names: Chen
+  - family-names: Liu
+    given-names: Botao
+  - family-names: Li
+    given-names: Xiaoxiao
+  - family-names: Huan
+    given-names: Tao
+year: 2026
+repository-code: "https://github.com/CZhao97/db-curator"
+license: MIT

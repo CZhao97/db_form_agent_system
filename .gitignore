@@ -1,0 +1,68 @@
+# Secrets and local configuration
+.env
+.env.*
+!.env.example
+keys/
+secrets/
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Virtual environments
+.venv/
+venv/
+env/
+.venv*/
+
+# Runtime outputs and caches
+results/
+logs/
+log/
+local_runs/
+searching_results/
+agent/searching_results/
+checkpoints/
+.paperqa_empty_docs/
+.narrow_pass_output/
+backfill_results_parquet/
+
+# Large generated/search artifacts
+*.faiss
+*.pkl
+*.sqlite
+*.db
+*.db-shm
+*.db-wal
+*.parquet
+*.jsonl
+*.ndjson
+*.cache
+
+# Downloaded papers and full-text assets
+assets/
+fulltext/
+papers/
+*.pdf.tmp
+
+# Logs and intermediate LaTeX files
+*.log
+*.aux
+*.out
+*.toc
+*.fls
+*.fdb_latexmk
+*.synctex.gz
+texput.log
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.swp
+*.swo

@@ -1,0 +1,40 @@
+# Core orchestration and LLM tooling
+langgraph
+langchain
+langchain-core
+langchain-community
+langchain-openai
+pydantic>=2
+python-dotenv
+
+# Retrieval, parsing, and indexing
+requests
+urllib3
+beautifulsoup4
+pypdf
+pdfminer.six
+opendataloader-pdf
+docling
+faiss-cpu
+sentence-transformers
+scikit-learn
+rank-bm25
+
+# Scientific Python
+numpy
+pandas
+pyarrow
+tqdm
+apsw
+
+# Chemistry and biomedical NER
+rdkit
+pubchempy
+py2opsin
+flair
+biopython
+
+# Manuscript / figures
+matplotlib
+seaborn
+openpyxl
