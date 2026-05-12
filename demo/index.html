@@ -33,6 +33,38 @@
       <div class="section-heading"><div><p class="eyebrow">Run state</p><h2>From request to verified rows</h2></div></div>
       <div class="stage-track" id="stageTrack"></div>
     </section>
+
+    <section class="panel lab-panel" id="demoLab">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">Runnable demo lab</p>
+          <h2>Run DB-Curator skills in the browser</h2>
+        </div>
+        <span class="lab-badge">No API key · deterministic toy run</span>
+      </div>
+      <div class="lab-grid">
+        <div class="lab-input-card">
+          <label for="demoPrompt">Scientific curation request</label>
+          <textarea id="demoPrompt" rows="5">Form a database of disinfection byproducts supported by primary literature.</textarea>
+          <div class="lab-actions">
+            <button class="run-button" id="runFullPipeline">Run full pipeline</button>
+            <button class="ghost-run" id="resetLab">Reset</button>
+          </div>
+          <p class="lab-note">This browser demo simulates DB-Curator's control flow for branding and teaching. The production system uses LLMs, literature APIs, chemical NER, grounding tools, and full-text retrieval.</p>
+        </div>
+        <div class="skill-board" id="skillBoard">
+          <button class="skill-card" data-skill="refine"><span>Skill 1</span><strong>Intent refinement</strong><small>Build a rubric from a vague request</small></button>
+          <button class="skill-card" data-skill="search"><span>Skill 2</span><strong>Dynamic literature</strong><small>Construct a paper set around the topic</small></button>
+          <button class="skill-card" data-skill="discover"><span>Skill 3</span><strong>Candidate discovery</strong><small>Extract, normalize and rank entities</small></button>
+          <button class="skill-card" data-skill="verify"><span>Skill 4</span><strong>Predicate verification</strong><small>Audit each candidate against evidence</small></button>
+        </div>
+      </div>
+      <div class="lab-status-grid">
+        <div class="lab-flow" id="labFlow"></div>
+        <pre class="lab-output" id="labOutput">Click a skill or run the full pipeline.</pre>
+      </div>
+    </section>
+
     <section class="workspace">
       <aside class="candidate-pane panel">
         <div class="section-heading compact"><p class="eyebrow">Candidate queue</p><h2>Inspect entries</h2></div>
