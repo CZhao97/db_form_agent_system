@@ -60,7 +60,7 @@ The implementation avoids storing secrets in code. API keys should be provided t
 
 ## Interactive Demo
 
-A static web demo is included in `demo/`. It presents DB-Curator as an academic tool story and includes a browser-only toy lab plus a precomputed walkthrough for exploring the major workflow stages: intent refinement, dynamic literature construction, candidate discovery, and predicate-state verification.
+A static web demo is included in `demo/`. It presents DB-Curator as an academic tool story and includes a browser-only toy lab plus a real mini-run walkthrough for exploring the major workflow stages: intent refinement, dynamic literature construction, candidate discovery, and predicate-state verification.
 
 Run it locally with:
 

@@ -437,3 +437,22 @@ textarea:focus-visible,
   margin: 40px auto;
   max-width: 720px;
 }
+.next-action {
+  margin-top: 14px;
+  display: grid;
+  gap: 5px;
+  padding: 12px 14px;
+  border-radius: 16px;
+  background: rgba(47,111,98,.08);
+  border: 1px solid rgba(47,111,98,.14);
+}
+.next-action strong {
+  color: var(--moss-dark);
+  font: 900 .7rem/1 "Trebuchet MS", Verdana, sans-serif;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+}
+.next-action span {
+  color: var(--muted);
+  line-height: 1.4;
+}

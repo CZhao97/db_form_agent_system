@@ -455,8 +455,8 @@
       }
     }
   ],
-  "demo_mode": "precomputed_walkthrough",
-  "data_notice": "Synthetic walkthrough data for public demonstration; not a live literature retrieval run.",
+  "demo_mode": "synthetic_walkthrough",
+  "data_notice": "Synthetic demonstration data. Paper titles and evidence snippets are illustrative, not real citations or live literature retrieval results.",
   "mandatory_predicates": [
     "specific chemical identity",
     "formation during disinfection or oxidation",

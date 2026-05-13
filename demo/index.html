@@ -85,7 +85,7 @@
         <div><span>Fixed-cohort supported references</span><strong>2,166 / 2,166</strong><strong>11 / 257</strong></div>
         <div><span>Benchmark-scale Confirmed labels</span><strong>977 / 1,887</strong><strong>375 / 1,887</strong></div>
         <div><span>Benchmark-scale supported references</span><strong>7,430 / 7,453</strong><strong>6 / 2,291</strong></div>
-        <div><span>Benchmark-missing valid compounds</span><strong>68</strong><strong>weak provenance</strong></div>
+        <div><span>Out-of-benchmark accepted entries</span><strong>68</strong><strong>not assessed as release-ready</strong></div>
       </div>
       <p class="panel-note">These values summarize the manuscript evaluation. The interactive lab below uses deterministic toy data so visitors can safely explore the pipeline without API keys or long-running jobs.</p>
     </section>
@@ -109,10 +109,10 @@
           </div>
           <div class="lab-actions">
             <button class="run-button" id="runFullPipeline">Run simulated browser demo</button>
-            <button class="ghost-run" id="loadPrecomputedRun">Load precomputed walkthrough</button>
+            <button class="ghost-run" id="loadRealMiniRun">Load real mini-run</button>
             <button class="ghost-run" id="resetLab">Reset</button>
           </div>
-          <p class="lab-note">Recommended path: load the walkthrough or run the simulation, click the evidence-limited candidate, compare supported versus unresolved predicates, then inspect the Critique step.</p>
+          <p class="lab-note">Recommended path: load the real mini-run, click the evidence-limited candidate, compare supported versus unresolved predicates, then inspect the Critique step.</p>
         </div>
         <div class="skill-board" id="skillBoard">
           <button class="skill-card" data-skill="refine"><span>Stage 1</span><strong>Intent refinement</strong><small>Build a rubric from a vague request</small></button>
@@ -123,7 +123,7 @@
       </div>
       <div class="lab-status-grid">
         <div>
-          <div class="toy-mode-callout"><strong>Demo modes:</strong> simulation uses deterministic browser logic; precomputed walkthrough replays saved intermediate artifacts. Neither mode performs live literature search or LLM inference.</div>
+          <div class="toy-mode-callout"><strong>Demo modes:</strong> simulation uses deterministic browser logic; real mini-run replays saved artifacts from a small DB-Curator run. Neither mode performs live literature search or LLM inference in the browser.</div>
           <div class="lab-flow" id="labFlow"></div>
         </div>
         <pre class="lab-output" id="labOutput">Click a workflow stage or run the full pipeline.</pre>

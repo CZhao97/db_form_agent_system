@@ -1,0 +1,673 @@
+{
+  "run_id": "real-mini-dbp-001",
+  "topic": "Disinfection byproduct real mini-run",
+  "user_request": "Form a database of experimentally supported disinfection byproducts.",
+  "refined_definition": "A disinfection byproduct is a specific chemical compound formed during a water disinfection or oxidation process when disinfectants or oxidants react with precursors in real or simulated water matrices, with evidence attributing formation to that treatment process.",
+  "demo_mode": "real_mini_run_export",
+  "data_notice": "Real mini-run export from DB-Curator sec1 DBP evaluation. Long evidence spans were shortened for public display; no live literature search or LLM inference is performed in the browser.",
+  "mandatory_predicates": [
+    "The entity must be a specific chemical compound.",
+    "The compound's formation must occur during a water disinfection or oxidation process.",
+    "The formation must result from the reaction of disinfectants or oxidants with naturally occurring or anthropogenic precursors.",
+    "The reaction must occur in real or simulated water matrices.",
+    "There must be evidence directly attributing the compound\u2019s formation to the treatment process."
+  ],
+  "exclusion_predicates": [
+    "disinfectant/reagent itself rather than a byproduct",
+    "solvent or analytical context only",
+    "microbial degradation or non-water-treatment context only"
+  ],
+  "candidate_funnel": {
+    "raw_mentions": 1185,
+    "normalized_candidates": 126,
+    "after_grounding": 74,
+    "after_topic_ranking": 32,
+    "verification_queue": 4
+  },
+  "summary": {
+    "literature_records": 12,
+    "candidate_mentions": 1185,
+    "normalized_candidates": 126,
+    "verification_queue": 4,
+    "confirmed": 2,
+    "evidence_limited": 1,
+    "excluded": 1,
+    "quote_supported_refs": 12
+  },
+  "stages": [
+    {
+      "name": "Intent refinement",
+      "state": "complete",
+      "count": 5,
+      "note": "DBP user request converted into mandatory predicates."
+    },
+    {
+      "name": "Dynamic literature construction",
+      "state": "complete",
+      "count": 12,
+      "note": "Evidence exported from candidate-specific DB-Curator verification runs."
+    },
+    {
+      "name": "Candidate funnel",
+      "state": "complete",
+      "count": 4,
+      "note": "Mini-run shows selected confirmed, benchmark-missing, evidence-limited, and explicit-negative cases."
+    },
+    {
+      "name": "Predicate-state verification",
+      "state": "complete",
+      "count": 4,
+      "note": "Final labels were assigned by the Researcher-Critique evaluation output."
+    }
+  ],
+  "literature": [
+    {
+      "id": "P1_1",
+      "title": "Comparative Study on the Performance of Anaerobic and Aerobic Biotrickling Filter for Removal of Chloroform.",
+      "year": "2018",
+      "source": "real pipeline evidence export",
+      "kind": "primary paper",
+      "status": "doi/pmid metadata exported",
+      "doi": "10.1089/ees.2017.0275",
+      "pmid": "32704228",
+      "query": "Decide whether 'CHCl2Br' satisfies the confirmed-topic definition.",
+      "triggered_by": "candidate-specific verification from real DB-Curator sec1 DBP run",
+      "used_by": [
+        "R1"
+      ]
+    },
+    {
+      "id": "P1_2",
+      "title": "Caracterizaci\u00f3n de los niveles de trihalometanos (THMs) en muestras de agua potable, provenientes de la planta regional ubicada en el municipio de Cogua - Zipaquir\u00e1, Colombia: un estudio de las causas y efectos",
+      "year": "2020",
+      "source": "real pipeline evidence export",
+      "kind": "primary paper",
+      "status": "doi/pmid metadata exported",
+      "doi": "10.18634/doctrabajo/56",
+      "pmid": "",
+      "query": "Decide whether 'CHCl2Br' satisfies the confirmed-topic definition.",
+      "triggered_by": "candidate-specific verification from real DB-Curator sec1 DBP run",
+      "used_by": [
+        "R1"
+      ]
+    },
+    {
+      "id": "P1_3",
+      "title": "Formation and speciation characteristics of brominated trihalomethanes in seawater chlorination.",
+      "year": "2012",
+      "source": "real pipeline evidence export",
+      "kind": "primary paper",
+      "status": "doi/pmid metadata exported",
+      "doi": "10.2175/106143012x13415215906735",
+      "pmid": "23356015",
+      "query": "Decide whether 'CHCl2Br' satisfies the confirmed-topic definition.",
+      "triggered_by": "candidate-specific verification from real DB-Curator sec1 DBP run",
+      "used_by": [
+        "R1"
+      ]
+    },
+    {
+      "id": "P2_1",
+      "title": "Kinetics of bromochloramine formation and decomposition.",
+      "year": "2014",
+      "source": "real pipeline evidence export",
+      "kind": "primary paper",
+      "status": "doi/pmid metadata exported",
+      "doi": "10.1021/es4036754",
+      "pmid": "24475927",
+      "query": "Decide whether 'bromochloramine' satisfies the confirmed-topic definition.",
+      "triggered_by": "candidate-specific verification from real DB-Curator sec1 DBP run",
+      "used_by": [
+        "R2"
+      ]
+    },
+    {
+      "id": "P2_2",
+      "title": "Minimizing N-Nitrosodimethylamine Formation During Disinfection of Blended Seawater and Wastewater Effluent",
+      "year": "2024",
+      "source": "real pipeline evidence export",
+      "kind": "primary paper",
+      "status": "doi/pmid metadata exported",
+      "doi": "10.1021/acsestwater.3c00617",
+      "pmid": "38633366",
+      "query": "Decide whether 'bromochloramine' satisfies the confirmed-topic definition.",
+      "triggered_by": "candidate-specific verification from real DB-Curator sec1 DBP run",
+      "used_by": [
+        "R2"
+      ]
+    },
+    {
+      "id": "P2_3",
+      "title": "Roles of Sulfites in Reverse Osmosis (RO) Plants and Adverse Effects in RO Operation.",
+      "year": "2022",
+      "source": "real pipeline evidence export",
+      "kind": "primary paper",
+      "status": "doi/pmid metadata exported",
+      "doi": "10.3390/membranes12020170",
+      "pmid": "35207091",
+      "query": "Decide whether 'bromochloramine' satisfies the confirmed-topic definition.",
+      "triggered_by": "candidate-specific verification from real DB-Curator sec1 DBP run",
+      "used_by": [
+        "R2"
+      ]
+    },
+    {
+      "id": "P3_1",
+      "title": "Mechanism of chloride elimination from 3-chloro- and 2,4-dichloro-cis,cis-muconate: new insight obtained from analysis of muconate cycloisomerase variant CatB-K169A.",
+      "year": "2001",
+      "source": "real pipeline evidence export",
+      "kind": "primary paper",
+      "status": "doi/pmid metadata exported",
+      "doi": "10.1128/jb.183.15.4551-4561.2001",
+      "pmid": "11443090",
+      "query": "Decide whether '3-chloro-cis,cis-muconic acid' satisfies the confirmed-topic definition.",
+      "triggered_by": "candidate-specific verification from real DB-Curator sec1 DBP run",
+      "used_by": [
+        "R3"
+      ]
+    },
+    {
+      "id": "P3_2",
+      "title": "Chemical structure and biodegradability of halogenated aromatic compounds. Halogenated muconic acids as intermediates.",
+      "year": "1980",
+      "source": "real pipeline evidence export",
+      "kind": "primary paper",
+      "status": "doi/pmid metadata exported",
+      "doi": "10.1042/BJ1920331",
+      "pmid": "7305905",
+      "query": "Decide whether '3-chloro-cis,cis-muconic acid' satisfies the confirmed-topic definition.",
+      "triggered_by": "candidate-specific verification from real DB-Curator sec1 DBP run",
+      "used_by": [
+        "R3"
+      ]
+    },
+    {
+      "id": "P3_3",
+      "title": "A Review on the Fate of Legacy and Alternative Antimicrobials and Their Metabolites during Wastewater and Sludge Treatment.",
+      "year": "2020",
+      "source": "real pipeline evidence export",
+      "kind": "primary paper",
+      "status": "doi/pmid metadata exported",
+      "doi": "10.3390/ijms21239241",
+      "pmid": "33287448",
+      "query": "Decide whether '3-chloro-cis,cis-muconic acid' satisfies the confirmed-topic definition.",
+      "triggered_by": "candidate-specific verification from real DB-Curator sec1 DBP run",
+      "used_by": [
+        "R3"
+      ]
+    },
+    {
+      "id": "P4_1",
+      "title": "Chlorine gas poisoning by trichloroisocyanuric acid and respiratory failure: a case report of a 49-year-old patient.",
+      "year": "2025",
+      "source": "real pipeline evidence export",
+      "kind": "primary paper",
+      "status": "doi/pmid metadata exported",
+      "doi": "10.3389/fmed.2025.1676596",
+      "pmid": "41451081",
+      "query": "Decide whether 'TCCA' satisfies the confirmed-topic definition.",
+      "triggered_by": "candidate-specific verification from real DB-Curator sec1 DBP run",
+      "used_by": [
+        "R4"
+      ]
+    },
+    {
+      "id": "P4_2",
+      "title": "Comparative disinfection efficacy in aquaculture: novel methylene bis(thiocyanate) vs. conventional trichloroisocyanuric acid against &lt;i&gt;Aeromonas hydrophila&lt;/i&gt;.",
+      "year": "2025",
+      "source": "real pipeline evidence export",
+      "kind": "primary paper",
+      "status": "doi/pmid metadata exported",
+      "doi": "10.3389/fmicb.2025.1611576",
+      "pmid": "40761282",
+      "query": "Decide whether 'TCCA' satisfies the confirmed-topic definition.",
+      "triggered_by": "candidate-specific verification from real DB-Curator sec1 DBP run",
+      "used_by": [
+        "R4"
+      ]
+    },
+    {
+      "id": "P4_3",
+      "title": "Effect of trichloroisocyanuric acid concentration on the electrical properties of swimming pool water.",
+      "year": "2025",
+      "source": "real pipeline evidence export",
+      "kind": "primary paper",
+      "status": "doi/pmid metadata exported",
+      "doi": "10.1038/s41598-024-80521-z",
+      "pmid": "39939398",
+      "query": "Decide whether 'TCCA' satisfies the confirmed-topic definition.",
+      "triggered_by": "candidate-specific verification from real DB-Curator sec1 DBP run",
+      "used_by": [
+        "R4"
+      ]
+    }
+  ],
+  "candidates": [
+    {
+      "id": "R1",
+      "name": "CHCl2Br",
+      "synonyms": [],
+      "formula": "",
+      "label": "Confirmed",
+      "confidence": 1.0,
+      "mentions": 578,
+      "papers": [
+        "P1_1",
+        "P1_2",
+        "P1_3"
+      ],
+      "iteration_count": 40,
+      "benchmark_status": "benchmark_overlap",
+      "discovery_type": "benchmark-overlap confirmed entry",
+      "benchmark_overlap": true,
+      "human_release_audit": "accepted",
+      "triage_reason": "Selected from the real DB-Curator DBP evaluation output for public mini-run demonstration.",
+      "grounding_status": "identity and evidence metadata exported from real run",
+      "why_label": "Bromodichloromethane (CHCl2Br) is a well-documented disinfection byproduct (DBP) that forms during the chlorination of water. Its formation is attributed to the reaction of disinfectants like chlorine with natural organic matter present in real water matrices.",
+      "next_action": "No additional action required for the mini-run; the row has sufficient evidence for demonstration.",
+      "rubric": [
+        {
+          "criterion": "The entity must be a specific chemical compound.",
+          "state": "supported",
+          "evidence": "CHCl2Br is identified as bromodichloromethane, a specific chemical compound."
+        },
+        {
+          "criterion": "The compound's formation must occur during a water disinfection or oxidation process.",
+          "state": "supported",
+          "evidence": "Formation of CHCl2Br is directly linked to water disinfection and chlorination processes."
+        },
+        {
+          "criterion": "The formation must result from the reaction of disinfectants or oxidants with naturally occurring or anthropogenic precursors.",
+          "state": "supported",
+          "evidence": "Formation is due to reactions of chlorine/hypochlorous acid with natural organic matter in water."
+        },
+        {
+          "criterion": "The reaction must occur in real or simulated water matrices.",
+          "state": "supported",
+          "evidence": "Formation is observed in drinking water, raw water supplies, and chlorinated swimming pools."
+        },
+        {
+          "criterion": "There must be evidence directly attributing the compound\u2019s formation to the treatment process.",
+          "state": "supported",
+          "evidence": "Multiple sources directly attribute CHCl2Br formation to disinfection/chlorination processes."
+        }
+      ],
+      "evidence": [
+        {
+          "paper": "P1_1",
+          "quote": "Drinking water disinfection by chlorination is the most important step in water treatment to kill pathogens and reduce waterborne diseases. However, chlorine also reacts with the ...",
+          "supports": "direct",
+          "quality": "direct",
+          "doi": "10.1089/ees.2017.0275",
+          "pmid": "32704228"
+        },
+        {
+          "paper": "P1_2",
+          "quote": "En el marco de la l\u00ednea de investigaci\u00f3n de hidr\u00e1ulica de la Facultad de Ingenier\u00eda Civil de la Universidad La Gran Colombia, se presentan aqu\u00ed los ...",
+          "supports": "direct",
+          "quality": "direct",
+          "doi": "10.18634/doctrabajo/56",
+          "pmid": ""
+        },
+        {
+          "paper": "P1_3",
+          "quote": "The formation order of different trihalomethane species at all studied temperatures was observed to be bromodichloromethane (CHCl2Br) < dibromochloromethane (CHClBr2) < bromoform (CHBr3).",
+          "supports": "direct",
+          "quality": "direct",
+          "doi": "10.2175/106143012x13415215906735",
+          "pmid": "23356015"
+        }
+      ],
+      "iterations": [
+        {
+          "round": 1,
+          "agent": "Researcher",
+          "action": "candidate-specific retrieval",
+          "result": "Collected candidate-specific literature evidence and paper metadata."
+        },
+        {
+          "round": 2,
+          "agent": "Critique",
+          "action": "predicate audit",
+          "result": "Assigned final label: Confirmed."
+        }
+      ],
+      "final_row": {
+        "compound_name": "CHCl2Br",
+        "canonical_name": "CHCl2Br",
+        "label": "Confirmed",
+        "benchmark_status": "benchmark_overlap",
+        "supporting_papers": [
+          "P1_1",
+          "P1_2",
+          "P1_3"
+        ],
+        "why_label": "Bromodichloromethane (CHCl2Br) is a well-documented disinfection byproduct (DBP) that forms during the chlorination of water. Its formation is attributed to the reaction of disinfectants like chlorine with natural organic matter present in real water matrices.",
+        "next_action": "No additional action required for the mini-run; the row has sufficient evidence for demonstration."
+      }
+    },
+    {
+      "id": "R2",
+      "name": "bromochloramine",
+      "synonyms": [
+        "2-chloro-4-bromoaniline",
+        "bromideAmmonium sulfateChlorine",
+        "5\u2010bromo\u20102\u2010chloroaniline",
+        "chlor- and bromamines",
+        "2006Monochloramine2"
+      ],
+      "formula": "",
+      "label": "Confirmed",
+      "confidence": 1.0,
+      "mentions": 510,
+      "papers": [
+        "P2_1",
+        "P2_2",
+        "P2_3"
+      ],
+      "iteration_count": 6,
+      "benchmark_status": "benchmark_missing",
+      "discovery_type": "benchmark-missing literature-supported entry",
+      "benchmark_overlap": false,
+      "human_release_audit": "accepted",
+      "triage_reason": "Selected from the real DB-Curator DBP evaluation output for public mini-run demonstration.",
+      "grounding_status": "identity and evidence metadata exported from real run",
+      "why_label": "Bromochloramine is a specific chemical compound (BrClHN) that forms during water disinfection, particularly chloramination, when monochloramine reacts with bromide ions. This reaction occurs in various water matrices, including seawater and wastewater, and is directly attributed to the disinfection treatment process.",
+      "next_action": "No additional action required for the mini-run; the row has sufficient evidence for demonstration.",
+      "rubric": [
+        {
+          "criterion": "The entity must be a specific chemical compound.",
+          "state": "supported",
+          "evidence": "Bromochloramine (BrClHN) is identified as a specific chemical compound with a PubChem CID."
+        },
+        {
+          "criterion": "The compound's formation must occur during a water disinfection or oxidation process.",
+          "state": "supported",
+          "evidence": "Multiple sources confirm bromochloramine formation during water disinfection, specifically chloramination."
+        },
+        {
+          "criterion": "The formation must result from the reaction of disinfectants or oxidants with naturally occurring or anthropogenic precursors.",
+          "state": "supported",
+          "evidence": "Bromochloramine forms from the reaction of monochloramine (disinfectant) and bromide ion (precursor)."
+        },
+        {
+          "criterion": "The reaction must occur in real or simulated water matrices.",
+          "state": "supported",
+          "evidence": "Studies were conducted in batch experiments, seawater, wastewater, and natural waters."
+        },
+        {
+          "criterion": "There must be evidence directly attributing the compound\u2019s formation to the treatment process.",
+          "state": "supported",
+          "evidence": "The formation of bromochloramine is directly linked to chloramination and disinfection processes."
+        }
+      ],
+      "evidence": [
+        {
+          "paper": "P2_1",
+          "quote": "Batch experiments were performed to study the kinetics of bromochloramine formation and decomposition from the reaction of monochloramine and bromide ion.",
+          "supports": "direct",
+          "quality": "direct",
+          "doi": "10.1021/es4036754",
+          "pmid": "24475927"
+        },
+        {
+          "paper": "P2_2",
+          "quote": "Modeled bromochloramine exposure was lowest during seawater disinfection (Figure 4a), and highest in blended disinfection (Figure 4c), because bromochloramine forms primarily by reactions between monochloramine and ...",
+          "supports": "direct",
+          "quality": "direct",
+          "doi": "10.1021/acsestwater.3c00617",
+          "pmid": "38633366"
+        },
+        {
+          "paper": "P2_3",
+          "quote": "However, the preformed chloramine is gradually converted to bromochloramine. This transformed bromochloramine may induce another membrane oxidation risk.",
+          "supports": "direct",
+          "quality": "direct",
+          "doi": "10.3390/membranes12020170",
+          "pmid": "35207091"
+        }
+      ],
+      "iterations": [
+        {
+          "round": 1,
+          "agent": "Researcher",
+          "action": "candidate-specific retrieval",
+          "result": "Collected candidate-specific literature evidence and paper metadata."
+        },
+        {
+          "round": 2,
+          "agent": "Critique",
+          "action": "predicate audit",
+          "result": "Assigned final label: Confirmed."
+        }
+      ],
+      "final_row": {
+        "compound_name": "bromochloramine",
+        "canonical_name": "bromochloramine",
+        "label": "Confirmed",
+        "benchmark_status": "benchmark_missing",
+        "supporting_papers": [
+          "P2_1",
+          "P2_2",
+          "P2_3"
+        ],
+        "why_label": "Bromochloramine is a specific chemical compound (BrClHN) that forms during water disinfection, particularly chloramination, when monochloramine reacts with bromide ions. This reaction occurs in various water matrices, including seawater and wastewater, and is directly attributed to the disinfection treatment process.",
+        "next_action": "No additional action required for the mini-run; the row has sufficient evidence for demonstration."
+      }
+    },
+    {
+      "id": "R3",
+      "name": "chloro-cis,cis-muconate",
+      "synonyms": [
+        "ZMX (Z)-2-chloro-3-(dichloromethyl)-4-oxobutenoic acid",
+        "3-chloro-cis,cis-muconic acid",
+        "2-chloromyristic acid"
+      ],
+      "formula": "",
+      "label": "Insufficient Direct Evidence",
+      "confidence": 0.3,
+      "mentions": 505,
+      "papers": [
+        "P3_1",
+        "P3_2",
+        "P3_3"
+      ],
+      "iteration_count": 2,
+      "benchmark_status": "candidate_rejected",
+      "discovery_type": "evidence-limited candidate after real verification",
+      "benchmark_overlap": false,
+      "human_release_audit": "needs_more_evidence",
+      "triage_reason": "Selected from the real DB-Curator DBP evaluation output for public mini-run demonstration.",
+      "grounding_status": "identity and evidence metadata exported from real run",
+      "why_label": "While 3-chloro-cis,cis-muconic acid is a specific chemical compound, the retrieved evidence primarily discusses its formation as an intermediate in microbial degradation pathways of chloroaromatic compounds, not as a direct product of water disinfection or oxidation processes. There is no direct attribution of its formation to disinfectants or oxidants in water matrices.",
+      "next_action": "Search for direct evidence that formation occurs during water disinfection or oxidation in a water matrix.",
+      "rubric": [
+        {
+          "criterion": "The entity must be a specific chemical compound.",
+          "state": "supported",
+          "evidence": "Compound identity confirmed via PubChem and discussed in multiple papers."
+        },
+        {
+          "criterion": "The compound's formation must occur during a water disinfection or oxidation process.",
+          "state": "supported",
+          "evidence": "Evidence points to microbial degradation, not water disinfection/oxidation."
+        },
+        {
+          "criterion": "The formation must result from the reaction of disinfectants or oxidants with naturally occurring or anthropogenic precursors.",
+          "state": "supported",
+          "evidence": "Evidence points to enzymatic reactions in microorganisms, not disinfectants/oxidants."
+        },
+        {
+          "criterion": "The reaction must occur in real or simulated water matrices.",
+          "state": "supported",
+          "evidence": "While some studies are in aqueous solutions, the context is microbial degradation, not water treatment."
+        },
+        {
+          "criterion": "There must be evidence directly attributing the compound\u2019s formation to the treatment process.",
+          "state": "supported",
+          "evidence": "Attribution is to microbial processes, not water treatment processes."
+        }
+      ],
+      "evidence": [
+        {
+          "paper": "P3_1",
+          "quote": "Conversion of 3-chloro- cis,cis -muconate by wild-type CatB and CatB-K169A at pH 7.5. For overlay spectra, reaction mixtures (1 ml) contained 30 mM Tris-HCl (pH 7.5), ...",
+          "supports": "direct",
+          "quality": "near_miss",
+          "doi": "10.1128/jb.183.15.4551-4561.2001",
+          "pmid": "11443090"
+        },
+        {
+          "paper": "P3_2",
+          "quote": "3-Chloro-cis,cis-muconic acid dimethyl ester (3chloro-cis,cis-hexa-2,4-dienedioic acid dimethyl ester) cis,cis-muconic acid and the native preparation, whereas retention time of the cis,trans isomer was 15.6min. The molecular formula ...",
+          "supports": "direct",
+          "quality": "near_miss",
+          "doi": "10.1042/BJ1920331",
+          "pmid": "7305905"
+        },
+        {
+          "paper": "P3_3",
+          "quote": "Intermediate 4-CC may then be converted into 3-chloro-cis,cis-muconic acid or 5-chloro-2-hydroxymuconic acid semialdehyde through ortho- or meta-cleavage pathways, respectively [180,190,191].",
+          "supports": "direct",
+          "quality": "near_miss",
+          "doi": "10.3390/ijms21239241",
+          "pmid": "33287448"
+        }
+      ],
+      "iterations": [
+        {
+          "round": 1,
+          "agent": "Researcher",
+          "action": "candidate-specific retrieval",
+          "result": "Collected candidate-specific literature evidence and paper metadata."
+        },
+        {
+          "round": 2,
+          "agent": "Critique",
+          "action": "predicate audit",
+          "result": "Assigned final label: Insufficient Direct Evidence."
+        }
+      ],
+      "final_row": {
+        "compound_name": "chloro-cis,cis-muconate",
+        "canonical_name": "chloro-cis,cis-muconate",
+        "label": "Insufficient Direct Evidence",
+        "benchmark_status": "candidate_rejected",
+        "supporting_papers": [
+          "P3_1",
+          "P3_2",
+          "P3_3"
+        ],
+        "why_label": "While 3-chloro-cis,cis-muconic acid is a specific chemical compound, the retrieved evidence primarily discusses its formation as an intermediate in microbial degradation pathways of chloroaromatic compounds, not as a direct product of water disinfection or oxidation processes. There is no direct attribution of its formation to disinfectants or oxidants in water matrices.",
+        "next_action": "Search for direct evidence that formation occurs during water disinfection or oxidation in a water matrix."
+      }
+    },
+    {
+      "id": "R4",
+      "name": "TCCA",
+      "synonyms": [
+        "2,4,6TCA",
+        "TCCA-disinfected",
+        "TCC-containing"
+      ],
+      "formula": "",
+      "label": "Explicit Negative Evidence",
+      "confidence": 1.0,
+      "mentions": 520,
+      "papers": [
+        "P4_1",
+        "P4_2",
+        "P4_3"
+      ],
+      "iteration_count": 2,
+      "benchmark_status": "out_of_scope",
+      "discovery_type": "context-only or reagent/disinfectant role",
+      "benchmark_overlap": false,
+      "human_release_audit": "rejected",
+      "triage_reason": "Selected from the real DB-Curator DBP evaluation output for public mini-run demonstration.",
+      "grounding_status": "identity and evidence metadata exported from real run",
+      "why_label": "The retrieved evidence consistently identifies Trichloroisocyanuric acid (TCCA) as a chlorine-based disinfectant used in water treatment, rather than a compound formed as a byproduct of disinfection or oxidation processes. No evidence was found to support TCCA's formation from precursors during water disinfection.",
+      "next_action": "Do not release as a DBP entry unless future evidence shows product formation rather than disinfectant/reagent use.",
+      "rubric": [
+        {
+          "criterion": "The entity must be a specific chemical compound.",
+          "state": "supported",
+          "evidence": "TCCA is identified as 1,3,5-trichloro-1,3,5-triazinane-2,4,6-trione (C3Cl3N3O3)."
+        },
+        {
+          "criterion": "The compound's formation must occur during a water disinfection or oxidation process.",
+          "state": "supported",
+          "evidence": "Evidence shows TCCA is a disinfectant used in these processes, not formed by them."
+        },
+        {
+          "criterion": "The formation must result from the reaction of disinfectants or oxidants with naturally occurring or anthropogenic precursors.",
+          "state": "supported",
+          "evidence": "Evidence describes TCCA as a disinfectant/oxidant, not a product of such reactions in water disinfection."
+        },
+        {
+          "criterion": "The reaction must occur in real or simulated water matrices.",
+          "state": "supported",
+          "evidence": "While TCCA is used in water matrices, its formation in them as a DBP is not supported."
+        },
+        {
+          "criterion": "There must be evidence directly attributing the compound\u2019s formation to the treatment process.",
+          "state": "supported",
+          "evidence": "No evidence attributes TCCA's formation to water treatment processes; it is consistently identified as a disinfectant itself."
+        }
+      ],
+      "evidence": [
+        {
+          "paper": "P4_1",
+          "quote": "Trichloroisocyanuric acid (TCCA) is a potent chlorine-based disinfectant renowned for its strong bactericidal and bleaching properties. It is widely applied in industries such as swimming pool ...",
+          "supports": "explicit_negative",
+          "quality": "explicit_negative",
+          "doi": "10.3389/fmed.2025.1676596",
+          "pmid": "41451081"
+        },
+        {
+          "paper": "P4_2",
+          "quote": "Trichloroisocyanuric acid (TCCA) is one of the widely used traditional disinfectants in aquaculture production.",
+          "supports": "explicit_negative",
+          "quality": "explicit_negative",
+          "doi": "10.3389/fmicb.2025.1611576",
+          "pmid": "40761282"
+        },
+        {
+          "paper": "P4_3",
+          "quote": "Trichloroisocyanuric acid is a chlorine-releasing compound commonly used for water disinfection in pool systems.",
+          "supports": "explicit_negative",
+          "quality": "explicit_negative",
+          "doi": "10.1038/s41598-024-80521-z",
+          "pmid": "39939398"
+        }
+      ],
+      "iterations": [
+        {
+          "round": 1,
+          "agent": "Researcher",
+          "action": "candidate-specific retrieval",
+          "result": "Collected candidate-specific literature evidence and paper metadata."
+        },
+        {
+          "round": 2,
+          "agent": "Critique",
+          "action": "predicate audit",
+          "result": "Assigned final label: Explicit Negative Evidence."
+        }
+      ],
+      "final_row": {
+        "compound_name": "TCCA",
+        "canonical_name": "TCCA",
+        "label": "Explicit Negative Evidence",
+        "benchmark_status": "out_of_scope",
+        "supporting_papers": [
+          "P4_1",
+          "P4_2",
+          "P4_3"
+        ],
+        "why_label": "The retrieved evidence consistently identifies Trichloroisocyanuric acid (TCCA) as a chlorine-based disinfectant used in water treatment, rather than a compound formed as a byproduct of disinfection or oxidation processes. No evidence was found to support TCCA's formation from precursors during water disinfection.",
+        "next_action": "Do not release as a DBP entry unless future evidence shows product formation rather than disinfectant/reagent use."
+      }
+    }
+  ]
+}

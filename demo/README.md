@@ -5,10 +5,10 @@ This folder contains a static, browser-only demonstration site for DB-Curator. I
 The page has three parts:
 
 1. **Story mode** explaining dynamic literature construction, predicate-state verification, and the reported benchmark-scale results from the manuscript.
-2. **Run mode** where visitors can run a deterministic browser simulation, load a precomputed walkthrough, or upload a compatible run JSON.
+2. **Run mode** where visitors can run a deterministic browser simulation, load a real mini-run walkthrough, or upload a compatible run JSON.
 3. **Audit mode** where visitors inspect candidate identity, benchmark status, candidate funnel, predicate states, evidence cards, literature queries, Researcher-Critique trace events, and final database-row JSON.
 
-The browser simulation does not call external APIs and does not reproduce manuscript-scale numbers. The precomputed walkthrough is saved demonstration data, not a live literature retrieval run. These modes demonstrate the control flow and user experience without requiring API keys, GPUs, or long-running jobs.
+The browser simulation does not call external APIs and does not reproduce manuscript-scale numbers. The real mini-run walkthrough is a saved export from a small DB-Curator run; the browser replays those artifacts rather than performing live literature retrieval. These modes demonstrate the control flow and user experience without requiring API keys, GPUs, or long-running jobs.
 
 ## Run Locally
 
@@ -23,7 +23,7 @@ Open `http://localhost:8000/demo/`.
 ## What Visitors Can Try
 
 - Choose a toy topic preset: DBP, blood exposome, or microbial natural products.
-- Run individual workflow stages or load the precomputed walkthrough:
+- Run individual workflow stages or load the real mini-run walkthrough:
   - intent refinement;
   - dynamic literature construction;
   - candidate discovery;
@@ -35,6 +35,6 @@ Open `http://localhost:8000/demo/`.
 
 ## Data Interpretation
 
-The benchmark values shown in the story section are reported manuscript-level evaluation results, including the DB-Curator versus zero-shot baseline comparison. The values in the run viewer describe only the currently loaded sample JSON or generated toy run. The bundled walkthrough is labeled as synthetic demonstration data unless replaced by a real exported run. Uploaded JSON is rendered with HTML escaping before display.
+The benchmark values shown in the story section are reported manuscript-level evaluation results, including the DB-Curator versus zero-shot baseline comparison. The values in the run viewer describe only the currently loaded sample JSON or generated toy run. The bundled synthetic walkthrough is labeled as illustrative, and `real_mini_run.json` is a saved mini-run export with long evidence spans shortened for public display. Uploaded JSON is rendered with HTML escaping before display.
 
 A production deployment can replace the deterministic browser functions in `app.js` with backend calls to the real DB-Curator pipeline.

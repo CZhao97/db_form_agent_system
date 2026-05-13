@@ -15,7 +15,9 @@ const safeId = value => String(value ?? '').replace(/[^a-zA-Z0-9_-]/g, '').slice
 const labelClass = label => label === 'Confirmed' ? 'label-confirmed' : label === 'Explicit Negative Evidence' ? 'label-negative' : 'label-need';
 const stateClass = value => { const s = String(value || '').toLowerCase(); return s.includes('supported') ? 'supported' : s.includes('contradicted') ? 'contradicted' : 'unresolved'; };
 const fmt = value => Number(value || 0).toLocaleString();
-async function loadDemo(){ const response = await fetch('sample_run.json'); if(!response.ok) throw new Error('Could not load sample_run.json'); setRun(await response.json()); }
+async function loadRunFile(path){ const response = await fetch(path); if(!response.ok) throw new Error(`Could not load ${path}`); setRun(await response.json()); }
+async function loadDemo(){ return loadRunFile('sample_run.json'); }
+async function loadRealMiniRun(){ return loadRunFile('real_mini_run.json'); }
 function setRun(run){ state.run = normalizeRun(run); state.selectedId = state.run.candidates[0]?._safe_id || null; state.search = ''; state.labelFilter = 'all'; els.candidateSearch.value = ''; els.labelFilter.value = 'all'; render(); }
 function normalizeRun(run){ const seen = new Map(); const candidates = (Array.isArray(run.candidates) ? run.candidates : []).map((c,i) => { const base = safeId(c.id || c.name || `candidate-${i}`) || `candidate-${i}`; const count = seen.get(base) || 0; seen.set(base, count + 1); return { ...c, _safe_id: count ? `${base}-${count}` : base }; }); const literature = (Array.isArray(run.literature) ? run.literature : []).map((p,i) => ({ ...p, _safe_id: safeId(p.id || p.title || `paper-${i}`) || `paper-${i}` })); return { ...run, stages: Array.isArray(run.stages) ? run.stages : [], literature, candidates, summary: run.summary || {} }; }
 function selectedCandidate(){ return state.run?.candidates.find(c => c._safe_id === state.selectedId) || state.run?.candidates[0]; }
@@ -25,9 +27,9 @@ function renderMetrics(){ const s = state.run.summary || {}; const metrics = [['
 function renderPredicates(){ const mand = state.run.mandatory_predicates || []; const excl = state.run.exclusion_predicates || []; els.mandatoryPredicates.innerHTML = mand.map(item => `<span>${esc(item)}</span>`).join('') || '<span>No inclusion predicates in this export</span>'; els.exclusionPredicates.innerHTML = excl.map(item => `<span>${esc(item)}</span>`).join('') || '<span>No exclusion predicates in this export</span>'; }
 function renderFunnel(){ const f = state.run.candidate_funnel; if(!f){ els.candidateFunnel.innerHTML = ''; return; } const steps = [['Raw mentions', f.raw_mentions], ['Normalized', f.normalized_candidates], ['Grounded', f.after_grounding], ['Ranked', f.after_topic_ranking], ['Verification queue', f.verification_queue]]; els.candidateFunnel.innerHTML = `<p class="eyebrow">Candidate discovery funnel</p><div class="funnel-steps">${steps.map(([label,value]) => `<div><strong>${fmt(value)}</strong><span>${esc(label)}</span></div>`).join('')}</div>`; }
 function renderStages(){ els.stageTrack.innerHTML = state.run.stages.map((stage,i) => `<article class="stage-card" data-count="${fmt(stage.count)}"><span class="state-pill ${stage.state === 'complete' ? 'complete' : 'active'}">${esc(stage.state || 'active')}</span><p class="eyebrow">Stage ${i+1}</p><strong>${esc(stage.name)}</strong><p>${esc(stage.note || '')}</p></article>`).join(''); }
-function renderCandidateList(){ const candidates = filteredCandidates(); if(!candidates.length){ els.candidateList.innerHTML = els.emptyTemplate.innerHTML; return; } if(!candidates.some(c => c._safe_id === state.selectedId)) state.selectedId = candidates[0]._safe_id; els.candidateList.innerHTML = candidates.map(c => `<button class="candidate-button ${c.id === state.selectedId ? 'active' : ''}" data-candidate-id="${c._safe_id}"><strong>${esc(c.name)}</strong><div class="candidate-meta"><span class="label-pill ${labelClass(c.label)}">${esc(labelText(c.label))}</span><span>${fmt(c.mentions)} mentions</span><span>${fmt(c.iteration_count || 0)} rounds</span></div></button>`).join(''); }
+function renderCandidateList(){ const candidates = filteredCandidates(); if(!candidates.length){ els.candidateList.innerHTML = els.emptyTemplate.innerHTML; return; } if(!candidates.some(c => c._safe_id === state.selectedId)) state.selectedId = candidates[0]._safe_id; els.candidateList.innerHTML = candidates.map(c => `<button class="candidate-button ${c._safe_id === state.selectedId ? 'active' : ''}" data-candidate-id="${c._safe_id}"><strong>${esc(c.name)}</strong><div class="candidate-meta"><span class="label-pill ${labelClass(c.label)}">${esc(labelText(c.label))}</span><span>${fmt(c.mentions)} mentions</span><span>${fmt(c.iteration_count || 0)} rounds</span></div></button>`).join(''); }
 function renderSelectedCandidate(){ const c = selectedCandidate(); if(!c) return; const score = Math.max(0, Math.min(100, Math.round((c.confidence || 0) * 100))); const synonyms = (c.synonyms || []).map(esc).join(', ') || 'none listed'; const papers = (c.papers || []).map(esc).join(', ') || 'none'; const chips = [c.benchmark_status, c.discovery_type, c.human_release_audit].filter(Boolean).map(v => `<span>${esc(String(v).replaceAll('_',' '))}</span>`).join(''); els.candidateDetail.innerHTML = `<div class="detail-header"><div><p class="eyebrow">Selected candidate</p><h2>${esc(c.name)}</h2></div><span class="label-pill ${labelClass(c.label)}">${esc(labelText(c.label))}</span></div><div class="candidate-chips">${chips}</div><p class="synonyms"><strong>Synonyms:</strong> ${synonyms}</p><p class="synonyms"><strong>Formula:</strong> ${esc(c.formula || 'not available')} · <strong>Papers:</strong> ${papers} · <strong>Mentions:</strong> ${fmt(c.mentions)}</p><p class="synonyms"><strong>Triage:</strong> ${esc(c.triage_reason || 'No triage reason provided.')} <strong>Grounding:</strong> ${esc(c.grounding_status || 'not specified')}</p><meter class="score-meter" min="0" max="100" value="${score}" aria-label="Candidate confidence score"></meter>`; renderWhy(c); renderRubric(c); renderEvidence(c); renderLiterature(c); renderIterations(c); renderRowJson(c); }
-function renderWhy(c){ els.whyPanel.innerHTML = `<p class="eyebrow">Why this label?</p><h2>${esc(labelText(c.label))}</h2><p>${esc(c.why_label || 'No label explanation provided in this export.')}</p>`; }
+function renderWhy(c){ els.whyPanel.innerHTML = `<p class="eyebrow">Why this label?</p><h2>${esc(labelText(c.label))}</h2><p>${esc(c.why_label || 'No label explanation provided in this export.')}</p><div class="next-action"><strong>Next action</strong><span>${esc(c.next_action || 'No follow-up action recorded for this export.')}</span></div>`; }
 function renderRubric(c){ const rubric = Array.isArray(c.rubric) ? c.rubric : []; els.rubricMatrix.innerHTML = rubric.map(item => `<div class="rubric-row"><div><strong>${esc(item.criterion)}</strong><p>${esc(item.evidence || '')}</p></div><span class="state-pill ${stateClass(item.state)}">${esc(item.state)}</span></div>`).join('') || '<div class="empty-state"><strong>No rubric states</strong><span>Load a run with predicate states.</span></div>'; }
 function renderEvidence(c){ const evidence = Array.isArray(c.evidence) ? c.evidence : []; els.evidenceCards.innerHTML = evidence.map(item => `<div class="evidence-card"><div class="paper-top"><strong>${esc(item.paper)}</strong><span class="quality-pill ${item.quality === 'direct' ? 'supported' : item.quality === 'explicit_negative' ? 'contradicted' : 'unresolved'}">${esc(qualityText(item.quality))}</span></div><p>Supports: ${esc(item.supports || 'unspecified predicate')}</p><blockquote>${esc(item.quote || 'No quote text provided.')}</blockquote></div>`).join('') || '<div class="empty-state"><strong>No evidence cards</strong><span>This candidate may be evidence-limited.</span></div>'; }
 function renderLiterature(c){ const used = new Set(c.papers || []); els.literatureMap.innerHTML = state.run.literature.map(p => `<article class="paper-card ${used.has(p.id) ? 'selected' : ''}"><div class="paper-top"><strong>${esc(p.id)}. ${esc(p.title)}</strong><span>${esc(p.year || '')}</span></div><p>${esc(p.source || 'unknown source')} · ${esc(p.kind || 'paper')} · ${esc(p.status || 'unknown status')}</p><p><strong>Query:</strong> ${esc(p.query || 'not included')}<br><strong>Triggered by:</strong> ${esc(p.triggered_by || 'not included')}</p><div class="paper-tags">${(p.used_by || []).map(id => `<span>${esc(id)}</span>`).join('')}</div></article>`).join(''); }
@@ -48,7 +50,7 @@ const lab = {
   skillBoard: document.getElementById('skillBoard'),
   full: document.getElementById('runFullPipeline'),
   reset: document.getElementById('resetLab'),
-  precomputed: document.getElementById('loadPrecomputedRun'),
+  realMini: document.getElementById('loadRealMiniRun'),
   state: { refined: null, papers: [], candidates: [], verified: [] }
 };
 
@@ -207,12 +209,14 @@ function demoCandidateDetails(candidate, verified, index) {
     : isNegative
       ? `${candidate.name} is Explicit negative because its strongest context triggers an exclusion predicate.`
       : `${candidate.name} is Evidence-limited because at least one mandatory predicate remains unresolved.`;
+  const nextAction = isConfirmed ? 'No follow-up needed in the toy run.' : isNegative ? 'Do not release unless future evidence shows topic-specific product formation.' : 'Search for direct evidence supporting the unresolved mandatory predicate.';
   const finalRow = {
     compound_name: candidate.name,
     label: verified.label,
     benchmark_status: benchmarkStatus,
     supporting_papers: [paperId],
-    why_label: why
+    why_label: why,
+    next_action: nextAction
   };
   return {
     id: candidate.id,
@@ -231,6 +235,7 @@ function demoCandidateDetails(candidate, verified, index) {
     triage_reason: candidate.rank_reason,
     grounding_status: 'normalized identity available',
     why_label: why,
+    next_action: nextAction,
     final_row: finalRow,
     rubric: [
       { criterion: 'Specific chemical identity', state: 'supported', evidence: `${candidate.name} was normalized as a candidate entity.` },
@@ -257,7 +262,7 @@ function labRunToViewer() {
     user_request: lab.state.refined.user_request,
     refined_definition: lab.state.refined.refined_definition,
     demo_mode: 'browser_simulation',
-    data_notice: 'Synthetic browser simulation data; no live literature search or LLM calls were made.',
+    data_notice: 'Synthetic browser simulation data. Paper titles and evidence snippets are illustrative; no live literature search or LLM calls were made.',
     mandatory_predicates: lab.state.refined.mandatory_predicates,
     exclusion_predicates: lab.state.refined.exclusion_predicates,
     candidate_funnel: { raw_mentions: 1185, normalized_candidates: 126, after_grounding: 74, after_topic_ranking: 32, verification_queue: lab.state.candidates.length },
@@ -285,7 +290,7 @@ lab.skillBoard?.addEventListener('click', async event => {
 });
 lab.full?.addEventListener('click', async () => { resetLabState(); await runRefinement(); await runLiteratureSearch(); await runCandidateDiscovery(); await runPredicateVerification(); labRunToViewer(); lab.output.textContent += '\n\nLoaded the generated toy run into the result viewer below.'; });
 lab.reset?.addEventListener('click', resetLabState);
-lab.precomputed?.addEventListener('click', async () => { resetLabState(); await loadDemo(); lab.output.textContent = 'Loaded the precomputed walkthrough into the result viewer below. The walkthrough is saved demo data, not a live literature or LLM run.'; });
+lab.realMini?.addEventListener('click', async () => { resetLabState(); await loadRealMiniRun(); lab.output.textContent = 'Loaded the real mini-run export into the result viewer below. The browser is replaying saved DB-Curator artifacts, not running live retrieval or LLM inference.'; });
 renderLabFlow();
 
 
