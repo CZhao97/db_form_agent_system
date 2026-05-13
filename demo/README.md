@@ -33,6 +33,17 @@ Open `http://localhost:8000/demo/`.
 - Upload a compatible run JSON export through **Load run JSON**.
 - Download the currently loaded run JSON for reproducible inspection, including the final database-row JSON for each selected candidate.
 
+## Backend Toy Runs
+
+For an interactive local backend instead of browser-only fallback:
+
+```bash
+pip install -r demo_backend/requirements.txt
+python -m uvicorn demo_backend.app:app --reload --port 8000
+```
+
+Open `http://127.0.0.1:8000/demo/`. When the backend is available, the page routes stage buttons through the API and returns server-generated toy run JSON. If the backend is unavailable, the same page falls back to deterministic browser simulation.
+
 ## Data Interpretation
 
 The benchmark values shown in the story section are reported manuscript-level evaluation results, including the DB-Curator versus zero-shot baseline comparison. The values in the run viewer describe only the currently loaded sample JSON or generated toy run. The bundled synthetic walkthrough is labeled as illustrative, and `real_mini_run.json` is a saved mini-run export with long evidence spans shortened for public display. Uploaded JSON is rendered with HTML escaping before display.

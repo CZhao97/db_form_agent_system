@@ -62,13 +62,22 @@ The implementation avoids storing secrets in code. API keys should be provided t
 
 A static web demo is included in `demo/`. It presents DB-Curator as an academic tool story and includes a browser-only toy lab plus a real mini-run walkthrough for exploring the major workflow stages: intent refinement, dynamic literature construction, candidate discovery, and predicate-state verification.
 
-Run it locally with:
+Run the static version locally with:
 
 ```bash
 python -m http.server 8000
 ```
 
 Then open `http://localhost:8000/demo/`. The benchmark values in the story section are manuscript-level results; the run viewer values describe only the loaded sample JSON or generated toy run. The page also supports run-JSON upload and download for lightweight inspection, including candidate-level audit artifacts and final database-row JSON.
+
+To let visitors run toy workflow samples through a local backend, use the lightweight FastAPI demo service:
+
+```bash
+pip install -r demo_backend/requirements.txt
+python -m uvicorn demo_backend.app:app --reload --port 8000
+```
+
+Then open `http://127.0.0.1:8000/demo/`. The web page will show `Backend connected` and route stage buttons through `/api/refine`, `/api/search`, `/api/discover`, `/api/verify`, and `/api/run`.
 
 ## Manuscript Reproduction
 

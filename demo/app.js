@@ -1,6 +1,6 @@
-const state = { run: null, selectedId: null, labelFilter: 'all', search: '' };
+const state = { run: null, selectedId: null, labelFilter: 'all', search: '', backendAvailable: false };
 const els = {
-  upload: document.getElementById('jsonUpload'), downloadRun: document.getElementById('downloadRun'), userRequest: document.getElementById('userRequest'), runNotice: document.getElementById('runNotice'), refinedDefinition: document.getElementById('refinedDefinition'), mandatoryPredicates: document.getElementById('mandatoryPredicates'), exclusionPredicates: document.getElementById('exclusionPredicates'), candidateFunnel: document.getElementById('candidateFunnel'), metricsStrip: document.getElementById('metricsStrip'), stageTrack: document.getElementById('stageTrack'), candidateSearch: document.getElementById('candidateSearch'), labelFilter: document.getElementById('labelFilter'), candidateList: document.getElementById('candidateList'), candidateDetail: document.getElementById('candidateDetail'), whyPanel: document.getElementById('whyPanel'), rowJson: document.getElementById('rowJson'), rubricMatrix: document.getElementById('rubricMatrix'), evidenceCards: document.getElementById('evidenceCards'), literatureMap: document.getElementById('literatureMap'), iterationTrace: document.getElementById('iterationTrace'), emptyTemplate: document.getElementById('emptyStateTemplate')
+  upload: document.getElementById('jsonUpload'), downloadRun: document.getElementById('downloadRun'), backendStatus: document.getElementById('backendStatus'), userRequest: document.getElementById('userRequest'), runNotice: document.getElementById('runNotice'), refinedDefinition: document.getElementById('refinedDefinition'), mandatoryPredicates: document.getElementById('mandatoryPredicates'), exclusionPredicates: document.getElementById('exclusionPredicates'), candidateFunnel: document.getElementById('candidateFunnel'), metricsStrip: document.getElementById('metricsStrip'), stageTrack: document.getElementById('stageTrack'), candidateSearch: document.getElementById('candidateSearch'), labelFilter: document.getElementById('labelFilter'), candidateList: document.getElementById('candidateList'), candidateDetail: document.getElementById('candidateDetail'), whyPanel: document.getElementById('whyPanel'), rowJson: document.getElementById('rowJson'), rubricMatrix: document.getElementById('rubricMatrix'), evidenceCards: document.getElementById('evidenceCards'), literatureMap: document.getElementById('literatureMap'), iterationTrace: document.getElementById('iterationTrace'), emptyTemplate: document.getElementById('emptyStateTemplate')
 };
 
 const esc = value => String(value ?? '')
@@ -15,6 +15,46 @@ const safeId = value => String(value ?? '').replace(/[^a-zA-Z0-9_-]/g, '').slice
 const labelClass = label => label === 'Confirmed' ? 'label-confirmed' : label === 'Explicit Negative Evidence' ? 'label-negative' : 'label-need';
 const stateClass = value => { const s = String(value || '').toLowerCase(); return s.includes('supported') ? 'supported' : s.includes('contradicted') ? 'contradicted' : 'unresolved'; };
 const fmt = value => Number(value || 0).toLocaleString();
+const apiUrl = path => `${window.location.origin}${path}`;
+async function apiPost(path, payload) {
+  const response = await fetch(apiUrl(path), {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(payload)
+  });
+  if (!response.ok) throw new Error(`Backend ${path} failed: ${response.status}`);
+  return response.json();
+}
+async function apiGet(path) {
+  const response = await fetch(apiUrl(path));
+  if (!response.ok) throw new Error(`Backend ${path} failed: ${response.status}`);
+  return response.json();
+}
+async function checkBackend() {
+  try {
+    await apiGet('/api/health');
+    state.backendAvailable = true;
+    if (els.backendStatus) els.backendStatus.textContent = 'Backend connected · toy samples run server-side';
+  } catch (error) {
+    state.backendAvailable = false;
+    if (els.backendStatus) els.backendStatus.textContent = 'Static mode · browser simulation fallback';
+  }
+}
+async function withBackend(stage, backendCall, fallbackCall) {
+  if (state.backendAvailable) {
+    try {
+      renderLabFlow(stage);
+      const payload = await backendCall();
+      renderLabFlow();
+      return payload;
+    } catch (error) {
+      state.backendAvailable = false;
+      if (els.backendStatus) els.backendStatus.textContent = 'Static mode · backend unavailable, using fallback';
+    }
+  }
+  return fallbackCall();
+}
+
 async function loadRunFile(path){ const response = await fetch(path); if(!response.ok) throw new Error(`Could not load ${path}`); setRun(await response.json()); }
 async function loadDemo(){ return loadRunFile('sample_run.json'); }
 async function loadRealMiniRun(){ return loadRunFile('real_mini_run.json'); }
@@ -146,7 +186,7 @@ function resetLabState() {
   lab.output.textContent = 'Click a workflow stage or run the full pipeline.';
 }
 
-async function runRefinement() {
+async function runRefinementFallback() {
   renderLabFlow('refine');
   await sleep(420);
   const request = lab.prompt.value.trim() || 'Form a scientific compound database.';
@@ -162,8 +202,8 @@ async function runRefinement() {
   return lab.state.refined;
 }
 
-async function runLiteratureSearch() {
-  if (!lab.state.refined) await runRefinement();
+async function runLiteratureSearchFallback() {
+  if (!lab.state.refined) await runRefinementFallback();
   renderLabFlow('search');
   await sleep(520);
   lab.state.papers = scenarioText[activeScenario()].papers.map(([id, source, title, status, triggered_by]) => ({ id, source, title, status, triggered_by }));
@@ -172,8 +212,8 @@ async function runLiteratureSearch() {
   return lab.state.papers;
 }
 
-async function runCandidateDiscovery() {
-  if (!lab.state.papers.length) await runLiteratureSearch();
+async function runCandidateDiscoveryFallback() {
+  if (!lab.state.papers.length) await runLiteratureSearchFallback();
   renderLabFlow('discover');
   await sleep(520);
   lab.state.candidates = scenarioText[activeScenario()].candidates.map(([id, name, mentions, rank_reason]) => ({ id, name, mentions, rank_reason }));
@@ -182,8 +222,8 @@ async function runCandidateDiscovery() {
   return lab.state.candidates;
 }
 
-async function runPredicateVerification() {
-  if (!lab.state.candidates.length) await runCandidateDiscovery();
+async function runPredicateVerificationFallback() {
+  if (!lab.state.candidates.length) await runCandidateDiscoveryFallback();
   renderLabFlow('verify');
   await sleep(620);
   const names = lab.state.candidates.map(c => c.name);
@@ -196,6 +236,66 @@ async function runPredicateVerification() {
   renderLabFlow();
   writeLab('Predicate verification output', { verified_rows: lab.state.verified, key_point: 'The decision is controlled by predicate states, not by whether the name sounds plausible.' });
   return lab.state.verified;
+}
+
+
+async function runRefinement() {
+  return withBackend('refine', async () => {
+    const payload = await apiPost('/api/refine', { prompt: lab.prompt.value.trim() || 'Form a scientific compound database.' });
+    lab.state.refined = payload;
+    writeLab('Backend intent refinement output', payload);
+    return payload;
+  }, runRefinementFallback);
+}
+async function runLiteratureSearch() {
+  return withBackend('search', async () => {
+    if (!lab.state.refined) await runRefinement();
+    const payload = await apiPost('/api/search', { prompt: lab.prompt.value.trim() || lab.state.refined.user_request });
+    lab.state.papers = payload.retrieved_papers || [];
+    writeLab('Backend dynamic literature output', payload);
+    return lab.state.papers;
+  }, runLiteratureSearchFallback);
+}
+async function runCandidateDiscovery() {
+  return withBackend('discover', async () => {
+    if (!lab.state.papers.length) await runLiteratureSearch();
+    const payload = await apiPost('/api/discover', { prompt: lab.prompt.value.trim() || lab.state.refined?.user_request || 'Form a scientific compound database.' });
+    lab.state.candidates = payload.verification_queue || [];
+    writeLab('Backend candidate discovery output', payload);
+    return lab.state.candidates;
+  }, runCandidateDiscoveryFallback);
+}
+async function runPredicateVerification() {
+  return withBackend('verify', async () => {
+    if (!lab.state.candidates.length) await runCandidateDiscovery();
+    const payload = await apiPost('/api/verify', { prompt: lab.prompt.value.trim() || lab.state.refined?.user_request || 'Form a scientific compound database.' });
+    lab.state.verified = payload.verified_rows || [];
+    writeLab('Backend predicate verification output', payload);
+    return lab.state.verified;
+  }, runPredicateVerificationFallback);
+}
+async function runFullPipeline() {
+  if (state.backendAvailable) {
+    try {
+      resetLabState();
+      renderLabFlow('verify');
+      const run = await apiPost('/api/run', { prompt: lab.prompt.value.trim() || 'Form a scientific compound database.' });
+      setRun(run);
+      renderLabFlow();
+      lab.output.textContent = `Backend full toy run completed\n${JSON.stringify({ run_id: run.run_id, mode: run.demo_mode, candidates: run.candidates?.length || 0 }, null, 2)}\n\nLoaded the generated backend run into the result viewer below.`;
+      return;
+    } catch (error) {
+      state.backendAvailable = false;
+      if (els.backendStatus) els.backendStatus.textContent = 'Static mode · backend unavailable, using fallback';
+    }
+  }
+  resetLabState();
+  await runRefinementFallback();
+  await runLiteratureSearchFallback();
+  await runCandidateDiscoveryFallback();
+  await runPredicateVerificationFallback();
+  labRunToViewer();
+  lab.output.textContent += '\n\nLoaded the generated browser toy run into the result viewer below.';
 }
 
 function demoCandidateDetails(candidate, verified, index) {
@@ -288,10 +388,11 @@ lab.skillBoard?.addEventListener('click', async event => {
   if (skill === 'discover') await runCandidateDiscovery();
   if (skill === 'verify') await runPredicateVerification();
 });
-lab.full?.addEventListener('click', async () => { resetLabState(); await runRefinement(); await runLiteratureSearch(); await runCandidateDiscovery(); await runPredicateVerification(); labRunToViewer(); lab.output.textContent += '\n\nLoaded the generated toy run into the result viewer below.'; });
+lab.full?.addEventListener('click', runFullPipeline);
 lab.reset?.addEventListener('click', resetLabState);
-lab.realMini?.addEventListener('click', async () => { resetLabState(); await loadRealMiniRun(); lab.output.textContent = 'Loaded the real mini-run export into the result viewer below. The browser is replaying saved DB-Curator artifacts, not running live retrieval or LLM inference.'; });
+lab.realMini?.addEventListener('click', async () => { resetLabState(); if (state.backendAvailable) { try { setRun(await apiGet('/api/samples/real-mini')); lab.output.textContent = 'Loaded the real mini-run export from the backend. The browser is replaying saved DB-Curator artifacts, not running live retrieval or LLM inference.'; return; } catch (error) { state.backendAvailable = false; } } await loadRealMiniRun(); lab.output.textContent = 'Loaded the real mini-run export from static JSON. The browser is replaying saved DB-Curator artifacts, not running live retrieval or LLM inference.'; });
 renderLabFlow();
+checkBackend();
 
 
 document.querySelectorAll('[data-preset]').forEach(button => {
