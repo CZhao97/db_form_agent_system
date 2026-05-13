@@ -1,6 +1,6 @@
 const state = { run: null, selectedId: null, labelFilter: 'all', search: '', backendAvailable: false };
 const els = {
-  upload: document.getElementById('jsonUpload'), downloadRun: document.getElementById('downloadRun'), backendStatus: document.getElementById('backendStatus'), userRequest: document.getElementById('userRequest'), runNotice: document.getElementById('runNotice'), refinedDefinition: document.getElementById('refinedDefinition'), mandatoryPredicates: document.getElementById('mandatoryPredicates'), exclusionPredicates: document.getElementById('exclusionPredicates'), candidateFunnel: document.getElementById('candidateFunnel'), metricsStrip: document.getElementById('metricsStrip'), stageTrack: document.getElementById('stageTrack'), candidateSearch: document.getElementById('candidateSearch'), labelFilter: document.getElementById('labelFilter'), candidateList: document.getElementById('candidateList'), candidateDetail: document.getElementById('candidateDetail'), whyPanel: document.getElementById('whyPanel'), rowJson: document.getElementById('rowJson'), rubricMatrix: document.getElementById('rubricMatrix'), evidenceCards: document.getElementById('evidenceCards'), literatureMap: document.getElementById('literatureMap'), iterationTrace: document.getElementById('iterationTrace'), emptyTemplate: document.getElementById('emptyStateTemplate')
+  upload: document.getElementById('jsonUpload'), downloadRun: document.getElementById('downloadRun'), accessToken: document.getElementById('demoAccessToken'), backendStatus: document.getElementById('backendStatus'), userRequest: document.getElementById('userRequest'), runNotice: document.getElementById('runNotice'), refinedDefinition: document.getElementById('refinedDefinition'), mandatoryPredicates: document.getElementById('mandatoryPredicates'), exclusionPredicates: document.getElementById('exclusionPredicates'), candidateFunnel: document.getElementById('candidateFunnel'), metricsStrip: document.getElementById('metricsStrip'), stageTrack: document.getElementById('stageTrack'), candidateSearch: document.getElementById('candidateSearch'), labelFilter: document.getElementById('labelFilter'), candidateList: document.getElementById('candidateList'), candidateDetail: document.getElementById('candidateDetail'), whyPanel: document.getElementById('whyPanel'), rowJson: document.getElementById('rowJson'), rubricMatrix: document.getElementById('rubricMatrix'), evidenceCards: document.getElementById('evidenceCards'), literatureMap: document.getElementById('literatureMap'), iterationTrace: document.getElementById('iterationTrace'), emptyTemplate: document.getElementById('emptyStateTemplate')
 };
 
 const esc = value => String(value ?? '')
@@ -16,25 +16,32 @@ const labelClass = label => label === 'Confirmed' ? 'label-confirmed' : label ==
 const stateClass = value => { const s = String(value || '').toLowerCase(); return s.includes('supported') ? 'supported' : s.includes('contradicted') ? 'contradicted' : 'unresolved'; };
 const fmt = value => Number(value || 0).toLocaleString();
 const apiUrl = path => `${window.location.origin}${path}`;
+const demoToken = () => (els.accessToken?.value || sessionStorage.getItem('dbcurator_demo_token') || '').trim();
+function apiHeaders(extra = {}) { const token = demoToken(); return token ? { ...extra, 'X-Demo-Token': token } : extra; }
 async function apiPost(path, payload) {
   const response = await fetch(apiUrl(path), {
     method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
+    headers: apiHeaders({ 'Content-Type': 'application/json' }),
     body: JSON.stringify(payload)
   });
   if (!response.ok) throw new Error(`Backend ${path} failed: ${response.status}`);
   return response.json();
 }
 async function apiGet(path) {
-  const response = await fetch(apiUrl(path));
+  const response = await fetch(apiUrl(path), { headers: apiHeaders() });
   if (!response.ok) throw new Error(`Backend ${path} failed: ${response.status}`);
   return response.json();
 }
 async function checkBackend() {
   try {
-    await apiGet('/api/health');
-    state.backendAvailable = true;
-    if (els.backendStatus) els.backendStatus.textContent = 'Backend connected · toy samples run server-side';
+    const health = await apiGet('/api/health');
+    const locked = Boolean(health.auth_required && !demoToken());
+    state.backendAvailable = !locked;
+    if (els.backendStatus) {
+      els.backendStatus.textContent = locked
+        ? 'Backend locked · enter access code'
+        : `Backend connected · ${health.rate_limit_per_minute}/min limit`;
+    }
   } catch (error) {
     state.backendAvailable = false;
     if (els.backendStatus) els.backendStatus.textContent = 'Static mode · browser simulation fallback';
@@ -48,8 +55,12 @@ async function withBackend(stage, backendCall, fallbackCall) {
       renderLabFlow();
       return payload;
     } catch (error) {
-      state.backendAvailable = false;
-      if (els.backendStatus) els.backendStatus.textContent = 'Static mode · backend unavailable, using fallback';
+      if (String(error.message || '').includes('401')) {
+        if (els.backendStatus) els.backendStatus.textContent = 'Backend locked · check access code';
+      } else {
+        state.backendAvailable = false;
+        if (els.backendStatus) els.backendStatus.textContent = 'Static mode · backend unavailable, using fallback';
+      }
     }
   }
   return fallbackCall();
@@ -79,6 +90,8 @@ els.candidateList.addEventListener('click', event => { const button = event.targ
 els.candidateSearch.addEventListener('input', event => { state.search = event.target.value; renderCandidateList(); renderSelectedCandidate(); });
 els.labelFilter.addEventListener('change', event => { state.labelFilter = event.target.value; renderCandidateList(); renderSelectedCandidate(); });
 els.upload.addEventListener('change', async event => { const file = event.target.files?.[0]; if(!file) return; try { setRun(JSON.parse(await file.text())); } catch(error){ alert(`Could not load JSON: ${error.message}`); } finally { event.target.value = ''; } });
+els.accessToken?.addEventListener('input', () => { sessionStorage.setItem('dbcurator_demo_token', els.accessToken.value.trim()); checkBackend(); });
+if (els.accessToken) els.accessToken.value = sessionStorage.getItem('dbcurator_demo_token') || '';
 els.downloadRun?.addEventListener('click', () => { if(!state.run) return; const blob = new Blob([JSON.stringify(state.run, null, 2)], { type: 'application/json' }); const url = URL.createObjectURL(blob); const link = document.createElement('a'); link.href = url; link.download = `${String(state.run.run_id || 'db-curator-run').replace(/[^a-z0-9_.-]+/gi, '-')}.json`; document.body.appendChild(link); link.click(); link.remove(); URL.revokeObjectURL(url); });
 loadDemo().catch(error => { document.body.innerHTML = `<main class="panel load-error"><h1>Demo failed to load</h1><p>${esc(error.message)}</p></main>`; });
 
@@ -285,8 +298,12 @@ async function runFullPipeline() {
       lab.output.textContent = `Backend full toy run completed\n${JSON.stringify({ run_id: run.run_id, mode: run.demo_mode, candidates: run.candidates?.length || 0 }, null, 2)}\n\nLoaded the generated backend run into the result viewer below.`;
       return;
     } catch (error) {
-      state.backendAvailable = false;
-      if (els.backendStatus) els.backendStatus.textContent = 'Static mode · backend unavailable, using fallback';
+      if (String(error.message || '').includes('401')) {
+        if (els.backendStatus) els.backendStatus.textContent = 'Backend locked · check access code';
+      } else {
+        state.backendAvailable = false;
+        if (els.backendStatus) els.backendStatus.textContent = 'Static mode · backend unavailable, using fallback';
+      }
     }
   }
   resetLabState();

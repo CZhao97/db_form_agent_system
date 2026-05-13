@@ -79,6 +79,18 @@ python -m uvicorn demo_backend.app:app --reload --port 8000
 
 Then open `http://127.0.0.1:8000/demo/`. The web page will show `Backend connected` and route stage buttons through `/api/refine`, `/api/search`, `/api/discover`, `/api/verify`, and `/api/run`.
 
+### Optional Access Control
+
+For a public or shared demo, set an access token before starting the backend:
+
+```bash
+export DEMO_ACCESS_TOKEN=choose-a-reviewer-code
+export DEMO_RATE_LIMIT_PER_MINUTE=60
+python -m uvicorn demo_backend.app:app --reload --port 8000
+```
+
+Visitors enter the code in the web page. Backend API calls include it as `X-Demo-Token`. Without the token, the backend returns `401`; static browser-only fallback remains harmless because it does not call APIs, LLMs, external tools, or local corpora.
+
 ## Manuscript Reproduction
 
 The manuscript source and generated figures are in `manuscript/latex/`. To rebuild the main PDF from the public snapshot:

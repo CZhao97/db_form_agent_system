@@ -456,3 +456,24 @@ textarea:focus-visible,
   color: var(--muted);
   line-height: 1.4;
 }
+.access-label {
+  display: flex !important;
+  justify-content: space-between;
+  gap: 10px;
+  margin-top: 12px !important;
+}
+.access-label span {
+  color: var(--muted);
+  font-weight: 700;
+  letter-spacing: 0;
+  text-transform: none;
+}
+.access-input {
+  width: 100%;
+  border: 1px solid rgba(77,94,86,.22);
+  border-radius: 16px;
+  padding: 12px 14px;
+  background: rgba(255,255,255,.74);
+  color: var(--ink);
+  outline: none;
+}

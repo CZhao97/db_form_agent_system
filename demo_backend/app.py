@@ -1,10 +1,14 @@
 """FastAPI backend for the DB-Curator public interactive demo."""
 from __future__ import annotations
 
+from collections import defaultdict, deque
 from pathlib import Path
 from typing import Any
+import os
+import secrets
+import time
 
-from fastapi import FastAPI
+from fastapi import FastAPI, HTTPException, Request
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import FileResponse, RedirectResponse
 from fastapi.staticfiles import StaticFiles
@@ -15,6 +19,38 @@ from .toy_pipeline import build_run, construct_literature, discover_candidates, 
 
 ROOT = Path(__file__).resolve().parents[1]
 DEMO_DIR = ROOT / "demo"
+ACCESS_TOKEN = os.getenv("DEMO_ACCESS_TOKEN", "").strip()
+RATE_LIMIT_PER_MINUTE = int(os.getenv("DEMO_RATE_LIMIT_PER_MINUTE", "60"))
+_REQUEST_LOG: dict[str, deque[float]] = defaultdict(deque)
+
+
+def _client_key(request: Request) -> str:
+    forwarded = request.headers.get("x-forwarded-for", "").split(",")[0].strip()
+    if forwarded:
+        return forwarded
+    if request.client:
+        return request.client.host
+    return "unknown"
+
+
+def _check_rate_limit(request: Request) -> None:
+    now = time.time()
+    key = _client_key(request)
+    window = _REQUEST_LOG[key]
+    while window and now - window[0] > 60:
+        window.popleft()
+    if len(window) >= RATE_LIMIT_PER_MINUTE:
+        raise HTTPException(status_code=429, detail="Demo rate limit exceeded. Please wait before trying again.")
+    window.append(now)
+
+
+def require_demo_access(request: Request) -> None:
+    _check_rate_limit(request)
+    if not ACCESS_TOKEN:
+        return
+    supplied = request.headers.get("x-demo-token", "")
+    if not secrets.compare_digest(supplied, ACCESS_TOKEN):
+        raise HTTPException(status_code=401, detail="A valid DB-Curator demo access token is required.")
 
 
 class PromptRequest(BaseModel):
@@ -41,37 +77,44 @@ def root() -> RedirectResponse:
 
 
 @app.get("/api/health")
-def health() -> dict[str, Any]:
-    return {"ok": True, "backend": "DB-Curator deterministic toy backend", "live_external_calls": False}
+def health(request: Request) -> dict[str, Any]:
+    _check_rate_limit(request)
+    return {"ok": True, "backend": "DB-Curator deterministic toy backend", "live_external_calls": False, "auth_required": bool(ACCESS_TOKEN), "rate_limit_per_minute": RATE_LIMIT_PER_MINUTE}
 
 
 @app.post("/api/refine")
-def api_refine(request: PromptRequest) -> dict[str, Any]:
-    return refine(request.prompt)
+def api_refine(payload: PromptRequest, request: Request) -> dict[str, Any]:
+    require_demo_access(request)
+    return refine(payload.prompt)
 
 
 @app.post("/api/search")
-def api_search(request: PromptRequest) -> dict[str, Any]:
-    return construct_literature(request.prompt)
+def api_search(payload: PromptRequest, request: Request) -> dict[str, Any]:
+    require_demo_access(request)
+    return construct_literature(payload.prompt)
 
 
 @app.post("/api/discover")
-def api_discover(request: PromptRequest) -> dict[str, Any]:
-    return discover_candidates(request.prompt)
+def api_discover(payload: PromptRequest, request: Request) -> dict[str, Any]:
+    require_demo_access(request)
+    return discover_candidates(payload.prompt)
 
 
 @app.post("/api/verify")
-def api_verify(request: PromptRequest) -> dict[str, Any]:
-    return verify_candidates(request.prompt)
+def api_verify(payload: PromptRequest, request: Request) -> dict[str, Any]:
+    require_demo_access(request)
+    return verify_candidates(payload.prompt)
 
 
 @app.post("/api/run")
-def api_run(request: PromptRequest) -> dict[str, Any]:
-    return build_run(request.prompt)
+def api_run(payload: PromptRequest, request: Request) -> dict[str, Any]:
+    require_demo_access(request)
+    return build_run(payload.prompt)
 
 
 @app.get("/api/samples/real-mini")
-def api_real_mini() -> dict[str, Any]:
+def api_real_mini(request: Request) -> dict[str, Any]:
+    require_demo_access(request)
     return real_mini_run()
 
 
