@@ -66,8 +66,8 @@
 
 \begin{document}
 
-\textbf{DB-Curator: On-demand scientific database curation via
-deep-research multi-agent literature mining and verification}
+\textbf{DB-Curator: on-demand scientific database construction with a
+deep-research multi-agent system}
 
 Chen Zhao\textsuperscript{1,2}, Botao Liu\textsuperscript{1}, Xiaoxiao Li\textsuperscript{2,}*, Tao
 Huan\textsuperscript{1,}*
@@ -102,347 +102,324 @@ Website: \href{https://xxlya.github.io/}{\uline{https://xxlya.github.io/}}
 
 \textbf{Abstract}
 
-Scientific databases represent a core foundation of scientific
-knowledge, yet their development remains time consuming, difficult to
-scale, and hard to reproduce across specialized topics. Existing
-automated assistants can answer questions or summarize papers, but they
-do not reliably construct topic-specific databases with entry-level
-verification and auditable provenance, especially when the relevant
-literature set must be built from the user request rather than supplied
-by human curators. Here we present DB-Curator, a multi-agent system that
-constructs topic-specific databases from open-ended scientific requests.
-DB-Curator converts the user request into a machine-actionable rubric,
-builds a dynamic literature set, discovers candidate entities, and
-verifies each candidate through a Researcher--Critique loop. We evaluated DB-Curator in two complementary settings. First, in
-fixed-cohort release audits, DB-Curator produced 246/250 release-ready
-rows and recovered 68 literature-supported compounds that were absent
-from the benchmark but judged valid by human experts. These entries were
-not only plausible names: all 2166 cited primary-paper references in this
-audit resolved to real papers and contained the quoted evidence span or
-equivalent local context. The zero-shot direct-generation baseline
-produced many acceptable names, but only 11/257 claimed references
-provided usable paper evidence. Second, across five benchmark-scale
-verification tasks spanning 1,887 candidate rows, DB-Curator assigned
-Confirmed labels to 977 entries, compared with 375 entries assigned
-Confirmed by the zero-shot benchmark-labeling baseline. DB-Curator also
-maintained quote- or context-supported provenance for 7,430 of 7,453
-cited primary-paper references, whereas the strict baseline citation
-audit found content support for only 6/2,291 claimed references. These
-results show that DB-Curator improves both evidence-grounded discovery of
-new database entries and large-scale confirmation of existing candidate
-sets, supporting predicate-grounded, critique-driven database
-construction as a general framework for scalable scientific curation.
+Scientific databases are foundations for reusable knowledge, but their
+construction remains slow, labour-intensive, and difficult to reproduce
+across specialised topics. Existing assistants can answer questions or
+summarise papers, but they rarely produce topic-specific database entries
+that adapt to open-ended user requests, build the relevant literature set,
+and preserve entry-level evidence. We present DB-Curator, a multi-agent
+system that converts a scientific request into a rubric, dynamically
+constructs a literature set, discovers candidate entities, and verifies
+each entry through a Researcher--Critique loop. We evaluated DB-Curator in
+two complementary settings. In release-readiness audits, DB-Curator
+produced 246/250 release-ready rows and recovered 68 benchmark-missing
+compounds judged valid by human experts. All 2,166 cited primary-paper
+references in this audit contained supporting evidence, whereas the
+zero-shot direct-generation baseline supported only 11/257 references. In
+benchmark-scale verification over 1,887 supplied candidates, DB-Curator
+assigned Confirmed labels to 977 entries, compared with 375 for the
+zero-shot benchmark-labeling baseline. DB-Curator also supported
+7,430/7,453 cited references, whereas the strict baseline citation audit
+supported only 6/2,291 references. These results show that DB-Curator
+improves both discovery-oriented database release and large-scale
+evidence-grounded verification. They support predicate-grounded,
+critique-driven database construction as a scalable framework for
+scientific curation.
 
 \textbf{Main}
 
 Scientific databases make experimental findings searchable, comparable,
-and reusable across studies. Conventionally, expert curators define the
-database scope, search the literature, identify candidate entities,
-normalize names and identifiers, read papers for inclusion evidence, and
-record provenance for later review. This process is powerful but slow,
-tedious, and difficult to repeat when the target topic is narrow and the
-evidence is scattered across many papers. In metabolomics and exposomics,
-resources such as HMDB and the Blood Exposome Database demonstrate the
-scientific value of expert curation, while recent work on
-disinfection-by-product (DBP) resources underscores how labor intensive
-topic-specific database construction remains.\textsuperscript{1-3}
-More broadly, resources such as T3DB, PubChem, and DrugBank show that
-useful databases require coverage, stable identifiers, explicit
-inclusion criteria, and maintainable provenance.\textsuperscript{4-6}
-Scientific database construction is therefore a natural target for
-automation, but only if automated systems can recover candidates broadly
-and justify every accepted entry with auditable evidence.
+and reusable across studies. Most specialised databases are still built
+through expert curation. Curators define the database scope, search the
+literature, extract candidate entries, interpret experimental context,
+and record evidence for each accepted row. This workflow is powerful, but
+it is slow, tedious, and difficult to reproduce when the target topic is
+narrow and evidence is scattered across many papers. In metabolomics and
+exposomics, resources such as HMDB and the Blood Exposome Database show
+the value of expert curation. Recent disinfection-by-product (DBP)
+resources further show how labour intensive topic-specific database
+construction remains.\textsuperscript{1-3} More broadly, resources such
+as T3DB, PubChem, and DrugBank show that useful databases require entity
+coverage, stable identifiers, explicit inclusion criteria, and
+maintainable provenance.\textsuperscript{4-6} Scientific database
+construction is therefore a natural target for automation, provided that
+automated systems can recover candidates broadly and justify every
+accepted entry with auditable evidence.
 
-Several developments make automated curation more realistic.
-Open literature infrastructure has expanded programmatic access to full
-text and metadata through Europe PMC, S2ORC, OpenAlex, and related
-resources. Document-processing systems such as PubTator and GROBID now
-support structured parsing of biomedical literature.\textsuperscript{7-12}
-Automated extraction pipelines have also improved substantially.
-Chemical text-mining tools and benchmarks such as ChemDataExtractor,
-CHEMDNER, and tmChem established strong baselines for named-entity
-recognition and normalization, and domain-adapted models such as
+Recent infrastructure makes large-scale scientific curation more
+technically feasible. Literature search and metadata resources such as
+Europe PMC, S2ORC, OpenAlex, and related databases expose papers,
+abstracts, identifiers, and full-text links at scale. Document-processing
+systems such as PubTator and GROBID support structured parsing of
+biomedical literature.\textsuperscript{7-12} Automated extraction
+pipelines have also improved substantially. Chemical text-mining tools
+and benchmarks such as ChemDataExtractor, CHEMDNER, and tmChem support
+named-entity recognition and normalisation. Domain-adapted models such as
 BioBERT, SciBERT, and HunFlair2 have strengthened scientific language
-understanding.\textsuperscript{13-18}
+understanding.\textsuperscript{13-18} Together, these resources make it
+possible to search, parse, and extract from literature collections that
+are too large for manual inspection alone.
 
-These advances do not by themselves solve release-quality database
-curation. A chemical name in a paper is not automatically a valid
-database entry. For example, a candidate may be a reagent rather than a
-measured analyte, a precursor rather than a disinfection byproduct, a
-compound reported in another biological matrix rather than blood, or a
-class-level mention rather than a specific confirmed entity. Inclusion
-therefore depends on topic-specific predicates such as identity,
+Yet, entity extraction alone is insufficient for database construction. A
+chemical name mentioned in a paper may be a target compound, reagent,
+precursor, solvent, contaminant, or contextual comparison. Whether it
+belongs in a database depends on the user's scope and on evidence about
 experimental context, sample matrix, analytical confirmation, formation
-route, organism, exposure source, or exclusion criteria. These predicates
-may be distributed across titles, abstracts, methods, tables, and result
-sections. Errors at this stage can propagate into curated resources,
-where they become costly to detect and correct.\textsuperscript{19-21}
+route, organism, or exposure source. These conditions may be distributed
+across titles, abstracts, methods, results, tables, and supplementary
+materials. Systems that only extract names can therefore promote plausible
+but unsupported or off-scope entities into database entries.\textsuperscript{19-21}
 Large language models (LLMs) broaden what is possible in scientific
 reading and information extraction,\textsuperscript{22-24} but direct
 single-pass use remains risky for database construction. Plausible but
 unsupported statements can become false entries unless provenance and
 acceptance rules are enforced explicitly.\textsuperscript{25-27}
 
-This creates a methodological challenge that is different from standard
-retrieval-augmented generation. A conventional RAG system typically
-retrieves a context set and then generates an answer from that context.
-Scientific database construction instead requires repeated testing of a
-candidate against a user-defined acceptance contract. Missing evidence,
-exclusion-triggering evidence, and off-scope context must change the
-decision for that entry rather than merely change the wording of a
-generated answer. The core AI problem is therefore not only retrieval
-quality. It is how to convert natural language intent into explicit
-predicates that can be checked, revisited, and left evidence-limited
-when support remains insufficient.
+This makes scientific database construction different from standard
+retrieval-augmented generation (RAG). A typical RAG system retrieves a
+context set and generates an answer from it. Database construction
+instead requires entry-wise decisions. Each candidate must be tested
+against a user-defined acceptance rule. Missing evidence, exclusion
+evidence, or off-scope context should change the entry label, not merely
+the wording of an answer. The core AI problem is therefore not only how
+to retrieve relevant papers. It is how to convert a broad scientific
+request into explicit predicates that can be checked, revisited, and
+linked to evidence.
 
-Single-agent and multi-agent LLM systems provide useful building blocks
-for this problem. Scientific claim verification treats correctness as
-evidence retrieval plus rationale selection over the
-literature.\textsuperscript{28-31} Agentic systems and deep-research
-workflows show how language models can interleave retrieval, reasoning,
-tool use, and self-correction over multiple steps.\textsuperscript{32,33,39,40}
-Modular tool-use and skill-composition systems such as MRKL, Toolformer,
-and Voyager further frame language models as controllers over external
-capabilities and reusable action routines.\textsuperscript{41-43} Prior
-scientific systems such as OpenChemIE, ProtAgents, MAIN-RAG, and
-tool-augmented chemistry assistants are important precursors, but they
-primarily emphasize extraction, question answering, or discovery support
-rather than evidence-constrained database construction from a literature
-set that is itself built during the run.\textsuperscript{34-38}
+Agentic systems provide useful building blocks for this problem. A
+single-agent workflow can combine search, reading, and decision-making,
+but these roles are difficult to audit when they are handled by one
+prompt or one reasoning trace. Multi-agent systems separate these roles.
+One agent can search and synthesize evidence, while another critiques
+whether the evidence satisfies the stated rubric. This separation aligns
+with work on reasoning-and-acting agents, self-correction,
+deep-research workflows, tool use, and skill composition.\textsuperscript{32,33,39-43}
+Most existing scientific agents, however, focus on question answering,
+extraction, hypothesis generation, or tool-assisted discovery.\textsuperscript{24,34-38}
+They do not directly address end-to-end scientific database construction,
+where the literature set, candidate list, evidence criteria, and release
+decision are all driven by a user-defined database scope.
 
-Here we present DB-Curator, an agentic system designed specifically for
-scientific database construction. Its distinctive feature is the coupling
-of dynamic, user-conditioned literature construction with predicate-state
-verification. The initial user request determines broad searches,
-inspected search results seed new queries, candidate identities trigger
-entity-specific retrieval, and unresolved rubric predicates determine
-follow-up searches. The clarified user intent is decomposed into rubric
-items, and the agents iteratively update the state of each item from
-cited evidence until the candidate is accepted, excluded by rubric
-criteria, or left evidence-limited. Each output is a structured database
-entry grounded in supporting spans. Relative to prior agentic scientific
-assistants, DB-Curator is designed around entry-level acceptance
-decisions rather than free-form answers, generic retrieval-augmented
-answers, or document-level extraction alone.
+Here we present DB-Curator, a multi-agent system for on-demand scientific
+database construction. DB-Curator converts an open-ended user request
+into a machine-actionable rubric, dynamically constructs the relevant
+literature set, discovers candidate entities, filters them into a
+verification queue, and evaluates each candidate through a
+Researcher--Critique loop. Its central design is predicate-state
+verification. A candidate is accepted only when required rubric predicates
+are supported by cited evidence and no exclusion criterion is triggered.
+The output is not a free-form answer or a list of extracted names. It is
+a provenance-backed database entry that can be inspected, corrected, and
+reused.
 
 \textbf{Results}
 
-\textbf{DB-Curator operationalizes curation as predicate-state
-verification}
+\textbf{DB-Curator couples dynamic literature construction with
+predicate-state verification}
 
-DB-Curator is designed to resolve the central tension in automated
-curation: broad discovery is needed to find candidate compounds, but
-release-quality database entries require strict evidence fidelity. The
-system addresses this tension by treating each candidate compound as an
-evidence contract rather than as a generation target. Figure 1 summarizes
-the four operational stages: intent refinement into a topic rubric,
-dynamic literature construction and entity discovery, candidate
-pre-ranking, and entry-wise Researcher--Critique verification. The key
-methodological objects are the evolving literature set and the predicate
-state of each candidate. Required predicates must be supported by cited
-paper context, exclusion criteria must not be triggered, and unresolved
-predicates drive targeted follow-up retrieval or remain evidence-limited.
+DB-Curator addresses a central bottleneck in scientific database
+construction. A useful system must find candidate entities, decide
+whether each candidate satisfies a user-defined scope, and release each
+accepted row with traceable evidence. The key design is the coupling of
+two processes that are usually separated. First, DB-Curator builds a
+run-specific literature set from the user request, inspected search
+results, candidate identities, and critique-triggered follow-up searches.
+Second, it verifies each candidate through an explicit predicate state.
+Required criteria must be supported, exclusion criteria must not be
+triggered, and unresolved criteria either direct further evidence search
+or remain evidence-limited.
+
+Figure 1 summarizes this workflow. DB-Curator first refines the user
+request into a topic definition and verification rubric. It then performs
+broad literature harvesting and candidate discovery, filters extracted
+entities into a smaller verification queue, and applies a
+Researcher--Critique loop to make entry-wise release decisions. This
+architecture turns database construction into an evidence-driven control
+problem. Each candidate moves from a possible entity to an accepted,
+excluded, or evidence-limited database row according to the
+user-defined rubric.
 
 \includegraphics[width=\linewidth]{vertopal_348d7636602e415aacb4c9f4c07d6a38/media/image1.png}
 
-Figure 1 | System architecture and modular workflow. The DB-Curator
-framework orchestrates LLM agents and domain-specific tools via
-LangGraph.\textsuperscript{44} It transforms unstructured research objectives into structured
-databases. The workflow starts with Stage 1, human-in-the-loop intent
-refinement, where a clarification agent iteratively formalizes user
-intent into explicit scientific criteria. Stage 2 performs agentic
-literature mining rather than extraction from a fixed corpus: broad
-queries, inspected search results, seed entities, and later unresolved
-rubric predicates all update the paper set used for curation. Retrieved
-papers are parsed with an OCR-aware extraction stack, using
-OpenDataLoader\textsuperscript{48} as the primary PDF conversion path
-with Docling fallback\textsuperscript{47} when needed, and are then
-processed with HunFlair2 followed by entity normalization. Stage 3
-performs lightweight candidate pre-ranking before downstream review.
-Candidate mention snippets are scored against topic-related query text
-to identify semantically relevant candidates. Only the top-ranked subset
-is forwarded to LLM filtering and downstream verification. Stage 4 runs
-a critique-driven verification loop between a Researcher agent and a
-Critique agent. The Researcher enriches chemicals using PubChem, RDKit,
-and name-to-structure resolution when available and gathers evidence
-with adaptive query refinement and retrieval-augmented reading. The
-Critique agent checks claim--evidence alignment at the rubric-item level
-and requests targeted follow-up retrieval until the required predicates
-are either supported or exhausted.
+Figure 1 | DB-Curator workflow for on-demand scientific database
+construction. DB-Curator converts an open-ended user request into a
+structured, evidence-grounded database through dynamic literature
+construction and predicate-state verification. The system refines user
+intent into an acceptance rubric, builds a run-specific literature set,
+discovers and filters candidate entities, and verifies each candidate
+through a Researcher--Critique loop. Accepted entries are returned with
+source identifiers, supporting spans, and provenance records.
 
-\textbf{Fixed-cohort full-pipeline comparison}
+\textbf{DB-Curator produces release-ready entries and benchmark-missing
+discoveries}
 
-We first asked whether the full DB-Curator workflow produces
-release-ready rows more reliably than direct generation from the same
-topic definition. This comparison is important because a strong LLM can
-often name plausible compounds, but database release also requires
-identity grounding and paper-level provenance. We compared DB-Curator
-against a zero-shot direct-generation baseline across all five
-topic-level human audits. DB-Curator used Gemini 2.5 Flash as the
-Researcher model and GPT-5-mini as the Critique model. The baseline used
-Gemini 2.5 Flash alone, without retrieval tools, compound grounding, or
-critique-loop verification.
+We first asked whether DB-Curator can produce release-ready database rows
+from open-ended topic requests. This comparison is needed because a
+strong zero-shot LLM can often generate plausible compound names.
+Database construction requires more than plausible names. A released row
+must have a valid compound identity, satisfy the topic definition, and
+carry citations that can be traced to supporting primary literature. We
+therefore compared DB-Curator with a zero-shot direct-generation baseline
+across five topic-level audits.
 
-Because curated benchmarks are incomplete for open-ended database
-construction, Figure 2 separates evidence grounding, release readiness,
-and curation effort. A benchmark-overlap row is a generated candidate
-whose normalized identity matches a benchmark entry. A release-accepted
-row is either a benchmark-overlap row or a non-overlap row judged true by
-manual inspection. Quote/context support means that the cited paper
-contains either the extracted evidence span or local context with the
-same support meaning. Figure 2A reports citation existence and
-quote/context support before the name-level analysis because evidence
-grounding is the release bottleneck. After excluding compound-database
-lookup records, 2166/2166 cited primary-paper references from DB-Curator
-resolved to real papers and 2166/2166 contained the quoted span or
-equivalent local context. By contrast, the zero-shot direct-generation
-baseline produced many plausible rows but only 11/257 claimed references
-resolved to papers with usable content support.
+A row that matched an existing benchmark entry by normalized identity was
+counted as a benchmark-overlap row. A non-overlap row was manually
+inspected against the user-defined topic scope. It was counted as
+release-ready only when the compound identity and supporting evidence
+satisfied the topic definition. Citation support was audited at the
+cited-paper level. A primary-paper reference was counted as supported
+only when the recovered paper contained the quoted evidence span or
+equivalent local context.
 
-Figure 2B shows why benchmark overlap alone underestimates useful
-curation and why human review should focus on the non-overlap remainder. Across the five fixed cohorts, DB-Curator produced 246/250
-release-accepted rows, comprising 178 benchmark-overlap rows and 68
-non-overlap rows judged true by human inspection. These 68 rows are the
-important out-of-benchmark discoveries: they were not recovered by
-benchmark matching, but the compound identity and supporting evidence
-were accepted by human experts. The four remaining DB-Curator rows were
-non-overlap errors, including false compound assignments or out-of-scope
-precursors. Figure 2C shows that this reliability came from a selective
-candidate funnel: depending on the topic, DB-Curator evaluated 52--124
-compounds to obtain each final 50-row accepted cohort. Figure 2D then evaluates the same release requirement at the entry level. All DB-Curator rows had real-paper support, whereas only a small
-fraction of zero-shot baseline rows had any resolvable reference trail. Together, these panels show that
-DB-Curator is not merely reproducing familiar benchmark entries. It
-recovers known compounds, surfaces literature-buried valid compounds
-outside the benchmark, and attaches auditable provenance to both.
+DB-Curator produced 246/250 release-ready rows across the five fixed
+cohorts. These included 178 benchmark-overlap rows and 68 non-overlap
+rows judged valid by human experts. The non-overlap rows are important
+because they show that DB-Curator is not simply reproducing existing
+benchmark lists. It can surface literature-supported compounds that are
+missing from the benchmark but still satisfy the requested database
+scope. Only four DB-Curator rows were rejected after manual inspection,
+mainly because of false compound assignments or out-of-scope
+precursor/product roles.
 
-The zero-shot Gemini 2.5 Flash baseline showed why name-level success is
-not enough for database construction. Under the same overlap-first and
-manual-inspection rule, 249/250 generated names were release-accepted,
-including 170 benchmark-overlap rows and 79 non-overlap rows judged true.
-However, the citation trail was weak: the baseline claimed 257
-references, but only 11/257 could be resolved as real papers and at most
-11/257 contained candidate-relevant evidence under the same
-quote/context-support criterion. Its mean existing-reference depth was
-only 0--0.10 references per row depending on topic. Thus the main
-difference was not whether a model could mention
-familiar compounds, but whether it could construct auditable,
-topic-specific, literature-grounded database entries.
+The evidence audit showed a larger separation between DB-Curator and the
+zero-shot baseline. All 2,166 cited primary-paper references from
+DB-Curator resolved to real papers and contained the quoted evidence span
+or equivalent local context. In contrast, the zero-shot baseline produced
+many acceptable names under the same overlap-first and manual-inspection
+rule, but its citation trail was weak. Only 11/257 claimed references
+could be resolved to real papers with candidate-relevant evidence. Thus,
+the main advantage of DB-Curator is not name generation alone. It
+converts generated candidates into auditable database entries with
+primary-literature support.
+
+The candidate funnel also remained selective. Depending on the topic,
+DB-Curator evaluated 52--124 compounds to obtain each final 50-row
+accepted cohort. This indicates that the system does not release every
+extracted or generated entity. Instead, it filters candidates through
+topic relevance, compound grounding, and evidence verification before
+release. Together, these results show that DB-Curator improves
+discovery-oriented database construction in two ways. It recovers
+benchmark entries with traceable evidence and identifies valid
+out-of-benchmark entries that benchmark matching alone would miss.
 
 \includegraphics[width=\linewidth]{generated_figs/section1_plan_aligned_human_labels.png}
 
-Figure 2 \textbar{} Evidence grounding, rather than name generation,
-limits release-ready database construction.
+Figure 2 | Evidence grounding, rather than name generation, limits
+release-ready database construction. A, Reference audit at the
+cited-paper level, measuring both paper existence and whether the quoted
+evidence span or equivalent local context was found in the paper. B,
+Topic-wise name-level release check across the five 50-row cohorts. Within
+each topic, the left stacked bar is DB-Curator and the right stacked bar
+is the zero-shot baseline, partitioned into benchmark-overlap,
+no-overlap true, and false rows. C, Number of per-compound evaluations
+required to obtain 50 accepted DB-Curator rows in each topic. D,
+Entry-level fraction of rows with any real-paper support.
 
-A, Reference audit at the cited-paper level, measuring both paper
-existence and whether the quoted evidence span or equivalent local
-context was found in the paper. B, Topic-wise name-level release check across the five 50-row cohorts:
-within each topic, the left stacked bar is DB-Curator and the right
-stacked bar is the zero-shot baseline, partitioned into
-benchmark-overlap, no-overlap true, and false rows.
-C, Number of per-compound evaluations required to obtain 50 accepted
-DB-Curator rows in each topic. D, Entry-level fraction of rows with any
-real-paper support.
+\textbf{Benchmark-scale verification across five chemical domains}
 
-\textbf{Verification Loop Benchmarking and Analysis}
+We next tested whether DB-Curator can verify a large supplied candidate
+set under explicit topic definitions. This setting differs from the
+release-readiness evaluation. The release-readiness audit asks whether
+generated rows are suitable for database release, including
+benchmark-missing discoveries. The benchmark-scale analysis asks whether
+supplied candidate compounds can be confirmed with direct evidence under
+the user-defined rubric.
 
-We next evaluated benchmark-scale verification across five source
-domains: DBPs from a systematic DBP curation resource,\textsuperscript{3}
-blood exposome chemicals from the Blood Exposome Database,\textsuperscript{2}
-drugs from DrugBank,\textsuperscript{6} human endogenous metabolites
-from HMDB,\textsuperscript{1} and microbial natural products from the
-Natural Products Atlas.\textsuperscript{52} The DBP benchmark contained
-687 candidate rows. For each of the other four domains, 300 cases were
-randomly chosen from the corresponding source database. In Figure 3B,
-only Confirmed rows are counted as database-ready positive entries. Suspected, Explicit Negative Evidence,
-and Insufficient Direct Evidence are grouped as not confirmed for this
-positive-entry analysis because they do not provide direct positive
-support for database inclusion.
+The analysis covered five domains: DBPs from a systematic DBP curation
+resource,\textsuperscript{3} blood exposome chemicals from the Blood
+Exposome Database,\textsuperscript{2} drugs from DrugBank,\textsuperscript{6}
+human endogenous metabolites from HMDB,\textsuperscript{1} and microbial
+natural products from the Natural Products Atlas.\textsuperscript{52} The
+DBP benchmark contained 687 candidate rows. For each of the other four
+domains, 300 cases were randomly chosen from the corresponding source
+database. In Figure 3B, only Confirmed rows are counted as
+database-ready positive entries. Suspected, Explicit Negative Evidence,
+and Insufficient Direct Evidence are grouped as not confirmed because
+they do not provide direct positive support for inclusion.
 
 Figure 3A shows the final DB-Curator outcome composition, separating
 Confirmed rows from entries that remained below the direct positive
-evidence standard. Figure 3B shows that the final DB-Curator labels are
-strongly domain-dependent. DB-Curator assigned Confirmed labels to 321/687 DBPs, 86/300 blood
-exposome chemicals, 210/300 drugs, 123/300 endogenous metabolites, and
-237/300 microbial natural products. The zero-shot Gemini 2.5 Flash
-benchmark-labeling baseline assigned Confirmed labels to fewer cases
-under the same topic definitions: 137/687 DBPs, 5/300 blood exposome
-chemicals, 120/300 drugs, 69/300 endogenous metabolites, and 44/300
-microbial natural products. Figure 3C then asks whether the cited evidence can support these
-decisions. It reports content-supported reference counts rather than
-another near-binary fraction. DB-Curator cited 7,453 paper references in this benchmark-scale
-analysis. Of these, 7,433/7,453 resolved to real papers
-and 7,430/7,453 contained the quoted evidence span or equivalent local
-context. This audit resolves cited items to papers and then checks available or
-recovered text for the quoted span or equivalent local context.
-Compound-database identity pages are not counted as primary papers. The matched zero-shot citation-support baseline produced a
-different failure mode from the fixed-cohort direct-generation baseline.
-In a permissive metadata-resolution audit, many claimed identifiers
-resolved to some bibliographic record, but title and context checks
-showed that this was not sufficient evidence support. Under the stricter
-benchmark-labeling citation audit used in Figure 3C, the zero-shot baseline
-produced 2,291 claimed references. Only 23/2,291 resolved to title- and
-identifier-compatible papers, and only 6/2,291 had candidate- and
-evidence-context support. This shows that the
+evidence standard. Figure 3B shows that the final labels were strongly
+domain-dependent. DB-Curator assigned Confirmed labels to 321/687 DBPs,
+86/300 blood exposome chemicals, 210/300 drugs, 123/300 endogenous
+metabolites, and 237/300 microbial natural products. The zero-shot
+Gemini 2.5 Flash benchmark-labeling baseline assigned Confirmed labels
+to fewer cases under the same topic definitions: 137/687 DBPs, 5/300
+blood exposome chemicals, 120/300 drugs, 69/300 endogenous metabolites,
+and 44/300 microbial natural products.
+
+Figure 3C asks whether the cited evidence can support these decisions.
+DB-Curator cited 7,453 paper references in this benchmark-scale analysis.
+Of these, 7,433/7,453 resolved to real papers and 7,430/7,453 contained
+the quoted evidence span or equivalent local context. The matched
+zero-shot citation-support baseline produced a different failure mode
+from the direct-generation baseline. In a permissive metadata-resolution
+audit, many claimed identifiers resolved to some bibliographic record.
+Title and context checks showed that this was not sufficient evidence
+support. Under the stricter benchmark-labeling citation audit used in
+Figure 3C, the zero-shot baseline produced 2,291 claimed references. Only
+23/2,291 resolved to title- and identifier-compatible papers, and only
+6/2,291 had candidate- and evidence-context support. This shows that the
 benchmark-labeling task is not just name recognition or citation
 plausibility. Evidence retrieval and quote-grounded verification are
 needed to apply topic-specific database criteria.
 
 Figure 3D uses human verification for a different question. It audits
-the rows that DB-Curator resolved as Confirmed or Explicit Negative
-Evidence and asks whether the decision is aligned with the user-defined
-topic scope. This matters because a benchmark entry is not automatically
-inside the narrower user definition used for a particular run. For
-example, a legacy benchmark may include compounds under broader database
-conventions, whereas DB-Curator is asked to apply the explicit topic
-definition and rubric supplied for this study. Across 1091 audited
-Confirmed or Explicit Negative Evidence rows, 1085 were judged real,
-topic-aligned outcomes. Thus, negative labels on benchmark compounds are
-not necessarily system mistakes; they often indicate that the supplied
-compound did not satisfy the stricter user topic definition. The full
-topic definitions and rubric criteria are provided in the Supplementary
-Information.
+rows that DB-Curator resolved as Confirmed or Explicit Negative Evidence
+and asks whether the decision aligned with the user-defined topic scope.
+This matters because a benchmark entry is not automatically inside the
+narrower user definition used for a particular run. A legacy benchmark
+may include compounds under broader database conventions, whereas
+DB-Curator applies the explicit topic definition and rubric supplied for
+this study. Across 1,091 audited Confirmed or Explicit Negative Evidence
+rows, 1,085 were judged real, topic-aligned outcomes. Negative labels on
+benchmark compounds are therefore not necessarily system mistakes. They
+often indicate that the supplied compound did not satisfy the stricter
+user topic definition. The full topic definitions and rubric criteria are
+provided in the Supplementary Information.
 
 \includegraphics[width=\linewidth]{generated_figs/section24_five_topic_overview.png}
 
-Figure 3 \textbar{} Benchmark-scale verification, zero-shot baseline,
-and evidence grounding across five chemical domains.
-
-A, DB-Curator benchmark-scale outcome counts, separating Confirmed rows
-from rows that remained below the direct positive evidence standard. B,
-Confirmed fractions assigned by DB-Curator and by the zero-shot
-baseline under the same topic definitions. C, Topic-wise content-supported
-reference counts for DB-Curator and the matched zero-shot citation-support
-baseline, shown on a logarithmic scale. D, Human analysis of rows resolved as Confirmed or Explicit Negative
+Figure 3 | Benchmark-scale verification, zero-shot baseline, and evidence
+grounding across five chemical domains. A, DB-Curator benchmark-scale
+outcome counts, separating Confirmed rows from rows that remained below
+the direct positive evidence standard. B, Confirmed fractions assigned by
+DB-Curator and by the zero-shot baseline under the same topic definitions.
+C, Topic-wise content-supported reference counts for DB-Curator and the
+matched zero-shot citation-support baseline, shown on a logarithmic scale.
+D, Human analysis of rows resolved as Confirmed or Explicit Negative
 Evidence. Counts report how many audited rows were real, topic-aligned
 outcomes under the user definition.
 
-\textbf{Rubric Discrimination and Agent Routing}
+\textbf{Rubric discrimination and agent routing}
 
 We then asked which rubric gates separate accepted compounds from rows
 that remain below the direct-evidence threshold. For each topic, we
 computed overall criterion pass rates and the number of criteria passed
-by each row. Figure 4 expands the
-rubric analysis across all five topics rather than collapsing the
-criteria into one global score. DBP confirmation is driven by direct formation,
-precursor identification, and drinking-water relevance. Blood exposome
-confirmation is driven by evidence for human blood or systemic
-circulation. Drug confirmation is controlled by drug-entity and
-formulation-exclusion criteria. Endogenous-metabolite confirmation is
-driven by human production, function, and exclusion of solely exogenous
-or microbiota-only explanations. Microbial-natural-product confirmation
-depends on analytical evidence, unambiguous structural assignment, and
-microbial origin. The left column reports how often each rubric gate is
-passed across the evaluated rows, with overlaid green and red markers
-showing the corresponding pass rates in Confirmed and non-Confirmed
-rows. The right column summarizes whether rows accumulate enough solved
-criteria to support database-ready decisions.
-Together these panels make the predicate logic auditable. DB-Curator is
-not applying a single global confidence score; it is routing each topic
-through the gates that define database readiness for that scientific
-context. The result is an interpretable failure profile: unresolved DBP
-rows are often missing direct formation evidence, blood exposome rows are
-often limited by specimen-context evidence, and microbial-natural-product
-rows depend strongly on structural and origin support.
+by each row. Figure 4 expands the rubric analysis across all five topics
+rather than collapsing the criteria into one global score. DBP
+confirmation is driven by direct formation, precursor identification,
+and drinking-water relevance. Blood exposome confirmation is driven by
+evidence for human blood or systemic circulation. Drug confirmation is
+controlled by drug-entity and formulation-exclusion criteria.
+Endogenous-metabolite confirmation is driven by human production,
+function, and exclusion of solely exogenous or microbiota-only
+explanations. Microbial-natural-product confirmation depends on
+analytical evidence, unambiguous structural assignment, and microbial
+origin.
+
+The left column of Figure 4 reports how often each rubric gate is passed
+across evaluated rows. Green and red markers show the corresponding pass
+rates in Confirmed and non-Confirmed rows. The right column summarizes
+whether rows accumulate enough solved criteria to support database-ready
+decisions. Together, these panels make the predicate logic auditable.
+DB-Curator is not applying a single global confidence score. It routes
+each topic through the gates that define database readiness for that
+scientific context. The resulting failure profiles are also informative.
+Unresolved DBP rows are often missing direct formation evidence, blood
+exposome rows are often limited by specimen-context evidence, and
+microbial-natural-product rows depend strongly on structural and origin
+support.
 
 \clearpage
 
@@ -451,100 +428,92 @@ rows depend strongly on structural and origin support.
 \includegraphics[width=1.12\linewidth]{generated_figs/section24_evidence_depth.png}}
 \end{center}
 
-Figure 4 \textbar{} Topic-specific predicate gates discriminate accepted
-entries from evidence-limited outcomes.
-
-A--J, Rubric diagnostics across the five benchmark topics. For each
-topic, the left panel reports overall pass rates for the topic-specific
-rubric gates, with green and red markers indicating pass rates among
-Confirmed and non-Confirmed rows, respectively. The right panel shows
-the distribution of how many criteria were passed by rows assigned to
-each final label. The panels show that database-ready outcomes are
-separated by topic-specific predicate gates and structured failure
-patterns rather than a single global score.
+Figure 4 | Topic-specific predicate gates discriminate accepted entries
+from evidence-limited outcomes. A--J, Rubric diagnostics across the five
+benchmark topics. For each topic, the left panel reports overall pass
+rates for topic-specific rubric gates, with green and red markers
+indicating pass rates among Confirmed and non-Confirmed rows. The right
+panel shows the distribution of how many criteria were passed by rows
+assigned to each final label. The panels show that database-ready
+outcomes are separated by topic-specific predicate gates and structured
+failure patterns rather than a single global score.
 
 \clearpage
 
-\textbf{Iterative Retrieval and Critique-Agent Utility}
+\textbf{Iterative retrieval and Critique-agent utility}
 
 Finally, we isolated the role of retrieval mode and iterative critique.
 The comparisons separate direct generation, topic-definition labeling,
 researcher-only pre-critique behavior, the full Researcher--Critique
 loop, and retrieval-source breadth. Direct zero-shot generation produced
 plausible names but only 11/257 resolvable references. Zero-shot
-benchmark labeling assigned Confirmed labels to 375/1,887 candidates
-but yielded only 6/2,291 content-supported references under the same
-strict citation-support audit used for Figure 3C. In contrast, the
-full Researcher--Critique loop assigned Confirmed labels to 977/1,887
+benchmark labeling assigned Confirmed labels to 375/1,887 candidates but
+yielded only 6/2,291 content-supported references under the strict
+citation-support audit used for Figure 3C. In contrast, the full
+Researcher--Critique loop assigned Confirmed labels to 977/1,887
 candidates with 7,430/7,453 quote/context-supported references.
+
 Figure 5A treats the first researcher claim as a researcher-only
-pre-critique state and compares it with the final critique-loop
-decision. Across 1,887 benchmark rows, the first researcher state
-assigned Confirmed labels to 933 rows, whereas the final loop assigned
-Confirmed labels to 977 rows. The loop
-rescued 49 rows to Confirmed and tightened 5 initially Confirmed rows
-away from Confirmed. Figure 5B evaluates these 54 confirmation-changing
-revisions against human inspection and shows both topic-wise counts and
-the pooled 51/54 right-label result. The 49 rescued-to-Confirmed cases
-were all judged right by human inspection. Among the five tightened-away
-cases, two became acceptable concrete negative labels, whereas
-Harmaline, 3-Hexanone, and 6-Succinoaminopurine were over-tightened to
-Suspected despite human inspection supporting a topic-acceptable final
-label.
+pre-critique state and compares it with the final critique-loop decision.
+Across 1,887 benchmark rows, the first researcher state assigned
+Confirmed labels to 933 rows, whereas the final loop assigned Confirmed
+labels to 977 rows. The loop rescued 49 rows to Confirmed and tightened
+five initially Confirmed rows away from Confirmed. Figure 5B evaluates
+these 54 confirmation-changing revisions against human inspection. It
+shows both topic-wise counts and the pooled 51/54 right-label result.
+The 49 rescued-to-Confirmed cases were all judged right by human
+inspection. Among the five tightened-away cases, two became acceptable
+concrete negative labels. Harmaline, 3-Hexanone, and
+6-Succinoaminopurine were over-tightened to Suspected despite human
+inspection supporting a topic-acceptable final label.
 
 Figure 5C shows that retrieval mode also changes the outcome. In a
 50-case mode ablation, hybrid retrieval confirmed 16/50 cases compared
-with 12/50 for offline-only retrieval, indicating that web and local
-evidence sources are complementary rather than redundant. Hybrid
-retrieval required more compute, with median runtime increasing from
-109 s to 555 s and median token use increasing from 51,024 to 77,343
-tokens. Figure 5D shows why the additional compute can matter.
-Changed-claim rows required more researcher calls than stable rows
-(5.28 versus 2.84 on average), more critique calls (2.00 versus 1.27),
-and more supporting sources (6.40 versus 4.23), all shown directly in
-Figure 5D. These dynamics support
-the intended role of the Critique agent. As evidence accumulates, the
-system can revise a provisional claim rather than stopping at the first
-plausible answer.
+with 12/50 for offline-only retrieval. Web and local evidence sources
+therefore contributed complementary evidence. Hybrid retrieval required
+more compute, with median runtime increasing from 109 s to 555 s and
+median token use increasing from 51,024 to 77,343 tokens. Figure 5D shows
+why additional evidence search can matter. Changed-claim rows required
+more researcher calls than stable rows (5.28 versus 2.84 on average),
+more critique calls (2.00 versus 1.27), and more supporting sources
+(6.40 versus 4.23). These dynamics support the intended role of the
+Critique agent. As evidence accumulates, the system can revise a
+provisional claim rather than stopping at the first plausible answer.
 
 \includegraphics[width=\linewidth]{generated_figs/section24_iterative_research_importance.png}
 
-Figure 5 \textbar{} Iterative retrieval and critique-agent utility.
+Figure 5 | Iterative retrieval and critique-agent utility. A, Initial
+researcher claims versus final critique-loop decisions by topic. The left
+bar is the first researcher claim and the right bar is the final
+critique-loop decision. B, Human audit of confirmation-changing claim
+revisions, with topic-wise bars and a pooled All bar separating rescued
+Confirmed labels, true negative labels, and over-tightened outcomes. C,
+Offline-only versus hybrid retrieval in a 50-case mode ablation, jointly
+showing confirmation yield and median runtime. D, Mean exact researcher
+invocations, critique invocations, and supporting-source depth for rows
+whose claim stayed stable versus rows whose claim changed during the
+loop.
 
-A, Initial researcher claims versus final critique-loop decisions by
-topic; the left bar is the first researcher claim and the right bar is
-the final critique-loop decision. B, Human audit of confirmation-changing
-claim revisions, with topic-wise bars and a pooled All bar separating
-rescued Confirmed labels, true negative labels, and over-tightened
-outcomes. C,
-Offline-only versus hybrid
-retrieval in a 50-case mode ablation, jointly showing confirmation yield
-and median runtime. D, Mean exact researcher invocations, critique
-invocations, and supporting-source depth for rows whose claim stayed
-stable versus rows whose claim changed during the loop.
-
-\textbf{Operational Cost and Routing Behavior}
+\textbf{Operational cost and routing behavior}
 
 We also quantified operational cost because database construction must
-scale beyond small demonstration sets. The cost profile shows a consistent
-pattern: straightforward Confirmed entries usually terminate after
-shorter evidence paths, whereas evidence-limited and suspected entries
-consume more tokens and time because the system continues searching until
-the relevant rubric gap is resolved or exhausted. Runtime closely follows
-token use across topics, making token budget a practical proxy for
-operational cost. Topic-dependent runtime variation reflects differences
-in literature accessibility and rubric specificity, while rubric-score
-distributions show that aggregate scores are useful diagnostics but do
-not replace predicate-level adjudication.
+scale beyond small demonstration sets. The cost profile showed a
+consistent pattern. Straightforward Confirmed entries usually terminated
+after shorter evidence paths, whereas evidence-limited and suspected
+entries consumed more tokens and time. The system continued searching
+until the relevant rubric gap was resolved or exhausted. Runtime closely
+followed token use across topics, making token budget a practical proxy
+for operational cost. Topic-dependent runtime variation reflected
+differences in literature accessibility and rubric specificity. Rubric
+score distributions were useful diagnostics, but they did not replace
+predicate-level adjudication.
 
 \includegraphics[width=\linewidth]{generated_figs/section24_operational_efficiency.png}
 
-Figure 6 \textbar{} Operational cost and routing behavior across five
-chemical domains.
-
-A, Smoothed token-use density by final decision, showing heavy-tailed
-resource allocation. B, Per-row token use versus runtime by topic,
-showing the close coupling between compute and elapsed time on
+Figure 6 | Operational cost and routing behavior across five chemical
+domains. A, Smoothed token-use density by final decision, showing
+heavy-tailed resource allocation. B, Per-row token use versus runtime by
+topic, showing the close coupling between compute and elapsed time on
 logarithmic axes. C, Runtime distributions by topic. D, Overall
 rubric-score distribution by final verdict. In this operational plot,
 ``Insufficient direct evidence'' denotes rows that remained below the
@@ -556,12 +525,13 @@ DB-Curator demonstrates that scientific database construction can be
 formulated as dynamic literature construction plus predicate-state
 verification. This framing differs from classical chemical information
 extraction, where the main objective is to detect and normalize entities
-from a fixed corpus.\textsuperscript{13-18,34} It also differs from standard RAG, where retrieved context is usually
-used to generate an answer. Here, retrieved evidence changes the state of each candidate
+from a fixed corpus.\textsuperscript{13-18,34} It also differs from
+standard RAG, where retrieved context is usually used to generate an
+answer. Here, retrieved evidence changes the state of each candidate
 entry. A candidate can become Confirmed, remain evidence-limited, or be
 excluded when the retrieved context violates the user-defined rubric.
 
-The closest methodological neighbors are scientific claim verification,
+The closest methodological neighbours are scientific claim verification,
 agentic reasoning systems, and tool-using scientific assistants.
 Claim-verification benchmarks emphasize evidence retrieval and rationale
 selection.\textsuperscript{28-31} ReAct, Reflexion, and deep-research
@@ -572,8 +542,8 @@ composition.\textsuperscript{41-43} Chemistry-focused systems have shown
 that LLMs and external tools can support molecular reasoning, extraction,
 and scientific discovery.\textsuperscript{34-38} DB-Curator advances this
 line of work by organizing those capabilities around database-entry
-acceptance. The output is not a free-form answer or extracted mention. It is a
-structured row whose inclusion criteria, identity grounding, and
+acceptance. The output is not a free-form answer or extracted mention. It
+is a structured row whose inclusion criteria, identity grounding, and
 supporting spans can be audited.
 
 The fixed-cohort results show why this distinction matters. The
@@ -589,17 +559,17 @@ chemicals, drugs, endogenous metabolites, and microbial natural products.
 The domain-dependent Confirmed rates are expected because each topic has
 different evidence requirements and different literature coverage.
 
-The rubric is central to this behavior. Instead of relying on an implicit
-model confidence score, DB-Curator converts the user specification into
-mandatory and exclusionary predicates. The Critique agent then audits
-claim--evidence alignment at the predicate level. This makes the stopping
-condition explicit: the loop stops when required evidence is found, when
-the candidate violates the rubric, or when the available evidence remains
-insufficient within the search budget. This structure reduces the risk
-that plausible but unsupported statements are promoted to database facts.
-It also makes human review easier, because reviewers inspect candidate
-identity, the rubric decision, and cited paper evidence rather than an
-unstructured generated answer.
+The rubric is central to this behaviour. Instead of relying on an
+implicit model confidence score, DB-Curator converts the user
+specification into mandatory and exclusionary predicates. The Critique
+agent then audits claim--evidence alignment at the predicate level. This
+makes the stopping condition explicit. The loop stops when required
+evidence is found, when the candidate violates the rubric, or when the
+available evidence remains insufficient within the search budget. This
+structure reduces the risk that plausible but unsupported statements are
+promoted to database facts. It also makes human review easier because
+reviewers inspect candidate identity, rubric decisions, and cited paper
+evidence rather than an unstructured generated answer.
 
 The system still has limitations. First, DB-Curator prioritizes text and
 table evidence. Multimodal extraction from figures and supplementary
@@ -632,6 +602,7 @@ Overall, DB-Curator provides a pathway from on-demand literature retrieval
 to curated, machine-actionable databases with explicit scope
 specification, structured evaluation rubrics, multi-agent verification,
 and auditable provenance.
+
 
 \textbf{Methods}
 
@@ -1038,26 +1009,19 @@ overlap analyses are released with the manuscript repository.
 \textbf{Code availability}
 
 The source code for DB-Curator is released publicly on GitHub under
-CZhao97/db\_form\_agent\_system. The repository includes the multi-agent
-orchestration pipeline implemented with LangGraph, hybrid retrieval
-components, chemical NER tools with HunFlair2 integration, verification
-logic for the dual-agent loop, and comprehensive provenance logging.
-Key files include \texttt{code/agent\_graph\_v2.py} for graph
-orchestration, \texttt{code/prompt\_payloads.py} for structured rubric
-generation and evaluation criteria creation,
+CZhao97/db-curator. The repository includes the multi-agent orchestration
+pipeline implemented with LangGraph, hybrid retrieval components,
+chemical NER tools with HunFlair2 integration, predicate-level
+verification logic, and provenance logging. Key files include
+\texttt{code/agent\_graph\_v2.py} for graph orchestration,
+\texttt{code/prompt\_payloads.py} for structured rubric generation,
 \texttt{code/candidate\_ranking.py} for semantic relevance filtering,
 \texttt{code/searching\_tool.py} for hybrid retrieval over online APIs
-and the offline corpus, and
-\texttt{manuscript/evaluation\_plan/} for the
-human-labeled evaluation, overlap, citation-audit, and figure-generation
-scripts. The repository also includes reproducible
-experiment scripts, configuration files for all five evaluation topics
-(DBP, blood exposome, drug compounds, microbial natural products, and
-human endogenous metabolites),
-instructions for downloading the Zenodo dataset, and complete
-environment specifications including dependency versions and model
-identifiers (Python 3.9+, LangGraph 0.x, sentence-transformers 2.x, and
-HunFlair2).
+and the offline corpus, and \texttt{manuscript/scripts/} for evaluation
+and figure-generation workflows. The repository also includes prompts,
+configuration files for all five evaluation topics, environment
+specifications, and a browser/backend demo for inspecting toy and
+precomputed mini-runs.
 
 \textbf{Acknowledgements}
 
