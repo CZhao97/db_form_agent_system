@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import json
+import os
 import shutil
 import sys
 import textwrap
@@ -29,10 +30,11 @@ except Exception:
 #   5. Keep output filenames unchanged so the current LaTeX links still work.
 # ----------------------------------------------------------------------------
 
-ROOT = Path("/home/chen/GNPS_SIM/agent/db_form_agent_system")
-FIG_DIR = ROOT / "manuscript" / "figures"
-LATEX_FIG_DIR = ROOT / "manuscript" / "latex" / "generated_figs"
-EVAL_DIR = ROOT / "manuscript" / "evaluation_plan"
+PUBLIC_ROOT = Path(__file__).resolve().parents[2]
+DATA_ROOT = Path(os.environ.get("DBCURATOR_DATA_ROOT", "/home/chen/GNPS_SIM/agent/db_form_agent_system"))
+FIG_DIR = PUBLIC_ROOT / "manuscript" / "figures"
+LATEX_FIG_DIR = PUBLIC_ROOT / "manuscript" / "latex" / "generated_figs"
+EVAL_DIR = DATA_ROOT / "manuscript" / "evaluation_plan"
 sys.path.insert(0, str(EVAL_DIR))
 
 TOPIC_ORDER = [
@@ -101,6 +103,7 @@ plt.rcParams.update({
     "savefig.transparent": False,
     "pdf.fonttype": 42,
     "ps.fonttype": 42,
+    "svg.fonttype": "none",
 })
 
 
@@ -114,6 +117,7 @@ def ensure_dirs() -> None:
 def save(fig: plt.Figure, stem: str) -> None:
     png = FIG_DIR / f"{stem}.png"
     pdf = FIG_DIR / f"{stem}.pdf"
+    svg = FIG_DIR / f"{stem}.svg"
 
     fig.savefig(
         png,
@@ -128,9 +132,16 @@ def save(fig: plt.Figure, stem: str) -> None:
         pad_inches=0.02,
         facecolor="white",
     )
+    fig.savefig(
+        svg,
+        bbox_inches="tight",
+        pad_inches=0.02,
+        facecolor="white",
+    )
 
+    # LaTeX uses PNG for predictable compilation; manuscript/figures keeps
+    # the editable PDF/SVG exports for journal production.
     shutil.copy2(png, LATEX_FIG_DIR / png.name)
-    shutil.copy2(pdf, LATEX_FIG_DIR / pdf.name)
     plt.close(fig)
     print("wrote", png)
 
@@ -168,15 +179,9 @@ def panel(ax, letter: str) -> None:
 
 
 def add_suptitle(fig, text: str) -> None:
-    fig.suptitle(
-        text,
-        x=0.02,
-        y=0.976,
-        ha="left",
-        fontsize=7.6,
-        fontweight="bold",
-        color=COL["ink"],
-    )
+    # Main figure titles are carried by LaTeX captions. Keeping the plot area
+    # title-free improves readability after journal resizing.
+    return None
 
 
 def inline_key(
@@ -636,7 +641,7 @@ def figure1_architecture() -> None:
 
 def figure2_fixed_cohort() -> None:
     summary = pd.read_csv(
-        ROOT / "manuscript" / "sec_1_result" / "section1_nmi_plan_source_data.csv"
+        DATA_ROOT / "manuscript" / "sec_1_result" / "section1_nmi_plan_source_data.csv"
     )
 
     order = [
@@ -910,10 +915,10 @@ def figure2_fixed_cohort() -> None:
 
 def figure3_benchmark_scale() -> None:
     summary = pd.read_csv(
-        ROOT / "manuscript" / "all_labeled" / "section24_summary.csv"
+        DATA_ROOT / "manuscript" / "all_labeled" / "section24_summary.csv"
     ).fillna(0)
     llm = pd.read_csv(
-        ROOT
+        DATA_ROOT
         / "manuscript"
         / "all_labeled"
         / "llm_benchmark_labeling_20260429"
@@ -921,10 +926,10 @@ def figure3_benchmark_scale() -> None:
         / "llm_benchmark_labeling_summary.csv"
     ).fillna(0)
     evidence = pd.read_csv(
-        ROOT / "manuscript" / "all_labeled" / "section24_evidence_paper_quote_audit.csv"
+        DATA_ROOT / "manuscript" / "all_labeled" / "section24_evidence_paper_quote_audit.csv"
     ).fillna(0)
     llm_cit = pd.read_csv(
-        ROOT
+        DATA_ROOT
         / "manuscript"
         / "all_labeled"
         / "llm_benchmark_citation_support_strict_20260430"
@@ -932,7 +937,7 @@ def figure3_benchmark_scale() -> None:
         / "llm_benchmark_citation_support_summary.csv"
     ).fillna(0)
     scope = pd.read_csv(
-        ROOT / "manuscript" / "all_labeled" / "section24_scope_alignment.csv"
+        DATA_ROOT / "manuscript" / "all_labeled" / "section24_scope_alignment.csv"
     ).fillna(0)
 
     summary = summary.set_index("topic").loc[TOPIC_ORDER].reset_index()
@@ -1353,7 +1358,7 @@ def figure4_rubric_full_discrimination() -> None:
     df = ext.load_all().copy()
     rubric = ext.rubric_discriminative_power(df).dropna(subset=["delta"]).copy()
     rubric.to_csv(
-        ROOT / "manuscript" / "all_labeled" / "section24_rubric_confirmation_probability.csv",
+        DATA_ROOT / "manuscript" / "all_labeled" / "section24_rubric_confirmation_probability.csv",
         index=False,
     )
 
@@ -1459,10 +1464,10 @@ def figure4_rubric_full_discrimination() -> None:
 
 def figure5_iterative() -> None:
     iter_df = pd.read_csv(
-        ROOT / "manuscript" / "all_labeled" / "section24_claim_change_and_calls.csv"
+        DATA_ROOT / "manuscript" / "all_labeled" / "section24_claim_change_and_calls.csv"
     ).fillna(0)
     corr = pd.read_csv(
-        ROOT / "manuscript" / "all_labeled" / "section24_fig6b_change_correctness.csv"
+        DATA_ROOT / "manuscript" / "all_labeled" / "section24_fig6b_change_correctness.csv"
     ).fillna(0)
     mode = pd.read_csv(
         "/data/chen/db_form_agent_system_archive/results/data/comparison_results_offline_vs_hybrid.csv"
@@ -1772,7 +1777,6 @@ def figure5_iterative() -> None:
 
 def main() -> None:
     ensure_dirs()
-    figure1_architecture()
     figure2_fixed_cohort()
     figure3_benchmark_scale()
     figure4_operational_efficiency()

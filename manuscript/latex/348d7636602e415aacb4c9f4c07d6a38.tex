@@ -66,8 +66,8 @@
 
 \begin{document}
 
-\textbf{DB-Curator: on-demand scientific database construction with a
-deep-research multi-agent system}
+\textbf{DB-Curator: deep-research agents for scientific database
+construction}
 
 Chen Zhao\textsuperscript{1,2}, Botao Liu\textsuperscript{1}, Xiaoxiao Li\textsuperscript{2,}*, Tao
 Huan\textsuperscript{1,}*
@@ -120,11 +120,11 @@ benchmark-scale verification over 1,887 supplied candidates, DB-Curator
 assigned Confirmed labels to 977 entries, compared with 375 for the
 zero-shot benchmark-labeling baseline. DB-Curator also supported
 7,430/7,453 cited references, whereas the strict baseline citation audit
-supported only 6/2,291 references. These results show that DB-Curator
-improves both discovery-oriented database release and large-scale
-evidence-grounded verification. They support predicate-grounded,
-critique-driven database construction as a scalable framework for
-scientific curation.
+supported only 6/2,291 references. Together, these results show that
+DB-Curator improves both discovery-oriented database release and
+large-scale evidence-grounded verification. The framework supports
+scalable scientific curation by coupling dynamic literature construction
+with predicate-state verification and entry-level provenance.
 
 \textbf{Main}
 
@@ -202,12 +202,13 @@ decision are all driven by a user-defined database scope.
 
 Here we present DB-Curator, a multi-agent system for on-demand scientific
 database construction. DB-Curator converts an open-ended user request
-into a machine-actionable rubric, dynamically constructs the relevant
-literature set, discovers candidate entities, filters them into a
-verification queue, and evaluates each candidate through a
+into a machine-actionable rubric and dynamically constructs the relevant
+literature set. It then discovers candidate entities, filters them into
+a verification queue, and evaluates each candidate through a
 Researcher--Critique loop. Its central design is predicate-state
-verification. A candidate is accepted only when required rubric predicates
-are supported by cited evidence and no exclusion criterion is triggered.
+verification. A candidate is accepted only when required rubric
+predicates are supported by cited evidence and no exclusion criterion is
+triggered.
 The output is not a free-form answer or a list of extracted names. It is
 a provenance-backed database entry that can be inspected, corrected, and
 reused.
@@ -246,9 +247,10 @@ construction. DB-Curator converts an open-ended user request into a
 structured, evidence-grounded database through dynamic literature
 construction and predicate-state verification. The system refines user
 intent into an acceptance rubric, builds a run-specific literature set,
-discovers and filters candidate entities, and verifies each candidate
-through a Researcher--Critique loop. Accepted entries are returned with
-source identifiers, supporting spans, and provenance records.
+and discovers candidate entities. It then filters candidates into a
+verification queue and verifies each candidate through a
+Researcher--Critique loop. Accepted entries are returned with source
+identifiers, supporting spans, and provenance records.
 
 \textbf{DB-Curator produces release-ready entries and benchmark-missing
 discoveries}
@@ -325,12 +327,12 @@ benchmark-missing discoveries. The benchmark-scale analysis asks whether
 supplied candidate compounds can be confirmed with direct evidence under
 the user-defined rubric.
 
-The analysis covered five domains: DBPs from a systematic DBP curation
-resource,\textsuperscript{3} blood exposome chemicals from the Blood
-Exposome Database,\textsuperscript{2} drugs from DrugBank,\textsuperscript{6}
-human endogenous metabolites from HMDB,\textsuperscript{1} and microbial
-natural products from the Natural Products Atlas.\textsuperscript{52} The
-DBP benchmark contained 687 candidate rows. For each of the other four
+The analysis covered five domains. The DBP set came from a systematic
+DBP curation resource.\textsuperscript{3} The blood exposome, drug,
+endogenous-metabolite and microbial-natural-product sets came from the
+Blood Exposome Database,\textsuperscript{2} DrugBank,\textsuperscript{6}
+HMDB,\textsuperscript{1} and the Natural Products Atlas.\textsuperscript{52}
+The DBP benchmark contained 687 candidate rows. For each of the other four
 domains, 300 cases were randomly chosen from the corresponding source
 database. In Figure 3B, only Confirmed rows are counted as
 database-ready positive entries. Suspected, Explicit Negative Evidence,
@@ -344,9 +346,9 @@ domain-dependent. DB-Curator assigned Confirmed labels to 321/687 DBPs,
 86/300 blood exposome chemicals, 210/300 drugs, 123/300 endogenous
 metabolites, and 237/300 microbial natural products. The zero-shot
 Gemini 2.5 Flash benchmark-labeling baseline assigned Confirmed labels
-to fewer cases under the same topic definitions: 137/687 DBPs, 5/300
-blood exposome chemicals, 120/300 drugs, 69/300 endogenous metabolites,
-and 44/300 microbial natural products.
+to fewer cases under the same topic definitions. It assigned Confirmed
+labels to 137/687 DBPs, 5/300 blood exposome chemicals, 120/300 drugs,
+69/300 endogenous metabolites, and 44/300 microbial natural products.
 
 Figure 3C asks whether the cited evidence can support these decisions.
 DB-Curator cited 7,453 paper references in this benchmark-scale analysis.
@@ -471,10 +473,11 @@ therefore contributed complementary evidence. Hybrid retrieval required
 more compute, with median runtime increasing from 109 s to 555 s and
 median token use increasing from 51,024 to 77,343 tokens. Figure 5D shows
 why additional evidence search can matter. Changed-claim rows required
-more researcher calls than stable rows (5.28 versus 2.84 on average),
-more critique calls (2.00 versus 1.27), and more supporting sources
-(6.40 versus 4.23). These dynamics support the intended role of the
-Critique agent. As evidence accumulates, the system can revise a
+more researcher calls than stable rows, 5.28 versus 2.84 on average.
+They also required more critique calls, 2.00 versus 1.27, and more
+supporting sources, 6.40 versus 4.23. These dynamics support the
+intended role of the Critique agent. As evidence accumulates, the system
+can revise a
 provisional claim rather than stopping at the first plausible answer.
 
 \includegraphics[width=\linewidth]{generated_figs/section24_iterative_research_importance.png}
@@ -607,11 +610,10 @@ and auditable provenance.
 
 DB-Curator is a stateful multi-agent pipeline that maps a user request
 \(u\) into a curated topic database \(B\). It is designed as a deep
-research agent in the sense that, rather than answering from a single
-context window or extracting from a fixed literature set, it
-iteratively searches, reads, and verifies evidence across a paper set
-that is built during the run. This design can be viewed as agentic
-retrieval-augmented verification: retrieval is part of the evolving
+research agent rather than as a fixed-corpus extractor. It iteratively
+searches, reads, and verifies evidence across a paper set that is built
+during the run. This design can be viewed as agentic
+retrieval-augmented verification. Retrieval is part of the evolving
 reasoning state, and new searches are conditioned on the refined user
 definition, inspected search results, candidate identities, and
 unresolved rubric predicates.
@@ -639,11 +641,11 @@ checks every rubric item, and assigns a canonical claim label.
 DB-Curator executes through a small set of specialized tools with
 separate roles. These tools implement lower-level skills for literature
 discovery, chemical grounding, candidate extraction, evidence retrieval,
-and predicate-level verification. Together, they form the deep-research loop:
-broad discovery expands the evidence pool, NER extracts candidate
-chemicals, session indexing supports within-paper reading, and iterative
-querying changes the paper set and evidence set until a candidate is
-accepted, excluded, or left evidence-limited.
+and predicate-level verification. Together, they form the deep-research
+loop. Broad discovery expands the evidence pool, NER extracts candidate
+chemicals, and session indexing supports within-paper reading.
+Iterative querying then changes the paper set and evidence set until a
+candidate is accepted, excluded, or left evidence-limited.
 
 CompoundDatabaseTool. This tool is invoked only when the verification
 loop requires compound-specific grounding, for example when a candidate
@@ -706,7 +708,7 @@ criteria for the domain.
 
 In the current workflow, the human contribution is limited to clarifying
 scope and resolving ambiguous inclusion rules at the specification
-stage; subsequent retrieval, candidate generation, and verification are
+stage. Subsequent retrieval, candidate generation, and verification are
 fully automated under the resulting rubric.
 
 \[r = f_{rubric}(s, \text{domain})\]
@@ -737,9 +739,10 @@ whose titles or abstracts omit the exact topic wording.
 During candidate verification, queries are generated differently. For a
 candidate entity \(e\), DB-Curator builds compact structured searches
 from identity terms \(I_e\), such as the canonical name and a small
-number of strong synonyms, and context terms \(C_{e,r}\), which are
-derived from the current unresolved rubric item. This produces targeted
-query batches rather than repeated paraphrases of the same broad search.
+number of strong synonyms. It combines these with context terms
+\(C_{e,r}\) derived from the current unresolved rubric item. This
+produces targeted query batches rather than repeated paraphrases of the
+same broad search.
 
 \[Q_e = f_{verify}(I_e,C_{e,r})\]
 
@@ -897,7 +900,7 @@ supports rejection, when tools are unavailable, or when repeated
 follow-up does not add rubric-relevant evidence.
 To prevent unbounded agent debate, the graph is explicitly bounded. The
 reported full-loop evaluation runs used a downstream LangGraph recursion
-limit of 24 graph steps, and the Critique prompt requires one of three
+limit of 24 graph steps. The Critique prompt also requires one of three
 actions at each critique point: approve the claim, request a bounded
 targeted follow-up tied to a specific unresolved predicate, or emit a
 terminal evidence-limited or negative decision. Duplicate follow-up
@@ -985,11 +988,12 @@ and citation-support baselines used temperature 0.0. Search budgets, RRF
 settings, stopping criteria, candidate-filter thresholds, and per-topic
 definitions were fixed within each reported evaluation run. The full
 benchmark-scale runs used a downstream recursion limit of 24 graph
-steps, two consecutive no-progress critique rounds before exhaustion,
-up to four follow-up query variants per round, a per-query literature
-search cap of eight records, up to six mechanical full-text search query
-variants, RRF filtering that retained 30--50 papers, and up to eight
-passage-query variants for indexed full-text querying. Random subsets
+steps and two consecutive no-progress critique rounds before exhaustion.
+Per round, the system allowed up to four follow-up query variants and a
+per-query literature search cap of eight records. It also allowed up to
+six mechanical full-text search query variants, RRF filtering that
+retained 30--50 papers, and up to eight passage-query variants for
+indexed full-text querying. Random subsets
 for the 300-case benchmark domains and the 50-case retrieval-mode
 ablation were generated with fixed seeds and released with the
 evaluation artifacts.
