@@ -112,7 +112,7 @@ def metric_card(slide, x, y, w, h, number, label, color, note=None):
     add_textbox(slide, x + 0.22, y + 0.18, w - 0.44, 0.42, number, size=25, color=color, bold=True)
     add_textbox(slide, x + 0.22, y + 0.76, w - 0.44, 0.40, label, size=12.8, color=BLACK, bold=True)
     if note:
-        add_textbox(slide, x + 0.22, y + 1.16, w - 0.44, h - 1.23, note, size=9.2, color=GRAY, line_spacing=0.92)
+        add_textbox(slide, x + 0.22, y + 1.15, w - 0.44, h - 1.22, note, size=8.7, color=GRAY, line_spacing=0.9)
 
 
 def bullet_box(slide, x, y, w, h, title, bullets, color=BLUE):
@@ -135,6 +135,10 @@ def bullet_box(slide, x, y, w, h, title, bullets, color=BLUE):
 def quote_box(slide, x, y, w, h, text, color=TEAL):
     rect(slide, x, y, w, h, LIGHT_GRAY, RGBColor(224, 230, 235))
     add_textbox(slide, x + 0.22, y + 0.15, w - 0.44, h - 0.16, text, size=12.0, color=color, bold=True, line_spacing=0.92)
+
+
+def figure_note(slide, x, y, w, text, color=GRAY):
+    add_textbox(slide, x, y, w, 0.28, text, size=10.4, color=color, bold=True)
 
 
 def add_picture_fit(slide, image_path: Path, x, y, w, h, border=True):
@@ -188,6 +192,7 @@ add_footer(slide, 2)
 slide = prs.slides.add_slide(prs.slide_layouts[1])
 add_title(slide, "How DB-Curator turns intent into verified rows")
 add_picture_fit(slide, FIGURE_ASSETS["workflow"], 0.85, 1.55, 7.35, 4.95)
+figure_note(slide, 0.95, 6.35, 7.0, "Figure link: the architecture shows where the corpus evolves and where evidence is audited.")
 bullet_box(slide, 8.55, 1.72, 3.45, 1.25, "1. Dynamic literature", ["Searches are seeded by the user definition, candidate identities and critique-discovered gaps."], BLUE)
 bullet_box(slide, 8.55, 3.12, 3.45, 1.25, "2. Candidate grounding", ["Chemical mentions are normalized, filtered and converted into compound-level verification questions."], GOLD)
 bullet_box(slide, 8.55, 4.52, 3.45, 1.34, "3. Predicate verification", ["Researcher proposes evidence; Critique audits whether each rubric predicate is actually supported."], TEAL)
@@ -200,11 +205,12 @@ add_footer(slide, 3)
 # Slide 4: application results.
 slide = prs.slides.add_slide(prs.slide_layouts[1])
 add_title(slide, "Application result: known recovery plus literature-buried additions")
-metric_card(slide, 0.82, 1.75, 2.65, 1.55, "246/250", "release-accepted rows", BLUE, "Fixed-cohort audit over five topics.")
-metric_card(slide, 3.75, 1.75, 2.65, 1.55, "178", "benchmark overlaps", TEAL, "Known entries recovered automatically.")
-metric_card(slide, 6.68, 1.75, 2.65, 1.55, "68", "new valid entries", GREEN, "Absent from benchmark but accepted by human experts.")
-metric_card(slide, 9.60, 1.75, 2.20, 1.55, "4", "errors", RED, "Out-of-scope or false rows.")
+metric_card(slide, 0.82, 1.75, 2.65, 1.60, "246/250", "release-accepted rows", BLUE, "Overlap plus human-accepted non-overlap rows.")
+metric_card(slide, 3.75, 1.75, 2.65, 1.60, "178", "benchmark overlaps", TEAL, "Known database entries recovered automatically.")
+metric_card(slide, 6.68, 1.75, 2.65, 1.60, "68", "new valid entries", GREEN, "Absent from benchmark, accepted by human experts.")
+metric_card(slide, 9.60, 1.75, 2.20, 1.60, "4", "errors", RED, "False or out-of-scope rows.")
 add_picture_fit(slide, FIGURE_ASSETS["fixed_cohort"], 0.95, 3.65, 6.65, 2.80)
+figure_note(slide, 1.05, 6.48, 6.2, "Figure link: panels separate evidence support, name-level release, candidate funnel and entry-level paper support.")
 bullet_box(slide, 8.02, 3.75, 3.95, 2.40, "Why this matters scientifically", [
     "Benchmarks are incomplete for open-ended curation.",
     "A useful system should recover known compounds and surface evidence-backed additions.",
@@ -225,21 +231,23 @@ bullet_box(slide, 4.58, 1.62, 3.55, 4.72, "Predicate-level audit", [
     "Exclusion contexts such as reagents, solvents or out-of-scope matrices block release.",
     "Unresolved predicates trigger follow-up retrieval or remain evidence-limited."
 ], TEAL)
-metric_card(slide, 8.55, 1.62, 3.10, 1.25, "2,166/2,166", "fixed-cohort support", GREEN)
-metric_card(slide, 8.55, 3.10, 3.10, 1.25, "7,430/7,453", "benchmark-scale support", BLUE)
-metric_card(slide, 8.55, 4.58, 3.10, 1.25, "11/257", "zero-shot direct generation", RED)
+metric_card(slide, 8.55, 1.47, 3.10, 1.42, "2,166/2,166", "fixed-cohort support", GREEN, "Refs with quote/context support.")
+metric_card(slide, 8.55, 3.05, 3.10, 1.42, "7,430/7,453", "benchmark-scale support", BLUE, "Auditable refs across five domains.")
+metric_card(slide, 8.55, 4.63, 3.10, 1.42, "11/257", "zero-shot baseline", RED, "Usable refs from direct generation.")
 quote_box(slide, 0.95, 6.34, 10.85, 0.66, "Core contrast: baseline models can name plausible compounds, but DB-Curator produces rows whose papers and evidence spans can be audited.")
 add_footer(slide, 5)
 
 # Slide 6: scale and agentic loop.
 slide = prs.slides.add_slide(prs.slide_layouts[1])
 add_title(slide, "What ML experts should take away")
-metric_card(slide, 0.82, 1.58, 2.62, 1.45, "1,887", "candidate rows", BLUE)
-metric_card(slide, 3.72, 1.58, 2.62, 1.45, "977", "Confirmed labels", GREEN)
-metric_card(slide, 6.62, 1.58, 2.62, 1.45, "49", "rescued by critique", TEAL)
-metric_card(slide, 9.52, 1.58, 2.45, 1.45, "5", "tightened", RED)
+metric_card(slide, 0.82, 1.50, 2.62, 1.58, "1,887", "evaluated candidates", BLUE, "The benchmark-scale test set.")
+metric_card(slide, 3.72, 1.50, 2.62, 1.58, "977", "system Confirmed", GREEN, "Rows meeting evidence predicates.")
+metric_card(slide, 6.62, 1.50, 2.62, 1.58, "49", "rescued by critique", TEAL, "Initially limited rows later confirmed.")
+metric_card(slide, 9.52, 1.50, 2.45, 1.58, "5", "tightened", RED, "Premature Confirmed labels corrected.")
 add_picture_fit(slide, FIGURE_ASSETS["benchmark"], 0.85, 3.35, 5.65, 2.85)
 add_picture_fit(slide, FIGURE_ASSETS["iterative"], 6.82, 3.35, 5.25, 2.85)
+figure_note(slide, 1.10, 6.16, 5.2, "Left: scale and evidence audit across domains.")
+figure_note(slide, 7.05, 6.16, 4.8, "Right: critique changes the verification state.")
 quote_box(slide, 0.95, 6.42, 10.75, 0.72, "General lesson: agentic systems are most useful in science when they turn open-ended requests into inspectable states, evidence contracts and auditable artifacts.")
 add_footer(slide, 6)
 
