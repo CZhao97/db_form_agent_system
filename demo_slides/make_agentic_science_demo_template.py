@@ -126,7 +126,7 @@ def bullet_box(slide, x, y, w, h, title, bullets, color=BLUE):
         p = tf.paragraphs[0] if i == 0 else tf.add_paragraph()
         p.text = b
         p.font.name = FONT
-        p.font.size = Pt(11.2)
+        p.font.size = Pt(10.8)
         p.font.color.rgb = DARK_GRAY
         p.space_after = Pt(4)
         p.line_spacing = 0.95
@@ -164,38 +164,38 @@ def add_picture_fit(slide, image_path: Path, x, y, w, h, border=True):
 slide = prs.slides.add_slide(prs.slide_layouts[0])
 set_text(slide.shapes.title.text_frame, "DB-Curator", size=44, color=NAVY, bold=True, align=PP_ALIGN.CENTER)
 set_text(slide.placeholders[1].text_frame, "Agentic database construction for scientific evidence", size=22, color=BLACK, bold=True, align=PP_ALIGN.CENTER)
-add_textbox(slide, 2.55, 5.40, 8.2, 0.54, "From open-ended scientific questions to verified, auditable database rows", size=18, color=TEAL, bold=True, align=PP_ALIGN.CENTER)
+add_textbox(slide, 2.25, 5.35, 8.8, 0.62, "A tool that searches literature, proposes candidates, and verifies each database row with auditable evidence", size=17.2, color=TEAL, bold=True, align=PP_ALIGN.CENTER)
 add_textbox(slide, 3.3, 6.10, 6.9, 0.35, "Chen Zhao, Botao Liu, Xiaoxiao Li, Tao Huan", size=14, color=BLACK, align=PP_ALIGN.CENTER)
 
 # Slide 2: motivation and application target.
 slide = prs.slides.add_slide(prs.slide_layouts[1])
-add_title(slide, "Application target: build a database, not an answer")
+add_title(slide, "The task: build a database, not just answer a question")
 bullet_box(slide, 0.82, 1.75, 3.75, 4.25, "Scientific pain point", [
-    "Specialized databases are still built by slow expert literature curation.",
-    "Relevant evidence is scattered across papers, tables, metadata and compound mentions.",
-    "A plausible chemical name is not enough; release requires identity, scope and paper provenance."
+    "Specialized scientific databases are still mostly built by expert literature curation.",
+    "The hard part is not finding chemical names; it is deciding whether each name belongs in the database.",
+    "Release requires identity, topic scope and a paper trail that another scientist can inspect."
 ], BLUE)
 bullet_box(slide, 4.78, 1.75, 3.75, 4.25, "Agentic framing", [
-    "The literature set is dynamic, not pre-curated: searches change as candidates and evidence gaps appear.",
-    "Each candidate is treated as an evidence contract with mandatory and exclusion predicates.",
-    "The loop stops only when the row is supported, rejected, or evidence-limited."
+    "The literature set is built during the run: searches change as candidates and evidence gaps appear.",
+    "Each candidate becomes an evidence contract: required predicates must pass and exclusion contexts must fail.",
+    "The system stops with an explicit state: supported, rejected, or evidence-limited."
 ], TEAL)
 bullet_box(slide, 8.75, 1.75, 3.55, 4.25, "What users get", [
-    "Curated compound rows with identifiers and topic labels.",
-    "Cited papers plus quote or local-context support.",
-    "Human-reviewable failure states for borderline cases."
+    "Curated compound rows with identifiers, topic labels and decision states.",
+    "Cited papers plus quote or local-context support for the decision.",
+    "A compact audit trail so humans review hard cases instead of searching from scratch."
 ], GREEN)
-quote_box(slide, 0.95, 6.28, 10.85, 0.72, "ML takeaway: the agent is valuable because it controls retrieval, state tracking and stopping decisions, not because it writes fluent summaries.")
+quote_box(slide, 0.95, 6.28, 10.85, 0.72, "One-sentence story: DB-Curator replaces open-ended manual literature curation with an agentic workflow that searches, verifies and leaves an audit trail.")
 add_footer(slide, 2)
 
 # Slide 3: workflow with manuscript figure.
 slide = prs.slides.add_slide(prs.slide_layouts[1])
-add_title(slide, "How DB-Curator turns intent into verified rows")
+add_title(slide, "How the workflow connects search to verification")
 add_picture_fit(slide, FIGURE_ASSETS["workflow"], 0.85, 1.55, 7.35, 4.95)
-figure_note(slide, 0.95, 6.35, 7.0, "Figure link: the architecture shows where the corpus evolves and where evidence is audited.")
-bullet_box(slide, 8.55, 1.72, 3.45, 1.25, "1. Dynamic literature", ["Searches are seeded by the user definition, candidate identities and critique-discovered gaps."], BLUE)
-bullet_box(slide, 8.55, 3.12, 3.45, 1.25, "2. Candidate grounding", ["Chemical mentions are normalized, filtered and converted into compound-level verification questions."], GOLD)
-bullet_box(slide, 8.55, 4.52, 3.45, 1.34, "3. Predicate verification", ["Researcher proposes evidence; Critique audits whether each rubric predicate is actually supported."], TEAL)
+figure_note(slide, 0.95, 6.35, 7.0, "How to read this figure: left side builds the candidate pool; right side checks whether each candidate satisfies the rubric.")
+bullet_box(slide, 8.55, 1.72, 3.45, 1.25, "1. Dynamic literature", ["Broad search first; targeted search follows when a candidate or missing predicate needs evidence."], BLUE)
+bullet_box(slide, 8.55, 3.12, 3.45, 1.25, "2. Candidate grounding", ["Ground chemical names, then ask: does this compound fit the database definition?"], GOLD)
+bullet_box(slide, 8.55, 4.52, 3.45, 1.34, "3. Predicate verification", ["Researcher finds evidence; Critique checks whether required predicates are supported."], TEAL)
 pill(slide, 8.70, 6.36, 1.35, "supported", GREEN)
 pill(slide, 10.20, 6.36, 1.40, "unresolved", GOLD)
 pill(slide, 8.70, 6.82, 1.55, "exclusion", RED)
@@ -204,51 +204,51 @@ add_footer(slide, 3)
 
 # Slide 4: application results.
 slide = prs.slides.add_slide(prs.slide_layouts[1])
-add_title(slide, "Application result: known recovery plus literature-buried additions")
+add_title(slide, "What the system produces: release-ready rows")
 metric_card(slide, 0.82, 1.75, 2.65, 1.60, "246/250", "release-accepted rows", BLUE, "Overlap plus human-accepted non-overlap rows.")
 metric_card(slide, 3.75, 1.75, 2.65, 1.60, "178", "benchmark overlaps", TEAL, "Known database entries recovered automatically.")
 metric_card(slide, 6.68, 1.75, 2.65, 1.60, "68", "new valid entries", GREEN, "Absent from benchmark, accepted by human experts.")
 metric_card(slide, 9.60, 1.75, 2.20, 1.60, "4", "errors", RED, "False or out-of-scope rows.")
 add_picture_fit(slide, FIGURE_ASSETS["fixed_cohort"], 0.95, 3.65, 6.65, 2.80)
-figure_note(slide, 1.05, 6.48, 6.2, "Figure link: panels separate evidence support, name-level release, candidate funnel and entry-level paper support.")
+figure_note(slide, 1.05, 6.48, 6.2, "How to read the figure: DB-Curator is strong because accepted names also carry auditable paper evidence.")
 bullet_box(slide, 8.02, 3.75, 3.95, 2.40, "Why this matters scientifically", [
-    "Benchmarks are incomplete for open-ended curation.",
-    "A useful system should recover known compounds and surface evidence-backed additions.",
-    "DB-Curator shifts human work from full literature search to focused audit of non-overlap rows and evidence."
+    "Benchmarks are useful but incomplete for open-ended database building.",
+    "A useful system should recover known compounds and also surface evidence-backed additions.",
+    "The human role shifts from searching everything to auditing the few non-overlap rows and their evidence."
 ], GREEN)
 add_footer(slide, 4)
 
 # Slide 5: verification logic and citation audit.
 slide = prs.slides.add_slide(prs.slide_layouts[1])
-add_title(slide, "How we verify the output")
+add_title(slide, "How every accepted output is verified")
 bullet_box(slide, 0.82, 1.62, 3.55, 4.72, "Paper-level audit", [
-    "Resolve the cited item to a real primary paper using DOI, PMID, title or recovered metadata.",
-    "Search recovered paper text for the quoted span or equivalent local context.",
-    "Exclude compound-database lookup pages from primary-paper citation counts."
+    "First ask: is the cited item a real primary paper? Resolve it using DOI, PMID, title or metadata.",
+    "Then ask: does the paper actually contain the quoted span or equivalent local context?",
+    "Compound lookup pages are useful for identity, but they are not counted as primary-paper evidence."
 ], BLUE)
 bullet_box(slide, 4.58, 1.62, 3.55, 4.72, "Predicate-level audit", [
-    "Required predicates must be directly supported, not only semantically nearby.",
-    "Exclusion contexts such as reagents, solvents or out-of-scope matrices block release.",
-    "Unresolved predicates trigger follow-up retrieval or remain evidence-limited."
+    "A paper must support the actual rubric predicate, not just mention a related chemical or context.",
+    "Reagent, solvent and out-of-scope contexts block release even if the compound name is real.",
+    "If evidence is missing, the agent searches again or leaves the row evidence-limited."
 ], TEAL)
 metric_card(slide, 8.55, 1.47, 3.10, 1.42, "2,166/2,166", "fixed-cohort support", GREEN, "Refs with quote/context support.")
 metric_card(slide, 8.55, 3.05, 3.10, 1.42, "7,430/7,453", "benchmark-scale support", BLUE, "Auditable refs across five domains.")
 metric_card(slide, 8.55, 4.63, 3.10, 1.42, "11/257", "zero-shot baseline", RED, "Usable refs from direct generation.")
-quote_box(slide, 0.95, 6.34, 10.85, 0.66, "Core contrast: baseline models can name plausible compounds, but DB-Curator produces rows whose papers and evidence spans can be audited.")
+quote_box(slide, 0.95, 6.34, 10.85, 0.66, "Presenter cue: stress that the output is not trusted because the model says so; it is trusted because the cited paper and rubric predicate can be inspected.")
 add_footer(slide, 5)
 
 # Slide 6: scale and agentic loop.
 slide = prs.slides.add_slide(prs.slide_layouts[1])
-add_title(slide, "What ML experts should take away")
-metric_card(slide, 0.82, 1.50, 2.62, 1.58, "1,887", "evaluated candidates", BLUE, "The benchmark-scale test set.")
-metric_card(slide, 3.72, 1.50, 2.62, 1.58, "977", "system Confirmed", GREEN, "Rows meeting evidence predicates.")
-metric_card(slide, 6.62, 1.50, 2.62, 1.58, "49", "rescued by critique", TEAL, "Initially limited rows later confirmed.")
-metric_card(slide, 9.52, 1.50, 2.45, 1.58, "5", "tightened", RED, "Premature Confirmed labels corrected.")
+add_title(slide, "What this shows about agentic AI for science")
+metric_card(slide, 0.82, 1.50, 2.62, 1.58, "1,887", "evaluated candidates", BLUE, "Scale of evaluation across five domains.")
+metric_card(slide, 3.72, 1.50, 2.62, 1.58, "977", "system Confirmed", GREEN, "Rows judged supported by the verification loop.")
+metric_card(slide, 6.62, 1.50, 2.62, 1.58, "49", "rescued by critique", TEAL, "Critique found the missing evidence path.")
+metric_card(slide, 9.52, 1.50, 2.45, 1.58, "5", "tightened", RED, "Critique prevented over-acceptance.")
 add_picture_fit(slide, FIGURE_ASSETS["benchmark"], 0.85, 3.35, 5.65, 2.85)
 add_picture_fit(slide, FIGURE_ASSETS["iterative"], 6.82, 3.35, 5.25, 2.85)
 figure_note(slide, 1.10, 6.16, 5.2, "Left: scale and evidence audit across domains.")
 figure_note(slide, 7.05, 6.16, 4.8, "Right: critique changes the verification state.")
-quote_box(slide, 0.95, 6.42, 10.75, 0.72, "General lesson: agentic systems are most useful in science when they turn open-ended requests into inspectable states, evidence contracts and auditable artifacts.")
+quote_box(slide, 0.95, 6.42, 10.75, 0.72, "Closing message: the agentic contribution is not just more retrieval; it is dynamic evidence collection plus predicate-level stopping and correction.")
 add_footer(slide, 6)
 
 prs.save(PPTX)
