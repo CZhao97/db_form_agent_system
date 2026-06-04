@@ -61,23 +61,23 @@ How to explain the numbers:
 Transition:
 Next, I will show that this is not just a few selected examples. We tested the same idea across five domains.
 
-## Content slide 5. Benchmark-scale evidence across five domains
-Main point: DB-Curator scales across several scientific database types while preserving evidence auditability.
+## Content slide 5. Benchmark-scale evidence and agentic correction
+Main point: DB-Curator scales across several scientific database types, and the critique loop changes decisions rather than merely retrieving more text.
 
 Suggested script:
-Across 1,887 candidate rows in five scientific domains, DB-Curator assigned 977 Confirmed labels. The important point is that these are evidence-grounded labels. The cited primary-paper references remained auditable at scale, with 7,430 of 7,453 references having quote or local-context support. The benchmark-labeling baseline had only 6 content-supported references out of 2,291 claimed references under strict audit. So the difference is not merely label frequency; it is whether the labels come with inspectable evidence.
+Across 1,887 candidate rows in five scientific domains, DB-Curator assigned 977 Confirmed labels. The cited primary-paper references remained auditable at scale, with 7,430 of 7,453 references having quote or local-context support. The right side shows why the agentic loop matters. Forty-nine initially evidence-limited rows were rescued after targeted follow-up, while five premature Confirmed labels were tightened. This connects the benchmark result to the mechanism: the system uses evidence gaps to decide when to search again and uses critique to correct the verification state.
 
 How to read the figure:
-Panel A shows DB-Curator outcomes by domain. Panel B compares DB-Curator with zero-shot baseline labeling. Panels C and D show citation support and human topic-scope alignment.
+The left figure shows benchmark-scale outcomes and citation support. The right figure shows decision changes caused by critique and retrieval mode. Together, they show both performance and why the agentic loop matters.
 
 Transition:
-The final content slide explains why the iterative agentic loop matters rather than just one retrieval pass.
+The final slide summarizes the general lesson for applying agentic AI in scientific domains.
 
-## Content slide 6. Why the agentic loop matters
-Main point: Critique changes the verification state by rescuing evidence-limited cases and tightening premature confirmations.
+## Content slide 6. Takeaway: a pattern for agentic AI in science
+Main point: DB-Curator illustrates a general pattern: dynamic evidence construction plus predicate-level verification.
 
 Suggested script:
-The critique loop is useful because it changes decisions. Forty-nine initially evidence-limited rows were rescued after targeted follow-up, while five premature Confirmed labels were tightened. In the retrieval-mode ablation, hybrid retrieval increased confirmed cases from 12 out of 50 to 16 out of 50. The important lesson is that the agent does not just retrieve more text. It uses missing predicates to decide when and why to search again, and it records cases where the decision changes.
+There are three takeaways. First, this is a practical scientific application: the system builds database rows and shifts human work from searching the literature to auditing compact evidence trails. Second, the verification principle is strict: accepted rows require real papers and predicate-relevant support. Third, the machine-learning lesson is that the agentic value is not fluent generation. It is dynamic evidence construction, explicit state tracking, and critique-driven correction.
 
 Closing sentence:
 DB-Curator shows one concrete pattern for applying agentic AI in science: dynamically build the evidence set, convert the user request into predicates, and verify each output before it becomes a database fact.
