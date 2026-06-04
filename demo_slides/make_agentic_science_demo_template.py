@@ -193,7 +193,8 @@ add_textbox(slide, 3.3, 6.10, 6.9, 0.35, "Chen Zhao, Botao Liu, Xiaoxiao Li, Tao
 # Content slide 1: background.
 slide = prs.slides.add_slide(prs.slide_layouts[1])
 add_title(slide, "Background: databases make science reusable")
-add_textbox(slide, 0.95, 1.28, 11.0, 0.75, "Scientific databases turn scattered papers into searchable, comparable and reusable knowledge.\nBut specialized databases are still built by expert literature curation.", size=16.8, color=NAVY, bold=True, line_spacing=0.95)
+add_textbox(slide, 0.95, 1.44, 11.0, 0.42, "Scientific databases turn scattered papers into searchable, comparable and reusable knowledge.", size=16.8, color=NAVY, bold=True)
+add_textbox(slide, 0.95, 1.82, 11.0, 0.34, "But specialized databases are still built by expert literature curation.", size=14.8, color=GRAY, bold=True)
 bullet_box(slide, 0.82, 2.12, 2.70, 3.45, "1. Define scope", [
     "Experts decide what should count as an entry.",
     "Borderline cases need explicit inclusion and exclusion rules."
@@ -238,7 +239,8 @@ add_footer(slide, 2)
 # Content slide 3: core idea.
 slide = prs.slides.add_slide(prs.slide_layouts[1])
 add_title(slide, "Core idea: turn user intent into an evidence contract")
-add_picture_fit(slide, FIGURE_ASSETS["workflow"], 0.82, 1.50, 6.65, 4.95)
+add_picture_fit(slide, FIGURE_ASSETS["workflow"], 0.68, 1.42, 7.10, 5.05)
+add_textbox(slide, 0.92, 2.48, 6.80, 0.28, "Left: build candidate pool. Right: verify each row.", size=11.8, color=GRAY, bold=True, align=PP_ALIGN.CENTER)
 bullet_box(slide, 7.85, 1.45, 3.85, 1.35, "1. Dynamic literature construction", [
     "Search changes as candidates and evidence gaps appear."
 ], BLUE)
@@ -266,6 +268,7 @@ bullet_box(slide, 0.82, 2.02, 3.45, 3.88, "DBP rubric", [
 ], TEAL)
 bullet_box(slide, 4.55, 2.02, 3.45, 3.88, "NDMA verification mini-run", [
     "Candidate: N-nitrosodimethylamine.",
+    "Example scale: 2,000 papers to 1,250 chemical entities.",
     "Researcher retrieves DBP and chloramination evidence.",
     "Critique asks whether the paper supports formation, not only occurrence or toxicity.",
     "Follow-up search targets formation plus analytical confirmation."
@@ -300,7 +303,7 @@ bullet_box(slide, 4.58, 1.62, 3.55, 4.72, "Predicate-level audit", [
 ], TEAL)
 metric_card(slide, 8.55, 1.47, 3.10, 1.42, "2,166/2,166", "fixed-cohort support", GREEN, "Refs with quote/context support.")
 metric_card(slide, 8.55, 3.05, 3.10, 1.42, "7,430/7,453", "benchmark-scale support", BLUE, "Auditable refs across five domains.")
-metric_card(slide, 8.55, 4.63, 3.10, 1.42, "11/257", "zero-shot baseline", RED, "Only refs supporting generated claim.")
+metric_card(slide, 8.55, 4.63, 3.10, 1.42, "11/257", "zero-shot baseline", RED, "Evidence support collapses under audit.")
 quote_box(slide, 0.95, 6.34, 10.85, 0.66, "Trust argument: the output is not trusted because the model says so; it is trusted because the cited paper and predicate can be inspected.")
 add_footer(slide, 5)
 
