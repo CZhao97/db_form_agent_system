@@ -192,8 +192,8 @@ add_textbox(slide, 3.3, 6.10, 6.9, 0.35, "Chen Zhao, Botao Liu, Xiaoxiao Li, Tao
 
 # Content slide 1: background.
 slide = prs.slides.add_slide(prs.slide_layouts[1])
-add_title(slide, "Background: scientific databases are reusable knowledge infrastructure")
-add_textbox(slide, 0.95, 1.35, 11.0, 0.55, "Scientific databases turn scattered papers into searchable, comparable and reusable knowledge.", size=18.5, color=NAVY, bold=True)
+add_title(slide, "Background: databases make science reusable")
+add_textbox(slide, 0.95, 1.28, 11.0, 0.75, "Scientific databases turn scattered papers into searchable, comparable and reusable knowledge.\nBut specialized databases are still built by expert literature curation.", size=16.8, color=NAVY, bold=True, line_spacing=0.95)
 bullet_box(slide, 0.82, 2.12, 2.70, 3.45, "1. Define scope", [
     "Experts decide what should count as an entry.",
     "Borderline cases need explicit inclusion and exclusion rules."
@@ -232,7 +232,7 @@ bullet_box(slide, 6.55, 2.05, 5.10, 3.95, "Scientific database construction", [
 pill(slide, 1.25, 6.28, 1.55, "missing evidence", GOLD, size=10.5)
 pill(slide, 3.05, 6.28, 1.80, "exclusion evidence", RED, size=10.5)
 pill(slide, 5.10, 6.28, 1.55, "off-scope", PURPLE, size=10.5)
-add_textbox(slide, 7.15, 6.23, 4.70, 0.50, "These should change the row label, not just change answer wording.", size=13.2, color=TEAL, bold=True)
+add_textbox(slide, 7.15, 6.18, 4.70, 0.60, "These are not wording problems. They are label-changing events.", size=13.2, color=TEAL, bold=True)
 add_footer(slide, 2)
 
 # Content slide 3: core idea.
@@ -252,32 +252,37 @@ pill(slide, 0.95, 6.36, 1.35, "supported", GREEN)
 pill(slide, 2.50, 6.36, 1.40, "unresolved", GOLD)
 pill(slide, 4.10, 6.36, 1.55, "exclusion", RED)
 pill(slide, 5.88, 6.36, 1.35, "exhausted", RGBColor(170, 181, 190))
-quote_box(slide, 7.95, 6.18, 3.75, 0.62, "Accepted = required predicates supported + no triggered exclusion.")
+quote_box(slide, 7.95, 6.18, 3.75, 0.62, "Accept row = all required predicates supported + no exclusion triggered.")
 add_footer(slide, 3)
 
 # Content slide 4: application demo.
 slide = prs.slides.add_slide(prs.slide_layouts[1])
 add_title(slide, "Application demo: DBP database construction")
 add_textbox(slide, 0.95, 1.28, 11.0, 0.50, "User request: build a database of experimentally confirmed disinfection byproducts.", size=17.2, color=NAVY, bold=True)
-bullet_box(slide, 0.82, 2.02, 3.55, 3.20, "Refined rubric", [
+bullet_box(slide, 0.82, 2.02, 3.45, 3.88, "DBP rubric", [
     "Water-relevant disinfection or oxidation context.",
     "Formation from disinfectant or oxidant reaction with relevant precursors.",
     "Structural confirmation in peer-reviewed studies."
 ], TEAL)
-bullet_box(slide, 4.58, 2.02, 3.55, 3.20, "Agent execution", [
-    "Expand DBP-specific literature searches.",
-    "Extract and ground chemical entities.",
-    "Ask compound-level verification questions."
+bullet_box(slide, 4.55, 2.02, 3.45, 3.88, "NDMA verification mini-run", [
+    "Candidate: N-nitrosodimethylamine.",
+    "Researcher retrieves DBP and chloramination evidence.",
+    "Critique asks whether the paper supports formation, not only occurrence or toxicity.",
+    "Follow-up search targets formation plus analytical confirmation."
 ], BLUE)
-bullet_box(slide, 8.35, 2.02, 3.55, 3.20, "Example question", [
-    "Is NDMA an experimentally confirmed DBP?",
-    "Which paper supports formation, matrix and analytical confirmation?",
-    "Which contexts should block release?"
+bullet_box(slide, 8.28, 2.02, 3.65, 3.88, "Final row output", [
+    "Question: is NDMA an experimentally confirmed DBP?",
+    "Final state: Confirmed when formation, matrix and structural evidence are supported.",
+    "Output includes compound ID, label, predicate states, evidence snippets, citations and search logs."
 ], GOLD)
-metric_card(slide, 1.05, 5.55, 2.80, 1.25, "label", "Confirmed / limited / negative", GREEN, None)
-metric_card(slide, 4.05, 5.55, 2.80, 1.25, "evidence", "quotes + citations", BLUE, None)
-metric_card(slide, 7.05, 5.55, 2.80, 1.25, "state", "predicate audit trail", TEAL, None)
-metric_card(slide, 10.05, 5.55, 2.05, 1.25, "logs", "search history", PURPLE, None)
+pill(slide, 1.35, 6.36, 1.55, "candidate", BLUE, size=10.5)
+add_textbox(slide, 3.00, 6.39, 0.35, 0.25, "→", size=15, color=GRAY, bold=True, align=PP_ALIGN.CENTER)
+pill(slide, 3.48, 6.36, 1.45, "evidence", TEAL, size=10.5)
+add_textbox(slide, 5.03, 6.39, 0.35, 0.25, "→", size=15, color=GRAY, bold=True, align=PP_ALIGN.CENTER)
+pill(slide, 5.50, 6.36, 1.35, "critique", GOLD, size=10.5)
+add_textbox(slide, 6.95, 6.39, 0.35, 0.25, "→", size=15, color=GRAY, bold=True, align=PP_ALIGN.CENTER)
+pill(slide, 7.40, 6.36, 1.45, "Confirmed", GREEN, size=10.5)
+add_textbox(slide, 9.18, 6.32, 2.75, 0.42, "with cited evidence and audit trail", size=11.6, color=TEAL, bold=True)
 add_footer(slide, 4)
 
 # Content slide 5: verification logic and citation audit.
@@ -295,13 +300,13 @@ bullet_box(slide, 4.58, 1.62, 3.55, 4.72, "Predicate-level audit", [
 ], TEAL)
 metric_card(slide, 8.55, 1.47, 3.10, 1.42, "2,166/2,166", "fixed-cohort support", GREEN, "Refs with quote/context support.")
 metric_card(slide, 8.55, 3.05, 3.10, 1.42, "7,430/7,453", "benchmark-scale support", BLUE, "Auditable refs across five domains.")
-metric_card(slide, 8.55, 4.63, 3.10, 1.42, "11/257", "zero-shot baseline", RED, "Usable refs from direct generation.")
+metric_card(slide, 8.55, 4.63, 3.10, 1.42, "11/257", "zero-shot baseline", RED, "Only refs supporting generated claim.")
 quote_box(slide, 0.95, 6.34, 10.85, 0.66, "Trust argument: the output is not trusted because the model says so; it is trusted because the cited paper and predicate can be inspected.")
 add_footer(slide, 5)
 
 # Content slide 6: results and ML lesson.
 slide = prs.slides.add_slide(prs.slide_layouts[1])
-add_small_title(slide, "Results and ML lesson: why agentic design matters")
+add_small_title(slide, "Evidence-grounded agents outperform plausible generation")
 result_panel(slide, 0.82, 1.52, 3.70, 3.28, "Release-ready construction", [
     ("246/250", "release-ready rows"),
     ("68", "benchmark-missing, human-validated entries"),
@@ -317,7 +322,8 @@ result_panel(slide, 8.82, 1.52, 3.70, 3.28, "Critique-loop utility", [
     ("5", "premature Confirmed labels tightened away"),
     ("51/54", "changed decisions judged right by human inspection")
 ], RED)
-quote_box(slide, 1.05, 5.42, 11.15, 1.05, "Final ML lesson: the value of agentic AI in science is not fluent generation. It is dynamic evidence construction, explicit state tracking and critique-driven correction.", color=TEAL)
+add_textbox(slide, 1.15, 5.02, 11.0, 0.35, "Five domains: DBPs, blood exposome chemicals, drugs, endogenous metabolites and microbial natural products.", size=11.5, color=GRAY, bold=True, align=PP_ALIGN.CENTER)
+quote_box(slide, 1.05, 5.46, 11.15, 1.00, "Final ML lesson: the value of agentic AI in science is not fluent generation. It is dynamic evidence construction, explicit state tracking and critique-driven correction.", color=TEAL)
 add_textbox(slide, 1.25, 6.55, 10.55, 0.45, "Practical implication: humans audit compact evidence trails and edge cases instead of manually searching every paper from scratch.", size=13.0, color=NAVY, bold=True, align=PP_ALIGN.CENTER)
 add_footer(slide, 6)
 

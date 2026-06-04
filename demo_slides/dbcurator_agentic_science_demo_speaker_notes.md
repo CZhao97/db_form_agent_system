@@ -12,7 +12,7 @@ Today I will introduce DB-Curator, an agentic system for scientific database con
 Transition:
 Before the method, I want to clarify why this is a good problem for agentic AI.
 
-## Content slide 1. Background: scientific databases are reusable knowledge infrastructure
+## Content slide 1. Background: databases make science reusable
 
 Main point: scientific databases are important, but specialized database construction is still slow because every row needs scope, interpretation and provenance.
 
@@ -33,7 +33,7 @@ Suggested script:
 In a paper, the same chemical name can play very different roles. It may be the target compound, a reagent, a precursor, a solvent, a contaminant, or just a comparison. Standard extraction and RAG can find mentions and generate answers, but database construction requires a row-level decision. The citation must support the exact predicate needed by the database definition. If evidence is missing, contradictory to the scope, or off-topic, the row label should change.
 
 How to explain the slide:
-Use the left box for what extraction and RAG usually do. Use the right box for what a database-building system must do. Emphasize the sentence at the bottom: missing evidence and exclusion evidence should change the row label.
+Use the left box for what extraction and RAG usually do. Use the right box for what a database-building system must do. Emphasize the sentence at the bottom: these are not wording problems; they are label-changing events.
 
 Transition:
 DB-Curator addresses this by turning the user request into an evidence contract.
@@ -56,10 +56,10 @@ Here is what this looks like in a concrete scientific application.
 Main point: the workflow can be explained through a concrete DBP curation task.
 
 Suggested script:
-Suppose the user asks for a database of experimentally confirmed disinfection byproducts. The system refines this into a rubric. A confirmed DBP needs a drinking-water-relevant disinfection or oxidation context, evidence of formation from disinfectant or oxidant reaction with relevant precursors, and structural confirmation in peer-reviewed studies. The agent then expands DBP-specific searches, extracts and grounds chemical entities, and asks compound-level verification questions. For example: is NDMA an experimentally confirmed DBP, and which paper supports formation, matrix and analytical confirmation?
+Suppose the user asks for a database of experimentally confirmed disinfection byproducts. The system refines this into a DBP rubric: water-relevant disinfection or oxidation context, formation from disinfectant or oxidant reaction with relevant precursors, and structural confirmation in peer-reviewed studies. Then we can follow one concrete candidate, NDMA. The Researcher retrieves DBP and chloramination evidence. The Critique agent asks whether the cited paper supports formation, not merely occurrence or toxicity. If the predicate is still incomplete, the next search targets formation plus analytical confirmation.
 
 How to explain the output:
-For each compound, the output is not just a name. It contains a label, evidence snippets, citations, predicate states, and search logs. This is the key application story for scientists.
+For each compound, the output is not just a name. In this mini-run, the row becomes Confirmed only when the formation, matrix and structural-evidence predicates are supported. The final row contains compound identity, label, predicate states, evidence snippets, citations and search logs. This is the key application story for scientists: the agent run produces an auditable row, not just an answer.
 
 Transition:
 The next slide explains how we verify that those outputs are reliable.
@@ -77,12 +77,12 @@ DB-Curator had 2,166 out of 2,166 fixed-cohort references with quote or context 
 Transition:
 Finally, I will summarize the strongest results and the ML lesson.
 
-## Content slide 6. Results and ML lesson: why agentic design matters
+## Content slide 6. Evidence-grounded agents outperform plausible generation
 
-Main point: DB-Curator succeeds both as a scientific curation system and as a demonstration of useful agentic AI.
+Main point: the strongest result is evidence grounding, not just name generation or high label counts.
 
 Suggested script:
-There are three results to remember. First, in fixed-cohort release audits, DB-Curator produced 246 release-ready rows out of 250, including 68 benchmark-missing entries that were judged valid by human experts. Second, at benchmark scale, it evaluated 1,887 candidates across five domains, assigned 977 Confirmed labels, and maintained quote or context support for 7,430 of 7,453 primary-paper references. Third, the critique loop changed decisions: 49 evidence-limited rows were rescued to Confirmed, five premature Confirmed labels were tightened away, and 51 of 54 changed decisions were judged right by human inspection.
+There are three results to remember. First, in fixed-cohort release audits, DB-Curator produced 246 release-ready rows out of 250, including 68 benchmark-missing entries that were judged valid by human experts. Second, at benchmark scale, it evaluated 1,887 candidates across five domains: DBPs, blood exposome chemicals, drugs, endogenous metabolites and microbial natural products. It assigned 977 Confirmed labels and maintained auditable support for 7,430 of 7,453 primary-paper references. Third, the critique loop changed decisions: 49 evidence-limited rows were rescued to Confirmed, five premature Confirmed labels were tightened away, and 51 of 54 changed decisions were judged right by human inspection.
 
 Closing message:
 The value of agentic AI in this scientific setting is not fluent generation. It is dynamic evidence construction, explicit state tracking, and critique-driven correction. Practically, humans audit compact evidence trails and edge cases instead of searching every paper from scratch.
