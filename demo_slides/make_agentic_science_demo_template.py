@@ -167,7 +167,7 @@ set_text(slide.placeholders[1].text_frame, "Agentic database construction for sc
 add_textbox(slide, 2.25, 5.35, 8.8, 0.62, "A tool that searches literature, proposes candidates, and verifies each database row with auditable evidence", size=17.2, color=TEAL, bold=True, align=PP_ALIGN.CENTER)
 add_textbox(slide, 3.3, 6.10, 6.9, 0.35, "Chen Zhao, Botao Liu, Xiaoxiao Li, Tao Huan", size=14, color=BLACK, align=PP_ALIGN.CENTER)
 
-# Slide 2: motivation and application target.
+# Content slide 1: motivation and application target.
 slide = prs.slides.add_slide(prs.slide_layouts[1])
 add_title(slide, "The task: build a database, not just answer a question")
 bullet_box(slide, 0.82, 1.75, 3.75, 4.25, "Scientific pain point", [
@@ -186,9 +186,9 @@ bullet_box(slide, 8.75, 1.75, 3.55, 4.25, "What users get", [
     "A compact audit trail so humans review hard cases instead of searching from scratch."
 ], GREEN)
 quote_box(slide, 0.95, 6.28, 10.85, 0.72, "One-sentence story: DB-Curator replaces open-ended manual literature curation with an agentic workflow that searches, verifies and leaves an audit trail.")
-add_footer(slide, 2)
+add_footer(slide, 1)
 
-# Slide 3: workflow with manuscript figure.
+# Content slide 2: workflow with manuscript figure.
 slide = prs.slides.add_slide(prs.slide_layouts[1])
 add_title(slide, "How the workflow connects search to verification")
 add_picture_fit(slide, FIGURE_ASSETS["workflow"], 0.85, 1.55, 7.35, 4.95)
@@ -200,9 +200,9 @@ pill(slide, 8.70, 6.36, 1.35, "supported", GREEN)
 pill(slide, 10.20, 6.36, 1.40, "unresolved", GOLD)
 pill(slide, 8.70, 6.82, 1.55, "exclusion", RED)
 pill(slide, 10.45, 6.82, 1.35, "exhausted", RGBColor(170, 181, 190))
-add_footer(slide, 3)
+add_footer(slide, 2)
 
-# Slide 4: application results.
+# Content slide 3: application results.
 slide = prs.slides.add_slide(prs.slide_layouts[1])
 add_title(slide, "What the system produces: release-ready rows")
 metric_card(slide, 0.82, 1.75, 2.65, 1.60, "246/250", "release-accepted rows", BLUE, "Overlap plus human-accepted non-overlap rows.")
@@ -216,9 +216,9 @@ bullet_box(slide, 8.02, 3.75, 3.95, 2.40, "Why this matters scientifically", [
     "A useful system should recover known compounds and also surface evidence-backed additions.",
     "The human role shifts from searching everything to auditing the few non-overlap rows and their evidence."
 ], GREEN)
-add_footer(slide, 4)
+add_footer(slide, 3)
 
-# Slide 5: verification logic and citation audit.
+# Content slide 4: verification logic and citation audit.
 slide = prs.slides.add_slide(prs.slide_layouts[1])
 add_title(slide, "How every accepted output is verified")
 bullet_box(slide, 0.82, 1.62, 3.55, 4.72, "Paper-level audit", [
@@ -235,20 +235,38 @@ metric_card(slide, 8.55, 1.47, 3.10, 1.42, "2,166/2,166", "fixed-cohort support"
 metric_card(slide, 8.55, 3.05, 3.10, 1.42, "7,430/7,453", "benchmark-scale support", BLUE, "Auditable refs across five domains.")
 metric_card(slide, 8.55, 4.63, 3.10, 1.42, "11/257", "zero-shot baseline", RED, "Usable refs from direct generation.")
 quote_box(slide, 0.95, 6.34, 10.85, 0.66, "Presenter cue: stress that the output is not trusted because the model says so; it is trusted because the cited paper and rubric predicate can be inspected.")
+add_footer(slide, 4)
+
+# Content slide 5: benchmark scale.
+slide = prs.slides.add_slide(prs.slide_layouts[1])
+add_title(slide, "Benchmark-scale evidence across five domains")
+metric_card(slide, 0.82, 1.45, 2.75, 1.55, "1,887", "evaluated candidates", BLUE, "Five scientific domains.")
+metric_card(slide, 3.85, 1.45, 2.75, 1.55, "977", "system Confirmed", GREEN, "Rows judged supported by the verification loop.")
+metric_card(slide, 6.88, 1.45, 2.75, 1.55, "7,430/7,453", "auditable refs", TEAL, "Primary-paper references with quote/context support.")
+metric_card(slide, 9.92, 1.45, 2.45, 1.55, "6/2,291", "baseline support", RED, "Strict citation audit for benchmark-labeling baseline.")
+add_picture_fit(slide, FIGURE_ASSETS["benchmark"], 0.82, 3.28, 7.05, 3.15)
+bullet_box(slide, 8.28, 3.30, 3.82, 2.45, "How to read this figure", [
+    "Panel A separates Confirmed and Not Confirmed outcomes by domain.",
+    "Panel B compares evidence-grounded DB-Curator labels with zero-shot labeling.",
+    "Panels C-D show that citation support and human topic-scope alignment remain auditable at scale."
+], BLUE)
+quote_box(slide, 0.95, 6.50, 10.75, 0.60, "Presenter cue: this slide shows scale. The key claim is not only more positives, but evidence-grounded decisions across several scientific database types.")
 add_footer(slide, 5)
 
-# Slide 6: scale and agentic loop.
+# Content slide 6: agentic loop.
 slide = prs.slides.add_slide(prs.slide_layouts[1])
-add_title(slide, "What this shows about agentic AI for science")
-metric_card(slide, 0.82, 1.50, 2.62, 1.58, "1,887", "evaluated candidates", BLUE, "Scale of evaluation across five domains.")
-metric_card(slide, 3.72, 1.50, 2.62, 1.58, "977", "system Confirmed", GREEN, "Rows judged supported by the verification loop.")
-metric_card(slide, 6.62, 1.50, 2.62, 1.58, "49", "rescued by critique", TEAL, "Critique found the missing evidence path.")
-metric_card(slide, 9.52, 1.50, 2.45, 1.58, "5", "tightened", RED, "Critique prevented over-acceptance.")
-add_picture_fit(slide, FIGURE_ASSETS["benchmark"], 0.85, 3.35, 5.65, 2.85)
-add_picture_fit(slide, FIGURE_ASSETS["iterative"], 6.82, 3.35, 5.25, 2.85)
-figure_note(slide, 1.10, 6.16, 5.2, "Left: scale and evidence audit across domains.")
-figure_note(slide, 7.05, 6.16, 4.8, "Right: critique changes the verification state.")
-quote_box(slide, 0.95, 6.42, 10.75, 0.72, "Closing message: the agentic contribution is not just more retrieval; it is dynamic evidence collection plus predicate-level stopping and correction.")
+add_title(slide, "Why the agentic loop matters")
+metric_card(slide, 0.82, 1.50, 2.90, 1.58, "49", "rescued by critique", GREEN, "Initially evidence-limited rows later confirmed after targeted follow-up.")
+metric_card(slide, 4.05, 1.50, 2.90, 1.58, "5", "tightened", RED, "Premature Confirmed labels corrected by critique.")
+metric_card(slide, 7.28, 1.50, 2.90, 1.58, "16/50", "hybrid retrieval", BLUE, "Confirmed labels in the retrieval-mode ablation.")
+metric_card(slide, 10.50, 1.50, 2.15, 1.58, "54", "decision changes", TEAL, "Critique changed the state.")
+add_picture_fit(slide, FIGURE_ASSETS["iterative"], 0.86, 3.34, 6.95, 3.00)
+bullet_box(slide, 8.28, 3.35, 3.82, 2.35, "How to read this figure", [
+    "Critique is not just a positivity booster; it revises uncertain and premature decisions.",
+    "Hybrid retrieval can improve yield because evidence gaps trigger more search.",
+    "Changed claims require deeper review, which is visible in the trace."
+], TEAL)
+quote_box(slide, 0.95, 6.50, 10.75, 0.60, "Closing message: the agentic contribution is dynamic evidence collection plus predicate-level stopping and correction, not simply more retrieval.")
 add_footer(slide, 6)
 
 prs.save(PPTX)
