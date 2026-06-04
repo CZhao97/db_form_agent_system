@@ -149,6 +149,21 @@ def figure_note(slide, x, y, w, text, color=GRAY):
     add_textbox(slide, x, y, w, 0.28, text, size=10.4, color=color, bold=True)
 
 
+def result_panel(slide, x, y, w, h, title, rows, color):
+    rect(slide, x, y, w, h, WHITE, RGBColor(222, 228, 233))
+    bar = slide.shapes.add_shape(MSO_SHAPE.RECTANGLE, Inches(x), Inches(y), Inches(w), Inches(0.07))
+    bar.fill.solid(); bar.fill.fore_color.rgb = color; bar.line.color.rgb = color
+    add_textbox(slide, x + 0.22, y + 0.20, w - 0.44, 0.35, title, size=14.2, color=BLACK, bold=True)
+    yy = y + 0.78
+    for number, label in rows:
+        num_size = 16.4 if len(number) > 8 else 19.5
+        num_w = 1.92 if len(number) > 8 else 1.42
+        label_x = 2.12 if len(number) > 8 else 1.58
+        add_textbox(slide, x + 0.22, yy, num_w, 0.35, number, size=num_size, color=color, bold=True)
+        add_textbox(slide, x + label_x, yy + 0.03, w - label_x - 0.24, 0.32, label, size=10.4, color=DARK_GRAY)
+        yy += 0.58
+
+
 def add_picture_fit(slide, image_path: Path, x, y, w, h, border=True):
     from PIL import Image
     with Image.open(image_path) as im:
@@ -175,107 +190,135 @@ set_text(slide.placeholders[1].text_frame, "Agentic database construction for sc
 add_textbox(slide, 2.25, 5.35, 8.8, 0.62, "A tool that searches literature, proposes candidates, and verifies each database row with auditable evidence", size=17.2, color=TEAL, bold=True, align=PP_ALIGN.CENTER)
 add_textbox(slide, 3.3, 6.10, 6.9, 0.35, "Chen Zhao, Botao Liu, Xiaoxiao Li, Tao Huan", size=14, color=BLACK, align=PP_ALIGN.CENTER)
 
-# Content slide 1: motivation and application target.
+# Content slide 1: background.
 slide = prs.slides.add_slide(prs.slide_layouts[1])
-add_title(slide, "The task: build a database, not just answer a question")
-bullet_box(slide, 0.82, 1.75, 3.75, 4.25, "Scientific pain point", [
-    "Specialized scientific databases are still mostly built by expert literature curation.",
-    "The hard part is not finding chemical names; it is deciding whether each name belongs in the database.",
-    "Release requires identity, topic scope and a paper trail that another scientist can inspect."
+add_title(slide, "Background: scientific databases are reusable knowledge infrastructure")
+add_textbox(slide, 0.95, 1.35, 11.0, 0.55, "Scientific databases turn scattered papers into searchable, comparable and reusable knowledge.", size=18.5, color=NAVY, bold=True)
+bullet_box(slide, 0.82, 2.12, 2.70, 3.45, "1. Define scope", [
+    "Experts decide what should count as an entry.",
+    "Borderline cases need explicit inclusion and exclusion rules."
 ], BLUE)
-bullet_box(slide, 4.78, 1.75, 3.75, 4.25, "Agentic framing", [
-    "The literature set is built during the run: searches change as candidates and evidence gaps appear.",
-    "Each candidate becomes an evidence contract: required predicates must pass and exclusion contexts must fail.",
-    "The system stops with an explicit state: supported, rejected, or evidence-limited."
+bullet_box(slide, 3.72, 2.12, 2.70, 3.45, "2. Search papers", [
+    "Relevant evidence is scattered across many articles.",
+    "The literature set changes as the topic becomes clearer."
 ], TEAL)
-bullet_box(slide, 8.75, 1.75, 3.55, 4.25, "What users get", [
-    "Curated compound rows with identifiers, topic labels and decision states.",
-    "Cited papers plus quote or local-context support for the decision.",
-    "A compact audit trail so humans review hard cases instead of searching from scratch."
+bullet_box(slide, 6.62, 2.12, 2.70, 3.45, "3. Interpret context", [
+    "A name mention is not enough.",
+    "The row needs identity, matrix, mechanism and evidence context."
+], GOLD)
+bullet_box(slide, 9.52, 2.12, 2.70, 3.45, "4. Record evidence", [
+    "Accepted entries need citations and provenance.",
+    "Future users must be able to inspect why the row exists."
 ], GREEN)
-quote_box(slide, 0.95, 6.28, 10.85, 0.72, "One-sentence story: DB-Curator replaces open-ended manual literature curation with an agentic workflow that searches, verifies and leaves an audit trail.")
+quote_box(slide, 1.05, 6.20, 10.70, 0.78, "Takeaway: scientific curation is slow because every accepted row needs identity, scope and evidence provenance.")
 add_footer(slide, 1)
 
-# Content slide 2: workflow with manuscript figure.
+# Content slide 2: problem definition.
 slide = prs.slides.add_slide(prs.slide_layouts[1])
-add_title(slide, "How the workflow connects search to verification")
-add_picture_fit(slide, FIGURE_ASSETS["workflow"], 0.85, 1.55, 7.35, 4.95)
-figure_note(slide, 0.95, 6.35, 7.0, "How to read this figure: left side builds the candidate pool; right side checks whether each candidate satisfies the rubric.")
-bullet_box(slide, 8.55, 1.72, 3.45, 1.25, "1. Dynamic literature", ["Broad search first; targeted search follows when a candidate or missing predicate needs evidence."], BLUE)
-bullet_box(slide, 8.55, 3.12, 3.45, 1.25, "2. Candidate grounding", ["Ground chemical names, then ask: does this compound fit the database definition?"], GOLD)
-bullet_box(slide, 8.55, 4.52, 3.45, 1.34, "3. Predicate verification", ["Researcher finds evidence; Critique checks whether required predicates are supported."], TEAL)
-pill(slide, 8.70, 6.36, 1.35, "supported", GREEN)
-pill(slide, 10.20, 6.36, 1.40, "unresolved", GOLD)
-pill(slide, 8.70, 6.82, 1.55, "exclusion", RED)
-pill(slide, 10.45, 6.82, 1.35, "exhausted", RGBColor(170, 181, 190))
+add_title(slide, "Problem: extraction and RAG do not decide database membership")
+add_textbox(slide, 0.95, 1.28, 10.9, 0.50, "A chemical mention can be a target compound, reagent, precursor, solvent, contaminant or contextual comparison.", size=17.0, color=NAVY, bold=True)
+bullet_box(slide, 0.95, 2.05, 5.10, 3.95, "Standard extraction / RAG", [
+    "Finds entity mentions or retrieves passages.",
+    "Generates an answer from a context window.",
+    "Citations can look plausible even when they do not support the exact claim.",
+    "The output is usually a one-shot answer."
+], BLUE)
+bullet_box(slide, 6.55, 2.05, 5.10, 3.95, "Scientific database construction", [
+    "Decides whether an entity deserves a row.",
+    "Assigns an entry-level verification state.",
+    "The cited paper must support the exact rubric predicate.",
+    "The output is an inspectable, correctable database artifact."
+], TEAL)
+pill(slide, 1.25, 6.28, 1.55, "missing evidence", GOLD, size=10.5)
+pill(slide, 3.05, 6.28, 1.80, "exclusion evidence", RED, size=10.5)
+pill(slide, 5.10, 6.28, 1.55, "off-scope", PURPLE, size=10.5)
+add_textbox(slide, 7.15, 6.23, 4.70, 0.50, "These should change the row label, not just change answer wording.", size=13.2, color=TEAL, bold=True)
 add_footer(slide, 2)
 
-# Content slide 3: application results.
+# Content slide 3: core idea.
 slide = prs.slides.add_slide(prs.slide_layouts[1])
-add_title(slide, "What the system produces: release-ready rows")
-metric_card(slide, 0.82, 1.75, 2.65, 1.60, "246/250", "release-accepted rows", BLUE, "Overlap plus human-accepted non-overlap rows.")
-metric_card(slide, 3.75, 1.75, 2.65, 1.60, "178", "benchmark overlaps", TEAL, "Known database entries recovered automatically.")
-metric_card(slide, 6.68, 1.75, 2.65, 1.60, "68", "new valid entries", GREEN, "Absent from benchmark, accepted by human experts.")
-metric_card(slide, 9.60, 1.75, 2.20, 1.60, "4", "errors", RED, "False or out-of-scope rows.")
-add_picture_fit(slide, FIGURE_ASSETS["fixed_cohort"], 0.95, 3.65, 6.65, 2.80)
-figure_note(slide, 1.05, 6.48, 6.2, "How to read the figure: DB-Curator is strong because accepted names also carry auditable paper evidence.")
-bullet_box(slide, 8.02, 3.75, 3.95, 2.40, "Why this matters scientifically", [
-    "Benchmarks are useful but incomplete for open-ended database building.",
-    "A useful system should recover known compounds and also surface evidence-backed additions.",
-    "The human role shifts from searching everything to auditing the few non-overlap rows and their evidence."
-], GREEN)
+add_title(slide, "Core idea: turn user intent into an evidence contract")
+add_picture_fit(slide, FIGURE_ASSETS["workflow"], 0.82, 1.50, 6.65, 4.95)
+bullet_box(slide, 7.85, 1.45, 3.85, 1.35, "1. Dynamic literature construction", [
+    "Search changes as candidates and evidence gaps appear."
+], BLUE)
+bullet_box(slide, 7.85, 2.95, 3.85, 1.35, "2. Candidate grounding", [
+    "Names are normalized and filtered before expensive verification."
+], GOLD)
+bullet_box(slide, 7.85, 4.45, 3.85, 1.45, "3. Predicate-state verification", [
+    "Researcher finds evidence; Critique checks support and exclusions."
+], TEAL)
+pill(slide, 0.95, 6.36, 1.35, "supported", GREEN)
+pill(slide, 2.50, 6.36, 1.40, "unresolved", GOLD)
+pill(slide, 4.10, 6.36, 1.55, "exclusion", RED)
+pill(slide, 5.88, 6.36, 1.35, "exhausted", RGBColor(170, 181, 190))
+quote_box(slide, 7.95, 6.18, 3.75, 0.62, "Accepted = required predicates supported + no triggered exclusion.")
 add_footer(slide, 3)
 
-# Content slide 4: verification logic and citation audit.
+# Content slide 4: application demo.
 slide = prs.slides.add_slide(prs.slide_layouts[1])
-add_title(slide, "How every accepted output is verified")
+add_title(slide, "Application demo: DBP database construction")
+add_textbox(slide, 0.95, 1.28, 11.0, 0.50, "User request: build a database of experimentally confirmed disinfection byproducts.", size=17.2, color=NAVY, bold=True)
+bullet_box(slide, 0.82, 2.02, 3.55, 3.20, "Refined rubric", [
+    "Water-relevant disinfection or oxidation context.",
+    "Formation from disinfectant or oxidant reaction with relevant precursors.",
+    "Structural confirmation in peer-reviewed studies."
+], TEAL)
+bullet_box(slide, 4.58, 2.02, 3.55, 3.20, "Agent execution", [
+    "Expand DBP-specific literature searches.",
+    "Extract and ground chemical entities.",
+    "Ask compound-level verification questions."
+], BLUE)
+bullet_box(slide, 8.35, 2.02, 3.55, 3.20, "Example question", [
+    "Is NDMA an experimentally confirmed DBP?",
+    "Which paper supports formation, matrix and analytical confirmation?",
+    "Which contexts should block release?"
+], GOLD)
+metric_card(slide, 1.05, 5.55, 2.80, 1.25, "label", "Confirmed / limited / negative", GREEN, None)
+metric_card(slide, 4.05, 5.55, 2.80, 1.25, "evidence", "quotes + citations", BLUE, None)
+metric_card(slide, 7.05, 5.55, 2.80, 1.25, "state", "predicate audit trail", TEAL, None)
+metric_card(slide, 10.05, 5.55, 2.05, 1.25, "logs", "search history", PURPLE, None)
+add_footer(slide, 4)
+
+# Content slide 5: verification logic and citation audit.
+slide = prs.slides.add_slide(prs.slide_layouts[1])
+add_title(slide, "Verification: how do we know the output is reliable?")
 bullet_box(slide, 0.82, 1.62, 3.55, 4.72, "Paper-level audit", [
-    "First ask: is the cited item a real primary paper? Resolve it using DOI, PMID, title or metadata.",
-    "Then ask: does the paper actually contain the quoted span or equivalent local context?",
-    "Compound lookup pages are useful for identity, but they are not counted as primary-paper evidence."
+    "Does the cited item resolve to a real primary paper?",
+    "Does the paper contain the quoted span or equivalent local context?",
+    "Compound lookup pages support identity grounding, but are not counted as primary evidence."
 ], BLUE)
 bullet_box(slide, 4.58, 1.62, 3.55, 4.72, "Predicate-level audit", [
-    "A paper must support the actual rubric predicate, not just mention a related chemical or context.",
-    "Reagent, solvent and out-of-scope contexts block release even if the compound name is real.",
-    "If evidence is missing, the agent searches again or leaves the row evidence-limited."
+    "The paper must support the actual rubric predicate.",
+    "Mentioning the same compound is not enough.",
+    "Reagent, solvent, precursor or out-of-scope context can block release."
 ], TEAL)
 metric_card(slide, 8.55, 1.47, 3.10, 1.42, "2,166/2,166", "fixed-cohort support", GREEN, "Refs with quote/context support.")
 metric_card(slide, 8.55, 3.05, 3.10, 1.42, "7,430/7,453", "benchmark-scale support", BLUE, "Auditable refs across five domains.")
 metric_card(slide, 8.55, 4.63, 3.10, 1.42, "11/257", "zero-shot baseline", RED, "Usable refs from direct generation.")
-quote_box(slide, 0.95, 6.34, 10.85, 0.66, "Presenter cue: stress that the output is not trusted because the model says so; it is trusted because the cited paper and rubric predicate can be inspected.")
-add_footer(slide, 4)
-
-# Content slide 5: benchmark scale and agentic correction.
-slide = prs.slides.add_slide(prs.slide_layouts[1])
-add_small_title(slide, "Benchmark-scale evidence and agentic correction")
-metric_card(slide, 0.82, 1.60, 2.45, 1.38, "1,887", "evaluated candidates", BLUE, "Five scientific domains.")
-metric_card(slide, 3.55, 1.60, 2.45, 1.38, "977", "system Confirmed", GREEN, "Rows judged supported.")
-metric_card(slide, 6.28, 1.60, 2.65, 1.38, "7,430/7,453", "auditable refs", TEAL, "Refs with quote/context support.")
-metric_card(slide, 9.22, 1.60, 2.45, 1.38, "49 + 5", "critique changes", RED, "49 rescued; 5 tightened.")
-add_picture_fit(slide, FIGURE_ASSETS["benchmark"], 0.78, 3.32, 5.95, 2.75)
-add_picture_fit(slide, FIGURE_ASSETS["iterative"], 6.95, 3.32, 5.35, 2.75)
-quote_box(slide, 0.95, 6.50, 10.75, 0.60, "Presenter cue: use this slide to connect scale with mechanism: evidence-grounded decisions, plus critique-driven correction.")
+quote_box(slide, 0.95, 6.34, 10.85, 0.66, "Trust argument: the output is not trusted because the model says so; it is trusted because the cited paper and predicate can be inspected.")
 add_footer(slide, 5)
 
-# Content slide 6: takeaways.
+# Content slide 6: results and ML lesson.
 slide = prs.slides.add_slide(prs.slide_layouts[1])
-add_title(slide, "Takeaway: a pattern for agentic AI in science")
-bullet_box(slide, 0.90, 1.62, 3.55, 3.45, "1. Scientific application", [
-    "DB-Curator turns an open-ended database request into candidate rows.",
-    "It recovers known entries and surfaces benchmark-missing, human-validated additions.",
-    "Humans audit compact evidence trails instead of searching the literature from scratch."
+add_small_title(slide, "Results and ML lesson: why agentic design matters")
+result_panel(slide, 0.82, 1.52, 3.70, 3.28, "Release-ready construction", [
+    ("246/250", "release-ready rows"),
+    ("68", "benchmark-missing, human-validated entries"),
+    ("4", "rejected non-overlap errors")
 ], BLUE)
-bullet_box(slide, 4.75, 1.62, 3.55, 3.45, "2. Verification principle", [
-    "Accepted rows require real papers plus quote or local-context support.",
-    "The paper must support the actual predicate, not just mention a nearby concept.",
-    "Unresolved cases remain evidence-limited rather than being forced into release."
+result_panel(slide, 4.82, 1.52, 3.70, 3.28, "Benchmark-scale verification", [
+    ("1,887", "evaluated candidates across five domains"),
+    ("977", "system Confirmed labels"),
+    ("7,430/7,453", "auditable primary-paper refs")
 ], TEAL)
-bullet_box(slide, 8.60, 1.62, 3.55, 3.45, "3. ML lesson", [
-    "The agentic value is not fluent generation.",
-    "It is dynamic evidence construction, explicit state tracking and critique-driven correction.",
-    "The output is an auditable artifact, not a one-shot answer."
-], GREEN)
-quote_box(slide, 1.20, 5.90, 10.30, 0.78, "Final message for the audience: agentic systems become useful in science when they make decisions inspectable, correctable and grounded in evidence.")
+result_panel(slide, 8.82, 1.52, 3.70, 3.28, "Critique-loop utility", [
+    ("49", "evidence-limited rows rescued to Confirmed"),
+    ("5", "premature Confirmed labels tightened away"),
+    ("51/54", "changed decisions judged right by human inspection")
+], RED)
+quote_box(slide, 1.05, 5.42, 11.15, 1.05, "Final ML lesson: the value of agentic AI in science is not fluent generation. It is dynamic evidence construction, explicit state tracking and critique-driven correction.", color=TEAL)
+add_textbox(slide, 1.25, 6.55, 10.55, 0.45, "Practical implication: humans audit compact evidence trails and edge cases instead of manually searching every paper from scratch.", size=13.0, color=NAVY, bold=True, align=PP_ALIGN.CENTER)
 add_footer(slide, 6)
 
 prs.save(PPTX)
