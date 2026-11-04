@@ -1,0 +1,314 @@
+CASE 19: N-desmethylimatinib | Confirmed | drug metabolite
+entity_synonyms: 
+canonical_name: 
+query: {
+  "task": "verify_candidate_entity",
+  "entity_name": "N-desmethylimatinib",
+  "original_query": "Decide whether 'N-desmethylimatinib' satisfies the confirmed-topic definition.",
+  "evaluation_criteria": {
+    "criteria_text": "- [mandatory] The entity must be a small molecule.\n- [mandatory] The entity must be produced within the human body.\n- [mandatory] The entity must function in human biochemical or physiological processes.\n- [mandatory] The entity must not be solely an exogenous chemical.\n- [mandatory] The entity must not be solely a microbiota-only metabolite.\n- [optional] If a metabolite is produced by both microbiota and host metabolism, it is included.",
+    "rubric_items": [
+      {
+        "name": "The entity must be a small molecule.",
+        "section": "rubric",
+        "priority": "mandatory"
+      },
+      {
+        "name": "The entity must be produced within the human body.",
+        "section": "rubric",
+        "priority": "mandatory"
+      },
+      {
+        "name": "The entity must function in human biochemical or physiological processes.",
+        "section": "rubric",
+        "priority": "mandatory"
+      },
+      {
+        "name": "The entity must not be solely an exogenous chemical.",
+        "section": "rubric",
+        "priority": "mandatory"
+      },
+      {
+        "name": "The entity must not be solely a microbiota-only metabolite.",
+        "section": "rubric",
+        "priority": "mandatory"
+      },
+      {
+        "name": "If a metabolite is produced by both microbiota and host metabolism, it is included.",
+        "section": "rubric",
+        "priority": "optional"
+      }
+    ],
+    "fixed_criteria": [
+      "The entity must be a small molecule.",
+      "The entity must be produced within the human body.",
+      "The entity must function in human biochemical or physiological processes.",
+      "The entity must not be solely an exogenous chemical.",
+      "The entity must not be solely a microbiota-only metabolite."
+    ]
+  },
+  "entity_synonyms": [
+    "N-(4-methyl-3-{[4-(pyridin-3-yl)pyrimidin-2-yl]amino}phenyl)-4-(piperazin-1-ylmethyl)benzamide",
+    "CGP74588",
+    "SDCCGSBI-0660070.P001",
+    "Imatinib EP Impurity C",
+    "CGP-74588 (N-Desmethyl imatinib)",
+    "Norimatinib",
+    "N-Desmethyl Gleevec",
+    "orb1309548",
+    "orb3141265",
+    "BQQYXPHRXIZMDM-UHFFFAOYSA-N",
+    "Benzamide, N-(4-methyl-3-((4-(3-pyridinyl)-2-pyrimidinyl)amino)phenyl)-4-(1-piperazinylmethyl)-"
+  ],
+  "domain": "endogenous_metabolite",
+  "search_budget": {
+    "batch1_max_search_directions": 3,
+    "batch1_max_identity_terms": 2,
+    "batch1_max_primary_context_terms": 2,
+    "defer_method_fanout_until_followup": true,
+    "avoid_near_duplicate_context_terms": true
+  }
+}
+explanation: N-desmethylimatinib is a small molecule metabolite formed in humans from the drug imatinib via CYP3A4 and CYP2C8 enzymes. It is pharmacologically active, indicating its involvement in human biochemical processes.
+criteria_json: [
+  {
+    "name": "The entity must be a small molecule.",
+    "priority": "mandatory",
+    "section": "rubric",
+    "status": "solved",
+    "notes": "Confirmed by molecular weight from PubChem.",
+    "support_type": "inferred",
+    "score": 1.0
+  },
+  {
+    "name": "The entity must be produced within the human body.",
+    "priority": "mandatory",
+    "section": "rubric",
+    "status": "solved",
+    "notes": "Explicitly stated as a major metabolite of imatinib formed by human CYP enzymes.",
+    "support_type": "direct_evidence",
+    "score": 1.0
+  },
+  {
+    "name": "The entity must function in human biochemical or physiological processes.",
+    "priority": "mandatory",
+    "section": "rubric",
+    "status": "solved",
+    "notes": "Described as pharmacologically active and equipotent to imatinib.",
+    "support_type": "direct_evidence",
+    "score": 1.0
+  },
+  {
+    "name": "The entity must not be solely an exogenous chemical.",
+    "priority": "mandatory",
+    "section": "rubric",
+    "status": "solved",
+    "notes": "It is a metabolite produced within the human body from an exogenous drug.",
+    "support_type": "direct_evidence",
+    "score": 1.0
+  },
+  {
+    "name": "The entity must not be solely a microbiota-only metabolite.",
+    "priority": "mandatory",
+    "section": "rubric",
+    "status": "solved",
+    "notes": "Formation is attributed to human CYP enzymes, not microbiota.",
+    "support_type": "direct_evidence",
+    "score": 1.0
+  },
+  {
+    "name": "If a metabolite is produced by both microbiota and host metabolism, it is included.",
+    "priority": "optional",
+    "section": "rubric",
+    "status": "solved",
+    "notes": "Not applicable as no microbiota involvement was found.",
+    "support_type": "inferred",
+    "score": 1.0
+  }
+]
+evidence_json: [
+  {
+    "id": "Ref 1",
+    "title": "A Review of CYP3A Drug-Drug Interaction Studies: Practical Guidelines for Patients Using Targeted Oral Anticancer Drugs.",
+    "year": "2021",
+    "doi": "10.3389/fphar.2021.670862",
+    "original_ids": [
+      "Ref 3"
+    ],
+    "pmid": "34526892",
+    "quotes": [
+      {
+        "quote": "Imatinib is mainly metabolized by CYP3A. Other CYP enzymes play a minor role. Auto-inhibition of CYP3A by imatinib was shown in vitro, but no in vivo data is available (). The main metabolite is N-desmethylimatinib also known as CGP 74588. N-desmethylimatinib is as potent as the parent compound in vitro. The exposure to N-desmethylimatinib is approximately 10% compared to the exposure to imatinib, therefore the effect of the metabolite is considered clinically irrelevant (; ).",
+        "supports": "direct"
+      }
+    ]
+  },
+  {
+    "id": "Ref 2",
+    "title": "Potent mechanism-based inhibition of CYP3A4 by imatinib explains its liability to interact with CYP3A4 substrates.",
+    "year": "2012",
+    "doi": "10.1111/j.1476-5381.2011.01732.x",
+    "original_ids": [
+      "Ref 5",
+      "Ref 10",
+      "Ref 11",
+      "Ref 12"
+    ],
+    "pmid": "22014153",
+    "quotes": [
+      {
+        "quote": "N-desmethylimatinib, the major metabolite of imatinib, is formed via CYP2C8- and CYP3A4/5-mediated demethylation of the distal nitrogen atom on the piperazine ring of imatinib ( Food and Drug Administration, 2001 ; Marull and Rochat, 2006 ; Rochat et al ., 2008 ; Nebot et al ., 2010 ).",
+        "supports": "direct"
+      },
+      {
+        "quote": "Following a single oral dose, the parent drug accounts for 70% of the drug concentration in plasma and about 28% of the excreted drug, whereas the main metabolite N-desmethylimatinib ( CGP74588 ) ( Figure 1 ), which is pharmacologically active, accounts for 10% of the plasma, and 13% of excreted, drug ( Gschwind et al ., 2005 )",
+        "supports": "direct"
+      },
+      {
+        "quote": "Because both CYP2C8 and CYP3A4/5 are involved in the N-demethylation of imatinib in vitro , and because comprehensive documentation of the CYP2C8 and CYP3A4/5 inhibitory effects of imatinib and N-desmethylimatinib is lacking, we carefully evaluated their direct and irreversible inhibitory effects on these enzymes.",
+        "supports": "direct"
+      },
+      {
+        "quote": "Imatinib, a cytochrome P450 2C8 (CYP2C8) and CYP3A4 substrate, markedly increases plasma concentrations of the CYP3A4/5 substrate simvastatin and reduces hepatic CYP3A4/5 activity in humans. Because competitive inhibition of CYP3A4/5 does not explain these in vivo interactions, we investigated the reversible and time-dependent inhibitory effects of imatinib and its main metabolite N-desmethylimatinib on CYP2C8 and CYP3A4/5 in vitro .",
+        "supports": "direct"
+      }
+    ]
+  },
+  {
+    "id": "Ref 3",
+    "title": "Can Foods or Herbs Alter the Bioavailability of Chemotherapy Drugs?",
+    "year": "2019",
+    "doi": "10.1021/acsptsci.9b00007",
+    "original_ids": [
+      "Ref 8"
+    ],
+    "pmid": "32219219",
+    "quotes": [
+      {
+        "quote": "It is mainly metabolized by CYP3A4 to N-desmethylimatinib with a potency similar to imatinib.",
+        "supports": "direct"
+      }
+    ]
+  },
+  {
+    "id": "Ref 4",
+    "title": "Participation of CYP2C8 and CYP3A4 in the N-demethylation of imatinib in human hepatic microsomes.",
+    "year": "2010",
+    "doi": "10.1111/j.1476-5381.2010.00946.x",
+    "original_ids": [
+      "Ref 13",
+      "Ref 14",
+      "Ref 15",
+      "Ref 19"
+    ],
+    "pmid": "20977456",
+    "quotes": [
+      {
+        "quote": "In summary, the present investigation has found that CYPs 3A an 2C8 participate in the hepatic formation of N-demethylimatinib, an active metabolite of the parent drug.",
+        "supports": "direct"
+      },
+      {
+        "quote": "cDNA-derived CYPs 2C8, 3A4, 3A5 and to a lesser extent 3A7 catalysed imatinib N-demethylation (155, 83, 66 an 22 pmol product·pmol CYP ·h , respectively), but 10 other CYPs were essentially inactive (Figure 4B).",
+        "supports": "direct"
+      },
+      {
+        "quote": "Imatinib is metabolized primarily by hepatic oxidation to N-desmethylimatinib (or CGP74588; Figure 1), which is also pharmacologically active (Peng et al ., 2005). An important role for cytochrome P450 (CYP) 3A (nomenclature follows Alexander et al ., 2009) in this pathway is supported by clinical findings, including drug interactions with other CYP substrates and inducers (Peng et al ., 2002; O'Brien et al ., 2003; Bolton et al ., 2004; Dutreix et al ., 2004; van Erp et al ., 2007)",
+        "supports": "direct"
+      },
+      {
+        "quote": "As shown in Figure 3, the formation of N-desmethylimatinib was correlated with CYP3A-mediated testosterone 6 b -hydroxylation (Spearman's correlation coefficient r = 0.60, P < 0.01; Figure 3A) and midazolam 1 ′ -hydroxylation ( r = 0.46, P < 0.05; Figure 3B), as well as CYP2C8-mediated paclitaxel 6 a -hydroxylation ( r = 0.58, P < 0.01) and CYP2C9-dependent tolbutamide 4-hydroxylation ( r = 0.57, P < 0.01), but not with oxidation of dextromethorphan (CYP2D6), coumarin (CYP2A6), bupropion (CYP2B6), resorufin (CYP1A2), N , N -dimethylnitrosamine (CYP2E1) or lauric acid (CYP4A11) (not shown).",
+        "supports": "direct"
+      }
+    ]
+  },
+  {
+    "id": "Ref 5",
+    "title": "Imatinib and Norimatinib Plasma Levels Analyses of Chronic Myeloid Leukemia Patients",
+    "year": "2016",
+    "doi": "10.5336/PHARMSCI.2016-51661",
+    "original_ids": [
+      "Ref 16",
+      "Ref 17",
+      "Ref 4"
+    ],
+    "quotes": [
+      {
+        "quote": "Imatinib metabolism depends primarily on the presence of cytochrome P450 enzymes, whose ac-tive metabolite is norimatinib.",
+        "supports": "direct"
+      },
+      {
+        "quote": "Imatinib transformation percentage to norimatinib was 27.54% in younger patients whereas the same percentage decreased to 19.02% in elderly patients of 2-fold age.",
+        "supports": "direct"
+      },
+      {
+        "quote": "Mean plasma imatinib and norimatinib levels were statistically calculated as 4.038±1.290 ppm (min. 0.576 ppm, max. 6.795 ppm) an 1.150±0.733 ppm (min. 0.08 ppm, max. 3.835 ppm), respectively.",
+        "supports": "direct"
+      }
+    ]
+  },
+  {
+    "id": "Ref 6",
+    "title": "Autoinhibition of CYP3A4 leads to important role of CYP2C8 in imatinib metabolism: variability in CYP2C8 activity may alter plasma concentrations and response.",
+    "year": "2013",
+    "doi": "10.1124/dmd.112.048017",
+    "original_ids": [
+      "Ref 18"
+    ],
+    "pmid": "23028140",
+    "quotes": [
+      {
+        "quote": "First, the metabolism of imatinib was investigated using recombinant P450 enzymes and human liver microsomes with P450 isoform-selective inhibitors. Thereafter, an in silico model for imatinib was constructed to perform pharmacokinetic simulations to assess the roles of P450 enzymes in imatinib elimination at clinically used imatinib doses. In vitro, CYP2C8 inhibitors and CYP3A4 inhibitors inhibited the depletion of 0.1 µM imatinib by 45 and 80%, respectively, and the formation of the main metabolite of imatinib, N-desmethylimatinib, by >50%. Likewise, recombinant CYP2C8 and CYP3A4 metabolized imatinib extensively, whereas other isoforms had minor effect on imatinib concentrations.",
+        "supports": "direct"
+      }
+    ]
+  },
+  {
+    "id": "Ref 7",
+    "title": "Increased plasma imatinib exposure and toxicity in chronically treated GIST patients with SARS-CoV-2 infection: a case series.",
+    "year": "2024",
+    "doi": "10.3389/fimmu.2024.1441620",
+    "original_ids": [
+      "Ref 20"
+    ],
+    "pmid": "39445010",
+    "quotes": [
+      {
+        "quote": "The primary metabolic pathway of imatinib involves demethylation mediated by CYP3A4, resulting in the formation of N-desmethylimatinib (norimatinib). While other CYP450 enzymes, including CYP3A5, CYP2C8, CYP1A1, and CYP1A2, also participate in this process, their roles are relatively minor. Norimatinib, which retains similar activity to imatinib, undergoes further metabolism either through CYP3A4-mediated hydroxylation or through conjugation reactions (glucuronidation or sulfonation).",
+        "supports": "direct"
+      }
+    ]
+  },
+  {
+    "id": "Ref 8",
+    "title": "Synthesis and positron emission tomography studies of carbon-11-labeled imatinib (Gleevec).",
+    "year": "2007",
+    "doi": "10.1016/j.nucmedbio.2006.11.004",
+    "original_ids": [
+      "Ref 6"
+    ],
+    "pmid": "17307123",
+    "quotes": [
+      {
+        "quote": "norimatinib was synthesized by the demethylation of imatinib (isolated from Gleevec tablets) according to a patent procedure [Collins JM, Klecker RW Jr, Anderson LW. Imaging of drug accumulation as a guide to antitumor therapy. US Patent 20030198594A1, 2003].",
+        "supports": "direct"
+      }
+    ]
+  },
+  {
+    "id": "Ref 9",
+    "title": "Women Administered Standard Dose Imatinib for Chronic Myeloid Leukemia Have Higher Dose-Adjusted Plasma Imatinib and Norimatinib Concentrations Than Men.",
+    "year": "2017",
+    "doi": "10.1097/FTD.0000000000000440",
+    "original_ids": [
+      "Ref 9"
+    ],
+    "pmid": "28767619",
+    "quotes": [
+      {
+        "quote": "The mean dose normalized plasma imatinib and norimatinib concentrations were significantly higher in women in comparison with men.",
+        "supports": "direct"
+      }
+    ]
+  }
+]
+results_dir: /data/chen/e2e_searching_results/endogenous_metabolite_eval_run_20260419_194100/endogenous_metabolite_eval_eval_endogenous_metabolite_b26c4a23

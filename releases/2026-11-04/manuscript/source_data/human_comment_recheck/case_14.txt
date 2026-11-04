@@ -1,0 +1,193 @@
+CASE 14: alpha-Curcumene | Confirmed | Plant / Dietary
+entity_synonyms: 
+canonical_name: 
+query: {
+  "task": "verify_candidate_entity",
+  "entity_name": "alpha-Curcumene",
+  "original_query": "Decide whether 'alpha-Curcumene' satisfies the confirmed-topic definition.",
+  "evaluation_criteria": {
+    "criteria_text": "- [mandatory] The entity must be a small molecule.\n- [mandatory] The entity must be produced within the human body.\n- [mandatory] The entity must function in human biochemical or physiological processes.\n- [mandatory] The entity must not be solely an exogenous chemical.\n- [mandatory] The entity must not be solely a microbiota-only metabolite.\n- [optional] If a metabolite is produced by both microbiota and host metabolism, it is included.",
+    "rubric_items": [
+      {
+        "name": "The entity must be a small molecule.",
+        "section": "rubric",
+        "priority": "mandatory"
+      },
+      {
+        "name": "The entity must be produced within the human body.",
+        "section": "rubric",
+        "priority": "mandatory"
+      },
+      {
+        "name": "The entity must function in human biochemical or physiological processes.",
+        "section": "rubric",
+        "priority": "mandatory"
+      },
+      {
+        "name": "The entity must not be solely an exogenous chemical.",
+        "section": "rubric",
+        "priority": "mandatory"
+      },
+      {
+        "name": "The entity must not be solely a microbiota-only metabolite.",
+        "section": "rubric",
+        "priority": "mandatory"
+      },
+      {
+        "name": "If a metabolite is produced by both microbiota and host metabolism, it is included.",
+        "section": "rubric",
+        "priority": "optional"
+      }
+    ],
+    "fixed_criteria": [
+      "The entity must be a small molecule.",
+      "The entity must be produced within the human body.",
+      "The entity must function in human biochemical or physiological processes.",
+      "The entity must not be solely an exogenous chemical.",
+      "The entity must not be solely a microbiota-only metabolite."
+    ]
+  },
+  "entity_synonyms": [
+    "1-methyl-4-(6-methylhept-5-en-2-yl)benzene",
+    "1-(1,5-Dimethyl-4-hexenyl)-4-methylbenzene",
+    "2-Methyl-6-p-tolyl-2-heptene",
+    "Ar-curcumene",
+    "Aromatic curcumene",
+    "Aryl-curcumene",
+    "Curcumene",
+    "a-Curcumene",
+    "(S)-Isomer OF alpha-curcumene",
+    "(R)-Isomer OF alpha-curcumene",
+    "2-Heptene, 2-methyl-6-p-tolyl-",
+    "orb1680033",
+    "Benzene, 1-(1,5-dimethyl-4-hexenyl)-4-methyl-",
+    "2-methyl-6-(p-tolyl)hept-2-ene",
+    "Curcumene <AR>",
+    "1-(1,5-dimethyl-hex-4-enyl)-4-methyl-benzene",
+    "alpha-Cucurmene"
+  ],
+  "domain": "endogenous_metabolite",
+  "search_budget": {
+    "batch1_max_search_directions": 3,
+    "batch1_max_identity_terms": 2,
+    "batch1_max_primary_context_terms": 2,
+    "defer_method_fanout_until_followup": true,
+    "avoid_near_duplicate_context_terms": true
+  }
+}
+explanation: Alpha-Curcumene is a small molecule (C15H22, 202.341 Da) detected as a metabolite in human fecal and urine samples. It is correlated with Alzheimer's disease biomarkers and shows potential to modulate the glutamatergic system, indicating its involvement in human biochemical and physiological processes. Its presence as a urinary biomarker after dietary intake confirms it is processed by the human body and not solely an exogenous chemical, and while it is mentioned in the context of 'intestinal fora', there is no evidence to suggest it is solely a microbiota-only metabolite.
+criteria_json: [
+  {
+    "name": "The entity must be a small molecule.",
+    "priority": "mandatory",
+    "section": "rubric",
+    "status": "solved",
+    "notes": "Confirmed by PubChem data (C15H22, 202.341 Da).",
+    "support_type": "inferred",
+    "score": 1.0
+  },
+  {
+    "name": "The entity must be produced within the human body.",
+    "priority": "mandatory",
+    "section": "rubric",
+    "status": "solved",
+    "notes": "Detected as a metabolite in human fecal and urine samples, indicating its presence and processing within the human body.",
+    "support_type": "direct_evidence",
+    "score": 1.0
+  },
+  {
+    "name": "The entity must function in human biochemical or physiological processes.",
+    "priority": "mandatory",
+    "section": "rubric",
+    "status": "solved",
+    "notes": "Correlated with AD biomarkers and suggested to modulate the glutamatergic system, implying functional roles.",
+    "support_type": "direct_evidence",
+    "score": 1.0
+  },
+  {
+    "name": "The entity must not be solely an exogenous chemical.",
+    "priority": "mandatory",
+    "section": "rubric",
+    "status": "solved",
+    "notes": "Identified as a human metabolite and urinary biomarker after dietary intake, indicating human processing.",
+    "support_type": "direct_evidence",
+    "score": 1.0
+  },
+  {
+    "name": "The entity must not be solely a microbiota-only metabolite.",
+    "priority": "mandatory",
+    "section": "rubric",
+    "status": "solved",
+    "notes": "While mentioned in the context of 'intestinal fora', its identification as a urinary biomarker after dietary intake suggests human metabolism of exogenous sources, not solely microbiota production.",
+    "support_type": "direct_evidence",
+    "score": 1.0
+  },
+  {
+    "name": "If a metabolite is produced by both microbiota and host metabolism, it is included.",
+    "priority": "optional",
+    "section": "rubric",
+    "status": "solved",
+    "notes": "Evidence suggests both potential microbiota involvement and human metabolic processing of exogenous sources.",
+    "support_type": "direct_evidence",
+    "score": 1.0
+  }
+]
+evidence_json: [
+  {
+    "id": "Ref 1",
+    "title": "Metabolites of intestinal fora can be used as diagnostic and progressive markers for mild cognitive impairment",
+    "year": "2024",
+    "doi": "10.3389/fcimb.2024.1351523",
+    "original_ids": [
+      "Ref 1"
+    ],
+    "pmid": "38404286",
+    "quotes": [
+      {
+        "quote": "Our study found that there were 21 different metabolites among the three groups (AD, MCI, and NC) and 19 differential metabolites between the P-G and U-G groups. Through machine learning analysis, we found that seven characteristic metabolites [Erythrodiol, alpha-Curcumene, Synephrine, o-Hydroxylaminobenzoate, 3-Amino-4-hydroxybenzoic acid, 2-Deoxystreptamine, and 9(S)-HPOT] were of characteristic significance for the diagnosis of MCI and that six metabolites (Indolelactate, Indole-3-acetaldehyde, L-Proline, Perillyl, Mesaconate, and Sphingosine) were the characteristic metabolites of early warning for the progression of MCI.",
+        "supports": "direct"
+      },
+      {
+        "quote": "As shown in , the results of fecal metabolites analysis in the AD, MCI, and normal groups were reliable. There were 21 different metabolites in the three groups (), in which positive ion included Pelletierine, 3-Amino-4-hydroxybenzoate, o-Hydroxylaminobenzoate, 2-Deoxystreptamine, p-Synephrine, alpha-Curcumene, Stearidonic acid, Piperine, 3-Ketosphingosine, Allopregna, 9(S)-HPOT, Tetrahydropalmatine, Docosatetraenoyl Ethanolamide, and Erythrodiol; and negative ion included 4-Aminophenol, 4-Hydroxycinnamic acid, D-Glucuronic Acid, Syringic acid, Dihydrotestosterone, All-trans-Retinoic acid, and All-trans-Retinoic acid).",
+        "supports": "direct"
+      },
+      {
+        "quote": "Erythrodiol was negatively correlated with GFAP, and alpha-Curcumene was negatively correlated with NF-light and GFAP.",
+        "supports": "direct"
+      }
+    ]
+  },
+  {
+    "id": "Ref 2",
+    "title": "Main urinary biomarkers of golden berries (Physalis peruviana) following acute and short-term nutritional intervention in healthy human volunteers.",
+    "year": "2023",
+    "doi": "10.1016/j.foodres.2023.113443",
+    "original_ids": [
+      "Ref 4"
+    ],
+    "pmid": "37803771",
+    "quotes": [
+      {
+        "quote": "The most discriminant metabolites confirmed by DHS/GC-MS2 analysis of volatiles in urine were sesquiterpenes (C15H22): 3 stereoisomers, β-vatirenene, β-vetivenene, and β-vetispirene, and 2 isomers, eremophila-1(10),8,11-triene and α-curcumene",
+        "supports": "direct"
+      }
+    ]
+  },
+  {
+    "id": "Ref 3",
+    "title": "Synergistic Potential of Trikatu Essential Oil as an Aromatherapy Agent: A Chemical and Mechanistic Review.",
+    "year": "2025",
+    "doi": "10.2147/dddt.s534731",
+    "original_ids": [
+      "Ref 9"
+    ],
+    "pmid": "40786247",
+    "quotes": [
+      {
+        "quote": "In addition, α-curcumene shows potential in modulating the glutamatergic system through strong binding to GluN1, GluN2B, and GluA2 receptors which are relevant in regulating mood and anxiety.",
+        "supports": "direct"
+      }
+    ]
+  }
+]
+results_dir: /data/chen/e2e_searching_results/endogenous_metabolite_eval_run_20260419_194100/endogenous_metabolite_eval_eval_endogenous_metabolite_98cddc98

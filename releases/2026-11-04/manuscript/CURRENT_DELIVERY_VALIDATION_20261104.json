@@ -1,0 +1,98 @@
+{
+  "status": "pass_with_author_actions_pending",
+  "documents": {
+    "DB_Curator_main": {
+      "pages": 27,
+      "sha256": "0d1e913fb339101506582499216749999c4deecc51d54d0dbde0df1f58f7a758"
+    },
+    "DB_Curator_SI": {
+      "pages": 15,
+      "sha256": "f11c11e7a04815012ea0e1f756e69405ce1362445ae7e4cb5c7cd9d9d974557b"
+    }
+  },
+  "abstract_words": 133,
+  "main_words_excluding_abstract_methods_legends_tables": 2906,
+  "main_figures": 6,
+  "main_tables": 0,
+  "display_items": 6,
+  "figure_outputs_hash_checked": 44,
+  "figure_inputs_unchanged": true,
+  "workshop_figure1_exports_hash_checked": 3,
+  "workshop_figure1_source_sha256": "7125db01af67b5fee1b2d360103ce14434433cc8247da9779175c73556d95c17",
+  "paper_existence": {
+    "true": 7624,
+    "false": 23,
+    "unresolved": 0
+  },
+  "benchmark_paper_citations": 7647,
+  "source_located_citations": 7246,
+  "validation_model_calls": 0,
+  "historical_labels_archived": true,
+  "designated_case_replacements": 69,
+  "semicolon_free_authored_prose": true,
+  "original_punctuation_preserved_in_quoted_sentences": true,
+  "verbatim_quote_semicolons": 1,
+  "expert_review_blinding": "with system labels hidden from the reviewer, across all four cohorts",
+  "author_actions": [
+    "Provide code/data reviewer access or authorize public release."
+  ],
+  "manual_publication_identities_remaining": 0,
+  "public_access_check": [
+    {
+      "url": "https://api.github.com/repos/CZhao97/db_form_agent_system",
+      "status": 404,
+      "final_url": "https://api.github.com/repos/CZhao97/db_form_agent_system",
+      "checked_utc": "2026-11-03T07:43:54.492631+00:00",
+      "body_preview": "{\"message\":\"Not Found\",\"documentation_url\":\"https://docs.github.com/rest/repos/repos#get-a-repository\",\"status\":\"404\"}"
+    },
+    {
+      "url": "https://zenodo.org/api/records/21285739",
+      "status": 404,
+      "final_url": "https://zenodo.org/api/records/21285739",
+      "checked_utc": "2026-11-03T07:43:55.308709+00:00",
+      "body_preview": "{\"status\": 404, \"message\": \"The persistent identifier is not registered.\"}"
+    },
+    {
+      "url": "https://doi.org/10.5281/zenodo.21285739",
+      "status": 404,
+      "final_url": "https://doi.org/10.5281/zenodo.21285739",
+      "checked_utc": "2026-11-03T07:43:55.497493+00:00",
+      "body_preview": "<!DOCTYPE html>\n<html lang=\"en-us\">\n<head>\n\n    <meta charset=\"UTF-8\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n    <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\">\n    <title>Error: DOI Not Found</title>\n\n\n\n    <link href=\"https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css\"\n          rel=\"stylesheet\"\n          integrity=\"sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC\"\n          crossorigin=\"anonymous\">\n    <scrip"
+    }
+  ],
+  "consolidated_results": {
+    "candidates": 1887,
+    "confirmed": 975,
+    "complete_tokens": 1887,
+    "complete_runtime": 1887,
+    "literature_references": 7647,
+    "real_literature": 7624,
+    "incorrect_literature": 23,
+    "unresolved_literature": 0,
+    "literature_existence_percent": 99.6992284556035,
+    "source_located_references": 7246,
+    "confirmed_references": 4169,
+    "confirmed_located": 3964,
+    "confirmed_false": 22,
+    "candidates_with_incorrect_references": 15,
+    "confirmed_candidates_with_incorrect_references": 14,
+    "reviewed_instances": 402,
+    "reviewed_real": 378,
+    "reviewed_false": 23,
+    "reviewed_excluded": 1,
+    "books_and_chapters_included": 2,
+    "quote_checks_not_upgraded_by_existence": true
+  },
+  "construction_processed_pool_review": {
+    "topic": "all",
+    "processed": 359,
+    "retained": 250,
+    "nonconfirmed": 109,
+    "TP": 241,
+    "FP": 9,
+    "FN": 2,
+    "TN": 107,
+    "precision": 0.964,
+    "processed_pool_recall": 0.9917695473251029
+  }
+}

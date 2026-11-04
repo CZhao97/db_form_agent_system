@@ -1,0 +1,17 @@
+{
+  "all_repair_candidates": 655,
+  "final_accepted_candidates": 142,
+  "final_accepted_review_events": 172,
+  "subsequent_research_events": 30,
+  "subsequent_events_with_new_reported_ids": 16,
+  "inspected_events_total": 133,
+  "inspected_final_accepted_cases": 11,
+  "random_sample": false,
+  "expert_error_count": null,
+  "independent_accuracy_estimate": false,
+  "selection": "Final Confirmed and canonical accepted within the existing diagnostic inspection set; all matching records retained.",
+  "source_hashes": {
+    "/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/critique_mechanism_analysis_complete655_20261026/snapshot/events.json": "4c8145f75cc009394b3da596d1050e8e1fc9560f97252058465173893904488d",
+    "/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/critique_mechanism_analysis_complete655_20261026/consolidated_inspections/all_event_inspections.json": "257d65823278f83798a64bd390f898c2859d6d149ea20917e50fa35461e42a9a"
+  }
+}

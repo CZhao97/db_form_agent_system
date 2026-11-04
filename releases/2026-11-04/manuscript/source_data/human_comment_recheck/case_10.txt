@@ -1,0 +1,308 @@
+CASE 10: Methylgallic acid-O-sulphate | Confirmed | Exogenous
+entity_synonyms: 
+canonical_name: 
+query: {
+  "task": "verify_candidate_entity",
+  "entity_name": "Methylgallic acid-O-sulphate",
+  "original_query": "Decide whether 'Methylgallic acid-O-sulphate' satisfies the confirmed-topic definition.",
+  "evaluation_criteria": {
+    "criteria_text": "- [mandatory] The entity must be a small molecule.\n- [mandatory] The entity must be produced within the human body.\n- [mandatory] The entity must function in human biochemical or physiological processes.\n- [mandatory] The entity must not be solely an exogenous chemical.\n- [mandatory] The entity must not be solely a microbiota-only metabolite.\n- [optional] If a metabolite is produced by both microbiota and host metabolism, it is included.",
+    "rubric_items": [
+      {
+        "name": "The entity must be a small molecule.",
+        "section": "rubric",
+        "priority": "mandatory"
+      },
+      {
+        "name": "The entity must be produced within the human body.",
+        "section": "rubric",
+        "priority": "mandatory"
+      },
+      {
+        "name": "The entity must function in human biochemical or physiological processes.",
+        "section": "rubric",
+        "priority": "mandatory"
+      },
+      {
+        "name": "The entity must not be solely an exogenous chemical.",
+        "section": "rubric",
+        "priority": "mandatory"
+      },
+      {
+        "name": "The entity must not be solely a microbiota-only metabolite.",
+        "section": "rubric",
+        "priority": "mandatory"
+      },
+      {
+        "name": "If a metabolite is produced by both microbiota and host metabolism, it is included.",
+        "section": "rubric",
+        "priority": "optional"
+      }
+    ],
+    "fixed_criteria": [
+      "The entity must be a small molecule.",
+      "The entity must be produced within the human body.",
+      "The entity must function in human biochemical or physiological processes.",
+      "The entity must not be solely an exogenous chemical.",
+      "The entity must not be solely a microbiota-only metabolite."
+    ]
+  },
+  "entity_synonyms": [
+    "(3,4,5-trihydroxy-2-methylbenzoyloxy)sulfonic acid",
+    "Methylgallate-O-sulfate",
+    "Methylgallate-O-sulphate",
+    "Methylgallic acid-O-sulfuric acid",
+    "Methylgallic acid-O-sulphuric acid",
+    "(3,4,5-Trihydroxy-2-methylbenzoyloxy)sulfonate",
+    "(3,4,5-Trihydroxy-2-methylbenzoyloxy)sulphonate",
+    "(3,4,5-Trihydroxy-2-methylbenzoyloxy)sulphonic acid",
+    "sulfo 3,4,5-trihydroxy-2-methylbenzoate",
+    "methylgallic acid sulfate"
+  ],
+  "domain": "endogenous_metabolite",
+  "search_budget": {
+    "batch1_max_search_directions": 3,
+    "batch1_max_identity_terms": 2,
+    "batch1_max_primary_context_terms": 2,
+    "defer_method_fanout_until_followup": true,
+    "avoid_near_duplicate_context_terms": true
+  }
+}
+explanation: Methylgallic acid-O-sulphate is a small molecule (264.211 Da) found in human plasma and urine following the consumption of polyphenol-rich foods. Its presence as a metabolite of dietary compounds confirms its production within the human body through host and potentially microbiota metabolism, and it is not solely exogenous or microbiota-only.
+criteria_json: [
+  {
+    "name": "The entity must be a small molecule.",
+    "priority": "mandatory",
+    "section": "rubric",
+    "status": "solved",
+    "notes": "Confirmed by PubChem data (264.211 Da).",
+    "support_type": "inferred",
+    "score": 1.0
+  },
+  {
+    "name": "The entity must be produced within the human body.",
+    "priority": "mandatory",
+    "section": "rubric",
+    "status": "solved",
+    "notes": "Detected in human urine and plasma as a metabolite after dietary intake.",
+    "support_type": "direct_evidence",
+    "score": 1.0
+  },
+  {
+    "name": "The entity must function in human biochemical or physiological processes.",
+    "priority": "mandatory",
+    "section": "rubric",
+    "status": "solved",
+    "notes": "Its consistent presence as a metabolite implies involvement in human metabolic processes, even if specific functions are not detailed.",
+    "support_type": "direct_evidence",
+    "score": 1.0
+  },
+  {
+    "name": "The entity must not be solely an exogenous chemical.",
+    "priority": "mandatory",
+    "section": "rubric",
+    "status": "solved",
+    "notes": "It is a metabolite of exogenous dietary compounds, not solely exogenous itself.",
+    "support_type": "direct_evidence",
+    "score": 1.0
+  },
+  {
+    "name": "The entity must not be solely a microbiota-only metabolite.",
+    "priority": "mandatory",
+    "section": "rubric",
+    "status": "solved",
+    "notes": "Evidence suggests involvement of both host and gut microbiota metabolism in its formation.",
+    "support_type": "direct_evidence",
+    "score": 1.0
+  },
+  {
+    "name": "If a metabolite is produced by both microbiota and host metabolism, it is included.",
+    "priority": "optional",
+    "section": "rubric",
+    "status": "solved",
+    "notes": "Hypothesized to be due to adaptive increase in metabolism by subjects' gut microbiota.",
+    "support_type": "direct_evidence",
+    "score": 1.0
+  }
+]
+evidence_json: [
+  {
+    "id": "Ref 1",
+    "title": "Adaptation of Galloyl Derivatives Metabolism and Excretion After 42 Days of Mango (Mangifera indica L.) Consumption",
+    "year": "2017",
+    "doi": "10.1096/fasebj.31.1_supplement.646.14",
+    "original_ids": [
+      "Ref 4"
+    ],
+    "quotes": [
+      {
+        "quote": "Significant (p<0.05) increases were observed in their 24 h urinary excretion of 4‐O‐methylgallic acid‐3‐O‐sulfate, methylpyrogallol‐O‐sulfate, pyrogallol‐O‐sulfate, and catechol‐O‐sulfate. ... Increased metabolism and excretion following daily polyphenol were hypothesized to be due to adaptive increase in the metabolism of gallic acid, galloyl glycosides, and gallotannins by the subjects' gut microbiota",
+        "supports": "direct"
+      }
+    ]
+  },
+  {
+    "id": "Ref 2",
+    "title": "Improved recovery of galloyl metabolites from mango (Mangifera indica L.) in human plasma using protein precipitation with sodium dodecyl sulfate and methanol.",
+    "year": "2020",
+    "doi": "10.1016/j.foodres.2019.108812",
+    "original_ids": [
+      "Ref 6"
+    ],
+    "pmid": "32036936",
+    "quotes": [
+      {
+        "quote": "In pharmacokinetic plasma samples five predominant metabolites of gallic acid were tentatively characterized by HPLC-MS and absorption kinetics evaluated over 8 h for catechol-O-sulfate, 4-O-methylgallic acid-3-O-sulfate, and pyrogallol-O-sulfate, methylpyrogallol-O-sulfate, and 4-O-methylgallic acid with AUC0-8h of 9520 ± 3370, 6030 ± 1310, 5990 ± 1690, 4020 ± 1040, and 2790 ± 1190 μg/L h respectively.",
+        "supports": "direct"
+      }
+    ]
+  },
+  {
+    "id": "Ref 3",
+    "title": "Dietary biomarkers-an update on their validity and applicability in epidemiological studies.",
+    "year": "2024",
+    "doi": "10.1093/nutrit/nuad119",
+    "original_ids": [
+      "Ref 7",
+      "Ref 13"
+    ],
+    "pmid": "37791499",
+    "quotes": [
+      {
+        "quote": "Moderate to high correlations with habitual tea intake have been observed for urine gallic acid metabolites 4-O-methylgallic acid and methylgallic acid sulfate.",
+        "supports": "direct"
+      },
+      {
+        "quote": "4-O-Methylgallic acid and methylgallic acid sulfate in urine",
+        "supports": "direct"
+      }
+    ]
+  },
+  {
+    "id": "Ref 4",
+    "title": "Biomarkers of intake for coffee, tea, and sweetened beverages.",
+    "year": "2018",
+    "doi": "10.1186/s12263-018-0607-5",
+    "original_ids": [
+      "Ref 8",
+      "Ref 12",
+      "Ref 17"
+    ],
+    "pmid": "29997698",
+    "quotes": [
+      {
+        "quote": "methylgallic acid sulfate(HMDB0060005)",
+        "supports": "direct"
+      },
+      {
+        "quote": "O-methylgallic acid sulfates",
+        "supports": "direct"
+      }
+    ]
+  },
+  {
+    "id": "Ref 5",
+    "title": "Pharmacokinetic Characterization of (Poly)phenolic Metabolites in Human Plasma and Urine after Acute and Short-Term Daily Consumption of Mango Pulp.",
+    "year": "2020",
+    "doi": "10.3390/molecules25235522",
+    "original_ids": [
+      "Ref 9",
+      "Ref 19"
+    ],
+    "pmid": "33255828",
+    "quotes": [
+      {
+        "quote": "The mean plasma concentration vs. time profiles (0-24 h) are reported for 10 metabolites that were detected above the limit of quantitation (LOQ): gallic acid (C1), galloyl glucose (C2), methylgallic acid (C3), methylgallic acid sulfate (C4), ferulic acid hexoside (C5), methylpyrogallol sulfate isomer 1 (C6), methylpyrogallol sulfate isomer 2 (C7), pyrogallol sulfate (C8), methylpyrogallol glucuronide (C9) and catechol glucuronide (C10), after ingestion of MP, MP + VC and VC test beverages",
+        "supports": "direct"
+      },
+      {
+        "quote": "The identification of plasma metabolites including galloyl glucose, methylgallic acid, methylgallic acid sulfate, ferulic acid hexoside and methylpyrogallol glucuronide was confirmed by UHPLC-Q-TOF-MS and previous literature reports",
+        "supports": "direct"
+      }
+    ]
+  },
+  {
+    "id": "Ref 6",
+    "title": "Exploring Human Metabolome after Wine Intake—A Review",
+    "year": "2023",
+    "original_ids": [
+      "Ref 11"
+    ],
+    "quotes": [
+      {
+        "quote": "Furthermore, a multitude of studies have documented the presence of gallic acid metabolites, encompassing gallic acid itself, methylgallic acids, methylgallic acid sulfates, and pyrogallol.",
+        "supports": "direct"
+      }
+    ]
+  },
+  {
+    "id": "Ref 7",
+    "title": "Biomarkers of Fruit Intake Using a Targeted Metabolomics Approach: an Observational Cross-Sectional Analysis of the ELSA-Brasil Study.",
+    "year": "2022",
+    "doi": "10.1093/jn/nxac115",
+    "original_ids": [
+      "Ref 14"
+    ],
+    "pmid": "35641174",
+    "quotes": [
+      {
+        "quote": "Spearman correlation analysis showed that total fruits intake was significantly correlated with citric acid (ρ = 0.213, P = 0.041), ferulic acid sulfate I (ρ = 0.240, P = 0.020), hesperetin glucuronide/homoeriodictyol glucuronide (ρ = 0.303, P = 0.003), hydroxyhippuric acid (ρ = 0.239, P = 0.021), homovanillic alcohol sulfate (ρ = 0.339, P = 0.001), methylgallic acid sulfate (ρ = 0.268, P = 0.009), naringenin glucuronide (NG; ρ = 0.278, P = 0.007), proline betaine (PB; ρ = 0.305, P = 0.003), syringic acid sulfate (ρ = 0.210, P = 0.044), and sinapic acid sulfate (ρ = 0.412, P < 0.001).",
+        "supports": "direct"
+      }
+    ]
+  },
+  {
+    "id": "Ref 8",
+    "title": "Exploring the immune-inflammatory mechanism of Maxing Shigan Decoction in treating influenza virus A-induced pneumonia based on an integrated strategy of single-cell transcriptomics and systems biology.",
+    "year": "2024",
+    "doi": "10.1186/s40001-024-01777-9",
+    "original_ids": [
+      "Ref 15",
+      "Ref 16"
+    ],
+    "pmid": "38622728",
+    "quotes": [
+      {
+        "quote": "Enterorhabdus was positively correlated with up-regulation of methylgallic acid-O-sulphate",
+        "supports": "direct"
+      },
+      {
+        "quote": "Anaeroplasma was positively correlated with up-regulation of 3-bromo-tyrosine, (R)-5-phosphomevalote, methylgallic acid-O-sulphate",
+        "supports": "direct"
+      }
+    ]
+  },
+  {
+    "id": "Ref 9",
+    "title": "Studies on the Changes of Pharmacokinetics Behaviors of Phytochemicals and the Influence on Endogenous Metabolites After the Combination of Radix Bupleuri and Radix Paeoniae Alba Based on Multi-Component Pharmacokinetics and Metabolomics.",
+    "year": "2021",
+    "doi": "10.3389/fphar.2021.630970",
+    "original_ids": [
+      "Ref 18"
+    ],
+    "pmid": "33762950",
+    "quotes": [
+      {
+        "quote": "M5 | Methylgallic acid sulfate | 2.968 | C8H8O8S | [M-H]- | 262.98679 | Methyl gallate | 262.98675-262.98682 |",
+        "supports": "direct"
+      }
+    ]
+  },
+  {
+    "id": "Ref 10",
+    "title": "Absorption, Metabolism and Excretion of Cranberry (Poly)phenols in Humans: A Dose Response Study and Assessment of Inter-Individual Variability.",
+    "year": "2017",
+    "doi": "10.3390/nu9030268",
+    "original_ids": [
+      "Ref 20"
+    ],
+    "pmid": "28287476",
+    "quotes": [
+      {
+        "quote": "Vanillic acid-4-O-sulfate, (4R)-5-(3′-hydroxyphenyl)-γ-valerolactone-4′-O-sulfate, 4-methylgallic acid-3-O-sulfate and isoferulic acid 3-O-sulfate had r2 values of almost 0.90.",
+        "supports": "direct"
+      }
+    ]
+  }
+]
+results_dir: /data/chen/e2e_searching_results/endogenous_metabolite_eval_run_20260419_194100/endogenous_metabolite_eval_eval_endogenous_metabolite_dd463da6

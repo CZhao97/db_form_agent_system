@@ -1,0 +1,252 @@
+CASE 13: Urolithin A-3-O-glucuronide | Confirmed | Exogenous
+entity_synonyms: 
+canonical_name: 
+query: {
+  "task": "verify_candidate_entity",
+  "entity_name": "Urolithin A-3-O-glucuronide",
+  "original_query": "Decide whether 'Urolithin A-3-O-glucuronide' satisfies the confirmed-topic definition.",
+  "evaluation_criteria": {
+    "criteria_text": "- [mandatory] The entity must be a small molecule.\n- [mandatory] The entity must be produced within the human body.\n- [mandatory] The entity must function in human biochemical or physiological processes.\n- [mandatory] The entity must not be solely an exogenous chemical.\n- [mandatory] The entity must not be solely a microbiota-only metabolite.\n- [optional] If a metabolite is produced by both microbiota and host metabolism, it is included.",
+    "rubric_items": [
+      {
+        "name": "The entity must be a small molecule.",
+        "section": "rubric",
+        "priority": "mandatory"
+      },
+      {
+        "name": "The entity must be produced within the human body.",
+        "section": "rubric",
+        "priority": "mandatory"
+      },
+      {
+        "name": "The entity must function in human biochemical or physiological processes.",
+        "section": "rubric",
+        "priority": "mandatory"
+      },
+      {
+        "name": "The entity must not be solely an exogenous chemical.",
+        "section": "rubric",
+        "priority": "mandatory"
+      },
+      {
+        "name": "The entity must not be solely a microbiota-only metabolite.",
+        "section": "rubric",
+        "priority": "mandatory"
+      },
+      {
+        "name": "If a metabolite is produced by both microbiota and host metabolism, it is included.",
+        "section": "rubric",
+        "priority": "optional"
+      }
+    ],
+    "fixed_criteria": [
+      "The entity must be a small molecule.",
+      "The entity must be produced within the human body.",
+      "The entity must function in human biochemical or physiological processes.",
+      "The entity must not be solely an exogenous chemical.",
+      "The entity must not be solely a microbiota-only metabolite."
+    ]
+  },
+  "entity_synonyms": [
+    "3,4,5-trihydroxy-6-({8-hydroxy-6-oxo-6H-benzo[c]chromen-3-yl}oxy)oxane-2-carboxylic acid",
+    "Urolithin a-O-glucuronide",
+    "3,4,5-Trihydroxy-6-({8-hydroxy-6-oxo-6H-benzo[c]chromen-3-yl}oxy)oxane-2-carboxylate",
+    "8-hydroxy-urolithin-3-glucuronide",
+    "Npc316566"
+  ],
+  "domain": "endogenous_metabolite",
+  "search_budget": {
+    "batch1_max_search_directions": 3,
+    "batch1_max_identity_terms": 2,
+    "batch1_max_primary_context_terms": 2,
+    "defer_method_fanout_until_followup": true,
+    "avoid_near_duplicate_context_terms": true
+  }
+}
+explanation: Urolithin A-3-O-glucuronide is a small molecule (Ref 1, Ref 2, Ref 3, Ref 4, Ref 5, Ref 6) produced in the human body through the metabolism of ellagitannins by gut microbiota and subsequent host glucuronidation (Ref 2, Ref 3, Ref 4, Ref 5, Ref 6). It is found in human urine, plasma, and prostate tissue (Ref 2, Ref 3, Ref 4, Ref 5, Ref 6) and is involved in biochemical processes as a substrate for drug efflux transporters (Ref 1).
+criteria_json: [
+  {
+    "name": "The entity must be a small molecule.",
+    "priority": "mandatory",
+    "section": "rubric",
+    "status": "solved",
+    "notes": "The entity is consistently referred to as a small molecule or metabolite, and its molecular weight (404.327 Da) confirms it as a small molecule.",
+    "support_type": "direct_evidence",
+    "score": 1.0
+  },
+  {
+    "name": "The entity must be produced within the human body.",
+    "priority": "mandatory",
+    "section": "rubric",
+    "status": "solved",
+    "notes": "Urolithin A-3-O-glucuronide is isolated from human urine and detected in human plasma and prostate tissue after consumption of ellagitannin-rich foods, indicating its production within the human body.",
+    "support_type": "direct_evidence",
+    "score": 1.0
+  },
+  {
+    "name": "The entity must function in human biochemical or physiological processes.",
+    "priority": "mandatory",
+    "section": "rubric",
+    "status": "solved",
+    "notes": "Urolithin A-3-O-glucuronide is a substrate for the drug efflux transporter BCRP/ABCG2, indicating its involvement in biochemical processes.",
+    "support_type": "direct_evidence",
+    "score": 1.0
+  },
+  {
+    "name": "The entity must not be solely an exogenous chemical.",
+    "priority": "mandatory",
+    "section": "rubric",
+    "status": "solved",
+    "notes": "It is a metabolite produced from dietary compounds, not solely exogenous.",
+    "support_type": "direct_evidence",
+    "score": 1.0
+  },
+  {
+    "name": "The entity must not be solely a microbiota-only metabolite.",
+    "priority": "mandatory",
+    "section": "rubric",
+    "status": "solved",
+    "notes": "It is a phase II metabolite, meaning it undergoes glucuronidation by host enzymes after initial microbial conversion.",
+    "support_type": "direct_evidence",
+    "score": 1.0
+  },
+  {
+    "name": "If a metabolite is produced by both microbiota and host metabolism, it is included.",
+    "priority": "optional",
+    "section": "rubric",
+    "status": "solved",
+    "notes": "Evidence indicates production by both microbiota (initial conversion of ellagitannins to urolithins) and host metabolism (glucuronidation).",
+    "support_type": "direct_evidence",
+    "score": 1.0
+  }
+]
+evidence_json: [
+  {
+    "id": "Ref 1",
+    "title": "The gut microbiota ellagic acid-derived metabolite urolithin A and its sulfate conjugate are substrates for the drug efflux transporter breast cancer resistance protein (ABCG2/BCRP).",
+    "year": "2013",
+    "doi": "10.1021/jf4007505",
+    "original_ids": [
+      "Ref 1"
+    ],
+    "pmid": "23586460",
+    "quotes": [
+      {
+        "quote": "Urolithins, metabolites-produced by the gut microbiota from ellagic acid (EA) and ellagitannins, have been-acknowledged with in vivo anti-inflammatory and cancer chemopreventive properties. We here-evaluated whether urolithins (Uro-A, -B, -C and -D), their main phase II metabolites Uro-A-sulfate, Uro-A glucuronide, and Uro-B glucuronide as well as their precursor EA were substrates-for ABCG2/BCRP.",
+        "supports": "direct"
+      },
+      {
+        "quote": "Urolithin A glucuronide (Uro-A glur); M-H=403",
+        "supports": "direct"
+      }
+    ]
+  },
+  {
+    "id": "Ref 2",
+    "title": "Comparative studies of urolithins and their phase II metabolites on macrophage and neutrophil functions.",
+    "year": "2020",
+    "doi": "10.1007/s00394-020-02386-y",
+    "original_ids": [
+      "Ref 2"
+    ],
+    "pmid": "32960290",
+    "quotes": [
+      {
+        "quote": "During our previous studies we have isolated urolithin glucuronides, namely iso-urolithin A 3-O-glucuronide (iUA) and urolithin B 3-O-glucuronide (GUB), and a mixture of two inseparable isomers of urolithin A: 3-O-glucuronide and 8-O-glucuronide (GUA) from a urine of a volunteer ingesting ellagitannin-rich food products [24].",
+        "supports": "direct"
+      },
+      {
+        "quote": "In the previous studies we have shown that urolithin glucuronides are cleaved by human β-glucuronidase, which is released by human neutrophils from azurophilic granules upon stimulation of formyl peptide receptor-1 [24]",
+        "supports": "direct"
+      }
+    ]
+  },
+  {
+    "id": "Ref 3",
+    "title": "Dietary (poly)phenolics in human health: structures, bioavailability, and evidence of protective effects against chronic diseases.",
+    "year": "2012",
+    "doi": "10.1089/ars.2012.4581",
+    "original_ids": [
+      "Ref 3"
+    ],
+    "pmid": "22794138",
+    "quotes": [
+      {
+        "quote": "after consumption of pomegranate juice and walnuts, urolithin A- O -3- glucuronide and traces of urolithin B have been detected in human prostate tissue ( 162 ).",
+        "supports": "direct"
+      },
+      {
+        "quote": "The urolithin A and B glucuronides were the major components in urine.",
+        "supports": "direct"
+      },
+      {
+        "quote": "Feeding human subjects a single dose of strawberries, raspberries, walnuts, and oak-aged red wine, all of which contain ellagitannins, resulted in excretion of urolithin A 3- O -glucuronide in quantities equivalent to 2.8% (strawberries), 3.4% (raspberries), 6.5% (oak-aged red wine), and 16.6% (walnuts) of intake ( 69 ).",
+        "supports": "direct"
+      }
+    ]
+  },
+  {
+    "id": "Ref 4",
+    "title": "Food intake biomarkers for berries and grapes.",
+    "year": "2020",
+    "doi": "10.1186/s12263-020-00675-z",
+    "original_ids": [
+      "Ref 4"
+    ],
+    "pmid": "32967625",
+    "quotes": [
+      {
+        "quote": "Urine, plasma ileal fluid Ellagic acids/ urolithins, its derivatives and conjugates ellagic acid, ellagic acid-O-glucuronide, dimethylellagic acid-O-glucuronide, urolithin A, urolithin A-O-glucuronide, urolithin A-sulfate, isourolithin A-O-glucuronide, urolithin B, urolithin B-3-O-glucuronide, (iso)urolithin A-sulfate-O-glucuronide",
+        "supports": "direct"
+      },
+      {
+        "quote": "Urolithin A-O-glucuronide (u, p)",
+        "supports": "bridge_step1"
+      },
+      {
+        "quote": "Urolithins are produced by the opening and decarboxylation of one of the lactone rings of ellagic acid and the sequential removal of hydroxyl groups.",
+        "supports": "direct"
+      },
+      {
+        "quote": "A number of studies investigating metabolism of ellagitannins reported urolithin A and B glucuronide and sulfate, as the main metabolites in urine and plasma",
+        "supports": "direct"
+      }
+    ]
+  },
+  {
+    "id": "Ref 5",
+    "title": "Absorption and Metabolism of Urolithin A and Ellagic Acid in Mice and Their Cytotoxicity in Human Colorectal Cancer Cells.",
+    "year": "2023",
+    "doi": "10.1155/2023/8264716",
+    "original_ids": [
+      "Ref 5"
+    ],
+    "pmid": "37706115",
+    "quotes": [
+      {
+        "quote": "Here, we detected and proposed three possible urolithin A-related metabolites, including urolithin A 3-O-glucuronide (1) was detected at m/z = 403.07 and the MS2 ion at 227.03 (characteristic for neutral loss of 176 amu)",
+        "supports": "direct"
+      },
+      {
+        "quote": "The phase II metabolites of urolithin A, including urolithin A-glucuronide and urolithin A-sulfate, also show no effect on CRC cell proliferation and senescence [].",
+        "supports": "direct"
+      }
+    ]
+  },
+  {
+    "id": "Ref 6",
+    "title": "LC–MS analysis of urolithin-related metabolites in human plasma reveals glucuronide conjugates as the primary species after 4-weeks of pecan consumption",
+    "year": "2023",
+    "doi": "10.31665/jfb.2023.18336",
+    "original_ids": [
+      "Ref 6"
+    ],
+    "quotes": [
+      {
+        "quote": "Plasma Uro-A, -B, and -C levels and their phase II glucuronide metabolites were measured against known standards at 0- and 4-weeks. Uro-A (0.0-0.1 ng/mL) and -C (0.01-0.5) both increased significantly at 4-weeks while Uro-B was undetectable in plasma. The glucuronide conjugates were significantly higher than their free-forms, and all three conjugates increased from 0- to 4-weeks with Uro-A-glucuronide the highest at 2.6-106 ng/mL.",
+        "supports": "direct"
+      }
+    ]
+  }
+]
+results_dir: /data/chen/e2e_searching_results/endogenous_metabolite_eval_run_20260419_194100/endogenous_metabolite_eval_eval_endogenous_metabolite_b3d1997a

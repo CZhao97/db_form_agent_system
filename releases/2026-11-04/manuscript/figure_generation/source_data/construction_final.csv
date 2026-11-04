@@ -1,0 +1,6 @@
+﻿topic,processed_candidates,fixed_candidates,final_confirmed,released_benchmark_linked,fixed_benchmark_linked,processed_benchmark_linked,zero_shot_candidates,zero_shot_benchmark_linked,citation_instances,verified_citations,zero_shot_citations,zero_shot_verified
+dbp,707,200,200,104,104,138,200,99,842,842,200,0
+blood_exposome,321,200,200,186,186,270,200,161,1527,1527,200,0
+drug_compounds,331,200,200,103,103,130,200,197,2031,2031,200,0
+human_endogenous_metabolites,360,200,200,166,166,276,200,177,1820,1820,191,0
+microbial_natural_products,403,200,200,35,35,47,200,115,1469,1469,200,0

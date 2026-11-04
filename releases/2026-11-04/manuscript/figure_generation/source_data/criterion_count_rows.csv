@@ -1,0 +1,1888 @@
+﻿topic,row_index,outcome,scientific_label,criteria_passed,criteria_total,saved_system_label
+blood_exposome,66f64bdf41344fbc3fe8829a,Confirmed,Confirmed,4,4,Confirmed
+blood_exposome,6d2831415ec601f3e6506b08,Insufficient evidence,Insufficient Direct Evidence,0,4,Insufficient Direct Evidence
+blood_exposome,cac7014bf2f1f23111ead65e,Suspected,Suspected,2,4,Suspected
+blood_exposome,863d331d5f516b0c2f0256d3,Confirmed,Confirmed,4,4,Confirmed
+blood_exposome,bbf77b9bfce18545452add6d,Insufficient evidence,Insufficient Direct Evidence,0,4,Insufficient Direct Evidence
+blood_exposome,043288224f9b272719673375,Suspected,Suspected,2,4,Suspected
+blood_exposome,09dabd3a149c1ed3cbf2bfa1,Insufficient evidence,Insufficient Direct Evidence,0,4,Insufficient Direct Evidence
+blood_exposome,08b7fe620d08253c9310fa98,Confirmed,Confirmed,4,4,Confirmed
+blood_exposome,780112dae3668b1bcc9479d6,Insufficient evidence,Insufficient Direct Evidence,2,4,Insufficient Direct Evidence
+blood_exposome,910fa669150b76aa108413fe,Confirmed,Confirmed,4,4,Confirmed
+blood_exposome,dc969032d91a3127c880ac80,Insufficient evidence,Insufficient Direct Evidence,0,4,Insufficient Direct Evidence
+blood_exposome,0814dd1a0207227b3d35ea2a,Explicit negative,Explicit Negative Evidence,4,4,Explicit Negative Evidence
+blood_exposome,a4d646ced965056db25bf971,Confirmed,Confirmed,4,4,Confirmed
+blood_exposome,8b51f3440bf43ff9f59975fb,Insufficient evidence,Insufficient Direct Evidence,0,4,Insufficient Direct Evidence
+blood_exposome,6138244c358e1279ea03d54b,Confirmed,Confirmed,4,4,Confirmed
+blood_exposome,151001b07e909f34e6877e49,Insufficient evidence,Insufficient Direct Evidence,0,4,Insufficient Direct Evidence
+blood_exposome,0e976864059d0eaedec769d7,Insufficient evidence,Insufficient Direct Evidence,0,4,Insufficient Direct Evidence
+blood_exposome,c34289d81dd103877e15421c,Insufficient evidence,Insufficient Direct Evidence,0,4,Insufficient Direct Evidence
+blood_exposome,17d2a28cd494606045f6fd29,Suspected,Suspected,3,4,Suspected
+blood_exposome,b9cc6ce347f30e9470526cc3,Confirmed,Confirmed,4,4,Confirmed
+blood_exposome,5cbffee0ec47a488893d8ac3,Confirmed,Confirmed,4,4,Confirmed
+blood_exposome,c2c71fbbedd7e012a47d4382,Insufficient evidence,Insufficient Direct Evidence,0,4,Insufficient Direct Evidence
+blood_exposome,2122438f2e5d57090c8a6fac,Insufficient evidence,Insufficient Direct Evidence,0,4,Insufficient Direct Evidence
+blood_exposome,b4ead28a0c4de3f5ab6abe87,Insufficient evidence,Insufficient Direct Evidence,0,4,Insufficient Direct Evidence
+blood_exposome,0baf6833837528d498e13bcb,Insufficient evidence,Insufficient Direct Evidence,0,4,Insufficient Direct Evidence
+blood_exposome,d0477b44091eea217115180e,Confirmed,Confirmed,4,4,Confirmed
+blood_exposome,921161ef8bc2007b5cf95caa,Insufficient evidence,Insufficient Direct Evidence,0,4,Insufficient Direct Evidence
+blood_exposome,9187e4bd273b1d1adbf180ff,Confirmed,Confirmed,4,4,Confirmed
+blood_exposome,e0fa9cc6befefd746deb5617,Insufficient evidence,Insufficient Direct Evidence,0,4,Insufficient Direct Evidence
+blood_exposome,1da13ea64c03eb06637bc3e6,Confirmed,Confirmed,3,4,Suspected
+blood_exposome,9a36e1f2791ff5a7c8a655f8,Insufficient evidence,Insufficient Direct Evidence,0,4,Insufficient Direct Evidence
+blood_exposome,1a390dd8d2369f82078ee8aa,Insufficient evidence,Insufficient Direct Evidence,0,4,Insufficient Direct Evidence
+blood_exposome,26121f4848f74c68ea3b7951,Confirmed,Confirmed,4,4,Confirmed
+blood_exposome,920a6db18d84ea28a07c1b17,Confirmed,Confirmed,4,4,Confirmed
+blood_exposome,201b71afd13ea4286351c8ef,Confirmed,Confirmed,4,4,Confirmed
+blood_exposome,4456dbc12cc81b94ad51320d,Insufficient evidence,Insufficient Direct Evidence,0,4,Insufficient Direct Evidence
+blood_exposome,106a33ff33c8685b114479d4,Insufficient evidence,Insufficient Direct Evidence,0,4,Insufficient Direct Evidence
+blood_exposome,1c7b73e4d00f0bd359fb20eb,Confirmed,Confirmed,4,4,Confirmed
+blood_exposome,850622dfb304cec16585886d,Insufficient evidence,Insufficient Direct Evidence,0,4,Insufficient Direct Evidence
+blood_exposome,f77d460fafea275857e57c6b,Insufficient evidence,Insufficient Direct Evidence,0,4,Insufficient Direct Evidence
+blood_exposome,ea98f6dfbf11aa95ba7a2653,Confirmed,Confirmed,4,4,Confirmed
+blood_exposome,7883dfc8751935ef692a0b05,Insufficient evidence,Insufficient Direct Evidence,0,4,Insufficient Direct Evidence
+blood_exposome,11d29140a8f5b3a3ef943aeb,Explicit negative,Explicit Negative Evidence,2,4,Insufficient Direct Evidence
+blood_exposome,efe93965d7575b8244b572ae,Confirmed,Confirmed,4,4,Confirmed
+blood_exposome,48d32ad218266e154cc7aa33,Insufficient evidence,Insufficient Direct Evidence,2,4,Insufficient Direct Evidence
+blood_exposome,cae43eda30b1db64fc71bcac,Insufficient evidence,Insufficient Direct Evidence,0,4,Insufficient Direct Evidence
+blood_exposome,b5cb6caee43b6b138f024c9f,Insufficient evidence,Insufficient Direct Evidence,2,4,Insufficient Direct Evidence
+blood_exposome,2aa54d415fd284f22bb42ab4,Confirmed,Confirmed,4,4,Confirmed
+blood_exposome,e87922e9227da8eb48e2fc76,Insufficient evidence,Insufficient Direct Evidence,0,4,Insufficient Direct Evidence
+blood_exposome,6a559c5d94c54cd14624b290,Insufficient evidence,Insufficient Direct Evidence,0,4,Insufficient Direct Evidence
+blood_exposome,d96939d376bddcdc98610f48,Insufficient evidence,Insufficient Direct Evidence,0,4,Insufficient Direct Evidence
+blood_exposome,26d5b1f237b683d1d44c10ab,Insufficient evidence,Insufficient Direct Evidence,0,4,Insufficient Direct Evidence
+blood_exposome,f78dfe53dc7f0ffa9a052e67,Confirmed,Confirmed,4,4,Confirmed
+blood_exposome,6ca014ebb25038a33c56ba86,Suspected,Suspected,2,4,Suspected
+blood_exposome,ef1df581fd36de4b9bf7fc47,Insufficient evidence,Insufficient Direct Evidence,0,4,Insufficient Direct Evidence
+blood_exposome,b04e1063a5ce356198506f24,Insufficient evidence,Insufficient Direct Evidence,0,4,Insufficient Direct Evidence
+blood_exposome,21b37843c671af2227ee0b50,Insufficient evidence,Insufficient Direct Evidence,0,4,Insufficient Direct Evidence
+blood_exposome,cfdc9e66ad6956bef54c5dfa,Insufficient evidence,Insufficient Direct Evidence,0,4,Insufficient Direct Evidence
+blood_exposome,e065524517efae8c9be48aaf,Confirmed,Confirmed,3,4,Suspected
+blood_exposome,a93033dc490f62d203aa0a3f,Insufficient evidence,Insufficient Direct Evidence,0,4,Insufficient Direct Evidence
+blood_exposome,e94f344720120b4ff07fedea,Insufficient evidence,Insufficient Direct Evidence,0,4,Insufficient Direct Evidence
+blood_exposome,b9d3370cd4ffbc47f42ecb55,Confirmed,Confirmed,4,4,Insufficient Direct Evidence
+blood_exposome,4fd399ad90bb748ae80a7808,Insufficient evidence,Insufficient Direct Evidence,0,4,Insufficient Direct Evidence
+blood_exposome,486ea8af570eecdd1433d5e8,Insufficient evidence,Insufficient Direct Evidence,0,4,Insufficient Direct Evidence
+blood_exposome,6ca5d5dca84fce884de7317a,Suspected,Suspected,3,4,Insufficient Direct Evidence
+blood_exposome,5c4aecea4ead6aee4abd8099,Insufficient evidence,Insufficient Direct Evidence,0,4,Insufficient Direct Evidence
+blood_exposome,54921e057273c53a9f831bec,Insufficient evidence,Insufficient Direct Evidence,0,4,Insufficient Direct Evidence
+blood_exposome,b7fc7ed9a33d169078afb346,Insufficient evidence,Insufficient Direct Evidence,0,4,Insufficient Direct Evidence
+blood_exposome,2774db4dac44bd7a8ed9c3de,Insufficient evidence,Insufficient Direct Evidence,0,4,Insufficient Direct Evidence
+blood_exposome,569cfcb38918df9e18c3fa09,Insufficient evidence,Insufficient Direct Evidence,0,4,Insufficient Direct Evidence
+blood_exposome,a60da39bd59ee7b3eda04a19,Insufficient evidence,Insufficient Direct Evidence,0,4,Insufficient Direct Evidence
+blood_exposome,5c4405af14aebc1027c8eff8,Insufficient evidence,Insufficient Direct Evidence,0,4,Insufficient Direct Evidence
+blood_exposome,e267296306cb2b580d956bf8,Insufficient evidence,Insufficient Direct Evidence,0,4,Insufficient Direct Evidence
+blood_exposome,432803b3740548ed3be81ed0,Confirmed,Confirmed,4,4,Confirmed
+blood_exposome,1d33532c73b486509cb6faaa,Insufficient evidence,Insufficient Direct Evidence,2,4,Insufficient Direct Evidence
+blood_exposome,c7573c3a2bf803163c06ac6d,Insufficient evidence,Insufficient Direct Evidence,0,4,Insufficient Direct Evidence
+blood_exposome,9c3e948a36a075a067dd2af5,Confirmed,Confirmed,1,4,Insufficient Direct Evidence
+blood_exposome,282f174c0801b8906064d6fb,Suspected,Suspected,4,4,Suspected
+blood_exposome,579ea2443d58fc79890fe4d0,Insufficient evidence,Insufficient Direct Evidence,0,4,Insufficient Direct Evidence
+blood_exposome,ae5bd241f5ed493bb75c0904,Insufficient evidence,Insufficient Direct Evidence,0,4,Insufficient Direct Evidence
+blood_exposome,e866482e4d02a6b3747c9ee0,Insufficient evidence,Insufficient Direct Evidence,0,4,Insufficient Direct Evidence
+blood_exposome,30b2cb15adcbe94f4cfb8c54,Confirmed,Confirmed,4,4,Confirmed
+blood_exposome,b59861bd5a81cb37ee70ccde,Confirmed,Confirmed,4,4,Confirmed
+blood_exposome,afefc766355327303dcc0d2d,Confirmed,Confirmed,4,4,Confirmed
+blood_exposome,93448124fd699b2ef9ab2211,Insufficient evidence,Insufficient Direct Evidence,0,4,Insufficient Direct Evidence
+blood_exposome,54091872665f35aa6a3fce19,Insufficient evidence,Insufficient Direct Evidence,0,4,Insufficient Direct Evidence
+blood_exposome,8525d6d800fe947fec594b3f,Insufficient evidence,Insufficient Direct Evidence,0,4,Insufficient Direct Evidence
+blood_exposome,8ceb88567491389749fff309,Insufficient evidence,Insufficient Direct Evidence,0,4,Insufficient Direct Evidence
+blood_exposome,b767d865a2b62d125e870b95,Insufficient evidence,Insufficient Direct Evidence,0,4,Insufficient Direct Evidence
+blood_exposome,6779c250f683ffd1d5e82c17,Insufficient evidence,Insufficient Direct Evidence,2,4,Insufficient Direct Evidence
+blood_exposome,e95fb18f684b6c9783742ac4,Confirmed,Confirmed,4,4,Confirmed
+blood_exposome,15f856a55090167a8fdf521c,Insufficient evidence,Insufficient Direct Evidence,0,4,Insufficient Direct Evidence
+blood_exposome,6f1a3cf34d51095dab78206b,Insufficient evidence,Insufficient Direct Evidence,0,4,Insufficient Direct Evidence
+blood_exposome,d5ba8bd10f9c1bfe0e172ad2,Explicit negative,Explicit Negative Evidence,4,4,Explicit Negative Evidence
+blood_exposome,cccbdd78fcb3a0145a9cb8af,Confirmed,Confirmed,3,4,Suspected
+blood_exposome,885594356062c53b80a15ff9,Insufficient evidence,Insufficient Direct Evidence,0,4,Insufficient Direct Evidence
+blood_exposome,a9a340b6360c426d01e553db,Insufficient evidence,Insufficient Direct Evidence,2,4,Insufficient Direct Evidence
+blood_exposome,2d9a2a67aca0a3fe03b4fe96,Insufficient evidence,Insufficient Direct Evidence,0,4,Insufficient Direct Evidence
+blood_exposome,70707ab022edacb92084a048,Insufficient evidence,Insufficient Direct Evidence,0,4,Insufficient Direct Evidence
+blood_exposome,b0aa00744c3ef5a58a465414,Insufficient evidence,Insufficient Direct Evidence,2,4,Insufficient Direct Evidence
+blood_exposome,99846326b7b43264f9be2287,Insufficient evidence,Insufficient Direct Evidence,2,4,Insufficient Direct Evidence
+blood_exposome,24da14c3e5bee111e4624a5a,Confirmed,Confirmed,4,4,Insufficient Direct Evidence
+blood_exposome,69e7397edd0a25ab7098f9fe,Confirmed,Confirmed,4,4,Confirmed
+blood_exposome,a5e73901dc18b2da8f726ea5,Confirmed,Confirmed,4,4,Confirmed
+blood_exposome,c6bfb7470d2801615ccec21a,Insufficient evidence,Insufficient Direct Evidence,0,4,Insufficient Direct Evidence
+blood_exposome,3185ecc801191ea18de94b05,Insufficient evidence,Insufficient Direct Evidence,0,4,Insufficient Direct Evidence
+blood_exposome,28337d2ccba46658877c3c34,Insufficient evidence,Insufficient Direct Evidence,0,4,Insufficient Direct Evidence
+blood_exposome,d2b5befea7d5c02723ea1639,Insufficient evidence,Insufficient Direct Evidence,0,4,Insufficient Direct Evidence
+blood_exposome,1f4c20bc4b240ab41d14d88e,Insufficient evidence,Insufficient Direct Evidence,0,4,Insufficient Direct Evidence
+blood_exposome,6cbc2acedd5fb4ed832ad8b5,Insufficient evidence,Insufficient Direct Evidence,0,4,Insufficient Direct Evidence
+blood_exposome,8a4cda4c0dfa4b4889846ad3,Insufficient evidence,Insufficient Direct Evidence,0,4,Insufficient Direct Evidence
+blood_exposome,114d605cf772fc5d8655d833,Insufficient evidence,Insufficient Direct Evidence,0,4,Insufficient Direct Evidence
+blood_exposome,24f8f6be71da6166e04ba71e,Insufficient evidence,Insufficient Direct Evidence,0,4,Insufficient Direct Evidence
+blood_exposome,aa081cb103d9950e56ece2d8,Insufficient evidence,Insufficient Direct Evidence,0,4,Insufficient Direct Evidence
+blood_exposome,772b846f2e9b3c41a1084ff6,Insufficient evidence,Insufficient Direct Evidence,0,4,Insufficient Direct Evidence
+blood_exposome,2d169ea7a84a0fe100cbaa82,Insufficient evidence,Insufficient Direct Evidence,0,4,Insufficient Direct Evidence
+blood_exposome,52d2c4577f254058101cfeaf,Insufficient evidence,Insufficient Direct Evidence,0,4,Insufficient Direct Evidence
+blood_exposome,e82ec764019175c968e24419,Confirmed,Confirmed,4,4,Confirmed
+blood_exposome,cfac72f5a2b1f103562a9d78,Confirmed,Confirmed,4,4,Confirmed
+blood_exposome,98c12c7dd503853f68fc1432,Insufficient evidence,Insufficient Direct Evidence,2,4,Insufficient Direct Evidence
+blood_exposome,5cf000f90991e756a172ac3d,Explicit negative,Explicit Negative Evidence,4,4,Explicit Negative Evidence
+blood_exposome,b00033024e88d197f29b5a9a,Insufficient evidence,Insufficient Direct Evidence,0,4,Insufficient Direct Evidence
+blood_exposome,6caffc27fffa000d69a68fd3,Insufficient evidence,Insufficient Direct Evidence,0,4,Insufficient Direct Evidence
+blood_exposome,da5fe5634cf7d73cc85114f4,Confirmed,Confirmed,4,4,Confirmed
+blood_exposome,9357775e867051261355c029,Insufficient evidence,Insufficient Direct Evidence,0,4,Insufficient Direct Evidence
+blood_exposome,6021de76eb9ee35a9d60e321,Insufficient evidence,Insufficient Direct Evidence,1,4,Insufficient Direct Evidence
+blood_exposome,2ad5291842231a6848f87d29,Insufficient evidence,Insufficient Direct Evidence,0,4,Insufficient Direct Evidence
+blood_exposome,429f28c403cfc6cefeddfbbe,Insufficient evidence,Insufficient Direct Evidence,0,4,Insufficient Direct Evidence
+blood_exposome,b1296e39b674096c2491d407,Insufficient evidence,Insufficient Direct Evidence,0,4,Insufficient Direct Evidence
+blood_exposome,7c8fa8bf42ef2bcfba162002,Insufficient evidence,Insufficient Direct Evidence,0,4,Insufficient Direct Evidence
+blood_exposome,90801af56d3212e2b52ad692,Insufficient evidence,Insufficient Direct Evidence,0,4,Insufficient Direct Evidence
+blood_exposome,977109b5b5c0ad224a2dc444,Insufficient evidence,Insufficient Direct Evidence,0,4,Insufficient Direct Evidence
+blood_exposome,efa436a2a072ddacf825b6ba,Confirmed,Confirmed,4,4,Confirmed
+blood_exposome,7aa4551db121d6d1d0b7c245,Insufficient evidence,Insufficient Direct Evidence,0,4,Insufficient Direct Evidence
+blood_exposome,70ab73dabf3d175876c46fac,Confirmed,Confirmed,4,4,Confirmed
+blood_exposome,71c94ef3919aabb5bc942acb,Confirmed,Confirmed,4,4,Confirmed
+blood_exposome,b8ca04ce9ba7a141ace86414,Insufficient evidence,Insufficient Direct Evidence,0,4,Insufficient Direct Evidence
+blood_exposome,8e1ac0f8b9c0e5729013d663,Insufficient evidence,Insufficient Direct Evidence,0,4,Insufficient Direct Evidence
+blood_exposome,5df7cf2bd56eab00ec7cab88,Suspected,Suspected,4,4,Suspected
+blood_exposome,0edab69cddafb3f60d501733,Insufficient evidence,Insufficient Direct Evidence,0,4,Insufficient Direct Evidence
+blood_exposome,48bc1448be80d4cd39b7081e,Suspected,Suspected,2,4,Insufficient Direct Evidence
+blood_exposome,f3289241f4bfd8929b36629f,Insufficient evidence,Insufficient Direct Evidence,0,4,Insufficient Direct Evidence
+blood_exposome,03aaea219efbeb49d63b1768,Insufficient evidence,Insufficient Direct Evidence,0,4,Insufficient Direct Evidence
+blood_exposome,0afcf57da66d5f48de680d1a,Insufficient evidence,Insufficient Direct Evidence,0,4,Insufficient Direct Evidence
+blood_exposome,54f5e47275132b41e040955d,Explicit negative,Explicit Negative Evidence,4,4,Explicit Negative Evidence
+blood_exposome,617ba7cf26e282001c3a703a,Insufficient evidence,Insufficient Direct Evidence,0,4,Insufficient Direct Evidence
+blood_exposome,a731719e32dca4c516033af9,Suspected,Suspected,4,4,Suspected
+blood_exposome,92cfc4a0860cef4f7503bdc6,Confirmed,Confirmed,4,4,Confirmed
+blood_exposome,4c12c76aed622391324d6a86,Insufficient evidence,Insufficient Direct Evidence,0,4,Insufficient Direct Evidence
+blood_exposome,44dbfa8aab92233bf8f77ed5,Insufficient evidence,Insufficient Direct Evidence,0,4,Insufficient Direct Evidence
+blood_exposome,230e1ef2143a09ee8f498a54,Insufficient evidence,Insufficient Direct Evidence,0,4,Insufficient Direct Evidence
+blood_exposome,f4288bc5cd0bd7fcb21f7bd6,Insufficient evidence,Insufficient Direct Evidence,2,4,Insufficient Direct Evidence
+blood_exposome,f590d076ac63ad2480228d34,Insufficient evidence,Insufficient Direct Evidence,0,4,Insufficient Direct Evidence
+blood_exposome,7a4ba4aa6cd83e78513f1510,Insufficient evidence,Insufficient Direct Evidence,0,4,Insufficient Direct Evidence
+blood_exposome,0c1785ab39b42a07d28fd26f,Insufficient evidence,Insufficient Direct Evidence,0,4,Insufficient Direct Evidence
+blood_exposome,17caf22c5e6521ba66418014,Insufficient evidence,Insufficient Direct Evidence,0,4,Insufficient Direct Evidence
+blood_exposome,de88a3c7ea3262016ecc203f,Insufficient evidence,Insufficient Direct Evidence,0,4,Insufficient Direct Evidence
+blood_exposome,35328e7b165b3bffe4d8c5c3,Insufficient evidence,Insufficient Direct Evidence,0,4,Insufficient Direct Evidence
+blood_exposome,416a33e0054bbb4c3d220f70,Insufficient evidence,Insufficient Direct Evidence,2,4,Insufficient Direct Evidence
+blood_exposome,7c4d2fd6c0d1e9b003f3e824,Insufficient evidence,Insufficient Direct Evidence,0,4,Insufficient Direct Evidence
+blood_exposome,b6e70665694f1e5351a43b29,Insufficient evidence,Insufficient Direct Evidence,0,4,Insufficient Direct Evidence
+blood_exposome,899add2777b2c3776bbf3861,Confirmed,Confirmed,0,4,Insufficient Direct Evidence
+blood_exposome,57f84b4033a3a7e8299ccebc,Insufficient evidence,Insufficient Direct Evidence,0,4,Insufficient Direct Evidence
+blood_exposome,96f5099b4f908ea004acffd9,Insufficient evidence,Insufficient Direct Evidence,0,4,Insufficient Direct Evidence
+blood_exposome,d6a591534683a6555b0d0d3d,Insufficient evidence,Insufficient Direct Evidence,0,4,Insufficient Direct Evidence
+blood_exposome,4ca3165e136f461c4f371d4e,Insufficient evidence,Insufficient Direct Evidence,0,4,Insufficient Direct Evidence
+blood_exposome,91754ea63eb9b9e17000e46f,Suspected,Suspected,3,4,Suspected
+blood_exposome,46b53cd09461ad4872f41150,Insufficient evidence,Insufficient Direct Evidence,0,4,Insufficient Direct Evidence
+blood_exposome,2e28bba8da49b4a3e0c04505,Insufficient evidence,Insufficient Direct Evidence,0,4,Insufficient Direct Evidence
+blood_exposome,0545fb89dfddf672e1e4d1ff,Insufficient evidence,Insufficient Direct Evidence,0,4,Insufficient Direct Evidence
+blood_exposome,781e8161d7759a10763ad447,Insufficient evidence,Insufficient Direct Evidence,0,4,Insufficient Direct Evidence
+blood_exposome,ef614db2075e97096858fd50,Insufficient evidence,Insufficient Direct Evidence,0,4,Insufficient Direct Evidence
+blood_exposome,0a4d7ffea5e294ef53bd0bef,Insufficient evidence,Insufficient Direct Evidence,0,4,Insufficient Direct Evidence
+blood_exposome,8e59543dcd7948e46f2c13e7,Insufficient evidence,Insufficient Direct Evidence,0,4,Insufficient Direct Evidence
+blood_exposome,e386e856488ebba413d7ff96,Confirmed,Confirmed,4,4,Confirmed
+blood_exposome,c6df3a677958ce4390102d77,Insufficient evidence,Insufficient Direct Evidence,0,4,Insufficient Direct Evidence
+blood_exposome,2c937cddff8d1ebd72f9bffa,Insufficient evidence,Insufficient Direct Evidence,0,4,Insufficient Direct Evidence
+blood_exposome,9ebd138782d7ca8d28352653,Insufficient evidence,Insufficient Direct Evidence,0,4,Insufficient Direct Evidence
+blood_exposome,a5b397f7035dc491d7b31b69,Confirmed,Confirmed,4,4,Confirmed
+blood_exposome,dd90575f6b7663982a01561e,Insufficient evidence,Insufficient Direct Evidence,0,4,Insufficient Direct Evidence
+blood_exposome,22d2d7afff65481026bc32e0,Explicit negative,Explicit Negative Evidence,1,4,Explicit Negative Evidence
+blood_exposome,db4ae557a0580e6cdc8c154f,Suspected,Suspected,4,4,Suspected
+blood_exposome,2dc75aec20c68a024805131c,Confirmed,Confirmed,2,4,Insufficient Direct Evidence
+blood_exposome,744051d896abda6d0f3ded47,Insufficient evidence,Insufficient Direct Evidence,0,4,Insufficient Direct Evidence
+blood_exposome,d53742f7ec20ac79951624af,Confirmed,Confirmed,4,4,Confirmed
+blood_exposome,af032c226e0e9c08322533f3,Insufficient evidence,Insufficient Direct Evidence,1,4,Insufficient Direct Evidence
+blood_exposome,84f34ab268cece28ae6a7a86,Confirmed,Confirmed,4,4,Confirmed
+blood_exposome,b5a52037515455b500a93635,Insufficient evidence,Insufficient Direct Evidence,0,4,Insufficient Direct Evidence
+blood_exposome,9ec78eccd4b78860dcf84da1,Insufficient evidence,Insufficient Direct Evidence,0,4,Insufficient Direct Evidence
+blood_exposome,8800fb396b233ce334fae8ef,Confirmed,Confirmed,4,4,Confirmed
+blood_exposome,ee6a1157223a80e42ecd400c,Suspected,Suspected,4,4,Suspected
+blood_exposome,5156f0099edc15e8d2938311,Insufficient evidence,Insufficient Direct Evidence,0,4,Insufficient Direct Evidence
+blood_exposome,0906c6036dc571c0f8cc7f59,Insufficient evidence,Insufficient Direct Evidence,0,4,Insufficient Direct Evidence
+blood_exposome,a5b0e8649fadb65c03bf2485,Suspected,Suspected,2,4,Suspected
+blood_exposome,a0ba49341b1b1ac5d4ee1fdd,Insufficient evidence,Insufficient Direct Evidence,4,4,Insufficient Direct Evidence
+blood_exposome,ab32e2c52d0a4fe64a987f5d,Insufficient evidence,Insufficient Direct Evidence,2,4,Insufficient Direct Evidence
+blood_exposome,3013256b084d7bd73a0459c4,Insufficient evidence,Insufficient Direct Evidence,0,4,Insufficient Direct Evidence
+blood_exposome,d4cf17d1f61eaa13bbb58250,Insufficient evidence,Insufficient Direct Evidence,0,4,Insufficient Direct Evidence
+blood_exposome,fde2f7cf391a2b7b2d352af9,Confirmed,Confirmed,4,4,Confirmed
+blood_exposome,2e4edcd06cbcf240b23a3c2e,Confirmed,Confirmed,3,4,Insufficient Direct Evidence
+blood_exposome,d24de43402abe80b8557b3de,Insufficient evidence,Insufficient Direct Evidence,2,4,Insufficient Direct Evidence
+blood_exposome,c91ffe80c1275b7644f6509e,Insufficient evidence,Insufficient Direct Evidence,0,4,Insufficient Direct Evidence
+blood_exposome,9ba29c4c70bfe4b47f4991fd,Insufficient evidence,Insufficient Direct Evidence,1,4,Insufficient Direct Evidence
+blood_exposome,f2936b9f64813cde006ca1a1,Confirmed,Confirmed,3,4,Insufficient Direct Evidence
+blood_exposome,9bd5787e42c1510b51602f5e,Insufficient evidence,Insufficient Direct Evidence,0,4,Insufficient Direct Evidence
+blood_exposome,96dfb19f3f0a4c187e00c0c6,Insufficient evidence,Insufficient Direct Evidence,0,4,Insufficient Direct Evidence
+blood_exposome,913ade5b07590072e922a91c,Insufficient evidence,Insufficient Direct Evidence,0,4,Insufficient Direct Evidence
+blood_exposome,1ea9cbf045e4838732872ed6,Confirmed,Confirmed,3,4,Suspected
+blood_exposome,e8672fa93d909612aa5024ed,Confirmed,Confirmed,4,4,Confirmed
+blood_exposome,518b429f3416ec6945b58717,Insufficient evidence,Insufficient Direct Evidence,0,4,Insufficient Direct Evidence
+blood_exposome,c89dcaf0abb967258b70e9ff,Insufficient evidence,Insufficient Direct Evidence,2,4,Insufficient Direct Evidence
+blood_exposome,7db87d6d31c099a380fdc356,Insufficient evidence,Insufficient Direct Evidence,0,4,Insufficient Direct Evidence
+blood_exposome,e95649c18b4cdb69d505bcb1,Insufficient evidence,Insufficient Direct Evidence,0,4,Insufficient Direct Evidence
+blood_exposome,80ffa946d5d72f55beac4460,Suspected,Suspected,2,4,Suspected
+blood_exposome,20c87acb5ddfa65ecace8360,Insufficient evidence,Insufficient Direct Evidence,0,4,Insufficient Direct Evidence
+blood_exposome,232af4ab599d8132821367d0,Insufficient evidence,Insufficient Direct Evidence,1,4,Insufficient Direct Evidence
+blood_exposome,5104ec80824114c45b91d6b6,Insufficient evidence,Insufficient Direct Evidence,0,4,Insufficient Direct Evidence
+blood_exposome,a1cb4ba15215482923e4cbd2,Suspected,Suspected,2,4,Suspected
+blood_exposome,ac8f40d9db877774aa1055f1,Insufficient evidence,Insufficient Direct Evidence,0,4,Insufficient Direct Evidence
+blood_exposome,d509d6fd7226915e785ce642,Insufficient evidence,Insufficient Direct Evidence,4,4,Insufficient Direct Evidence
+blood_exposome,0ce468594e893140b02a3917,Insufficient evidence,Insufficient Direct Evidence,0,4,Insufficient Direct Evidence
+blood_exposome,dfeb089285f22d45cffaa4c9,Insufficient evidence,Insufficient Direct Evidence,0,4,Insufficient Direct Evidence
+blood_exposome,623f8930db17d8f804952d3f,Insufficient evidence,Insufficient Direct Evidence,2,4,Insufficient Direct Evidence
+blood_exposome,11d04e693148af265bbd6535,Confirmed,Confirmed,4,4,Confirmed
+blood_exposome,ff23c8c009434882451a8e17,Confirmed,Confirmed,3,4,Insufficient Direct Evidence
+blood_exposome,9dc4f6e223a33180a5126a6b,Confirmed,Confirmed,2,4,Insufficient Direct Evidence
+blood_exposome,925ef0a00df865f89990365d,Insufficient evidence,Insufficient Direct Evidence,0,4,Insufficient Direct Evidence
+blood_exposome,4f6d97a5061750e344c1ed4b,Insufficient evidence,Insufficient Direct Evidence,0,4,Insufficient Direct Evidence
+blood_exposome,bcb46b465a7c98891bfff78c,Confirmed,Confirmed,4,4,Confirmed
+blood_exposome,37fb69f820b9bb430a30347e,Insufficient evidence,Insufficient Direct Evidence,0,4,Insufficient Direct Evidence
+blood_exposome,320018bf883724d41e49d4a9,Insufficient evidence,Insufficient Direct Evidence,4,4,Insufficient Direct Evidence
+blood_exposome,ed9953198cd9cf6f45e68c55,Insufficient evidence,Insufficient Direct Evidence,0,4,Insufficient Direct Evidence
+blood_exposome,9b3f08cf5e1bd27a2b0162aa,Confirmed,Confirmed,4,4,Confirmed
+blood_exposome,334c9a3a8f6720f32a3df561,Insufficient evidence,Insufficient Direct Evidence,4,4,Insufficient Direct Evidence
+blood_exposome,d58a30ba34f4da8a4801eb8a,Insufficient evidence,Insufficient Direct Evidence,4,4,Insufficient Direct Evidence
+blood_exposome,a4a2cf9450c0f36caae52fef,Confirmed,Confirmed,4,4,Confirmed
+blood_exposome,741f62788e0213ee7ac55a42,Confirmed,Confirmed,4,4,Confirmed
+blood_exposome,332f381e0bf84ed13c08f8f7,Insufficient evidence,Insufficient Direct Evidence,0,4,Insufficient Direct Evidence
+blood_exposome,629263e0746cffd7ec183dcd,Suspected,Suspected,4,4,Suspected
+blood_exposome,3498ef942c7562349b7537cf,Confirmed,Confirmed,4,4,Confirmed
+blood_exposome,8ec1649a8ef280570af613aa,Insufficient evidence,Insufficient Direct Evidence,4,4,Insufficient Direct Evidence
+blood_exposome,8973d44617e4a3328791029f,Insufficient evidence,Insufficient Direct Evidence,0,4,Insufficient Direct Evidence
+blood_exposome,ee3c87349c95e26835a62e6e,Insufficient evidence,Insufficient Direct Evidence,0,4,Insufficient Direct Evidence
+blood_exposome,4c0e22ac45c4cf91f0e76b26,Insufficient evidence,Insufficient Direct Evidence,4,4,Insufficient Direct Evidence
+blood_exposome,05dc2d8b56716c8c6b020005,Insufficient evidence,Insufficient Direct Evidence,4,4,Insufficient Direct Evidence
+blood_exposome,658dedc20eea0cfbf3c02626,Confirmed,Confirmed,3,4,Suspected
+blood_exposome,54d2fe20e6cd435723ae8dde,Confirmed,Confirmed,4,4,Confirmed
+blood_exposome,86b6a79b4d08e4087527ebb4,Insufficient evidence,Insufficient Direct Evidence,4,4,Insufficient Direct Evidence
+blood_exposome,48d11e6967f20203881fcdba,Insufficient evidence,Insufficient Direct Evidence,4,4,Insufficient Direct Evidence
+blood_exposome,950e51d8e7050bb1932bbfcf,Confirmed,Confirmed,4,4,Confirmed
+blood_exposome,68a16e5306bed1ed1e8618ae,Confirmed,Confirmed,4,4,Confirmed
+blood_exposome,8f8386c190ff43cb9ff30fbe,Insufficient evidence,Insufficient Direct Evidence,0,4,Insufficient Direct Evidence
+blood_exposome,3d83bfdea665e11d91fe19a6,Insufficient evidence,Insufficient Direct Evidence,4,4,Insufficient Direct Evidence
+blood_exposome,dbe92f7f21e35dc344158753,Insufficient evidence,Insufficient Direct Evidence,0,4,Insufficient Direct Evidence
+blood_exposome,47a70f46f13a79b1cc3974a0,Insufficient evidence,Insufficient Direct Evidence,0,4,Insufficient Direct Evidence
+blood_exposome,6372b95f98ec5140cd5fdc63,Insufficient evidence,Insufficient Direct Evidence,0,4,Insufficient Direct Evidence
+blood_exposome,edc9fc137a91c33e356d5931,Confirmed,Confirmed,4,4,Confirmed
+blood_exposome,215f6f7d4866c35a31698598,Insufficient evidence,Insufficient Direct Evidence,0,4,Insufficient Direct Evidence
+blood_exposome,fa956f9ef9bbda7fa7d50248,Insufficient evidence,Insufficient Direct Evidence,0,4,Insufficient Direct Evidence
+blood_exposome,8d8a6f4227a35432a4de7f7f,Insufficient evidence,Insufficient Direct Evidence,2,4,Insufficient Direct Evidence
+blood_exposome,0931ba703cf393a518c93da9,Insufficient evidence,Insufficient Direct Evidence,0,4,Insufficient Direct Evidence
+blood_exposome,8cb72f21f0ff35f57a982cd7,Explicit negative,Explicit Negative Evidence,4,4,Explicit Negative Evidence
+blood_exposome,565e20e74bc5f9fc0785fa5b,Insufficient evidence,Insufficient Direct Evidence,0,4,Insufficient Direct Evidence
+blood_exposome,8dd1d50adb175800d9178adc,Insufficient evidence,Insufficient Direct Evidence,4,4,Insufficient Direct Evidence
+blood_exposome,431844e893bef591088c05b0,Insufficient evidence,Insufficient Direct Evidence,0,4,Insufficient Direct Evidence
+blood_exposome,806a676ac971b53f3bc1d78c,Insufficient evidence,Insufficient Direct Evidence,0,4,Insufficient Direct Evidence
+blood_exposome,7cd375a5159c1325cc68ba4f,Insufficient evidence,Insufficient Direct Evidence,0,4,Insufficient Direct Evidence
+blood_exposome,0279b3416439511fee500b98,Insufficient evidence,Insufficient Direct Evidence,0,4,Insufficient Direct Evidence
+blood_exposome,57bf60dc1c33efa0ce1f16b1,Insufficient evidence,Insufficient Direct Evidence,0,4,Insufficient Direct Evidence
+blood_exposome,21108c0b34840cf04574dade,Insufficient evidence,Insufficient Direct Evidence,0,4,Insufficient Direct Evidence
+blood_exposome,5044f9a971ceec17796cb3c1,Confirmed,Confirmed,4,4,Confirmed
+blood_exposome,5af1c580e8bdb042b5d35d7c,Insufficient evidence,Insufficient Direct Evidence,0,4,Insufficient Direct Evidence
+blood_exposome,daec8983e258336ad10ff269,Insufficient evidence,Insufficient Direct Evidence,0,4,Insufficient Direct Evidence
+blood_exposome,253c5b59075bb764f7cfc811,Insufficient evidence,Insufficient Direct Evidence,0,4,Insufficient Direct Evidence
+blood_exposome,c9f800001c5ff9dac3b75745,Confirmed,Confirmed,4,4,Confirmed
+blood_exposome,edeff14750c99dace689b984,Insufficient evidence,Insufficient Direct Evidence,4,4,Insufficient Direct Evidence
+blood_exposome,4ca44d692301e23c93accd5b,Insufficient evidence,Insufficient Direct Evidence,0,4,Insufficient Direct Evidence
+blood_exposome,690afc8258d4539e81ea612a,Confirmed,Confirmed,4,4,Confirmed
+blood_exposome,aa1ee2d138685569f77c3c81,Insufficient evidence,Insufficient Direct Evidence,0,4,Insufficient Direct Evidence
+blood_exposome,54d68fec4a7e33819e127371,Insufficient evidence,Insufficient Direct Evidence,4,4,Insufficient Direct Evidence
+blood_exposome,3d34f75878b4e9fe0e664711,Suspected,Suspected,4,4,Suspected
+blood_exposome,b578adf43485a48179bd2651,Insufficient evidence,Insufficient Direct Evidence,0,4,Insufficient Direct Evidence
+blood_exposome,c2bbe3a6d403e2cf1b8987b2,Insufficient evidence,Insufficient Direct Evidence,0,4,Insufficient Direct Evidence
+blood_exposome,124c4d2b3d761edbbf7c15d3,Insufficient evidence,Insufficient Direct Evidence,0,4,Insufficient Direct Evidence
+blood_exposome,3a3f1e5cf56f7d8b802bc782,Insufficient evidence,Insufficient Direct Evidence,2,4,Insufficient Direct Evidence
+blood_exposome,25002481776d13e343e35029,Insufficient evidence,Insufficient Direct Evidence,4,4,Insufficient Direct Evidence
+blood_exposome,264fda214aaaf2bbad3542a2,Insufficient evidence,Insufficient Direct Evidence,0,4,Insufficient Direct Evidence
+blood_exposome,d92526ff5a0972d59040c359,Confirmed,Confirmed,1,4,Insufficient Direct Evidence
+blood_exposome,cb3b68e8371c35f7336d4b21,Suspected,Suspected,2,4,Suspected
+blood_exposome,437660420c92038598642e10,Insufficient evidence,Insufficient Direct Evidence,0,4,Insufficient Direct Evidence
+blood_exposome,7018c47004a7517e4f6188fc,Insufficient evidence,Insufficient Direct Evidence,0,4,Insufficient Direct Evidence
+blood_exposome,1e3b24e89db2042388b09b46,Suspected,Suspected,3,4,Suspected
+blood_exposome,b17646de10982045b259652c,Insufficient evidence,Insufficient Direct Evidence,0,4,Insufficient Direct Evidence
+dbp,402ec9fa98737d7046249c17,Insufficient evidence,Insufficient Direct Evidence,1,5,Insufficient Direct Evidence
+dbp,7dfe288aed35ee9abb6deb7e,Confirmed,Confirmed,5,5,Confirmed
+dbp,0a1d398db66839f5c5b67bfa,Confirmed,Confirmed,5,5,Insufficient Direct Evidence
+dbp,ce3f9c718fc2743d21a34d2f,Confirmed,Confirmed,5,5,Confirmed
+dbp,ce02586f2f49ad9fe2c38bcd,Insufficient evidence,Insufficient Direct Evidence,1,5,Insufficient Direct Evidence
+dbp,cc1cd54246e374a729252705,Confirmed,Confirmed,3,5,Suspected
+dbp,b189139f53517d4e0259c8b2,Suspected,Suspected,3,5,Suspected
+dbp,1b4523b44608330e8cdb05c9,Insufficient evidence,Insufficient Direct Evidence,1,5,Insufficient Direct Evidence
+dbp,5a33599fdc642d939ea24e0c,Insufficient evidence,Insufficient Direct Evidence,1,5,Insufficient Direct Evidence
+dbp,b13ea45eaead12170239da62,Confirmed,Confirmed,5,5,Confirmed
+dbp,40d6ac3c07c487e5de942194,Confirmed,Confirmed,5,5,Confirmed
+dbp,f5dc5f31abd40a77b8cccded,Confirmed,Confirmed,5,5,Confirmed
+dbp,ed82d90144abc189581cdc6e,Insufficient evidence,Insufficient Direct Evidence,1,5,Insufficient Direct Evidence
+dbp,87ae8c9af5618ff2e64a9183,Confirmed,Confirmed,5,5,Confirmed
+dbp,8f193106569b0dd7d34ab4b8,Confirmed,Confirmed,5,5,Confirmed
+dbp,5de537e007efc4a7723b583d,Confirmed,Confirmed,5,5,Confirmed
+dbp,5b0ec5d497fed6deecdaad1a,Insufficient evidence,Insufficient Direct Evidence,1,5,Insufficient Direct Evidence
+dbp,3fa4dedd50b2708a04c18469,Insufficient evidence,Insufficient Direct Evidence,0,5,Insufficient Direct Evidence
+dbp,086e93e9d5bfadc2be945625,Confirmed,Confirmed,5,5,Insufficient Direct Evidence
+dbp,e055a9382a15fc524e0c7aba,Confirmed,Confirmed,5,5,Confirmed
+dbp,4b10652bba580374a813657b,Insufficient evidence,Insufficient Direct Evidence,1,5,Insufficient Direct Evidence
+dbp,db48f9c46637d21078f531e7,Suspected,Suspected,5,5,Suspected
+dbp,7c748c2d4e43ee7df7857715,Insufficient evidence,Insufficient Direct Evidence,1,5,Insufficient Direct Evidence
+dbp,b7640517fe022fc5783617ec,Confirmed,Confirmed,5,5,Confirmed
+dbp,36d47b88d12b46e5601fbab2,Insufficient evidence,Insufficient Direct Evidence,1,5,Insufficient Direct Evidence
+dbp,76f82ca68e89091807c11511,Confirmed,Confirmed,5,5,Confirmed
+dbp,3bec80cbedeb5d0e4917cabd,Insufficient evidence,Insufficient Direct Evidence,1,5,Insufficient Direct Evidence
+dbp,854552a41170af8f27d32779,Insufficient evidence,Insufficient Direct Evidence,1,5,Insufficient Direct Evidence
+dbp,5df7a07284a120841a969328,Insufficient evidence,Insufficient Direct Evidence,1,5,Insufficient Direct Evidence
+dbp,7a947ae8f313f32e6a50ac25,Insufficient evidence,Insufficient Direct Evidence,1,5,Insufficient Direct Evidence
+dbp,74131b2b66168ee8e7f63785,Insufficient evidence,Insufficient Direct Evidence,1,5,Insufficient Direct Evidence
+dbp,9ca97e0cc0bee496e51d2687,Confirmed,Confirmed,5,5,Confirmed
+dbp,131f0c7e9b7230c7a41769f3,Confirmed,Confirmed,5,5,Confirmed
+dbp,d1c47e7f21dc3214da652a74,Insufficient evidence,Insufficient Direct Evidence,1,5,Insufficient Direct Evidence
+dbp,cbca62d09c3936017738304e,Confirmed,Confirmed,5,5,Confirmed
+dbp,1098517bcc88b8880e65ff17,Insufficient evidence,Insufficient Direct Evidence,1,5,Insufficient Direct Evidence
+dbp,fa8d5c9ab741abbc0e0c003e,Confirmed,Confirmed,5,5,Confirmed
+dbp,a89fb6631419abcc28d4026c,Insufficient evidence,Insufficient Direct Evidence,1,5,Insufficient Direct Evidence
+dbp,728bf609729cb249bbb5297a,Confirmed,Confirmed,4,5,Suspected
+dbp,e8c821e816ac30c33ff1ad27,Insufficient evidence,Insufficient Direct Evidence,1,5,Insufficient Direct Evidence
+dbp,c74b969af84468cb3e936a29,Confirmed,Confirmed,5,5,Confirmed
+dbp,5c18e7656de9562e7daca48a,Confirmed,Confirmed,5,5,Confirmed
+dbp,a9fea2c57accd305dbe37ce8,Confirmed,Confirmed,5,5,Confirmed
+dbp,17b3232aa2eb8efb7d458140,Insufficient evidence,Insufficient Direct Evidence,1,5,Insufficient Direct Evidence
+dbp,b9fa755502b16ef76fa88649,Confirmed,Confirmed,5,5,Confirmed
+dbp,dda507b4aa594fbe91f9bbf4,Insufficient evidence,Insufficient Direct Evidence,1,5,Insufficient Direct Evidence
+dbp,176f6e9ea06b2d92cc564852,Insufficient evidence,Insufficient Direct Evidence,1,5,Insufficient Direct Evidence
+dbp,f23438c8ec3783864396d8fe,Confirmed,Confirmed,5,5,Confirmed
+dbp,ef04f85964b78e971fe37b9b,Insufficient evidence,Insufficient Direct Evidence,1,5,Insufficient Direct Evidence
+dbp,5eddd946a2d41c2ba49b0ce2,Insufficient evidence,Insufficient Direct Evidence,1,5,Insufficient Direct Evidence
+dbp,1486517ad763b15bbc8d7dab,Insufficient evidence,Insufficient Direct Evidence,1,5,Insufficient Direct Evidence
+dbp,aaf29f0f47749946b471d4f8,Confirmed,Confirmed,4,5,Suspected
+dbp,05fc9c06caa0580096260667,Confirmed,Confirmed,5,5,Confirmed
+dbp,c1e9cf4941a1b620f68b35d0,Confirmed,Confirmed,1,5,Insufficient Direct Evidence
+dbp,b9f9fefeb29c9e72d293deee,Confirmed,Confirmed,5,5,Confirmed
+dbp,55ff99ae63ce6bdf00107bf5,Insufficient evidence,Insufficient Direct Evidence,4,5,Insufficient Direct Evidence
+dbp,459ab920db82a6857269cba1,Insufficient evidence,Insufficient Direct Evidence,1,5,Insufficient Direct Evidence
+dbp,1dbb2c4fcc68fcdfcd650ff9,Insufficient evidence,Insufficient Direct Evidence,1,5,Insufficient Direct Evidence
+dbp,3859f1fa6c711392cc5e5214,Suspected,Suspected,5,5,Suspected
+dbp,bbb2fdeed6868ad6520d8b31,Confirmed,Confirmed,5,5,Confirmed
+dbp,35ca16f59013abaf54fb3f7d,Insufficient evidence,Insufficient Direct Evidence,1,5,Insufficient Direct Evidence
+dbp,165786f1deb911c8cec00d62,Insufficient evidence,Insufficient Direct Evidence,1,5,Insufficient Direct Evidence
+dbp,88db4f585172f9308e2fefec,Insufficient evidence,Insufficient Direct Evidence,1,5,Insufficient Direct Evidence
+dbp,e68f6cd3916a65b5d71d815f,Insufficient evidence,Insufficient Direct Evidence,1,5,Insufficient Direct Evidence
+dbp,1cdf224c00b6297e02b1b86f,Insufficient evidence,Insufficient Direct Evidence,1,5,Insufficient Direct Evidence
+dbp,0257c340bacd10ee608c879f,Insufficient evidence,Insufficient Direct Evidence,1,5,Insufficient Direct Evidence
+dbp,f0e10ff6e3168e48bc7a6e12,Confirmed,Confirmed,4,5,Suspected
+dbp,32353d7e6ce27d5df851cf2a,Confirmed,Confirmed,5,5,Confirmed
+dbp,e8fd41bf57f3419563fbf852,Insufficient evidence,Insufficient Direct Evidence,1,5,Insufficient Direct Evidence
+dbp,571a5c133d2fdc612125c977,Confirmed,Confirmed,3,5,Suspected
+dbp,34cc8dffaee370304f572bc8,Suspected,Suspected,1,5,Insufficient Direct Evidence
+dbp,636c4a50fdf44505dc27ecef,Insufficient evidence,Insufficient Direct Evidence,1,5,Insufficient Direct Evidence
+dbp,fe2c67d9d049a2c302032ac6,Confirmed,Confirmed,5,5,Confirmed
+dbp,5384d586d124951c0b477df2,Insufficient evidence,Insufficient Direct Evidence,1,5,Insufficient Direct Evidence
+dbp,54c99d0472715b8145d99260,Insufficient evidence,Insufficient Direct Evidence,1,5,Insufficient Direct Evidence
+dbp,d40864380f4859f12d3754b1,Confirmed,Confirmed,5,5,Confirmed
+dbp,1ed4be3ff35de58d0913cb62,Insufficient evidence,Insufficient Direct Evidence,1,5,Insufficient Direct Evidence
+dbp,70163f33de83415f40f70438,Suspected,Suspected,5,5,Suspected
+dbp,04c44890bd2aeb07943de7f7,Confirmed,Confirmed,5,5,Confirmed
+dbp,94ef983566385b6187d326e5,Confirmed,Confirmed,5,5,Confirmed
+dbp,94e8201738b2c10a2f2a0dfb,Insufficient evidence,Insufficient Direct Evidence,1,5,Insufficient Direct Evidence
+dbp,fbf653b177713ddb2fba1d7a,Confirmed,Confirmed,5,5,Confirmed
+dbp,201221b7af178326e44d03a4,Suspected,Suspected,1,5,Insufficient Direct Evidence
+dbp,0d81a795a753f00496895617,Confirmed,Confirmed,5,5,Confirmed
+dbp,3a846914bbfef7477f44dde4,Confirmed,Confirmed,5,5,Confirmed
+dbp,df4c0dea8c4f2b9c0c9ca086,Confirmed,Confirmed,5,5,Confirmed
+dbp,11fc699e789ad1b94c77be78,Confirmed,Confirmed,5,5,Confirmed
+dbp,0a3ac3885a8da056c308251e,Insufficient evidence,Insufficient Direct Evidence,1,5,Insufficient Direct Evidence
+dbp,8485f288f85f858e554c1c6f,Insufficient evidence,Insufficient Direct Evidence,1,5,Insufficient Direct Evidence
+dbp,21d07bf88d6a9ec7d1551dc2,Confirmed,Confirmed,5,5,Confirmed
+dbp,4d8e02f5702ec6c154bb05cb,Confirmed,Confirmed,5,5,Confirmed
+dbp,38c536e5520bd39a771403ac,Suspected,Suspected,5,5,Suspected
+dbp,cf707574c4d39a9f04f8be41,Insufficient evidence,Insufficient Direct Evidence,1,5,Insufficient Direct Evidence
+dbp,2defde3b19a4fcf675f7a36b,Confirmed,Confirmed,5,5,Confirmed
+dbp,04490038dac4ba972b2702d5,Confirmed,Confirmed,2,5,Insufficient Direct Evidence
+dbp,05b9de484f41316e9c7c64f7,Insufficient evidence,Insufficient Direct Evidence,1,5,Insufficient Direct Evidence
+dbp,9c8f6302b658a044cee82a1d,Insufficient evidence,Insufficient Direct Evidence,1,5,Insufficient Direct Evidence
+dbp,5d5fd30bcdc7312388615990,Suspected,Suspected,5,5,Suspected
+dbp,2b07870d79d4c4718f8a42f1,Suspected,Suspected,1,5,Insufficient Direct Evidence
+dbp,b8abd665b599f683455a6c45,Confirmed,Confirmed,2,5,Insufficient Direct Evidence
+dbp,db7348dc690cfd2281aa01ca,Confirmed,Confirmed,5,5,Confirmed
+dbp,38d08cb7f4773556da574438,Insufficient evidence,Insufficient Direct Evidence,1,5,Insufficient Direct Evidence
+dbp,37c4f8eace651a649033f611,Insufficient evidence,Insufficient Direct Evidence,1,5,Insufficient Direct Evidence
+dbp,d3c67499fc57d4e982ede96b,Confirmed,Confirmed,5,5,Confirmed
+dbp,3a5b96bc7406c4fd9a2951d3,Confirmed,Confirmed,5,5,Confirmed
+dbp,ba13e9259eddc7b6962e5398,Confirmed,Confirmed,5,5,Insufficient Direct Evidence
+dbp,282b96be81977fdf7e9ba49d,Confirmed,Confirmed,5,5,Confirmed
+dbp,19a53bcd0e31de43d6dd756b,Insufficient evidence,Insufficient Direct Evidence,1,5,Insufficient Direct Evidence
+dbp,67abd36f148175d685b00e92,Insufficient evidence,Insufficient Direct Evidence,1,5,Insufficient Direct Evidence
+dbp,c1effbb0697b116b4bd6d889,Insufficient evidence,Insufficient Direct Evidence,1,5,Insufficient Direct Evidence
+dbp,d8b2e0eead41b8b58648d319,Insufficient evidence,Insufficient Direct Evidence,1,5,Insufficient Direct Evidence
+dbp,aabe68717b381ffdcea260f0,Insufficient evidence,Insufficient Direct Evidence,1,5,Insufficient Direct Evidence
+dbp,371143ace92ad3c0e71dc8d0,Confirmed,Confirmed,5,5,Confirmed
+dbp,cc3769604f4a77827fb8145f,Insufficient evidence,Insufficient Direct Evidence,4,5,Insufficient Direct Evidence
+dbp,5a7f9f7109922100ac518b9e,Insufficient evidence,Insufficient Direct Evidence,1,5,Insufficient Direct Evidence
+dbp,4e2d623a80b8e60ec30abe73,Insufficient evidence,Insufficient Direct Evidence,1,5,Insufficient Direct Evidence
+dbp,1fbbddd4bb621ca2b4cd0f88,Confirmed,Confirmed,5,5,Confirmed
+dbp,01e23b0fd9b1b0b759dd3962,Confirmed,Confirmed,1,5,Insufficient Direct Evidence
+dbp,461d54a13a24c1c6cac70656,Confirmed,Confirmed,5,5,Confirmed
+dbp,6c9bea3e332d6f40eae4be7f,Insufficient evidence,Insufficient Direct Evidence,1,5,Insufficient Direct Evidence
+dbp,72d78bf4d3b8ed5e5a7d2ced,Insufficient evidence,Insufficient Direct Evidence,1,5,Insufficient Direct Evidence
+dbp,5f2d4d443cba8fbeb9f80bd4,Confirmed,Confirmed,5,5,Insufficient Direct Evidence
+dbp,aa7643cb07e3c12ee8d25a9d,Confirmed,Confirmed,5,5,Confirmed
+dbp,c59ba13d1792ef5034eb8348,Confirmed,Confirmed,5,5,Confirmed
+dbp,4a056b31ce4c93d1cc93ee20,Insufficient evidence,Insufficient Direct Evidence,1,5,Insufficient Direct Evidence
+dbp,5ea02e44d643d47c9f690a48,Confirmed,Confirmed,5,5,Confirmed
+dbp,00f4f7c9fb2f93e85799fd69,Insufficient evidence,Insufficient Direct Evidence,1,5,Insufficient Direct Evidence
+dbp,f981d7ea61e95945729a6865,Confirmed,Confirmed,5,5,Confirmed
+dbp,951437f149f38e56fcad9574,Confirmed,Confirmed,5,5,Confirmed
+dbp,cdf9760b68b7674cd5e47832,Insufficient evidence,Insufficient Direct Evidence,1,5,Insufficient Direct Evidence
+dbp,0cfb0dc67158f098778310f6,Confirmed,Confirmed,5,5,Confirmed
+dbp,1fcd27f28fbc4fbfbe0581ed,Insufficient evidence,Insufficient Direct Evidence,1,5,Insufficient Direct Evidence
+dbp,80c0b8945f1bfd33edde8590,Explicit negative,Explicit Negative Evidence,5,5,Explicit Negative Evidence
+dbp,4f295ed6460421d9ca9989b3,Confirmed,Confirmed,5,5,Confirmed
+dbp,db2bb23b42b88a6b2946a1f8,Insufficient evidence,Insufficient Direct Evidence,1,5,Insufficient Direct Evidence
+dbp,e10de3ae827ae31d77fc29da,Confirmed,Confirmed,5,5,Insufficient Direct Evidence
+dbp,b1bb2c387abd7bfea41e7dd9,Insufficient evidence,Insufficient Direct Evidence,1,5,Insufficient Direct Evidence
+dbp,19207277c07b239f8d0325d0,Confirmed,Confirmed,4,5,Suspected
+dbp,e2fb4dc7daa0ade41c18d102,Insufficient evidence,Insufficient Direct Evidence,1,5,Insufficient Direct Evidence
+dbp,0554ad4ca2b2168a90855f6e,Insufficient evidence,Insufficient Direct Evidence,1,5,Insufficient Direct Evidence
+dbp,74ade1e96059f1e69d306379,Insufficient evidence,Insufficient Direct Evidence,1,5,Insufficient Direct Evidence
+dbp,186b48dbd17204ecb095549e,Confirmed,Confirmed,5,5,Confirmed
+dbp,4e2809ad6d8f3d6e462b6dd2,Insufficient evidence,Insufficient Direct Evidence,1,5,Insufficient Direct Evidence
+dbp,404e202224eed5a36f0087d6,Confirmed,Confirmed,4,5,Suspected
+dbp,bc7fafab70544743eb0cc03d,Confirmed,Confirmed,5,5,Confirmed
+dbp,e0dd697caed34ad41f4781d8,Insufficient evidence,Insufficient Direct Evidence,1,5,Insufficient Direct Evidence
+dbp,5e7375858d2c519756cd3744,Insufficient evidence,Insufficient Direct Evidence,1,5,Insufficient Direct Evidence
+dbp,57de8e4ffd547202b9f3ddfd,Insufficient evidence,Insufficient Direct Evidence,1,5,Insufficient Direct Evidence
+dbp,3fd1b28ae2b1d83facb07903,Insufficient evidence,Insufficient Direct Evidence,0,5,Insufficient Direct Evidence
+dbp,404a1958ce5a30a8f57ff30d,Insufficient evidence,Insufficient Direct Evidence,1,5,Insufficient Direct Evidence
+dbp,9adf49bff6a3f6348f7dd9a2,Confirmed,Confirmed,5,5,Confirmed
+dbp,0d6f2c0d8f55c619799f268c,Insufficient evidence,Insufficient Direct Evidence,1,5,Insufficient Direct Evidence
+dbp,5a5ff44d1779cca1cb2e2094,Insufficient evidence,Insufficient Direct Evidence,1,5,Insufficient Direct Evidence
+dbp,8b1aa764c3fa83ad78895757,Confirmed,Confirmed,5,5,Confirmed
+dbp,4f64e642b03786dc3f4b6afc,Insufficient evidence,Insufficient Direct Evidence,1,5,Insufficient Direct Evidence
+dbp,78dc15bdbcf6db85380b0f1e,Confirmed,Confirmed,5,5,Confirmed
+dbp,f658832b48e04d0f0d77f7a8,Suspected,Suspected,0,5,Insufficient Direct Evidence
+dbp,b7a374024fae32b36cf243e7,Confirmed,Confirmed,5,5,Confirmed
+dbp,4366b2286c9652c1ce8a9fc0,Insufficient evidence,Insufficient Direct Evidence,1,5,Insufficient Direct Evidence
+dbp,12715c3495c15f412dd57e8d,Confirmed,Confirmed,5,5,Confirmed
+dbp,31a0df2d029b2643ce65f3b9,Confirmed,Confirmed,5,5,Confirmed
+dbp,20f201dea35dbe18c4613ece,Confirmed,Confirmed,5,5,Confirmed
+dbp,6c1685c0b184a96691b97535,Confirmed,Confirmed,5,5,Insufficient Direct Evidence
+dbp,e8ff430960c3301770576e93,Confirmed,Confirmed,5,5,Confirmed
+dbp,ec93a0655af1119e8e57d052,Other scope / identity,Indirect or Class-Level Only,1,5,Indirect or Class-Level Only
+dbp,f29071bc5da9772dc0285316,Insufficient evidence,Insufficient Direct Evidence,1,5,Insufficient Direct Evidence
+dbp,fa964440aaa66a409a1ba5c8,Confirmed,Confirmed,4,5,Suspected
+dbp,75610f0ab761fa2f1a8b167a,Confirmed,Confirmed,4,5,Suspected
+dbp,443fc56fadf3a137df641482,Insufficient evidence,Insufficient Direct Evidence,1,5,Insufficient Direct Evidence
+dbp,bf459bd1e8be47886d2c5722,Insufficient evidence,Insufficient Direct Evidence,1,5,Insufficient Direct Evidence
+dbp,3af88123aaad35677c733967,Confirmed,Confirmed,5,5,Confirmed
+dbp,3112e373aa56512738ff08cc,Insufficient evidence,Insufficient Direct Evidence,1,5,Insufficient Direct Evidence
+dbp,10be4eed4e926bf28280f3c7,Insufficient evidence,Insufficient Direct Evidence,1,5,Insufficient Direct Evidence
+dbp,20863cda9043b2ed2b49ecf5,Confirmed,Confirmed,5,5,Confirmed
+dbp,03073f1da4164ffa0fc3ddde,Confirmed,Confirmed,5,5,Insufficient Direct Evidence
+dbp,a4c11b913b3568a358b3af75,Insufficient evidence,Insufficient Direct Evidence,1,5,Insufficient Direct Evidence
+dbp,17525ff19b8cb4f5ca844bb6,Confirmed,Confirmed,4,5,Suspected
+dbp,26f70f587934a06499bb9ee1,Insufficient evidence,Insufficient Direct Evidence,1,5,Insufficient Direct Evidence
+dbp,450a4c64fc49b9f209db1158,Insufficient evidence,Insufficient Direct Evidence,1,5,Insufficient Direct Evidence
+dbp,27c6890d87ec81c746c06756,Insufficient evidence,Insufficient Direct Evidence,1,5,Insufficient Direct Evidence
+dbp,d43cb1b41c71d214076074f8,Insufficient evidence,Insufficient Direct Evidence,1,5,Insufficient Direct Evidence
+dbp,6a09106c440dc9e2361de7a0,Confirmed,Confirmed,5,5,Confirmed
+dbp,74ac897f05519b8cbf08a9e4,Insufficient evidence,Insufficient Direct Evidence,1,5,Insufficient Direct Evidence
+dbp,4f21f2dd9cd16502db40aaec,Confirmed,Confirmed,5,5,Confirmed
+dbp,2362fb9e4253a233711834d7,Insufficient evidence,Insufficient Direct Evidence,1,5,Insufficient Direct Evidence
+dbp,cc9a8d4c7fee876b56d4b45d,Confirmed,Confirmed,5,5,Insufficient Direct Evidence
+dbp,c4663bcc660b734af142cd5c,Confirmed,Confirmed,4,5,Suspected
+dbp,192f71b7939aa7a1a2e36a8e,Insufficient evidence,Insufficient Direct Evidence,1,5,Insufficient Direct Evidence
+dbp,837918c15e2c8b6431fe49bc,Confirmed,Confirmed,5,5,Insufficient Direct Evidence
+dbp,840dfe3fa09a4bdbdf5218b6,Insufficient evidence,Insufficient Direct Evidence,1,5,Insufficient Direct Evidence
+dbp,8a1306e634143d611253645e,Insufficient evidence,Insufficient Direct Evidence,1,5,Insufficient Direct Evidence
+dbp,4ae4869176f506ca5d73663e,Insufficient evidence,Insufficient Direct Evidence,1,5,Insufficient Direct Evidence
+dbp,e465ea57639c45aa6ef17e1e,Confirmed,Confirmed,5,5,Confirmed
+dbp,5e900d78e7d87857d644b6b4,Explicit negative,Explicit Negative Evidence,5,5,Explicit Negative Evidence
+dbp,d562fa8e1d2b441ac47481e7,Insufficient evidence,Insufficient Direct Evidence,1,5,Insufficient Direct Evidence
+dbp,5bde95dd4a63e85752e90cbf,Insufficient evidence,Insufficient Direct Evidence,1,5,Insufficient Direct Evidence
+dbp,2475b58b181790938cd206cc,Confirmed,Confirmed,5,5,Confirmed
+dbp,ffd1b34ddc34061afe42a529,Insufficient evidence,Insufficient Direct Evidence,1,5,Insufficient Direct Evidence
+dbp,9cf8cf9088f32c4038e0c566,Confirmed,Confirmed,0,5,Insufficient Direct Evidence
+dbp,f419388ba07ff98e8afbf473,Confirmed,Confirmed,5,5,Confirmed
+dbp,5e69ae6cf2614c1c606cf3a1,Insufficient evidence,Insufficient Direct Evidence,1,5,Insufficient Direct Evidence
+dbp,d68e6eaeb2c6a65b9f167541,Confirmed,Confirmed,5,5,Confirmed
+dbp,81be4ffd42f3bf09390d80ee,Insufficient evidence,Insufficient Direct Evidence,1,5,Insufficient Direct Evidence
+dbp,c09c0efa1afe3b4204c10954,Confirmed,Confirmed,5,5,Confirmed
+dbp,24ed47ca721a12da3d7343d3,Confirmed,Confirmed,5,5,Insufficient Direct Evidence
+dbp,d0bc82ffbc1597729f544878,Insufficient evidence,Insufficient Direct Evidence,1,5,Insufficient Direct Evidence
+dbp,7fc0db9e4742479bde21e3fb,Confirmed,Confirmed,5,5,Confirmed
+dbp,f43e462f6965c7b324037d98,Confirmed,Confirmed,5,5,Confirmed
+dbp,2d45342f09a7e83045ff76b3,Insufficient evidence,Insufficient Direct Evidence,1,5,Insufficient Direct Evidence
+dbp,cd97b88af1b6ec194856eddd,Insufficient evidence,Insufficient Direct Evidence,1,5,Insufficient Direct Evidence
+dbp,e4f6a7b8bed6f025aabdf1b1,Confirmed,Confirmed,5,5,Confirmed
+dbp,07862270c245b374df03a9b1,Confirmed,Confirmed,5,5,Confirmed
+dbp,87df638f08f793047aaa8cb4,Insufficient evidence,Insufficient Direct Evidence,1,5,Insufficient Direct Evidence
+dbp,69c2ee18cbc2a505a3336bc4,Insufficient evidence,Insufficient Direct Evidence,1,5,Insufficient Direct Evidence
+dbp,72b7762792e67a35c3823bf4,Confirmed,Confirmed,5,5,Confirmed
+dbp,ed2796b2683c18c8cb830c5b,Insufficient evidence,Insufficient Direct Evidence,1,5,Insufficient Direct Evidence
+dbp,06b3f7a89713d5d0ac011a23,Insufficient evidence,Insufficient Direct Evidence,1,5,Insufficient Direct Evidence
+dbp,854bf03ec37b371ffa58670d,Confirmed,Confirmed,5,5,Confirmed
+dbp,7744365f49e3f0b55a154801,Insufficient evidence,Insufficient Direct Evidence,1,5,Insufficient Direct Evidence
+dbp,eeeac46e0b87664e16a65c1d,Confirmed,Confirmed,5,5,Confirmed
+dbp,6f392a5f891994c602262106,Insufficient evidence,Insufficient Direct Evidence,1,5,Insufficient Direct Evidence
+dbp,44e3057ca8f92e34954b3865,Explicit negative,Explicit Negative Evidence,5,5,Explicit Negative Evidence
+dbp,487cd0b0394c55489b1652c6,Insufficient evidence,Insufficient Direct Evidence,1,5,Insufficient Direct Evidence
+dbp,6718af106b601d187a0f9d5c,Insufficient evidence,Insufficient Direct Evidence,1,5,Insufficient Direct Evidence
+dbp,dddc6ab0bb02e886c87c51ca,Confirmed,Confirmed,5,5,Confirmed
+dbp,1d73af2896574c1bafcb11ce,Explicit negative,Explicit Negative Evidence,1,5,Explicit Negative Evidence
+dbp,048b1448c52e2eb28f7ff15e,Insufficient evidence,Insufficient Direct Evidence,1,5,Insufficient Direct Evidence
+dbp,21a22ba311093b0a5aa61bab,Insufficient evidence,Insufficient Direct Evidence,1,5,Insufficient Direct Evidence
+dbp,c467c529f3312c4ca929423e,Confirmed,Confirmed,5,5,Confirmed
+dbp,a772f0e4e1a7255e0f1c9c17,Confirmed,Confirmed,5,5,Confirmed
+dbp,a11c8a5b9d4ee09a31919415,Insufficient evidence,Insufficient Direct Evidence,1,5,Insufficient Direct Evidence
+dbp,aedbc70d50f006ba3f0d6fc5,Insufficient evidence,Insufficient Direct Evidence,1,5,Insufficient Direct Evidence
+dbp,ced848bc1d0da9c826575c3e,Insufficient evidence,Insufficient Direct Evidence,2,5,Insufficient Direct Evidence
+dbp,e6313b20cdfe5572de3ee195,Insufficient evidence,Insufficient Direct Evidence,1,5,Insufficient Direct Evidence
+dbp,b1932fa632ec635e3a2cfb0a,Insufficient evidence,Insufficient Direct Evidence,1,5,Insufficient Direct Evidence
+dbp,d538f271809a0fcce1ff8fda,Confirmed,Confirmed,5,5,Confirmed
+dbp,c5639b54897fbe3537fc5938,Confirmed,Confirmed,4,5,Suspected
+dbp,f7d70cb4cec0cb4eb35406b4,Suspected,Suspected,1,5,Insufficient Direct Evidence
+dbp,a5c07b182b91dbdc8ef3f3f1,Suspected,Suspected,3,5,Suspected
+dbp,7fd462817d7d4e16ff3d65f1,Confirmed,Confirmed,5,5,Confirmed
+dbp,d2ec736dd8fd73a2569688fd,Insufficient evidence,Insufficient Direct Evidence,1,5,Insufficient Direct Evidence
+dbp,f90a06f9376a841ba3be0db5,Insufficient evidence,Insufficient Direct Evidence,1,5,Insufficient Direct Evidence
+dbp,26e61991c2e38d3e863b6d3d,Insufficient evidence,Insufficient Direct Evidence,1,5,Insufficient Direct Evidence
+dbp,430727b26883e4c14a0eeaf3,Confirmed,Confirmed,5,5,Confirmed
+dbp,5b17ff9662491d98fb8775f6,Confirmed,Confirmed,5,5,Confirmed
+dbp,39ffc69a69ce85a905cc1735,Confirmed,Confirmed,5,5,Confirmed
+dbp,391aff5850b6736b7b96191a,Insufficient evidence,Insufficient Direct Evidence,1,5,Insufficient Direct Evidence
+dbp,74a1541b83ce10f5e34ae63f,Insufficient evidence,Insufficient Direct Evidence,1,5,Insufficient Direct Evidence
+dbp,277fba790b728f71e3da33f2,Insufficient evidence,Insufficient Direct Evidence,1,5,Insufficient Direct Evidence
+dbp,28c9d5f01df156359f1e5e49,Insufficient evidence,Insufficient Direct Evidence,1,5,Insufficient Direct Evidence
+dbp,9e76276792b0a922d32529c2,Confirmed,Confirmed,5,5,Confirmed
+dbp,894145ce01cc1418d833903d,Confirmed,Confirmed,5,5,Confirmed
+dbp,d32ffa5af37556531777366d,Insufficient evidence,Insufficient Direct Evidence,1,5,Insufficient Direct Evidence
+dbp,d52f1bbecf3d811846aab669,Confirmed,Confirmed,5,5,Confirmed
+dbp,f33094c242bdf454237e9dbe,Insufficient evidence,Insufficient Direct Evidence,1,5,Insufficient Direct Evidence
+dbp,d808d4546face151e78dccf4,Confirmed,Confirmed,5,5,Confirmed
+dbp,4cfd65e5ce7387ecfdef542f,Insufficient evidence,Insufficient Direct Evidence,1,5,Insufficient Direct Evidence
+dbp,9d6e42a4afe4be056ad8e6e5,Insufficient evidence,Insufficient Direct Evidence,1,5,Insufficient Direct Evidence
+dbp,162801ca6a1bd2a67e1bdcb3,Insufficient evidence,Insufficient Direct Evidence,1,5,Insufficient Direct Evidence
+dbp,2f3193c44cae21f6c1849c86,Confirmed,Confirmed,1,5,Insufficient Direct Evidence
+dbp,4fb2509eb61198155d4a563d,Insufficient evidence,Insufficient Direct Evidence,1,5,Insufficient Direct Evidence
+dbp,15057674ae100be0d608d63c,Confirmed,Confirmed,5,5,Confirmed
+dbp,90be923e02fd78a6252eac4b,Confirmed,Confirmed,5,5,Insufficient Direct Evidence
+dbp,4b4cbd8f3fd3871b088adc60,Insufficient evidence,Insufficient Direct Evidence,1,5,Insufficient Direct Evidence
+dbp,234bf84be5dffa3c39ef9873,Confirmed,Confirmed,5,5,Confirmed
+dbp,58bac1b38a1881497dcf5bb6,Insufficient evidence,Insufficient Direct Evidence,1,5,Insufficient Direct Evidence
+dbp,dabd9c0057cde78304438601,Insufficient evidence,Insufficient Direct Evidence,1,5,Insufficient Direct Evidence
+dbp,cae7575fc9ebb0a4e5ca73ff,Confirmed,Confirmed,5,5,Confirmed
+dbp,260678d120846f61202596b5,Insufficient evidence,Insufficient Direct Evidence,1,5,Insufficient Direct Evidence
+dbp,0161817ad5856fd9a49a1c8f,Insufficient evidence,Insufficient Direct Evidence,1,5,Insufficient Direct Evidence
+dbp,cc270279acc2538f92ebb65d,Confirmed,Confirmed,5,5,Confirmed
+dbp,3fdbd301b375525494903f14,Insufficient evidence,Insufficient Direct Evidence,1,5,Insufficient Direct Evidence
+dbp,78cb0dfdc8f444626f32e5da,Insufficient evidence,Insufficient Direct Evidence,1,5,Insufficient Direct Evidence
+dbp,392317830c68aecbb2d53a9a,Confirmed,Confirmed,5,5,Confirmed
+dbp,47631d1a9459b05aac65ca05,Insufficient evidence,Insufficient Direct Evidence,1,5,Insufficient Direct Evidence
+dbp,8e064c7e64ae5f07fe842761,Insufficient evidence,Insufficient Direct Evidence,1,5,Insufficient Direct Evidence
+dbp,401a503c951560cffbd92d6d,Other scope / identity,Indirect or Class-Level Only,1,5,Indirect or Class-Level Only
+dbp,7a59e596246885c62772bd37,Confirmed,Confirmed,5,5,Confirmed
+dbp,47382ccbcfc7d4910d056260,Confirmed,Confirmed,5,5,Confirmed
+dbp,a3849927025d70bd4b12c783,Confirmed,Confirmed,5,5,Confirmed
+dbp,02e94e0767b96781c5f108f9,Confirmed,Confirmed,5,5,Confirmed
+dbp,1d1ba5656087dc9ab76048b4,Confirmed,Confirmed,5,5,Insufficient Direct Evidence
+dbp,2aebb49348510cd76ef7a74a,Confirmed,Confirmed,5,5,Confirmed
+dbp,e7ecbbd6a2efe215479340ba,Suspected,Suspected,1,5,Insufficient Direct Evidence
+dbp,bf888df0e1e415de200d5a56,Insufficient evidence,Insufficient Direct Evidence,1,5,Insufficient Direct Evidence
+dbp,4efa81f1b9befdaa661fe7a1,Insufficient evidence,Insufficient Direct Evidence,1,5,Insufficient Direct Evidence
+dbp,fbb0e4609d7cbe964dea4724,Confirmed,Confirmed,5,5,Confirmed
+dbp,7bc215adb3b744d8d3131940,Confirmed,Confirmed,3,5,Insufficient Direct Evidence
+dbp,9fcdc9a6ad0d4e01b3f7cb33,Insufficient evidence,Insufficient Direct Evidence,1,5,Insufficient Direct Evidence
+dbp,9c3ab5f57f7c2167429eaca0,Insufficient evidence,Insufficient Direct Evidence,1,5,Insufficient Direct Evidence
+dbp,2e2f93542b2f6ba62cf527a1,Insufficient evidence,Insufficient Direct Evidence,1,5,Insufficient Direct Evidence
+dbp,912db06d521cee0f7cc26473,Suspected,Suspected,4,5,Suspected
+dbp,c5881ffe04d0463be878572c,Insufficient evidence,Insufficient Direct Evidence,1,5,Insufficient Direct Evidence
+dbp,f436d23f036f02b74522c692,Insufficient evidence,Insufficient Direct Evidence,1,5,Insufficient Direct Evidence
+dbp,fa3600ee586fa145a4971568,Confirmed,Confirmed,5,5,Confirmed
+dbp,8b8a897d609038eeadf527d6,Insufficient evidence,Insufficient Direct Evidence,1,5,Insufficient Direct Evidence
+dbp,3266494669f9763212dbbfc8,Confirmed,Confirmed,4,5,Suspected
+dbp,d58b133da188109fb45f3f5d,Confirmed,Confirmed,4,5,Suspected
+dbp,cea183365cd05bfaf857f15f,Confirmed,Confirmed,5,5,Confirmed
+dbp,25d0102dc52128c0216abfe0,Confirmed,Confirmed,5,5,Confirmed
+dbp,11db1b9cfa40facb2efad9da,Insufficient evidence,Insufficient Direct Evidence,1,5,Insufficient Direct Evidence
+dbp,70e4c0aa17ab12b7fe98f04e,Insufficient evidence,Insufficient Direct Evidence,1,5,Insufficient Direct Evidence
+dbp,223abeecb8e001bc3c32b0ed,Insufficient evidence,Insufficient Direct Evidence,1,5,Insufficient Direct Evidence
+dbp,9bb8fdd9f184dc3ffecb6fc2,Insufficient evidence,Insufficient Direct Evidence,1,5,Insufficient Direct Evidence
+dbp,077127ae586f306df4d338f6,Confirmed,Confirmed,4,5,Suspected
+dbp,3e01829ff1c30a4c11b5002e,Insufficient evidence,Insufficient Direct Evidence,1,5,Insufficient Direct Evidence
+dbp,af37772431143b5f1562a8ed,Confirmed,Confirmed,1,5,Insufficient Direct Evidence
+dbp,9382240cc1d53ba5eddeee98,Confirmed,Confirmed,5,5,Confirmed
+dbp,8f8a3a6accca025cf5ad7a31,Insufficient evidence,Insufficient Direct Evidence,1,5,Insufficient Direct Evidence
+dbp,2651c5457e1edcaa248c403d,Confirmed,Confirmed,5,5,Confirmed
+dbp,4b33980e4896597891cef1b5,Insufficient evidence,Insufficient Direct Evidence,1,5,Insufficient Direct Evidence
+dbp,d4719561b2fa6fa702116476,Insufficient evidence,Insufficient Direct Evidence,1,5,Insufficient Direct Evidence
+dbp,1d349390d3b2fb930c4c4433,Confirmed,Confirmed,5,5,Confirmed
+dbp,fa8fbacf9cb74591de8e9c30,Confirmed,Confirmed,5,5,Confirmed
+dbp,182e164a6dd0b019462d2bc4,Insufficient evidence,Insufficient Direct Evidence,1,5,Insufficient Direct Evidence
+dbp,2203374c09d247629f42b36d,Confirmed,Confirmed,5,5,Confirmed
+dbp,1728d00cb5ba2808cb77026f,Confirmed,Confirmed,5,5,Confirmed
+dbp,e91214761e16ff029ad4bc40,Insufficient evidence,Insufficient Direct Evidence,1,5,Insufficient Direct Evidence
+dbp,55afae81272cf95419a008e2,Insufficient evidence,Insufficient Direct Evidence,1,5,Insufficient Direct Evidence
+dbp,17a2bc653ec44d150767927b,Insufficient evidence,Insufficient Direct Evidence,1,5,Insufficient Direct Evidence
+dbp,6cf09771d4e1194509ad982b,Other scope / identity,Out of Scope Matrix or Context,1,5,Out of Scope Matrix or Context
+dbp,8c30f29624dff9e79a306fbf,Confirmed,Confirmed,5,5,Confirmed
+dbp,7007efc892b47afd23cb679f,Confirmed,Confirmed,5,5,Confirmed
+dbp,b7dfaa3f4ae009939c6f3edc,Insufficient evidence,Insufficient Direct Evidence,1,5,Insufficient Direct Evidence
+dbp,5d5ea6eb8b1fd29353cdcc05,Suspected,Suspected,5,5,Suspected
+dbp,598b1f7aa893623edff294dd,Confirmed,Confirmed,5,5,Confirmed
+dbp,233a730a8bc9cbb1e941e89d,Insufficient evidence,Insufficient Direct Evidence,1,5,Insufficient Direct Evidence
+dbp,69086ba52d1b61b19dd96ab3,Confirmed,Confirmed,5,5,Confirmed
+dbp,9476b9da5829ed7b89154e6c,Insufficient evidence,Insufficient Direct Evidence,1,5,Insufficient Direct Evidence
+dbp,f0541d1142e93ef7f7f305dc,Confirmed,Confirmed,4,5,Suspected
+dbp,f5d4c038c9373b1da78d753a,Confirmed,Confirmed,5,5,Confirmed
+dbp,3859b0d7ff164257e12a48c1,Insufficient evidence,Insufficient Direct Evidence,1,5,Insufficient Direct Evidence
+dbp,c168aa2399563b91344410e8,Insufficient evidence,Insufficient Direct Evidence,2,5,Insufficient Direct Evidence
+dbp,9deb848ca0b089249e2f0269,Confirmed,Confirmed,5,5,Confirmed
+dbp,5b410cb8e4086a583975e32a,Insufficient evidence,Insufficient Direct Evidence,1,5,Insufficient Direct Evidence
+dbp,e91244eb5b68d0ee5dd6444d,Confirmed,Confirmed,5,5,Confirmed
+dbp,c478b1e7f3ac30207475cc8b,Suspected,Suspected,4,5,Suspected
+dbp,92814fd7801a08ff8327a0d0,Insufficient evidence,Insufficient Direct Evidence,0,5,Insufficient Direct Evidence
+dbp,35e81a2c4d1b841ffef84bcb,Confirmed,Confirmed,5,5,Confirmed
+dbp,d42c6f4bb544cfa87b95edea,Confirmed,Confirmed,5,5,Confirmed
+dbp,e4e28c5bef21ec18b92c7bf9,Confirmed,Confirmed,5,5,Confirmed
+dbp,e3a0577eeff957a1a0115d5f,Insufficient evidence,Insufficient Direct Evidence,1,5,Insufficient Direct Evidence
+dbp,fce33c47f9b1603529265b0a,Insufficient evidence,Insufficient Direct Evidence,1,5,Insufficient Direct Evidence
+dbp,bde156209c616b01c9231a10,Confirmed,Confirmed,1,5,Insufficient Direct Evidence
+dbp,640d4422983070b50789ef5a,Insufficient evidence,Insufficient Direct Evidence,1,5,Insufficient Direct Evidence
+dbp,4740b39a724d2086f77e4070,Insufficient evidence,Insufficient Direct Evidence,1,5,Insufficient Direct Evidence
+dbp,f1e200e481d3a7c8d80cf67c,Insufficient evidence,Insufficient Direct Evidence,1,5,Insufficient Direct Evidence
+dbp,4c4f629f2e6c555bbc3b5292,Insufficient evidence,Insufficient Direct Evidence,1,5,Insufficient Direct Evidence
+dbp,74af3085a4a3b53255c292a7,Insufficient evidence,Insufficient Direct Evidence,1,5,Insufficient Direct Evidence
+dbp,c2c36ea048a23f701fbf1ac2,Confirmed,Confirmed,5,5,Confirmed
+dbp,54c860ab3bec98c8217d2de3,Insufficient evidence,Insufficient Direct Evidence,1,5,Insufficient Direct Evidence
+dbp,d4a1d10cc0f22430aa9d6d4e,Insufficient evidence,Insufficient Direct Evidence,1,5,Insufficient Direct Evidence
+dbp,8068b11c5e52751075cce654,Confirmed,Confirmed,5,5,Confirmed
+dbp,50f244a83182409f692402dd,Confirmed,Confirmed,5,5,Confirmed
+dbp,eb5227a130fbe77a8d05850f,Confirmed,Confirmed,5,5,Confirmed
+dbp,21fabb11cecc9fc828d45c2b,Insufficient evidence,Insufficient Direct Evidence,1,5,Insufficient Direct Evidence
+dbp,301dd8bcc93b912dff3f9a48,Confirmed,Confirmed,4,5,Suspected
+dbp,a09d82b1eab107c7e71346c8,Confirmed,Confirmed,5,5,Confirmed
+dbp,f6b088a1e8a68ab9f1b7af31,Explicit negative,Explicit Negative Evidence,5,5,Explicit Negative Evidence
+dbp,8b9ab7637578c6214b2f1387,Confirmed,Confirmed,5,5,Confirmed
+dbp,21adf5313c52d2e1b48c422b,Insufficient evidence,Insufficient Direct Evidence,1,5,Insufficient Direct Evidence
+dbp,7317ac68d8fd83ab47e054e4,Confirmed,Confirmed,3,5,Insufficient Direct Evidence
+dbp,0b31063759e031fa6763873e,Confirmed,Confirmed,5,5,Confirmed
+dbp,ef38786835be914bbf876f97,Insufficient evidence,Insufficient Direct Evidence,1,5,Insufficient Direct Evidence
+dbp,a2a039792fb1b60c2754df2d,Confirmed,Confirmed,5,5,Confirmed
+dbp,2c9dbc352b36ca5ab1529e84,Confirmed,Confirmed,5,5,Confirmed
+dbp,f3f6df5b99b2d94dc44590fb,Insufficient evidence,Insufficient Direct Evidence,1,5,Insufficient Direct Evidence
+dbp,981ff7cfa44132eb64a5741f,Insufficient evidence,Insufficient Direct Evidence,1,5,Insufficient Direct Evidence
+dbp,1b801a469368863d9d730fac,Insufficient evidence,Insufficient Direct Evidence,1,5,Insufficient Direct Evidence
+dbp,353db68553656900bc31d3d4,Confirmed,Confirmed,5,5,Confirmed
+dbp,01eb1e17709fbc0b47006df8,Insufficient evidence,Insufficient Direct Evidence,1,5,Insufficient Direct Evidence
+dbp,7740e7484dbd0df98e2c396d,Confirmed,Confirmed,5,5,Confirmed
+dbp,3d7db9dd48893e84fa5944ae,Confirmed,Confirmed,5,5,Confirmed
+dbp,e259b0c27b58e928213c0cea,Insufficient evidence,Insufficient Direct Evidence,1,5,Insufficient Direct Evidence
+dbp,483a14332643aa20e7a820b7,Insufficient evidence,Insufficient Direct Evidence,1,5,Insufficient Direct Evidence
+dbp,571827c3d3b6c598760cebfe,Suspected,Suspected,5,5,Suspected
+dbp,8d449533b91feb10d18897b3,Confirmed,Confirmed,5,5,Confirmed
+dbp,8a7553838e11ec4fbd85f902,Confirmed,Confirmed,4,5,Suspected
+dbp,01e72348a6d0922ce8fef4cc,Confirmed,Confirmed,5,5,Confirmed
+dbp,b3632f827eaeff3642281e4b,Confirmed,Confirmed,5,5,Insufficient Direct Evidence
+dbp,e5dc9d2876cb5f3ce8528548,Confirmed,Confirmed,5,5,Confirmed
+dbp,80fc1d54c16c8108a0ebbfcb,Confirmed,Confirmed,5,5,Confirmed
+dbp,72e9760d5381a11d2cffdc88,Confirmed,Confirmed,5,5,Confirmed
+dbp,552edd278ec94e737661f173,Confirmed,Confirmed,5,5,Insufficient Direct Evidence
+dbp,c0407815c99df0b86bb95566,Confirmed,Confirmed,5,5,Confirmed
+dbp,c8a82f49088ee1e32e1c89be,Confirmed,Confirmed,5,5,Confirmed
+dbp,31beb46da2b71488df21dd9c,Insufficient evidence,Insufficient Direct Evidence,1,5,Insufficient Direct Evidence
+dbp,9c16598f3ce687f579d75e92,Insufficient evidence,Insufficient Direct Evidence,1,5,Insufficient Direct Evidence
+dbp,b0ffe208c9055c13ba40ed2f,Other scope / identity,Out of Scope Matrix or Context,1,5,Out of Scope Matrix or Context
+dbp,746051c7132280c9469db355,Confirmed,Confirmed,5,5,Confirmed
+dbp,eacc4dbf1deaf96547525d1a,Confirmed,Confirmed,5,5,Confirmed
+dbp,bf80befb08cf97914f178010,Insufficient evidence,Insufficient Direct Evidence,1,5,Insufficient Direct Evidence
+dbp,aa7ec486ab2a87936d3dfe83,Insufficient evidence,Insufficient Direct Evidence,1,5,Insufficient Direct Evidence
+dbp,7d5e84e230949336426416eb,Insufficient evidence,Insufficient Direct Evidence,1,5,Insufficient Direct Evidence
+dbp,22ca6b8ce4ac0e0880e44b6c,Insufficient evidence,Insufficient Direct Evidence,1,5,Insufficient Direct Evidence
+dbp,c6f5eb909f356a4a24255036,Insufficient evidence,Insufficient Direct Evidence,1,5,Insufficient Direct Evidence
+dbp,17a2ef98e6ad7202aaf3cc15,Insufficient evidence,Insufficient Direct Evidence,1,5,Insufficient Direct Evidence
+dbp,0cbd8006c93225ae41aa4664,Suspected,Suspected,4,5,Suspected
+dbp,39f6fc8a4814c160a6da1cf1,Insufficient evidence,Insufficient Direct Evidence,1,5,Insufficient Direct Evidence
+dbp,4812b20906407f0be7fcd791,Confirmed,Confirmed,5,5,Confirmed
+dbp,8df03a144e4f1ffcdd2754fa,Insufficient evidence,Insufficient Direct Evidence,1,5,Insufficient Direct Evidence
+dbp,05dcd93de2e9e56592bf1c88,Confirmed,Confirmed,5,5,Confirmed
+dbp,1dd2d77a52eebca9a64cd41e,Confirmed,Confirmed,5,5,Confirmed
+dbp,e0db3368e34e8b6187787953,Insufficient evidence,Insufficient Direct Evidence,1,5,Insufficient Direct Evidence
+dbp,de5f193bf86d1ee08b507e22,Confirmed,Confirmed,5,5,Confirmed
+dbp,e6b03c8014bade04701009dd,Insufficient evidence,Insufficient Direct Evidence,1,5,Insufficient Direct Evidence
+dbp,dc4ac1f9905d8469aee195a2,Insufficient evidence,Insufficient Direct Evidence,1,5,Insufficient Direct Evidence
+dbp,b7ec368b7c05c6b5d75cef21,Insufficient evidence,Insufficient Direct Evidence,1,5,Insufficient Direct Evidence
+dbp,2028fbbcd1e5b6f22a5e58b0,Insufficient evidence,Insufficient Direct Evidence,1,5,Insufficient Direct Evidence
+dbp,7b9dbf68d132144542532732,Confirmed,Confirmed,5,5,Confirmed
+dbp,b010c93b76abafa604b7f200,Explicit negative,Explicit Negative Evidence,1,5,Explicit Negative Evidence
+dbp,d8abe91479ca93d58c359d88,Confirmed,Confirmed,5,5,Confirmed
+dbp,9b0b189daf75716a20ca4cce,Confirmed,Confirmed,0,5,Insufficient Direct Evidence
+dbp,b307f803cc36ca0254371bfa,Insufficient evidence,Insufficient Direct Evidence,1,5,Insufficient Direct Evidence
+dbp,c79c1f74b3524321300b1c92,Confirmed,Confirmed,5,5,Confirmed
+dbp,b932594c575c1fe512d7c502,Insufficient evidence,Insufficient Direct Evidence,1,5,Insufficient Direct Evidence
+dbp,8e31375eeb144a7a7bce86be,Insufficient evidence,Insufficient Direct Evidence,1,5,Insufficient Direct Evidence
+dbp,f22fe0a3b8e047f2e2adc681,Suspected,Suspected,5,5,Suspected
+dbp,bc42f683a986ef62934edc1e,Insufficient evidence,Insufficient Direct Evidence,1,5,Insufficient Direct Evidence
+dbp,6df250656c2b992ce8042faf,Confirmed,Confirmed,4,5,Suspected
+dbp,23f53ce4d3caefae49af34e0,Confirmed,Confirmed,5,5,Confirmed
+dbp,cd278a91aa13de8b8e5ab9fa,Confirmed,Confirmed,5,5,Confirmed
+dbp,a6379835586dffa8b18bd5de,Insufficient evidence,Insufficient Direct Evidence,1,5,Insufficient Direct Evidence
+dbp,4cffd024e3e8848612e98ce2,Confirmed,Confirmed,5,5,Confirmed
+dbp,60490e99ec01629e51761eed,Confirmed,Confirmed,5,5,Confirmed
+dbp,7768ff7ba8ee0ba8a6fe4baa,Confirmed,Confirmed,5,5,Confirmed
+dbp,8596bd4564cba14b0e747271,Confirmed,Confirmed,4,5,Insufficient Direct Evidence
+dbp,e8e2f35a93ebcdbd52bd5c4a,Confirmed,Confirmed,5,5,Confirmed
+dbp,9f0b6e9a1ea14c04b71ef21a,Confirmed,Confirmed,4,5,Insufficient Direct Evidence
+dbp,4d2f564eff0fb562445e8c0b,Insufficient evidence,Insufficient Direct Evidence,1,5,Insufficient Direct Evidence
+dbp,a1df441b48840fefb0abce1b,Confirmed,Confirmed,5,5,Confirmed
+dbp,78482ab6d420c4435274cb0e,Insufficient evidence,Insufficient Direct Evidence,1,5,Insufficient Direct Evidence
+dbp,87576ad30b99fd63fe518f35,Confirmed,Confirmed,5,5,Confirmed
+dbp,e6cda74f71a80c987d95aa72,Confirmed,Confirmed,4,5,Suspected
+dbp,66cda4cc7b8be78628dd2889,Confirmed,Confirmed,5,5,Confirmed
+dbp,a9d586308492ec7df88dd3e1,Insufficient evidence,Insufficient Direct Evidence,1,5,Insufficient Direct Evidence
+dbp,1b390b1af5132746625f10cf,Confirmed,Confirmed,5,5,Insufficient Direct Evidence
+dbp,ca46b23407ae96db38177fbd,Insufficient evidence,Insufficient Direct Evidence,1,5,Insufficient Direct Evidence
+dbp,168d8690863f639edee62f1e,Confirmed,Confirmed,5,5,Insufficient Direct Evidence
+dbp,c81bb17dabe5cdfba6a8bfd2,Insufficient evidence,Insufficient Direct Evidence,1,5,Insufficient Direct Evidence
+dbp,69c5edd4a1bb23fb082a63e5,Confirmed,Confirmed,5,5,Confirmed
+dbp,498f4fd8794df9b35465b97c,Insufficient evidence,Insufficient Direct Evidence,1,5,Insufficient Direct Evidence
+dbp,6dcb5777162494904adde84f,Insufficient evidence,Insufficient Direct Evidence,1,5,Insufficient Direct Evidence
+dbp,795b3061b78ad43921cdac7b,Insufficient evidence,Insufficient Direct Evidence,1,5,Insufficient Direct Evidence
+dbp,b74d7dc36ee2eef47f5b1163,Insufficient evidence,Insufficient Direct Evidence,1,5,Insufficient Direct Evidence
+dbp,d73c587e86eb01bff63cfaa4,Insufficient evidence,Insufficient Direct Evidence,1,5,Insufficient Direct Evidence
+dbp,107706ef9c5267ea69d79625,Confirmed,Confirmed,5,5,Confirmed
+dbp,449eb0223d84646bb410fc6c,Insufficient evidence,Insufficient Direct Evidence,1,5,Insufficient Direct Evidence
+dbp,1530637f96e33490dcfdb070,Confirmed,Confirmed,5,5,Confirmed
+dbp,75a8960f8a0080f25e8f6da6,Confirmed,Confirmed,1,5,Insufficient Direct Evidence
+dbp,381562137ea6edcefbc0b3a4,Insufficient evidence,Insufficient Direct Evidence,2,5,Insufficient Direct Evidence
+dbp,d75e775b2ef0e9ab458645b1,Insufficient evidence,Insufficient Direct Evidence,1,5,Insufficient Direct Evidence
+dbp,a3fbd5469002d6cbd74a3081,Insufficient evidence,Insufficient Direct Evidence,1,5,Insufficient Direct Evidence
+dbp,0762d10b11e0b85103065382,Confirmed,Confirmed,5,5,Insufficient Direct Evidence
+dbp,ccf3cb5685fde716dd42e3d6,Confirmed,Confirmed,5,5,Confirmed
+dbp,ffb3cefa3c0151695220d9fa,Suspected,Suspected,4,5,Suspected
+dbp,0fd09c10fe91fb92a6bbef85,Insufficient evidence,Insufficient Direct Evidence,1,5,Insufficient Direct Evidence
+dbp,b3111b470b6d8b392636acf4,Confirmed,Confirmed,5,5,Confirmed
+dbp,fcabfdd73082bc4e6c5320d9,Confirmed,Confirmed,5,5,Confirmed
+dbp,35688272cad29c246a9f7e3a,Insufficient evidence,Insufficient Direct Evidence,1,5,Insufficient Direct Evidence
+dbp,3aaadde394ca9016c779cea9,Insufficient evidence,Insufficient Direct Evidence,1,5,Insufficient Direct Evidence
+dbp,87354f72f57f99b2ed18e7d5,Confirmed,Confirmed,5,5,Confirmed
+dbp,92e4a2f287b3f90f52b61f5b,Confirmed,Confirmed,5,5,Confirmed
+dbp,1e3a1efe74514b8706d99ef8,Confirmed,Confirmed,5,5,Confirmed
+dbp,e49261b8443afb41d3ba963f,Insufficient evidence,Insufficient Direct Evidence,1,5,Insufficient Direct Evidence
+dbp,1e8e39a30e635d7374b77eb5,Confirmed,Confirmed,5,5,Confirmed
+dbp,aae01ca746a3798d0f4c4fad,Insufficient evidence,Insufficient Direct Evidence,1,5,Insufficient Direct Evidence
+dbp,8c00a6a9039cc6474e9e4016,Insufficient evidence,Insufficient Direct Evidence,1,5,Insufficient Direct Evidence
+dbp,fbb6f46641cae02acd362f61,Insufficient evidence,Insufficient Direct Evidence,1,5,Insufficient Direct Evidence
+dbp,751d7ca8dfd5f434cad0355c,Suspected,Suspected,1,5,Suspected
+dbp,af6af7a7042145a2f5133659,Confirmed,Confirmed,5,5,Insufficient Direct Evidence
+dbp,3c578fd8842af3057adab8df,Insufficient evidence,Insufficient Direct Evidence,1,5,Insufficient Direct Evidence
+dbp,55f0949072ea2ab6f670fae4,Confirmed,Confirmed,5,5,Confirmed
+dbp,d2b718b777315789cbf0a856,Insufficient evidence,Insufficient Direct Evidence,1,5,Insufficient Direct Evidence
+dbp,e8026d8603035fbbfb8c5991,Confirmed,Confirmed,5,5,Confirmed
+dbp,5caddd0d5dccdf19b2628036,Confirmed,Confirmed,5,5,Confirmed
+dbp,d7cb264ce14b02b07e0a73d2,Insufficient evidence,Insufficient Direct Evidence,1,5,Insufficient Direct Evidence
+dbp,358055f0a4d057e1bb6688e5,Confirmed,Confirmed,5,5,Confirmed
+dbp,d88f45cc27498adcb746f9d6,Confirmed,Confirmed,5,5,Confirmed
+dbp,d93a1a4a42e69426c5c9bfa8,Confirmed,Confirmed,5,5,Confirmed
+dbp,7197a48cec95d901a6ee9a17,Confirmed,Confirmed,5,5,Confirmed
+dbp,cecc940819a5de89192635be,Confirmed,Confirmed,5,5,Confirmed
+dbp,ef28b8ca2e7afb8423dc39ec,Insufficient evidence,Insufficient Direct Evidence,1,5,Insufficient Direct Evidence
+dbp,7dc8ac40a815706a4f811ef6,Other scope / identity,Out of Scope Matrix or Context,1,5,Out of Scope Matrix or Context
+dbp,517f53b0875c33a99ae36d9d,Insufficient evidence,Insufficient Direct Evidence,1,5,Insufficient Direct Evidence
+dbp,189a5a7ed20006a8886fc091,Confirmed,Confirmed,5,5,Confirmed
+dbp,c684c4a3648b70eb98a9c9e2,Insufficient evidence,Insufficient Direct Evidence,1,5,Insufficient Direct Evidence
+dbp,be462759c8acdffea6e6c972,Confirmed,Confirmed,5,5,Confirmed
+dbp,33b8324d714583b946d9c65c,Confirmed,Confirmed,5,5,Confirmed
+dbp,77558a37324ad26932b28ea7,Confirmed,Confirmed,5,5,Confirmed
+dbp,6722752d84fd99faebfeaa25,Insufficient evidence,Insufficient Direct Evidence,1,5,Insufficient Direct Evidence
+dbp,2ed867c9146c4119a754fff6,Insufficient evidence,Insufficient Direct Evidence,1,5,Insufficient Direct Evidence
+dbp,b79b1465e504a1b81bf045d4,Insufficient evidence,Insufficient Direct Evidence,1,5,Insufficient Direct Evidence
+dbp,40df18cc178e1d6b17b18b3b,Insufficient evidence,Insufficient Direct Evidence,1,5,Insufficient Direct Evidence
+dbp,04d56f0e4a7c46b7373ef43f,Confirmed,Confirmed,5,5,Confirmed
+dbp,461d8fcfc417b77cc29468db,Confirmed,Confirmed,4,5,Suspected
+dbp,77760b96530564546d5c0740,Insufficient evidence,Insufficient Direct Evidence,1,5,Insufficient Direct Evidence
+dbp,38485dd6fdb37edfe697e14c,Explicit negative,Explicit Negative Evidence,4,5,Explicit Negative Evidence
+dbp,485f9894f58bec95141c8800,Insufficient evidence,Insufficient Direct Evidence,2,5,Insufficient Direct Evidence
+dbp,904ac9492d5462b72b4aa62b,Confirmed,Confirmed,5,5,Confirmed
+dbp,f00c6ab291e80739dd27de9b,Confirmed,Confirmed,5,5,Confirmed
+dbp,d89ac75e1a22890073abd39a,Insufficient evidence,Insufficient Direct Evidence,1,5,Insufficient Direct Evidence
+dbp,f245ac1c211a60c22f4d1ba6,Suspected,Suspected,4,5,Suspected
+dbp,f5fcd1ea9e98cba526e44794,Insufficient evidence,Insufficient Direct Evidence,1,5,Insufficient Direct Evidence
+dbp,67bb8b3db104b2d865f2c865,Confirmed,Confirmed,5,5,Confirmed
+dbp,12024c929b1312e590e05734,Insufficient evidence,Insufficient Direct Evidence,1,5,Insufficient Direct Evidence
+dbp,00638969fff5c0147e823191,Insufficient evidence,Insufficient Direct Evidence,1,5,Insufficient Direct Evidence
+dbp,d3a29f12dc0ab58c3a247dd8,Insufficient evidence,Insufficient Direct Evidence,1,5,Insufficient Direct Evidence
+dbp,198ebde9bb50aed26c15211a,Suspected,Suspected,4,5,Insufficient Direct Evidence
+dbp,9d05019ef36811d55f4ee54d,Insufficient evidence,Insufficient Direct Evidence,1,5,Insufficient Direct Evidence
+dbp,576a46e56cbd361fd03c4d67,Confirmed,Confirmed,5,5,Confirmed
+dbp,8f88bc02e9f201a83cfe8af0,Insufficient evidence,Insufficient Direct Evidence,1,5,Insufficient Direct Evidence
+dbp,ae155b975fe84ae1fd2ea2bb,Confirmed,Confirmed,5,5,Confirmed
+dbp,679855dfed63313a4bb7ce19,Confirmed,Confirmed,5,5,Confirmed
+dbp,fad0e9aa478bcfce58a79906,Confirmed,Confirmed,5,5,Confirmed
+dbp,e0c81dbaea858cfac3921f04,Confirmed,Confirmed,5,5,Confirmed
+dbp,e4e2b0492c864f91582844dc,Insufficient evidence,Insufficient Direct Evidence,1,5,Insufficient Direct Evidence
+dbp,72e71a172b02d15f1c36be98,Explicit negative,Explicit Negative Evidence,5,5,Explicit Negative Evidence
+dbp,9481ec99fdadc507774a6056,Insufficient evidence,Insufficient Direct Evidence,1,5,Insufficient Direct Evidence
+dbp,71e9e046cbead088ac1d68d8,Confirmed,Confirmed,5,5,Confirmed
+dbp,49a613dd983311ec4c144398,Insufficient evidence,Insufficient Direct Evidence,1,5,Insufficient Direct Evidence
+dbp,961d7325de0f79ad16798f1b,Insufficient evidence,Insufficient Direct Evidence,1,5,Insufficient Direct Evidence
+dbp,2c03532a1439fa14724d5eca,Insufficient evidence,Insufficient Direct Evidence,1,5,Insufficient Direct Evidence
+dbp,eefc87e4d1f90d6914a56254,Insufficient evidence,Insufficient Direct Evidence,1,5,Insufficient Direct Evidence
+dbp,cebf09710173d8f09c404435,Suspected,Suspected,0,5,Suspected
+dbp,59bcbad874d03ce3e13d40fc,Confirmed,Confirmed,5,5,Suspected
+dbp,82d72f0a88bec744914b95c2,Confirmed,Confirmed,5,5,Confirmed
+dbp,af673b769610a7051b133b3e,Confirmed,Confirmed,4,5,Suspected
+dbp,3d1803b975015b968316b6b1,Confirmed,Confirmed,5,5,Confirmed
+dbp,341d735e283a7a9c1926c05a,Confirmed,Confirmed,5,5,Confirmed
+dbp,1fcac43600266a2f0c3df735,Confirmed,Confirmed,5,5,Confirmed
+dbp,0f81eb1a473ecc2e80f2923b,Insufficient evidence,Insufficient Direct Evidence,1,5,Insufficient Direct Evidence
+dbp,63c24e83af5c201e64f410cd,Confirmed,Confirmed,5,5,Confirmed
+dbp,ae33735e2feaa68b1b2c5c53,Confirmed,Confirmed,4,5,Suspected
+dbp,d21e7a6e2371378cd45494b3,Confirmed,Confirmed,4,5,Suspected
+dbp,0059011a0e4e6b9665d61d1d,Confirmed,Confirmed,5,5,Confirmed
+dbp,36f80a190ee112df000b767e,Confirmed,Confirmed,5,5,Confirmed
+dbp,d118bbd831046fd4325a8eb4,Confirmed,Confirmed,5,5,Confirmed
+dbp,fff1693258ef34c4c745d5ef,Confirmed,Confirmed,4,5,Insufficient Direct Evidence
+dbp,c6666fd79874535dadc3061d,Insufficient evidence,Insufficient Direct Evidence,1,5,Insufficient Direct Evidence
+dbp,1aeed8f5873b30b237821106,Insufficient evidence,Insufficient Direct Evidence,1,5,Insufficient Direct Evidence
+dbp,abf220fa0625db575b4ecd74,Insufficient evidence,Insufficient Direct Evidence,1,5,Insufficient Direct Evidence
+dbp,652faf95ea1b032ab7b4b00b,Confirmed,Confirmed,5,5,Confirmed
+dbp,8ba6702f94276db9acb234ca,Insufficient evidence,Insufficient Direct Evidence,1,5,Insufficient Direct Evidence
+dbp,144cc9b30cf6ef4a8a88c648,Other scope / identity,Out of Scope Matrix or Context,1,5,Out of Scope Matrix or Context
+dbp,5d11ba4ce3d4d2319375164e,Insufficient evidence,Insufficient Direct Evidence,1,5,Insufficient Direct Evidence
+dbp,4c4cb85b56ea40f124eb466f,Insufficient evidence,Insufficient Direct Evidence,3,5,Insufficient Direct Evidence
+dbp,a21d1a1a5c9a5ac13a798b1a,Insufficient evidence,Insufficient Direct Evidence,1,5,Insufficient Direct Evidence
+dbp,e79de733427a9c0538168893,Insufficient evidence,Insufficient Direct Evidence,1,5,Insufficient Direct Evidence
+dbp,8d4bd52b7364e26dc6025d48,Suspected,Suspected,3,5,Suspected
+dbp,992d9a90bee50f84da31b37f,Insufficient evidence,Insufficient Direct Evidence,1,5,Insufficient Direct Evidence
+dbp,930f8d23561bfcf405bd4444,Insufficient evidence,Insufficient Direct Evidence,1,5,Insufficient Direct Evidence
+dbp,71e18d72d879398e52a6ba65,Insufficient evidence,Insufficient Direct Evidence,1,5,Insufficient Direct Evidence
+dbp,d6157adf1115947142a0f911,Confirmed,Confirmed,5,5,Confirmed
+dbp,ff64ecbe89c04b955595039d,Confirmed,Confirmed,5,5,Confirmed
+dbp,d1ce4661c473af07440fddb6,Confirmed,Confirmed,5,5,Confirmed
+dbp,1101b45f5a0c0b3227823650,Confirmed,Confirmed,5,5,Confirmed
+dbp,4ed011e7742334d23619a7b7,Insufficient evidence,Insufficient Direct Evidence,1,5,Insufficient Direct Evidence
+dbp,4988e87b2e1e3e2f104ce595,Explicit negative,Explicit Negative Evidence,5,5,Explicit Negative Evidence
+dbp,a995009c5deb3936f4e754eb,Confirmed,Confirmed,1,5,Insufficient Direct Evidence
+dbp,5d14688e564c6e88bcae090f,Confirmed,Confirmed,5,5,Confirmed
+dbp,b2c3741ebe6c218600eb0a63,Confirmed,Confirmed,5,5,Confirmed
+dbp,df6cbcfd7e5b0ec36841ed69,Insufficient evidence,Insufficient Direct Evidence,1,5,Insufficient Direct Evidence
+dbp,14fd472e5fa3e6b55078ee71,Other scope / identity,Indirect or Class-Level Only,5,5,Indirect or Class-Level Only
+dbp,4b66fe4bed27489fec9aac64,Insufficient evidence,Insufficient Direct Evidence,1,5,Insufficient Direct Evidence
+dbp,f28cc902c0d733ab044a1c66,Confirmed,Confirmed,5,5,Confirmed
+dbp,283330b656f3cac186d8fb0a,Insufficient evidence,Insufficient Direct Evidence,1,5,Insufficient Direct Evidence
+dbp,ad755c374f3ad989516b1aef,Insufficient evidence,Insufficient Direct Evidence,1,5,Insufficient Direct Evidence
+dbp,c3593580451b7dc6a8174a08,Confirmed,Confirmed,4,5,Suspected
+dbp,7a3f08240ea864780dd7bae1,Insufficient evidence,Insufficient Direct Evidence,1,5,Insufficient Direct Evidence
+dbp,f03f42921e42a7f6f358dcf3,Confirmed,Confirmed,5,5,Confirmed
+dbp,457da5c95a49954bebe464d5,Insufficient evidence,Insufficient Direct Evidence,1,5,Insufficient Direct Evidence
+dbp,de5ca192813e444a268d1051,Insufficient evidence,Insufficient Direct Evidence,1,5,Insufficient Direct Evidence
+dbp,e3eea11344d09aa1efe107b2,Confirmed,Confirmed,5,5,Confirmed
+dbp,3216a0e720b37dfcd906a761,Insufficient evidence,Insufficient Direct Evidence,1,5,Insufficient Direct Evidence
+dbp,c110b17a4a624a9a9dbe28aa,Confirmed,Confirmed,5,5,Confirmed
+dbp,577ce3e3a184d212dc8130ae,Insufficient evidence,Insufficient Direct Evidence,1,5,Insufficient Direct Evidence
+dbp,d712c31774d9d302f7595772,Insufficient evidence,Insufficient Direct Evidence,1,5,Insufficient Direct Evidence
+dbp,7012f14607ac5f89f9e239ce,Confirmed,Confirmed,5,5,Insufficient Direct Evidence
+dbp,7ceba8777fd21b6f401ce070,Confirmed,Confirmed,5,5,Confirmed
+dbp,dce94efcdaca8c9f9b88a8fe,Suspected,Suspected,5,5,Suspected
+dbp,5b149936dd62ea817be4fe76,Insufficient evidence,Insufficient Direct Evidence,1,5,Insufficient Direct Evidence
+dbp,5803ca84f13437890d570b8f,Insufficient evidence,Insufficient Direct Evidence,1,5,Insufficient Direct Evidence
+dbp,5350a59210285a561b48d7a4,Confirmed,Confirmed,5,5,Confirmed
+dbp,4c9111ee8f8e1471e9cacb19,Insufficient evidence,Insufficient Direct Evidence,1,5,Insufficient Direct Evidence
+dbp,a8c60aa43a008c4f8461c5d2,Insufficient evidence,Insufficient Direct Evidence,1,5,Insufficient Direct Evidence
+dbp,09228444c66fb93ddf526eec,Confirmed,Confirmed,5,5,Confirmed
+dbp,412885538d6d8e393780f914,Insufficient evidence,Insufficient Direct Evidence,1,5,Insufficient Direct Evidence
+dbp,01b24982007ef1a973b4ba30,Insufficient evidence,Insufficient Direct Evidence,1,5,Insufficient Direct Evidence
+dbp,2258b9c548d9f9548cc063d6,Insufficient evidence,Insufficient Direct Evidence,1,5,Insufficient Direct Evidence
+dbp,0712af01319858bc19ac715c,Confirmed,Confirmed,3,5,Suspected
+dbp,a0e0b20998ed6adaf6a7f627,Confirmed,Confirmed,5,5,Confirmed
+dbp,0ca86ecef6bbc0ee23bba98b,Insufficient evidence,Insufficient Direct Evidence,1,5,Insufficient Direct Evidence
+dbp,1f7dc7a58bcad7161ceac8b6,Confirmed,Confirmed,5,5,Confirmed
+dbp,8aef7a0c1dfa95239ad36ae1,Confirmed,Confirmed,5,5,Confirmed
+dbp,ffc0de08a6c93624b4c8dc00,Insufficient evidence,Insufficient Direct Evidence,1,5,Insufficient Direct Evidence
+dbp,d31d00f69e51f95926198398,Insufficient evidence,Insufficient Direct Evidence,1,5,Insufficient Direct Evidence
+dbp,15efc3536ed9fc8eba809bb1,Confirmed,Confirmed,5,5,Confirmed
+dbp,159c9e5abaf25e099c280a02,Other scope / identity,Indirect or Class-Level Only,5,5,Indirect or Class-Level Only
+dbp,fd672bc25ebb047a4431fe15,Insufficient evidence,Insufficient Direct Evidence,1,5,Insufficient Direct Evidence
+dbp,3a95cea7ea1004d1b728b826,Confirmed,Confirmed,5,5,Confirmed
+dbp,f39e4e8b55dac85399f4d5d2,Confirmed,Confirmed,5,5,Confirmed
+dbp,38e68d03c813f7bb26f2c169,Confirmed,Confirmed,5,5,Confirmed
+dbp,69e2cfbf1e45874350d827a6,Suspected,Suspected,2,5,Insufficient Direct Evidence
+dbp,83a7395cb73fdcade04b399b,Insufficient evidence,Insufficient Direct Evidence,1,5,Insufficient Direct Evidence
+dbp,fbc71acececb397d11caf4e2,Insufficient evidence,Insufficient Direct Evidence,1,5,Insufficient Direct Evidence
+dbp,2693c9c1e7a6542adf54d30f,Insufficient evidence,Insufficient Direct Evidence,1,5,Insufficient Direct Evidence
+dbp,13c4f95fdb1f471a5d9e5626,Insufficient evidence,Insufficient Direct Evidence,1,5,Insufficient Direct Evidence
+dbp,d73b51155d42e027ac53426e,Confirmed,Confirmed,5,5,Confirmed
+dbp,235d78809dce3e2ec7f71176,Confirmed,Confirmed,4,5,Suspected
+dbp,f48314d858c37ec196e6c629,Confirmed,Confirmed,5,5,Confirmed
+dbp,eb57b3a78c06078fb959223d,Confirmed,Confirmed,5,5,Confirmed
+dbp,d246154de38b89736eb838c1,Confirmed,Confirmed,5,5,Confirmed
+dbp,e5f3920707e2ecea886ac869,Confirmed,Confirmed,5,5,Confirmed
+dbp,9ef349b0252f4aee47599233,Insufficient evidence,Insufficient Direct Evidence,1,5,Insufficient Direct Evidence
+dbp,e337de98a572c3ed03a7fa5f,Insufficient evidence,Insufficient Direct Evidence,1,5,Insufficient Direct Evidence
+dbp,9b3d487e152f8330f1a4cb2b,Insufficient evidence,Insufficient Direct Evidence,1,5,Insufficient Direct Evidence
+dbp,cb23a61bd96867b50c03a7f1,Insufficient evidence,Insufficient Direct Evidence,1,5,Insufficient Direct Evidence
+dbp,5ffa1d879b0f6335305f488a,Suspected,Suspected,4,5,Suspected
+dbp,7cd8b78d596baa95296e0c88,Confirmed,Confirmed,5,5,Confirmed
+dbp,74b1d9625c817274f08f670c,Confirmed,Confirmed,5,5,Confirmed
+dbp,cd5a05b5b0d97e5022f7b2da,Explicit negative,Explicit Negative Evidence,5,5,Explicit Negative Evidence
+dbp,91324de2c637ae3e94e4746a,Insufficient evidence,Insufficient Direct Evidence,1,5,Insufficient Direct Evidence
+dbp,c653cc7328ac1d0a7ca44282,Insufficient evidence,Insufficient Direct Evidence,1,5,Insufficient Direct Evidence
+dbp,90590cb73f1f0fe3e809bdf1,Insufficient evidence,Insufficient Direct Evidence,1,5,Insufficient Direct Evidence
+dbp,470675f1faff13cf842d7bb1,Insufficient evidence,Insufficient Direct Evidence,2,5,Insufficient Direct Evidence
+dbp,d1510290512be1a24dcd45a7,Confirmed,Confirmed,1,5,Insufficient Direct Evidence
+dbp,e31466eb98954f70693a2f1b,Suspected,Suspected,5,5,Suspected
+dbp,b4b9374c1d141f393aaa1f8b,Confirmed,Confirmed,1,5,Insufficient Direct Evidence
+dbp,1911b846e520d145cbd496ea,Confirmed,Confirmed,5,5,Insufficient Direct Evidence
+dbp,371577a691afa303c7485b2e,Explicit negative,Explicit Negative Evidence,5,5,Explicit Negative Evidence
+dbp,dc7fe91376f5d6d73589a9c6,Insufficient evidence,Insufficient Direct Evidence,1,5,Insufficient Direct Evidence
+dbp,0cadfe6895be32689676522e,Insufficient evidence,Insufficient Direct Evidence,1,5,Insufficient Direct Evidence
+dbp,2a5c8fb5cd3a66fdb95bbe3e,Confirmed,Confirmed,4,5,Suspected
+dbp,d6b95a5598f1dac4ede42481,Confirmed,Confirmed,5,5,Confirmed
+dbp,8167d67b5370ceead6a20a1d,Insufficient evidence,Insufficient Direct Evidence,1,5,Insufficient Direct Evidence
+dbp,9cfbd78a5d7378037a94e3ac,Insufficient evidence,Insufficient Direct Evidence,1,5,Insufficient Direct Evidence
+dbp,a257e6977a20e88f1f553dfe,Confirmed,Confirmed,5,5,Confirmed
+dbp,0e0e3fdf548fef2c0be7bec1,Confirmed,Confirmed,5,5,Confirmed
+dbp,8952229f51580182d6ef47d0,Confirmed,Confirmed,5,5,Confirmed
+dbp,5bbfaf5441cf7616965a1e11,Suspected,Suspected,5,5,Suspected
+dbp,502417328c82388c76fe2b32,Confirmed,Confirmed,5,5,Confirmed
+dbp,caf06426a603bd01e14bdce9,Confirmed,Confirmed,5,5,Confirmed
+dbp,7f1e475a4301b6d1a5dcb541,Confirmed,Confirmed,5,5,Confirmed
+dbp,a0dc039cc9cc85c8c9e0e9a6,Suspected,Suspected,3,5,Suspected
+dbp,30a6611ba61464e9b31143cf,Confirmed,Confirmed,5,5,Confirmed
+dbp,7dc83a18a363002636b89c93,Explicit negative,Explicit Negative Evidence,5,5,Explicit Negative Evidence
+dbp,d9861104016167178109f42c,Insufficient evidence,Insufficient Direct Evidence,1,5,Insufficient Direct Evidence
+dbp,d13bb9d44d4ba1b917d11ff8,Confirmed,Confirmed,5,5,Confirmed
+dbp,a2dc7ce199b4004f4c3cd51a,Confirmed,Confirmed,5,5,Insufficient Direct Evidence
+dbp,99a515b29a813ff1fa0c85fc,Confirmed,Confirmed,5,5,Confirmed
+dbp,d79771dbbb604013760623fb,Confirmed,Confirmed,4,5,Insufficient Direct Evidence
+dbp,3b8ce0ae1eed1fe6b4eeae78,Confirmed,Confirmed,5,5,Confirmed
+dbp,f49d57e4604a522104e94d0e,Confirmed,Confirmed,4,5,Insufficient Direct Evidence
+dbp,3463cd8281f760666ee189ca,Confirmed,Confirmed,5,5,Confirmed
+dbp,c4273a8ee01c51c61540479f,Confirmed,Confirmed,5,5,Confirmed
+dbp,4d95a2b82f9362e69ca8d1dd,Insufficient evidence,Insufficient Direct Evidence,1,5,Insufficient Direct Evidence
+dbp,6e12d88d52e07606274f3237,Confirmed,Confirmed,5,5,Confirmed
+dbp,2b0043c3931896daa675aab6,Confirmed,Confirmed,5,5,Confirmed
+dbp,f935345b26839bf2195ace43,Confirmed,Confirmed,5,5,Confirmed
+dbp,87d7f0855958170335795894,Confirmed,Confirmed,5,5,Confirmed
+dbp,1a95f04dd64088f378168acb,Insufficient evidence,Insufficient Direct Evidence,1,5,Insufficient Direct Evidence
+dbp,08e49dc66cd566f82d822311,Confirmed,Confirmed,5,5,Confirmed
+dbp,a5d3f40bb30c36a36826743a,Confirmed,Confirmed,1,5,Insufficient Direct Evidence
+dbp,3ae72340e9783c6f5b18f5e9,Confirmed,Confirmed,5,5,Confirmed
+dbp,9e594037cd3ab6f5270a01f2,Confirmed,Confirmed,5,5,Insufficient Direct Evidence
+drug_compounds,ae50419602678e2f15733f34,Suspected,Suspected,2,6,Suspected
+drug_compounds,ed188870cb6fe79144c7f02e,Insufficient evidence,Insufficient Direct Evidence,0,6,Insufficient Direct Evidence
+drug_compounds,077428baeec39111dfcd0167,Confirmed,Confirmed,6,6,Confirmed
+drug_compounds,cfd6ff0fc4ee466c9690f1e9,Confirmed,Confirmed,6,6,Confirmed
+drug_compounds,4d3e4ccb4b91ee072691f956,Insufficient evidence,Insufficient Direct Evidence,0,6,Insufficient Direct Evidence
+drug_compounds,984cbd36691593019f313989,Confirmed,Confirmed,6,6,Confirmed
+drug_compounds,563b0d1e56db03f26aa7597f,Insufficient evidence,Insufficient Direct Evidence,4,6,Insufficient Direct Evidence
+drug_compounds,4295bad870134ec3528e59d5,Insufficient evidence,Insufficient Direct Evidence,1,6,Insufficient Direct Evidence
+drug_compounds,f45423e6e4c91f9d52fa559d,Confirmed,Confirmed,5,6,Suspected
+drug_compounds,7ecbaeba474cf71e9bb1c10f,Insufficient evidence,Insufficient Direct Evidence,0,6,Insufficient Direct Evidence
+drug_compounds,f75da0f9104748a5da75b13f,Confirmed,Confirmed,6,6,Confirmed
+drug_compounds,a28722e4686181385b31fbf3,Suspected,Suspected,5,6,Suspected
+drug_compounds,38afe9783296a55f967abab4,Confirmed,Confirmed,6,6,Confirmed
+drug_compounds,f5eddefc8b89c94d88b0e68d,Confirmed,Confirmed,6,6,Insufficient Direct Evidence
+drug_compounds,8ae4d212e650890c4d854009,Explicit negative,Explicit Negative Evidence,6,6,Explicit Negative Evidence
+drug_compounds,4a5f21d3b7b8d1d7dea4e674,Insufficient evidence,Insufficient Direct Evidence,1,6,Insufficient Direct Evidence
+drug_compounds,c180c4955b78b740b77d700d,Confirmed,Confirmed,6,6,Confirmed
+drug_compounds,6cbdce079c6401fa7cd886f2,Confirmed,Confirmed,6,6,Confirmed
+drug_compounds,cc09f3b81a60686a881ebfd0,Insufficient evidence,Insufficient Direct Evidence,1,6,Insufficient Direct Evidence
+drug_compounds,1110cb68085565f0c3728c70,Confirmed,Confirmed,6,6,Insufficient Direct Evidence
+drug_compounds,41334834da7be9bbfcadba23,Confirmed,Confirmed,6,6,Confirmed
+drug_compounds,4570958969d6bb6f47ff2c22,Confirmed,Confirmed,6,6,Confirmed
+drug_compounds,2918dbebc0c7e2b5d783c12f,Confirmed,Confirmed,6,6,Insufficient Direct Evidence
+drug_compounds,a9606ac3d6080ac94aeaf7ba,Confirmed,Confirmed,6,6,Confirmed
+drug_compounds,70107d60373437d73d209bc5,Insufficient evidence,Insufficient Direct Evidence,0,6,Insufficient Direct Evidence
+drug_compounds,0e345f80523045dca8ff81cf,Confirmed,Confirmed,6,6,Confirmed
+drug_compounds,a95848d38e2095c2113e7e6b,Confirmed,Confirmed,6,6,Confirmed
+drug_compounds,566dfc6bd57020ed3c57727a,Insufficient evidence,Insufficient Direct Evidence,1,6,Insufficient Direct Evidence
+drug_compounds,d75fb8adbcdc7df1a8db4a4f,Insufficient evidence,Insufficient Direct Evidence,4,6,Insufficient Direct Evidence
+drug_compounds,d6056754bcb453c18443bc95,Confirmed,Confirmed,6,6,Confirmed
+drug_compounds,4e39353d8e46f007b2713da8,Confirmed,Confirmed,6,6,Insufficient Direct Evidence
+drug_compounds,2cd71edff1ac9c4dd3769fef,Insufficient evidence,Insufficient Direct Evidence,5,6,Insufficient Direct Evidence
+drug_compounds,b098eda6b1f65d336f9903e5,Insufficient evidence,Insufficient Direct Evidence,2,6,Insufficient Direct Evidence
+drug_compounds,114b1979d2c8d0cbf5348002,Confirmed,Confirmed,6,6,Confirmed
+drug_compounds,3c776a79c580542eeb7f11f7,Confirmed,Confirmed,6,6,Confirmed
+drug_compounds,6f2b81d0aa47aacda9b328ac,Insufficient evidence,Insufficient Direct Evidence,4,6,Insufficient Direct Evidence
+drug_compounds,6c680192fbd5852aada4f601,Confirmed,Confirmed,6,6,Confirmed
+drug_compounds,2f3e2d09b8c6a7ee96173ed4,Other scope / identity,Out of Scope Matrix or Context,6,6,Out of Scope Matrix or Context
+drug_compounds,b8d5024fb74d5e17a97ef404,Confirmed,Confirmed,6,6,Suspected
+drug_compounds,24910f4097ca3f5c370e5d13,Confirmed,Confirmed,6,6,Confirmed
+drug_compounds,0a5efb3f125ce30361adf27c,Confirmed,Confirmed,6,6,Confirmed
+drug_compounds,0e3b8dbeb917f39ad0033e76,Confirmed,Confirmed,6,6,Confirmed
+drug_compounds,15e12c1be10407de052afef1,Suspected,Suspected,3,6,Suspected
+drug_compounds,4a81e7d5d0ef8a65006bb158,Explicit negative,Explicit Negative Evidence,6,6,Explicit Negative Evidence
+drug_compounds,f0f3f21d772649436ca57455,Confirmed,Confirmed,3,6,Suspected
+drug_compounds,daad93622abba56f66d816f5,Explicit negative,Explicit Negative Evidence,6,6,Explicit Negative Evidence
+drug_compounds,8b84c12c9d0622450302a7c2,Confirmed,Confirmed,6,6,Confirmed
+drug_compounds,52307810f12e8b8920a26051,Confirmed,Confirmed,6,6,Confirmed
+drug_compounds,b436284b36ccabfc661a554c,Confirmed,Confirmed,6,6,Suspected
+drug_compounds,0f1ddf1c8e8ac9f850fe4682,Confirmed,Confirmed,6,6,Confirmed
+drug_compounds,c48a46610254c6e6eab7ea49,Explicit negative,Explicit Negative Evidence,6,6,Explicit Negative Evidence
+drug_compounds,b1e811105bdd59bb13da26f5,Confirmed,Confirmed,6,6,Suspected
+drug_compounds,87b82e42fa45205188506963,Confirmed,Confirmed,6,6,Confirmed
+drug_compounds,3d243697cf741c43cb7255a3,Confirmed,Confirmed,6,6,Confirmed
+drug_compounds,ea379abc0fcd8641742cf70c,Confirmed,Confirmed,6,6,Confirmed
+drug_compounds,03259301b359714894944e83,Confirmed,Confirmed,6,6,Confirmed
+drug_compounds,a70cf227db839e6fc7192e44,Confirmed,Confirmed,6,6,Confirmed
+drug_compounds,c7231c3cfd5c2784390a0cab,Confirmed,Confirmed,6,6,Confirmed
+drug_compounds,87b360ae6bdd3c1cfe5e8dce,Confirmed,Confirmed,6,6,Confirmed
+drug_compounds,f16a1099592e9da36dead762,Confirmed,Confirmed,6,6,Insufficient Direct Evidence
+drug_compounds,3355f5f1faaad2c801614d24,Confirmed,Confirmed,6,6,Confirmed
+drug_compounds,da7975d28530beb8b9c5719c,Confirmed,Confirmed,5,6,Suspected
+drug_compounds,0d1ba3b4094f620caaa83c76,Insufficient evidence,Insufficient Direct Evidence,0,6,Insufficient Direct Evidence
+drug_compounds,a0dfd9fa43b07ca0914ebef3,Confirmed,Confirmed,5,6,Suspected
+drug_compounds,3b09e80685418e6e1b2bcba8,Confirmed,Confirmed,6,6,Confirmed
+drug_compounds,449cc50af11e38e518362d89,Confirmed,Confirmed,6,6,Confirmed
+drug_compounds,67c6c13eefb16e5ebbe8b8b2,Confirmed,Confirmed,3,6,Suspected
+drug_compounds,f4fdb2cd1351def5f467fc71,Suspected,Suspected,3,6,Suspected
+drug_compounds,9804b4167009d697096f0473,Explicit negative,Explicit Negative Evidence,6,6,Explicit Negative Evidence
+drug_compounds,ec1e00228eb443934b581afa,Confirmed,Confirmed,5,6,Suspected
+drug_compounds,dfb0aa7307a329c1e905615f,Confirmed,Confirmed,6,6,Confirmed
+drug_compounds,9ab84b4fa9c18e3882ee3360,Confirmed,Confirmed,6,6,Confirmed
+drug_compounds,079879086982d777a3f22fac,Confirmed,Confirmed,6,6,Confirmed
+drug_compounds,553e3cefe659187518a23a7e,Confirmed,Confirmed,6,6,Confirmed
+drug_compounds,e6278dd53a2d74cf53512886,Confirmed,Confirmed,1,6,Insufficient Direct Evidence
+drug_compounds,526784aa637d44f0f0cb4fdf,Confirmed,Confirmed,6,6,Insufficient Direct Evidence
+drug_compounds,1bfdefabce464971e6c8b02c,Explicit negative,Explicit Negative Evidence,6,6,Explicit Negative Evidence
+drug_compounds,b2a285bb0b3a2a7df4e86aea,Confirmed,Confirmed,6,6,Confirmed
+drug_compounds,3d417c0ad2e9314db885e10a,Confirmed,Confirmed,6,6,Confirmed
+drug_compounds,0c409cba87a855096791e473,Explicit negative,Explicit Negative Evidence,6,6,Explicit Negative Evidence
+drug_compounds,18942cc114fed13a57d16af5,Confirmed,Confirmed,6,6,Insufficient Direct Evidence
+drug_compounds,fb924edae58d85283023b52c,Confirmed,Confirmed,6,6,Confirmed
+drug_compounds,cb6a13dd90652cacce2d5d77,Confirmed,Confirmed,5,6,Suspected
+drug_compounds,78f05944a60bcb85e15a94d1,Confirmed,Confirmed,0,6,Insufficient Direct Evidence
+drug_compounds,6d65849a05f890cff1303dc6,Confirmed,Confirmed,6,6,Confirmed
+drug_compounds,54af626316b182ce09529340,Other scope / identity,Indirect or Class-Level Only,4,6,Indirect or Class-Level Only
+drug_compounds,5398db648b7926ba9b9fbfb1,Confirmed,Confirmed,6,6,Confirmed
+drug_compounds,cacbfc49f725c5931d3c8320,Confirmed,Confirmed,6,6,Confirmed
+drug_compounds,e470e9b6e15ed99d82435df4,Confirmed,Confirmed,6,6,Confirmed
+drug_compounds,7b99e00bce9602f2796beeb8,Confirmed,Confirmed,6,6,Confirmed
+drug_compounds,4daf5a79725314af842372c4,Confirmed,Confirmed,6,6,Insufficient Direct Evidence
+drug_compounds,746237767674f3024e346530,Confirmed,Confirmed,6,6,Confirmed
+drug_compounds,afe3d54acf641f9d1f3f45b4,Confirmed,Confirmed,6,6,Insufficient Direct Evidence
+drug_compounds,bff7228f3fa612cad6860131,Insufficient evidence,Insufficient Direct Evidence,5,6,Insufficient Direct Evidence
+drug_compounds,eed6475ca6a6f8d0a47ca1eb,Confirmed,Confirmed,6,6,Confirmed
+drug_compounds,33908059db3e4e2ccaf5622a,Confirmed,Confirmed,6,6,Confirmed
+drug_compounds,636f1c56b7c955e3710f9218,Confirmed,Confirmed,6,6,Confirmed
+drug_compounds,a7309219ade1d64741483329,Confirmed,Confirmed,6,6,Insufficient Direct Evidence
+drug_compounds,85f2942c5e90d6760405f0c8,Confirmed,Confirmed,6,6,Confirmed
+drug_compounds,7ad4b412a6d4b8dc23f4ab16,Confirmed,Confirmed,6,6,Confirmed
+drug_compounds,fbe6e82c4b933864d76032c7,Confirmed,Confirmed,6,6,Insufficient Direct Evidence
+drug_compounds,c2d3dc6c16f51ea35b12364f,Explicit negative,Explicit Negative Evidence,6,6,Explicit Negative Evidence
+drug_compounds,a8e8684992ffd2caf096b81c,Confirmed,Confirmed,6,6,Confirmed
+drug_compounds,4d4a6cb1ec4684f69ea0742c,Confirmed,Confirmed,5,6,Suspected
+drug_compounds,a85a53ef51856c5612eddb83,Explicit negative,Explicit Negative Evidence,5,6,Explicit Negative Evidence
+drug_compounds,6aa3d126a4ec8e8ece969b67,Confirmed,Confirmed,6,6,Confirmed
+drug_compounds,a248f840d9463f7cc448439e,Confirmed,Confirmed,5,6,Suspected
+drug_compounds,d819f4bd6750402f29fb0218,Insufficient evidence,Insufficient Direct Evidence,2,6,Insufficient Direct Evidence
+drug_compounds,bdedfdac14ef31a8eedd5c4a,Confirmed,Confirmed,6,6,Confirmed
+drug_compounds,365bcb7592b80bb3071c8218,Explicit negative,Explicit Negative Evidence,6,6,Explicit Negative Evidence
+drug_compounds,10025c17fbe67ff1cbb9cbc2,Confirmed,Confirmed,6,6,Insufficient Direct Evidence
+drug_compounds,447c6820477682ed05393553,Confirmed,Confirmed,6,6,Confirmed
+drug_compounds,2db1a990ddc01de56314600e,Confirmed,Confirmed,6,6,Insufficient Direct Evidence
+drug_compounds,b0b9c007b721f1bb75a00c4c,Confirmed,Confirmed,6,6,Confirmed
+drug_compounds,9dae02a053107cc8e849752b,Other scope / identity,Indirect or Class-Level Only,3,6,Indirect or Class-Level Only
+drug_compounds,eee0b14cec1df209b5bd7917,Confirmed,Confirmed,6,6,Confirmed
+drug_compounds,c31a0b557f5bd98266df8c29,Explicit negative,Explicit Negative Evidence,6,6,Explicit Negative Evidence
+drug_compounds,a44dfa6d45d166f038f0b3b3,Suspected,Suspected,6,6,Suspected
+drug_compounds,cf9fa238a26404ce5cabe3eb,Confirmed,Confirmed,2,6,Suspected
+drug_compounds,e547c8d1dd7d2f6a6a05857c,Confirmed,Confirmed,6,6,Confirmed
+drug_compounds,ad354a9199e48201ed7ed058,Confirmed,Confirmed,6,6,Confirmed
+drug_compounds,96ed1be94b086031c6774752,Confirmed,Confirmed,6,6,Confirmed
+drug_compounds,795276ace0cdd34058f8efec,Confirmed,Confirmed,6,6,Insufficient Direct Evidence
+drug_compounds,2fc4422dda14838a503f51c4,Confirmed,Confirmed,6,6,Confirmed
+drug_compounds,9b967687c34ad05ba813197a,Explicit negative,Explicit Negative Evidence,5,6,Explicit Negative Evidence
+drug_compounds,199faf0d4bded0be4f772512,Confirmed,Confirmed,6,6,Confirmed
+drug_compounds,ba872d56fa86f01a1a571337,Confirmed,Confirmed,6,6,Confirmed
+drug_compounds,9f1d329b5f701fd10a1c631a,Confirmed,Confirmed,6,6,Insufficient Direct Evidence
+drug_compounds,3bd3fe4e5154f6358c4b4cb9,Explicit negative,Explicit Negative Evidence,6,6,Explicit Negative Evidence
+drug_compounds,df5e7d4e619ced4c3466c3e6,Explicit negative,Explicit Negative Evidence,6,6,Explicit Negative Evidence
+drug_compounds,a0e1c1878fa902561d3d4df0,Confirmed,Confirmed,5,6,Suspected
+drug_compounds,9e174c82e3550fee23d92276,Suspected,Suspected,6,6,Suspected
+drug_compounds,df2c9a35caf1f97a25d920dd,Confirmed,Confirmed,6,6,Confirmed
+drug_compounds,7cace8f4c88e1014e80f7ad8,Confirmed,Confirmed,6,6,Insufficient Direct Evidence
+drug_compounds,52a8a9179a4faea05b50a4e5,Confirmed,Confirmed,6,6,Confirmed
+drug_compounds,2d1188159be2ad4c1e12262c,Confirmed,Confirmed,6,6,Insufficient Direct Evidence
+drug_compounds,6e1127b49cab07fbbfd3015f,Confirmed,Confirmed,6,6,Insufficient Direct Evidence
+drug_compounds,3fc512106d47fd308c6a444e,Confirmed,Confirmed,6,6,Confirmed
+drug_compounds,6b775b469715158db2ea98b1,Confirmed,Confirmed,6,6,Confirmed
+drug_compounds,47270802bfec1fd1072e58b3,Confirmed,Confirmed,6,6,Confirmed
+drug_compounds,132850b9908151877943d715,Confirmed,Confirmed,6,6,Confirmed
+drug_compounds,a56ae568fcb8a584b954237e,Explicit negative,Explicit Negative Evidence,6,6,Explicit Negative Evidence
+drug_compounds,cef69c5442f59e5d40bd6e35,Insufficient evidence,Insufficient Direct Evidence,5,6,Insufficient Direct Evidence
+drug_compounds,8ec00e0a21006e554cc8dca7,Confirmed,Confirmed,6,6,Confirmed
+drug_compounds,d5023b0859ab5851a7a0a479,Insufficient evidence,Insufficient Direct Evidence,5,6,Insufficient Direct Evidence
+drug_compounds,b46bc3164e8e9cb457dadcbd,Suspected,Suspected,2,6,Suspected
+drug_compounds,585f78691f122a1ab62aa27d,Confirmed,Confirmed,6,6,Confirmed
+drug_compounds,405785aea956ec70ef062764,Confirmed,Confirmed,6,6,Insufficient Direct Evidence
+drug_compounds,1bf7ad8892bb0056def722cd,Confirmed,Confirmed,6,6,Insufficient Direct Evidence
+drug_compounds,d3faf01550b64f069079e635,Other scope / identity,Indirect or Class-Level Only,6,6,Indirect or Class-Level Only
+drug_compounds,55caf0efa3c87922f0b3150d,Confirmed,Confirmed,5,6,Suspected
+drug_compounds,6a91b0ffc4a7e65e91f5ba72,Insufficient evidence,Insufficient Direct Evidence,5,6,Insufficient Direct Evidence
+drug_compounds,ae6ae77b7126aaeaab7e283c,Confirmed,Confirmed,6,6,Confirmed
+drug_compounds,478f2f5e234e3180d751f211,Confirmed,Confirmed,6,6,Insufficient Direct Evidence
+drug_compounds,ab000f15b0e5087c6cd37afc,Confirmed,Confirmed,6,6,Insufficient Direct Evidence
+drug_compounds,cce55f547ee6cefef7ad417b,Confirmed,Confirmed,6,6,Confirmed
+drug_compounds,f13bfb8622b99a223c1232c5,Confirmed,Confirmed,6,6,Confirmed
+drug_compounds,faf738cf5bc187156c40918e,Confirmed,Confirmed,6,6,Confirmed
+drug_compounds,10b30a004d6bd2ce95fbae62,Confirmed,Confirmed,6,6,Confirmed
+drug_compounds,32f1e768633432ccf5a2de16,Suspected,Suspected,6,6,Suspected
+drug_compounds,cca7dd931411d8a89a7eedb7,Confirmed,Confirmed,5,6,Suspected
+drug_compounds,33fe0faece1a8b7e52293468,Insufficient evidence,Insufficient Direct Evidence,1,6,Insufficient Direct Evidence
+drug_compounds,2fac2d64525ca2630abaa93d,Confirmed,Confirmed,6,6,Confirmed
+drug_compounds,b317abec68e2bc91bb309aa4,Confirmed,Confirmed,3,6,Insufficient Direct Evidence
+drug_compounds,c8795eb2575c42a92d2f694d,Confirmed,Confirmed,6,6,Confirmed
+drug_compounds,dffd844ce8e580344c6e8f56,Confirmed,Confirmed,3,6,Insufficient Direct Evidence
+drug_compounds,c4c678c0e6bbbefcb4906e63,Confirmed,Confirmed,6,6,Confirmed
+drug_compounds,9d4c3e6a441261647938745f,Insufficient evidence,Insufficient Direct Evidence,4,6,Insufficient Direct Evidence
+drug_compounds,c3680899b4d52e5dee0bf3ed,Confirmed,Confirmed,6,6,Confirmed
+drug_compounds,9fc3dcaec671ebaf65da5885,Insufficient evidence,Insufficient Direct Evidence,2,6,Insufficient Direct Evidence
+drug_compounds,71e5993b64b1233482b821d7,Confirmed,Confirmed,6,6,Confirmed
+drug_compounds,276d8b59a18d80717f50e650,Confirmed,Confirmed,6,6,Confirmed
+drug_compounds,f531cbf1501b5ac09d04981d,Suspected,Suspected,6,6,Suspected
+drug_compounds,3b4a0c0b0f2f55622b198a2e,Confirmed,Confirmed,6,6,Confirmed
+drug_compounds,d5fbeb7ea053a6f0e099cc25,Confirmed,Confirmed,6,6,Suspected
+drug_compounds,208426523a98b88bd6fa75d7,Confirmed,Confirmed,6,6,Confirmed
+drug_compounds,5f4c0cd0bfea69f8097afc31,Confirmed,Confirmed,6,6,Insufficient Direct Evidence
+drug_compounds,724e5936f3bcc493e40d53d2,Confirmed,Confirmed,6,6,Confirmed
+drug_compounds,3eb2ae71f473a496b455d351,Confirmed,Confirmed,6,6,Confirmed
+drug_compounds,21eb326c2669e7ab77cff62a,Confirmed,Confirmed,6,6,Confirmed
+drug_compounds,e2b550c99a5efdb7f9f2b317,Confirmed,Confirmed,6,6,Confirmed
+drug_compounds,adc8c9e9ed9d6c02ca461c9b,Confirmed,Confirmed,6,6,Confirmed
+drug_compounds,dce70c5a67a97ffff12d2f83,Confirmed,Confirmed,6,6,Confirmed
+drug_compounds,59988418006a2bc5ca8e0a12,Confirmed,Confirmed,6,6,Confirmed
+drug_compounds,d22dbd3a5e808ded04fd1f85,Explicit negative,Explicit Negative Evidence,6,6,Explicit Negative Evidence
+drug_compounds,0da7c05f56c389000fcb23d4,Explicit negative,Explicit Negative Evidence,6,6,Explicit Negative Evidence
+drug_compounds,69fc8f77bb350fb9c6e5797b,Confirmed,Confirmed,6,6,Confirmed
+drug_compounds,4b2eaa8d857febafe35bc33a,Explicit negative,Explicit Negative Evidence,6,6,Explicit Negative Evidence
+drug_compounds,676a794aaa4f4aa210baa4f7,Confirmed,Confirmed,5,6,Suspected
+drug_compounds,6fdfe226e52a63acdb31e0bb,Confirmed,Confirmed,5,6,Insufficient Direct Evidence
+drug_compounds,55018c25a445cdb7a714152e,Confirmed,Confirmed,6,6,Insufficient Direct Evidence
+drug_compounds,58fe08426a4c41cf67c7daca,Confirmed,Confirmed,6,6,Confirmed
+drug_compounds,8b24654f009e801375c965e7,Confirmed,Confirmed,6,6,Confirmed
+drug_compounds,7966b963da9a03c4d6377b86,Confirmed,Confirmed,6,6,Confirmed
+drug_compounds,83de283625485de6c858af81,Confirmed,Confirmed,6,6,Insufficient Direct Evidence
+drug_compounds,2b0012cf944a23401e56052b,Confirmed,Confirmed,6,6,Suspected
+drug_compounds,c6d2c170e9795a08a036109a,Confirmed,Confirmed,6,6,Insufficient Direct Evidence
+drug_compounds,8458c1195c943656437d6838,Confirmed,Confirmed,6,6,Confirmed
+drug_compounds,4d1bf41e1fb7ef723d283c22,Other scope / identity,Out of Scope Matrix or Context,6,6,Out of Scope Matrix or Context
+drug_compounds,84d60c05c06db86911288133,Confirmed,Confirmed,6,6,Insufficient Direct Evidence
+drug_compounds,786874085388d4aa7642e129,Confirmed,Confirmed,6,6,Confirmed
+drug_compounds,af0a325a6890fa3b9438b656,Explicit negative,Explicit Negative Evidence,6,6,Explicit Negative Evidence
+drug_compounds,713b197e756b9766fdf7eeab,Explicit negative,Explicit Negative Evidence,6,6,Explicit Negative Evidence
+drug_compounds,bae8b7a3c2d0b8428d5f3468,Confirmed,Confirmed,6,6,Confirmed
+drug_compounds,cb8dcf7ae1aa7b4caa5fc847,Confirmed,Confirmed,6,6,Confirmed
+drug_compounds,5fcd1a23ad48e2a0cb894f3c,Insufficient evidence,Insufficient Direct Evidence,4,6,Insufficient Direct Evidence
+drug_compounds,a559f10f04f31ccec14d4717,Confirmed,Confirmed,5,6,Suspected
+drug_compounds,c19c002420bd87a458c2604a,Confirmed,Confirmed,6,6,Insufficient Direct Evidence
+drug_compounds,7eb8157bdb89b174311d43ab,Explicit negative,Explicit Negative Evidence,6,6,Explicit Negative Evidence
+drug_compounds,f0aabfe5ff660de4a33427de,Confirmed,Confirmed,6,6,Confirmed
+drug_compounds,df4d49b3af61e14b31ca8f27,Insufficient evidence,Insufficient Direct Evidence,2,6,Insufficient Direct Evidence
+drug_compounds,bb3c7cfdf4f7ed1be60982bb,Explicit negative,Explicit Negative Evidence,6,6,Explicit Negative Evidence
+drug_compounds,090c195e59a6c99fb96a818e,Confirmed,Confirmed,6,6,Confirmed
+drug_compounds,160aacad1ec9465658b4baf3,Explicit negative,Explicit Negative Evidence,6,6,Explicit Negative Evidence
+drug_compounds,59fed472f6c54dd7709a9acf,Confirmed,Confirmed,6,6,Confirmed
+drug_compounds,fb996c3a866ca40a0ec12fde,Insufficient evidence,Insufficient Direct Evidence,2,6,Insufficient Direct Evidence
+drug_compounds,630c58ac7dfc680559a94947,Confirmed,Confirmed,6,6,Insufficient Direct Evidence
+drug_compounds,0eb0993fab921dd4803375ce,Insufficient evidence,Insufficient Direct Evidence,0,6,Insufficient Direct Evidence
+drug_compounds,aae3b3e56855445931f3103d,Confirmed,Confirmed,6,6,Confirmed
+drug_compounds,2442c03af8fc2470631122e1,Confirmed,Confirmed,6,6,Confirmed
+drug_compounds,2a23c553246df24f9bdabb1d,Confirmed,Confirmed,6,6,Confirmed
+drug_compounds,a954fd6b77bafb70f48cc24b,Confirmed,Confirmed,6,6,Confirmed
+drug_compounds,18caf2bf3d360110df93052e,Confirmed,Confirmed,6,6,Confirmed
+drug_compounds,76cced040f06b8f32a52c484,Confirmed,Confirmed,6,6,Confirmed
+drug_compounds,6bd8c663a2a280510c9e33fc,Confirmed,Confirmed,6,6,Confirmed
+drug_compounds,499aae395c1d242bf98e0f39,Suspected,Suspected,6,6,Suspected
+drug_compounds,ef1aeae683af346c6519e5e5,Confirmed,Confirmed,1,6,Suspected
+drug_compounds,79513496fcc96179356a40fe,Confirmed,Confirmed,6,6,Confirmed
+drug_compounds,2b146b047982ece96095054e,Suspected,Suspected,4,6,Suspected
+drug_compounds,84f2f539531fda6a7518cfcf,Confirmed,Confirmed,6,6,Confirmed
+drug_compounds,13469913ed4ca2f7c6b89882,Other scope / identity,Out of Scope Matrix or Context,6,6,Out of Scope Matrix or Context
+drug_compounds,6d5a73e4e3948b2b908d6c29,Confirmed,Confirmed,6,6,Insufficient Direct Evidence
+drug_compounds,c80c1b068184398e893111d5,Confirmed,Confirmed,6,6,Suspected
+drug_compounds,da023a0984e6cbc5c2849c25,Confirmed,Confirmed,6,6,Confirmed
+drug_compounds,6717e7d440ffa56f4b4a30b8,Other scope / identity,Indirect or Class-Level Only,3,6,Indirect or Class-Level Only
+drug_compounds,a6030a6c3cc4a1aac3846469,Confirmed,Confirmed,6,6,Confirmed
+drug_compounds,1a32ee3469fafc55d040f984,Confirmed,Confirmed,5,6,Suspected
+drug_compounds,a84d127fbb2933d99be6c320,Confirmed,Confirmed,6,6,Confirmed
+drug_compounds,053815eea3c7bc4840d6f7c4,Confirmed,Confirmed,6,6,Confirmed
+drug_compounds,a176bf68c83bc57c86049017,Confirmed,Confirmed,6,6,Confirmed
+drug_compounds,677835d1e3d6c296dde23933,Confirmed,Confirmed,6,6,Confirmed
+drug_compounds,02086b5593545b48eb7ee888,Confirmed,Confirmed,6,6,Confirmed
+drug_compounds,c9e5795facd49ca3af7c7188,Confirmed,Confirmed,6,6,Confirmed
+drug_compounds,8fbf554697214c8a8921588a,Explicit negative,Explicit Negative Evidence,6,6,Explicit Negative Evidence
+drug_compounds,13c797030c9b3c84ab5deffd,Confirmed,Confirmed,6,6,Confirmed
+drug_compounds,e587704ec38337193dd9dc55,Insufficient evidence,Insufficient Direct Evidence,0,6,Insufficient Direct Evidence
+drug_compounds,cc3a5ee4c5a247966d9d87cb,Explicit negative,Explicit Negative Evidence,6,6,Explicit Negative Evidence
+drug_compounds,e4f717d3cb84023cc2eecf1c,Confirmed,Confirmed,6,6,Insufficient Direct Evidence
+drug_compounds,717813ae05e23cddb9d7581e,Confirmed,Confirmed,6,6,Confirmed
+drug_compounds,f923c91b6dea52f6d75972b8,Confirmed,Confirmed,6,6,Confirmed
+drug_compounds,bd345a0a75270f173451c276,Confirmed,Confirmed,6,6,Confirmed
+drug_compounds,fc360eda39de0a220729a170,Suspected,Suspected,2,6,Suspected
+drug_compounds,53aebc008e017f0413c7a33e,Suspected,Suspected,6,6,Insufficient Direct Evidence
+drug_compounds,a1d060de3b0acab1d8c20315,Confirmed,Confirmed,6,6,Confirmed
+drug_compounds,b6ed6fa0a15ca5525f55af09,Confirmed,Confirmed,6,6,Confirmed
+drug_compounds,c84488a5bdea37720786faf5,Other scope / identity,Out of Scope Matrix or Context,4,6,Out of Scope Matrix or Context
+drug_compounds,367967b37606f0e41113b7c5,Other scope / identity,Indirect or Class-Level Only,4,6,Indirect or Class-Level Only
+drug_compounds,73c81bd9d0476b5b04464ded,Other scope / identity,Out of Scope Matrix or Context,6,6,Out of Scope Matrix or Context
+drug_compounds,a2e7c08b1f87fae068f26432,Confirmed,Confirmed,6,6,Confirmed
+drug_compounds,a73032cd0208784f7a31774c,Confirmed,Confirmed,6,6,Confirmed
+drug_compounds,967e6514c970cfb126b1e82e,Confirmed,Confirmed,6,6,Confirmed
+drug_compounds,be280d974c88842c903712c3,Confirmed,Confirmed,0,6,Insufficient Direct Evidence
+drug_compounds,c24249f38fb53038d9c85f8e,Explicit negative,Explicit Negative Evidence,6,6,Explicit Negative Evidence
+drug_compounds,73924426f746e842173d71f9,Confirmed,Confirmed,2,6,Insufficient Direct Evidence
+drug_compounds,b143a3e659b978974daa9095,Confirmed,Confirmed,6,6,Confirmed
+drug_compounds,7c84e3d69368ae90d467b678,Confirmed,Confirmed,5,6,Suspected
+drug_compounds,8d800a1d8d41de251a7fe2cd,Confirmed,Confirmed,6,6,Confirmed
+drug_compounds,a12dec05a3c26318d354c355,Insufficient evidence,Insufficient Direct Evidence,3,6,Insufficient Direct Evidence
+drug_compounds,4b173b831be65acbc8fc3ff7,Confirmed,Confirmed,6,6,Confirmed
+drug_compounds,483d7506dea64ee2428bda81,Confirmed,Confirmed,6,6,Suspected
+drug_compounds,3e41ad333f23c66ef0b741ce,Confirmed,Confirmed,6,6,Confirmed
+drug_compounds,3b27898e2d784c44223d6e2e,Confirmed,Confirmed,6,6,Confirmed
+drug_compounds,5646f4787cabbf7e7f28fb13,Suspected,Suspected,6,6,Suspected
+drug_compounds,1d55dd8784c43951ea06e748,Confirmed,Confirmed,3,6,Suspected
+drug_compounds,f016b57a7329e3f8c86ac848,Insufficient evidence,Insufficient Direct Evidence,5,6,Insufficient Direct Evidence
+drug_compounds,50b05b2ec41e20fc03366e98,Insufficient evidence,Insufficient Direct Evidence,0,6,Insufficient Direct Evidence
+drug_compounds,796d5413a819c7262c70b907,Suspected,Suspected,5,6,Suspected
+drug_compounds,e2883f20d288964e58a9a258,Insufficient evidence,Insufficient Direct Evidence,6,6,Insufficient Direct Evidence
+drug_compounds,51c9a9732a5b5dd0ae700659,Insufficient evidence,Insufficient Direct Evidence,4,6,Insufficient Direct Evidence
+drug_compounds,8e3bdcacada5423e494a3e90,Confirmed,Confirmed,6,6,Insufficient Direct Evidence
+drug_compounds,738f295820463ea7b32e93de,Insufficient evidence,Insufficient Direct Evidence,3,6,Insufficient Direct Evidence
+human_endogenous_metabolites,13cb9e9b5f97e3ca5f8a620c,Confirmed,Confirmed,6,6,Confirmed
+human_endogenous_metabolites,887d5f7d8914592f3f515ac8,Insufficient evidence,Insufficient Direct Evidence,1,6,Insufficient Direct Evidence
+human_endogenous_metabolites,33f77ed069142b265915f371,Insufficient evidence,Insufficient Direct Evidence,1,6,Insufficient Direct Evidence
+human_endogenous_metabolites,b9abcdfe31309c9e858a4c5f,Insufficient evidence,Insufficient Direct Evidence,1,6,Insufficient Direct Evidence
+human_endogenous_metabolites,7669a46443920b1e9de88d0d,Suspected,Suspected,1,6,Suspected
+human_endogenous_metabolites,4a8880ecc6d37e043f105fc3,Explicit negative,Explicit Negative Evidence,4,6,Explicit Negative Evidence
+human_endogenous_metabolites,faec6000ca5e136efbda0b62,Insufficient evidence,Insufficient Direct Evidence,1,6,Insufficient Direct Evidence
+human_endogenous_metabolites,481ad019df687077a6d4fc2e,Suspected,Suspected,3,6,Insufficient Direct Evidence
+human_endogenous_metabolites,ca18d9f07dd8615fc345a329,Insufficient evidence,Insufficient Direct Evidence,1,6,Insufficient Direct Evidence
+human_endogenous_metabolites,f21cbeda8afc3bedd429d5b0,Confirmed,Confirmed,6,6,Confirmed
+human_endogenous_metabolites,ebb05188dc303578c4cb8a3a,Suspected,Suspected,4,6,Suspected
+human_endogenous_metabolites,64eb134bb2ab26ddd983e4ee,Explicit negative,Explicit Negative Evidence,6,6,Explicit Negative Evidence
+human_endogenous_metabolites,70bd0a8c948b54b5fadb7b85,Confirmed,Confirmed,5,6,Insufficient Direct Evidence
+human_endogenous_metabolites,3b0f24a82781be89fecb783f,Explicit negative,Explicit Negative Evidence,5,6,Explicit Negative Evidence
+human_endogenous_metabolites,100ca8226629b0c9ad16333e,Suspected,Suspected,3,6,Suspected
+human_endogenous_metabolites,07c2c3b1e4de15acaded7dec,Insufficient evidence,Insufficient Direct Evidence,1,6,Insufficient Direct Evidence
+human_endogenous_metabolites,2ce88e1c25c056efec8cbd4f,Confirmed,Confirmed,6,6,Confirmed
+human_endogenous_metabolites,a6470397197e6acf3e879f36,Explicit negative,Explicit Negative Evidence,6,6,Explicit Negative Evidence
+human_endogenous_metabolites,d97eb8f0cf96a17e920ae5b5,Confirmed,Confirmed,6,6,Confirmed
+human_endogenous_metabolites,88a7e360421160313337aa04,Confirmed,Confirmed,5,6,Insufficient Direct Evidence
+human_endogenous_metabolites,a8be8d4de569793c0c48f1fa,Explicit negative,Explicit Negative Evidence,5,6,Explicit Negative Evidence
+human_endogenous_metabolites,1e26c210630b42857bb6a144,Confirmed,Confirmed,5,6,Suspected
+human_endogenous_metabolites,b87e97d07e4be43603016cd6,Insufficient evidence,Insufficient Direct Evidence,1,6,Insufficient Direct Evidence
+human_endogenous_metabolites,3bd18f9333716957cc18f098,Explicit negative,Explicit Negative Evidence,5,6,Explicit Negative Evidence
+human_endogenous_metabolites,f39165a1edc1ebeb08a4847a,Confirmed,Confirmed,5,6,Insufficient Direct Evidence
+human_endogenous_metabolites,4011b46fa14489f8b502560c,Explicit negative,Explicit Negative Evidence,6,6,Explicit Negative Evidence
+human_endogenous_metabolites,ef748496810310a65e299667,Explicit negative,Explicit Negative Evidence,5,6,Explicit Negative Evidence
+human_endogenous_metabolites,f9d1850dcf49d97a0448bc1b,Explicit negative,Explicit Negative Evidence,6,6,Explicit Negative Evidence
+human_endogenous_metabolites,e5647979e72975ba339cfc75,Explicit negative,Explicit Negative Evidence,6,6,Explicit Negative Evidence
+human_endogenous_metabolites,c688169ab8282cd84bbc42f5,Confirmed,Confirmed,6,6,Confirmed
+human_endogenous_metabolites,4cef54947a2cb3e9193b3177,Insufficient evidence,Insufficient Direct Evidence,1,6,Insufficient Direct Evidence
+human_endogenous_metabolites,d3badd9ce76ddb3b85c60878,Confirmed,Confirmed,6,6,Confirmed
+human_endogenous_metabolites,0e9061db6489836b3dc3675e,Insufficient evidence,Insufficient Direct Evidence,1,6,Insufficient Direct Evidence
+human_endogenous_metabolites,c8b4373446218dccc1f10f76,Insufficient evidence,Insufficient Direct Evidence,1,6,Insufficient Direct Evidence
+human_endogenous_metabolites,b89ffd934569eb1ead27f13e,Suspected,Suspected,5,6,Suspected
+human_endogenous_metabolites,67f1fa86fd017c6b7cf81303,Confirmed,Confirmed,5,6,Confirmed
+human_endogenous_metabolites,4046f6604f95bc31677c5f88,Confirmed,Confirmed,6,6,Confirmed
+human_endogenous_metabolites,38b64d625b63678880f19f0e,Confirmed,Confirmed,6,6,Confirmed
+human_endogenous_metabolites,b755f1dc19146dd0045282e8,Insufficient evidence,Insufficient Direct Evidence,1,6,Insufficient Direct Evidence
+human_endogenous_metabolites,dc7704027e05626aec59cc37,Insufficient evidence,Insufficient Direct Evidence,1,6,Insufficient Direct Evidence
+human_endogenous_metabolites,05e4256db12c072cf586458c,Insufficient evidence,Insufficient Direct Evidence,1,6,Insufficient Direct Evidence
+human_endogenous_metabolites,07646b40c3d892a568329178,Confirmed,Confirmed,5,6,Suspected
+human_endogenous_metabolites,243d3f829397423067e66617,Suspected,Suspected,6,6,Suspected
+human_endogenous_metabolites,5b3fad1efaec94f1609e812b,Confirmed,Confirmed,3,6,Insufficient Direct Evidence
+human_endogenous_metabolites,ec077d62717f8e671acfa8f3,Insufficient evidence,Insufficient Direct Evidence,2,6,Insufficient Direct Evidence
+human_endogenous_metabolites,2ab95a021e647c841f33990d,Suspected,Suspected,6,6,Suspected
+human_endogenous_metabolites,f02771ce00e09a1901e3276e,Confirmed,Confirmed,6,6,Confirmed
+human_endogenous_metabolites,d48b25b3feda2882e4a80468,Explicit negative,Explicit Negative Evidence,3,6,Insufficient Direct Evidence
+human_endogenous_metabolites,4a93e9969fc7a9e7d4980dc4,Confirmed,Confirmed,5,6,Insufficient Direct Evidence
+human_endogenous_metabolites,35800877301d92394129fdff,Insufficient evidence,Insufficient Direct Evidence,1,6,Insufficient Direct Evidence
+human_endogenous_metabolites,35b5cfe66ca04619960c1dce,Confirmed,Confirmed,6,6,Confirmed
+human_endogenous_metabolites,57e73cfe0ec70be14f5ceae6,Insufficient evidence,Insufficient Direct Evidence,1,6,Insufficient Direct Evidence
+human_endogenous_metabolites,f25a70b60b7aa3ef565f2bad,Confirmed,Confirmed,2,6,Insufficient Direct Evidence
+human_endogenous_metabolites,2ab030283383e6b8f01ec8c0,Insufficient evidence,Insufficient Direct Evidence,1,6,Insufficient Direct Evidence
+human_endogenous_metabolites,e6ba17dc7deb15e658d379d8,Other scope / identity,Out of Scope Matrix or Context,1,6,Out of Scope Matrix or Context
+human_endogenous_metabolites,69168fb154d2c52ea0d91254,Insufficient evidence,Insufficient Direct Evidence,1,6,Insufficient Direct Evidence
+human_endogenous_metabolites,d833a7f483f27198bcf5031d,Explicit negative,Explicit Negative Evidence,4,6,Explicit Negative Evidence
+human_endogenous_metabolites,681892c6ebc1ae4c3ee1d1a2,Insufficient evidence,Insufficient Direct Evidence,1,6,Insufficient Direct Evidence
+human_endogenous_metabolites,004da026184257b2f1670d80,Other scope / identity,Indirect or Class-Level Only,5,6,Indirect or Class-Level Only
+human_endogenous_metabolites,0718c9b0f6c6d299d64713b0,Confirmed,Confirmed,6,6,Confirmed
+human_endogenous_metabolites,cc7189d77d177776fcded716,Confirmed,Confirmed,5,6,Insufficient Direct Evidence
+human_endogenous_metabolites,d3d96c2eecc01c735f2590d9,Suspected,Suspected,4,6,Suspected
+human_endogenous_metabolites,7c529653ae59f378765b9c92,Insufficient evidence,Insufficient Direct Evidence,1,6,Insufficient Direct Evidence
+human_endogenous_metabolites,fab927958b7a4be6b10aa7f3,Suspected,Suspected,6,6,Suspected
+human_endogenous_metabolites,3e4331395d21422a12d09e90,Suspected,Suspected,4,6,Suspected
+human_endogenous_metabolites,df6e13eb6de36d961365df1b,Other scope / identity,Indirect or Class-Level Only,1,6,Indirect or Class-Level Only
+human_endogenous_metabolites,f965d18a6ffdb4c2bc905a1f,Insufficient evidence,Insufficient Direct Evidence,1,6,Insufficient Direct Evidence
+human_endogenous_metabolites,ea741dffece3048f7f36aa76,Insufficient evidence,Insufficient Direct Evidence,1,6,Insufficient Direct Evidence
+human_endogenous_metabolites,871842ffd61f1d647d97c563,Insufficient evidence,Insufficient Direct Evidence,1,6,Insufficient Direct Evidence
+human_endogenous_metabolites,b2ffb3fe5e1cb25fcfba3051,Insufficient evidence,Insufficient Direct Evidence,1,6,Insufficient Direct Evidence
+human_endogenous_metabolites,09540b903a444ab3317131e7,Suspected,Suspected,6,6,Suspected
+human_endogenous_metabolites,cd10489707f29a3a8ce25bb2,Insufficient evidence,Insufficient Direct Evidence,1,6,Insufficient Direct Evidence
+human_endogenous_metabolites,19f9da55d131a1eb5e90377e,Suspected,Suspected,4,6,Suspected
+human_endogenous_metabolites,616b8e27a47745423348ea34,Confirmed,Confirmed,5,6,Suspected
+human_endogenous_metabolites,bf24fc535b9f0745173d0b36,Confirmed,Confirmed,5,6,Confirmed
+human_endogenous_metabolites,7f8e3ebc3c3cf2d6bba8385c,Confirmed,Confirmed,6,6,Confirmed
+human_endogenous_metabolites,26bfda5c40ccd338f703524f,Confirmed,Confirmed,6,6,Insufficient Direct Evidence
+human_endogenous_metabolites,d05cea73049ed1f710f94016,Insufficient evidence,Insufficient Direct Evidence,1,6,Insufficient Direct Evidence
+human_endogenous_metabolites,3b78a64db1e34ee0bf20f2df,Explicit negative,Explicit Negative Evidence,5,6,Explicit Negative Evidence
+human_endogenous_metabolites,76206b55aea428f8aa078055,Confirmed,Confirmed,6,6,Confirmed
+human_endogenous_metabolites,e619c718733b33fa120855ce,Explicit negative,Explicit Negative Evidence,5,6,Explicit Negative Evidence
+human_endogenous_metabolites,46d340128d2d88a109c944ab,Other scope / identity,Out of Scope Matrix or Context,2,6,Out of Scope Matrix or Context
+human_endogenous_metabolites,6a9fe74ab27249a74f5b79b7,Insufficient evidence,Insufficient Direct Evidence,1,6,Insufficient Direct Evidence
+human_endogenous_metabolites,f736b69e7a57a4a9a1a5786b,Insufficient evidence,Insufficient Direct Evidence,2,6,Insufficient Direct Evidence
+human_endogenous_metabolites,b2643164f88247c256251fec,Insufficient evidence,Insufficient Direct Evidence,1,6,Insufficient Direct Evidence
+human_endogenous_metabolites,87b941769cdb2cde20b6f952,Insufficient evidence,Insufficient Direct Evidence,1,6,Insufficient Direct Evidence
+human_endogenous_metabolites,4655b72a4fae23a04747ae2b,Explicit negative,Explicit Negative Evidence,2,6,Explicit Negative Evidence
+human_endogenous_metabolites,64a20d8e110aeaa1a5be3671,Confirmed,Confirmed,6,6,Insufficient Direct Evidence
+human_endogenous_metabolites,3b3b36346667fcb4c828af33,Confirmed,Confirmed,6,6,Confirmed
+human_endogenous_metabolites,5cae1a1afb085b4ae1a951a8,Insufficient evidence,Insufficient Direct Evidence,1,6,Insufficient Direct Evidence
+human_endogenous_metabolites,7e2af3688119b28d4fcbf4dc,Confirmed,Confirmed,6,6,Insufficient Direct Evidence
+human_endogenous_metabolites,40b441eb53fa280fa07efb6f,Explicit negative,Explicit Negative Evidence,5,6,Explicit Negative Evidence
+human_endogenous_metabolites,cbf37f0654cee1d94440089f,Insufficient evidence,Insufficient Direct Evidence,1,6,Insufficient Direct Evidence
+human_endogenous_metabolites,4d9f5462ff43b8552c2557d6,Explicit negative,Explicit Negative Evidence,5,6,Explicit Negative Evidence
+human_endogenous_metabolites,9b29316b908fff6254bbbc10,Insufficient evidence,Insufficient Direct Evidence,1,6,Insufficient Direct Evidence
+human_endogenous_metabolites,a17869513c4513333d1b96c9,Insufficient evidence,Insufficient Direct Evidence,1,6,Insufficient Direct Evidence
+human_endogenous_metabolites,2682dec9a8b4ef913357d9ec,Confirmed,Confirmed,6,6,Insufficient Direct Evidence
+human_endogenous_metabolites,ec7dc1c5d72dc2bd067ada2a,Confirmed,Confirmed,5,6,Insufficient Direct Evidence
+human_endogenous_metabolites,492e74f33207ef281900ed67,Insufficient evidence,Insufficient Direct Evidence,1,6,Insufficient Direct Evidence
+human_endogenous_metabolites,0aa4e5ca7978aa88c2dfffa4,Insufficient evidence,Insufficient Direct Evidence,1,6,Insufficient Direct Evidence
+human_endogenous_metabolites,175bd47002cec638624819f0,Insufficient evidence,Insufficient Direct Evidence,1,6,Insufficient Direct Evidence
+human_endogenous_metabolites,3ad49ad650b83c39a738ddff,Insufficient evidence,Insufficient Direct Evidence,1,6,Insufficient Direct Evidence
+human_endogenous_metabolites,ec10f27af8deccb1841ba576,Confirmed,Confirmed,5,6,Suspected
+human_endogenous_metabolites,b1499e612f53e62fdc90a880,Insufficient evidence,Insufficient Direct Evidence,1,6,Insufficient Direct Evidence
+human_endogenous_metabolites,916d36db0b4b77356de9a9f6,Confirmed,Confirmed,6,6,Confirmed
+human_endogenous_metabolites,c95fe87c6aec95007d44c07e,Insufficient evidence,Insufficient Direct Evidence,4,6,Insufficient Direct Evidence
+human_endogenous_metabolites,05e6e7f042505cb094aacfc3,Insufficient evidence,Insufficient Direct Evidence,1,6,Insufficient Direct Evidence
+human_endogenous_metabolites,fda31562377165a6d158f0d1,Suspected,Suspected,3,6,Suspected
+human_endogenous_metabolites,af40d8f44be6cbd3d03241eb,Confirmed,Confirmed,6,6,Confirmed
+human_endogenous_metabolites,d385db01fe9daf1d450a9863,Explicit negative,Explicit Negative Evidence,3,6,Insufficient Direct Evidence
+human_endogenous_metabolites,d7413634b07103f962395c60,Explicit negative,Explicit Negative Evidence,3,6,Explicit Negative Evidence
+human_endogenous_metabolites,789653a24ed889b8847cbb2f,Explicit negative,Explicit Negative Evidence,5,6,Explicit Negative Evidence
+human_endogenous_metabolites,6d9fa7cb89d559dd653f8583,Explicit negative,Explicit Negative Evidence,6,6,Explicit Negative Evidence
+human_endogenous_metabolites,725dbb075816f867969e2ec7,Suspected,Suspected,4,6,Suspected
+human_endogenous_metabolites,75c9ead6749514e8909173ed,Confirmed,Confirmed,5,6,Confirmed
+human_endogenous_metabolites,0738c9f85e5c96bc2d79b713,Explicit negative,Explicit Negative Evidence,5,6,Explicit Negative Evidence
+human_endogenous_metabolites,c93a1db6b73ecdc664972dfa,Explicit negative,Explicit Negative Evidence,6,6,Explicit Negative Evidence
+human_endogenous_metabolites,4cf40d5f4aec8c4013b1428a,Insufficient evidence,Insufficient Direct Evidence,1,6,Insufficient Direct Evidence
+human_endogenous_metabolites,feff51787f05a3ea43c359ff,Insufficient evidence,Insufficient Direct Evidence,1,6,Insufficient Direct Evidence
+human_endogenous_metabolites,c1860b63ae5a700461f5991a,Confirmed,Confirmed,6,6,Confirmed
+human_endogenous_metabolites,89de86374bab568bf96b8790,Insufficient evidence,Insufficient Direct Evidence,1,6,Insufficient Direct Evidence
+human_endogenous_metabolites,a972906c96ebf99179c58f0a,Confirmed,Confirmed,5,6,Confirmed
+human_endogenous_metabolites,db67be14d9c6719680ac0a7f,Explicit negative,Explicit Negative Evidence,5,6,Explicit Negative Evidence
+human_endogenous_metabolites,cbe853c05f915d68901e99fc,Insufficient evidence,Insufficient Direct Evidence,1,6,Insufficient Direct Evidence
+human_endogenous_metabolites,3a1bf2f64be97c0c13fa0ecc,Confirmed,Confirmed,6,6,Confirmed
+human_endogenous_metabolites,8af48e07ddadae1ac2bb6ed9,Explicit negative,Explicit Negative Evidence,1,6,Insufficient Direct Evidence
+human_endogenous_metabolites,6743d5ba77ff60fd35ad1422,Explicit negative,Explicit Negative Evidence,5,6,Explicit Negative Evidence
+human_endogenous_metabolites,7b7807949f900f86981d50f7,Insufficient evidence,Insufficient Direct Evidence,1,6,Insufficient Direct Evidence
+human_endogenous_metabolites,ee15efa9ab5cf3f70ae64c34,Suspected,Suspected,4,6,Suspected
+human_endogenous_metabolites,1685e3d15fc589f7a68738ee,Explicit negative,Explicit Negative Evidence,2,6,Explicit Negative Evidence
+human_endogenous_metabolites,b590af9b419bf42137f3eb2c,Confirmed,Confirmed,6,6,Confirmed
+human_endogenous_metabolites,1df33dcc38afc039575a26d2,Explicit negative,Explicit Negative Evidence,3,6,Explicit Negative Evidence
+human_endogenous_metabolites,9c9b670deb73275cffaf8cb1,Confirmed,Confirmed,5,6,Confirmed
+human_endogenous_metabolites,03490819aebff7b5e733d85e,Insufficient evidence,Insufficient Direct Evidence,1,6,Insufficient Direct Evidence
+human_endogenous_metabolites,157082fb9409dee05d831228,Insufficient evidence,Insufficient Direct Evidence,1,6,Insufficient Direct Evidence
+human_endogenous_metabolites,db2d47ff14db5afd8cc140a8,Explicit negative,Explicit Negative Evidence,6,6,Explicit Negative Evidence
+human_endogenous_metabolites,7b9f2660b16a317c53d43732,Explicit negative,Explicit Negative Evidence,2,6,Explicit Negative Evidence
+human_endogenous_metabolites,715e0467e544459e0de84323,Explicit negative,Explicit Negative Evidence,3,6,Explicit Negative Evidence
+human_endogenous_metabolites,a701a8d79b0a773b265734ac,Explicit negative,Explicit Negative Evidence,5,6,Explicit Negative Evidence
+human_endogenous_metabolites,43a58c7802c1ae30426089b8,Insufficient evidence,Insufficient Direct Evidence,1,6,Insufficient Direct Evidence
+human_endogenous_metabolites,155bd5ccd91f45ce9d489912,Confirmed,Confirmed,6,6,Confirmed
+human_endogenous_metabolites,f9a7c1ce64b0695ce4e3a682,Confirmed,Confirmed,6,6,Confirmed
+human_endogenous_metabolites,fa107e1bb3958cc7f5b30a85,Explicit negative,Explicit Negative Evidence,5,6,Explicit Negative Evidence
+human_endogenous_metabolites,21569971dbaeaaa5283c557f,Insufficient evidence,Insufficient Direct Evidence,1,6,Insufficient Direct Evidence
+human_endogenous_metabolites,4441bcce0ca7f9ae6b7059e3,Explicit negative,Explicit Negative Evidence,1,6,Explicit Negative Evidence
+human_endogenous_metabolites,2199410f83cc2508c2595f9c,Confirmed,Confirmed,6,6,Confirmed
+human_endogenous_metabolites,c5200669a0ac834113ba2b5e,Explicit negative,Explicit Negative Evidence,4,6,Explicit Negative Evidence
+human_endogenous_metabolites,cd033432a86363fb377fbd34,Explicit negative,Explicit Negative Evidence,5,6,Explicit Negative Evidence
+human_endogenous_metabolites,9efaab7c04ff208a22cc6728,Insufficient evidence,Insufficient Direct Evidence,1,6,Insufficient Direct Evidence
+human_endogenous_metabolites,7a90e29b81052bef41e112e1,Other scope / identity,Out of Scope Matrix or Context,1,6,Out of Scope Matrix or Context
+human_endogenous_metabolites,c63ab7d2beafbea531382604,Explicit negative,Explicit Negative Evidence,5,6,Explicit Negative Evidence
+human_endogenous_metabolites,fc375754d1c3077b3417fd83,Insufficient evidence,Insufficient Direct Evidence,1,6,Insufficient Direct Evidence
+human_endogenous_metabolites,c81c8eae9993978732f69838,Explicit negative,Explicit Negative Evidence,6,6,Explicit Negative Evidence
+human_endogenous_metabolites,c07d3614b71c73a7a5a5c212,Explicit negative,Explicit Negative Evidence,6,6,Explicit Negative Evidence
+human_endogenous_metabolites,ef08411301cf902b465ba51f,Confirmed,Confirmed,1,6,Insufficient Direct Evidence
+human_endogenous_metabolites,500e94d99d9ccc82d2960128,Insufficient evidence,Insufficient Direct Evidence,2,6,Insufficient Direct Evidence
+human_endogenous_metabolites,72e4c2fe4282a22009d6e7fd,Explicit negative,Explicit Negative Evidence,5,6,Explicit Negative Evidence
+human_endogenous_metabolites,581ba7e27576bf83b30aa670,Explicit negative,Explicit Negative Evidence,6,6,Explicit Negative Evidence
+human_endogenous_metabolites,44dfd5e7e8adc494bf0b4b48,Confirmed,Confirmed,6,6,Confirmed
+human_endogenous_metabolites,ac5bb069af821988b6aea8c9,Insufficient evidence,Insufficient Direct Evidence,1,6,Insufficient Direct Evidence
+human_endogenous_metabolites,fcc157fe6ecb08c1bcc7d072,Confirmed,Confirmed,5,6,Insufficient Direct Evidence
+human_endogenous_metabolites,26465fee9ec1eded0c679745,Explicit negative,Explicit Negative Evidence,4,6,Insufficient Direct Evidence
+human_endogenous_metabolites,5bb9c7cabab71ec66b08be4f,Other scope / identity,Out of Scope Matrix or Context,2,6,Out of Scope Matrix or Context
+human_endogenous_metabolites,1cacf6fe06a062bbd86d5333,Explicit negative,Explicit Negative Evidence,5,6,Explicit Negative Evidence
+human_endogenous_metabolites,92d638df9366f1ccfb2a15b0,Explicit negative,Explicit Negative Evidence,2,6,Explicit Negative Evidence
+human_endogenous_metabolites,9c1c0b1b23aea2cd8def2bd7,Insufficient evidence,Insufficient Direct Evidence,1,6,Insufficient Direct Evidence
+human_endogenous_metabolites,d9383a0df6d3ec98ba43b763,Insufficient evidence,Insufficient Direct Evidence,1,6,Insufficient Direct Evidence
+human_endogenous_metabolites,8ce8993c1d99e0cb4aa8b096,Insufficient evidence,Insufficient Direct Evidence,1,6,Insufficient Direct Evidence
+human_endogenous_metabolites,0e4498ded22e14d941d4a7fe,Insufficient evidence,Insufficient Direct Evidence,1,6,Insufficient Direct Evidence
+human_endogenous_metabolites,4f6542e505c5344c25f7197a,Explicit negative,Explicit Negative Evidence,6,6,Explicit Negative Evidence
+human_endogenous_metabolites,41b2ab005e7d5ed0d8a4a2ed,Explicit negative,Explicit Negative Evidence,5,6,Explicit Negative Evidence
+human_endogenous_metabolites,02adb30cc14b0c2278cc30f3,Insufficient evidence,Insufficient Direct Evidence,1,6,Insufficient Direct Evidence
+human_endogenous_metabolites,6d37efb2a16c9798f9fc9a2d,Insufficient evidence,Insufficient Direct Evidence,2,6,Insufficient Direct Evidence
+human_endogenous_metabolites,7692cb10bc9bd93e2cf7eb88,Confirmed,Confirmed,6,6,Confirmed
+human_endogenous_metabolites,875b41049b2aa391485fcd21,Insufficient evidence,Insufficient Direct Evidence,1,6,Insufficient Direct Evidence
+human_endogenous_metabolites,65003e2b35afd31564599b1e,Explicit negative,Explicit Negative Evidence,5,6,Explicit Negative Evidence
+human_endogenous_metabolites,fbec208c9ac4040675a803e3,Explicit negative,Explicit Negative Evidence,2,6,Explicit Negative Evidence
+human_endogenous_metabolites,d538f65bded0418b3147c765,Confirmed,Confirmed,1,6,Suspected
+human_endogenous_metabolites,6c9c1bd83df9f47dda26fa59,Insufficient evidence,Insufficient Direct Evidence,1,6,Insufficient Direct Evidence
+human_endogenous_metabolites,5a31beb2a301632d815723f8,Insufficient evidence,Insufficient Direct Evidence,1,6,Insufficient Direct Evidence
+human_endogenous_metabolites,e1f373d6de012130369b6c78,Explicit negative,Explicit Negative Evidence,5,6,Explicit Negative Evidence
+human_endogenous_metabolites,57f7b943d5e81b9b04a51561,Explicit negative,Explicit Negative Evidence,6,6,Explicit Negative Evidence
+human_endogenous_metabolites,cf6b13f251b2a33aa6b3300f,Confirmed,Confirmed,6,6,Confirmed
+human_endogenous_metabolites,2d9aaff9021cc7006a6d04d6,Insufficient evidence,Insufficient Direct Evidence,1,6,Insufficient Direct Evidence
+human_endogenous_metabolites,145c5f630781604eabba8487,Explicit negative,Explicit Negative Evidence,5,6,Explicit Negative Evidence
+human_endogenous_metabolites,62defa5c6bff8f378d9e465c,Explicit negative,Explicit Negative Evidence,3,6,Explicit Negative Evidence
+human_endogenous_metabolites,40ff84109ad344a33d7419a4,Suspected,Suspected,4,6,Suspected
+human_endogenous_metabolites,60ec87b9f2311ae6bbd12c61,Confirmed,Confirmed,6,6,Insufficient Direct Evidence
+human_endogenous_metabolites,057800efbb182ab3e9373ce7,Explicit negative,Explicit Negative Evidence,5,6,Explicit Negative Evidence
+human_endogenous_metabolites,ac8e5e08c7880874d05796f2,Confirmed,Confirmed,5,6,Insufficient Direct Evidence
+human_endogenous_metabolites,aa959fb6dfaee6c4535eb709,Confirmed,Confirmed,4,6,Suspected
+human_endogenous_metabolites,844d1d0cf82f684c202cf381,Confirmed,Confirmed,6,6,Confirmed
+human_endogenous_metabolites,db4f88a913c6f62a5315c92a,Confirmed,Confirmed,6,6,Confirmed
+human_endogenous_metabolites,6bc135ed6f6e668dc3cde803,Confirmed,Confirmed,5,6,Suspected
+human_endogenous_metabolites,9ac3938c96bd4aac88a21397,Confirmed,Confirmed,6,6,Confirmed
+human_endogenous_metabolites,0566dc1d4dbacfd995b90b5a,Explicit negative,Explicit Negative Evidence,5,6,Explicit Negative Evidence
+human_endogenous_metabolites,54e9ca4fabce569f77f1d0d6,Confirmed,Confirmed,6,6,Confirmed
+human_endogenous_metabolites,7c36c688892370ce35e0412a,Suspected,Suspected,5,6,Suspected
+human_endogenous_metabolites,b4d783c3d8407ccc84bb2f1d,Confirmed,Confirmed,3,6,Insufficient Direct Evidence
+human_endogenous_metabolites,3b7505cb34e13d707d22f566,Confirmed,Confirmed,6,6,Confirmed
+human_endogenous_metabolites,ab74e138c23042038e76512a,Explicit negative,Explicit Negative Evidence,6,6,Explicit Negative Evidence
+human_endogenous_metabolites,32a77030d6977bc968784c85,Confirmed,Confirmed,6,6,Confirmed
+human_endogenous_metabolites,e2118161172dde74df4f5575,Confirmed,Confirmed,5,6,Confirmed
+human_endogenous_metabolites,76ea0dce2d0d1afef05ed93f,Confirmed,Confirmed,6,6,Confirmed
+human_endogenous_metabolites,709fc0dc8a4e1494a074bd55,Confirmed,Confirmed,6,6,Confirmed
+human_endogenous_metabolites,a50c2990530ae29116a40d0e,Confirmed,Confirmed,5,6,Confirmed
+human_endogenous_metabolites,09d23c1af4dadf78a0d45ad6,Confirmed,Confirmed,6,6,Confirmed
+human_endogenous_metabolites,064f76670d6f32125eeb176d,Confirmed,Confirmed,6,6,Confirmed
+human_endogenous_metabolites,bf701c23421d3c02c4f68cd9,Confirmed,Confirmed,5,6,Confirmed
+human_endogenous_metabolites,c11aa68b3566ed79dc293f82,Confirmed,Confirmed,6,6,Confirmed
+human_endogenous_metabolites,b9f648e08e07c48e7b7735a8,Confirmed,Confirmed,6,6,Confirmed
+human_endogenous_metabolites,e189eac896feb155e0bc0ae0,Insufficient evidence,Insufficient Direct Evidence,1,6,Insufficient Direct Evidence
+human_endogenous_metabolites,34d02c659f6746dd0a460fae,Confirmed,Confirmed,6,6,Confirmed
+human_endogenous_metabolites,f152544b8e2011099185eeea,Confirmed,Confirmed,5,6,Suspected
+human_endogenous_metabolites,2345cad8a2964bfca46710f4,Suspected,Suspected,5,6,Suspected
+human_endogenous_metabolites,84047faa91aff7988bf8a766,Suspected,Suspected,1,6,Suspected
+human_endogenous_metabolites,4c52f7ff3206142271f1c285,Suspected,Suspected,2,6,Insufficient Direct Evidence
+human_endogenous_metabolites,20e25802a5302e3a79391ac7,Confirmed,Confirmed,6,6,Confirmed
+human_endogenous_metabolites,e951f4aba8bcd8da1b13c17f,Confirmed,Confirmed,5,6,Insufficient Direct Evidence
+human_endogenous_metabolites,f0bb41a9b221128d4dc773a6,Confirmed,Confirmed,6,6,Confirmed
+human_endogenous_metabolites,6168146dbee4b51d5d35621b,Confirmed,Confirmed,6,6,Confirmed
+human_endogenous_metabolites,4712a426f8f268c9f2f291eb,Confirmed,Confirmed,6,6,Confirmed
+human_endogenous_metabolites,62e1cedbf1be4de031740a22,Confirmed,Confirmed,6,6,Confirmed
+human_endogenous_metabolites,ef7bbcd67e1a973be16f237c,Confirmed,Confirmed,6,6,Insufficient Direct Evidence
+human_endogenous_metabolites,b1a7183c8766c7625a3ae6d0,Confirmed,Confirmed,5,6,Suspected
+human_endogenous_metabolites,d07b860a757b3548c8693085,Confirmed,Confirmed,6,6,Suspected
+human_endogenous_metabolites,b1399c1e35162de1ac9bbaa3,Confirmed,Confirmed,4,6,Suspected
+human_endogenous_metabolites,bb1fc4c05acf0e49e8fa4e56,Suspected,Suspected,2,6,Suspected
+human_endogenous_metabolites,99e645b087d1e9949f2deff8,Confirmed,Confirmed,6,6,Confirmed
+human_endogenous_metabolites,6db6cae2f43f3eacf94c239b,Confirmed,Confirmed,6,6,Suspected
+human_endogenous_metabolites,30dc2d4cd37d82886d793062,Confirmed,Confirmed,6,6,Confirmed
+human_endogenous_metabolites,5fabca115b6b76a7cb13fac6,Confirmed,Confirmed,6,6,Confirmed
+human_endogenous_metabolites,8ba9d062a59f011f359c0ef0,Confirmed,Confirmed,5,6,Insufficient Direct Evidence
+human_endogenous_metabolites,52657dbcb44bd8f8f6670c6e,Insufficient evidence,Insufficient Direct Evidence,1,6,Insufficient Direct Evidence
+human_endogenous_metabolites,55c5f75bee83f8dc183e8e19,Confirmed,Confirmed,5,6,Confirmed
+human_endogenous_metabolites,da261c55194c9abfef9f505c,Confirmed,Confirmed,5,6,Suspected
+human_endogenous_metabolites,fa3922ab8ef10ebbf6927be6,Confirmed,Confirmed,0,6,Insufficient Direct Evidence
+human_endogenous_metabolites,aedfa841c9e3cd85c6fcd5ea,Insufficient evidence,Insufficient Direct Evidence,1,6,Insufficient Direct Evidence
+human_endogenous_metabolites,10642d3022d2bdfd1f1f2d33,Confirmed,Confirmed,6,6,Confirmed
+human_endogenous_metabolites,30f53b16111eb8426dd8058c,Confirmed,Confirmed,5,6,Insufficient Direct Evidence
+human_endogenous_metabolites,cfca167d1056bf9e233ef2c9,Insufficient evidence,Insufficient Direct Evidence,1,6,Insufficient Direct Evidence
+human_endogenous_metabolites,2f6e424b9ab311178fe228d8,Suspected,Suspected,4,6,Suspected
+human_endogenous_metabolites,a4448e91ba18387580d615ac,Suspected,Suspected,4,6,Suspected
+human_endogenous_metabolites,57623523de1ef7557b3c8ff2,Confirmed,Confirmed,2,6,Suspected
+human_endogenous_metabolites,c0da956d8e22602a503ee05a,Suspected,Suspected,1,6,Suspected
+human_endogenous_metabolites,2b322f6782537e1f11a6f10f,Confirmed,Confirmed,6,6,Confirmed
+human_endogenous_metabolites,71713b833ccb7ecdf947b13f,Confirmed,Confirmed,4,6,Insufficient Direct Evidence
+human_endogenous_metabolites,c184edfeabdcff0402f1abe5,Insufficient evidence,Insufficient Direct Evidence,1,6,Insufficient Direct Evidence
+human_endogenous_metabolites,c9bffef1ec135d0a9b291b88,Suspected,Suspected,1,6,Suspected
+human_endogenous_metabolites,c88ccfb8cdcd7fb7174994ed,Confirmed,Confirmed,5,6,Confirmed
+human_endogenous_metabolites,538a46a8591e7a4bccab2357,Suspected,Suspected,1,6,Insufficient Direct Evidence
+human_endogenous_metabolites,205789354943f87d340c8db7,Confirmed,Confirmed,1,6,Insufficient Direct Evidence
+human_endogenous_metabolites,ad3650d5ab490145657990ff,Confirmed,Confirmed,6,6,Confirmed
+human_endogenous_metabolites,d3eba30df66074ad9a3002c6,Suspected,Suspected,1,6,Suspected
+human_endogenous_metabolites,840504f447ef11b301388245,Confirmed,Confirmed,6,6,Confirmed
+human_endogenous_metabolites,48268bc8955694a1f39cbd29,Suspected,Suspected,6,6,Suspected
+human_endogenous_metabolites,f6d5fcd7d1c777202c0d3371,Suspected,Suspected,5,6,Suspected
+human_endogenous_metabolites,16690ce1ad0f0c24faf1527f,Confirmed,Confirmed,6,6,Confirmed
+human_endogenous_metabolites,671568c6b0de5f1461271dbd,Confirmed,Confirmed,6,6,Confirmed
+human_endogenous_metabolites,dcafa275ea1757c563ba5f24,Suspected,Suspected,4,6,Suspected
+human_endogenous_metabolites,3ef64fc215e74a5e00c0d42e,Other scope / identity,Indirect or Class-Level Only,1,6,Indirect or Class-Level Only
+human_endogenous_metabolites,26311ee716e7f7f57d2fbb34,Confirmed,Confirmed,6,6,Confirmed
+human_endogenous_metabolites,b927f98d22007c9fc0682de0,Confirmed,Confirmed,5,6,Confirmed
+human_endogenous_metabolites,9c75307db856253af95e99f1,Confirmed,Confirmed,5,6,Confirmed
+human_endogenous_metabolites,fcb70538d09bcbd6464936ea,Confirmed,Confirmed,5,6,Confirmed
+human_endogenous_metabolites,4bc6cc8091d8e69a46ff084d,Suspected,Suspected,5,6,Suspected
+human_endogenous_metabolites,67e099176ec9e06c6d9157bd,Confirmed,Confirmed,5,6,Insufficient Direct Evidence
+human_endogenous_metabolites,c14a740212c3514a686831ea,Insufficient evidence,Insufficient Direct Evidence,2,6,Insufficient Direct Evidence
+human_endogenous_metabolites,00a98d0e37bc9d202c56b8ac,Confirmed,Confirmed,5,6,Insufficient Direct Evidence
+human_endogenous_metabolites,c8f98a049d4fe208453bcbcf,Confirmed,Confirmed,6,6,Confirmed
+human_endogenous_metabolites,f176e94858adee1558f0ce2a,Suspected,Suspected,3,6,Suspected
+human_endogenous_metabolites,171d6f05efb65625b90dfbf4,Suspected,Suspected,2,6,Suspected
+human_endogenous_metabolites,7591cef18c5a172d55e9ddbc,Confirmed,Confirmed,6,6,Suspected
+human_endogenous_metabolites,585deffab4243d1b1cb7d84b,Explicit negative,Explicit Negative Evidence,5,6,Explicit Negative Evidence
+human_endogenous_metabolites,d8fb65ed1b4d50678a57b7d3,Confirmed,Confirmed,5,6,Confirmed
+human_endogenous_metabolites,82317aa06275ce26dec3cc57,Confirmed,Confirmed,5,6,Confirmed
+human_endogenous_metabolites,6a38667c7f2d0be13c79eb50,Explicit negative,Explicit Negative Evidence,6,6,Explicit Negative Evidence
+human_endogenous_metabolites,1ede751ac9c06338895e4909,Confirmed,Confirmed,6,6,Suspected
+human_endogenous_metabolites,bc08ff431431d6d370af8f9f,Confirmed,Confirmed,6,6,Confirmed
+human_endogenous_metabolites,7667d66f601f958269ab3300,Confirmed,Confirmed,6,6,Confirmed
+human_endogenous_metabolites,cf3aec82f7661ef1cb66ad7a,Confirmed,Confirmed,6,6,Confirmed
+human_endogenous_metabolites,ffea25dc3b9815c0019be5a8,Confirmed,Confirmed,3,6,Insufficient Direct Evidence
+human_endogenous_metabolites,d40f14d7e833ab908d39aa30,Confirmed,Confirmed,6,6,Confirmed
+human_endogenous_metabolites,9ce816f2d1d45b09d0703816,Confirmed,Confirmed,6,6,Suspected
+human_endogenous_metabolites,024cfc533cb07729d5f36f4f,Confirmed,Confirmed,6,6,Confirmed
+human_endogenous_metabolites,4fc05b5ae357e124ff595375,Insufficient evidence,Insufficient Direct Evidence,3,6,Insufficient Direct Evidence
+human_endogenous_metabolites,1ecee8ac52478c552006025d,Insufficient evidence,Insufficient Direct Evidence,1,6,Insufficient Direct Evidence
+human_endogenous_metabolites,de385763b46ebfe4f2cf3a8c,Insufficient evidence,Insufficient Direct Evidence,1,6,Insufficient Direct Evidence
+human_endogenous_metabolites,b76187988a9164bb1bd403a2,Confirmed,Confirmed,6,6,Confirmed
+human_endogenous_metabolites,124d34429d5a4bc58e3a3e37,Confirmed,Confirmed,6,6,Confirmed
+human_endogenous_metabolites,5d335d86fe5324537d6d508b,Insufficient evidence,Insufficient Direct Evidence,1,6,Insufficient Direct Evidence
+human_endogenous_metabolites,ec7ddd9f945ee0b81a7d1ce7,Insufficient evidence,Insufficient Direct Evidence,6,6,Insufficient Direct Evidence
+human_endogenous_metabolites,bec9cc7c23a7746d27ea992b,Confirmed,Confirmed,5,6,Suspected
+human_endogenous_metabolites,ce3333bbb864326f6015d056,Confirmed,Confirmed,6,6,Insufficient Direct Evidence
+microbial_natural_products,28b2a19571070ad68cc8c523,Confirmed,Confirmed,7,7,Confirmed
+microbial_natural_products,7340372e26416099438587b5,Confirmed,Confirmed,7,7,Confirmed
+microbial_natural_products,12d349c03613a68a153b87be,Insufficient evidence,Insufficient Direct Evidence,1,7,Insufficient Direct Evidence
+microbial_natural_products,c80a6f760a8896542f47fcb0,Confirmed,Confirmed,7,7,Confirmed
+microbial_natural_products,84511c483550bb3c50b845ee,Confirmed,Confirmed,7,7,Confirmed
+microbial_natural_products,bc761454418b9feecbd81996,Suspected,Suspected,5,7,Suspected
+microbial_natural_products,cd0cb7567bfad7201c847f9f,Confirmed,Confirmed,7,7,Confirmed
+microbial_natural_products,845df2474545996d6b275310,Confirmed,Confirmed,7,7,Insufficient Direct Evidence
+microbial_natural_products,474e7fce1aeda9abb9783049,Insufficient evidence,Insufficient Direct Evidence,1,7,Insufficient Direct Evidence
+microbial_natural_products,3e11f096f20fdbbb0cfcb746,Confirmed,Confirmed,7,7,Confirmed
+microbial_natural_products,f8625043b6e0b094de32a84e,Confirmed,Confirmed,7,7,Confirmed
+microbial_natural_products,4faa3deec2031fcbb6c86c5b,Confirmed,Confirmed,7,7,Confirmed
+microbial_natural_products,59ba77351005ff7b2b109cf1,Confirmed,Confirmed,7,7,Confirmed
+microbial_natural_products,16a9f6a3ada492bca0112623,Explicit negative,Explicit Negative Evidence,3,7,Explicit Negative Evidence
+microbial_natural_products,28d75048216561a1f31c59b7,Confirmed,Confirmed,7,7,Confirmed
+microbial_natural_products,e28024fa19bd44ae90d8c40e,Confirmed,Confirmed,7,7,Confirmed
+microbial_natural_products,e1ccf29a568bd2bceb7c6c6f,Confirmed,Confirmed,7,7,Confirmed
+microbial_natural_products,c760796c28a1f11c7703edc9,Confirmed,Confirmed,1,7,Insufficient Direct Evidence
+microbial_natural_products,aa86a8ea26abbd03f986bb72,Confirmed,Confirmed,7,7,Confirmed
+microbial_natural_products,f118f1f409a61c7ad6fa03a7,Confirmed,Confirmed,7,7,Confirmed
+microbial_natural_products,3a4e23e9152b61f8b78210d8,Insufficient evidence,Insufficient Direct Evidence,1,7,Insufficient Direct Evidence
+microbial_natural_products,85e1fa423d5198b594ee4aca,Insufficient evidence,Insufficient Direct Evidence,1,7,Insufficient Direct Evidence
+microbial_natural_products,1767014ba2857d4620b1e249,Insufficient evidence,Insufficient Direct Evidence,1,7,Insufficient Direct Evidence
+microbial_natural_products,67ede16ffdb4d7642aabb2ae,Confirmed,Confirmed,7,7,Confirmed
+microbial_natural_products,2f11dd9df03273147ceb4bb3,Confirmed,Confirmed,7,7,Confirmed
+microbial_natural_products,57df439c20ad9c6517d64020,Confirmed,Confirmed,7,7,Confirmed
+microbial_natural_products,0710789ced7f53c3c38d523f,Confirmed,Confirmed,7,7,Confirmed
+microbial_natural_products,2a2bcc7b0b0fb56f60500cda,Suspected,Suspected,3,7,Suspected
+microbial_natural_products,4379dfbf072ed299a07feaef,Confirmed,Confirmed,7,7,Confirmed
+microbial_natural_products,a03cac3a0475a8ca5ba1a453,Confirmed,Confirmed,7,7,Confirmed
+microbial_natural_products,e48292cb9403c10e76690ed1,Suspected,Suspected,3,7,Suspected
+microbial_natural_products,64b02a1cb2a9314df8b18c57,Insufficient evidence,Insufficient Direct Evidence,1,7,Insufficient Direct Evidence
+microbial_natural_products,11adee9d5725a9d6eb0c6982,Confirmed,Confirmed,6,7,Insufficient Direct Evidence
+microbial_natural_products,a7c74672e5ab06705ae2ff1d,Confirmed,Confirmed,5,7,Insufficient Direct Evidence
+microbial_natural_products,6ebb2b11dbdb08b1ba10242c,Insufficient evidence,Insufficient Direct Evidence,2,7,Insufficient Direct Evidence
+microbial_natural_products,bc8af60719fb5c9a71f65bc1,Insufficient evidence,Insufficient Direct Evidence,1,7,Insufficient Direct Evidence
+microbial_natural_products,fb3ecd8c9909424e3f01e29e,Insufficient evidence,Insufficient Direct Evidence,1,7,Insufficient Direct Evidence
+microbial_natural_products,96667e2ebd43f9b7274a7dbd,Confirmed,Confirmed,7,7,Confirmed
+microbial_natural_products,eb80737510d5af847efc1f5e,Confirmed,Confirmed,7,7,Insufficient Direct Evidence
+microbial_natural_products,df69d7e279f5eaeebc382d3d,Confirmed,Confirmed,7,7,Confirmed
+microbial_natural_products,8a7e3a8a85ef7b3a7b86556f,Confirmed,Confirmed,7,7,Confirmed
+microbial_natural_products,587137800e436240861051fb,Insufficient evidence,Insufficient Direct Evidence,1,7,Insufficient Direct Evidence
+microbial_natural_products,b9dab20ee56688aca6edfa4e,Confirmed,Confirmed,5,7,Insufficient Direct Evidence
+microbial_natural_products,fdfaade3f4cc42c40fb81f04,Confirmed,Confirmed,6,7,Insufficient Direct Evidence
+microbial_natural_products,b4d59fd5caa34970589502c0,Insufficient evidence,Insufficient Direct Evidence,1,7,Insufficient Direct Evidence
+microbial_natural_products,748587c5ad3440e896ebfaa9,Confirmed,Confirmed,1,7,Insufficient Direct Evidence
+microbial_natural_products,c426045c03f5dfbdbe777e6d,Confirmed,Confirmed,1,7,Insufficient Direct Evidence
+microbial_natural_products,61415695c25054c192b60b04,Suspected,Suspected,0,7,Insufficient Direct Evidence
+microbial_natural_products,cf84fdc3070b7e2069a4baec,Confirmed,Confirmed,7,7,Confirmed
+microbial_natural_products,96ddacfc63bfcf555b109213,Confirmed,Confirmed,5,7,Insufficient Direct Evidence
+microbial_natural_products,d86bea1cd6ef4817f4566f1c,Confirmed,Confirmed,7,7,Confirmed
+microbial_natural_products,cd21440d54b96c83b68a16f2,Confirmed,Confirmed,5,7,Insufficient Direct Evidence
+microbial_natural_products,cf9ca639acf080052e2fdbbc,Confirmed,Confirmed,5,7,Insufficient Direct Evidence
+microbial_natural_products,7be89650931b3359e0a47902,Confirmed,Confirmed,7,7,Confirmed
+microbial_natural_products,d31793461634535a59e126f1,Confirmed,Confirmed,4,7,Insufficient Direct Evidence
+microbial_natural_products,5a6b9e1387cf5715be651432,Confirmed,Confirmed,7,7,Confirmed
+microbial_natural_products,2340a4389dcb2f94fc204df2,Confirmed,Confirmed,7,7,Confirmed
+microbial_natural_products,36888fb6295300c8bfe77627,Insufficient evidence,Insufficient Direct Evidence,1,7,Insufficient Direct Evidence
+microbial_natural_products,c8ad1d1a59a134fe15072011,Insufficient evidence,Insufficient Direct Evidence,1,7,Insufficient Direct Evidence
+microbial_natural_products,0dc52b171d45aa113fdbf02d,Insufficient evidence,Insufficient Direct Evidence,5,7,Insufficient Direct Evidence
+microbial_natural_products,5a06fffd9dfef2a06694800e,Insufficient evidence,Insufficient Direct Evidence,1,7,Insufficient Direct Evidence
+microbial_natural_products,8e8047f5d18a020f85204456,Confirmed,Confirmed,5,7,Insufficient Direct Evidence
+microbial_natural_products,675b37785326140139f34b3f,Confirmed,Confirmed,7,7,Confirmed
+microbial_natural_products,4fd570ad68418e4389fdce6b,Confirmed,Confirmed,7,7,Confirmed
+microbial_natural_products,4ffb13708171f8e79633be60,Confirmed,Confirmed,7,7,Confirmed
+microbial_natural_products,3c885a4aac81ff5135b9a00d,Confirmed,Confirmed,7,7,Confirmed
+microbial_natural_products,fc6a59cd813555162e92d35f,Confirmed,Confirmed,0,7,Insufficient Direct Evidence
+microbial_natural_products,d7d88f1443cfd363156f09ce,Suspected,Suspected,3,7,Suspected
+microbial_natural_products,5dba9416f21c838703a1bb52,Confirmed,Confirmed,7,7,Confirmed
+microbial_natural_products,e20d49d6dd41fc10d88544f3,Confirmed,Confirmed,7,7,Insufficient Direct Evidence
+microbial_natural_products,3272ef48323d11e87a3bdf70,Confirmed,Confirmed,7,7,Confirmed
+microbial_natural_products,59220c34ef7b850d5296b5de,Insufficient evidence,Insufficient Direct Evidence,1,7,Insufficient Direct Evidence
+microbial_natural_products,553fd6c05793190653d4edab,Confirmed,Confirmed,6,7,Insufficient Direct Evidence
+microbial_natural_products,6ca11ca854f0bc63b4791c8f,Confirmed,Confirmed,7,7,Confirmed
+microbial_natural_products,f1f3b736e67c6d0684e66311,Confirmed,Confirmed,1,7,Insufficient Direct Evidence
+microbial_natural_products,10230c1ebea9d50482190d05,Confirmed,Confirmed,7,7,Insufficient Direct Evidence
+microbial_natural_products,f97062f9ed31eb05303cae21,Confirmed,Confirmed,7,7,Confirmed
+microbial_natural_products,377ffd521893f6a35718927a,Confirmed,Confirmed,7,7,Confirmed
+microbial_natural_products,d9b1059aa4f5c0fcc63f2af2,Confirmed,Confirmed,6,7,Suspected
+microbial_natural_products,6297fef1ad01ea9816a1a9f7,Confirmed,Confirmed,7,7,Confirmed
+microbial_natural_products,b432c83143f6aaefd6369ec4,Confirmed,Confirmed,7,7,Confirmed
+microbial_natural_products,0a71c5127a550f502cb6f3bc,Confirmed,Confirmed,7,7,Insufficient Direct Evidence
+microbial_natural_products,9572bb0e530f500499bce9e9,Confirmed,Confirmed,7,7,Confirmed
+microbial_natural_products,cc8ca8ab5dcd4e3b18aaa1f1,Confirmed,Confirmed,2,7,Insufficient Direct Evidence
+microbial_natural_products,074832e422e05facbc8c6017,Confirmed,Confirmed,7,7,Insufficient Direct Evidence
+microbial_natural_products,d7b78faddc78c37d1600bcd5,Confirmed,Confirmed,4,7,Insufficient Direct Evidence
+microbial_natural_products,c0354f72c2a9f4836fbb2d3e,Confirmed,Confirmed,6,7,Suspected
+microbial_natural_products,a3afbf6a2259812a250a844a,Confirmed,Confirmed,7,7,Confirmed
+microbial_natural_products,de2b18429b6a3f4c790d5ae0,Confirmed,Confirmed,7,7,Confirmed
+microbial_natural_products,c3539c9c7255e15239d229a4,Confirmed,Confirmed,7,7,Confirmed
+microbial_natural_products,21457ab42933808c3a64bac6,Confirmed,Confirmed,7,7,Confirmed
+microbial_natural_products,f860e022d5be83fea3a5823c,Confirmed,Confirmed,7,7,Confirmed
+microbial_natural_products,0b97030a78e94b206fb732ef,Confirmed,Confirmed,7,7,Confirmed
+microbial_natural_products,4477e3233d9207d1b1d78737,Confirmed,Confirmed,7,7,Confirmed
+microbial_natural_products,ae9e9e9f7aa04e8a1ec8cb59,Confirmed,Confirmed,7,7,Confirmed
+microbial_natural_products,cc876117d0922a6447ee62a8,Confirmed,Confirmed,4,7,Insufficient Direct Evidence
+microbial_natural_products,93e446cc86f0a3bd80786573,Confirmed,Confirmed,7,7,Confirmed
+microbial_natural_products,240a2ae0053256cdef715eee,Insufficient evidence,Insufficient Direct Evidence,1,7,Insufficient Direct Evidence
+microbial_natural_products,c4621eddfb0f0f61fb1aec0b,Confirmed,Confirmed,7,7,Insufficient Direct Evidence
+microbial_natural_products,7184177e367cf81707437a62,Confirmed,Confirmed,7,7,Confirmed
+microbial_natural_products,83595fe6a7561d469d9e771c,Confirmed,Confirmed,6,7,Suspected
+microbial_natural_products,e7796eabb267e82962dcabc5,Confirmed,Confirmed,7,7,Confirmed
+microbial_natural_products,a54d4d366e4c77f48b65d032,Confirmed,Confirmed,7,7,Confirmed
+microbial_natural_products,38a0af9c6ea47c98bbb75560,Confirmed,Confirmed,7,7,Confirmed
+microbial_natural_products,f09343efcb5dc4c6336671d5,Confirmed,Confirmed,5,7,Insufficient Direct Evidence
+microbial_natural_products,1aa69dc0a08cf2b30c9be279,Confirmed,Confirmed,7,7,Confirmed
+microbial_natural_products,7f478f57e7c593ad3b207514,Confirmed,Confirmed,7,7,Insufficient Direct Evidence
+microbial_natural_products,e6570a0d0c94c2fecebc0ef4,Confirmed,Confirmed,7,7,Confirmed
+microbial_natural_products,dafab5c392435b2862528420,Confirmed,Confirmed,5,7,Suspected
+microbial_natural_products,7ff236000c937e630a8e7b99,Insufficient evidence,Insufficient Direct Evidence,1,7,Insufficient Direct Evidence
+microbial_natural_products,075e73a922a32b0093f0b33c,Confirmed,Confirmed,7,7,Confirmed
+microbial_natural_products,acedcadd23995c3039ffbe24,Confirmed,Confirmed,7,7,Confirmed
+microbial_natural_products,829727520a3e3377c5358bf7,Confirmed,Confirmed,7,7,Confirmed
+microbial_natural_products,7263343cf36cc399a43fe1da,Confirmed,Confirmed,7,7,Confirmed
+microbial_natural_products,1a337d22da565b1c06a61e8a,Confirmed,Confirmed,7,7,Confirmed
+microbial_natural_products,7c0f21cf292cb9b5c02a0905,Confirmed,Confirmed,7,7,Confirmed
+microbial_natural_products,467abd91cbb7a59cd01fb882,Insufficient evidence,Insufficient Direct Evidence,1,7,Insufficient Direct Evidence
+microbial_natural_products,095d36059360165c465d2077,Confirmed,Confirmed,7,7,Confirmed
+microbial_natural_products,4a584b2131c82c99102d2607,Insufficient evidence,Insufficient Direct Evidence,1,7,Insufficient Direct Evidence
+microbial_natural_products,204ad3f2a1efd9554d0cda3d,Confirmed,Confirmed,7,7,Suspected
+microbial_natural_products,377fd379a49637a6744e4b17,Confirmed,Confirmed,7,7,Confirmed
+microbial_natural_products,118ff4c51d221e9493b60d8a,Insufficient evidence,Insufficient Direct Evidence,1,7,Insufficient Direct Evidence
+microbial_natural_products,ce70a1e0c1b05fedc0eac624,Confirmed,Confirmed,7,7,Confirmed
+microbial_natural_products,d196d38037099d65f19f1abe,Insufficient evidence,Insufficient Direct Evidence,1,7,Insufficient Direct Evidence
+microbial_natural_products,f3ee79ddd5213e0f81b1892d,Confirmed,Confirmed,7,7,Confirmed
+microbial_natural_products,c248ec007b325081c3a541e0,Confirmed,Confirmed,5,7,Insufficient Direct Evidence
+microbial_natural_products,104d1c8bddde974a530dd4ab,Confirmed,Confirmed,7,7,Insufficient Direct Evidence
+microbial_natural_products,b1111ed7d3f22fa30f489c40,Explicit negative,Explicit Negative Evidence,7,7,Explicit Negative Evidence
+microbial_natural_products,e82ba786d0da0f7eb50dd291,Insufficient evidence,Insufficient Direct Evidence,5,7,Insufficient Direct Evidence
+microbial_natural_products,720b91f8c16721a6d8efeb11,Insufficient evidence,Insufficient Direct Evidence,1,7,Insufficient Direct Evidence
+microbial_natural_products,81b8a6b99549478a924d6344,Suspected,Suspected,5,7,Suspected
+microbial_natural_products,0499261a3386aad47fac6a77,Confirmed,Confirmed,7,7,Confirmed
+microbial_natural_products,562185d851315d8cc6d33f11,Confirmed,Confirmed,7,7,Confirmed
+microbial_natural_products,805ab0c78cd4f6bead9c87b8,Confirmed,Confirmed,7,7,Confirmed
+microbial_natural_products,147c80d385c9eb554c230ef0,Confirmed,Confirmed,7,7,Confirmed
+microbial_natural_products,14f29420ce0506c6de3faf1a,Confirmed,Confirmed,7,7,Confirmed
+microbial_natural_products,c6e8cae2692f1be9a56e6756,Confirmed,Confirmed,7,7,Confirmed
+microbial_natural_products,f6f57edf0552e0c613d36a74,Confirmed,Confirmed,7,7,Confirmed
+microbial_natural_products,3b72a0c63d88113d9484935d,Confirmed,Confirmed,7,7,Confirmed
+microbial_natural_products,bc14bd9d1f50e2bbcaf01757,Confirmed,Confirmed,7,7,Confirmed
+microbial_natural_products,56282f6f23a98f76d1adcbe5,Confirmed,Confirmed,7,7,Confirmed
+microbial_natural_products,27c9d087d00e160e0217d398,Confirmed,Confirmed,7,7,Confirmed
+microbial_natural_products,253adc7eb9302e600552c551,Confirmed,Confirmed,7,7,Confirmed
+microbial_natural_products,1ad0156f6cf799991032ebeb,Confirmed,Confirmed,7,7,Confirmed
+microbial_natural_products,e34541e5c610971de253238b,Confirmed,Confirmed,7,7,Confirmed
+microbial_natural_products,e5beb304644878c0d4188a65,Confirmed,Confirmed,7,7,Insufficient Direct Evidence
+microbial_natural_products,cd14312048498c14a4bce284,Confirmed,Confirmed,7,7,Confirmed
+microbial_natural_products,b90e9de49b02483f2a872a06,Other scope / identity,Out of Scope Matrix or Context,1,7,Out of Scope Matrix or Context
+microbial_natural_products,ea7df0b5f6347c955972fe59,Confirmed,Confirmed,7,7,Confirmed
+microbial_natural_products,2f1aec2cf6e33bcc5887df9f,Confirmed,Confirmed,7,7,Confirmed
+microbial_natural_products,a00526369fb4fca68d2d29ff,Confirmed,Confirmed,5,7,Suspected
+microbial_natural_products,0b398044f1321b3d9df9af58,Confirmed,Confirmed,7,7,Confirmed
+microbial_natural_products,dbd3d74d6360cb25a6bcb234,Insufficient evidence,Insufficient Direct Evidence,0,7,Insufficient Direct Evidence
+microbial_natural_products,b35db5413b7c0b88e17112d1,Confirmed,Confirmed,5,7,Insufficient Direct Evidence
+microbial_natural_products,e28e1f29367ed357eb5339a5,Confirmed,Confirmed,7,7,Confirmed
+microbial_natural_products,034f7d27603b234db98ab467,Confirmed,Confirmed,7,7,Confirmed
+microbial_natural_products,b6f21828569fd13ebf150287,Confirmed,Confirmed,7,7,Confirmed
+microbial_natural_products,f4a288f8e20e84a6f5313103,Explicit negative,Explicit Negative Evidence,3,7,Explicit Negative Evidence
+microbial_natural_products,bf0ccd866d7bb0159c2e605a,Confirmed,Confirmed,7,7,Confirmed
+microbial_natural_products,cb98c66624a32ba034dd151e,Confirmed,Confirmed,7,7,Confirmed
+microbial_natural_products,3c9028fdfb9cbd7623070498,Confirmed,Confirmed,7,7,Confirmed
+microbial_natural_products,25c04edf89b21a9905055d30,Confirmed,Confirmed,7,7,Confirmed
+microbial_natural_products,cd0f486a681d2774cc07e8f8,Confirmed,Confirmed,4,7,Insufficient Direct Evidence
+microbial_natural_products,751f132141193624029430d1,Confirmed,Confirmed,7,7,Confirmed
+microbial_natural_products,eecb5d9583605a511c8139bf,Confirmed,Confirmed,7,7,Confirmed
+microbial_natural_products,850d6f20e3f40447e519ad46,Confirmed,Confirmed,7,7,Confirmed
+microbial_natural_products,9235d781913b3b08e72f74ff,Insufficient evidence,Insufficient Direct Evidence,1,7,Insufficient Direct Evidence
+microbial_natural_products,a9022475857b03ab7ef7e8e6,Suspected,Suspected,5,7,Suspected
+microbial_natural_products,19835ec80ae33ffc3a03e70b,Confirmed,Confirmed,7,7,Insufficient Direct Evidence
+microbial_natural_products,e754638c75206b4b6a4f9442,Confirmed,Confirmed,7,7,Confirmed
+microbial_natural_products,3ca494ba9ee8354d8715cb37,Confirmed,Confirmed,7,7,Confirmed
+microbial_natural_products,9fee8b3fcca12eddfe550eb8,Confirmed,Confirmed,5,7,Insufficient Direct Evidence
+microbial_natural_products,d69c7356c6d413e2965b93e7,Confirmed,Confirmed,1,7,Insufficient Direct Evidence
+microbial_natural_products,87ce3e20db10ca354f3d089b,Insufficient evidence,Insufficient Direct Evidence,0,7,Insufficient Direct Evidence
+microbial_natural_products,8015d161a87b1838b5051df9,Confirmed,Confirmed,7,7,Confirmed
+microbial_natural_products,ec5d6984ae603eb65bf65863,Confirmed,Confirmed,7,7,Confirmed
+microbial_natural_products,ae5c279082410943ad2e3c34,Confirmed,Confirmed,7,7,Confirmed
+microbial_natural_products,d94df32ccd707771e5a8a61d,Confirmed,Confirmed,5,7,Insufficient Direct Evidence
+microbial_natural_products,8c885beb59512791c42004e8,Insufficient evidence,Insufficient Direct Evidence,1,7,Insufficient Direct Evidence
+microbial_natural_products,4c43cd89468568279d3cfa13,Confirmed,Confirmed,5,7,Insufficient Direct Evidence
+microbial_natural_products,bf881cdac9dd3607d617927e,Confirmed,Confirmed,7,7,Confirmed
+microbial_natural_products,d4259484184942ddfb85d828,Confirmed,Confirmed,7,7,Confirmed
+microbial_natural_products,70c148ac3146641639e58d4e,Confirmed,Confirmed,7,7,Confirmed
+microbial_natural_products,cd12f385bd4955f4dd03e37f,Confirmed,Confirmed,7,7,Confirmed
+microbial_natural_products,2938ea5e71c36b0146f2def8,Confirmed,Confirmed,7,7,Confirmed
+microbial_natural_products,d1819f2f50aedb65916f418c,Confirmed,Confirmed,7,7,Confirmed
+microbial_natural_products,d06eb5b86cd55108a01aed89,Confirmed,Confirmed,7,7,Confirmed
+microbial_natural_products,82ec8de5a8bfe6ffecbbeaec,Confirmed,Confirmed,7,7,Confirmed
+microbial_natural_products,e47edb5f0fd70e329444c4eb,Confirmed,Confirmed,7,7,Confirmed
+microbial_natural_products,3fba093d52858006188cc4d9,Confirmed,Confirmed,7,7,Insufficient Direct Evidence
+microbial_natural_products,4354bf50948a2e90304de72a,Confirmed,Confirmed,7,7,Confirmed
+microbial_natural_products,01efd17ae7f0caff2e776496,Confirmed,Confirmed,7,7,Confirmed
+microbial_natural_products,8e610b3bc97a9f26df9b1a1f,Suspected,Suspected,5,7,Suspected
+microbial_natural_products,5131b7d17dd87df575df9843,Confirmed,Confirmed,7,7,Confirmed
+microbial_natural_products,21187b76921d0a0288a89186,Confirmed,Confirmed,5,7,Suspected
+microbial_natural_products,de270ae2fa72c28384d51b73,Confirmed,Confirmed,7,7,Confirmed
+microbial_natural_products,8de06094ce64beb597efc244,Confirmed,Confirmed,5,7,Insufficient Direct Evidence
+microbial_natural_products,e11739182aadb1d15d3fa478,Confirmed,Confirmed,7,7,Insufficient Direct Evidence
+microbial_natural_products,b7645582b84da960024f36dc,Insufficient evidence,Insufficient Direct Evidence,2,7,Insufficient Direct Evidence
+microbial_natural_products,bbf8115aa991a2972f3ee9a5,Confirmed,Confirmed,7,7,Insufficient Direct Evidence
+microbial_natural_products,04958deab8b33d0d05d2713b,Confirmed,Confirmed,7,7,Insufficient Direct Evidence
+microbial_natural_products,07d2232f4d95eaa43c29461a,Confirmed,Confirmed,7,7,Confirmed
+microbial_natural_products,2220244a7aeb101e1015d31a,Confirmed,Confirmed,7,7,Insufficient Direct Evidence
+microbial_natural_products,f734e88a893916af65fdcde2,Confirmed,Confirmed,7,7,Confirmed
+microbial_natural_products,890d81e1418d9b1a27173f1d,Confirmed,Confirmed,7,7,Confirmed
+microbial_natural_products,8903bd63e70102d9e36435c0,Confirmed,Confirmed,7,7,Insufficient Direct Evidence
+microbial_natural_products,4701844570dac3c1a1059612,Confirmed,Confirmed,7,7,Confirmed
+microbial_natural_products,d4cd9bb6c0075667f3b1cac0,Confirmed,Confirmed,7,7,Confirmed
+microbial_natural_products,913147dce18e4a8608b888ed,Confirmed,Confirmed,7,7,Confirmed
+microbial_natural_products,b5315ec0672caf56d4239151,Insufficient evidence,Insufficient Direct Evidence,1,7,Insufficient Direct Evidence
+microbial_natural_products,c7e84f73b0e5ecaed8222e22,Confirmed,Confirmed,7,7,Confirmed
+microbial_natural_products,e4f9d416136b934de8efc879,Confirmed,Confirmed,7,7,Confirmed
+microbial_natural_products,0042c52ff89e23b3c843a0aa,Insufficient evidence,Insufficient Direct Evidence,1,7,Insufficient Direct Evidence
+microbial_natural_products,a6bd05e56867ce1d4d19b57e,Confirmed,Confirmed,7,7,Confirmed
+microbial_natural_products,83cd87f1a17ecd69823c0a95,Confirmed,Confirmed,7,7,Confirmed
+microbial_natural_products,a845d932de6d506378a7361b,Confirmed,Confirmed,7,7,Confirmed
+microbial_natural_products,d0364c5de5d9f2eb7f18009b,Confirmed,Confirmed,7,7,Confirmed
+microbial_natural_products,d28d71b5075776f812bd6d12,Confirmed,Confirmed,6,7,Suspected
+microbial_natural_products,466263c666b7c9a172c11957,Confirmed,Confirmed,7,7,Confirmed
+microbial_natural_products,9665c89b750be71f43e32287,Confirmed,Confirmed,7,7,Confirmed
+microbial_natural_products,67108fbe8f850d9786d673a1,Confirmed,Confirmed,0,7,Insufficient Direct Evidence
+microbial_natural_products,850610913826e58934a4ce84,Confirmed,Confirmed,7,7,Confirmed
+microbial_natural_products,aeb0118a8901ea4ace5b6617,Confirmed,Confirmed,7,7,Confirmed
+microbial_natural_products,64d17a9fc05ad51f48ca5591,Confirmed,Confirmed,7,7,Insufficient Direct Evidence
+microbial_natural_products,5e943b5ce021041b5597f223,Confirmed,Confirmed,7,7,Confirmed
+microbial_natural_products,11d7b9f74189d4f00ca7c44d,Suspected,Suspected,5,7,Suspected
+microbial_natural_products,dfad8fed80785700adde000b,Confirmed,Confirmed,7,7,Confirmed
+microbial_natural_products,6e3e22cd9b9ce85cf0e53efe,Confirmed,Confirmed,7,7,Confirmed
+microbial_natural_products,39ff5850725441435bb2ba1f,Confirmed,Confirmed,6,7,Suspected
+microbial_natural_products,45b933b4f97e9bfe99c2f6d4,Explicit negative,Explicit Negative Evidence,2,7,Explicit Negative Evidence
+microbial_natural_products,2f6178ee8c951ce6b17937c7,Confirmed,Confirmed,7,7,Confirmed
+microbial_natural_products,71aa37557cbd358f9ec44f16,Confirmed,Confirmed,7,7,Confirmed
+microbial_natural_products,ce57aaa271f83b4c1afa4b1f,Confirmed,Confirmed,7,7,Insufficient Direct Evidence
+microbial_natural_products,286aebf7891e7cc4fc4d5395,Confirmed,Confirmed,7,7,Confirmed
+microbial_natural_products,31daaf3ed2342de2b0a2b5c6,Confirmed,Confirmed,7,7,Confirmed
+microbial_natural_products,cbaa7e0a5d286eeca5345e40,Confirmed,Confirmed,7,7,Confirmed
+microbial_natural_products,f8ebcc5c10d6d88e77e9afca,Insufficient evidence,Insufficient Direct Evidence,1,7,Insufficient Direct Evidence
+microbial_natural_products,8dd97efdcfc71961f3587dfc,Confirmed,Confirmed,7,7,Confirmed
+microbial_natural_products,8e435ace02023795b7fc3501,Insufficient evidence,Insufficient Direct Evidence,1,7,Insufficient Direct Evidence
+microbial_natural_products,bde378c302aaeb879ed3ca9c,Suspected,Suspected,6,7,Suspected
+microbial_natural_products,8c86b88cb6c4b70397e1c55b,Insufficient evidence,Insufficient Direct Evidence,1,7,Insufficient Direct Evidence
+microbial_natural_products,5a54f8b0093106f780f010c1,Confirmed,Confirmed,7,7,Confirmed
+microbial_natural_products,0d3881245c044b13183d1017,Confirmed,Confirmed,7,7,Confirmed
+microbial_natural_products,b2d87f8ab6aadfbbbdf61978,Confirmed,Confirmed,7,7,Confirmed
+microbial_natural_products,1057f882ebbdb013e6627278,Confirmed,Confirmed,7,7,Confirmed
+microbial_natural_products,280704d63085607e3829d01f,Confirmed,Confirmed,6,7,Suspected
+microbial_natural_products,81a74b273977bbdc0bcdd4cc,Insufficient evidence,Insufficient Direct Evidence,1,7,Insufficient Direct Evidence
+microbial_natural_products,e291816d5a82c3b80be42464,Insufficient evidence,Insufficient Direct Evidence,1,7,Insufficient Direct Evidence
+microbial_natural_products,92bc31acf8f53e5ab1664993,Confirmed,Confirmed,7,7,Confirmed
+microbial_natural_products,ec4cded2e5251bcfa019def4,Confirmed,Confirmed,6,7,Suspected
+microbial_natural_products,c96a391b1900d9d2e6cd51c4,Confirmed,Confirmed,7,7,Confirmed
+microbial_natural_products,5d92f29558ebe954b1de46ec,Confirmed,Confirmed,7,7,Confirmed
+microbial_natural_products,5a3f093fb2fd82b20678caf9,Confirmed,Confirmed,5,7,Suspected
+microbial_natural_products,b93f8b5a2b78a648ee2ddd54,Confirmed,Confirmed,7,7,Confirmed
+microbial_natural_products,aab6e58481c294fce152026b,Confirmed,Confirmed,7,7,Confirmed
+microbial_natural_products,7ffc0f7e8f9437d5664a5a9d,Insufficient evidence,Insufficient Direct Evidence,2,7,Insufficient Direct Evidence
+microbial_natural_products,af48ca62ffa1d8969eefdbbc,Confirmed,Confirmed,5,7,Insufficient Direct Evidence
+microbial_natural_products,83a9d3b0d9b6e9a8b2f97b80,Confirmed,Confirmed,0,7,Insufficient Direct Evidence
+microbial_natural_products,6d02b744a60438ea8b26751a,Confirmed,Confirmed,7,7,Confirmed
+microbial_natural_products,a5fc5733cdbd40abd4b03311,Insufficient evidence,Insufficient Direct Evidence,1,7,Insufficient Direct Evidence
+microbial_natural_products,af561dc7d94489a06cc53fca,Insufficient evidence,Insufficient Direct Evidence,5,7,Insufficient Direct Evidence
+microbial_natural_products,d8925a061fb7187c876e88aa,Confirmed,Confirmed,7,7,Confirmed
+microbial_natural_products,5c9a4644cbbdba02114520dc,Confirmed,Confirmed,7,7,Confirmed
+microbial_natural_products,a7eaab227cb2cbdcc4902e53,Confirmed,Confirmed,7,7,Confirmed
+microbial_natural_products,15df260704cc20bb7728309f,Confirmed,Confirmed,6,7,Insufficient Direct Evidence
+microbial_natural_products,c6c60a9548dfb5eb40df1068,Insufficient evidence,Insufficient Direct Evidence,0,7,Insufficient Direct Evidence
+microbial_natural_products,988fd3dbfbd576b14f4269cd,Confirmed,Confirmed,7,7,Insufficient Direct Evidence
+microbial_natural_products,84b3e672b454f588a846e368,Confirmed,Confirmed,7,7,Confirmed
+microbial_natural_products,c564a005dd6c5c108dcc3f08,Confirmed,Confirmed,7,7,Confirmed
+microbial_natural_products,d9b6d0c5b927a6f0e44d093f,Confirmed,Confirmed,7,7,Confirmed
+microbial_natural_products,0cfa9487759e2c44d0839370,Suspected,Suspected,5,7,Suspected
+microbial_natural_products,99074f20b5812bf4eb5add31,Confirmed,Confirmed,7,7,Confirmed
+microbial_natural_products,d4c8f8d6a275b181fcd45322,Confirmed,Confirmed,7,7,Confirmed
+microbial_natural_products,5b11e8ca859dff8425ca52b6,Confirmed,Confirmed,7,7,Confirmed
+microbial_natural_products,d1e6f22aefadfe2f2b18e00a,Confirmed,Confirmed,7,7,Confirmed
+microbial_natural_products,5aba341f5bafc24e48ad9153,Confirmed,Confirmed,7,7,Confirmed
+microbial_natural_products,e5deb085bbca6dbb81e41b30,Confirmed,Confirmed,5,7,Insufficient Direct Evidence
+microbial_natural_products,bdb480cf42b031e3306894bc,Confirmed,Confirmed,5,7,Insufficient Direct Evidence
+microbial_natural_products,0aa6c22570ca256f463b0055,Suspected,Suspected,3,7,Insufficient Direct Evidence
+microbial_natural_products,29f1909bc712959618306810,Confirmed,Confirmed,4,7,Insufficient Direct Evidence
+microbial_natural_products,5de6241de9f7899f8b651b11,Insufficient evidence,Insufficient Direct Evidence,1,7,Insufficient Direct Evidence
+microbial_natural_products,e5a4086a7c3a715279d256c1,Confirmed,Confirmed,1,7,Insufficient Direct Evidence
+microbial_natural_products,cecfe3a9628e90a3fa9e474d,Confirmed,Confirmed,7,7,Confirmed
+microbial_natural_products,9bed09eb3f246a4bd06d1428,Insufficient evidence,Insufficient Direct Evidence,1,7,Insufficient Direct Evidence
+blood_exposome,3c82927d997b9ef63d55be6e,Insufficient evidence,Insufficient Direct Evidence,4,4,Insufficient Direct Evidence
+blood_exposome,3dc30b53e69f0807d229e823,Suspected,Suspected,2,4,Insufficient Direct Evidence
+blood_exposome,337cbca2fe05ccc151622f71,Insufficient evidence,Insufficient Direct Evidence,0,4,Insufficient Direct Evidence
+blood_exposome,8d43ae9b69735bf4f6e6a17d,Insufficient evidence,Insufficient Direct Evidence,0,4,Insufficient Direct Evidence
+blood_exposome,446fe144d95f321a20ca4179,Insufficient evidence,Insufficient Direct Evidence,0,4,Insufficient Direct Evidence
+blood_exposome,3a62ef80399d2220c577e35c,Confirmed,Confirmed,3,4,Insufficient Direct Evidence
+blood_exposome,01a89ec2f2fe00506b69f55e,Suspected,Suspected,2,4,Suspected
+dbp,2a593727553f9b86658651ee,Insufficient evidence,Insufficient Direct Evidence,1,5,Insufficient Direct Evidence
+dbp,9526478021d77b3e47153621,Confirmed,Confirmed,5,5,Insufficient Direct Evidence
+dbp,05ecd031e0e3d084eb08dfc9,Confirmed,Confirmed,5,5,Confirmed
+dbp,02b1271885c661dcec2fa388,Insufficient evidence,Insufficient Direct Evidence,1,5,Insufficient Direct Evidence
+dbp,9368b6473d5784d6c0a9007f,Confirmed,Confirmed,0,5,Insufficient Direct Evidence
+dbp,1560f20575f4c3f60d367c4a,Confirmed,Confirmed,5,5,Insufficient Direct Evidence
+dbp,3a2dfab03494f49500f047e3,Confirmed,Confirmed,5,5,Insufficient Direct Evidence
+dbp,9292e55c8cf42b7b9bbecb9c,Confirmed,Confirmed,4,5,Insufficient Direct Evidence
+dbp,36c9d39512702c9c66fd3bc9,Confirmed,Confirmed,5,5,Insufficient Direct Evidence
+dbp,9190f0a41f2717cca6b0326e,Confirmed,Confirmed,0,5,Insufficient Direct Evidence
+dbp,3af74aea6754198a9f487e56,Confirmed,Confirmed,4,5,Suspected
+dbp,0b45853275c4588f36f51d89,Confirmed,Confirmed,5,5,Confirmed
+dbp,3755d9eff8c4fa3514ffa18a,Confirmed,Confirmed,0,5,Insufficient Direct Evidence
+dbp,9160813acbbaf29273c26e2f,Confirmed,Confirmed,5,5,Insufficient Direct Evidence
+dbp,06d461551eec240092b2d5a4,Insufficient evidence,Insufficient Direct Evidence,1,5,Insufficient Direct Evidence
+dbp,3a277a645805daf1d7267e5e,Confirmed,Confirmed,3,5,Insufficient Direct Evidence
+dbp,46e3bd77147adf5136212e9d,Confirmed,Confirmed,5,5,Insufficient Direct Evidence
+dbp,3a06d9f86fff1f7416649f0f,Confirmed,Confirmed,0,5,Insufficient Direct Evidence
+dbp,3b28badbbd1ca66c2c039d69,Insufficient evidence,Insufficient Direct Evidence,1,5,Insufficient Direct Evidence
+dbp,336459f31368da0427ad3d99,Suspected,Suspected,1,5,Insufficient Direct Evidence
+dbp,05c894ee5657adcafe329101,Confirmed,Confirmed,2,5,Insufficient Direct Evidence
+drug_compounds,3ac451b85247debbcccb63fe,Confirmed,Confirmed,6,6,Insufficient Direct Evidence
+drug_compounds,36c3588e558143af762e5cc9,Confirmed,Confirmed,5,6,Insufficient Direct Evidence
+drug_compounds,14217cb0e8b33eac160d1397,Confirmed,Confirmed,6,6,Insufficient Direct Evidence
+drug_compounds,09c5efd6d40a974f92371270,Confirmed,Confirmed,6,6,Confirmed
+drug_compounds,f897b4f0bfe9a0e9d4d300b0,Confirmed,Confirmed,6,6,Confirmed
+drug_compounds,3d636d8f86908fc66dc9cf2c,Confirmed,Confirmed,2,6,Insufficient Direct Evidence
+drug_compounds,6699273b26cc6aced36f64bb,Confirmed,Confirmed,6,6,Confirmed
+drug_compounds,5ba51ef89608525c1450b535,Confirmed,Confirmed,6,6,Confirmed
+drug_compounds,60ec2f24632458703d4fd97c,Confirmed,Confirmed,6,6,Confirmed
+drug_compounds,14645bc4c8305eeabb6af62e,Insufficient evidence,Insufficient Direct Evidence,1,6,Insufficient Direct Evidence
+drug_compounds,46bd0f632d738138c3e26200,Confirmed,Confirmed,0,6,Insufficient Direct Evidence
+drug_compounds,444036114bf6c94bb69d85de,Suspected,Suspected,5,6,Suspected
+drug_compounds,147d61b9450ffc7b89aa232d,Confirmed,Confirmed,0,6,Insufficient Direct Evidence
+drug_compounds,47e6cac1e0f42dc38475120e,Confirmed,Confirmed,6,6,Insufficient Direct Evidence
+drug_compounds,1057fec11432bd0691fb724d,Confirmed,Confirmed,6,6,Insufficient Direct Evidence
+drug_compounds,3ede21158c899177ecbf60d7,Explicit negative,Explicit Negative Evidence,6,6,Explicit Negative Evidence
+drug_compounds,94fe3627a6d99d5a6eea7a7d,Confirmed,Confirmed,5,6,Suspected
+drug_compounds,1253e9b5894e74739b0c7f04,Confirmed,Confirmed,5,6,Suspected
+drug_compounds,0d82a5c24fdce2f1176832c3,Confirmed,Confirmed,6,6,Confirmed
+human_endogenous_metabolites,3e4c684c98c8bcad42c0a65a,Insufficient evidence,Insufficient Direct Evidence,1,6,Insufficient Direct Evidence
+human_endogenous_metabolites,f9661509c0f88771f135df1d,Confirmed,Confirmed,6,6,Insufficient Direct Evidence
+human_endogenous_metabolites,335748e38b7f62902740c422,Insufficient evidence,Insufficient Direct Evidence,1,6,Insufficient Direct Evidence
+human_endogenous_metabolites,734336182aaf339722ff796f,Explicit negative,Explicit Negative Evidence,4,6,Explicit Negative Evidence
+human_endogenous_metabolites,46c61a6f016ad4ff67c081a6,Confirmed,Confirmed,5,6,Insufficient Direct Evidence
+human_endogenous_metabolites,373000ff4707abf6a1bdf5e9,Confirmed,Confirmed,6,6,Insufficient Direct Evidence
+microbial_natural_products,951120e9dd830dcb3c7c6f86,Confirmed,Confirmed,5,7,Suspected
+microbial_natural_products,3c30e1eb4411a83ed0c7dfb6,Confirmed,Confirmed,1,7,Insufficient Direct Evidence
+microbial_natural_products,3e2a029350ee122ba51bbe67,Confirmed,Confirmed,7,7,Insufficient Direct Evidence
+microbial_natural_products,d80a3f4a20076a048e6f976e,Confirmed,Confirmed,5,7,Insufficient Direct Evidence
+microbial_natural_products,12a26716c376dd16f1c17e63,Confirmed,Confirmed,7,7,Confirmed
+microbial_natural_products,4131602724118fe0f8d092e6,Confirmed,Confirmed,5,7,Insufficient Direct Evidence
+microbial_natural_products,42ffdb108e4661d9b630b22b,Confirmed,Confirmed,7,7,Insufficient Direct Evidence
+microbial_natural_products,11fe68cd33285c2ecde48cbd,Confirmed,Confirmed,6,7,Suspected
+microbial_natural_products,47e88c3d28e7320fa4d0b436,Confirmed,Confirmed,5,7,Insufficient Direct Evidence
+microbial_natural_products,914688bcfc97e813d81b3f86,Confirmed,Confirmed,4,7,Suspected
+microbial_natural_products,460e51c704435372f8c32f9a,Confirmed,Confirmed,6,7,Suspected
+microbial_natural_products,134dd6282637e3f57da5242f,Confirmed,Confirmed,6,7,Insufficient Direct Evidence
+microbial_natural_products,175cfcfb1485ed813e5f28b7,Insufficient evidence,Insufficient Direct Evidence,5,7,Insufficient Direct Evidence
+microbial_natural_products,71617435783e096ad6a418ab,Insufficient evidence,Insufficient Direct Evidence,1,7,Insufficient Direct Evidence
+microbial_natural_products,3547801694da94f77f5956fb,Confirmed,Confirmed,7,7,Insufficient Direct Evidence
+microbial_natural_products,13ecd6a211b72b3fae809877,Confirmed,Confirmed,7,7,Insufficient Direct Evidence

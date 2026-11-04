@@ -1,0 +1,6 @@
+reason,claude,gpt,total
+Insufficient direct evidence,50,55,105
+Exact identity or chemical class,19,14,33
+Formation or reaction role,7,8,15
+Rubric interpretation,4,11,15
+Biological origin,1,1,2

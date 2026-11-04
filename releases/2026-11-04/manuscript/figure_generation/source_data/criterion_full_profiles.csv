@@ -1,0 +1,29 @@
+﻿topic,criterion,criterion_label,gate_type,pass_rate_other,pass_rate_confirmed,rows_other,rows_confirmed,delta
+dbp,The formation must result from the reaction of disinfectants or oxidants with naturally occurring or anthropogenic precursors.,Disinfectant--precursor reaction,M,0.08403361344537816,0.9212121212121213,357,330,0.8371785077667431
+dbp,The compound's formation must occur during a water disinfection or oxidation process.,Disinfection or oxidation,M,0.10364145658263306,0.9363636363636364,357,330,0.8327221797810034
+dbp,The reaction must occur in real or simulated water matrices.,Water matrix,M,0.11764705882352941,0.9424242424242424,357,330,0.824777183600713
+dbp,There must be evidence directly attributing the compound’s formation to the treatment process.,Direct treatment attribution,M,0.07282913165266107,0.8818181818181818,357,330,0.8089890501655208
+dbp,The entity must be a specific chemical compound.,Specific chemical,M,0.9831932773109243,0.9454545454545454,357,330,-0.03773873185637888
+blood_exposome,"The chemical entity must be introduced by, structurally modified by, or significantly change in amount in response to the external environment.",External-environment relation,M,0.1896551724137931,0.9705882352941176,232,68,0.7809330628803246
+blood_exposome,The supporting evidence must be associated with human blood specimens.,Human blood specimen,M,0.21551724137931033,0.9264705882352942,232,68,0.7109533468559839
+blood_exposome,"Evidence for the chemical entity's presence and exposomal origin must be supported by primary literature, biomonitoring surveys, or public metabolomics datasets.",Literature or dataset support,M,0.17672413793103448,0.8823529411764706,232,68,0.7056288032454361
+blood_exposome,The chemical entity must be reported in human blood or systemic circulation.,Blood or systemic circulation,M,0.21551724137931033,0.8823529411764706,232,68,0.6668356997971603
+drug_compounds,The drug substance or entity elicits or is intended to elicit pharmacologically relevant effects.,Pharmacologically relevant effect,M,0.5632183908045977,0.9295774647887324,87,213,0.3663590739841347
+drug_compounds,The entry represents a specific drug substance or drug entity.,Specific drug entity,M,0.6436781609195402,0.9061032863849765,87,213,0.2624251254654363
+drug_compounds,The entry excludes final commercial drug products.,Excludes commercial products,X,0.7241379310344828,0.9483568075117371,87,213,0.22421887647725436
+drug_compounds,The entry excludes drug formulations.,Excludes formulations,X,0.7241379310344828,0.9436619718309859,87,213,0.21952404079650312
+drug_compounds,The entry excludes drug packages.,Excludes drug packages,X,0.7241379310344828,0.9436619718309859,87,213,0.21952404079650312
+drug_compounds,Drug modality: small-molecule OR biotechnology drug,Drug modality (ANY),M,0.7931034482758621,0.9577464788732394,87,213,0.16464303059737728
+human_endogenous_metabolites,The entity must function in human biochemical or physiological processes.,Human biochemical function,M,0.3657142857142857,0.92,175,125,0.5542857142857143
+human_endogenous_metabolites,"If a metabolite is produced by both microbiota and host metabolism, it is included.",Host + microbiota allowed,O,0.14285714285714285,0.696,175,125,0.5531428571428572
+human_endogenous_metabolites,The entity must not be solely a microbiota-only metabolite.,Not microbiota-only,X,0.4342857142857143,0.952,175,125,0.5177142857142857
+human_endogenous_metabolites,The entity must be produced within the human body.,Produced in human body,M,0.4,0.904,175,125,0.504
+human_endogenous_metabolites,The entity must not be solely an exogenous chemical.,Not solely exogenous,X,0.45714285714285713,0.936,175,125,0.4788571428571429
+human_endogenous_metabolites,The entity must be a small molecule.,Small molecule,M,0.9942857142857143,0.936,175,125,-0.058285714285714274
+microbial_natural_products,The entity must not be a non-secondary-metabolite biomolecule.,Excludes non-secondary biomolecules,X,0.18032786885245902,0.9539748953974896,61,239,0.7736470265450306
+microbial_natural_products,The unambiguous structural assignment must be supported by sufficient analytical evidence.,Analytical evidence,M,0.04918032786885246,0.8200836820083682,61,239,0.7709033541395158
+microbial_natural_products,The entity must not be a primary metabolite.,Not a primary metabolite,X,0.18032786885245902,0.9497907949790795,61,239,0.7694629261266205
+microbial_natural_products,The entity's structural assignment must be unambiguous.,Unambiguous structure,M,0.09836065573770492,0.8368200836820083,61,239,0.7384594279443034
+microbial_natural_products,The entity's origin must be supported by peer-reviewed primary scientific literature.,Peer-reviewed origin support,M,0.26229508196721313,0.895397489539749,61,239,0.6331024075725358
+microbial_natural_products,"The entity must originate from bacteria, fungi, or cyanobacteria.",Microbial producer,M,0.32786885245901637,0.9497907949790795,61,239,0.621921942520063
+microbial_natural_products,The entity must be a specific chemical compound.,Specific chemical,M,0.9344262295081968,0.9748953974895398,61,239,0.040469167981343035

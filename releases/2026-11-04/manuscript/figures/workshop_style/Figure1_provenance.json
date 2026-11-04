@@ -1,0 +1,19 @@
+{
+  "source": "/home/chen/GNPS_SIM/agent/db_form_agent_system/manuscript/agenticls_2026_full/DB_Curator_AgenticLS_camera_ready.pdf",
+  "source_sha256": "7125db01af67b5fee1b2d360103ce14434433cc8247da9779175c73556d95c17",
+  "source_page_1_based": 3,
+  "clip_points": [
+    107.0,
+    71.0,
+    505.0,
+    235.0
+  ],
+  "width_mm": 180,
+  "artwork_redrawn": false,
+  "shared_control_bar_preserved": true,
+  "outputs": {
+    "Figure1.pdf": "75e2d78a8b9961348e15778a905d2007d971552179945b0f97723d7595fc71b9",
+    "Figure1.png": "d82032918776d882f4f88208f2f14a0b94e423733d0e9166cc28e31a59b2476f",
+    "Figure1.tiff": "28e5164fde8ee7e1e01563eea65732ebe3b1b4255a9613f1d465c2c0a20856e1"
+  }
+}

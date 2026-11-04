@@ -1,0 +1,145 @@
+CASE 2: NNN | Confirmed | class of compounds
+entity_synonyms: [
+  "N-rich",
+  "nicotine-derived nitrosamine ketone",
+  "N?€?-nitrosonornicotine",
+  "Nicotine-norTobacco-related",
+  "NicotineTobacco-related",
+  "N-nitrosonornicotine",
+  "NOR-N-induced",
+  "Nicotine-nor",
+  "nor-nicotine",
+  "N-nitrosonortriptyline",
+  "nicotine-metabolizing",
+  "nicotine-na??ve",
+  "C20H41NO3Syn",
+  "nilotin",
+  "N-CNR"
+]
+canonical_name: NNN
+query: {
+  "task": "verify_candidate_entity",
+  "entity_name": "N′-nitrosonornicotine",
+  "original_query": "Decide whether 'N′-nitrosonornicotine' satisfies the confirmed-topic definition.",
+  "evaluation_criteria": {
+    "criteria_text": "- [mandatory] The chemical entity must be reported in human blood or systemic circulation.\n- [mandatory] The chemical entity must be introduced by, structurally modified by, or significantly change in amount in response to the external environment.\n- [mandatory] Evidence for the chemical entity's presence and exposomal origin must be supported by primary literature, biomonitoring surveys, or public metabolomics datasets.\n- [mandatory] The supporting evidence must be associated with human blood specimens.",
+    "rubric_items": [
+      {
+        "name": "The chemical entity must be reported in human blood or systemic circulation.",
+        "section": "rubric",
+        "priority": "mandatory"
+      },
+      {
+        "name": "The chemical entity must be introduced by, structurally modified by, or significantly change in amount in response to the external environment.",
+        "section": "rubric",
+        "priority": "mandatory"
+      },
+      {
+        "name": "Evidence for the chemical entity's presence and exposomal origin must be supported by primary literature, biomonitoring surveys, or public metabolomics datasets.",
+        "section": "rubric",
+        "priority": "mandatory"
+      },
+      {
+        "name": "The supporting evidence must be associated with human blood specimens.",
+        "section": "rubric",
+        "priority": "mandatory"
+      }
+    ],
+    "fixed_criteria": [
+      "The chemical entity must be reported in human blood or systemic circulation.",
+      "The chemical entity must be introduced by, structurally modified by, or significantly change in amount in response to the external environment.",
+      "Evidence for the chemical entity's presence and exposomal origin must be supported by primary literature, biomonitoring surveys, or public metabolomics datasets.",
+      "The supporting evidence must be associated with human blood specimens."
+    ]
+  },
+  "domain": "blood",
+  "search_budget": {
+    "batch1_max_search_directions": 3,
+    "batch1_max_identity_terms": 2,
+    "batch1_max_primary_context_terms": 2,
+    "defer_method_fanout_until_followup": true,
+    "avoid_near_duplicate_context_terms": true
+  }
+}
+explanation: N'-nitrosonornicotine (NNN) has been quantified in human plasma, indicating its presence in systemic circulation. Its origin is linked to tobacco products, demonstrating environmental introduction. The evidence is derived from primary literature involving human blood specimens.
+criteria_json: [
+  {
+    "name": "The chemical entity must be reported in human blood or systemic circulation.",
+    "priority": "mandatory",
+    "section": "rubric",
+    "status": "solved",
+    "notes": "NNN has been quantified in human plasma.",
+    "support_type": "direct_evidence",
+    "score": 1.0
+  },
+  {
+    "name": "The chemical entity must be introduced by, structurally modified by, or significantly change in amount in response to the external environment.",
+    "priority": "mandatory",
+    "section": "rubric",
+    "status": "solved",
+    "notes": "NNN is formed in tobacco products and its plasma levels correlate with nicotine exposure from tobacco.",
+    "support_type": "direct_evidence",
+    "score": 1.0
+  },
+  {
+    "name": "Evidence for the chemical entity's presence and exposomal origin must be supported by primary literature, biomonitoring surveys, or public metabolomics datasets.",
+    "priority": "mandatory",
+    "section": "rubric",
+    "status": "solved",
+    "notes": "Evidence is from primary literature.",
+    "support_type": "direct_evidence",
+    "score": 1.0
+  },
+  {
+    "name": "The supporting evidence must be associated with human blood specimens.",
+    "priority": "mandatory",
+    "section": "rubric",
+    "status": "solved",
+    "notes": "NNN was quantified in human plasma specimens.",
+    "support_type": "direct_evidence",
+    "score": 1.0
+  }
+]
+evidence_json: [
+  {
+    "id": "Ref 1",
+    "title": "Assessment of the Exposure to NNN in the Plasma of Smokeless Tobacco Users",
+    "year": "2022",
+    "doi": "10.1021/acs.chemrestox.1c00431",
+    "original_ids": [
+      "Ref 1"
+    ],
+    "pmid": "35298127",
+    "quotes": [
+      {
+        "quote": "The method presented here is proved to be fit for purpose to evaluate the PK of NNN in the plasma of smokeless tobacco users. Plasma NNN correlated significantly with nicotine.",
+        "supports": "direct"
+      },
+      {
+        "quote": "Regarding the high correlation between nicotine and NNN and the stable blood pH of 7.40 which inhibits the nitrosation reaction, plasma NNN may be considered as a biomarker to determine the product-specific exposure to NNN in future clinical exposure studies with tobacco products.",
+        "supports": "direct"
+      },
+      {
+        "quote": "10 μL of sodium hydroxide (10 M), 10 μL of NNN-d4 (25 ng/mL in water), 100 μL of saturated sodium chloride solution, and 2 mL of MTBE were added to 1 mL of plasma and stirred for 10 min. After centrifugation (10 min, 1860g), the organic phase was evaporated to dryness and reconstituted in 50 μL of formic acid (4 M) and 150 μL of MTBE. The extract was vortexed and centrifuged (10 min, 1860g). The aqueous phase was evaporated to dryness and reconstituted in 50 μL of methanol/water (1:4 (v/v)). Analysis of NNN in plasma by LC-MS/MS was performed in analogy to the analysis of NNN in urine.",
+        "supports": "direct"
+      }
+    ]
+  },
+  {
+    "id": "Ref 2",
+    "title": "Mass Spectrometric Quantitation of N'-Nitrosonornicotine-1N-oxide in the Urine of Cigarette Smokers and Smokeless Tobacco Users.",
+    "year": "2022",
+    "doi": "10.1021/acs.chemrestox.2c00195",
+    "original_ids": [
+      "Ref 2"
+    ],
+    "pmid": "36006857",
+    "quotes": [
+      {
+        "quote": "N´-Nitrosonornicotine (1, NNN, ) and 4-(methylnitrosamino)-1-(3-pyridyl)-1-butanone (7, NNK) are two strongly carcinogenic N-nitrosamines which always occur together and are present exclusively in tobacco products.",
+        "supports": "direct"
+      }
+    ]
+  }
+]
+results_dir: /data/chen/e2e_searching_results/blood_eval_run_20260420_113443/blood_eval_eval_blood_fcdeb73d

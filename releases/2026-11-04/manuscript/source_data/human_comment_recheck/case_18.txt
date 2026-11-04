@@ -1,0 +1,483 @@
+CASE 18: Alpha-hydroxymidazolam | Confirmed | drug metabolite
+entity_synonyms: 
+canonical_name: 
+query: {
+  "task": "verify_candidate_entity",
+  "entity_name": "Alpha-hydroxymidazolam",
+  "original_query": "Decide whether 'Alpha-hydroxymidazolam' satisfies the confirmed-topic definition.",
+  "evaluation_criteria": {
+    "criteria_text": "- [mandatory] The entity must be a small molecule.\n- [mandatory] The entity must be produced within the human body.\n- [mandatory] The entity must function in human biochemical or physiological processes.\n- [mandatory] The entity must not be solely an exogenous chemical.\n- [mandatory] The entity must not be solely a microbiota-only metabolite.\n- [optional] If a metabolite is produced by both microbiota and host metabolism, it is included.",
+    "rubric_items": [
+      {
+        "name": "The entity must be a small molecule.",
+        "section": "rubric",
+        "priority": "mandatory"
+      },
+      {
+        "name": "The entity must be produced within the human body.",
+        "section": "rubric",
+        "priority": "mandatory"
+      },
+      {
+        "name": "The entity must function in human biochemical or physiological processes.",
+        "section": "rubric",
+        "priority": "mandatory"
+      },
+      {
+        "name": "The entity must not be solely an exogenous chemical.",
+        "section": "rubric",
+        "priority": "mandatory"
+      },
+      {
+        "name": "The entity must not be solely a microbiota-only metabolite.",
+        "section": "rubric",
+        "priority": "mandatory"
+      },
+      {
+        "name": "If a metabolite is produced by both microbiota and host metabolism, it is included.",
+        "section": "rubric",
+        "priority": "optional"
+      }
+    ],
+    "fixed_criteria": [
+      "The entity must be a small molecule.",
+      "The entity must be produced within the human body.",
+      "The entity must function in human biochemical or physiological processes.",
+      "The entity must not be solely an exogenous chemical.",
+      "The entity must not be solely a microbiota-only metabolite."
+    ]
+  },
+  "entity_synonyms": [
+    "[12-chloro-9-(2-fluorophenyl)-2,4,8-triazatricyclo[8.4.0.0²,⁶]tetradeca-1(10),3,5,8,11,13-hexaen-3-yl]methanol",
+    "a-Hydroxymidazolam",
+    "Α-hydroxymidazolam",
+    "1-Hydroxymethylmidazolam",
+    "1-OH-MDZ",
+    "1-Hydroxymidazolam",
+    "8-Chloro-6-(2-fluorophenyl)-4H-imidazo(1,5-a)(1,4)benzodiazepine-1-methanol",
+    "4H-Imidazo(1,5-a)(1,4)benzodiazepine-1-methanol, 8-chloro-6-(2-fluorophenyl)-",
+    "alpha-Hydroxymidazolam 0.1 mg/ml in Methanol",
+    "Alpha-Hydroxymidazolam, 1mg/ml in Methanol",
+    "1'-Hydroxy Midazolam (100 ug/mL in methanol)",
+    "alpha-Hydroxymidazolam 100 microg/mL in Acetonitrile"
+  ],
+  "domain": "endogenous_metabolite",
+  "search_budget": {
+    "batch1_max_search_directions": 3,
+    "batch1_max_identity_terms": 2,
+    "batch1_max_primary_context_terms": 2,
+    "defer_method_fanout_until_followup": true,
+    "avoid_near_duplicate_context_terms": true
+  }
+}
+explanation: Alpha-hydroxymidazolam is a small molecule (341.773 Da) formed in the human body as a metabolite of the drug midazolam, primarily through the action of cytochrome P450 3A4 (CYP3A4). It is an active metabolite with neuronal depressant properties, contributing to the overall pharmacological effects of midazolam. It is further metabolized via glucuronidation and excreted, confirming its involvement in human biochemical processes and that it is not solely an exogenous chemical or microbiota-only metabolite.
+criteria_json: [
+  {
+    "name": "The entity must be a small molecule.",
+    "priority": "mandatory",
+    "section": "rubric",
+    "status": "solved",
+    "notes": "Alpha-hydroxymidazolam has a molecular mass of 341.773 Da, confirming it as a small molecule.",
+    "support_type": "inferred",
+    "score": 1.0
+  },
+  {
+    "name": "The entity must be produced within the human body.",
+    "priority": "mandatory",
+    "section": "rubric",
+    "status": "solved",
+    "notes": "Alpha-hydroxymidazolam is a metabolite of midazolam, formed in the human body by CYP3A4.",
+    "support_type": "direct_evidence",
+    "score": 1.0
+  },
+  {
+    "name": "The entity must function in human biochemical or physiological processes.",
+    "priority": "mandatory",
+    "section": "rubric",
+    "status": "solved",
+    "notes": "It is an active metabolite with neuronal depressant effects and undergoes further glucuronidation and excretion.",
+    "support_type": "direct_evidence",
+    "score": 1.0
+  },
+  {
+    "name": "The entity must not be solely an exogenous chemical.",
+    "priority": "mandatory",
+    "section": "rubric",
+    "status": "solved",
+    "notes": "It is a human metabolite of an exogenous drug, not solely exogenous itself.",
+    "support_type": "direct_evidence",
+    "score": 1.0
+  },
+  {
+    "name": "The entity must not be solely a microbiota-only metabolite.",
+    "priority": "mandatory",
+    "section": "rubric",
+    "status": "solved",
+    "notes": "Its formation is attributed to human CYP3A4 enzymes.",
+    "support_type": "direct_evidence",
+    "score": 1.0
+  },
+  {
+    "name": "If a metabolite is produced by both microbiota and host metabolism, it is included.",
+    "priority": "optional",
+    "section": "rubric",
+    "status": "solved",
+    "notes": "Not applicable as it is primarily a host metabolite.",
+    "support_type": "inferred",
+    "score": 1.0
+  }
+]
+evidence_json: [
+  {
+    "id": "Ref 1",
+    "title": "Pharmacokinetics study of atracurium, dexmedetomidine, midazolam and 1-hydroxymidazolam in patients undergoing acute aortic dissection surgery.",
+    "year": "2024",
+    "doi": "10.3389/fphar.2024.1427553",
+    "original_ids": [
+      "Ref 1"
+    ],
+    "pmid": "39512828",
+    "quotes": [
+      {
+        "quote": "The main product of MDZ metabolism, 1-hydroxymidazolam (1-OH-MDZ, ), is commonly used as a probe for competitive binding of various drugs to CYP3A4 (; ).",
+        "supports": "direct"
+      }
+    ]
+  },
+  {
+    "id": "Ref 2",
+    "title": "Sedation in Critically Ill Children.",
+    "year": "2025",
+    "doi": "10.3390/jcm14176273",
+    "original_ids": [
+      "Ref 2"
+    ],
+    "pmid": "40944032",
+    "quotes": [
+      {
+        "quote": "Cytochrome P450 isoenzyme 3A4 hydroxylation metabolizes midazolam to 1-hydroxymidazolam and to 1,4-dihydroxymidazolam, which then undergoes further glucuronidation. Glucuronidation of 1-hydroxymidazolam by UDP-glucuronosyltransferases generates inactive metabolites that are excreted in the urine.",
+        "supports": "direct"
+      }
+    ]
+  },
+  {
+    "id": "Ref 3",
+    "title": "Differential depression of neuronal network activity by midazolam and its main metabolite 1-hydroxymidazolam in cultured neocortical slices",
+    "year": "2017",
+    "doi": "10.1038/s41598-017-03154-5",
+    "original_ids": [
+      "Ref 3"
+    ],
+    "pmid": "28615640",
+    "quotes": [
+      {
+        "quote": "Midazolam has a clinical active metabolite: 1-hydroxymidazolam, which is, like the parent drug midazolam a neuronal depressant drug.",
+        "supports": "direct"
+      },
+      {
+        "quote": "The second row summarizes plasma concentrations taken from clinical studies, where 1-hydroxymidazolam is a product of metabolism of midazolam.",
+        "supports": "direct"
+      },
+      {
+        "quote": "Midazolam is metabolized into an active metabolite, 1-hydroxymidazolam.",
+        "supports": "direct"
+      },
+      {
+        "quote": "When comparing midazolam with 1-hydroxymidazolam it is evident that 1-hydroxymidazolam is far less potent. Inhibitory actions of 1-hydroxymidazolam could be observed starting at a concentration of 100 nM, corresponding to a plasma concentration of nearly 40 ng/ml. Considering the plasma concentration measured in a previous study, 1-hydroxymidazolam may, therefore, contribute to the effects of midazolam, above all, in cases of deep sedation or in patients with severe renal dysfunction.",
+        "supports": "direct"
+      },
+      {
+        "quote": "Midazolam’s main metabolite, 1-hydroxymidazolam, is far less potent than midazolam itself.",
+        "supports": "direct"
+      }
+    ]
+  },
+  {
+    "id": "Ref 4",
+    "title": "Pharmacokinetics of midazolam and its main metabolite 1-hydroxymidazolam in intensive care patients.",
+    "year": "1998",
+    "doi": "10.1007/BF03189348",
+    "original_ids": [
+      "Ref 4"
+    ],
+    "pmid": "9725490",
+    "quotes": [
+      {
+        "quote": "The pharmacokinetics of midazolam and of its main metabolite, 1-hydroxymidazolam, were investigated in intensive care patients... Significant concentrations of the unconjugated form of 1-hydroxymidazolam were recovered in plasma. ...These results show that 1-hydroxymidazolam might contribute to the pharmacodynamic effect of midazolam and consequently must be taken into account during pharmacokinetic and pharmacodynamic studies.",
+        "supports": "direct"
+      }
+    ]
+  },
+  {
+    "id": "Ref 5",
+    "title": "Characterization of 1'-hydroxymidazolam glucuronidation in human liver microsomes.",
+    "year": "2008",
+    "doi": "10.1124/dmd.107.017962",
+    "original_ids": [
+      "Ref 5"
+    ],
+    "pmid": "17998299",
+    "quotes": [
+      {
+        "quote": "Midazolam is a potent benzodiazepine derivative with sedative, hypnotic, anticonvulsant, muscle-relaxant, and anxiolytic activities. It undergoes oxidative metabolism catalyzed almost exclusively by the CYP3A subfamily to a major metabolite, 1'-hydroxymidazolam, which is equipotent to midazolam. 1'-Hydroxymidazolam is subject to glucuronidation followed by renal excretion.",
+        "supports": "direct"
+      },
+      {
+        "quote": "In summary, our study provides the first demonstration of N-glucuronidation of 1'-hydroxymidazolam in human liver microsomes.",
+        "supports": "direct"
+      }
+    ]
+  },
+  {
+    "id": "Ref 6",
+    "title": "Effect of Extracorporeal Membrane Oxygenation Flow Rate on Midazolam Clearance: A Population Pharmacokinetic Study.",
+    "year": "2025",
+    "doi": "10.1097/aln.0000000000005811",
+    "original_ids": [
+      "Ref 6"
+    ],
+    "pmid": "41325279",
+    "quotes": [
+      {
+        "quote": "Simulations were conducted to evaluate the pharmacokinetics of midazolam and its metabolite under varying infusion rates (1 to 10 mg/h) and ECMO flow rates (1 to 5 l/min). To characterize recovery after continuous midazolam infusion, we simulated the time required for plasma concentrations of 1-hydroxymidazolam to decline by 70% after termination of a 24-h continuous infusion, assuming steady-state concentrations had been achieved by the end of the infusion.",
+        "supports": "direct"
+      },
+      {
+        "quote": "Second, the structural model focused on the primary metabolic pathway via 1-hydroxymidazolam and excluded minor routes such as 4-hydroxylation and glucuronidation.",
+        "supports": "direct"
+      }
+    ]
+  },
+  {
+    "id": "Ref 7",
+    "title": "Sensitive determination of midazolam and 1'-hydroxymidazolam in plasma by liquid-liquid extraction and column-switching liquid chromatography with ultraviolet absorbance detection and its application for measuring CYP3A activity.",
+    "year": "2004",
+    "doi": "10.1016/j.jchromb.2004.08.039",
+    "original_ids": [
+      "Ref 7"
+    ],
+    "pmid": "15522714",
+    "quotes": [
+      {
+        "quote": "This manuscript described a new sensitive determination of midazolam and its metabolite 1'-hydroxymidazolam by automated column-switching high-performance liquid chromatography.",
+        "supports": "direct"
+      }
+    ]
+  },
+  {
+    "id": "Ref 8",
+    "title": "P-1246. Effect of BV100 on the Pharmacokinetics of Midazolam and its metabolite 1-hydroxymidazolam in healthy volunteers",
+    "year": "2025",
+    "doi": "10.1093/ofid/ofae631.1428",
+    "original_ids": [
+      "Ref 8"
+    ],
+    "quotes": [
+      {
+        "quote": "A single center, open-label, 3-period fixed-sequence, phase I clinical drug-drug interaction study was conducted to evaluate the effect of BV100 on the pharmacokinetics (PK) of midazolam and its metabolite 1-hydroxymidazolam on healthy subjects.",
+        "supports": "direct"
+      }
+    ]
+  },
+  {
+    "id": "Ref 9",
+    "title": "Sensitive assay for midazolam and its metabolite 1'-hydroxymidazolam in human plasma by capillary high-performance liquid chromatography.",
+    "year": "1998",
+    "doi": "10.1016/s0378-4347(98)00137-6",
+    "original_ids": [
+      "Ref 9"
+    ],
+    "pmid": "9686884",
+    "quotes": [
+      {
+        "quote": "The applicability of the method was demonstrated by studying the pharmacokinetics of midazolam, and its major metabolite 1'-hydroxymidazolam, in human volunteers following i.v. bolus administration of a subtherapeutic midazolam dose (40 microg/kg).",
+        "supports": "direct"
+      }
+    ]
+  },
+  {
+    "id": "Ref 10",
+    "title": "Determination of midazolam and its major metabolite 1'-hydroxymidazolam by high-performance liquid chromatography-electrospray mass spectrometry in plasma from children.",
+    "year": "2005",
+    "doi": "10.1016/j.jchromb.2005.03.015",
+    "original_ids": [
+      "Ref 10"
+    ],
+    "pmid": "15914101",
+    "quotes": [
+      {
+        "quote": "We have developed a sensitive, selective and reproducible reversed-phase high-performance liquid chromatography method coupled with electrospray ionization mass spectrometry (HPLC-ESI-MS) for the simultaneous quantification of midazolam (MDZ) and its major metabolite, 1'-hydroxymidazolam (1'-OHM) in a small volume (200 microl) of human plasma.",
+        "supports": "direct"
+      }
+    ]
+  },
+  {
+    "id": "Ref 11",
+    "title": "A primary human Gut/Liver microphysiological system to estimate human oral bioavailability.",
+    "year": "2025",
+    "doi": "10.1016/j.dmd.2025.100130",
+    "original_ids": [
+      "Ref 11"
+    ],
+    "pmid": "40829518",
+    "quotes": [
+      {
+        "quote": "The profile of 1'-hydroxymidazolam in the apical side of the gut compartment for the primary Gut/Liver MPS confirms functional CYP3A4 activity by the primary gut model.",
+        "supports": "direct"
+      },
+      {
+        "quote": "MDZ, along with its main metabolite, 1'-hydroxymidazolam, is commonly used as a probe drug to evaluate CYP3A activity, the most abundant P450 subfamily expressed in the gut wall.",
+        "supports": "direct"
+      }
+    ]
+  },
+  {
+    "id": "Ref 12",
+    "title": "Simultaneous determination of midazolam and 1'-hydroxymidazolam in human plasma by liquid chromatography with tandem mass spectrometry.",
+    "year": "2007",
+    "doi": "10.1002/bmc.829",
+    "original_ids": [
+      "Ref 12"
+    ],
+    "pmid": "17441219",
+    "quotes": [
+      {
+        "quote": "A sensitive and simple liquid chromatography-tandem mass spectrometry method for the determination of midazolam and 1'-hydroxymidazolam in human plasma has been developed and validated with a dynamic range of 0.1-250 ng/mL. ...The current method has been applied to a clinical drug-drug interaction study in human.",
+        "supports": "direct"
+      }
+    ]
+  },
+  {
+    "id": "Ref 13",
+    "title": "Pharmacokinetic-pharmacodynamic modeling of the central nervous system effects of midazolam and its main metabolite alpha-hydroxymidazolam in healthy volunteers.",
+    "year": "1992",
+    "doi": "10.1038/clpt.1992.84",
+    "original_ids": [
+      "Ref 13"
+    ],
+    "pmid": "1611810",
+    "quotes": [
+      {
+        "quote": "The pharmacodynamics of midazolam and its main metabolite alpha-hydroxymidazolam were characterized in individual subjects by use of saccadic eye movement and electroencephalographic (EEG) effect measurements. Eight healthy volunteers received 0.1 mg/kg midazolam intravenously in 15 minutes, 0.15 mg/kg alpha-hydroxymidazolam intravenously in 15 minutes, 7.5 mg midazolam orally and placebo in a randomized, double-blind, four-way crossover experiment. Plasma concentrations of midazolam, alpha-hydroxymidazolam and 4-hydroxymidazolam were measured by gas chromatography.",
+        "supports": "direct"
+      }
+    ]
+  },
+  {
+    "id": "Ref 14",
+    "title": "Metabolism of 1′- and 4-Hydroxymidazolam by Glucuronide Conjugation Is Largely Mediated by UDP-Glucuronosyltransferases 1A4, 2B4, and 2B7",
+    "year": "2010",
+    "doi": "10.1124/dmd.110.035295",
+    "original_ids": [
+      "Ref 14"
+    ],
+    "pmid": "20713656",
+    "quotes": [
+      {
+        "quote": "Midazolam undergoes oxidative hydroxylation by CYP3A to its metabolites, which are excreted mainly as glucuronidated conjugates into the urine. In this study, we examined the glucuronidation of hydroxymidazolam in human liver microsomes (HLMs) and characterized the UDP-glucuronosyltransferases (UGTs) involved in 1'- and 4-hydroxymidazolam glucuronidation. Among the 12 UGT isoforms tested, the O- and N-glucuronidation of 1'-hydroxymidazolam was mediated by UGT2B4/2B7 and 1A4, respectively.",
+        "supports": "direct"
+      }
+    ]
+  },
+  {
+    "id": "Ref 15",
+    "title": "Simultaneous determination of midazolam and its metabolites 1-hydroxymidazolam and 4-hydroxymidazolam in human serum using gas chromatography-mass spectrometry.",
+    "year": "1997",
+    "doi": "10.1016/s0378-4347(96)00506-3",
+    "original_ids": [
+      "Ref 15"
+    ],
+    "pmid": "9187388",
+    "quotes": [
+      {
+        "quote": "A method for the quantitation of midazolam and its metabolites 1-hydroxymidazolam and 4-hydroxymidazolam from human serum capable of monitoring concentrations achieved under therapeutic conditions is presented.",
+        "supports": "direct"
+      }
+    ]
+  },
+  {
+    "id": "Ref 16",
+    "title": "Value of Assessing 1-Hydroxymidazolam in Drug-Drug Interaction Studies with Midazolam as a Substrate of Cytochrome P450 3A.",
+    "year": "2024",
+    "doi": "10.1002/jcph.2447",
+    "original_ids": [
+      "Ref 16"
+    ],
+    "pmid": "38797881",
+    "quotes": [
+      {
+        "quote": "The perpetrator effect of the investigational drugs on cytochrome P450 3A (CYP3A) was assessed by analyzing both midazolam and 1-OHM in plasma and evaluating their pharmacokinetic parameters. Given the almost exclusive metabolism of the parent drug by CYP3A to the main metabolite 1-OHM, an increase in midazolam and a decrease in 1-OHM exposure in the case of CYP3A inhibition caused by a perpetrator drug would be expected.",
+        "supports": "direct"
+      }
+    ]
+  },
+  {
+    "id": "Ref 17",
+    "title": "Effects of Dexmedetomidine on the Pharmacokinetics of Dezocine, Midazolam and Its Metabolite 1-Hydroxymidazolam in Beagles by UPLC-MS/MS.",
+    "year": "2020",
+    "doi": "10.2147/DDDT.S254055",
+    "original_ids": [
+      "Ref 17"
+    ],
+    "pmid": "32753841",
+    "quotes": [
+      {
+        "quote": "MDZ is considered one of the best CYP3A4 probe drugs, since it is extensively metabolized by CYP3A4 to its major metabolite 1-hydroxymidazolam (1-OH-MDZ, ) and rapidly excreted into urine as its glucuronide conjugate.",
+        "supports": "direct"
+      }
+    ]
+  },
+  {
+    "id": "Ref 18",
+    "title": "Inhibitory effects of Δ8-tetrahydrocannabinol on major hepatic cytochrome P450 enzymes and implications for drug disposition.",
+    "year": "2025",
+    "doi": "10.1016/j.dmd.2025.100122",
+    "original_ids": [
+      "Ref 18"
+    ],
+    "pmid": "40829519",
+    "quotes": [
+      {
+        "quote": "At 10 μM, both cannabinoids reduced the formation of 4′-hydroxydiclofenac and 7′-hydroxywarfarin (CYP2C9 substrates) as well as 1′-hydroxymidazolam (CYP3A4 substrate) by > 40% (, A-D).",
+        "supports": "direct"
+      },
+      {
+        "quote": "Strong inhibition of CYP3A4 was also observed for Δ8-THC against 1′-hydroxyl-midazolam formation (IC50,u = 0.44 ± 0.14 μM for recombinant CYP3A4-overexpressing microsomes and 0.48 ± 0.11 μM for HLM).",
+        "supports": "direct"
+      }
+    ]
+  },
+  {
+    "id": "Ref 19",
+    "title": "Assessing the Feasibility of In Vitro Assays in Combination with Biological Matrices to Screen for Endogenous CYP450 Phenotype Biomarkers Using an Untargeted Metabolomics Approach-A Proof of Concept Study.",
+    "year": "2025",
+    "doi": "10.3390/metabo15120791",
+    "original_ids": [
+      "Ref 19"
+    ],
+    "pmid": "41441033",
+    "quotes": [
+      {
+        "quote": "All three probe substrate metabolites (dextrorphan, 5-hydroxyomeprazole, and 1-hydroxymidazolam) were found by targeted processing of our untargeted acquired data, despite being 100-fold less concentrated than in our initial experiments, to avoid potential inhibition effects.",
+        "supports": "direct"
+      }
+    ]
+  },
+  {
+    "id": "Ref 20",
+    "title": "Evaluation of the Pharmacokinetic Interactions of &lt;i&gt;Maytenus ilicifolia&lt;/i&gt; Mart. ex Reiss Extracts on Drug Intestinal Permeability and Hepatic Metabolism.",
+    "year": "2025",
+    "doi": "10.1021/acsomega.5c07564",
+    "original_ids": [
+      "Ref 20"
+    ],
+    "pmid": "41078739",
+    "quotes": [
+      {
+        "quote": "Determination of IC50 and confidence interval (CI) of hydroacetonic extract (HAE1) on CYP3A inhibition. (A) 1-Hydroxylation of midazolam and (B) oxidation of nifedipine (n = 3).",
+        "supports": "direct"
+      }
+    ]
+  }
+]
+results_dir: /data/chen/e2e_searching_results/endogenous_metabolite_eval_run_20260419_194100/endogenous_metabolite_eval_eval_endogenous_metabolite_7e5d787b

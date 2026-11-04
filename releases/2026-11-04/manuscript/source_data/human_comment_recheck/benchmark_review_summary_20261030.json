@@ -1,0 +1,18 @@
+{
+  "date": "2026-10-30",
+  "n": 1886,
+  "previous_agreement": 1847,
+  "newly_approved_comments": 23,
+  "agreement": 1870,
+  "not_counted_as_agreement": 16,
+  "blank_agreement": 1827,
+  "approved_comments": 43,
+  "confirmed_label_n": 976,
+  "agreement_with_confirmed_label": 965,
+  "remaining_by_system_label": {
+    "Confirmed": 11,
+    "Explicit Negative Evidence": 5
+  },
+  "author_clarification": "Author clarified that the 23 comments stating supporting literature was found count as agreement. This is a clarification of existing review annotations, not a new expert review or evidence search.",
+  "source_sha256": "b03662bb2b3c57dca7e23c3f4aff74e13e9804e0fae573338e09e89268b5b379"
+}

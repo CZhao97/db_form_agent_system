@@ -1,0 +1,72 @@
+CASE 24: 9-fluorenone | Max Iteration Timeout | INSUFFICIENT EVIDENCE
+entity_synonyms: [
+  "9H-Fluoren-9-one",
+  "9-fluorenone-D8",
+  "9‐fluorenone",
+  "fluorenone"
+]
+canonical_name: 9-fluorenone
+query: {
+  "task": "verify_candidate_entity",
+  "entity_name": "9-fluorenone",
+  "original_query": "Decide whether '9-fluorenone' satisfies the confirmed-topic definition.",
+  "evaluation_criteria": {
+    "criteria_text": "- [mandatory] The chemical entity must be reported in human blood or systemic circulation.\n- [mandatory] The chemical entity must be introduced by, structurally modified by, or significantly change in amount in response to the external environment.\n- [mandatory] Evidence for the chemical entity's presence and exposomal origin must be supported by primary literature, biomonitoring surveys, or public metabolomics datasets.\n- [mandatory] The supporting evidence must be associated with human blood specimens.",
+    "rubric_items": [
+      {
+        "name": "The chemical entity must be reported in human blood or systemic circulation.",
+        "section": "rubric",
+        "priority": "mandatory"
+      },
+      {
+        "name": "The chemical entity must be introduced by, structurally modified by, or significantly change in amount in response to the external environment.",
+        "section": "rubric",
+        "priority": "mandatory"
+      },
+      {
+        "name": "Evidence for the chemical entity's presence and exposomal origin must be supported by primary literature, biomonitoring surveys, or public metabolomics datasets.",
+        "section": "rubric",
+        "priority": "mandatory"
+      },
+      {
+        "name": "The supporting evidence must be associated with human blood specimens.",
+        "section": "rubric",
+        "priority": "mandatory"
+      }
+    ],
+    "fixed_criteria": [
+      "The chemical entity must be reported in human blood or systemic circulation.",
+      "The chemical entity must be introduced by, structurally modified by, or significantly change in amount in response to the external environment.",
+      "Evidence for the chemical entity's presence and exposomal origin must be supported by primary literature, biomonitoring surveys, or public metabolomics datasets.",
+      "The supporting evidence must be associated with human blood specimens."
+    ]
+  },
+  "entity_synonyms": [
+    "fluoren-9-one",
+    "AH-034/05416008",
+    "orb3029398",
+    "9-fluoreneone",
+    "9H-fluoren9-one",
+    "orb3025969",
+    "c0390",
+    "9-Fluorenone Solution in Methanol, 1000ug/mL",
+    "InChI=1/C13H8O/c14-13-11-7-3-1-5-9(11)10-6-2-4-8-12(10)13/h1-8",
+    "9H-Fluorene-9-one",
+    "9-Oxofluorene",
+    "bmse000521",
+    "Diphenylene ketone",
+    "9-Fluorenone Solution in Methanol, 100ug/mL"
+  ],
+  "domain": "blood",
+  "search_budget": {
+    "batch1_max_search_directions": 3,
+    "batch1_max_identity_terms": 2,
+    "batch1_max_primary_context_terms": 2,
+    "defer_method_fanout_until_followup": true,
+    "avoid_near_duplicate_context_terms": true
+  }
+}
+explanation: Agent execution timed out (maximum iterations reached)
+criteria_json: []
+evidence_json: []
+results_dir: /data/chen/e2e_searching_results/blood_eval_run_20260420_104549/blood_eval_eval_blood_979d18f0

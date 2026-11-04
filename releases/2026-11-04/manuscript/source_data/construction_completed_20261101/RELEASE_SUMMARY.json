@@ -1,0 +1,31 @@
+{
+  "status": "data_release_complete",
+  "totals": {
+    "processed_candidates": 2122,
+    "fixed_candidates": 1000,
+    "final_confirmed": 1000,
+    "released_benchmark_linked": 594,
+    "fixed_benchmark_linked": 594,
+    "processed_benchmark_linked": 861,
+    "zero_shot_candidates": 1000,
+    "zero_shot_benchmark_linked": 749,
+    "citation_instances": 7689,
+    "verified_citations": 7689,
+    "zero_shot_citations": 991,
+    "zero_shot_verified": 0
+  },
+  "origin_counts": {
+    "historical_baseline": 889,
+    "continuation": 111
+  },
+  "source_table_manifest": "/data/chen/dbcurator_construction_completion_20261030/final_release_tables_20261101/MANIFEST.json",
+  "source_table_manifest_sha256": "070b4e4f4d7d4974c17db0adfa7397991d6bbd931b9b8aaadc53d75f9fbca239",
+  "analysis_manifest": "/data/chen/dbcurator_construction_completion_20261030/final_analysis_20261101/MANIFEST.json",
+  "analysis_manifest_sha256": "0c8b32cbdd73c7d32d34b7d3d893f42a39dba44ec902b7c752e1c419bab1c104",
+  "final_identity_audit": "/data/chen/dbcurator_construction_completion_20261030/identity_source_review/final1000_identity_audit.json",
+  "all_source_attempts_and_costs_preserved": true,
+  "original_records_modified": false,
+  "human_annotations_transferred": false,
+  "new_model_calls": 0,
+  "script_sha256": "6c9144423305bd350955a5b43f9df0129c9de1634430496faa6aebd3dd9fb4c7"
+}

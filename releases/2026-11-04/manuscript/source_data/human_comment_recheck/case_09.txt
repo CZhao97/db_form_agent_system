@@ -1,0 +1,405 @@
+CASE 9: Genistein 4'-O-glucuronide | Confirmed | Exogenous
+entity_synonyms: 
+canonical_name: 
+query: {
+  "task": "verify_candidate_entity",
+  "entity_name": "Genistein 4'-O-glucuronide",
+  "original_query": "Decide whether 'Genistein 4'-O-glucuronide' satisfies the confirmed-topic definition.",
+  "evaluation_criteria": {
+    "criteria_text": "- [mandatory] The entity must be a small molecule.\n- [mandatory] The entity must be produced within the human body.\n- [mandatory] The entity must function in human biochemical or physiological processes.\n- [mandatory] The entity must not be solely an exogenous chemical.\n- [mandatory] The entity must not be solely a microbiota-only metabolite.\n- [optional] If a metabolite is produced by both microbiota and host metabolism, it is included.",
+    "rubric_items": [
+      {
+        "name": "The entity must be a small molecule.",
+        "section": "rubric",
+        "priority": "mandatory"
+      },
+      {
+        "name": "The entity must be produced within the human body.",
+        "section": "rubric",
+        "priority": "mandatory"
+      },
+      {
+        "name": "The entity must function in human biochemical or physiological processes.",
+        "section": "rubric",
+        "priority": "mandatory"
+      },
+      {
+        "name": "The entity must not be solely an exogenous chemical.",
+        "section": "rubric",
+        "priority": "mandatory"
+      },
+      {
+        "name": "The entity must not be solely a microbiota-only metabolite.",
+        "section": "rubric",
+        "priority": "mandatory"
+      },
+      {
+        "name": "If a metabolite is produced by both microbiota and host metabolism, it is included.",
+        "section": "rubric",
+        "priority": "optional"
+      }
+    ],
+    "fixed_criteria": [
+      "The entity must be a small molecule.",
+      "The entity must be produced within the human body.",
+      "The entity must function in human biochemical or physiological processes.",
+      "The entity must not be solely an exogenous chemical.",
+      "The entity must not be solely a microbiota-only metabolite."
+    ]
+  },
+  "entity_synonyms": [
+    "(2S,3S,4S,5R,6S)-6-[4-(5,7-dihydroxy-4-oxo-4H-chromen-3-yl)phenoxy]-3,4,5-trihydroxyoxane-2-carboxylic acid",
+    "(2S,3S,4S,5R,6S)-6-[4-(5,7-Dihydroxy-4-oxo-4H-chromen-3-yl)phenoxy]-3,4,5-trihydroxyoxane-2-carboxylate",
+    "Genistein 4'-?-D-Glucuronide",
+    "beta-D-Glucopyranosiduronic acid, 4-(5,7-dihydroxy-4-oxo-4H-1-benzopyran-3-yl)phenyl",
+    "GENISTEIN 4'-BETA-D-GLUCURONIDE",
+    "Genistein 4'-b-D-Glucuronide",
+    "Genistein-4'-glucuronide",
+    "4-(5,7-Dihydroxy-4-oxo-4H-1-benzopyran-3-yl)phenyl beta-D-glucopyranosiduronic acid"
+  ],
+  "domain": "endogenous_metabolite",
+  "search_budget": {
+    "batch1_max_search_directions": 3,
+    "batch1_max_identity_terms": 2,
+    "batch1_max_primary_context_terms": 2,
+    "defer_method_fanout_until_followup": true,
+    "avoid_near_duplicate_context_terms": true
+  }
+}
+explanation: Genistein 4'-O-glucuronide is a small molecule (Ref 21) that is a phase-II metabolite of genistein, formed in human intestinal and liver cells by UGT enzymes (Ref 2, Ref 4, Ref 8, Ref 10, Ref 11, Ref 12, Ref 13, Ref 14, Ref 15, Ref 16, Ref 17, Ref 18, Ref 19, Ref 20). Its presence and measurement in human biological fluids and tissues indicate its involvement in human biochemical processes.
+criteria_json: [
+  {
+    "name": "The entity must be a small molecule.",
+    "priority": "mandatory",
+    "section": "rubric",
+    "status": "solved",
+    "notes": "Confirmed by PubChem data (mass 446.364 Da).",
+    "support_type": "direct_evidence",
+    "score": 1.0
+  },
+  {
+    "name": "The entity must be produced within the human body.",
+    "priority": "mandatory",
+    "section": "rubric",
+    "status": "solved",
+    "notes": "Detected in human plasma and urine as a phase-II metabolite formed by human UGT enzymes.",
+    "support_type": "direct_evidence",
+    "score": 1.0
+  },
+  {
+    "name": "The entity must function in human biochemical or physiological processes.",
+    "priority": "mandatory",
+    "section": "rubric",
+    "status": "solved",
+    "notes": "Its consistent presence and measurement in human biological fluids and tissues as a major metabolite of genistein implies involvement in human biochemical processes related to ADME.",
+    "support_type": "direct_evidence",
+    "score": 1.0
+  },
+  {
+    "name": "The entity must not be solely an exogenous chemical.",
+    "priority": "mandatory",
+    "section": "rubric",
+    "status": "solved",
+    "notes": "It is a metabolite formed within the human body from an exogenous precursor, not solely exogenous itself.",
+    "support_type": "direct_evidence",
+    "score": 1.0
+  },
+  {
+    "name": "The entity must not be solely a microbiota-only metabolite.",
+    "priority": "mandatory",
+    "section": "rubric",
+    "status": "solved",
+    "notes": "Glucuronidation occurs in human intestinal and liver cells by human UGT enzymes.",
+    "support_type": "direct_evidence",
+    "score": 1.0
+  },
+  {
+    "name": "If a metabolite is produced by both microbiota and host metabolism, it is included.",
+    "priority": "optional",
+    "section": "rubric",
+    "status": "solved",
+    "notes": "Evidence indicates host metabolism, and while gut-derived metabolites are mentioned, Genistein 4'-O-glucuronide is explicitly a host-mediated phase II metabolite.",
+    "support_type": "direct_evidence",
+    "score": 1.0
+  }
+]
+evidence_json: [
+  {
+    "id": "Ref 1",
+    "title": "Nutrikinetic modeling reveals order of genistein phase II metabolites appearance in human plasma.",
+    "year": "2014",
+    "doi": "10.1002/mnfr.201400325",
+    "original_ids": [
+      "Ref 1"
+    ],
+    "pmid": "25045152",
+    "quotes": [
+      {
+        "quote": "Nutrikinetic analysis using population-based modeling revealed the order of appearance of five genistein phase II metabolites in plasma: (1) genistein-4',7-diglucuronide, (2) genistein-7-sulfate, (3) genistein-4'-sulfate-7-glucuronide, (4) genistein-4'-glucuronide, and (5) genistein-7-glucuronide, independent of the food matrix.",
+        "supports": "direct"
+      }
+    ]
+  },
+  {
+    "id": "Ref 2",
+    "title": "Simultaneous determination of genistein and its four phase II metabolites in blood by a sensitive and robust UPLC-MS/MS method: Application to an oral bioavailability study of genistein in mice.",
+    "year": "2010",
+    "doi": "10.1016/j.jpba.2010.03.011",
+    "original_ids": [
+      "Ref 2"
+    ],
+    "pmid": "20378296",
+    "quotes": [
+      {
+        "quote": "Hosoda et al. have shown that two genistein glucuronides, G-7-G and G-4’-G were present in human plasma samples after oral administration of kinako (baked soybean powder), and G-7-G was eluted faster than G-4’-G in a reversed phase HPLC system (retention time was about 6 min for G-7-G and 7 min for G-4’-G, respectively) []. Doerge et al. has shown that genistein can generate two single-glucuronides (G-7-G and G-4’-G) when using recombinant human UGT isoforms 1A1, 1A9 and 1A10.",
+        "supports": "direct"
+      },
+      {
+        "quote": "This rapid formation of glucuronidated metabolite after i.v. administration was unexpected since genistein is known to undergo heavy first-pass metabolism [,], and further studies are need to determine the mechanisms responsible for this observed effect.",
+        "supports": "direct"
+      },
+      {
+        "quote": "In the present study, we found that two glucuronides (G-1 and G-2) are present in mouse blood and perfusate samples. The retention time for G-1 was 1.19 min and for G-2 1.44 min. To identify these two glucuronides, we performed a study similar to Doerge et al. by using recombinant human UGT1A1, 1A9 and 1A10 to measure the formation rates of genistein glucuronides. We found that after 2 h incubation period, the formation ratios (G-1/G-2) were 136, 9.6 and 2.1 for UGT1A1, 1A9 and 1A10, respectively. Similarly, after 24 h incubation, the formation ratios (G-1/G-2) were 142, 11.6 and 2.9 for UGT1A1, 1A9 and 1A10, respectively (). These results along with previous findings from the other laboratory [] confirmed that G-1 is G-7-G, whereas G-2 is G-4’-G.",
+        "supports": "direct"
+      },
+      {
+        "quote": "Genistein and its metabolites were then confirmed by mass spectrometer. The single-stage full scan mass chromatograms were showed in . The MS2 full scan mass chromatograms of genistein and its metabolites were showed in . G-7-G and G-4’-G have the ion [M-H]- at m/z 445 (), which was 176 Dalton higher (characteristic of the addition of one glucuronic acid) than that of genistein (m/z 269, ).",
+        "supports": "direct"
+      }
+    ]
+  },
+  {
+    "id": "Ref 3",
+    "title": "The Role of Genistein in Type 2 Diabetes and Beyond: Mechanisms and Therapeutic Potential.",
+    "year": "2025",
+    "doi": "10.3390/molecules30051068",
+    "original_ids": [
+      "Ref 3"
+    ],
+    "pmid": "40076293",
+    "quotes": [
+      {
+        "quote": "High-mass resolution LC-LTQ-Orbitrap Fourier transform mass spectrometry (FTMS) was used to detect and quantify free genistein, seven of its phase-II metabolites, and fifteen gut-derived metabolites in human plasma. A novel metabolite, genistein-4′-glucuronide-7-sulfate (G-4′G-7S), was identified. Nutrikinetic analysis, using population-based modeling, revealed a consistent order of appearance for the five major genistein phase II metabolites in plasma: (1) G-4′,7-diG, (2) G-7-S, (3) G-4′,7-diG, (4) G-4′-G, and (5) G-7-G, regardless of the food matrix.",
+        "supports": "direct"
+      },
+      {
+        "quote": "The metabolites observed in human plasma included genistein-7-glucuronide (G-7-G), 4′-glucuronide (G-4′-G), 7-sulfate (G-7-S), 4′-sulfate (G-4′-S), 4′,7-diglucuronide (G-4′,7-diG), and 7-glucuronide-4′-sulfate (G-7-G-4′-S), in addition to the unconjugated genistein.",
+        "supports": "direct"
+      }
+    ]
+  },
+  {
+    "id": "Ref 4",
+    "title": "In vitro-in silico-based analysis of the dose-dependent in vivo oestrogenicity of the soy phytoestrogen genistein in humans.",
+    "year": "2017",
+    "doi": "10.1111/bph.13900",
+    "original_ids": [
+      "Ref 4"
+    ],
+    "pmid": "28585232",
+    "quotes": [
+      {
+        "quote": "Figure S1 Concentration-dependent formation of genistein mono-conjugates and genistein diconjugates with pooled mixed-gender human small intestine S9 (A - E) or liver S9 (F - I): genistein-7-O-glucuronide (G-7G), genistein-4′-O-glucuronide (G-4´G), genistein-7-O-sulfate (G-7S), genistein-4′,7-O-diglucuronide (G-4′7diG), genistein-7-O-glucuronide-4′-O-sulfate (G-7G-4′S), and genistein-4′-O-glucuronide-7-O-sulfate (G-4´G-7S).",
+        "supports": "direct"
+      },
+      {
+        "quote": "Genistein was modelled to undergo metabolic conversion via glucuronidation and sulfation reactions forming different mono- and di-conjugates at positions 4′ and/or 7. The kinetic constants for glucuronidation of genistein were obtained from in vitro incubations by Islam et al. ( 2014 ). For other reactions including sulfation of genistein, G-7G and G4′G as well as glucuronidation of G-7G, G4′G and G-7S, the kinetic constants were obtained in the present study based on in vitro experiments",
+        "supports": "direct"
+      },
+      {
+        "quote": "Analysis of the glucuronidation of G-7G, G-4′G and G-7S in incubations with pooled human tissue fractions revealed that all three substrates were metabolized by pooled human small intestine S9, while pooled human liver S9 only metabolized G-4′G.",
+        "supports": "direct"
+      },
+      {
+        "quote": "Analysis of the sulfation incubations revealed that human small intestine and liver S9 could metabolize genistein and G-7G, whereas sulfation of G-4′G was only observed in incubations with human liver S9.",
+        "supports": "direct"
+      },
+      {
+        "quote": "Genistein is the major isoflavone in soy occurring in plants mainly in its glycosylated form, genistin (Islam et al., 2014 ), while fermentation increases the aglycone content in soy-based products (Yuan et al., 2012a ; Islam et al., 2014 ). The metabolic pathways of genistin and genistein are shown in Figure 1 . The glycosylated genistin is hydrolyzed to genistein aglycone prior to absorption in the intestine by the brush-border lactase, phlorizin hydrolase (Walsh et al., 2007 ) or by gut microflora (Bokkenheuser et al., 1987 ). Upon absorption, genistein is extensively metabolized by glucuronidation and sulfation in both intestinal cells and liver cells. Most of the absorbed genistein is present in the systemic circulation in the form of glucuronides, sulfates and mixed conjugates at positions 4′ and/or 7 (Hosoda et al., 2010 ; Hosoda et al., 2011 ; Yuan et al., 2012b ).",
+        "supports": "direct"
+      }
+    ]
+  },
+  {
+    "id": "Ref 5",
+    "title": "Non-digestible stachyose promotes bioavailability of genistein through inhibiting intestinal degradation and first-pass metabolism of genistein in mice",
+    "year": "2017",
+    "doi": "10.1080/16546628.2017.1369343",
+    "original_ids": [
+      "Ref 5"
+    ],
+    "pmid": "28970781",
+    "quotes": [
+      {
+        "quote": "UPLC-qTOF/MS was employed to quantify the levels of naturally occurring genistein and its metabolites (dihydrogenistein, genistein 7-sulfate, genistein 4’-β-D-glucuronide, genistein 7-β-D-glucuronide) in the serum, urine, and feces of the tested mice with consumption of genistein or its combination with stachyose.",
+        "supports": "direct"
+      },
+      {
+        "quote": "In comparison with the metabolites of circulating genistein in the blood, two glucuronidated genisteins (GEN-4’-G and GEN-7-G) were detected in urine, and urinary GEN-4’-G as the main glucuronidated metabolite in the co-treated mice presented noteworthy elevation (p<0.05) when compared to that of individual genistein-treated mice ().",
+        "supports": "direct"
+      },
+      {
+        "quote": "Chemical structure of genistein (GEN) and its metabolites in vivo (a). UPLC-qTOF/MS chromatogram of a standard substance mixture of analytes in urine, and the extracted ion chromatograms of single MRM traces are displayed (b). Treatments of stachyose at 50, 250 and 500 mg/kg·bw for 4 weeks increased serum concentrations of total genistein and its metabolites (total genitein/metabolites, (a), genistein 7-sulfate sodium salt (GEN-7-S, b), and genistein (GEN, c), dihydrogenistein (DH-GEN, d), respectively, and urinary concentrations of total genistein and its metabolites (total genitein/metabolites, e), and genistein 7-sulfate sodium salt and genistein (GEN-7-S and GEN, f) and genistein 4’-β-D-glucuronide, genistein 7-sulfate sodium salt, and dihydrogenistein (GEN-4’-G, GEN-7-G and DH-GEN, g), respectively.",
+        "supports": "direct"
+      }
+    ]
+  },
+  {
+    "id": "Ref 6",
+    "title": "The Changes of Serum Metabolites in Diabetic GK Rats after Ileal Transposition Surgery.",
+    "year": "2019",
+    "doi": "10.1007/s11695-018-3582-4",
+    "original_ids": [
+      "Ref 6"
+    ],
+    "pmid": "30397878",
+    "quotes": [
+      {
+        "quote": ". In the metabolomics analysis, ten serum differential metabolites were identified. Compared with Sham-IT rats, serum LysoPC(O-18:0) and PG(20:4/20:0) of IT rats were decreased, while genistein 4'-O-glucuronide, 5,6:8,9-Diepoxyergost-22-ene-3,7beta-diol, PI(16:0/18:2(9Z,12Z)), docosapentaenoic acid, 3-Oxo-4,6-choladienoic acid, 3-Oxocholic acid, and TG were increased.",
+        "supports": "direct"
+      }
+    ]
+  },
+  {
+    "id": "Ref 7",
+    "title": "Nutrikinetic study of genistein metabolites in ovariectomized mice",
+    "year": "2017",
+    "doi": "10.1371/journal.pone.0186320",
+    "original_ids": [
+      "Ref 7"
+    ],
+    "pmid": "29059247",
+    "quotes": [
+      {
+        "quote": "The pharmacokinetic profiles of genistein metabolites in the sham and OVX mice are presented in , which shows significant differences between the groups for the Pmax of genistein, genistein-4′-glucuronide, genistein 7-glucuronide, 3-hydroxygenistein, and HA.",
+        "supports": "direct"
+      },
+      {
+        "quote": "G-4′G: Genistein 4′-glucuronide; G-7G: genistein 7-glucuronide; G-7S-4′G: genistein 7-sulfate-4′-glucuronide; G-4′S: genistein 4′-sulfate; E-7S: equol 7-sulfate; 3′-OHD: 3-hydroxydaidzein; 3′-OHG: 3-hydroxygenistein; DHG: dehydrogenistein; HA: hippuric acid; DOPAC: 3,4-dihydroxypenylacetic acid; BA: benzoic acid; PA: 2-(4-hydroxy phenyl)propionic acid.",
+        "supports": "direct"
+      }
+    ]
+  },
+  {
+    "id": "Ref 8",
+    "title": "Disposition of flavonoids via enteric recycling: enzyme stability affects characterization of prunetin glucuronidation across species, organs, and UGT isoforms.",
+    "year": "2007",
+    "doi": "10.1021/mp700135a",
+    "original_ids": [
+      "Ref 8"
+    ],
+    "pmid": "18052087",
+    "quotes": [
+      {
+        "quote": "Metabolism studies were conducted using expressed human UGT isoforms and microsomes/S9 fractions prepared from intestine and liver of rodents and humans. The results indicated that human intestinal microsomes were more efficient than liver microsomes in glucuronidating prunetin, but rates of metabolism were dependent on time of incubation at 37°C. Human liver and intestinal microsomes mainly produced metabolite 1 (prunetin-5-O-glucuronide) and metabolite 2 (prunetin-4’-O-glucuronide), respectively.",
+        "supports": "direct"
+      },
+      {
+        "quote": "One of the results of our conventional studies was that intestinal microsomes produced metabolite 2 (4’-O-glucuronide) at rates substantially faster than metabolite 1 (5-O-glucuronide) by intestinal or liver microsomes. Based on distribution pattern of human UGT1As, we expected that prunetin would be mainly metabolized into metabolite 2 by UGT1A8 and 1A10 since they are mainly expressed in the intestine . We expected that prunetin would be metabolized into metabolite 1 by UGT1A9 and UGT1A1 since they are abundantly expressed in the liver . The results of our study confirmed our expectations, and were consistent with the results of an earlier study showing more rapid glucuronidation of genistein (but not daidzein) in human colon microsomes than in human liver microsomes .",
+        "supports": "direct"
+      }
+    ]
+  },
+  {
+    "id": "Ref 9",
+    "title": "Metformin improves HPRT1-targeted purine metabolism and repairs NR4A1-mediated autophagic flux by modulating FoxO1 nucleocytoplasmic shuttling to treat postmenopausal osteoporosis.",
+    "year": "2024",
+    "doi": "10.1038/s41419-024-07177-5",
+    "original_ids": [
+      "Ref 9"
+    ],
+    "pmid": "39500875",
+    "quotes": [
+      {
+        "quote": "| Com_3998_pos | Genistein 4’-O-glucuronide | C21 H18 O11 | 446.0859 | 0.465087 | −1.10443 | 0.015924 | 0.888889 | 1.130713 | down |",
+        "supports": "direct"
+      }
+    ]
+  },
+  {
+    "id": "Ref 10",
+    "title": "The kinetic basis for age-associated changes in quercetin and genistein glucuronidation by rat liver microsomes.",
+    "year": "2010",
+    "doi": "10.1016/j.jnutbio.2009.02.006",
+    "original_ids": [
+      "Ref 10"
+    ],
+    "pmid": "19446449",
+    "quotes": [
+      {
+        "quote": "Consistent with Doerge, et al. [], microsomal glucuronidation incubations with genistein yielded primarily the 7-O-glucuronide of genistein (Rt 15.2 min), although with longer incubation times the 4′-O-glucuronide was observed.",
+        "supports": "direct"
+      }
+    ]
+  },
+  {
+    "id": "Ref 11",
+    "title": "Phytoestrogens and Health Effects.",
+    "year": "2023",
+    "doi": "10.3390/nu15020317",
+    "original_ids": [
+      "Ref 11"
+    ],
+    "pmid": "36678189",
+    "quotes": [
+      {
+        "quote": ". 283.71 ± 35.88 pmol/g in breast glandular tissue). The study also showed that genistein in breast glandular tissue was essentially in conjugated forms: genistein-7-O-glucuronide 268 ± 179 pmol/g; genistein-4′-O-glucuronide 86 ± 46 pmol/g; and free genistein 12 ± 2 pmol/g.",
+        "supports": "direct"
+      }
+    ]
+  },
+  {
+    "id": "Ref 12",
+    "title": "A Parent-Metabolite Middle-Out PBPK Model for Genistein and Its Glucuronide Metabolite in Rats: Integrating Liver and Enteric Metabolism with Hepatobiliary and Enteroluminal Transport to Assess Glucuronide Recycling.",
+    "year": "2025",
+    "doi": "10.3390/pharmaceutics17070814",
+    "original_ids": [
+      "Ref 12"
+    ],
+    "pmid": "40733023",
+    "quotes": [
+      {
+        "quote": "Phenolic compounds such as flavonoids are often UGT substrates as they can form mono- and di-O-glucuronides owing to their multiple hydroxyls []. Due to their hydrophilicity, glucuronides have poor passive membrane permeability and require transporters to cross the membrane. Hence, a physiologically based pharmacokinetic (PBPK) model for such a compound would need to incorporate both UGT-mediated metabolism and transporter-mediated processes [,,].",
+        "supports": "direct"
+      },
+      {
+        "quote": "Glucuronidation is the predominant pathway for GT metabolism in rats, forming GT glucuronides (GT-glu), which accounts for 90% of the total genistein plasma concentration (genistein plus all metabolites) [,,,,]",
+        "supports": "direct"
+      },
+      {
+        "quote": "**Table: Table 1** *Drug-related model parameters for Genistein and its glucuronide obtained from the literature.* | Parameter | GT | References | GT-Glu | References | | --- | --- | --- | --- | --- | | Fraction unbound in plasma (%) | 1 | [] | 71 | [] | | Blood to plasma partition coefficient | 0.88 | [] | 0.61 | [] | | pKa’s | 7.3, 10.18 and 11.68 | [] | 3.82, 8.15 and 11.24 | ADMET predictor | | Log P | 3.04 | [] | 0.34 | ADMET predictor | | Fraction unbound in liver microsome (%) | 71.8 | ADMET predictor | 100 | Assumed | | Drug intrinsic solubility (mg/mL) | 0.024 | [] | NA | | | First order absorption rate constant ka (1/h) | 4.02 | [] | NA | | | In vitro Jmax,Mrp2 (ng/h/mg) a | NA | | 111 | [] | | Km,Mrp2 (ng/mL) a | NA | | 468 | | In vitro Jmax,Mrp3 (ng/h/mg) | NA | | 486 | [] | | Km,Mrp3 (ng/mL) | NA | | 351 | | In vitro Jmax,Bcrp (ng/h/mg) | NA | | 2756 | [] | | Km,Bcrp (ng/mL) | NA | | 3054 | | In vitro Jmax,Oatp1b2 (ng/h/mg) b | NA | | 3240 | [] | | Km,Oatp1b2 (ng/mL) b | NA | | 13,512 |",
+        "supports": "direct"
+      }
+    ]
+  },
+  {
+    "id": "Ref 13",
+    "title": "Comparison of genistein metabolism in rats and humans using liver microsomes and hepatocytes.",
+    "year": "2008",
+    "doi": "10.1016/j.fct.2007.10.023",
+    "original_ids": [
+      "Ref 13"
+    ],
+    "pmid": "18063284",
+    "quotes": [
+      {
+        "quote": "In both species, liver microsomes produced the same three hydroxylated metabolites (8-OH, 6-OH and 3'-OH-genistein) whereas cryopreserved hepatocytes produced the same glucurono- and sulfo-conjugates (genistein 4'-O-sulfate 7-O-glucuronide, genistein 7-O-glucuronide, genistein 4'-O-glucuronide, genistein 7-O-sulfate and genistein 4'-O-sulfate).",
+        "supports": "direct"
+      }
+    ]
+  },
+  {
+    "id": "Ref 14",
+    "title": "PubChem Compound Summary for CID 45782816",
+    "original_ids": [
+      "Ref 21"
+    ],
+    "quotes": [
+      {
+        "quote": "Name: (2S,3S,4S,5R,6S)-6-[4-(5,7-dihydroxy-4-oxochromen-3-yl)phenoxy]-3,4,5-trihydroxyoxane-2-carboxylic acid, Formula: C21H18O11, Mass: 446.364 Da",
+        "supports": "direct"
+      }
+    ]
+  }
+]
+results_dir: /data/chen/e2e_searching_results/endogenous_metabolite_eval_run_20260419_194100/endogenous_metabolite_eval_eval_endogenous_metabolite_2d1665ab

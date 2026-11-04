@@ -1,0 +1,301 @@
+﻿case_id,topic,arm,completed,researcher_label,accepted,tokens,source
+blood_06,blood_exposome,A,True,Confirmed,True,16765,/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/critique_mechanism_validation_20261027/live/blood_06__E/result.json
+blood_06,blood_exposome,B,True,Confirmed,True,461632,/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/critique_mechanism_validation_20261027/live/blood_06__F/result.json
+blood_06,blood_exposome,C,True,Confirmed,True,5354,/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/critique_mechanism_validation_20261027/live/blood_06__G/result.json
+blood_07,blood_exposome,A,True,Insufficient Direct Evidence,False,379552,/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/critique_mechanism_validation_20261027/live/blood_07__E/result.json
+blood_07,blood_exposome,B,True,Insufficient Direct Evidence,False,371652,/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/critique_mechanism_validation_20261027/live/blood_07__F/result.json
+blood_07,blood_exposome,C,True,Insufficient Direct Evidence,False,201494,/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/critique_mechanism_validation_20261027/live/blood_07__G/result.json
+blood_08,blood_exposome,A,True,Confirmed,True,155454,/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/critique_mechanism_validation_20261027/live/blood_08__E/result.json
+blood_08,blood_exposome,B,True,Confirmed,True,165589,/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/critique_mechanism_validation_20261027/live/blood_08__F/result.json
+blood_08,blood_exposome,C,True,Confirmed,True,82069,/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/critique_mechanism_validation_20261027/live/blood_08__G/result.json
+blood_09,blood_exposome,A,True,Confirmed,True,14897,/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/critique_mechanism_validation_20261027/live/blood_09__E/result.json
+blood_09,blood_exposome,B,True,Confirmed,True,9934,/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/critique_mechanism_validation_20261027/live/blood_09__F/result.json
+blood_09,blood_exposome,C,True,Confirmed,True,7627,/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/critique_mechanism_validation_20261027/live/blood_09__G/result.json
+blood_10,blood_exposome,A,True,Insufficient Direct Evidence,False,214743,/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/critique_mechanism_validation_20261027/live/blood_10__E/result.json
+blood_10,blood_exposome,B,True,Insufficient Direct Evidence,False,471162,/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/critique_mechanism_validation_20261027/live/blood_10__F/result.json
+blood_10,blood_exposome,C,True,Insufficient Direct Evidence,False,188044,/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/critique_mechanism_validation_20261027/live/blood_10__G/result.json
+blood_11,blood_exposome,A,True,Confirmed,True,20859,/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/critique_mechanism_validation_20261027/live/blood_11__E/result.json
+blood_11,blood_exposome,B,True,Confirmed,True,10251,/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/critique_mechanism_validation_20261027/live/blood_11__F/result.json
+blood_11,blood_exposome,C,True,Confirmed,True,55963,/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/critique_mechanism_validation_20261027/live/blood_11__G/result.json
+blood_12,blood_exposome,A,True,Insufficient Direct Evidence,False,255340,/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/critique_mechanism_validation_20261027/live/blood_12__E/result.json
+blood_12,blood_exposome,B,True,Insufficient Direct Evidence,False,11976,/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/critique_mechanism_validation_20261027/live/blood_12__F/result.json
+blood_12,blood_exposome,C,True,Insufficient Direct Evidence,False,9080,/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/critique_mechanism_validation_20261027/live/blood_12__G/result.json
+blood_13,blood_exposome,A,True,Insufficient Direct Evidence,False,263518,/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/critique_mechanism_validation_20261027/live/blood_13__E/result.json
+blood_13,blood_exposome,B,True,Insufficient Direct Evidence,False,66476,/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/critique_mechanism_validation_20261027/live/blood_13__F/result.json
+blood_13,blood_exposome,C,True,Insufficient Direct Evidence,False,4139,/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/critique_mechanism_validation_20261027/live/blood_13__G/result.json
+blood_14,blood_exposome,A,True,Insufficient Direct Evidence,False,8789,/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/critique_mechanism_validation_20261027/live/blood_14__E/result.json
+blood_14,blood_exposome,B,True,Insufficient Direct Evidence,False,5249,/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/critique_mechanism_validation_20261027/live/blood_14__F/result.json
+blood_14,blood_exposome,C,True,Insufficient Direct Evidence,False,3894,/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/critique_mechanism_validation_20261027/live/blood_14__G/result.json
+blood_15,blood_exposome,A,True,Insufficient Direct Evidence,False,219154,/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/critique_mechanism_validation_20261027/live/blood_15__E/result.json
+blood_15,blood_exposome,B,True,Insufficient Direct Evidence,False,4957,/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/critique_mechanism_validation_20261027/live/blood_15__F/result.json
+blood_15,blood_exposome,C,True,Insufficient Direct Evidence,False,3607,/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/critique_mechanism_validation_20261027/live/blood_15__G/result.json
+blood_16,blood_exposome,A,True,Insufficient Direct Evidence,False,191709,/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/critique_mechanism_validation_20261027/live/blood_16__E/result.json
+blood_16,blood_exposome,B,True,Insufficient Direct Evidence,False,4919,/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/critique_mechanism_validation_20261027/live/blood_16__F/result.json
+blood_16,blood_exposome,C,True,Insufficient Direct Evidence,False,191278,/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/critique_mechanism_validation_20261027/live/blood_16__G/result.json
+blood_17,blood_exposome,A,True,Confirmed,True,6993,/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/critique_mechanism_validation_20261027/live/blood_17__E/result.json
+blood_17,blood_exposome,B,True,Confirmed,True,4528,/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/critique_mechanism_validation_20261027/live/blood_17__F/result.json
+blood_17,blood_exposome,C,True,Confirmed,True,3574,/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/critique_mechanism_validation_20261027/live/blood_17__G/result.json
+blood_18,blood_exposome,A,True,Insufficient Direct Evidence,False,316045,/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/critique_mechanism_validation_20261027/live/blood_18__E/result.json
+blood_18,blood_exposome,B,True,Insufficient Direct Evidence,False,313700,/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/critique_mechanism_validation_20261027/live/blood_18__F/result.json
+blood_18,blood_exposome,C,True,Confirmed,False,280568,/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/critique_mechanism_validation_20261027/live/blood_18__G/result.json
+blood_19,blood_exposome,A,True,Insufficient Direct Evidence,False,182790,/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/critique_mechanism_validation_20261027/live/blood_19__E/result.json
+blood_19,blood_exposome,B,True,Insufficient Direct Evidence,False,4988,/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/critique_mechanism_validation_20261027/live/blood_19__F/result.json
+blood_19,blood_exposome,C,True,Insufficient Direct Evidence,False,3888,/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/critique_mechanism_validation_20261027/live/blood_19__G/result.json
+blood_20,blood_exposome,A,True,Insufficient Direct Evidence,False,211269,/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/critique_mechanism_validation_20261027/live/blood_20__E/result.json
+blood_20,blood_exposome,B,True,Insufficient Direct Evidence,False,5516,/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/critique_mechanism_validation_20261027/live/blood_20__F/result.json
+blood_20,blood_exposome,C,True,Insufficient Direct Evidence,False,4053,/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/critique_mechanism_validation_20261027/live/blood_20__G/result.json
+blood_21,blood_exposome,A,True,Confirmed,False,261432,/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/critique_mechanism_validation_20261027/live/blood_21__E/result.json
+blood_21,blood_exposome,B,True,Suspected,False,204965,/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/critique_mechanism_validation_20261027/live/blood_21__F/result.json
+blood_21,blood_exposome,C,True,Confirmed,False,378383,/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/critique_mechanism_validation_20261027/live/blood_21__G/result.json
+blood_28,blood_exposome,A,True,Confirmed,True,8311,/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/critique_mechanism_validation_20261027/live/blood_28__E/result.json
+blood_28,blood_exposome,B,True,Confirmed,True,5891,/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/critique_mechanism_validation_20261027/live/blood_28__F/result.json
+blood_28,blood_exposome,C,True,Confirmed,True,4402,/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/critique_mechanism_validation_20261027/live/blood_28__G/result.json
+blood_30,blood_exposome,A,True,Confirmed,True,9610,/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/critique_mechanism_validation_20261027/live/blood_30__E/result.json
+blood_30,blood_exposome,B,True,Confirmed,True,7788,/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/critique_mechanism_validation_20261027/live/blood_30__F/result.json
+blood_30,blood_exposome,C,True,Confirmed,True,5200,/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/critique_mechanism_validation_20261027/live/blood_30__G/result.json
+blood_34,blood_exposome,A,True,Confirmed,True,8480,/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/critique_mechanism_validation_20261027/live/blood_34__E/result.json
+blood_34,blood_exposome,B,True,Confirmed,True,5675,/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/critique_mechanism_validation_20261027/live/blood_34__F/result.json
+blood_34,blood_exposome,C,True,Confirmed,True,4193,/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/critique_mechanism_validation_20261027/live/blood_34__G/result.json
+blood_35,blood_exposome,A,True,Confirmed,True,7896,/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/critique_mechanism_validation_20261027/live/blood_35__E/result.json
+blood_35,blood_exposome,B,True,Confirmed,True,5995,/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/critique_mechanism_validation_20261027/live/blood_35__F/result.json
+blood_35,blood_exposome,C,True,Confirmed,True,4359,/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/critique_mechanism_validation_20261027/live/blood_35__G/result.json
+dbp_06,dbp,A,True,Insufficient Direct Evidence,False,180976,/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/critique_mechanism_validation_20261027/live/dbp_06__E/result.json
+dbp_06,dbp,B,True,Insufficient Direct Evidence,False,5167,/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/critique_mechanism_validation_20261027/live/dbp_06__F/result.json
+dbp_06,dbp,C,True,Insufficient Direct Evidence,False,3895,/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/critique_mechanism_validation_20261027/live/dbp_06__G/result.json
+dbp_07,dbp,A,True,Confirmed,True,10368,/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/critique_mechanism_validation_20261027/live/dbp_07__E/result.json
+dbp_07,dbp,B,True,Confirmed,True,7773,/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/critique_mechanism_validation_20261027/live/dbp_07__F/result.json
+dbp_07,dbp,C,True,Confirmed,True,6132,/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/critique_mechanism_validation_20261027/live/dbp_07__G/result.json
+dbp_08,dbp,A,True,Confirmed,True,8824,/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/critique_mechanism_validation_20261027/live/dbp_08__E/result.json
+dbp_08,dbp,B,True,Confirmed,True,135085,/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/critique_mechanism_validation_20261027/live/dbp_08__F/result.json
+dbp_08,dbp,C,True,Confirmed,True,5105,/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/critique_mechanism_validation_20261027/live/dbp_08__G/result.json
+dbp_09,dbp,A,True,Insufficient Direct Evidence,False,211761,/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/critique_mechanism_validation_20261027/live/dbp_09__E/result.json
+dbp_09,dbp,B,True,Insufficient Direct Evidence,False,5873,/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/critique_mechanism_validation_20261027/live/dbp_09__F/result.json
+dbp_09,dbp,C,True,Insufficient Direct Evidence,False,4040,/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/critique_mechanism_validation_20261027/live/dbp_09__G/result.json
+dbp_10,dbp,A,True,Insufficient Direct Evidence,False,250119,/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/critique_mechanism_validation_20261027/live/dbp_10__E/result.json
+dbp_10,dbp,B,True,Insufficient Direct Evidence,False,5286,/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/critique_mechanism_validation_20261027/live/dbp_10__F/result.json
+dbp_10,dbp,C,True,Insufficient Direct Evidence,False,3425,/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/critique_mechanism_validation_20261027/live/dbp_10__G/result.json
+dbp_11,dbp,A,True,Confirmed,True,8093,/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/critique_mechanism_validation_20261027/live/dbp_11__E/result.json
+dbp_11,dbp,B,True,Confirmed,True,5616,/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/critique_mechanism_validation_20261027/live/dbp_11__F/result.json
+dbp_11,dbp,C,True,Confirmed,True,4000,/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/critique_mechanism_validation_20261027/live/dbp_11__G/result.json
+dbp_12,dbp,A,True,Confirmed,True,10699,/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/critique_mechanism_validation_20261027/live/dbp_12__E/result.json
+dbp_12,dbp,B,True,Confirmed,True,8012,/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/critique_mechanism_validation_20261027/live/dbp_12__F/result.json
+dbp_12,dbp,C,True,Confirmed,True,6507,/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/critique_mechanism_validation_20261027/live/dbp_12__G/result.json
+dbp_13,dbp,A,True,Confirmed,True,88434,/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/critique_mechanism_validation_20261027/live/dbp_13__E/result.json
+dbp_13,dbp,B,True,Confirmed,True,386654,/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/critique_mechanism_validation_20261027/live/dbp_13__F/result.json
+dbp_13,dbp,C,True,Confirmed,True,78919,/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/critique_mechanism_validation_20261027/live/dbp_13__G/result.json
+dbp_14,dbp,A,True,Insufficient Direct Evidence,False,422884,/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/critique_mechanism_validation_20261027/live/dbp_14__E/result.json
+dbp_14,dbp,B,True,Insufficient Direct Evidence,False,557486,/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/critique_mechanism_validation_20261027/live/dbp_14__F/result.json
+dbp_14,dbp,C,True,Insufficient Direct Evidence,False,218346,/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/critique_mechanism_validation_20261027/live/dbp_14__G/result.json
+dbp_15,dbp,A,True,Confirmed,True,9197,/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/critique_mechanism_validation_20261027/live/dbp_15__E/result.json
+dbp_15,dbp,B,True,Confirmed,True,6763,/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/critique_mechanism_validation_20261027/live/dbp_15__F/result.json
+dbp_15,dbp,C,True,Confirmed,True,88738,/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/critique_mechanism_validation_20261027/live/dbp_15__G/result.json
+dbp_16,dbp,A,True,Insufficient Direct Evidence,False,369420,/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/critique_mechanism_validation_20261027/live/dbp_16__E/result.json
+dbp_16,dbp,B,True,Insufficient Direct Evidence,False,5388,/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/critique_mechanism_validation_20261027/live/dbp_16__F/result.json
+dbp_16,dbp,C,True,Insufficient Direct Evidence,False,4019,/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/critique_mechanism_validation_20261027/live/dbp_16__G/result.json
+dbp_17,dbp,A,True,Insufficient Direct Evidence,False,212569,/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/critique_mechanism_validation_20261027/live/dbp_17__E/result.json
+dbp_17,dbp,B,True,Insufficient Direct Evidence,False,5577,/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/critique_mechanism_validation_20261027/live/dbp_17__F/result.json
+dbp_17,dbp,C,True,Insufficient Direct Evidence,False,4040,/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/critique_mechanism_validation_20261027/live/dbp_17__G/result.json
+dbp_19,dbp,A,True,Confirmed,False,281355,/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/critique_mechanism_validation_20261027/live/dbp_19__E/result.json
+dbp_19,dbp,B,True,Insufficient Direct Evidence,False,618506,/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/critique_mechanism_validation_20261027/live/dbp_19__F/result.json
+dbp_19,dbp,C,True,Insufficient Direct Evidence,False,529927,/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/critique_mechanism_validation_20261027/live/dbp_19__G/result.json
+dbp_20,dbp,A,True,Confirmed,False,50713,/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/critique_mechanism_validation_20261027/live/dbp_20__E/result.json
+dbp_20,dbp,B,True,Confirmed,True,71511,/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/critique_mechanism_validation_20261027/live/dbp_20__F/result.json
+dbp_20,dbp,C,True,Confirmed,True,5353,/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/critique_mechanism_validation_20261027/live/dbp_20__G/result.json
+dbp_22,dbp,A,True,Insufficient Direct Evidence,False,197737,/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/critique_mechanism_validation_20261027/live/dbp_22__E/result.json
+dbp_22,dbp,B,True,Insufficient Direct Evidence,False,5022,/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/critique_mechanism_validation_20261027/live/dbp_22__F/result.json
+dbp_22,dbp,C,True,Insufficient Direct Evidence,False,3943,/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/critique_mechanism_validation_20261027/live/dbp_22__G/result.json
+dbp_23,dbp,A,True,Insufficient Direct Evidence,False,267609,/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/critique_mechanism_validation_20261027/live/dbp_23__E/result.json
+dbp_23,dbp,B,True,Insufficient Direct Evidence,False,4772,/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/critique_mechanism_validation_20261027/live/dbp_23__F/result.json
+dbp_23,dbp,C,True,Insufficient Direct Evidence,False,3925,/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/critique_mechanism_validation_20261027/live/dbp_23__G/result.json
+dbp_24,dbp,A,True,Insufficient Direct Evidence,False,208029,/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/critique_mechanism_validation_20261027/live/dbp_24__E/result.json
+dbp_24,dbp,B,True,Insufficient Direct Evidence,False,5520,/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/critique_mechanism_validation_20261027/live/dbp_24__F/result.json
+dbp_24,dbp,C,True,Insufficient Direct Evidence,False,3898,/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/critique_mechanism_validation_20261027/live/dbp_24__G/result.json
+dbp_25,dbp,A,True,Confirmed,False,146071,/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/critique_mechanism_validation_20261027/live/dbp_25__E/result.json
+dbp_25,dbp,B,True,Confirmed,False,379453,/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/critique_mechanism_validation_20261027/live/dbp_25__F/result.json
+dbp_25,dbp,C,True,Suspected,False,237320,/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/critique_mechanism_validation_20261027/live/dbp_25__G/result.json
+dbp_26,dbp,A,True,Confirmed,False,323425,/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/critique_mechanism_validation_20261027/live/dbp_26__E/result.json
+dbp_26,dbp,B,True,Confirmed,False,465611,/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/critique_mechanism_validation_20261027/live/dbp_26__F/result.json
+dbp_26,dbp,C,True,Insufficient Direct Evidence,False,240118,/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/critique_mechanism_validation_20261027/live/dbp_26__G/result.json
+dbp_27,dbp,A,True,Insufficient Direct Evidence,False,228381,/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/critique_mechanism_validation_20261027/live/dbp_27__E/result.json
+dbp_27,dbp,B,True,Insufficient Direct Evidence,False,6115,/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/critique_mechanism_validation_20261027/live/dbp_27__F/result.json
+dbp_27,dbp,C,True,Insufficient Direct Evidence,False,4292,/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/critique_mechanism_validation_20261027/live/dbp_27__G/result.json
+drug_06,drug_compounds,A,True,Confirmed,True,13595,/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/critique_mechanism_validation_20261027/live/drug_06__E/result.json
+drug_06,drug_compounds,B,True,Confirmed,True,9404,/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/critique_mechanism_validation_20261027/live/drug_06__F/result.json
+drug_06,drug_compounds,C,True,Confirmed,True,7019,/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/critique_mechanism_validation_20261027/live/drug_06__G/result.json
+drug_07,drug_compounds,A,True,Insufficient Direct Evidence,False,299655,/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/critique_mechanism_validation_20261027/live/drug_07__E/result.json
+drug_07,drug_compounds,B,True,Insufficient Direct Evidence,False,6847,/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/critique_mechanism_validation_20261027/live/drug_07__F/result.json
+drug_07,drug_compounds,C,True,Insufficient Direct Evidence,False,5117,/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/critique_mechanism_validation_20261027/live/drug_07__G/result.json
+drug_08,drug_compounds,A,True,Confirmed,True,10688,/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/critique_mechanism_validation_20261027/live/drug_08__E/result.json
+drug_08,drug_compounds,B,True,Confirmed,False,190823,/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/critique_mechanism_validation_20261027/live/drug_08__F/result.json
+drug_08,drug_compounds,C,True,Confirmed,False,183932,/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/critique_mechanism_validation_20261027/live/drug_08__G/result.json
+drug_09,drug_compounds,A,True,Confirmed,False,204107,/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/critique_mechanism_validation_20261027/live/drug_09__E/result.json
+drug_09,drug_compounds,B,True,Confirmed,False,261413,/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/critique_mechanism_validation_20261027/live/drug_09__F/result.json
+drug_09,drug_compounds,C,True,Confirmed,False,650733,/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/critique_mechanism_validation_20261027/live/drug_09__G/result.json
+drug_11,drug_compounds,A,True,Confirmed,True,11290,/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/critique_mechanism_validation_20261027/live/drug_11__E/result.json
+drug_11,drug_compounds,B,True,Confirmed,True,8141,/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/critique_mechanism_validation_20261027/live/drug_11__F/result.json
+drug_11,drug_compounds,C,True,Confirmed,True,6537,/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/critique_mechanism_validation_20261027/live/drug_11__G/result.json
+drug_12,drug_compounds,A,True,Confirmed,True,11789,/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/critique_mechanism_validation_20261027/live/drug_12__E/result.json
+drug_12,drug_compounds,B,True,Suspected,False,279850,/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/critique_mechanism_validation_20261027/live/drug_12__F/result.json
+drug_12,drug_compounds,C,True,Confirmed,False,178061,/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/critique_mechanism_validation_20261027/live/drug_12__G/result.json
+drug_14,drug_compounds,A,True,Confirmed,False,150589,/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/critique_mechanism_validation_20261027/live/drug_14__E/result.json
+drug_14,drug_compounds,B,True,Suspected,False,375836,/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/critique_mechanism_validation_20261027/live/drug_14__F/result.json
+drug_14,drug_compounds,C,True,Confirmed,False,277173,/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/critique_mechanism_validation_20261027/live/drug_14__G/result.json
+drug_15,drug_compounds,A,True,Confirmed,True,12925,/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/critique_mechanism_validation_20261027/live/drug_15__E/result.json
+drug_15,drug_compounds,B,True,Confirmed,False,267258,/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/critique_mechanism_validation_20261027/live/drug_15__F/result.json
+drug_15,drug_compounds,C,True,Confirmed,False,210788,/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/critique_mechanism_validation_20261027/live/drug_15__G/result.json
+drug_16,drug_compounds,A,True,Confirmed,True,11136,/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/critique_mechanism_validation_20261027/live/drug_16__E/result.json
+drug_16,drug_compounds,B,True,Confirmed,True,8270,/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/critique_mechanism_validation_20261027/live/drug_16__F/result.json
+drug_16,drug_compounds,C,True,Confirmed,True,6138,/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/critique_mechanism_validation_20261027/live/drug_16__G/result.json
+drug_17,drug_compounds,A,True,Confirmed,True,9371,/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/critique_mechanism_validation_20261027/live/drug_17__E/result.json
+drug_17,drug_compounds,B,True,Confirmed,True,6525,/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/critique_mechanism_validation_20261027/live/drug_17__F/result.json
+drug_17,drug_compounds,C,True,Confirmed,True,4741,/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/critique_mechanism_validation_20261027/live/drug_17__G/result.json
+drug_18,drug_compounds,A,True,Confirmed,True,10804,/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/critique_mechanism_validation_20261027/live/drug_18__E/result.json
+drug_18,drug_compounds,B,True,Suspected,False,144251,/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/critique_mechanism_validation_20261027/live/drug_18__F/result.json
+drug_18,drug_compounds,C,True,Confirmed,False,234331,/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/critique_mechanism_validation_20261027/live/drug_18__G/result.json
+drug_19,drug_compounds,A,True,Insufficient Direct Evidence,False,738361,/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/critique_mechanism_validation_20261027/live/drug_19__E/result.json
+drug_19,drug_compounds,B,True,Confirmed,False,329018,/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/critique_mechanism_validation_20261027/live/drug_19__F/result.json
+drug_19,drug_compounds,C,True,Suspected,False,737856,/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/critique_mechanism_validation_20261027/live/drug_19__G/result.json
+drug_20,drug_compounds,A,True,Confirmed,False,193327,/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/critique_mechanism_validation_20261027/live/drug_20__E/result.json
+drug_20,drug_compounds,B,True,Confirmed,True,9270,/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/critique_mechanism_validation_20261027/live/drug_20__F/result.json
+drug_20,drug_compounds,C,True,Confirmed,True,6834,/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/critique_mechanism_validation_20261027/live/drug_20__G/result.json
+drug_21,drug_compounds,A,True,Confirmed,True,11139,/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/critique_mechanism_validation_20261027/live/drug_21__E/result.json
+drug_21,drug_compounds,B,True,Confirmed,True,7331,/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/critique_mechanism_validation_20261027/live/drug_21__F/result.json
+drug_21,drug_compounds,C,True,Confirmed,True,95061,/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/critique_mechanism_validation_20261027/live/drug_21__G/result.json
+drug_24,drug_compounds,A,True,Insufficient Direct Evidence,False,267942,/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/critique_mechanism_validation_20261027/live/drug_24__E/result.json
+drug_24,drug_compounds,B,True,Confirmed,False,170155,/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/critique_mechanism_validation_20261027/live/drug_24__F/result.json
+drug_24,drug_compounds,C,True,Insufficient Direct Evidence,False,187401,/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/critique_mechanism_validation_20261027/live/drug_24__G/result.json
+drug_28,drug_compounds,A,True,Confirmed,False,111429,/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/critique_mechanism_validation_20261027/live/drug_28__E/result.json
+drug_28,drug_compounds,B,True,Confirmed,False,166104,/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/critique_mechanism_validation_20261027/live/drug_28__F/result.json
+drug_28,drug_compounds,C,True,Suspected,False,290353,/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/critique_mechanism_validation_20261027/live/drug_28__G/result.json
+drug_31,drug_compounds,A,True,Confirmed,False,235098,/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/critique_mechanism_validation_20261027/live/drug_31__E/result.json
+drug_31,drug_compounds,B,True,Suspected,False,1072136,/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/critique_mechanism_validation_20261027/live/drug_31__F/result.json
+drug_31,drug_compounds,C,True,Confirmed,False,376475,/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/critique_mechanism_validation_20261027/live/drug_31__G/result.json
+drug_33,drug_compounds,A,True,Insufficient Direct Evidence,False,577820,/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/critique_mechanism_validation_20261027/live/drug_33__E/result.json
+drug_33,drug_compounds,B,True,Insufficient Direct Evidence,False,5648,/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/critique_mechanism_validation_20261027/live/drug_33__F/result.json
+drug_33,drug_compounds,C,True,Insufficient Direct Evidence,False,3900,/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/critique_mechanism_validation_20261027/live/drug_33__G/result.json
+drug_35,drug_compounds,A,True,Confirmed,True,9864,/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/critique_mechanism_validation_20261027/live/drug_35__E/result.json
+drug_35,drug_compounds,B,True,Confirmed,False,161836,/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/critique_mechanism_validation_20261027/live/drug_35__F/result.json
+drug_35,drug_compounds,C,True,Confirmed,True,79874,/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/critique_mechanism_validation_20261027/live/drug_35__G/result.json
+drug_37,drug_compounds,A,True,Confirmed,True,10854,/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/critique_mechanism_validation_20261027/live/drug_37__E/result.json
+drug_37,drug_compounds,B,True,Confirmed,True,365718,/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/critique_mechanism_validation_20261027/live/drug_37__F/result.json
+drug_37,drug_compounds,C,True,Confirmed,False,298184,/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/critique_mechanism_validation_20261027/live/drug_37__G/result.json
+endogenous_06,human_endogenous_metabolites,A,True,Insufficient Direct Evidence,False,318241,/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/critique_mechanism_validation_20261027/live/endogenous_06__E/result.json
+endogenous_06,human_endogenous_metabolites,B,True,Insufficient Direct Evidence,False,571927,/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/critique_mechanism_validation_20261027/live/endogenous_06__F/result.json
+endogenous_06,human_endogenous_metabolites,C,True,Insufficient Direct Evidence,False,3762,/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/critique_mechanism_validation_20261027/live/endogenous_06__G/result.json
+endogenous_08,human_endogenous_metabolites,A,True,Confirmed,True,12107,/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/critique_mechanism_validation_20261027/live/endogenous_08__E/result.json
+endogenous_08,human_endogenous_metabolites,B,True,Confirmed,True,9081,/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/critique_mechanism_validation_20261027/live/endogenous_08__F/result.json
+endogenous_08,human_endogenous_metabolites,C,True,Suspected,False,108026,/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/critique_mechanism_validation_20261027/live/endogenous_08__G/result.json
+endogenous_09,human_endogenous_metabolites,A,True,Explicit Negative Evidence,False,223986,/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/critique_mechanism_validation_20261027/live/endogenous_09__E/result.json
+endogenous_09,human_endogenous_metabolites,B,True,Insufficient Direct Evidence,False,284519,/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/critique_mechanism_validation_20261027/live/endogenous_09__F/result.json
+endogenous_09,human_endogenous_metabolites,C,True,Insufficient Direct Evidence,False,215806,/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/critique_mechanism_validation_20261027/live/endogenous_09__G/result.json
+endogenous_10,human_endogenous_metabolites,A,True,Confirmed,True,14765,/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/critique_mechanism_validation_20261027/live/endogenous_10__E/result.json
+endogenous_10,human_endogenous_metabolites,B,True,Confirmed,True,11450,/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/critique_mechanism_validation_20261027/live/endogenous_10__F/result.json
+endogenous_10,human_endogenous_metabolites,C,True,Confirmed,True,9466,/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/critique_mechanism_validation_20261027/live/endogenous_10__G/result.json
+endogenous_11,human_endogenous_metabolites,A,True,Insufficient Direct Evidence,False,435707,/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/critique_mechanism_validation_20261027/live/endogenous_11__E/result.json
+endogenous_11,human_endogenous_metabolites,B,True,Insufficient Direct Evidence,False,312341,/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/critique_mechanism_validation_20261027/live/endogenous_11__F/result.json
+endogenous_11,human_endogenous_metabolites,C,True,Suspected,False,5904,/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/critique_mechanism_validation_20261027/live/endogenous_11__G/result.json
+endogenous_12,human_endogenous_metabolites,A,True,Confirmed,False,367198,/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/critique_mechanism_validation_20261027/live/endogenous_12__E/result.json
+endogenous_12,human_endogenous_metabolites,B,True,Insufficient Direct Evidence,False,434971,/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/critique_mechanism_validation_20261027/live/endogenous_12__F/result.json
+endogenous_12,human_endogenous_metabolites,C,True,Insufficient Direct Evidence,False,638863,/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/critique_mechanism_validation_20261027/live/endogenous_12__G/result.json
+endogenous_13,human_endogenous_metabolites,A,True,Confirmed,True,11213,/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/critique_mechanism_validation_20261027/live/endogenous_13__E/result.json
+endogenous_13,human_endogenous_metabolites,B,True,Confirmed,False,235042,/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/critique_mechanism_validation_20261027/live/endogenous_13__F/result.json
+endogenous_13,human_endogenous_metabolites,C,True,Confirmed,True,5910,/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/critique_mechanism_validation_20261027/live/endogenous_13__G/result.json
+endogenous_14,human_endogenous_metabolites,A,True,Confirmed,True,228883,/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/critique_mechanism_validation_20261027/live/endogenous_14__E/result.json
+endogenous_14,human_endogenous_metabolites,B,True,Confirmed,False,476197,/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/critique_mechanism_validation_20261027/live/endogenous_14__F/result.json
+endogenous_14,human_endogenous_metabolites,C,True,Suspected,False,5526,/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/critique_mechanism_validation_20261027/live/endogenous_14__G/result.json
+endogenous_15,human_endogenous_metabolites,A,True,Insufficient Direct Evidence,False,326886,/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/critique_mechanism_validation_20261027/live/endogenous_15__E/result.json
+endogenous_15,human_endogenous_metabolites,B,True,Explicit Negative Evidence,False,218544,/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/critique_mechanism_validation_20261027/live/endogenous_15__F/result.json
+endogenous_15,human_endogenous_metabolites,C,True,Insufficient Direct Evidence,False,468998,/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/critique_mechanism_validation_20261027/live/endogenous_15__G/result.json
+endogenous_16,human_endogenous_metabolites,A,True,Confirmed,True,10659,/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/critique_mechanism_validation_20261027/live/endogenous_16__E/result.json
+endogenous_16,human_endogenous_metabolites,B,True,Suspected,False,87818,/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/critique_mechanism_validation_20261027/live/endogenous_16__F/result.json
+endogenous_16,human_endogenous_metabolites,C,True,Confirmed,False,585794,/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/critique_mechanism_validation_20261027/live/endogenous_16__G/result.json
+endogenous_17,human_endogenous_metabolites,A,True,Insufficient Direct Evidence,False,334029,/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/critique_mechanism_validation_20261027/live/endogenous_17__E/result.json
+endogenous_17,human_endogenous_metabolites,B,True,Insufficient Direct Evidence,False,5287,/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/critique_mechanism_validation_20261027/live/endogenous_17__F/result.json
+endogenous_17,human_endogenous_metabolites,C,True,Insufficient Direct Evidence,False,3771,/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/critique_mechanism_validation_20261027/live/endogenous_17__G/result.json
+endogenous_18,human_endogenous_metabolites,A,True,Insufficient Direct Evidence,False,412716,/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/critique_mechanism_validation_20261027/live/endogenous_18__E/result.json
+endogenous_18,human_endogenous_metabolites,B,True,Insufficient Direct Evidence,False,7737,/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/critique_mechanism_validation_20261027/live/endogenous_18__F/result.json
+endogenous_18,human_endogenous_metabolites,C,True,Insufficient Direct Evidence,False,5349,/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/critique_mechanism_validation_20261027/live/endogenous_18__G/result.json
+endogenous_19,human_endogenous_metabolites,A,True,Insufficient Direct Evidence,False,231823,/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/critique_mechanism_validation_20261027/live/endogenous_19__E/result.json
+endogenous_19,human_endogenous_metabolites,B,True,Insufficient Direct Evidence,False,6688,/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/critique_mechanism_validation_20261027/live/endogenous_19__F/result.json
+endogenous_19,human_endogenous_metabolites,C,True,Insufficient Direct Evidence,False,4602,/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/critique_mechanism_validation_20261027/live/endogenous_19__G/result.json
+endogenous_20,human_endogenous_metabolites,A,True,Confirmed,True,12840,/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/critique_mechanism_validation_20261027/live/endogenous_20__E/result.json
+endogenous_20,human_endogenous_metabolites,B,True,Confirmed,True,9589,/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/critique_mechanism_validation_20261027/live/endogenous_20__F/result.json
+endogenous_20,human_endogenous_metabolites,C,True,Confirmed,True,7616,/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/critique_mechanism_validation_20261027/live/endogenous_20__G/result.json
+endogenous_25,human_endogenous_metabolites,A,True,Confirmed,False,419815,/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/critique_mechanism_validation_20261027/live/endogenous_25__E/result.json
+endogenous_25,human_endogenous_metabolites,B,True,Insufficient Direct Evidence,False,6220,/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/critique_mechanism_validation_20261027/live/endogenous_25__F/result.json
+endogenous_25,human_endogenous_metabolites,C,True,Insufficient Direct Evidence,False,4269,/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/critique_mechanism_validation_20261027/live/endogenous_25__G/result.json
+endogenous_26,human_endogenous_metabolites,A,True,Confirmed,False,318261,/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/critique_mechanism_validation_20261027/live/endogenous_26__E/result.json
+endogenous_26,human_endogenous_metabolites,B,True,Suspected,False,600278,/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/critique_mechanism_validation_20261027/live/endogenous_26__F/result.json
+endogenous_26,human_endogenous_metabolites,C,True,Insufficient Direct Evidence,False,433723,/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/critique_mechanism_validation_20261027/live/endogenous_26__G/result.json
+endogenous_28,human_endogenous_metabolites,A,True,Confirmed,False,373871,/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/critique_mechanism_validation_20261027/live/endogenous_28__E/result.json
+endogenous_28,human_endogenous_metabolites,B,True,Suspected,False,299386,/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/critique_mechanism_validation_20261027/live/endogenous_28__F/result.json
+endogenous_28,human_endogenous_metabolites,C,True,Confirmed,False,204166,/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/critique_mechanism_validation_20261027/live/endogenous_28__G/result.json
+endogenous_29,human_endogenous_metabolites,A,True,Confirmed,True,9890,/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/critique_mechanism_validation_20261027/live/endogenous_29__E/result.json
+endogenous_29,human_endogenous_metabolites,B,True,Confirmed,True,6761,/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/critique_mechanism_validation_20261027/live/endogenous_29__F/result.json
+endogenous_29,human_endogenous_metabolites,C,True,Confirmed,True,4654,/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/critique_mechanism_validation_20261027/live/endogenous_29__G/result.json
+endogenous_30,human_endogenous_metabolites,A,True,Insufficient Direct Evidence,False,243066,/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/critique_mechanism_validation_20261027/live/endogenous_30__E/result.json
+endogenous_30,human_endogenous_metabolites,B,True,Insufficient Direct Evidence,False,289637,/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/critique_mechanism_validation_20261027/live/endogenous_30__F/result.json
+endogenous_30,human_endogenous_metabolites,C,True,Insufficient Direct Evidence,False,5544,/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/critique_mechanism_validation_20261027/live/endogenous_30__G/result.json
+endogenous_32,human_endogenous_metabolites,A,True,Insufficient Direct Evidence,False,493092,/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/critique_mechanism_validation_20261027/live/endogenous_32__E/result.json
+endogenous_32,human_endogenous_metabolites,B,True,Insufficient Direct Evidence,False,5997,/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/critique_mechanism_validation_20261027/live/endogenous_32__F/result.json
+endogenous_32,human_endogenous_metabolites,C,True,Insufficient Direct Evidence,False,4112,/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/critique_mechanism_validation_20261027/live/endogenous_32__G/result.json
+microbial_06,microbial_natural_products,A,True,Confirmed,False,132218,/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/critique_mechanism_validation_20261027/live/microbial_06__E/result.json
+microbial_06,microbial_natural_products,B,True,Confirmed,False,272483,/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/critique_mechanism_validation_20261027/live/microbial_06__F/result.json
+microbial_06,microbial_natural_products,C,True,Confirmed,False,1176177,/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/critique_mechanism_validation_20261027/live/microbial_06__G/result.json
+microbial_07,microbial_natural_products,A,True,Confirmed,True,9943,/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/critique_mechanism_validation_20261027/live/microbial_07__E/result.json
+microbial_07,microbial_natural_products,B,True,Confirmed,True,7203,/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/critique_mechanism_validation_20261027/live/microbial_07__F/result.json
+microbial_07,microbial_natural_products,C,True,Confirmed,True,5734,/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/critique_mechanism_validation_20261027/live/microbial_07__G/result.json
+microbial_08,microbial_natural_products,A,True,Insufficient Direct Evidence,False,406783,/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/critique_mechanism_validation_20261027/live/microbial_08__E/result.json
+microbial_08,microbial_natural_products,B,True,Insufficient Direct Evidence,False,410107,/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/critique_mechanism_validation_20261027/live/microbial_08__F/result.json
+microbial_08,microbial_natural_products,C,True,Insufficient Direct Evidence,False,314812,/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/critique_mechanism_validation_20261027/live/microbial_08__G/result.json
+microbial_09,microbial_natural_products,A,True,Confirmed,True,9820,/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/critique_mechanism_validation_20261027/live/microbial_09__E/result.json
+microbial_09,microbial_natural_products,B,True,Confirmed,True,6211,/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/critique_mechanism_validation_20261027/live/microbial_09__F/result.json
+microbial_09,microbial_natural_products,C,True,Confirmed,True,4955,/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/critique_mechanism_validation_20261027/live/microbial_09__G/result.json
+microbial_10,microbial_natural_products,A,True,Confirmed,True,9708,/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/critique_mechanism_validation_20261027/live/microbial_10__E/result.json
+microbial_10,microbial_natural_products,B,True,Confirmed,True,6579,/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/critique_mechanism_validation_20261027/live/microbial_10__F/result.json
+microbial_10,microbial_natural_products,C,True,Confirmed,True,5161,/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/critique_mechanism_validation_20261027/live/microbial_10__G/result.json
+microbial_11,microbial_natural_products,A,True,Confirmed,True,9126,/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/critique_mechanism_validation_20261027/live/microbial_11__E/result.json
+microbial_11,microbial_natural_products,B,True,Confirmed,True,6258,/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/critique_mechanism_validation_20261027/live/microbial_11__F/result.json
+microbial_11,microbial_natural_products,C,True,Confirmed,True,4581,/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/critique_mechanism_validation_20261027/live/microbial_11__G/result.json
+microbial_12,microbial_natural_products,A,True,Confirmed,True,8707,/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/critique_mechanism_validation_20261027/live/microbial_12__E/result.json
+microbial_12,microbial_natural_products,B,True,Confirmed,True,5470,/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/critique_mechanism_validation_20261027/live/microbial_12__F/result.json
+microbial_12,microbial_natural_products,C,True,Confirmed,True,4187,/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/critique_mechanism_validation_20261027/live/microbial_12__G/result.json
+microbial_13,microbial_natural_products,A,True,Confirmed,True,305459,/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/critique_mechanism_validation_20261027/live/microbial_13__E/result.json
+microbial_13,microbial_natural_products,B,True,Confirmed,True,371824,/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/critique_mechanism_validation_20261027/live/microbial_13__F/result.json
+microbial_13,microbial_natural_products,C,True,Confirmed,True,1136686,/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/critique_mechanism_validation_20261027/live/microbial_13__G/result.json
+microbial_14,microbial_natural_products,A,True,Suspected,False,415821,/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/critique_mechanism_validation_20261027/live/microbial_14__E/result.json
+microbial_14,microbial_natural_products,B,True,Insufficient Direct Evidence,False,5801,/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/critique_mechanism_validation_20261027/live/microbial_14__F/result.json
+microbial_14,microbial_natural_products,C,True,Insufficient Direct Evidence,False,4138,/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/critique_mechanism_validation_20261027/live/microbial_14__G/result.json
+microbial_15,microbial_natural_products,A,True,Insufficient Direct Evidence,False,319795,/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/critique_mechanism_validation_20261027/live/microbial_15__E/result.json
+microbial_15,microbial_natural_products,B,True,Suspected,False,277155,/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/critique_mechanism_validation_20261027/live/microbial_15__F/result.json
+microbial_15,microbial_natural_products,C,True,Insufficient Direct Evidence,False,260754,/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/critique_mechanism_validation_20261027/live/microbial_15__G/result.json
+microbial_16,microbial_natural_products,A,True,Confirmed,True,9499,/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/critique_mechanism_validation_20261027/live/microbial_16__E/result.json
+microbial_16,microbial_natural_products,B,True,Confirmed,True,6834,/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/critique_mechanism_validation_20261027/live/microbial_16__F/result.json
+microbial_16,microbial_natural_products,C,True,Confirmed,True,5371,/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/critique_mechanism_validation_20261027/live/microbial_16__G/result.json
+microbial_17,microbial_natural_products,A,True,Confirmed,True,9330,/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/critique_mechanism_validation_20261027/live/microbial_17__E/result.json
+microbial_17,microbial_natural_products,B,True,Confirmed,True,250519,/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/critique_mechanism_validation_20261027/live/microbial_17__F/result.json
+microbial_17,microbial_natural_products,C,True,Confirmed,False,170113,/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/critique_mechanism_validation_20261027/live/microbial_17__G/result.json
+microbial_19,microbial_natural_products,A,True,Insufficient Direct Evidence,False,441509,/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/critique_mechanism_validation_20261027/live/microbial_19__E/result.json
+microbial_19,microbial_natural_products,B,True,Insufficient Direct Evidence,False,5532,/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/critique_mechanism_validation_20261027/live/microbial_19__F/result.json
+microbial_19,microbial_natural_products,C,True,Insufficient Direct Evidence,False,4072,/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/critique_mechanism_validation_20261027/live/microbial_19__G/result.json
+microbial_20,microbial_natural_products,A,False,,False,1250833,/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/critique_mechanism_validation_20261027/live/microbial_20__E/result.json
+microbial_20,microbial_natural_products,B,False,,False,1318685,/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/critique_mechanism_validation_20261027/live/microbial_20__F/result.json
+microbial_20,microbial_natural_products,C,True,Confirmed,False,460771,/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/critique_mechanism_validation_20261027/live/microbial_20__G/result.json
+microbial_23,microbial_natural_products,A,True,Confirmed,True,9916,/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/critique_mechanism_validation_20261027/live/microbial_23__E/result.json
+microbial_23,microbial_natural_products,B,True,Confirmed,True,7175,/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/critique_mechanism_validation_20261027/live/microbial_23__F/result.json
+microbial_23,microbial_natural_products,C,True,Confirmed,False,190493,/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/critique_mechanism_validation_20261027/live/microbial_23__G/result.json
+microbial_24,microbial_natural_products,A,True,Insufficient Direct Evidence,False,641379,/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/critique_mechanism_validation_20261027/live/microbial_24__E/result.json
+microbial_24,microbial_natural_products,B,True,Insufficient Direct Evidence,False,1122485,/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/critique_mechanism_validation_20261027/live/microbial_24__F/result.json
+microbial_24,microbial_natural_products,C,True,Insufficient Direct Evidence,False,870228,/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/critique_mechanism_validation_20261027/live/microbial_24__G/result.json
+microbial_25,microbial_natural_products,A,True,Insufficient Direct Evidence,False,340061,/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/critique_mechanism_validation_20261027/live/microbial_25__E/result.json
+microbial_25,microbial_natural_products,B,True,Insufficient Direct Evidence,False,5285,/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/critique_mechanism_validation_20261027/live/microbial_25__F/result.json
+microbial_25,microbial_natural_products,C,True,Insufficient Direct Evidence,False,254248,/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/critique_mechanism_validation_20261027/live/microbial_25__G/result.json
+microbial_28,microbial_natural_products,A,False,,False,1280404,/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/critique_mechanism_validation_20261027/live/microbial_28__E/result.json
+microbial_28,microbial_natural_products,B,True,Insufficient Direct Evidence,False,5953,/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/critique_mechanism_validation_20261027/live/microbial_28__F/result.json
+microbial_28,microbial_natural_products,C,True,Insufficient Direct Evidence,False,3885,/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/critique_mechanism_validation_20261027/live/microbial_28__G/result.json
+microbial_35,microbial_natural_products,A,True,Insufficient Direct Evidence,False,840595,/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/critique_mechanism_validation_20261027/live/microbial_35__E/result.json
+microbial_35,microbial_natural_products,B,True,Insufficient Direct Evidence,False,5459,/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/critique_mechanism_validation_20261027/live/microbial_35__F/result.json
+microbial_35,microbial_natural_products,C,True,Insufficient Direct Evidence,False,3643,/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/critique_mechanism_validation_20261027/live/microbial_35__G/result.json
+microbial_36,microbial_natural_products,A,True,Confirmed,False,521773,/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/critique_mechanism_validation_20261027/live/microbial_36__E/result.json
+microbial_36,microbial_natural_products,B,True,Insufficient Direct Evidence,False,562666,/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/critique_mechanism_validation_20261027/live/microbial_36__F/result.json
+microbial_36,microbial_natural_products,C,True,Confirmed,False,555971,/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/critique_mechanism_validation_20261027/live/microbial_36__G/result.json

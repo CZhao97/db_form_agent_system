@@ -1,0 +1,26 @@
+{
+  "criterion_count_distribution.csv": {
+    "source": "source_data/benchmark_consolidated_20261104/MANIFEST.json",
+    "sha256": "627add0156c3f0d90f9bdbb4436127f2ea0c720f754d3ae5968f31816b739886",
+    "output_sha256": "a9f29064c49f4c1c3950ae83bd04b178463f22f778f51cf52a170214f5ade788",
+    "prediction_endpoint": "last_researcher_claim"
+  },
+  "criterion_count_rows.csv": {
+    "source": "source_data/benchmark_consolidated_20261104/MANIFEST.json",
+    "sha256": "627add0156c3f0d90f9bdbb4436127f2ea0c720f754d3ae5968f31816b739886",
+    "output_sha256": "f705be24317da331a2992584093d8ae9917a495ad8b8b7dfda830a50efbd56b2",
+    "prediction_endpoint": "last_researcher_claim"
+  },
+  "criterion_indicators.csv": {
+    "source": "source_data/benchmark_consolidated_20261104/MANIFEST.json",
+    "sha256": "627add0156c3f0d90f9bdbb4436127f2ea0c720f754d3ae5968f31816b739886",
+    "output_sha256": "8baf5224102f6f02e7b465b9dde9cc38a06ac8837a2abf74af0427a02eb12c07",
+    "prediction_endpoint": "last_researcher_claim"
+  },
+  "criterion_full_profiles.csv": {
+    "source": "source_data/benchmark_consolidated_20261104/MANIFEST.json",
+    "sha256": "627add0156c3f0d90f9bdbb4436127f2ea0c720f754d3ae5968f31816b739886",
+    "output_sha256": "dffbf5a7dcc1cbb9c85ec65ff7f5441d5a20a2ce4dde7cc8cec36f047d2b37e8",
+    "prediction_endpoint": "last_researcher_claim"
+  }
+}

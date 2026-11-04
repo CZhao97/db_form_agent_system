@@ -1,0 +1,9 @@
+﻿metric,endpoint,group,n,mean,median
+tokens,current_label,Confirmed,665,130873.01804511278,83415.0
+tokens,current_label,Other,1159,406992.6937014668,353706.0
+tokens,researcher_label,Confirmed,931,193702.19226638024,113358.0
+tokens,researcher_label,Other,893,423738.3516237402,374565.0
+runtime_seconds,current_label,Confirmed,671,239.7160831509404,149.206
+runtime_seconds,current_label,Other,1210,662.0954817417381,566.0085281667709
+runtime_seconds,researcher_label,Confirmed,970,335.5277537155938,215.043
+runtime_seconds,researcher_label,Other,911,698.7081268909529,624.136

@@ -1,0 +1,6 @@
+file,rows,annotation_column,explicit_comments,blank_comments,blank_interpretation
+/home/chen/GNPS_SIM/agent/db_form_agent_system/manuscript/all_labeled/db_curator_confirmed_blood_BL (1).csv,50,Mannual inspection,7,43,unknown_without_original_review_protocol
+/home/chen/GNPS_SIM/agent/db_form_agent_system/manuscript/all_labeled/db_curator_confirmed_dbp_BL (2).csv,50,mannual inspection,10,40,unknown_without_original_review_protocol
+/home/chen/GNPS_SIM/agent/db_form_agent_system/manuscript/all_labeled/db_curator_confirmed_drug_BL (1).csv,50,Mannual inspection,2,48,unknown_without_original_review_protocol
+/home/chen/GNPS_SIM/agent/db_form_agent_system/manuscript/all_labeled/db_curator_confirmed_endo_BL (1).csv,50,mannual inspection,6,44,unknown_without_original_review_protocol
+/home/chen/GNPS_SIM/agent/db_form_agent_system/manuscript/all_labeled/db_curator_confirmed_microbial_BL (1).csv,50,Mannual inspection,7,43,unknown_without_original_review_protocol

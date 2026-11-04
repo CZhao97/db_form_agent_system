@@ -1,0 +1,94 @@
+{
+  "construction.csv": {
+    "source": "manuscript/sec_1_result/open_construction_1000_source_data.csv",
+    "sha256": "7d5febc70848842dda52571603cf268478881369bc26dc69aa045996f3d4c09e"
+  },
+  "construction_citations.csv": {
+    "source": "manuscript/figures/nmi_evidence_hierarchy_revision_20260821/source_data/figure2d_open_construction_citation_traceability.csv",
+    "sha256": "ee189407b0c37c65704f69c235b3d45a9596df469febe868efe54cc705673e90"
+  },
+  "benchmark_paired.csv": {
+    "source": "deliverables/endpoint_sensitivity_revision_20261011/retry2_audit/full1887_summary.csv",
+    "sha256": "2f7285f9d9514dfb6ec43dbd30981e0c7d528fbda7cbb4b91a92ded2d861b039"
+  },
+  "repeated_contrasts.csv": {
+    "source": "deliverables/endpoint_sensitivity_revision_20261011/source_data/repeated500_cluster_bootstrap.csv",
+    "sha256": "c29b461168129160f6cf0b7b12b6317aa1d3d0ac4a29ef967a1b7335ee659f18"
+  },
+  "criterion_indicators.csv": {
+    "source": "source_data/benchmark_consolidated_20261104/MANIFEST.json",
+    "sha256": "627add0156c3f0d90f9bdbb4436127f2ea0c720f754d3ae5968f31816b739886",
+    "output_sha256": "8baf5224102f6f02e7b465b9dde9cc38a06ac8837a2abf74af0427a02eb12c07",
+    "prediction_endpoint": "last_researcher_claim"
+  },
+  "transitions.csv": {
+    "source": "deliverables/nmi_narrative_revision_20261019/source_data/solid_evidence_20261017/figure_source_inputs/transitions44_observable_changes.csv",
+    "sha256": "d46bc021ec52a8e2298c5c7ead89d373219bb24cf03098594ef35d5221f19bc3"
+  },
+  "workflow_original.png": {
+    "source": "deliverables/nmi_visual_revision_20261019/assets/d587ce9e2e_workflow.png",
+    "sha256": "d587ce9e2ecae487830b45a2cfda16d79c555dac62417686740344156246fada",
+    "reference_pdf": "deliverables/native86_final_20261010/DB_Curator_main_20261010.pdf",
+    "reference_page": 4
+  },
+  "criterion_changes.csv": {
+    "source": "deliverables/nmi_visual_revision_20261019/source_data/solid_evidence_20261017/figure_source_inputs/transitions44_criterion_changes.csv",
+    "sha256": "1ceff12c451d6fa91633010453af5db071d791992acf9f94679a719178051427"
+  },
+  "construction_final.csv": {
+    "sha256": "234083cae55094c5abb55ecbd16dded883491907d55ecf0ceb6cdb70a2780852",
+    "source": "reconciled fixed cohorts",
+    "source_hashes": {
+      "/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/revision_execution_20261020/construction_reconciled_20261026/construction1000_reconciled.csv": "b7882c4ee6ef10258ef0a5c5686c27f12bc7e710b5994bf46b2b4ac65ab1ffce",
+      "/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/revision_execution_20261020/construction_reconciled_20261026/topic_summary.csv": "7eec0cc88c1fb7cedc2dc4090d51a688f2df9dc48070f4ebf96afbbde4f96d20",
+      "/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/revision_execution_20261020/benchmark_reconciled_20261026/topic_summary.csv": "8d5cc6e3472ce64020f1698744f9712021a6a1550449f143b41dd9a3f45811f3",
+      "/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/revision_execution_20261020/benchmark_reconciled_20261026/citations/topic_summary.csv": "1f4a7711bae71c0ee733c3c86e15eaef58af0e63582f10ba3016a19b29a937ee",
+      "/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/revision_execution_20261020/manuscript_working/figure_generation/source_data/construction.csv": "7d5febc70848842dda52571603cf268478881369bc26dc69aa045996f3d4c09e",
+      "/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/revision_execution_20261020/manuscript_working/figure_generation/source_data/construction_citations.csv": "ee189407b0c37c65704f69c235b3d45a9596df469febe868efe54cc705673e90",
+      "/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/revision_execution_20261020/manuscript_working/figure_generation/source_data/repeated_contrasts.csv": "c29b461168129160f6cf0b7b12b6317aa1d3d0ac4a29ef967a1b7335ee659f18"
+    },
+    "script_sha256": "2b350e52bd28cc2edeac7bb50340891117ae1374cdc77cc4ee831b837b2c061a"
+  },
+  "benchmark_final.csv": {
+    "source": "source_data/benchmark_consolidated_20261104/MANIFEST.json",
+    "sha256": "627add0156c3f0d90f9bdbb4436127f2ea0c720f754d3ae5968f31816b739886",
+    "output_sha256": "4d7e9587ce22fc0445550fb3ebe0846e75c5ec4132dbab534dba76ff5158f09a",
+    "prediction_endpoint": "last_researcher_claim"
+  },
+  "benchmark_labels.csv": {
+    "source": "source_data/benchmark_consolidated_20261104/MANIFEST.json",
+    "sha256": "627add0156c3f0d90f9bdbb4436127f2ea0c720f754d3ae5968f31816b739886",
+    "output_sha256": "41443afdcf88107b385a86a7619c236ed46f522d8457d927a7f5293eafd502f9",
+    "prediction_endpoint": "last_researcher_claim"
+  },
+  "benchmark_operational_current.csv": {
+    "source": "source_data/benchmark_consolidated_20261104/MANIFEST.json",
+    "sha256": "627add0156c3f0d90f9bdbb4436127f2ea0c720f754d3ae5968f31816b739886",
+    "output_sha256": "ed15adaac3ae3b7c282cd6cb07f8c4e532eb39b2081afa3bcc631b04df9afb06",
+    "prediction_endpoint": "last_researcher_claim"
+  },
+  "criterion_count_distribution.csv": {
+    "source": "source_data/benchmark_consolidated_20261104/MANIFEST.json",
+    "sha256": "627add0156c3f0d90f9bdbb4436127f2ea0c720f754d3ae5968f31816b739886",
+    "output_sha256": "a9f29064c49f4c1c3950ae83bd04b178463f22f778f51cf52a170214f5ade788",
+    "prediction_endpoint": "last_researcher_claim"
+  },
+  "criterion_count_rows.csv": {
+    "source": "source_data/benchmark_consolidated_20261104/MANIFEST.json",
+    "sha256": "627add0156c3f0d90f9bdbb4436127f2ea0c720f754d3ae5968f31816b739886",
+    "output_sha256": "f705be24317da331a2992584093d8ae9917a495ad8b8b7dfda830a50efbd56b2",
+    "prediction_endpoint": "last_researcher_claim"
+  },
+  "criterion_full_profiles.csv": {
+    "source": "source_data/benchmark_consolidated_20261104/MANIFEST.json",
+    "sha256": "627add0156c3f0d90f9bdbb4436127f2ea0c720f754d3ae5968f31816b739886",
+    "output_sha256": "dffbf5a7dcc1cbb9c85ec65ff7f5441d5a20a2ce4dde7cc8cec36f047d2b37e8",
+    "prediction_endpoint": "last_researcher_claim"
+  },
+  "story_panels/model_swap.csv": {
+    "source": "source_data/researcher_endpoint_20261102/MANIFEST.json",
+    "sha256": "75fc14a1bd10dd6b8ca33d3e8b7cfee9dee5dc8318f81fcad2442a15cede73e7",
+    "output_sha256": "74af0e1305139a3b89d73838068e357cd07d9e7d36697b5f7b01383b4446d330",
+    "prediction_endpoint": "last_researcher_claim"
+  }
+}

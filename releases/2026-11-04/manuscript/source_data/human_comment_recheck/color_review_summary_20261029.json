@@ -1,0 +1,76 @@
+{
+  "date": "2026-10-29",
+  "cohorts": {
+    "construction_250_labeled_version": {
+      "n": 250,
+      "agreement": 241,
+      "previous_agreement": 221,
+      "new_agreement": 20,
+      "class_level_not_accepted": 5,
+      "other_not_accepted": 4,
+      "agreement_with_confirmed_label": 240,
+      "confirmed_label_n": 249,
+      "topics": {
+        "blood_exposome": {
+          "n": 50,
+          "agreement": 50
+        },
+        "dbp": {
+          "n": 50,
+          "agreement": 45
+        },
+        "drug_compounds": {
+          "n": 50,
+          "agreement": 50
+        },
+        "human_endogenous_metabolites": {
+          "n": 50,
+          "agreement": 47
+        },
+        "microbial_natural_products": {
+          "n": 50,
+          "agreement": 49
+        }
+      }
+    },
+    "zero_shot_250": {
+      "n": 250,
+      "agreement": 248,
+      "previous_agreement": 248,
+      "new_agreement": 0,
+      "class_level_not_accepted": 1,
+      "other_not_accepted": 1,
+      "agreement_with_confirmed_label": 0,
+      "confirmed_label_n": 0,
+      "topics": {
+        "blood_exposome": {
+          "n": 50,
+          "agreement": 49
+        },
+        "dbp": {
+          "n": 50,
+          "agreement": 50
+        },
+        "drug_compounds": {
+          "n": 50,
+          "agreement": 50
+        },
+        "human_endogenous_metabolites": {
+          "n": 50,
+          "agreement": 50
+        },
+        "microbial_natural_products": {
+          "n": 50,
+          "agreement": 49
+        }
+      }
+    }
+  },
+  "sources": {
+    "20261029.xlsx": "9bf685449e0ff442f0e8370c45a863affb0fb626807fcc2a0e838b50735d2e00",
+    "human_all_records_author_confirmation_overlay.csv": "ecc208ac6262523c5743b0774b561e3de4effe0c9707aadbdd58a45bcb1087c2"
+  },
+  "rule": "Blue: reviewer agreement. Yellow/orange class-level: not accepted under the individual-entity requirement. Uncolored rows retain explicit negative comments.",
+  "clarification": "Author supplied reviewer confirmation: blue is correct; organic class-level entries are not accepted, while some inorganic entries were approved. Apply actual row colors, not a new chemical-class heuristic.",
+  "scope": "Review agreement, retaining original identity-quality notes. No new evidence search or rewriting of historical annotations."
+}

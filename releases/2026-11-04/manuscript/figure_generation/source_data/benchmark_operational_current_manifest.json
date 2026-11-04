@@ -1,0 +1,39 @@
+{
+  "records": 1887,
+  "runtime_records": 1887,
+  "complete_token_records": 1887,
+  "confirmed": 975,
+  "summary": {
+    "Confirmed": {
+      "n": 975,
+      "median_tokens": 118650.0
+    },
+    "Other outcomes": {
+      "n": 912,
+      "median_tokens": 375022.5
+    },
+    "dbp": {
+      "runtime_n": 687,
+      "median_minutes": 6.6962787707646685
+    },
+    "blood_exposome": {
+      "runtime_n": 300,
+      "median_minutes": 6.5611250000000005
+    },
+    "drug_compounds": {
+      "runtime_n": 300,
+      "median_minutes": 4.596339297056199
+    },
+    "human_endogenous_metabolites": {
+      "runtime_n": 300,
+      "median_minutes": 8.437275
+    },
+    "microbial_natural_products": {
+      "runtime_n": 300,
+      "median_minutes": 5.152117685476939
+    }
+  },
+  "prediction_endpoint": "last_researcher_claim",
+  "endpoint_source": "source_data/benchmark_consolidated_20261104/benchmark_all1887.csv",
+  "receipt_resolution": "source_data/benchmark_consolidated_20261104/usage_receipt_resolution.csv"
+}

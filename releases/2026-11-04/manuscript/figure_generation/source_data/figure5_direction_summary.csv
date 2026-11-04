@@ -1,0 +1,5 @@
+category,to_confirmed,from_confirmed,total
+new_cited_source_in_saved_report,26,4,30
+existing_sources_passages_or_assessments_changed,5,4,9
+unknown_incomplete_pre_payload,4,0,4
+label_change_without_new_source_or_assessment_change,0,1,1

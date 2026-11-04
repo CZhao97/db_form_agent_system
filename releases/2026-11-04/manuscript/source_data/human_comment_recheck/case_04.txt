@@ -1,0 +1,103 @@
+CASE 4: 4-CPAN | Confirmed | Name
+entity_synonyms: []
+canonical_name: 4-CPAN
+query: {
+  "task": "verify_candidate_entity",
+  "entity_name": "4-CPAN",
+  "original_query": "Decide whether '4-CPAN' satisfies the confirmed-topic definition.",
+  "evaluation_criteria": {
+    "criteria_text": "- [mandatory] The entity must be a specific chemical compound.\n- [mandatory] The compound's formation must occur during a water disinfection or oxidation process.\n- [mandatory] The formation must result from the reaction of disinfectants or oxidants with naturally occurring or anthropogenic precursors.\n- [mandatory] The reaction must occur in real or simulated water matrices.\n- [mandatory] There must be evidence directly attributing the compound’s formation to the treatment process.",
+    "rubric_items": [
+      {
+        "name": "The entity must be a specific chemical compound.",
+        "section": "rubric",
+        "priority": "mandatory"
+      },
+      {
+        "name": "The compound's formation must occur during a water disinfection or oxidation process.",
+        "section": "rubric",
+        "priority": "mandatory"
+      },
+      {
+        "name": "The formation must result from the reaction of disinfectants or oxidants with naturally occurring or anthropogenic precursors.",
+        "section": "rubric",
+        "priority": "mandatory"
+      },
+      {
+        "name": "The reaction must occur in real or simulated water matrices.",
+        "section": "rubric",
+        "priority": "mandatory"
+      },
+      {
+        "name": "There must be evidence directly attributing the compound’s formation to the treatment process.",
+        "section": "rubric",
+        "priority": "mandatory"
+      }
+    ],
+    "fixed_criteria": [
+      "The entity must be a specific chemical compound.",
+      "The compound's formation must occur during a water disinfection or oxidation process.",
+      "The formation must result from the reaction of disinfectants or oxidants with naturally occurring or anthropogenic precursors.",
+      "The reaction must occur in real or simulated water matrices.",
+      "There must be evidence directly attributing the compound’s formation to the treatment process."
+    ]
+  },
+  "domain": "dbp",
+  "search_budget": {
+    "batch1_max_search_directions": 3,
+    "batch1_max_identity_terms": 2,
+    "batch1_max_primary_context_terms": 2,
+    "defer_method_fanout_until_followup": true,
+    "avoid_near_duplicate_context_terms": true
+  }
+}
+explanation: Evidence confirms that 4-CPAN, or 4-chlorophenylacetonitrile, is a specific chemical compound. Its formation is directly attributed to water disinfection processes, specifically chlorination and chloramination, reacting with naturally occurring precursors such as tyrosine and tryptophan in both real and simulated water matrices.
+criteria_json: [
+  {
+    "name": "The entity must be a specific chemical compound.",
+    "priority": "mandatory",
+    "section": "rubric",
+    "status": "solved",
+    "notes": "4-CPAN is identified as 4-chlorophenylacetonitrile.",
+    "support_type": "direct_evidence",
+    "score": 1.0
+  },
+  {
+    "name": "The compound's formation must occur during a water disinfection or oxidation process.",
+    "priority": "mandatory",
+    "section": "rubric",
+    "status": "solved",
+    "notes": "Formation is observed during chlorination and chloramination in DWTPs.",
+    "support_type": "direct_evidence",
+    "score": 1.0
+  },
+  {
+    "name": "The formation must result from the reaction of disinfectants or oxidants with naturally occurring or anthropogenic precursors.",
+    "priority": "mandatory",
+    "section": "rubric",
+    "status": "solved",
+    "notes": "Tyrosine and tryptophan are identified as precursors reacting with disinfectants.",
+    "support_type": "direct_evidence",
+    "score": 1.0
+  },
+  {
+    "name": "The reaction must occur in real or simulated water matrices.",
+    "priority": "mandatory",
+    "section": "rubric",
+    "status": "solved",
+    "notes": "Formation is observed in real DWTPs and simulated conditions.",
+    "support_type": "direct_evidence",
+    "score": 1.0
+  },
+  {
+    "name": "There must be evidence directly attributing the compound’s formation to the treatment process.",
+    "priority": "mandatory",
+    "section": "rubric",
+    "status": "solved",
+    "notes": "4-CPAN is not present in source water but appears after disinfection.",
+    "support_type": "direct_evidence",
+    "score": 1.0
+  }
+]
+evidence_json: []
+results_dir: /data/chen/e2e_searching_results/dbp_eval_run_20260419_031044/dbp_eval_eval_dbp_5081b089

@@ -1,0 +1,100 @@
+{
+  "endpoint": "Retention in the reviewed 50-per-topic construction cohorts",
+  "overall": {
+    "topic": "all",
+    "processed": 359,
+    "retained": 250,
+    "nonconfirmed": 109,
+    "TP": 241,
+    "FP": 9,
+    "FN": 2,
+    "TN": 107,
+    "precision": 0.964,
+    "processed_pool_recall": 0.9917695473251029
+  },
+  "topic_results": [
+    {
+      "topic": "dbp",
+      "processed": 122,
+      "retained": 50,
+      "nonconfirmed": 72,
+      "TP": 45,
+      "FP": 5,
+      "FN": 0,
+      "TN": 72,
+      "precision": 0.9,
+      "processed_pool_recall": 1.0
+    },
+    {
+      "topic": "blood_exposome",
+      "processed": 64,
+      "retained": 50,
+      "nonconfirmed": 14,
+      "TP": 50,
+      "FP": 0,
+      "FN": 2,
+      "TN": 12,
+      "precision": 1.0,
+      "processed_pool_recall": 0.9615384615384616
+    },
+    {
+      "topic": "drug_compounds",
+      "processed": 51,
+      "retained": 50,
+      "nonconfirmed": 1,
+      "TP": 50,
+      "FP": 0,
+      "FN": 0,
+      "TN": 1,
+      "precision": 1.0,
+      "processed_pool_recall": 1.0
+    },
+    {
+      "topic": "human_endogenous_metabolites",
+      "processed": 65,
+      "retained": 50,
+      "nonconfirmed": 15,
+      "TP": 47,
+      "FP": 3,
+      "FN": 0,
+      "TN": 15,
+      "precision": 0.94,
+      "processed_pool_recall": 1.0
+    },
+    {
+      "topic": "microbial_natural_products",
+      "processed": 57,
+      "retained": 50,
+      "nonconfirmed": 7,
+      "TP": 49,
+      "FP": 1,
+      "FN": 0,
+      "TN": 7,
+      "precision": 0.98,
+      "processed_pool_recall": 1.0
+    }
+  ],
+  "author_confirmation": "/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/nmi_rewrite_20261026/manuscript/source_data/construction_recall_20261103/AUTHOR_CONFIRMATION.json",
+  "inputs": {
+    "/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/nmi_rewrite_20261026/manuscript/source_data/construction_recall_20261103/AUTHOR_CONFIRMATION.json": "7fd4bb3cc4f7c9c1b7d7dcf0633bcfd3dbee718f16965d81ab8b1d94ab6b7a07",
+    "/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/nmi_rewrite_20261026/manuscript/source_data/human_comment_recheck/human_review_overlay_20261029.csv": "9b1ffcc42b6aa570fc5cd2f926a68fdc397926229c7b03e5f6314b3029f97a89",
+    "/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/nmi_rewrite_20261026/manuscript/source_data/solid_evidence_20261017/benzalkonium_recovery_evidence.json": "9b4d9668e6ceddf71496fd68d5f640aa1009d709ee02cc866740d078bf9af0c5",
+    "/data/chen/e2e_searching_results/blood_eval_run_20260420_163754/blood_eval_eval_blood_1dd09e85/rubric_eval.json": "fc412a6fa0946a0a59b144e96a01b62db2f7e08231f9b2d44193878f9bef5eec",
+    "/data/chen/db_curator_results/sec1/dbp/db_curator_confirmed.csv": "fcb8232b664699008d4e2ff695141f7477cb3d0db6873027b3df11d29c364427",
+    "/data/chen/db_curator_results/sec1/dbp/db_curator_not_confirmed.csv": "b3859fd574993da58992042914945ff31a05f566c1a3043a0797bd0fef927c56",
+    "/data/chen/db_curator_results/sec1/blood_exposome/db_curator_confirmed.csv": "bfd2b752386a03ca93fb76b0231904b3f2e5440a2ff2c45dda57d5b9a1461884",
+    "/data/chen/db_curator_results/sec1/blood_exposome/db_curator_not_confirmed.csv": "1e5ebe7fb67b36d57364d347b9c34cf96c807fd84dab7ba351cb2b6e969a65ac",
+    "/home/chen/GNPS_SIM/agent/db_form_agent_system/manuscript/all_labeled/db_curator_confirmed_blood_BL (1).csv": "2cfbb18d71b136b1287cfb94356477a79cdeb08cb1cfacf745d0dc388bd22fcb",
+    "/data/chen/db_curator_results/sec1/drug_compounds/db_curator_confirmed.csv": "809502efbc221181dd7c0ed95975dea48e51717be124943abd3cddb873c6406f",
+    "/data/chen/db_curator_results/sec1/drug_compounds/db_curator_not_confirmed.csv": "1e7ab263d6241cb8bbef3cd84c556b9afe20e421bfd326012f9091915c329c39",
+    "/data/chen/db_curator_results/sec1/human_endogenous_metabolites/db_curator_confirmed.csv": "731f9f855c87cf7b145ceb18030222bacf8fe2c4a2bd7a4b70fec630b7b4db7b",
+    "/data/chen/db_curator_results/sec1/human_endogenous_metabolites/db_curator_not_confirmed.csv": "561eb8d3b25a14f846311a559290a6a901c14f22888e322e82e9154eda667088",
+    "/data/chen/db_curator_results/sec1/microbial_natural_products/db_curator_confirmed.csv": "94c1bcb30029b4626859b8e6e39de274007abc78049c8f105fada1d722d6757b",
+    "/data/chen/db_curator_results/sec1/microbial_natural_products/db_curator_not_confirmed.csv": "df0551df05e660d06d3355d9b2366678799c0a4a302fe15ad9b8fc7b8979c946"
+  },
+  "script_sha256": "e18eab0af14626bb3f950248d377f6b983589c62ecd2d95a5db439f2cde6ec50",
+  "original_annotations_modified": false,
+  "new_model_calls": 0,
+  "applies_to_current_1000_release": false,
+  "applies_to_entire_open_literature": false
+}

@@ -1,0 +1,1596 @@
+[
+  {
+    "event_id": "0b45853275c4588f36f51d89:1",
+    "candidate": "4-Hydroxybenzene-1,2-dicarboxylic acid",
+    "topic": "dbp",
+    "strata": [
+      "downward"
+    ],
+    "inspection_level": "source_anchored",
+    "initial_label": "Confirmed",
+    "critique_label": "Suspected",
+    "first_response_label": "Confirmed",
+    "last_response_label": "Confirmed",
+    "canonical_final_label": "Confirmed",
+    "canonical_accepted": true,
+    "findings": [
+      "The initial quote names 4-hydroxyphthalic acid and its chlorination formation but omits the explicit natural-organic-matter link claimed in the synthesis. Critique asks for that link. The later report adds a sentence from the same saved abstract describing these nonhalogenated aromatic DBPs as intermediates between NOM and halogenated aromatic DBPs."
+    ],
+    "response_assessments": [
+      "Researcher remains Confirmed, but the supporting quotation becomes more directly aligned with the precursor criterion. Final pipeline accepts Confirmed. This is a concrete same-source evidence-completeness improvement, not an increase in Confirmed yield, a new-paper retrieval success, or an independent whole-row correctness adjudication."
+    ],
+    "boundaries": [],
+    "inspections": [
+      {
+        "record_path": "deliverables/critique_mechanism_analysis_20261025/downward_stratum_complete_0922/all_stratum_cases.json",
+        "record_file_sha256": "66543b4174a5db751a27db734255e6206f619d98e9d2a2c398d7c7b4a871b87c",
+        "assessment": "missing_precursor_context_recovered_from_same_source",
+        "finding": "The initial quote names 4-hydroxyphthalic acid and its chlorination formation but omits the explicit natural-organic-matter link claimed in the synthesis. Critique asks for that link. The later report adds a sentence from the same saved abstract describing these nonhalogenated aromatic DBPs as intermediates between NOM and halogenated aromatic DBPs.",
+        "response_assessment": "Researcher remains Confirmed, but the supporting quotation becomes more directly aligned with the precursor criterion. Final pipeline accepts Confirmed. This is a concrete same-source evidence-completeness improvement, not an increase in Confirmed yield, a new-paper retrieval success, or an independent whole-row correctness adjudication.",
+        "boundary": "",
+        "source_anchors": [
+          {
+            "event_id": "0b45853275c4588f36f51d89:1",
+            "stage": "initial_report",
+            "evidence_number": 1,
+            "evidence_id": "Ref 1",
+            "quote_number": 1,
+            "quote": "In this study, nine nonhalogenated aromatic compounds were identified as new intermediate DBPs in chlorination, including 4-hydroxybenzaldehyde, 4-hydroxybenzoic acid, 3-formyl-4-hydroxybenzoic acid, salicylic acid, 5-formyl-2-hydroxybenzoic acid, 4-hydroxyphthalic acid, 4'-hydroxyacetophenone, 4-methylbenzoic acid, and 4-hydroxy-3-methylbenzaldehyde. These nonhalogenated aromatic DBPs formed quickly and reached the maximum levels at relatively low chlorine doses within a short contact time, and their formation pathways were proposed",
+            "supplied_title": "Nonhalogenated Aromatic DBPs in Drinking Water Chlorination: A Gap between NOM and Halogenated Aromatic DBPs.",
+            "supplied_identifier": "10.1021/acs.est.9b06403",
+            "source_locator": "/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/revision_execution_20261020/repair_runs/0b45853275c4588f36f51d89/data/session/10.1021acs.est.9b06403.json",
+            "source_status": "available",
+            "source_sha256": "2f20088131eb378da38f68eb925e14452142f1c66fb90989389de01da4af8b28",
+            "saved_title": "Nonhalogenated Aromatic DBPs in Drinking Water Chlorination: A Gap between NOM and Halogenated Aromatic DBPs.",
+            "saved_doi": "10.1021/acs.est.9b06403",
+            "saved_ids": {
+              "pmid": "31909989",
+              "pmcid": "",
+              "doi": "10.1021/acs.est.9b06403",
+              "eupmc_id": "31909989",
+              "s2id": "c59c819e062b7abbc976bbab1a487bbec4416560"
+            },
+            "location_status": "exact",
+            "text_field": "full_text",
+            "offset": 547,
+            "offset_basis": "original_text",
+            "source_context": "have been identified in chlorinated drinking waters, and they behave as intermediate DBPs to decompose to halogenated aliphatic DBPs. There is still one gap between NOM and halogenated aromatic DBPs. In this study, nine nonhalogenated aromatic compounds were identified as new intermediate DBPs in chlorination, including 4-hydroxybenzaldehyde, 4-hydroxybenzoic acid, 3-formyl-4-hydroxybenzoic acid, salicylic acid, 5-formyl-2-hydroxybenzoic acid, 4-hydroxyphthalic acid, 4'-hydroxyacetophenone, 4-methylbenzoic acid, and 4-hydroxy-3-methylbenzaldehyde. These nonhalogenated aromatic DBPs formed quickly and reached the maximum levels at relatively low chlorine doses within a short contact time, and their formation pathways were proposed. The formation kinetics of three nonhalogenated aromatic DBPs and their corresponding monochloro-/dichloro-substitutes during chlorination were then modeled. The nonhalogenated aromatic DBPs contribu",
+            "semantic_support": "not_adjudicated",
+            "saved_has_fulltext": false,
+            "full_text_equals_abstract": true
+          },
+          {
+            "event_id": "0b45853275c4588f36f51d89:1",
+            "stage": "response",
+            "evidence_number": 1,
+            "evidence_id": "Ref 1",
+            "quote_number": 1,
+            "quote": "In this study, nine nonhalogenated aromatic compounds were identified as new intermediate DBPs in chlorination, including 4-hydroxybenzaldehyde, 4-hydroxybenzoic acid, 3-formyl-4-hydroxybenzoic acid, salicylic acid, 5-formyl-2-hydroxybenzoic acid, 4-hydroxyphthalic acid, 4'-hydroxyacetophenone, 4-methylbenzoic acid, and 4-hydroxy-3-methylbenzaldehyde. These nonhalogenated aromatic DBPs formed quickly and reached the maximum levels at relatively low chlorine doses within a short contact time, and their formation pathways were proposed",
+            "supplied_title": "Nonhalogenated Aromatic DBPs in Drinking Water Chlorination: A Gap between NOM and Halogenated Aromatic DBPs.",
+            "supplied_identifier": "10.1021/acs.est.9b06403",
+            "source_locator": "/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/revision_execution_20261020/repair_runs/0b45853275c4588f36f51d89/data/session/10.1021acs.est.9b06403.json",
+            "source_status": "available",
+            "source_sha256": "2f20088131eb378da38f68eb925e14452142f1c66fb90989389de01da4af8b28",
+            "saved_title": "Nonhalogenated Aromatic DBPs in Drinking Water Chlorination: A Gap between NOM and Halogenated Aromatic DBPs.",
+            "saved_doi": "10.1021/acs.est.9b06403",
+            "saved_ids": {
+              "pmid": "31909989",
+              "pmcid": "",
+              "doi": "10.1021/acs.est.9b06403",
+              "eupmc_id": "31909989",
+              "s2id": "c59c819e062b7abbc976bbab1a487bbec4416560"
+            },
+            "location_status": "exact",
+            "text_field": "full_text",
+            "offset": 547,
+            "offset_basis": "original_text",
+            "source_context": "have been identified in chlorinated drinking waters, and they behave as intermediate DBPs to decompose to halogenated aliphatic DBPs. There is still one gap between NOM and halogenated aromatic DBPs. In this study, nine nonhalogenated aromatic compounds were identified as new intermediate DBPs in chlorination, including 4-hydroxybenzaldehyde, 4-hydroxybenzoic acid, 3-formyl-4-hydroxybenzoic acid, salicylic acid, 5-formyl-2-hydroxybenzoic acid, 4-hydroxyphthalic acid, 4'-hydroxyacetophenone, 4-methylbenzoic acid, and 4-hydroxy-3-methylbenzaldehyde. These nonhalogenated aromatic DBPs formed quickly and reached the maximum levels at relatively low chlorine doses within a short contact time, and their formation pathways were proposed. The formation kinetics of three nonhalogenated aromatic DBPs and their corresponding monochloro-/dichloro-substitutes during chlorination were then modeled. The nonhalogenated aromatic DBPs contribu",
+            "semantic_support": "not_adjudicated",
+            "saved_has_fulltext": false,
+            "full_text_equals_abstract": true
+          },
+          {
+            "event_id": "0b45853275c4588f36f51d89:1",
+            "stage": "response",
+            "evidence_number": 1,
+            "evidence_id": "Ref 1",
+            "quote_number": 2,
+            "quote": "The nonhalogenated aromatic DBPs contributed up to 84% of the formed monochloro-substitutes and 22% of the formed dichloro-substitutes, demonstrating that they somewhat acted as intermediates between NOM and halogenated aromatic DBPs.",
+            "supplied_title": "Nonhalogenated Aromatic DBPs in Drinking Water Chlorination: A Gap between NOM and Halogenated Aromatic DBPs.",
+            "supplied_identifier": "10.1021/acs.est.9b06403",
+            "source_locator": "/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/revision_execution_20261020/repair_runs/0b45853275c4588f36f51d89/data/session/10.1021acs.est.9b06403.json",
+            "source_status": "available",
+            "source_sha256": "2f20088131eb378da38f68eb925e14452142f1c66fb90989389de01da4af8b28",
+            "saved_title": "Nonhalogenated Aromatic DBPs in Drinking Water Chlorination: A Gap between NOM and Halogenated Aromatic DBPs.",
+            "saved_doi": "10.1021/acs.est.9b06403",
+            "saved_ids": {
+              "pmid": "31909989",
+              "pmcid": "",
+              "doi": "10.1021/acs.est.9b06403",
+              "eupmc_id": "31909989",
+              "s2id": "c59c819e062b7abbc976bbab1a487bbec4416560"
+            },
+            "location_status": "exact",
+            "text_field": "full_text",
+            "offset": 1245,
+            "offset_basis": "original_text",
+            "source_context": "nd their formation pathways were proposed. The formation kinetics of three nonhalogenated aromatic DBPs and their corresponding monochloro-/dichloro-substitutes during chlorination were then modeled. The nonhalogenated aromatic DBPs contributed up to 84% of the formed monochloro-substitutes and 22% of the formed dichloro-substitutes, demonstrating that they somewhat acted as intermediates between NOM and halogenated aromatic DBPs. Furthermore, the formed nonhalogenated aromatic DBPs were found to be removed by >50% by granular activated carbon adsorption.",
+            "semantic_support": "not_adjudicated",
+            "saved_has_fulltext": false,
+            "full_text_equals_abstract": true
+          }
+        ],
+        "source_contexts": [],
+        "inspection_level": "source_anchored"
+      }
+    ],
+    "packet_sha256": "2378df9ece841e3a5120466da7077570ff67e998cc82ad0fcd2f4bccdb3f69d3",
+    "independent_expert_review": false,
+    "whole_row_correctness": "not_adjudicated",
+    "carry_basis": "identical_complete_packet_and_revalidated_sources"
+  },
+  {
+    "event_id": "5044f9a971ceec17796cb3c1:1",
+    "candidate": "N-Methylformamide",
+    "topic": "blood_exposome",
+    "strata": [
+      "downward"
+    ],
+    "inspection_level": "source_anchored",
+    "initial_label": "Confirmed",
+    "critique_label": "Insufficient Direct Evidence",
+    "first_response_label": "Confirmed",
+    "last_response_label": "Confirmed",
+    "canonical_final_label": "Confirmed",
+    "canonical_accepted": true,
+    "findings": [
+      "The initial occupational study reports urinary NMF and blood NMHb, not the same entity measured in the same specimen. Other cited detection is in rat plasma. Critique requested human plasma detection of NMF. Whether proxy/adduct evidence should satisfy broader exposome definitions is a separate scope choice."
+    ],
+    "response_assessments": [
+      "The requested query appears in a subsequent search call, and the later report adds PMID 6855210 about a human-serum/urine monitoring assay. The saved record has has_fulltext=false and only an abstract duplicated in full_text. It establishes retrieval of a relevant method paper, but does not unambiguously establish the claimed actual quantification in patient serum from the available text alone."
+    ],
+    "boundaries": [],
+    "inspections": [
+      {
+        "record_path": "deliverables/critique_mechanism_analysis_20261025/downward_stratum_complete_0922/all_stratum_cases.json",
+        "record_file_sha256": "66543b4174a5db751a27db734255e6206f619d98e9d2a2c398d7c7b4a871b87c",
+        "assessment": "supported_request_to_distinguish_parent_from_adduct",
+        "finding": "The initial occupational study reports urinary NMF and blood NMHb, not the same entity measured in the same specimen. Other cited detection is in rat plasma. Critique requested human plasma detection of NMF. Whether proxy/adduct evidence should satisfy broader exposome definitions is a separate scope choice.",
+        "response_assessment": "The requested query appears in a subsequent search call, and the later report adds PMID 6855210 about a human-serum/urine monitoring assay. The saved record has has_fulltext=false and only an abstract duplicated in full_text. It establishes retrieval of a relevant method paper, but does not unambiguously establish the claimed actual quantification in patient serum from the available text alone.",
+        "boundary": "",
+        "source_anchors": [
+          {
+            "event_id": "5044f9a971ceec17796cb3c1:1",
+            "stage": "initial_report",
+            "evidence_number": 1,
+            "evidence_id": "Ref 1",
+            "quote_number": 1,
+            "quote": "Widespread contamination of N,N-dimethylformamide (DMF) has been identified in the environment of leather industries and their surrounding residential areas. Few studies have assessed the dose-response relationships between internal exposure biomarkers and liver injury in DMF exposed populations. We assessed urinary N-methylformamide (NMF) and N-acetyl-S-(N-methylcarbamoyl) cysteine (AMCC) and blood N-methylcarbmoylated hemoglobin (NMHb) levels in 698 Chinese DMF-exposed workers and 188 nonDMF- exposed workers using ultraperformance liquid-chromatography tandem mass-spectrometry.",
+            "supplied_title": "A Comparative Benchmark Dose Study for N, N-Dimethylformamide Induced Liver Injury in a Chinese Occupational Cohort.",
+            "supplied_identifier": "10.1093/toxsci/kfx076",
+            "source_locator": "/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/revision_execution_20261020/repair_runs/5044f9a971ceec17796cb3c1/data/session/10.1093toxscikfx076.json",
+            "source_status": "available",
+            "source_sha256": "a42980c910be17007259f3a2b0f0e6911803319c2b0b0b5f71e17e0a94304857",
+            "saved_title": "A Comparative Benchmark Dose Study for N, N-Dimethylformamide Induced Liver Injury in a Chinese Occupational Cohort.",
+            "saved_doi": "10.1093/toxsci/kfx076",
+            "saved_ids": {
+              "pmid": "28505332",
+              "pmcid": ""
+            },
+            "location_status": "exact",
+            "text_field": "full_text",
+            "offset": 0,
+            "offset_basis": "original_text",
+            "source_context": "Widespread contamination of N,N-dimethylformamide (DMF) has been identified in the environment of leather industries and their surrounding residential areas. Few studies have assessed the dose-response relationships between internal exposure biomarkers and liver injury in DMF exposed populations. We assessed urinary N-methylformamide (NMF) and N-acetyl-S-(N-methylcarbamoyl) cysteine (AMCC) and blood N-methylcarbmoylated hemoglobin (NMHb) levels in 698 Chinese DMF-exposed workers and 188 nonDMF- exposed workers using ultraperformance liquid-chromatography tandem mass-spectrometry. Liver injury was defined as having abnormal serum activities of any of the 3 liver enzymes, including alanine aminotransferase, aspartate aminotransferase, and γ-glutamyl transpeptidase. Higher liver",
+            "semantic_support": "not_adjudicated",
+            "saved_has_fulltext": false,
+            "full_text_equals_abstract": true
+          },
+          {
+            "event_id": "5044f9a971ceec17796cb3c1:1",
+            "stage": "initial_report",
+            "evidence_number": 2,
+            "evidence_id": "Ref 2",
+            "quote_number": 1,
+            "quote": "A capillary gas chromatographic method with nitrogen-phosphorus detection for the simultaneous quantitative determination of N,N-dimethylformamide, and its two metabolites, N-monomethylformamide and N-hydroxymethyl-N-methylformamide, in rat plasma has been developed.",
+            "supplied_title": "Simultaneous determination of N,N-dimethylformamide, N-monomethylformamide and N-hydroxymethyl-N-methylformamide in rat plasma by capillary gas chromatography.",
+            "supplied_identifier": "10.1016/0378-4347(93)80302-k",
+            "source_locator": "/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/revision_execution_20261020/repair_runs/5044f9a971ceec17796cb3c1/data/session/10.10160378-4347(93)80302-k.json",
+            "source_status": "available",
+            "source_sha256": "56cba1fbeb837cc9112bc930b7154c3f860bf0a1440007280dfced04149da3bb",
+            "saved_title": "Simultaneous determination of N,N-dimethylformamide, N-monomethylformamide and N-hydroxymethyl-N-methylformamide in rat plasma by capillary gas chromatography.",
+            "saved_doi": "10.1016/0378-4347(93)80302-k",
+            "saved_ids": {
+              "pmid": "8340454",
+              "pmcid": "",
+              "doi": "10.1016/0378-4347(93)80302-k",
+              "eupmc_id": "8340454",
+              "s2id": "2c469832b531b06df0d384c25b76eb728a0d8a67"
+            },
+            "location_status": "exact",
+            "text_field": "full_text",
+            "offset": 0,
+            "offset_basis": "original_text",
+            "source_context": "A capillary gas chromatographic method with nitrogen-phosphorus detection for the simultaneous quantitative determination of N,N-dimethylformamide, and its two metabolites, N-monomethylformamide and N-hydroxymethyl-N-methylformamide, in rat plasma has been developed. The method involves a single extraction step with ethyl acetate-acetone (4:1, v/v). The extract is injected into a fused-silica capillary column coated with Carbowax 20M. A temperature gradient (65-1",
+            "semantic_support": "not_adjudicated",
+            "saved_has_fulltext": false,
+            "full_text_equals_abstract": true
+          },
+          {
+            "event_id": "5044f9a971ceec17796cb3c1:1",
+            "stage": "response",
+            "evidence_number": 5,
+            "evidence_id": "Ref 5",
+            "quote_number": 1,
+            "quote": "This report describes a gas chromatographic procedure using a packed column and a flame ionization detector, which is suitable for the therapeutic monitoring of N-methylformamide (N-MF). N-MF is a polar compound that induces cancer cell maturation in vitro and exhibits antitumor activity with human tumors xenografted in nude mice. Toxicology studies with mice have shown this compound to be hepatotoxic. N-MF is currently undergoing Phase I clinical trial as an anticancer drug at this institution. In concert with its clinical trial, a method for the analysis of N-MF in biological fluids has been developed to study its pharmacokinetics. This method involves direct injection of urine or acetone-deproteinized serum onto a Chromosorb 103 column, using N,N-diethylformamide as an internal standard.",
+            "supplied_title": "A therapeutic monitoring assay for N-methylformamide in human serum and urine.",
+            "supplied_identifier": "6855210",
+            "source_locator": "/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/revision_execution_20261020/repair_runs/5044f9a971ceec17796cb3c1/data/session/10.1093jat7.2.89.json",
+            "source_status": "available",
+            "source_sha256": "a0be70c355f4149b8fcd19d39e1f71545c67f611b3a3e59c4859942a89339411",
+            "saved_title": "A therapeutic monitoring assay for N-methylformamide in human serum and urine.",
+            "saved_doi": "10.1093/jat/7.2.89",
+            "saved_ids": {
+              "pmid": "6855210",
+              "pmcid": "",
+              "s2id": "6fcaaeb7663a3a4d91d28fa42c85af6a4fcc969c",
+              "doi": "10.1093/JAT/7.2.89"
+            },
+            "location_status": "exact",
+            "text_field": "full_text",
+            "offset": 0,
+            "offset_basis": "original_text",
+            "source_context": "This report describes a gas chromatographic procedure using a packed column and a flame ionization detector, which is suitable for the therapeutic monitoring of N-methylformamide (N-MF). N-MF is a polar compound that induces cancer cell maturation in vitro and exhibits antitumor activity with human tumors xenografted in nude mice. Toxicology studies with mice have shown this compound to be hepatotoxic. N-MF is currently undergoing Phase I clinical trial as an anticancer drug at this institution. In concert with its clinical trial, a method for the analysis of N-MF in biological fluids has been developed to study its pharmacokinetics. This method involves direct injection of urine or acetone-deproteinized serum onto a Chromosorb 103 column, using N,N-diethylformamide as an internal standard.",
+            "semantic_support": "not_adjudicated",
+            "saved_has_fulltext": false,
+            "full_text_equals_abstract": true
+          }
+        ],
+        "source_contexts": [],
+        "inspection_level": "source_anchored"
+      }
+    ],
+    "packet_sha256": "3b0c24f930e6997ee860a9202a6a5771735cb587b233744e77b854e42c473913",
+    "independent_expert_review": false,
+    "whole_row_correctness": "not_adjudicated",
+    "carry_basis": "identical_complete_packet_and_revalidated_sources"
+  },
+  {
+    "event_id": "71e9e046cbead088ac1d68d8:1",
+    "candidate": "4-Ethylbenzaldehyde",
+    "topic": "dbp",
+    "strata": [
+      "upward"
+    ],
+    "inspection_level": "source_anchored",
+    "initial_label": "Suspected",
+    "critique_label": "Confirmed",
+    "first_response_label": "Confirmed",
+    "last_response_label": "Confirmed",
+    "canonical_final_label": "Confirmed",
+    "canonical_accepted": true,
+    "findings": [
+      "The rubric permits water disinfection OR oxidation, so the Researcher added an unnecessary disinfection-only condition. However, Ref 2 studies degradation of already-existing 4EBA, not its formation from ibuprofen. Ref 3 calls it an ibuprofen oxidation product but its quoted experiment dissolves selected compounds for membrane testing. Critique correctly questions the narrow scope but overstates the treatment-specific formation evidence in these snippets."
+    ],
+    "response_assessments": [
+      "The later Researcher and final pipeline became Confirmed. This label agreement is not an independently verified rescue."
+    ],
+    "boundaries": [],
+    "inspections": [
+      {
+        "record_path": "/data/chen/dbcurator_critique_snapshot_588_20261025_2320/upward_review/all_upward_cases.json",
+        "record_file_sha256": "abb2c0cbd564c3f60ba2cc4eeac76dbe0dced30f53692a22d93e757dc5c17eba",
+        "assessment": "valid_scope_objection_with_formation_vs_degradation_concern",
+        "finding": "The rubric permits water disinfection OR oxidation, so the Researcher added an unnecessary disinfection-only condition. However, Ref 2 studies degradation of already-existing 4EBA, not its formation from ibuprofen. Ref 3 calls it an ibuprofen oxidation product but its quoted experiment dissolves selected compounds for membrane testing. Critique correctly questions the narrow scope but overstates the treatment-specific formation evidence in these snippets.",
+        "response_assessment": "The later Researcher and final pipeline became Confirmed. This label agreement is not an independently verified rescue.",
+        "boundary": "",
+        "source_anchors": [
+          {
+            "event_id": "71e9e046cbead088ac1d68d8:1",
+            "stage": "initial_report",
+            "evidence_number": 2,
+            "evidence_id": "Ref 2",
+            "quote_number": 1,
+            "quote": "This article presents the results of studies on the degradation of ibuprofen transformation products: 1-hydroxyibuprofen (1OHIBF), 4-ethylbenzaldehyde (4EBA), 1-[4-(2-methylpropyl)phenyl]ethan-1-ol (MPPE) in water.",
+            "supplied_title": "Photodegradation and ozonation of ibuprofen derivatives in the water environment: Kinetics approach and assessment of mineralization and biodegradability.",
+            "supplied_identifier": "10.1016/j.chemosphere.2021.132742",
+            "source_locator": "/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/revision_execution_20261020/repair_runs/71e9e046cbead088ac1d68d8/data/session/10.1016j.chemosphere.2021.132742.json",
+            "source_status": "available",
+            "source_sha256": "759bd74c70f19b7bbd5b47656002f62c186df00472a31962305a55cc062ccb3c",
+            "saved_title": "Photodegradation and ozonation of ibuprofen derivatives in the water environment: Kinetics approach and assessment of mineralization and biodegradability.",
+            "saved_doi": "10.1016/j.chemosphere.2021.132742",
+            "saved_ids": {
+              "pmid": "34736944",
+              "pmcid": "",
+              "doi": "10.1016/j.chemosphere.2021.132742",
+              "eupmc_id": "34736944",
+              "s2id": "0efc4e8176406aa514fa508d6113c39d4c17a2d5"
+            },
+            "location_status": "exact",
+            "text_field": "full_text",
+            "offset": 0,
+            "offset_basis": "original_text",
+            "source_context": "This article presents the results of studies on the degradation of ibuprofen transformation products: 1-hydroxyibuprofen (1OHIBF), 4-ethylbenzaldehyde (4EBA), 1-[4-(2-methylpropyl)phenyl]ethan-1-ol (MPPE) in water. To the best of our knowledge, this is the first paper where the ozonation and photodegradation (VIS and UV photolysis, degradation in H<sub>2</sub>O<sub>2</sub>/UV system, photosensitized oxidation) ",
+            "semantic_support": "not_adjudicated"
+          },
+          {
+            "event_id": "71e9e046cbead088ac1d68d8:1",
+            "stage": "initial_report",
+            "evidence_number": 3,
+            "evidence_id": "Ref 3",
+            "quote_number": 1,
+            "quote": "The oxidation products of some pharmaceuticals, such as 4-Amino-3,5-dichlorophenol-the oxidation product of diclofenac or 4-ethylbenzaldehyde-the product of IBU oxidation showed poor separation efficiency in the selected commercial membranes, regardless of the pH value and the presence of natural organic matter (NOM).",
+            "supplied_title": "Removal of Organic Compounds with an Amino Group during the Nanofiltration Process.",
+            "supplied_identifier": "10.3390/membranes12010058",
+            "source_locator": "/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/revision_execution_20261020/repair_runs/71e9e046cbead088ac1d68d8/data/session/10.3390membranes12010058.json",
+            "source_status": "available",
+            "source_sha256": "137f43e2fb5c5d7da5111ba57c3d787acc0c70476d4bfaa63177790a3dc13c8f",
+            "saved_title": "Removal of Organic Compounds with an Amino Group during the Nanofiltration Process.",
+            "saved_doi": "10.3390/membranes12010058",
+            "saved_ids": {
+              "doi": "10.3390/membranes12010058",
+              "pmid": "35054585",
+              "pmcid": "PMC8780745",
+              "eupmc_id": "35054585",
+              "s2id": "71fefec857f5562389de473c200411202ab6db3c"
+            },
+            "location_status": "exact",
+            "text_field": "full_text",
+            "offset": 19225,
+            "offset_basis": "original_text",
+            "source_context": "iltration process. The experiments showed that the presence of an amino group in the molecule can significantly reduce the separation efficiency, even in the case of dense aromatic polymer membranes.\nThe oxidation products of some pharmaceuticals, such as 4-Amino-3,5-dichlorophenol-the oxidation product of diclofenac or 4-ethylbenzaldehyde-the product of IBU oxidation showed poor separation efficiency in the selected commercial membranes, regardless of the pH value and the presence of natural organic matter (NOM).\nFurther research is needed on the effectiveness of the removal of compounds with amino groups in membrane filtration processes. The low efficiency of the separation of these compounds in the wastewat",
+            "semantic_support": "not_adjudicated"
+          },
+          {
+            "event_id": "71e9e046cbead088ac1d68d8:1",
+            "stage": "initial_report",
+            "evidence_number": 3,
+            "evidence_id": "Ref 3",
+            "quote_number": 2,
+            "quote": "The selected compounds were dissolved in pure deionized water or, if the experiment required it, in natural raw or ozonated (15 min) water from rivers.",
+            "supplied_title": "Removal of Organic Compounds with an Amino Group during the Nanofiltration Process.",
+            "supplied_identifier": "10.3390/membranes12010058",
+            "source_locator": "/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/revision_execution_20261020/repair_runs/71e9e046cbead088ac1d68d8/data/session/10.3390membranes12010058.json",
+            "source_status": "available",
+            "source_sha256": "137f43e2fb5c5d7da5111ba57c3d787acc0c70476d4bfaa63177790a3dc13c8f",
+            "saved_title": "Removal of Organic Compounds with an Amino Group during the Nanofiltration Process.",
+            "saved_doi": "10.3390/membranes12010058",
+            "saved_ids": {
+              "doi": "10.3390/membranes12010058",
+              "pmid": "35054585",
+              "pmcid": "PMC8780745",
+              "eupmc_id": "35054585",
+              "s2id": "71fefec857f5562389de473c200411202ab6db3c"
+            },
+            "location_status": "exact",
+            "text_field": "full_text",
+            "offset": 6015,
+            "offset_basis": "original_text",
+            "source_context": "ich (Poznań, Poland), and 1-hydroxyibuprofen (OH-IBU) was obtained from AKos GmbH (Lörrach, Germany). For the tests, solutions with a mass concentration of the active substance of 5 mg·L-1 were used. The selected compounds were dissolved in pure deionized water or, if the experiment required it, in natural raw or ozonated (15 min) water from rivers.\nThe nanofiltration process was carried out with the cross-flow method at a constant flow rate of liquid inside the bypass of 2 L·min-1 at 30 °C. The membrane filtration unit was built as model protot",
+            "semantic_support": "not_adjudicated"
+          }
+        ],
+        "source_contexts": [],
+        "inspection_level": "source_anchored"
+      }
+    ],
+    "packet_sha256": "52203c4754c4749efaffb34cb23521b134e82aed8d2fac3e4ba1cf1a1f6c6de4",
+    "independent_expert_review": false,
+    "whole_row_correctness": "not_adjudicated",
+    "carry_basis": "identical_complete_packet_and_revalidated_sources"
+  },
+  {
+    "event_id": "8d43ae9b69735bf4f6e6a17d:1",
+    "candidate": "Disodium guanosine triphosphate",
+    "topic": "blood_exposome",
+    "strata": [
+      "downward",
+      "returned"
+    ],
+    "inspection_level": "source_anchored",
+    "initial_label": "Confirmed",
+    "critique_label": "Insufficient Direct Evidence",
+    "first_response_label": "Insufficient Direct Evidence",
+    "last_response_label": "Confirmed",
+    "canonical_final_label": "Confirmed",
+    "canonical_accepted": true,
+    "findings": [
+      "Ref 3 describes adding GTP to a sensor in the presence of plasma/urine constituents, not measuring GTP in human specimens. Ref 9 concerns rat spleen and heart. Ref 15 concerns 6-thio-GTP enzymatic activity in cell extracts. Those passages do not establish the initial report's claimed human-blood detection of the target."
+    ],
+    "response_assessments": [
+      "The first response acknowledged the gap. Later research again claimed Confirmed with additional evidence. The later evidence and salt-to-parent scope require separate assessment; the label reversal alone is not a proven relapse."
+    ],
+    "boundaries": [],
+    "inspections": [
+      {
+        "record_path": "deliverables/critique_mechanism_analysis_20261025/downward_stratum_complete_0922/all_stratum_cases.json",
+        "record_file_sha256": "66543b4174a5db751a27db734255e6206f619d98e9d2a2c398d7c7b4a871b87c",
+        "assessment": "supported_gap_in_initial_supplied_evidence",
+        "finding": "Ref 3 describes adding GTP to a sensor in the presence of plasma/urine constituents, not measuring GTP in human specimens. Ref 9 concerns rat spleen and heart. Ref 15 concerns 6-thio-GTP enzymatic activity in cell extracts. Those passages do not establish the initial report's claimed human-blood detection of the target.",
+        "response_assessment": "The first response acknowledged the gap. Later research again claimed Confirmed with additional evidence. The later evidence and salt-to-parent scope require separate assessment; the label reversal alone is not a proven relapse.",
+        "boundary": "",
+        "source_anchors": [
+          {
+            "event_id": "8d43ae9b69735bf4f6e6a17d:1",
+            "stage": "initial_report",
+            "evidence_number": 1,
+            "evidence_id": "Ref 3",
+            "quote_number": 1,
+            "quote": "Guanosine triphosphate (GTP) is a key biomarker of multiple cellular processes and human diseases. The new fluorescent dinuclear complex [Zn2(L)(S)][OTf]4, 1 (asymmetric ligand, L = 5,8-Bis{[bis(2-pyridylmethyl)amino] methyl}quinoline, S = solvent, and OTf = triflate anion) was synthesized and studied in-depth as a chemosensor for nucleoside polyphosphates and inorganic anions in pure water. Additions at neutral pH of nucleoside triphosphates, guanosine diphosphate, guanosine monophosphate, and pyrophosphate (PPi) to 1 quench its blue emission (λem = 410 nm) with a pronounced selectivity toward GTP over other anions, including adenosine triphosphate (ATP), uridine triphosphate (UTP), and cytidine triphosphate (CTP). The efficient quenching response by the addition of GTP was observed in the presence of coexisting species in blood plasma and urine with a detection limit of 9.2 μmol L-1. GTP also shows much tighter binding to the receptor 1 on a submicromolar level",
+            "supplied_title": "Chemosensing of Guanosine Triphosphate Based on a Fluorescent Dinuclear Zn(II)-Dipicolylamine Complex in Water.",
+            "supplied_identifier": "10.1021/acs.inorgchem.0c00777",
+            "source_locator": "/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/revision_execution_20261020/repair_runs/8d43ae9b69735bf4f6e6a17d/data/session/10.1021acs.inorgchem.0c00777.json",
+            "source_status": "available",
+            "source_sha256": "2af9b5868120e0d2867153f02e9cc40eedc71671210c9abca81a771aeeccab60",
+            "saved_title": "Chemosensing of Guanosine Triphosphate Based on a Fluorescent Dinuclear Zn(II)-Dipicolylamine Complex in Water.",
+            "saved_doi": "10.1021/acs.inorgchem.0c00777",
+            "saved_ids": {
+              "s2id": "2fd71700a2174ad67d4fb0f991d2cbc143533b23",
+              "doi": "10.1021/acs.inorgchem.0c00777",
+              "pmid": "32391691",
+              "arxiv": ""
+            },
+            "location_status": "exact",
+            "text_field": "full_text",
+            "offset": 0,
+            "offset_basis": "original_text",
+            "source_context": "Guanosine triphosphate (GTP) is a key biomarker of multiple cellular processes and human diseases. The new fluorescent dinuclear complex [Zn2(L)(S)][OTf]4, 1 (asymmetric ligand, L = 5,8-Bis{[bis(2-pyridylmethyl)amino] methyl}quinoline, S = solvent, and OTf = triflate anion) was synthesized and studied in-depth as a chemosensor for nucleoside polyphosphates and inorganic anions in pure water. Additions at neutral pH of nucleoside triphosphates, guanosine diphosphate, guanosine monophosphate, and pyrophosphate (PPi) to 1 quench its blue emission (λem = 410 nm) with a pronounced selectivity toward GTP over other anions, including adenosine triphosphate (ATP), uridine triphosphate (UTP), and cytidine triphosphate (CTP). The efficient quenching response by the addition of GTP was observed in the presence of coexisting species in blood plasma and urine with a detection limit of 9.2 μmol L-1. GTP also shows much tighter binding to the receptor 1 on a submicromolar level. On the basis of multiple spectroscopic tools (1H, 31P NMR, UV-vis, and fluorescence) and DFT calculations, the binding mode is proposed through three-point recognition involving the simultaneous coo",
+            "semantic_support": "not_adjudicated",
+            "saved_has_fulltext": false,
+            "full_text_equals_abstract": true
+          },
+          {
+            "event_id": "8d43ae9b69735bf4f6e6a17d:1",
+            "stage": "initial_report",
+            "evidence_number": 2,
+            "evidence_id": "Ref 9",
+            "quote_number": 1,
+            "quote": "Mycophenolic acid is effective against a wide range of experimental tumors in rodents when given orally, despite rapid metabolism to the inactive glucuronide derivative and rapid clearance from plasma. In the light of this, the pharmacodynamic action of mycophenolic acid on the radiolabelling of GTP and ATP by [14C]hypoxanthine in spleen and heart has been investigated in vivo in the rat as a preliminary to studies in tumor tissue. The data indicate that inhibition of GTP, and more surprisingly, ATP synthesis in spleen was sustained for at least 24.25 hr after single oral doses of the disodium salt of mycophenolic acid, indicating that the inhibitor is retained in sensitive cells for considerably longer than might be expected from the pharmacokinetic profile in the plasma in this species. GTP and ATP levels became depressed in rat spleen subsequent to the inhibition of nucleotide radiolabelling. The persistence of mycophenolic acid in proliferating cells may account for the effectiveness of once daily dosing against rapidly growing experimental tumors",
+            "supplied_title": "Pharmacodynamics of the inhibition of GTP synthesis in vivo by mycophenolic acid.",
+            "supplied_identifier": "10.1016/0065-2571(94)90011-6",
+            "source_locator": "/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/revision_execution_20261020/repair_runs/8d43ae9b69735bf4f6e6a17d/data/session/10.10160065-2571(94)90011-6.json",
+            "source_status": "available",
+            "source_sha256": "cfe92d0baf56712fab557f3d263975a0293bd8b6282ecc1770d471790f5750a3",
+            "saved_title": "Pharmacodynamics of the inhibition of GTP synthesis in vivo by mycophenolic acid.",
+            "saved_doi": "10.1016/0065-2571(94)90011-6",
+            "saved_ids": {
+              "pmid": "7942268",
+              "pmcid": "",
+              "s2id": "be3799b6450fe097558b3a8ec1b82ea4f368345f",
+              "doi": "10.1016/0065-2571(94)90011-6"
+            },
+            "location_status": "exact",
+            "text_field": "full_text",
+            "offset": 0,
+            "offset_basis": "original_text",
+            "source_context": "Mycophenolic acid is effective against a wide range of experimental tumors in rodents when given orally, despite rapid metabolism to the inactive glucuronide derivative and rapid clearance from plasma. In the light of this, the pharmacodynamic action of mycophenolic acid on the radiolabelling of GTP and ATP by [14C]hypoxanthine in spleen and heart has been investigated in vivo in the rat as a preliminary to studies in tumor tissue. The data indicate that inhibition of GTP, and more surprisingly, ATP synthesis in spleen was sustained for at least 24.25 hr after single oral doses of the disodium salt of mycophenolic acid, indicating that the inhibitor is retained in sensitive cells for considerably longer than might be expected from the pharmacokinetic profile in the plasma in this species. GTP and ATP levels became depressed in rat spleen subsequent to the inhibition of nucleotide radiolabelling. The persistence of mycophenolic acid in proliferating cells may account for the effectiveness of once daily dosing against rapidly growing experimental tumors. In contrast with spleen, there was no incorporation of radiolabel from [14C]hypoxanthine into either GTP or ATP in rat heart and mycophenolic acid had no effect on the cardiac content of either nucl",
+            "semantic_support": "not_adjudicated",
+            "saved_has_fulltext": false,
+            "full_text_equals_abstract": true
+          },
+          {
+            "event_id": "8d43ae9b69735bf4f6e6a17d:1",
+            "stage": "initial_report",
+            "evidence_number": 4,
+            "evidence_id": "Ref 15",
+            "quote_number": 1,
+            "quote": "Thiopurine is metabolized to 6-thio-(deoxy) guanosine triphosphate (6-thio-(d) GTP), which is then incorporated into DNA or RNA and causes cytotoxicity. Nudix hydrolase 15 (NUDT15) reduces the cytotoxic effects of thiopurine by converting 6-thio-(d) GTP to 6-thio-(d) guanosine monophosphate (6-thio-(d) GMP). NUDT15 polymorphisms like the Arg139Cys variant are strongly linked to thiopurine-induced severe leukocytopenia and alopecia. Therefore, measurement of NUDT15 enzymatic activity in individual patients can help predict thiopurine tolerability and adjust the dosage. We aimed to develop a quantitative assay for NUDT15 enzymatic activity in human blood samples. Blood samples were collected from donors whose NUDT15 genetic status was determined. Liquid chromatography-tandem mass spectrometry (LC-MS/MS) was used to assess the 6-thio-GTP metabolic activity in cell extracts. Because 6-thio-guanosine diphosphate (6-thio-GDP) and 6-thio-GMP were generated upon incubation of 6-thio-GTP with human blood cell extracts, the method detecting 6-thio-GTP, 6-thio-GDP, and 6-thio-GMP was validated",
+            "supplied_title": "Measurement of the intracellular active metabolites of thiopurine drugs to evaluate the enzymatic activity of nudix hydrolase 15 in human blood samples.",
+            "supplied_identifier": "38246006",
+            "source_locator": "/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/revision_execution_20261020/repair_runs/8d43ae9b69735bf4f6e6a17d/data/session/10.1016j.jchromb.2024.123993.json",
+            "source_status": "available",
+            "source_sha256": "ae9dedb851377e8fe067a52936311e81438e578deed7e22fcbb4e78cbe4e53f9",
+            "saved_title": "Measurement of the intracellular active metabolites of thiopurine drugs to evaluate the enzymatic activity of nudix hydrolase 15 in human blood samples.",
+            "saved_doi": "10.1016/j.jchromb.2024.123993",
+            "saved_ids": {
+              "s2id": "080f34bfa26f844219ef328d9ff9e032af78e37c",
+              "doi": "10.1016/j.jchromb.2024.123993",
+              "pmid": "38246006",
+              "arxiv": ""
+            },
+            "location_status": "exact",
+            "text_field": "full_text",
+            "offset": 0,
+            "offset_basis": "original_text",
+            "source_context": "Thiopurine is metabolized to 6-thio-(deoxy) guanosine triphosphate (6-thio-(d) GTP), which is then incorporated into DNA or RNA and causes cytotoxicity. Nudix hydrolase 15 (NUDT15) reduces the cytotoxic effects of thiopurine by converting 6-thio-(d) GTP to 6-thio-(d) guanosine monophosphate (6-thio-(d) GMP). NUDT15 polymorphisms like the Arg139Cys variant are strongly linked to thiopurine-induced severe leukocytopenia and alopecia. Therefore, measurement of NUDT15 enzymatic activity in individual patients can help predict thiopurine tolerability and adjust the dosage. We aimed to develop a quantitative assay for NUDT15 enzymatic activity in human blood samples. Blood samples were collected from donors whose NUDT15 genetic status was determined. Liquid chromatography-tandem mass spectrometry (LC-MS/MS) was used to assess the 6-thio-GTP metabolic activity in cell extracts. Because 6-thio-guanosine diphosphate (6-thio-GDP) and 6-thio-GMP were generated upon incubation of 6-thio-GTP with human blood cell extracts, the method detecting 6-thio-GTP, 6-thio-GDP, and 6-thio-GMP was validated. All three metabolites were linearly detected, and the lower limit of quantification (LLOQ) of 6-thio-GTP, 6-thio-GDP, and 6-thio-GMP were 5 μM, 1 μM, and 2 μM, respectively. Matrix effects of human ",
+            "semantic_support": "not_adjudicated",
+            "saved_has_fulltext": false,
+            "full_text_equals_abstract": true
+          }
+        ],
+        "source_contexts": [],
+        "inspection_level": "source_anchored"
+      }
+    ],
+    "packet_sha256": "914dc79a15028433b43f6be2f4588acaad5c1cab9cb3b7592fbc25a26bcd87ab",
+    "independent_expert_review": false,
+    "whole_row_correctness": "not_adjudicated",
+    "carry_basis": "identical_complete_packet_and_revalidated_sources"
+  },
+  {
+    "event_id": "99a515b29a813ff1fa0c85fc:1",
+    "candidate": "2-Oxopropanal",
+    "topic": "dbp",
+    "strata": [
+      "upward",
+      "retained"
+    ],
+    "inspection_level": "source_anchored",
+    "initial_label": "Suspected",
+    "critique_label": "Confirmed",
+    "first_response_label": "Confirmed",
+    "last_response_label": "Confirmed",
+    "canonical_final_label": "Confirmed",
+    "canonical_accepted": true,
+    "findings": [
+      "The saved groundwater passage links methylglyoxal changes to Fenton/ozonation and NOM fractions. The rubric permits oxidation, whereas the Researcher required a specifically disinfection-linked result. That is a valid scope correction. The methylglyoxal discussion in Ref 2 summarizes prior work, and Ref 1 describes oxidation OF methylglyoxal rather than its formation. Neither should be described as this study directly measuring target formation without further attribution checks."
+    ],
+    "response_assessments": [
+      "The Researcher and final pipeline became Confirmed. The narrow scope correction is supported, but all-citation entailment and whole-row correctness have not been independently adjudicated."
+    ],
+    "boundaries": [],
+    "inspections": [
+      {
+        "record_path": "/data/chen/dbcurator_critique_snapshot_588_20261025_2320/upward_review/all_upward_cases.json",
+        "record_file_sha256": "abb2c0cbd564c3f60ba2cc4eeac76dbe0dced30f53692a22d93e757dc5c17eba",
+        "assessment": "supported_scope_interpretation_correction_with_citation_role_caveat",
+        "finding": "The saved groundwater passage links methylglyoxal changes to Fenton/ozonation and NOM fractions. The rubric permits oxidation, whereas the Researcher required a specifically disinfection-linked result. That is a valid scope correction. The methylglyoxal discussion in Ref 2 summarizes prior work, and Ref 1 describes oxidation OF methylglyoxal rather than its formation. Neither should be described as this study directly measuring target formation without further attribution checks.",
+        "response_assessment": "The Researcher and final pipeline became Confirmed. The narrow scope correction is supported, but all-citation entailment and whole-row correctness have not been independently adjudicated.",
+        "boundary": "",
+        "source_anchors": [
+          {
+            "event_id": "99a515b29a813ff1fa0c85fc:1",
+            "stage": "initial_report",
+            "evidence_number": 1,
+            "evidence_id": "Ref 1",
+            "quote_number": 1,
+            "quote": "The oxidation mechanism of methylglyoxal (CH3COCHO) in the aqueous phase plays a crucial role in the formation of secondary organic aerosols (SOA).",
+            "supplied_title": "Theoretical investigation on the oxidation mechanism of methylglyoxal in the aqueous phase.",
+            "supplied_identifier": "10.1016/j.chemosphere.2024.143425",
+            "source_locator": "/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/revision_execution_20261020/repair_runs/99a515b29a813ff1fa0c85fc/data/session/10.1016j.chemosphere.2024.143425.json",
+            "source_status": "available",
+            "source_sha256": "f8f4f4c995a532c1e11d35e3db16f1ea762adec3ad4f8c393b9495d99f858862",
+            "saved_title": "Theoretical investigation on the oxidation mechanism of methylglyoxal in the aqueous phase.",
+            "saved_doi": "10.1016/j.chemosphere.2024.143425",
+            "saved_ids": {
+              "s2id": "37070d6258da3fcf8e5ed4923bdaa10f765b1f90",
+              "doi": "10.1016/j.chemosphere.2024.143425",
+              "pmid": "39341396",
+              "arxiv": ""
+            },
+            "location_status": "exact",
+            "text_field": "full_text",
+            "offset": 0,
+            "offset_basis": "original_text",
+            "source_context": "The oxidation mechanism of methylglyoxal (CH3COCHO) in the aqueous phase plays a crucial role in the formation of secondary organic aerosols (SOA). To date, the investigations of reaction mechanisms of MG in the aqueous phase still needs to be refined, and the oxidation mechanisms of MG in the existence of various oxidants (e.g., H2O2, O3, ∙NO3,",
+            "semantic_support": "not_adjudicated"
+          },
+          {
+            "event_id": "99a515b29a813ff1fa0c85fc:1",
+            "stage": "initial_report",
+            "evidence_number": 1,
+            "evidence_id": "Ref 1",
+            "quote_number": 2,
+            "quote": "The aqueous oxidation reaction of MG could form a variety of organic acids, including pyruvic acid, formic acid, acetic acid, and oxalic acid",
+            "supplied_title": "Theoretical investigation on the oxidation mechanism of methylglyoxal in the aqueous phase.",
+            "supplied_identifier": "10.1016/j.chemosphere.2024.143425",
+            "source_locator": "/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/revision_execution_20261020/repair_runs/99a515b29a813ff1fa0c85fc/data/session/10.1016j.chemosphere.2024.143425.json",
+            "source_status": "available",
+            "source_sha256": "f8f4f4c995a532c1e11d35e3db16f1ea762adec3ad4f8c393b9495d99f858862",
+            "saved_title": "Theoretical investigation on the oxidation mechanism of methylglyoxal in the aqueous phase.",
+            "saved_doi": "10.1016/j.chemosphere.2024.143425",
+            "saved_ids": {
+              "s2id": "37070d6258da3fcf8e5ed4923bdaa10f765b1f90",
+              "doi": "10.1016/j.chemosphere.2024.143425",
+              "pmid": "39341396",
+              "arxiv": ""
+            },
+            "location_status": "exact",
+            "text_field": "full_text",
+            "offset": 971,
+            "offset_basis": "original_text",
+            "source_context": "that the hydration reaction is a significant initiating reaction of MG in the atmospheric aqueous phase, whose generated hydrated compounds played a critical part in the process of forming oligomers. The aqueous oxidation reaction of MG could form a variety of organic acids, including pyruvic acid, formic acid, acetic acid, and oxalic acid. In the presence of OH radicals, pyruvic acid was the main first-generation production, which undergoes further reactions to form acetic acid, oxalic acid, and mesoxalic acid. Acetic acid was mainly ",
+            "semantic_support": "not_adjudicated"
+          },
+          {
+            "event_id": "99a515b29a813ff1fa0c85fc:1",
+            "stage": "initial_report",
+            "evidence_number": 2,
+            "evidence_id": "Ref 2",
+            "quote_number": 1,
+            "quote": "The results for groundwater with a TOC concentration of about 5 mgC/dm3 showed that during the oxidation process using the Fenton reaction and also as a result of ozonation, there was an increase in the concentration of total aldehydes, mainly formic and acetaldehyde, while the concentrations of glyoxal and methylglyoxal changed only slightly.",
+            "supplied_title": "Application of Fenton's Reaction for Removal of Organic Matter from Groundwater.",
+            "supplied_identifier": "10.3390/molecules29215150",
+            "source_locator": "/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/revision_execution_20261020/repair_runs/99a515b29a813ff1fa0c85fc/data/session/10.3390molecules29215150.json",
+            "source_status": "available",
+            "source_sha256": "191bfbbc4d265fce6f0d565b021cfcf6f846183054f01ea31dd73600b2eaa5d9",
+            "saved_title": "Application of Fenton's Reaction for Removal of Organic Matter from Groundwater.",
+            "saved_doi": "10.3390/molecules29215150",
+            "saved_ids": {
+              "doi": "10.3390/molecules29215150",
+              "pmid": "39519790",
+              "pmcid": "PMC11547487",
+              "eupmc_id": "39519790"
+            },
+            "location_status": "exact",
+            "text_field": "full_text",
+            "offset": 8657,
+            "offset_basis": "original_text",
+            "source_context": "eated water, organo-bromine compounds may also form. Due to their toxic, genotoxic, mutagenic, or carcinogenic effects, most organo-bromine compounds are considered hazardous to consumer health [,,]. The results for groundwater with a TOC concentration of about 5 mgC/dm3 showed that during the oxidation process using the Fenton reaction and also as a result of ozonation, there was an increase in the concentration of total aldehydes, mainly formic and acetaldehyde, while the concentrations of glyoxal and methylglyoxal changed only slightly. Among the aldehydes identified in the groundwater after the oxidation process, formaldehyde and acetaldehyde accounted for 59%, glyoxal and methylglyoxal for 6%, and the other aldehydes accounted for",
+            "semantic_support": "not_adjudicated"
+          },
+          {
+            "event_id": "99a515b29a813ff1fa0c85fc:1",
+            "stage": "initial_report",
+            "evidence_number": 2,
+            "evidence_id": "Ref 2",
+            "quote_number": 2,
+            "quote": "Among the aldehydes identified in the groundwater after the oxidation process, formaldehyde and acetaldehyde accounted for 59%, glyoxal and methylglyoxal for 6%, and the other aldehydes accounted for the remainder []. It was also shown that the increase in concentration of individual aldehydes relative to their content in water before oxidation depended on the type of natural organic matter. In the case of formic and acetaldehyde, it was greater for humic acids and hydrophilic fractions, and in the case of glyoxal and methylglyoxal, it was greater for hydrophobic fractions",
+            "supplied_title": "Application of Fenton's Reaction for Removal of Organic Matter from Groundwater.",
+            "supplied_identifier": "10.3390/molecules29215150",
+            "source_locator": "/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/revision_execution_20261020/repair_runs/99a515b29a813ff1fa0c85fc/data/session/10.3390molecules29215150.json",
+            "source_status": "available",
+            "source_sha256": "191bfbbc4d265fce6f0d565b021cfcf6f846183054f01ea31dd73600b2eaa5d9",
+            "saved_title": "Application of Fenton's Reaction for Removal of Organic Matter from Groundwater.",
+            "saved_doi": "10.3390/molecules29215150",
+            "saved_ids": {
+              "doi": "10.3390/molecules29215150",
+              "pmid": "39519790",
+              "pmcid": "PMC11547487",
+              "eupmc_id": "39519790"
+            },
+            "location_status": "exact",
+            "text_field": "full_text",
+            "offset": 9003,
+            "offset_basis": "original_text",
+            "source_context": "o as a result of ozonation, there was an increase in the concentration of total aldehydes, mainly formic and acetaldehyde, while the concentrations of glyoxal and methylglyoxal changed only slightly. Among the aldehydes identified in the groundwater after the oxidation process, formaldehyde and acetaldehyde accounted for 59%, glyoxal and methylglyoxal for 6%, and the other aldehydes accounted for the remainder []. It was also shown that the increase in concentration of individual aldehydes relative to their content in water before oxidation depended on the type of natural organic matter. In the case of formic and acetaldehyde, it was greater for humic acids and hydrophilic fractions, and in the case of glyoxal and methylglyoxal, it was greater for hydrophobic fractions. Carboxylic acids such as formic, acetic, oxalic and propionic acids can also be formed as by-products of the oxidation of organic substances during the Fenton process [,,,]. However, preceding the c",
+            "semantic_support": "not_adjudicated"
+          }
+        ],
+        "source_contexts": [],
+        "inspection_level": "source_anchored"
+      }
+    ],
+    "packet_sha256": "2f3d26c47c2e795e313bfb2bca39a9766f9248d94df7fbc18bed57848e8ea3bf",
+    "independent_expert_review": false,
+    "whole_row_correctness": "not_adjudicated",
+    "carry_basis": "identical_complete_packet_and_revalidated_sources"
+  },
+  {
+    "event_id": "b143a3e659b978974daa9095:1",
+    "candidate": "West Nile immune globulin",
+    "topic": "drug_compounds",
+    "strata": [
+      "downward",
+      "returned"
+    ],
+    "inspection_level": "source_anchored",
+    "initial_label": "Confirmed",
+    "critique_label": "Insufficient Direct Evidence",
+    "first_response_label": "Insufficient Direct Evidence",
+    "last_response_label": "Confirmed",
+    "canonical_final_label": "Confirmed",
+    "canonical_accepted": true,
+    "findings": [
+      "The initial quotes explicitly concern commercial IGIV lots and named products. Critique raises a real source-to-entry distinction under the supplied exclusions. However, a product study can still provide evidence about its active substance, so product wording alone does not prove that the requested entity must be excluded. The subsequent source demonstrates prophylactic and therapeutic activity of human gamma globulin, while its saved full text also states that the material was obtained commercially."
+    ],
+    "response_assessments": [
+      "The first response adopts Insufficient Direct Evidence. The last response adds a different primary paper and returns to Confirmed, retained by the final accepted output. This is additional relevant pharmacological evidence, not an independently validated resolution of the substance-versus-formulation boundary. Preserve both the initial concern and the later acceptance without calling this a proven correction or a proven harmful reversal."
+    ],
+    "boundaries": [],
+    "inspections": [
+      {
+        "record_path": "deliverables/critique_mechanism_analysis_20261025/downward_stratum_complete_0922/all_stratum_cases.json",
+        "record_file_sha256": "66543b4174a5db751a27db734255e6206f619d98e9d2a2c398d7c7b4a871b87c",
+        "assessment": "product_substance_boundary_remains_unresolved_after_new_source",
+        "finding": "The initial quotes explicitly concern commercial IGIV lots and named products. Critique raises a real source-to-entry distinction under the supplied exclusions. However, a product study can still provide evidence about its active substance, so product wording alone does not prove that the requested entity must be excluded. The subsequent source demonstrates prophylactic and therapeutic activity of human gamma globulin, while its saved full text also states that the material was obtained commercially.",
+        "response_assessment": "The first response adopts Insufficient Direct Evidence. The last response adds a different primary paper and returns to Confirmed, retained by the final accepted output. This is additional relevant pharmacological evidence, not an independently validated resolution of the substance-versus-formulation boundary. Preserve both the initial concern and the later acceptance without calling this a proven correction or a proven harmful reversal.",
+        "boundary": "",
+        "source_anchors": [
+          {
+            "event_id": "b143a3e659b978974daa9095:1",
+            "stage": "initial_report",
+            "evidence_number": 2,
+            "evidence_id": "Ref 3",
+            "quote_number": 1,
+            "quote": "West Nile virus (WNV) neutralization titers of US plasma-derived immune globulin intravenous (human) (IGIV) lots by year of production and estimated percentage of the US population with past WNV infection by year. WNV neutralization titers were determined either for retention or lot release samples of 3 IGIV products produced during 1998-2005 or for a considerable proportion of Gammagard Liquid/KIOVIG lots produced during 2006-2008.",
+            "supplied_title": "West Nile Virus Infection in Plasma of Blood and Plasma Donors, United States",
+            "supplied_identifier": "10.3201/eid1510.080711",
+            "source_locator": "/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/revision_execution_20261020/repair_runs/b143a3e659b978974daa9095/data/session/10.3201eid1510.080711.json",
+            "source_status": "available",
+            "source_sha256": "32934f5e60562b524e0e00949991f4e47ca88c3df56fb5654546aa2b4775c02d",
+            "saved_title": "West Nile Virus Infection in Plasma of Blood and Plasma Donors, United States",
+            "saved_doi": "10.3201/eid1510.080711",
+            "saved_ids": {
+              "s2id": "3594781b7fd120a0777cfdc61f45df470bfd6775",
+              "doi": "10.3201/eid1510.080711",
+              "pmid": "",
+              "arxiv": ""
+            },
+            "location_status": "exact",
+            "text_field": "full_text",
+            "offset": 1808,
+            "offset_basis": "original_text",
+            "source_context": ". According to extrapolations from the WNV screening of the US blood supply (), by 2003, an estimated 0.5% of the US population had been infected with WNV, although most infections were asymptomatic.\nWest Nile virus (WNV) neutralization titers of US plasma-derived immune globulin intravenous (human) (IGIV) lots by year of production and estimated percentage of the US population with past WNV infection by year. WNV neutralization titers were determined either for retention or lot release samples of 3 IGIV products produced during 1998-2005 or for a considerable proportion of Gammagard Liquid/KIOVIG lots produced during 2006-2008. Results are shown as mean ± SEM (limit of detection <0.8) by year of product release. For 5% of IGIV samples, titers were multiplied by 2 for comparison with the 10% IGIV samples at equivalent immuno",
+            "semantic_support": "not_adjudicated",
+            "saved_has_fulltext": true,
+            "full_text_equals_abstract": false
+          },
+          {
+            "event_id": "b143a3e659b978974daa9095:1",
+            "stage": "first_response",
+            "evidence_number": 1,
+            "evidence_id": "Ref 1",
+            "quote_number": 3,
+            "quote": "West Nile virus (WNV) neutralization titers of US plasma-derived immune globulin intravenous (human) (IGIV) lots by year of production and estimated percentage of the US population with past WNV infection by year. WNV neutralization titers were determined either for retention or lot release samples of 3 IGIV products produced during 1998-2005 or for a considerable proportion of Gammagard Liquid/KIOVIG lots produced during 2006-2008.",
+            "supplied_title": "West Nile Virus Infection in Plasma of Blood and Plasma Donors, United States",
+            "supplied_identifier": "10.3201/eid1510.080711",
+            "source_locator": "/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/revision_execution_20261020/repair_runs/b143a3e659b978974daa9095/data/session/10.3201eid1510.080711.json",
+            "source_status": "available",
+            "source_sha256": "32934f5e60562b524e0e00949991f4e47ca88c3df56fb5654546aa2b4775c02d",
+            "saved_title": "West Nile Virus Infection in Plasma of Blood and Plasma Donors, United States",
+            "saved_doi": "10.3201/eid1510.080711",
+            "saved_ids": {
+              "s2id": "3594781b7fd120a0777cfdc61f45df470bfd6775",
+              "doi": "10.3201/eid1510.080711",
+              "pmid": "",
+              "arxiv": ""
+            },
+            "location_status": "exact",
+            "text_field": "full_text",
+            "offset": 1808,
+            "offset_basis": "original_text",
+            "source_context": ". According to extrapolations from the WNV screening of the US blood supply (), by 2003, an estimated 0.5% of the US population had been infected with WNV, although most infections were asymptomatic.\nWest Nile virus (WNV) neutralization titers of US plasma-derived immune globulin intravenous (human) (IGIV) lots by year of production and estimated percentage of the US population with past WNV infection by year. WNV neutralization titers were determined either for retention or lot release samples of 3 IGIV products produced during 1998-2005 or for a considerable proportion of Gammagard Liquid/KIOVIG lots produced during 2006-2008. Results are shown as mean ± SEM (limit of detection <0.8) by year of product release. For 5% of IGIV samples, titers were multiplied by 2 for comparison with the 10% IGIV samples at equivalent immuno",
+            "semantic_support": "not_adjudicated",
+            "saved_has_fulltext": true,
+            "full_text_equals_abstract": false
+          },
+          {
+            "event_id": "b143a3e659b978974daa9095:1",
+            "stage": "response",
+            "evidence_number": 1,
+            "evidence_id": "Ref 1",
+            "quote_number": 1,
+            "quote": "In this study, we directly tested the prophylactic and therapeutic efficacy of polyclonal antibodies against WNV. Passive administration of human gamma globulin or mouse serum prior to WNV infection protected congenic wild-type, B-cell-deficient (μMT), and T- and B-cell-deficient ( RAG1 ) C57BL/6J mice.",
+            "supplied_title": "Antibody Prophylaxis and Therapy against West NileVirus Infection in Wild-Type and ImmunodeficientMice",
+            "supplied_identifier": "10.1128/JVI.77.24.12941-12949.2003",
+            "source_locator": "/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/revision_execution_20261020/repair_runs/b143a3e659b978974daa9095/data/session/10.1128JVI.77.24.12941-12949.2003.json",
+            "source_status": "available",
+            "source_sha256": "f0497779b8bea0c906e941eaf460d3fc1af53b96420df824e068fff7c4cadfc9",
+            "saved_title": "Antibody Prophylaxis and Therapy against West NileVirus Infection in Wild-Type and ImmunodeficientMice",
+            "saved_doi": "10.1128/JVI.77.24.12941-12949.2003",
+            "saved_ids": {
+              "s2id": "f86d32fbf4067dba421bc5423f48cf550e88afe3",
+              "doi": "10.1128/JVI.77.24.12941-12949.2003",
+              "pmid": "14645550",
+              "arxiv": "",
+              "pmcid": "PMC296058"
+            },
+            "location_status": "exact",
+            "text_field": "full_text",
+            "offset": 226,
+            "offset_basis": "original_text",
+            "source_context": "s (WNV) is a mosquito-borne Flavivirus that causes encephalitis in a subset of susceptible humans. Current treatment for WNV infections is supportive, and no specific therapy or vaccine is available. In this study, we directly tested the prophylactic and therapeutic efficacy of polyclonal antibodies against WNV. Passive administration of human gamma globulin or mouse serum prior to WNV infection protected congenic wild-type, B-cell-deficient (μMT), and T- and B-cell-deficient ( RAG1 ) C57BL/6J mice. Notably, no increased mortality due to immune enhancement was observed. Although immune antibody completely prevented morbidity and mortality in wild-type mice, its effect was not durable in immunoco",
+            "semantic_support": "not_adjudicated",
+            "saved_has_fulltext": true,
+            "full_text_equals_abstract": false
+          },
+          {
+            "event_id": "b143a3e659b978974daa9095:1",
+            "stage": "response",
+            "evidence_number": 1,
+            "evidence_id": "Ref 1",
+            "quote_number": 4,
+            "quote": "For this study, two immune human gamma globulin lots were used: G12101 and G24191 had significant in vitro immunoreactivity (ELISA titers of 1/900 against WNV antigen) and neutralizing (PRNT 50 of 1/50 to 1/100) potential.",
+            "supplied_title": "Antibody Prophylaxis and Therapy against West NileVirus Infection in Wild-Type and ImmunodeficientMice",
+            "supplied_identifier": "10.1128/JVI.77.24.12941-12949.2003",
+            "source_locator": "/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/revision_execution_20261020/repair_runs/b143a3e659b978974daa9095/data/session/10.1128JVI.77.24.12941-12949.2003.json",
+            "source_status": "available",
+            "source_sha256": "f0497779b8bea0c906e941eaf460d3fc1af53b96420df824e068fff7c4cadfc9",
+            "saved_title": "Antibody Prophylaxis and Therapy against West NileVirus Infection in Wild-Type and ImmunodeficientMice",
+            "saved_doi": "10.1128/JVI.77.24.12941-12949.2003",
+            "saved_ids": {
+              "s2id": "f86d32fbf4067dba421bc5423f48cf550e88afe3",
+              "doi": "10.1128/JVI.77.24.12941-12949.2003",
+              "pmid": "14645550",
+              "arxiv": "",
+              "pmcid": "PMC296058"
+            },
+            "location_status": "exact",
+            "text_field": "full_text",
+            "offset": 9911,
+            "offset_basis": "original_text",
+            "source_context": "against WNV was obtained from donors in Israel. Over the past several years, a series of WNV epidemics have occurred in Israel, so that 10 to 20% of the population has antibodies against WNV ( 61 ).\n\nFor this study, two immune human gamma globulin lots were used: G12101 and G24191 had significant in vitro immunoreactivity (ELISA titers of 1/900 against WNV antigen) and neutralizing (PRNT 50 of 1/50 to 1/100) potential. Nonimmune human gamma globulin was obtained from a region where WNV was nonendemic and lacked neutralizing activity or immunoreactivity. In vivo studies with human gamma globulin were performed in 8-",
+            "semantic_support": "not_adjudicated",
+            "saved_has_fulltext": true,
+            "full_text_equals_abstract": false
+          }
+        ],
+        "source_contexts": [
+          {
+            "stage": "response",
+            "evidence_id": "Ref 1",
+            "field": "full_text",
+            "text": "Purified human gamma globulin was obtained commercially (Omrix Biopharmaceuticals Ltd.) from a region of WNV endemicity (Israel) which has had repeated outbreaks over the past few years.",
+            "source_locator": "/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/revision_execution_20261020/repair_runs/b143a3e659b978974daa9095/data/session/10.1128JVI.77.24.12941-12949.2003.json",
+            "source_sha256": "f0497779b8bea0c906e941eaf460d3fc1af53b96420df824e068fff7c4cadfc9",
+            "start": 4621,
+            "end": 4807,
+            "role": "assistant_inspected_source_context_not_original_critique_input"
+          }
+        ],
+        "inspection_level": "source_anchored"
+      }
+    ],
+    "packet_sha256": "ea6c0485f9890d23eb92ea3a68ec50a41086b42959a06283f2b003f5836467b1",
+    "independent_expert_review": false,
+    "whole_row_correctness": "not_adjudicated",
+    "carry_basis": "identical_complete_packet_and_revalidated_sources"
+  },
+  {
+    "event_id": "c88ccfb8cdcd7fb7174994ed:1",
+    "candidate": "PC(20:2(11Z,14Z)/20:1(11Z))",
+    "topic": "human_endogenous_metabolites",
+    "strata": [
+      "downward",
+      "returned"
+    ],
+    "inspection_level": "source_anchored",
+    "initial_label": "Confirmed",
+    "critique_label": "Insufficient Direct Evidence",
+    "first_response_label": "Insufficient Direct Evidence",
+    "last_response_label": "Confirmed",
+    "canonical_final_label": "Confirmed",
+    "canonical_accepted": true,
+    "findings": [
+      "The supplied human-sample quotes enumerate related PCs, including PC(20:3(8Z,11Z,14Z)/20:1(11Z)), rather than the requested PC(20:2(11Z,14Z)/20:1(11Z)). Critique correctly points out this target-specific gap in the cited passages. Later Kennedy-pathway and PC-class evidence supports general biosynthesis but does not by itself establish this exact molecular species."
+    ],
+    "response_assessments": [
+      "Researcher first adopts Insufficient Direct Evidence, then returns to Confirmed using related-species and class-level evidence. The final accepted output retains Confirmed. This is an adverse persistence example: an initially well-grounded objection did not prevent final acceptance of the same unresolved attribution. It is not proof the chemical cannot exist in humans or an independently adjudicated whole-row false positive."
+    ],
+    "boundaries": [],
+    "inspections": [
+      {
+        "record_path": "deliverables/critique_mechanism_analysis_20261025/downward_stratum_complete_0922/all_stratum_cases.json",
+        "record_file_sha256": "66543b4174a5db751a27db734255e6206f619d98e9d2a2c398d7c7b4a871b87c",
+        "assessment": "supported_exact_lipid_gap_reasserted_and_finally_accepted",
+        "finding": "The supplied human-sample quotes enumerate related PCs, including PC(20:3(8Z,11Z,14Z)/20:1(11Z)), rather than the requested PC(20:2(11Z,14Z)/20:1(11Z)). Critique correctly points out this target-specific gap in the cited passages. Later Kennedy-pathway and PC-class evidence supports general biosynthesis but does not by itself establish this exact molecular species.",
+        "response_assessment": "Researcher first adopts Insufficient Direct Evidence, then returns to Confirmed using related-species and class-level evidence. The final accepted output retains Confirmed. This is an adverse persistence example: an initially well-grounded objection did not prevent final acceptance of the same unresolved attribution. It is not proof the chemical cannot exist in humans or an independently adjudicated whole-row false positive.",
+        "boundary": "",
+        "source_anchors": [
+          {
+            "event_id": "c88ccfb8cdcd7fb7174994ed:1",
+            "stage": "initial_report",
+            "evidence_number": 1,
+            "evidence_id": "Ref 1",
+            "quote_number": 1,
+            "quote": "Eighteen metabolites associated with GPL metabolism were identified in this study compared to normal subjects: LysoPA (16:0/0:0), LysoPA (18:1(9Z)/0:0), PC (20:3(8Z,11Z,14Z)/20:1(11Z)), PC (18:2(9Z,12Z)/P-18:1(11Z)), PC (20:0/14:0), PC (18:2(9Z,12Z)/18:0), PC (22:6(4Z,7Z,10Z,13Z,16Z,19Z)/20:2(11Z,14Z)), PC (22:2(13Z,16Z)/16:1(9Z)), LysoPC (16:0), PC (16:1(9Z)/16:1(9Z)), LysoPC (18:2(9Z,12Z)), LysoPC (20:3(5Z,8Z,11Z)), PE (16:0/20:4(5Z,8Z,11Z,14Z)), PS (15:0/18:0), PE (P-18:1(11Z)/18:3(6Z,9Z,12Z)), PC (15:0/20:2(11Z,14Z)), PC (15:0/18:2(9Z,12Z)), PE (P-18:1(9Z)/16:1(9Z)) ().",
+            "supplied_title": "Dilated cardiomyopathy signature metabolic marker screening: Machine learning and multi-omics analysis",
+            "supplied_identifier": "10.1016/j.heliyon.2025.e41927",
+            "source_locator": "/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/revision_execution_20261020/repair_runs/c88ccfb8cdcd7fb7174994ed/data/session/10.1016j.heliyon.2025.e41927.json",
+            "source_status": "available",
+            "source_sha256": "f0a54b7f8d20feaed3de294f12a3ddf9811b2833220a4899dddf78682e2504e1",
+            "saved_title": "Dilated cardiomyopathy signature metabolic marker screening: Machine learning and multi-omics analysis",
+            "saved_doi": "10.1016/j.heliyon.2025.e41927",
+            "saved_ids": {
+              "s2id": "95d5c5b5066ea8e5d506e4272b0970d8f8a5c86a",
+              "doi": "10.1016/j.heliyon.2025.e41927",
+              "pmid": "39991223",
+              "arxiv": "",
+              "pmcid": "PMC11847283"
+            },
+            "location_status": "exact",
+            "text_field": "full_text",
+            "offset": 14719,
+            "offset_basis": "original_text",
+            "source_context": "es as well as metabolic pathways.\nGPL-related metabolites and enzymes were significantly altered in DCM patients. Therefore, we further analyzed the significant metabolite changes in the GPL pathway. Eighteen metabolites associated with GPL metabolism were identified in this study compared to normal subjects: LysoPA (16:0/0:0), LysoPA (18:1(9Z)/0:0), PC (20:3(8Z,11Z,14Z)/20:1(11Z)), PC (18:2(9Z,12Z)/P-18:1(11Z)), PC (20:0/14:0), PC (18:2(9Z,12Z)/18:0), PC (22:6(4Z,7Z,10Z,13Z,16Z,19Z)/20:2(11Z,14Z)), PC (22:2(13Z,16Z)/16:1(9Z)), LysoPC (16:0), PC (16:1(9Z)/16:1(9Z)), LysoPC (18:2(9Z,12Z)), LysoPC (20:3(5Z,8Z,11Z)), PE (16:0/20:4(5Z,8Z,11Z,14Z)), PS (15:0/18:0), PE (P-18:1(11Z)/18:3(6Z,9Z,12Z)), PC (15:0/20:2(11Z,14Z)), PC (15:0/18:2(9Z,12Z)), PE (P-18:1(9Z)/16:1(9Z)) (). We also used heatmap to show the relationship of 18 of the metabolites with LVEF, LVEDd, and NT-proBNP. As shown in , we observed that the expression of these metabolites converged with the trend of ",
+            "semantic_support": "not_adjudicated",
+            "saved_has_fulltext": true,
+            "full_text_equals_abstract": false
+          },
+          {
+            "event_id": "c88ccfb8cdcd7fb7174994ed:1",
+            "stage": "initial_report",
+            "evidence_number": 2,
+            "evidence_id": "Ref 2",
+            "quote_number": 1,
+            "quote": "Global untargeted metabolomics conducted on 60 CC tissue samples revealed significant increases in the levels of PC(14:0/22:0), PC[18:3(6Z,9Z,12Z)/20:3(5Z,8Z,11Z)], PC[20:2(11Z,14Z)/18:3(9Z,12Z,15Z)], PC[20:5(5Z,8Z,11Z,14Z,17Z)/18:1(9Z)], PC[20:5(5Z,8Z,11Z,14Z,17Z)/18:1(11Z)], and PC[P-18:1(9Z)/20:5(5Z,8Z,11Z,14Z,17Z)] in CC tissues with LNM ().",
+            "supplied_title": "Multi-omics analysis reveals the alterations in the tumor microbiome and metabolome associated with cervical cancer lymph node metastasis.",
+            "supplied_identifier": "10.1128/spectrum.02247-25",
+            "source_locator": "/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/revision_execution_20261020/repair_runs/c88ccfb8cdcd7fb7174994ed/data/session/10.1128spectrum.02247-25.json",
+            "source_status": "available",
+            "source_sha256": "e7ff33059952dd91608849591936ae627f81d84b684cf994fab8d33cda546393",
+            "saved_title": "Multi-omics analysis reveals the alterations in the tumor microbiome and metabolome associated with cervical cancer lymph node metastasis.",
+            "saved_doi": "10.1128/spectrum.02247-25",
+            "saved_ids": {
+              "doi": "10.1128/spectrum.02247-25",
+              "pmid": "42059393",
+              "pmcid": "PMC13228043",
+              "eupmc_id": "42059393"
+            },
+            "location_status": "exact",
+            "text_field": "full_text",
+            "offset": 30694,
+            "offset_basis": "original_text",
+            "source_context": "abolites.\nIn this study, the levels of phospholipids, particularly phosphatidylcholines (PCs) and phosphatidylethanolamines (PEs), were found to be elevated in CC with LNM compared to CC without LNM. Global untargeted metabolomics conducted on 60 CC tissue samples revealed significant increases in the levels of PC(14:0/22:0), PC[18:3(6Z,9Z,12Z)/20:3(5Z,8Z,11Z)], PC[20:2(11Z,14Z)/18:3(9Z,12Z,15Z)], PC[20:5(5Z,8Z,11Z,14Z,17Z)/18:1(9Z)], PC[20:5(5Z,8Z,11Z,14Z,17Z)/18:1(11Z)], and PC[P-18:1(9Z)/20:5(5Z,8Z,11Z,14Z,17Z)] in CC tissues with LNM (). Additionally, high-resolution spatial metabolomics conducted on six CC tissue samples identified a significant upregulation of numerous phospholipids in CC tissues with LNM, including PC[16:0/16:1(9Z",
+            "semantic_support": "not_adjudicated",
+            "saved_has_fulltext": true,
+            "full_text_equals_abstract": false
+          },
+          {
+            "event_id": "c88ccfb8cdcd7fb7174994ed:1",
+            "stage": "response",
+            "evidence_number": 1,
+            "evidence_id": "Ref 1",
+            "quote_number": 1,
+            "quote": "Eighteen metabolites associated with GPL metabolism were identified in this study compared to normal subjects: LysoPA (16:0/0:0), LysoPA (18:1(9Z)/0:0), PC (20:3(8Z,11Z,14Z)/20:1(11Z)), PC (18:2(9Z,12Z)/P-18:1(11Z)), PC (20:0/14:0), PC (18:2(9Z,12Z)/18:0), PC (22:6(4Z,7Z,10Z,13Z,16Z,19Z)/20:2(11Z,14Z)), PC (22:2(13Z,16Z)/16:1(9Z)), LysoPC (16:0), PC (16:1(9Z)/16:1(9Z)), LysoPC (18:2(9Z,12Z)), LysoPC (20:3(5Z,8Z,11Z)), PE (16:0/20:4(5Z,8Z,11Z,14Z)), PS (15:0/18:0), PE (P-18:1(11Z)/18:3(6Z,9Z,12Z)), PC (15:0/20:2(11Z,14Z)), PC (15:0/18:2(9Z,12Z)), PE (P-18:1(9Z)/16:1(9Z)) ().",
+            "supplied_title": "Dilated cardiomyopathy signature metabolic marker screening: Machine learning and multi-omics analysis",
+            "supplied_identifier": "10.1016/j.heliyon.2025.e41927",
+            "source_locator": "/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/revision_execution_20261020/repair_runs/c88ccfb8cdcd7fb7174994ed/data/session/10.1016j.heliyon.2025.e41927.json",
+            "source_status": "available",
+            "source_sha256": "f0a54b7f8d20feaed3de294f12a3ddf9811b2833220a4899dddf78682e2504e1",
+            "saved_title": "Dilated cardiomyopathy signature metabolic marker screening: Machine learning and multi-omics analysis",
+            "saved_doi": "10.1016/j.heliyon.2025.e41927",
+            "saved_ids": {
+              "s2id": "95d5c5b5066ea8e5d506e4272b0970d8f8a5c86a",
+              "doi": "10.1016/j.heliyon.2025.e41927",
+              "pmid": "39991223",
+              "arxiv": "",
+              "pmcid": "PMC11847283"
+            },
+            "location_status": "exact",
+            "text_field": "full_text",
+            "offset": 14719,
+            "offset_basis": "original_text",
+            "source_context": "es as well as metabolic pathways.\nGPL-related metabolites and enzymes were significantly altered in DCM patients. Therefore, we further analyzed the significant metabolite changes in the GPL pathway. Eighteen metabolites associated with GPL metabolism were identified in this study compared to normal subjects: LysoPA (16:0/0:0), LysoPA (18:1(9Z)/0:0), PC (20:3(8Z,11Z,14Z)/20:1(11Z)), PC (18:2(9Z,12Z)/P-18:1(11Z)), PC (20:0/14:0), PC (18:2(9Z,12Z)/18:0), PC (22:6(4Z,7Z,10Z,13Z,16Z,19Z)/20:2(11Z,14Z)), PC (22:2(13Z,16Z)/16:1(9Z)), LysoPC (16:0), PC (16:1(9Z)/16:1(9Z)), LysoPC (18:2(9Z,12Z)), LysoPC (20:3(5Z,8Z,11Z)), PE (16:0/20:4(5Z,8Z,11Z,14Z)), PS (15:0/18:0), PE (P-18:1(11Z)/18:3(6Z,9Z,12Z)), PC (15:0/20:2(11Z,14Z)), PC (15:0/18:2(9Z,12Z)), PE (P-18:1(9Z)/16:1(9Z)) (). We also used heatmap to show the relationship of 18 of the metabolites with LVEF, LVEDd, and NT-proBNP. As shown in , we observed that the expression of these metabolites converged with the trend of ",
+            "semantic_support": "not_adjudicated",
+            "saved_has_fulltext": true,
+            "full_text_equals_abstract": false
+          },
+          {
+            "event_id": "c88ccfb8cdcd7fb7174994ed:1",
+            "stage": "response",
+            "evidence_number": 4,
+            "evidence_id": "Ref 10",
+            "quote_number": 1,
+            "quote": "The Kennedy pathway represents the primary route for phosphatidylcholine (PC) biosynthesis, accounting for approximately 70-80% of total PC production in cells []. This pathway begins with choline uptake via specific transporters, followed by phosphorylation to phosphocholine by choline kinase (CK), conversion to CDP-choline by CTP: phosphocholine cytidylyltransferase (CCT), and final incorporation into phosphatidylcholine by CDP-choline:1,2-diacylglycerol cholinephosphotransferase [,].",
+            "supplied_title": "Choline in Adolescent Pregnancy: The Impact on Fetal Brain Development and Long-Term Cognitive Outcomes of Offspring.",
+            "supplied_identifier": "10.3390/medicina61112057",
+            "source_locator": "/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/revision_execution_20261020/repair_runs/c88ccfb8cdcd7fb7174994ed/data/session/10.3390medicina61112057.json",
+            "source_status": "available",
+            "source_sha256": "aff0e3b776c48adfc70f55686cb9d6d6b8598c9e822ac1fb590e1f09d617b9d3",
+            "saved_title": "Choline in Adolescent Pregnancy: The Impact on Fetal Brain Development and Long-Term Cognitive Outcomes of Offspring.",
+            "saved_doi": "10.3390/medicina61112057",
+            "saved_ids": {
+              "doi": "10.3390/medicina61112057",
+              "pmid": "41303892",
+              "pmcid": "PMC12654092",
+              "eupmc_id": "41303892"
+            },
+            "location_status": "exact",
+            "text_field": "full_text",
+            "offset": 8108,
+            "offset_basis": "original_text",
+            "source_context": "ent pregnancy, recognizing that modern adolescent mothers face unprecedented physiological challenges that evolution did not anticipate or optimize.\n\n## 2. Choline Metabolism and Biochemical Pathways\nThe Kennedy pathway represents the primary route for phosphatidylcholine (PC) biosynthesis, accounting for approximately 70-80% of total PC production in cells []. This pathway begins with choline uptake via specific transporters, followed by phosphorylation to phosphocholine by choline kinase (CK), conversion to CDP-choline by CTP: phosphocholine cytidylyltransferase (CCT), and final incorporation into phosphatidylcholine by CDP-choline:1,2-diacylglycerol cholinephosphotransferase [,].\nIn adolescent pregnancy, several key differences emerge in Kennedy pathway regulation. Choline kinase α (CHKA) activity is reduced by 25-30% compared to adult pregnant women, potentially limiting the",
+            "semantic_support": "not_adjudicated",
+            "saved_has_fulltext": true,
+            "full_text_equals_abstract": false
+          },
+          {
+            "event_id": "c88ccfb8cdcd7fb7174994ed:1",
+            "stage": "response",
+            "evidence_number": 5,
+            "evidence_id": "Ref 12",
+            "quote_number": 1,
+            "quote": "Endogenous phosphatidylcholine composition for CD15 + cells both unlabelled and newly synthesised methyl-D9-choline labelled diacyl (A) and alkylacyl PC (B) composition.",
+            "supplied_title": "Expression of cell-surface activation markers on human CD15&lt;sup&gt;+&lt;/sup&gt; cells after selected non esterified fatty acid supplementations.",
+            "supplied_identifier": "10.1186/s12944-025-02729-w",
+            "source_locator": "/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/revision_execution_20261020/repair_runs/c88ccfb8cdcd7fb7174994ed/data/session/10.1186s12944-025-02729-w.json",
+            "source_status": "available",
+            "source_sha256": "5420927af4899dc6bf65ab55e3930534616e13e92b918b3604c3e63c52e2fef9",
+            "saved_title": "Expression of cell-surface activation markers on human CD15&lt;sup&gt;+&lt;/sup&gt; cells after selected non esterified fatty acid supplementations.",
+            "saved_doi": "10.1186/s12944-025-02729-w",
+            "saved_ids": {
+              "doi": "10.1186/s12944-025-02729-w",
+              "pmid": "41023662",
+              "pmcid": "PMC12482614",
+              "eupmc_id": "41023662"
+            },
+            "location_status": "exact",
+            "text_field": "full_text",
+            "offset": 16385,
+            "offset_basis": "original_text",
+            "source_context": "differential turnover or remodelling of specific and relatively overabundant molecular species ultimately leads to the steady-state composition, represented here by the unlabelled bulk PC composition.Endogenous phosphatidylcholine composition for CD15 + cells both unlabelled and newly synthesised methyl-D9-choline labelled diacyl (A) and alkylacyl PC (B) composition. The comparisons between methyl-D9 labelled and unlabelled individual species are made by using student- t- test\nEndogenous phosphatidylcholine composition for CD15 + cells both unlabelled and newly s",
+            "semantic_support": "not_adjudicated",
+            "saved_has_fulltext": true,
+            "full_text_equals_abstract": false
+          }
+        ],
+        "source_contexts": [],
+        "inspection_level": "source_anchored"
+      }
+    ],
+    "packet_sha256": "3371183b64c0e147b5b97d6f8677a6e4277338265fd14de7add1df175c844376",
+    "independent_expert_review": false,
+    "whole_row_correctness": "not_adjudicated",
+    "carry_basis": "identical_complete_packet_and_revalidated_sources"
+  },
+  {
+    "event_id": "cd14312048498c14a4bce284:1",
+    "candidate": "Isoterrelumamide A",
+    "topic": "microbial_natural_products",
+    "strata": [
+      "downward"
+    ],
+    "inspection_level": "source_anchored",
+    "initial_label": "Confirmed",
+    "critique_label": "Insufficient Direct Evidence",
+    "first_response_label": "Confirmed",
+    "last_response_label": "Confirmed",
+    "canonical_final_label": "Confirmed",
+    "canonical_accepted": true,
+    "findings": [
+      "The initial primary paper identifies the exact target, fungal origin and NMR/HRESIMS structure determination. Critique requests explicit support for secondary-metabolite status. The response adds reviews that name Isoterrelumamide A and discuss the detected compounds as secondary metabolites under varying culture conditions."
+    ],
+    "response_assessments": [
+      "Researcher stays Confirmed and the final pipeline accepts the row. The narrow observed gain is explicit textual support for classification, not an extra Confirmed row. It does not establish that the initial chemically contextual inference was wrong or that review was uniquely necessary."
+    ],
+    "boundaries": [],
+    "inspections": [
+      {
+        "record_path": "deliverables/critique_mechanism_analysis_20261025/downward_stratum_complete_0922/all_stratum_cases.json",
+        "record_file_sha256": "66543b4174a5db751a27db734255e6206f619d98e9d2a2c398d7c7b4a871b87c",
+        "assessment": "secondary_metabolite_context_added_with_label_unchanged",
+        "finding": "The initial primary paper identifies the exact target, fungal origin and NMR/HRESIMS structure determination. Critique requests explicit support for secondary-metabolite status. The response adds reviews that name Isoterrelumamide A and discuss the detected compounds as secondary metabolites under varying culture conditions.",
+        "response_assessment": "Researcher stays Confirmed and the final pipeline accepts the row. The narrow observed gain is explicit textual support for classification, not an extra Confirmed row. It does not establish that the initial chemically contextual inference was wrong or that review was uniquely necessary.",
+        "boundary": "",
+        "source_anchors": [
+          {
+            "event_id": "cd14312048498c14a4bce284:1",
+            "stage": "initial_report",
+            "evidence_number": 1,
+            "evidence_id": "Ref 1",
+            "quote_number": 1,
+            "quote": "Three new natural products, isopropylchaetominine (1), isoterrelumamide A (2) and 5'-epi-averufanin (3), together with fourteen known compounds (4-17) were isolated. The structures of the new compounds were established by 1D and 2D NMR spectroscopic analysis as well as by HRESIMS.",
+            "supplied_title": "Induction of new metabolites from sponge-associated fungus Aspergillus carneus by OSMAC approach.",
+            "supplied_identifier": "10.1016/j.fitote.2018.10.008",
+            "source_locator": "/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/revision_execution_20261020/repair_runs/cd14312048498c14a4bce284/data/session/10.1016j.fitote.2018.10.008.json",
+            "source_status": "available",
+            "source_sha256": "8051df6961e44e21bc05418a6f78371cb404c18f44d62074214057928b1c17fe",
+            "saved_title": "Induction of new metabolites from sponge-associated fungus Aspergillus carneus by OSMAC approach.",
+            "saved_doi": "10.1016/j.fitote.2018.10.008",
+            "saved_ids": {
+              "doi": "10.1016/j.fitote.2018.10.008",
+              "pmid": "30312652",
+              "pmcid": "",
+              "eupmc_id": "30312652",
+              "s2id": "189a47522a04a435094797c0b19ae2e8b48b61d4"
+            },
+            "location_status": "exact",
+            "text_field": "full_text",
+            "offset": 275,
+            "offset_basis": "original_text",
+            "source_context": "s Aspergillus carneus using the OSMAC approach was conducted. The fungal strain was fermented on three different media including solid rice medium with or without sea salt and modified Czapek medium. Three new natural products, isopropylchaetominine (1), isoterrelumamide A (2) and 5'-epi-averufanin (3), together with fourteen known compounds (4-17) were isolated. The structures of the new compounds were established by 1D and 2D NMR spectroscopic analysis as well as by HRESIMS. Compound 2 was only found when the fungus was cultivated on modified Czapek medium, whereas compounds 4, 7, 11, 12, and 14 were only detected in fungal extracts from solid rice media lacking sea salt",
+            "semantic_support": "not_adjudicated",
+            "saved_has_fulltext": false,
+            "full_text_equals_abstract": true
+          },
+          {
+            "event_id": "cd14312048498c14a4bce284:1",
+            "stage": "initial_report",
+            "evidence_number": 1,
+            "evidence_id": "Ref 1",
+            "quote_number": 2,
+            "quote": "A comparative study on the metabolic profile of the sponge-associated fungus Aspergillus carneus using the OSMAC approach was conducted.",
+            "supplied_title": "Induction of new metabolites from sponge-associated fungus Aspergillus carneus by OSMAC approach.",
+            "supplied_identifier": "10.1016/j.fitote.2018.10.008",
+            "source_locator": "/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/revision_execution_20261020/repair_runs/cd14312048498c14a4bce284/data/session/10.1016j.fitote.2018.10.008.json",
+            "source_status": "available",
+            "source_sha256": "8051df6961e44e21bc05418a6f78371cb404c18f44d62074214057928b1c17fe",
+            "saved_title": "Induction of new metabolites from sponge-associated fungus Aspergillus carneus by OSMAC approach.",
+            "saved_doi": "10.1016/j.fitote.2018.10.008",
+            "saved_ids": {
+              "doi": "10.1016/j.fitote.2018.10.008",
+              "pmid": "30312652",
+              "pmcid": "",
+              "eupmc_id": "30312652",
+              "s2id": "189a47522a04a435094797c0b19ae2e8b48b61d4"
+            },
+            "location_status": "exact",
+            "text_field": "full_text",
+            "offset": 0,
+            "offset_basis": "original_text",
+            "source_context": "A comparative study on the metabolic profile of the sponge-associated fungus Aspergillus carneus using the OSMAC approach was conducted. The fungal strain was fermented on three different media including solid rice medium with or without sea salt and modified Czapek medium. Three new natural products, isopropylchaetominine (1), isoter",
+            "semantic_support": "not_adjudicated",
+            "saved_has_fulltext": false,
+            "full_text_equals_abstract": true
+          },
+          {
+            "event_id": "cd14312048498c14a4bce284:1",
+            "stage": "response",
+            "evidence_number": 2,
+            "evidence_id": "Ref 2",
+            "quote_number": 1,
+            "quote": "In this study, Özkaya et al. (2018) of the Proksch group isolated three new natural products ()-isopropylchaetominine (3), isoterrelumamide A (4), and 5′-epi-averufanin (5)-after the fungus was inoculated on three different media. Isoterrelumamide A (4) was present only after fermentation on modified Czapek medium, while 5′-epi-averufanin was only afforded when incubated on solid rice medium with or without sea salt. It can thus be seen that depending on the composition of the culture medium in which the microorganism was inoculated, the detected secondary metabolites were not always the same [].",
+            "supplied_title": "Impact of Co-Culture on the Metabolism of Marine Microorganisms.",
+            "supplied_identifier": "10.3390/md20020153",
+            "source_locator": "/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/revision_execution_20261020/repair_runs/cd14312048498c14a4bce284/data/session/10.3390md20020153.json",
+            "source_status": "available",
+            "source_sha256": "7090b7c53748c61238a426513045336d32f8179f513b55af84e18e091fb44e8f",
+            "saved_title": "Impact of Co-Culture on the Metabolism of Marine Microorganisms.",
+            "saved_doi": "10.3390/md20020153",
+            "saved_ids": {
+              "doi": "10.3390/md20020153",
+              "pmid": "35200682",
+              "pmcid": "PMC8879974",
+              "eupmc_id": "35200682"
+            },
+            "location_status": "exact",
+            "text_field": "full_text",
+            "offset": 9699,
+            "offset_basis": "original_text",
+            "source_context": "e Dobson group in Cork, Ireland []. An example to illustrate the OSMAC approach is a comparative study on the changes in the metabolomic profile of a sponge-associated fungus, Aspergillus carneus []. In this study, Özkaya et al. (2018) of the Proksch group isolated three new natural products ()-isopropylchaetominine (3), isoterrelumamide A (4), and 5′-epi-averufanin (5)-after the fungus was inoculated on three different media. Isoterrelumamide A (4) was present only after fermentation on modified Czapek medium, while 5′-epi-averufanin was only afforded when incubated on solid rice medium with or without sea salt. It can thus be seen that depending on the composition of the culture medium in which the microorganism was inoculated, the detected secondary metabolites were not always the same [].\nFinally, the third option is by co-culture, also called mixed-fermentation, which is another cultivation-based approach. In this technique, two or more different microorganisms are inoculated togethe",
+            "semantic_support": "not_adjudicated",
+            "saved_has_fulltext": true,
+            "full_text_equals_abstract": false
+          },
+          {
+            "event_id": "cd14312048498c14a4bce284:1",
+            "stage": "response",
+            "evidence_number": 3,
+            "evidence_id": "Ref 3",
+            "quote_number": 1,
+            "quote": "In this study, Özkaya et al. isolated three new natural products Isopropylchaetominine (66), Isoterrelumamide A (67), and 5′-epi-Averufanin (68) (), after inoculating the fungus in three different media and demonstrated how the production is depending on the composition of the culture medium in which the microorganism was inoculated; the secondary metabolites detected are not always the same [].",
+            "supplied_title": "Advanced Technologies for Large Scale Supply of Marine Drugs.",
+            "supplied_identifier": "10.3390/md23020069",
+            "source_locator": "/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/revision_execution_20261020/repair_runs/cd14312048498c14a4bce284/data/session/10.3390md23020069.json",
+            "source_status": "available",
+            "source_sha256": "6397e374d7c9024876efb161d468e10cc559b55a9c2e6b1434ac67079b514c7b",
+            "saved_title": "Advanced Technologies for Large Scale Supply of Marine Drugs.",
+            "saved_doi": "10.3390/md23020069",
+            "saved_ids": {
+              "doi": "10.3390/md23020069",
+              "pmid": "39997193",
+              "pmcid": "PMC11857447",
+              "eupmc_id": "39997193"
+            },
+            "location_status": "exact",
+            "text_field": "full_text",
+            "offset": 93150,
+            "offset_basis": "original_text",
+            "source_context": "een cultures on solid and liquid media. An example to illustrate the OSMAC strategy is a comparative study on changes in the metabolomic profile of a sponge-associated fungus, Aspergillus carneus []. In this study, Özkaya et al. isolated three new natural products Isopropylchaetominine (66), Isoterrelumamide A (67), and 5′-epi-Averufanin (68) (), after inoculating the fungus in three different media and demonstrated how the production is depending on the composition of the culture medium in which the microorganism was inoculated; the secondary metabolites detected are not always the same [].\nIn this technique, two or more different microorganisms are inoculated together to mimic the natural habitat in which symbiotic or competitive interactions between microorganisms are simulated and/or",
+            "semantic_support": "not_adjudicated",
+            "saved_has_fulltext": true,
+            "full_text_equals_abstract": false
+          }
+        ],
+        "source_contexts": [],
+        "inspection_level": "source_anchored"
+      }
+    ],
+    "packet_sha256": "9d6a3f62ae9bab046432fe75929f06fd113c4e842ee190f384c1a8ee794156d2",
+    "independent_expert_review": false,
+    "whole_row_correctness": "not_adjudicated",
+    "carry_basis": "identical_complete_packet_and_revalidated_sources"
+  },
+  {
+    "event_id": "construction_dbp_20:1",
+    "candidate": "2,2-dichloropropionic acid",
+    "topic": "dbp",
+    "strata": [
+      "downward"
+    ],
+    "inspection_level": "source_anchored",
+    "initial_label": "Confirmed",
+    "critique_label": "Insufficient Direct Evidence",
+    "first_response_label": "Confirmed",
+    "last_response_label": "Confirmed",
+    "canonical_final_label": "Confirmed",
+    "canonical_accepted": true,
+    "findings": [
+      "The initial analytical-method abstracts include dalapon in measurement panels but do not themselves demonstrate its formation during treatment. Critique correctly asks for a direct treatment association. The subsequent report cites a different study whose located abstract reports 0.1-0.5 micrograms/L in potable water, below 0.01 micrograms/L in immediate source water, and temporal trends resembling trihalomethanes."
+    ],
+    "response_assessments": [
+      "The candidate remains Confirmed in both Researcher and final accepted output, but the cited rationale changes from inclusion in an analytical panel to a target-specific raw-water/treated-water comparison. This is evidence improvement without a label-count increase."
+    ],
+    "boundaries": [
+      "The authors describe these observations as suggesting in situ formation, not controlled proof of every reaction pathway. New reporting of the paper is not by itself a controlled estimate of retrieval benefit. The input synonym list also contains 2,3-positional variants, so whole-row identity has not been independently adjudicated."
+    ],
+    "inspections": [
+      {
+        "record_path": "/data/chen/dbcurator_critique_snapshot_588_20261025_2320/source_inspections_first5/source_inspections.json",
+        "record_file_sha256": "02213df9d25b941208d2536df1f8f25af7b60f070178c7964bdee8f4100a735b",
+        "assessment": "supported_initial_gap_followed_by_relevant_occurrence_evidence",
+        "finding": "The initial analytical-method abstracts include dalapon in measurement panels but do not themselves demonstrate its formation during treatment. Critique correctly asks for a direct treatment association. The subsequent report cites a different study whose located abstract reports 0.1-0.5 micrograms/L in potable water, below 0.01 micrograms/L in immediate source water, and temporal trends resembling trihalomethanes.",
+        "response_assessment": "The candidate remains Confirmed in both Researcher and final accepted output, but the cited rationale changes from inclusion in an analytical panel to a target-specific raw-water/treated-water comparison. This is evidence improvement without a label-count increase.",
+        "boundary": "The authors describe these observations as suggesting in situ formation, not controlled proof of every reaction pathway. New reporting of the paper is not by itself a controlled estimate of retrieval benefit. The input synonym list also contains 2,3-positional variants, so whole-row identity has not been independently adjudicated.",
+        "source_anchors": [
+          {
+            "event_id": "construction_dbp_20:1",
+            "stage": "initial_report",
+            "evidence_number": 2,
+            "evidence_id": "Ref 2",
+            "quote_number": 1,
+            "quote": "Haloacetic acids (HAAs) are a group of disinfection by-products formed in chlorinated water. Due to their potential health effects and widespread occurrences, HAAs are regulated in drinking water in the United States under a promulgated regulation. To better control the formation of HAAs in drinking water, a reliable and accurate analytical method is needed for HAA monitoring. In the present study, a liquid-liquid microextraction, acidic methanol derivatization, and gas chromatography/mass spectrometry (GC/MS) detection method was developed for determining HAAs and dalapon in drinking water.",
+            "supplied_title": "Analyzing haloacetic acids using gas chromatography/mass spectrometry.",
+            "supplied_identifier": "10.1016/s0043-1354(00)00397-3",
+            "source_locator": "/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/revision_execution_20261020/repair_runs/construction_dbp_20/data/session/10.1016s0043-1354(00)00397-3.json",
+            "source_status": "available",
+            "source_sha256": "57d64e31cdde2bd8b0385fbb53d3f7e1875f752b0d8a9dcd9e899de84fbefd28",
+            "saved_title": "Analyzing haloacetic acids using gas chromatography/mass spectrometry.",
+            "saved_doi": "10.1016/s0043-1354(00)00397-3",
+            "saved_ids": {
+              "pmid": "11317908",
+              "pmcid": ""
+            },
+            "location_status": "exact",
+            "text_field": "full_text",
+            "offset": 0,
+            "offset_basis": "original_text",
+            "source_context": "Haloacetic acids (HAAs) are a group of disinfection by-products formed in chlorinated water. Due to their potential health effects and widespread occurrences, HAAs are regulated in drinking water in the United States under a promulgated regulation. To better control the formation of HAAs in drinking water, a reliable and accurate analytical method is needed for HAA monitoring. In the present study, a liquid-liquid microextraction, acidic methanol derivatization, and gas chromatography/mass spectrometry (GC/MS) detection method was developed for determining HAAs and dalapon in drinking water. The newly developed method is capable of analyzing all nine HAAs and dalapon at microgram/l levels. The method performance, including the method detection limit (MDL) and spiking recovery, was evalua",
+            "semantic_support": "not_adjudicated"
+          },
+          {
+            "event_id": "construction_dbp_20:1",
+            "stage": "initial_report",
+            "evidence_number": 3,
+            "evidence_id": "Ref 3",
+            "quote_number": 1,
+            "quote": "The addition of oxidants for disinfecting water can lead to the formation of potentially carcinogenic compounds referred to as disinfection byproducts (DBPs). Haloacetic acids (HAAs) are one of the most widely detected DBPs in US water utilities and some of them are regulated by the US Environmental Protection Agency (USEPA). The present study developed a method to analyze all the compounds in the USEPA method 557 (nine HAAs, bromate and dalapon) plus four potentially more toxic iodinated HAAs in water by coupling ion chromatography with tandem mass spectrometry (IC-MS/MS).",
+            "supplied_title": "Analysis of haloacetic acids, bromate, and dalapon in natural waters by ion chromatography-tandem mass spectrometry.",
+            "supplied_identifier": "10.1016/j.chroma.2017.01.006",
+            "source_locator": "/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/revision_execution_20261020/repair_runs/construction_dbp_20/data/session/10.1016j.chroma.2017.01.006.json",
+            "source_status": "available",
+            "source_sha256": "a39f60142d06057e5820f2097a62c07c0f382197da6b7b94dd061f0dcf556705",
+            "saved_title": "Analysis of haloacetic acids, bromate, and dalapon in natural waters by ion chromatography-tandem mass spectrometry.",
+            "saved_doi": "10.1016/j.chroma.2017.01.006",
+            "saved_ids": {
+              "pmid": "28118976",
+              "pmcid": "",
+              "s2id": "cfcd45704369592144a3854e0ab42c283e08f431",
+              "doi": "10.1016/j.chroma.2017.01.006",
+              "eupmc_id": "28118976"
+            },
+            "location_status": "exact",
+            "text_field": "full_text",
+            "offset": 0,
+            "offset_basis": "original_text",
+            "source_context": "The addition of oxidants for disinfecting water can lead to the formation of potentially carcinogenic compounds referred to as disinfection byproducts (DBPs). Haloacetic acids (HAAs) are one of the most widely detected DBPs in US water utilities and some of them are regulated by the US Environmental Protection Agency (USEPA). The present study developed a method to analyze all the compounds in the USEPA method 557 (nine HAAs, bromate and dalapon) plus four potentially more toxic iodinated HAAs in water by coupling ion chromatography with tandem mass spectrometry (IC-MS/MS). This aqueous direct injection method has significant advantages over traditional GC methods, which require a derivatization and sample extraction that are laborious, time-consuming, and can negativel",
+            "semantic_support": "not_adjudicated"
+          },
+          {
+            "event_id": "construction_dbp_20:1",
+            "stage": "response",
+            "evidence_number": 2,
+            "evidence_id": "Ref 4",
+            "quote_number": 1,
+            "quote": "Salts of 2,2-dichloropropionic acid, such as dalapon, are well known as herbicides and are regulated as such in potable water in Australia and elsewhere. It is also an identified disinfection by-product (DBP), but little is known about the compound's formation and typical levels from this source. This work presents results from a sampling campaign where 2,2-dichloropropionate was found at levels between 0.1 and 0.5 µg l(-1) in potable water samples from a major treatment plant in South East Queensland, Australia. However, levels were below the reporting limit (0.01 µg l(-1)) in the immediate source water for the plant. Also, temporal trends in 2,2-dichloropropionate observed in treated water during sampling mirrored those of trihalomethanes albeit at much lower concentrations, suggesting that the occurrence is due to in situ formation as a DBP. This could present a regulatory dilemma in some jurisdictions.",
+            "supplied_title": "The occurrence of the herbicide dalapon (2,2-dichloropropionate) in potable water as a disinfection by-product.",
+            "supplied_identifier": "10.1039/c0em00475h",
+            "source_locator": "/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/revision_execution_20261020/repair_runs/construction_dbp_20/data/session/10.1039c0em00475h.json",
+            "source_status": "available",
+            "source_sha256": "ae12cf9d79e108581396b000237fdbaf286117e6427d370010f2005136b84bc0",
+            "saved_title": "The occurrence of the herbicide dalapon (2,2-dichloropropionate) in potable water as a disinfection by-product.",
+            "saved_doi": "10.1039/c0em00475h",
+            "saved_ids": {
+              "doi": "10.1039/c0em00475h",
+              "pmid": "21165509",
+              "pmcid": "",
+              "eupmc_id": "21165509"
+            },
+            "location_status": "exact",
+            "text_field": "full_text",
+            "offset": 0,
+            "offset_basis": "original_text",
+            "source_context": "Salts of 2,2-dichloropropionic acid, such as dalapon, are well known as herbicides and are regulated as such in potable water in Australia and elsewhere. It is also an identified disinfection by-product (DBP), but little is known about the compound's formation and typical levels from this source. This work presents results from a sampling campaign where 2,2-dichloropropionate was found at levels between 0.1 and 0.5 µg l(-1) in potable water samples from a major treatment plant in South East Queensland, Australia. However, levels were below the reporting limit (0.01 µg l(-1)) in the immediate source water for the plant. Also, temporal trends in 2,2-dichloropropionate observed in treated water during sampling mirrored those of trihalomethanes albeit at much lower concentrations, suggesting that the occurrence is due to in situ formation as a DBP. This could present a regulatory dilemma in some jurisdictions.",
+            "semantic_support": "not_adjudicated"
+          }
+        ],
+        "source_contexts": [],
+        "inspection_level": "source_anchored"
+      }
+    ],
+    "packet_sha256": "cf8bb5e5512b046412d92fe1a69977887d7b573feefe6d66445743c443c71fb5",
+    "independent_expert_review": false,
+    "whole_row_correctness": "not_adjudicated",
+    "carry_basis": "identical_complete_packet_and_revalidated_sources"
+  },
+  {
+    "event_id": "construction_dbp_90:1",
+    "candidate": "3,5-dichlorotyrosine",
+    "topic": "dbp",
+    "strata": [
+      "returned"
+    ],
+    "inspection_level": "source_anchored",
+    "initial_label": "Confirmed",
+    "critique_label": "Insufficient Direct Evidence",
+    "first_response_label": "Suspected",
+    "last_response_label": "Confirmed",
+    "canonical_final_label": "Confirmed",
+    "canonical_accepted": true,
+    "findings": [
+      "Initial evidence combines mammalian HOCl chemistry and exposure biomarkers with a paper-title-only reference to produce washing. Critique flags the missing located treatment-specific link. The final report adds a located abstract passage showing formation of 3,5-dichlorotyrosine in the leaf phase during chlorine washing of spinach and lettuce. This is more specific evidence than the initial title alone."
+    ],
+    "response_assessments": [
+      "The formation-link criterion changes from supported to unresolved, then back to supported, and the final pipeline accepts Confirmed. The final snippet does not directly demonstrate occurrence in a drinking-water treatment plant. It documents food-washing chlorination, while other snippets describe endogenous oxidative chemistry or generic chloramine use."
+    ],
+    "boundaries": [
+      "The rubric requires a process relevant to drinking-water treatment, not explicitly detection in finished drinking water. Whether food-washing chlorine chemistry meets that scope is an unresolved application boundary, not an automatically proven harmful reversal or a fully validated rescue. Protein-bound leaf residues also should not be silently equated with a measured free compound in drinking water."
+    ],
+    "inspections": [
+      {
+        "record_path": "/data/chen/dbcurator_critique_snapshot_588_20261025_2320/source_inspections_first5/source_inspections.json",
+        "record_file_sha256": "02213df9d25b941208d2536df1f8f25af7b60f070178c7964bdee8f4100a735b",
+        "assessment": "improved_target_snippet_with_application_scope_boundary",
+        "finding": "Initial evidence combines mammalian HOCl chemistry and exposure biomarkers with a paper-title-only reference to produce washing. Critique flags the missing located treatment-specific link. The final report adds a located abstract passage showing formation of 3,5-dichlorotyrosine in the leaf phase during chlorine washing of spinach and lettuce. This is more specific evidence than the initial title alone.",
+        "response_assessment": "The formation-link criterion changes from supported to unresolved, then back to supported, and the final pipeline accepts Confirmed. The final snippet does not directly demonstrate occurrence in a drinking-water treatment plant. It documents food-washing chlorination, while other snippets describe endogenous oxidative chemistry or generic chloramine use.",
+        "boundary": "The rubric requires a process relevant to drinking-water treatment, not explicitly detection in finished drinking water. Whether food-washing chlorine chemistry meets that scope is an unresolved application boundary, not an automatically proven harmful reversal or a fully validated rescue. Protein-bound leaf residues also should not be silently equated with a measured free compound in drinking water.",
+        "source_anchors": [
+          {
+            "event_id": "construction_dbp_90:1",
+            "stage": "initial_report",
+            "evidence_number": 2,
+            "evidence_id": "Ref 2",
+            "quote_number": 1,
+            "quote": "3-Chlorotyrosine is a chemically stable product formed when tyrosine reacts with HOCl, or a chloramine generated by HOCl. In particular, it has been observed that this aromatic amino acid (both free and in protein) undergoes the rapid chlorination of the aromatic ring, through an electrophilic aromatic substitution reaction of a hydrogen for a chlorine to give 3-chlorotyrosine with excess HOCl to form 3,5-dichlorotyrosine",
+            "supplied_title": "Hypochlorous Acid Chemistry in Mammalian Cells-Influence on Infection and Role in Various Pathologies.",
+            "supplied_identifier": "10.3390/ijms231810735",
+            "source_locator": "/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/revision_execution_20261020/repair_runs/construction_dbp_90/data/session/10.3390ijms231810735.json",
+            "source_status": "available",
+            "source_sha256": "59fe0c5405ea23026826ef87d0ad43575aa871542778b902cdcd5267ef0b6def",
+            "saved_title": "Hypochlorous Acid Chemistry in Mammalian Cells-Influence on Infection and Role in Various Pathologies.",
+            "saved_doi": "10.3390/ijms231810735",
+            "saved_ids": {
+              "doi": "10.3390/ijms231810735",
+              "pmid": "36142645",
+              "pmcid": "PMC9504810",
+              "eupmc_id": "36142645"
+            },
+            "location_status": "exact",
+            "text_field": "full_text",
+            "offset": 30592,
+            "offset_basis": "original_text",
+            "source_context": "rapidly transfers its chlorine group into another amine []. Tryptophan reacts with HOCl to form 2-oxindole, while the reaction of HOCl with tyrosine forms 3-chlorotyrosine and 3,5-dichlorotyrosine, .\n3-Chlorotyrosine is a chemically stable product formed when tyrosine reacts with HOCl, or a chloramine generated by HOCl. In particular, it has been observed that this aromatic amino acid (both free and in protein) undergoes the rapid chlorination of the aromatic ring, through an electrophilic aromatic substitution reaction of a hydrogen for a chlorine to give 3-chlorotyrosine with excess HOCl to form 3,5-dichlorotyrosine [,,,,,], as shown in .\nDirect HOCl attack and a chlorine transfer from the chloramine initially produced in the amino group of the amino acid are the two mechanisms proposed for the chlorination of t",
+            "semantic_support": "not_adjudicated"
+          },
+          {
+            "event_id": "construction_dbp_90:1",
+            "stage": "response",
+            "evidence_number": 1,
+            "evidence_id": "Ref 2",
+            "quote_number": 1,
+            "quote": "Hypochlorous acid (HOCl), the primary product of activated neutrophils, is known to damage both DNA and proteins. This article describes the use of mass spectrometry to quantitate the formation of 3-chlorotyrosine and 3,5-dichlorotyrosine, stable and unique markers of protein damage caused by HOCl, in the core histone proteins.",
+            "supplied_title": "Hypochlorous acid damages histone proteins forming 3-chlorotyrosine and 3,5-dichlorotyrosine.",
+            "supplied_identifier": "10.1021/tx7003486",
+            "source_locator": "/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/revision_execution_20261020/repair_runs/construction_dbp_90/data/session/10.1021tx7003486.json",
+            "source_status": "available",
+            "source_sha256": "796e83f75f67fd2cd85314e4389b0fdb23d2480e421ef8149773c990fd8df7c1",
+            "saved_title": "Hypochlorous acid damages histone proteins forming 3-chlorotyrosine and 3,5-dichlorotyrosine.",
+            "saved_doi": "10.1021/tx7003486",
+            "saved_ids": {
+              "pmid": "18452314",
+              "pmcid": "",
+              "s2id": "1dcc6d42fbb5d3291b51053572448ee8798ef877",
+              "doi": "10.1021/tx7003486"
+            },
+            "location_status": "exact",
+            "text_field": "full_text",
+            "offset": 221,
+            "offset_basis": "original_text",
+            "source_context": "rs chronicles an extensive effort to understand the damage to DNA caused by reactive oxygen species (ROS), little research has examined the chemical damage to the histone proteins found in chromatin. Hypochlorous acid (HOCl), the primary product of activated neutrophils, is known to damage both DNA and proteins. This article describes the use of mass spectrometry to quantitate the formation of 3-chlorotyrosine and 3,5-dichlorotyrosine, stable and unique markers of protein damage caused by HOCl, in the core histone proteins. Our results indicate that up to 25% of the tyrosine in histone proteins become chlorinated by excess HOCl. We also observe significant formation of 3-chlorotyrosine and 3,5-dichlorotyrosine at low HO",
+            "semantic_support": "not_adjudicated"
+          },
+          {
+            "event_id": "construction_dbp_90:1",
+            "stage": "response",
+            "evidence_number": 4,
+            "evidence_id": "Ref 19",
+            "quote_number": 1,
+            "quote": "Chlorinated products of this reaction (3-chlorotyrosine and 3,5-dichlorotyrosine) have been suggested as biomarkers of protein damage resulting from HOCl and chloramine derivatives [,]. Chloramines are disinfectants that are commonly used to treat drinking water.",
+            "supplied_title": "Surviving Reactive Chlorine Stress: Responses of Gram-Negative Bacteria to Hypochlorous Acid.",
+            "supplied_identifier": "10.3390/microorganisms8081220",
+            "source_locator": "/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/revision_execution_20261020/repair_runs/construction_dbp_90/data/session/10.3390microorganisms8081220.json",
+            "source_status": "available",
+            "source_sha256": "2876a7ab9bd7fe8fbbeeded69bda1c0c0e8f40b67f6fa36d5950b8a606efb635",
+            "saved_title": "Surviving Reactive Chlorine Stress: Responses of Gram-Negative Bacteria to Hypochlorous Acid.",
+            "saved_doi": "10.3390/microorganisms8081220",
+            "saved_ids": {
+              "doi": "10.3390/microorganisms8081220",
+              "pmid": "32796669",
+              "pmcid": "PMC7464077",
+              "eupmc_id": "32796669"
+            },
+            "location_status": "exact",
+            "text_field": "full_text",
+            "offset": 18910,
+            "offset_basis": "original_text",
+            "source_context": ", HOCl undergoes reaction with tryptophan on proteins, which might lead to irreversible protein unfolding and enzyme inactivation []. Furthermore, HOCl can also chlorinate the side chain of tyrosine. Chlorinated products of this reaction (3-chlorotyrosine and 3,5-dichlorotyrosine) have been suggested as biomarkers of protein damage resulting from HOCl and chloramine derivatives [,]. Chloramines are disinfectants that are commonly used to treat drinking water.\nHOCl rapidly reacts with nitrogen-containing compounds (particularly amines and, to a lesser extent, amides), yielding chlorinated derivatives, including chloramines (R-N(R′)-Cl) and chloramides (R-C",
+            "semantic_support": "not_adjudicated"
+          },
+          {
+            "event_id": "construction_dbp_90:1",
+            "stage": "response",
+            "evidence_number": 5,
+            "evidence_id": "Ref 21",
+            "quote_number": 1,
+            "quote": "Using protein-bound tyrosine as an example precursor, the concentrations of the initial 3-chlorotyrosine and 3,5-dichlorotyrosine transformation products from this one precursor in the leaf phase were comparable to, and, in the case of some lettuces, exceeded, the aggregate aqueous concentration of volatile DBPs formed from multiple precursors. Chlorotyrosine formation increased when spinach was shredded due to the greater accessibility of chlorine to proteins in the leaf interiors. The cytotoxicity of chlorotyrosines to Chinese hamster ovary cells was higher than any of the trihalomethanes regulated in drinking water.",
+            "supplied_title": "Chlorotyrosines versus Volatile Byproducts from Chlorine Disinfection during Washing of Spinach and Lettuce.",
+            "supplied_identifier": "10.1021/acs.est.8b03005",
+            "source_locator": "/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/revision_execution_20261020/repair_runs/construction_dbp_90/data/session/10.1021acs.est.8b03005.json",
+            "source_status": "available",
+            "source_sha256": "a744fbe1a33a0a85ff979902d4884e1ef62af8c684eb91a1ad0b76c32d7cccfa",
+            "saved_title": "Chlorotyrosines versus Volatile Byproducts from Chlorine Disinfection during Washing of Spinach and Lettuce.",
+            "saved_doi": "10.1021/acs.est.8b03005",
+            "saved_ids": {
+              "pmid": "30040386",
+              "pmcid": "",
+              "doi": "10.1021/acs.est.8b03005",
+              "eupmc_id": "30040386",
+              "s2id": "32587e891cbcd8578b97f8eac850c3ebdaef8de1"
+            },
+            "location_status": "exact",
+            "text_field": "full_text",
+            "offset": 1240,
+            "offset_basis": "original_text",
+            "source_context": "yield transformation products of such reactions may represent a greater concern for consumer exposure because they remain bound within the biopolymers in food and would be liberated during digestion. Using protein-bound tyrosine as an example precursor, the concentrations of the initial 3-chlorotyrosine and 3,5-dichlorotyrosine transformation products from this one precursor in the leaf phase were comparable to, and, in the case of some lettuces, exceeded, the aggregate aqueous concentration of volatile DBPs formed from multiple precursors. Chlorotyrosine formation increased when spinach was shredded due to the greater accessibility of chlorine to proteins in the leaf interiors. The cytotoxicity of chlorotyrosines to Chinese hamster ovary cells was higher than any of the trihalomethanes regulated in drinking water.",
+            "semantic_support": "not_adjudicated"
+          }
+        ],
+        "source_contexts": [],
+        "inspection_level": "source_anchored"
+      }
+    ],
+    "packet_sha256": "a94cfbb1859aa9fb24a12985ea715fa1c082efc7ed20076c713a0c4d69648141",
+    "independent_expert_review": false,
+    "whole_row_correctness": "not_adjudicated",
+    "carry_basis": "identical_complete_packet_and_revalidated_sources"
+  },
+  {
+    "event_id": "eee0b14cec1df209b5bd7917:1",
+    "candidate": "Factor IX Complex (Human)",
+    "topic": "drug_compounds",
+    "strata": [
+      "downward",
+      "returned"
+    ],
+    "inspection_level": "source_anchored",
+    "initial_label": "Confirmed",
+    "critique_label": "Insufficient Direct Evidence",
+    "first_response_label": "Explicit Negative Evidence",
+    "last_response_label": "Confirmed",
+    "canonical_final_label": "Confirmed",
+    "canonical_accepted": true,
+    "findings": [
+      "The input is Factor IX Complex (Human), while the initial evidence concerns recombinant factor IX. Critique requests an exact-target definition. A subsequently cited paper explicitly describes factor IX complex, human (Baxter), as a formulation containing factors II, IX and X, whereas other cited papers concern the individual FIX protein."
+    ],
+    "response_assessments": [
+      "The first response uses that formulation evidence to give Explicit Negative Evidence. The last returns to Confirmed by treating the target as individual factor IX and asserting separation from formulations, without explaining why the exact-name mixture evidence is inapplicable. The canonical final row is Confirmed/accepted. This unresolved target-scope conflict is retained as an adverse outcome, not counted as successful correction merely because the initial Critique raised it."
+    ],
+    "boundaries": [
+      "A generic biologic complex can be distinguished from a branded preparation only through an explicit identity and scope interpretation. The record does not supply that reconciliation. The observation is a specific conflict in the supplied evidence and reasoning, not an independent expert whole-row verdict or a universal ban on biologic mixtures."
+    ],
+    "inspections": [
+      {
+        "record_path": "/data/chen/dbcurator_critique_snapshot_588_20261025_2320/source_inspections_last11/source_inspections.json",
+        "record_file_sha256": "6c5cfe78c38eb04626af81654609226f86d9e7ac3ddb38cab4a3d05404a2f8a9",
+        "assessment": "target_complex_vs_single_protein_conflict_not_resolved_before_acceptance",
+        "finding": "The input is Factor IX Complex (Human), while the initial evidence concerns recombinant factor IX. Critique requests an exact-target definition. A subsequently cited paper explicitly describes factor IX complex, human (Baxter), as a formulation containing factors II, IX and X, whereas other cited papers concern the individual FIX protein.",
+        "response_assessment": "The first response uses that formulation evidence to give Explicit Negative Evidence. The last returns to Confirmed by treating the target as individual factor IX and asserting separation from formulations, without explaining why the exact-name mixture evidence is inapplicable. The canonical final row is Confirmed/accepted. This unresolved target-scope conflict is retained as an adverse outcome, not counted as successful correction merely because the initial Critique raised it.",
+        "boundary": "A generic biologic complex can be distinguished from a branded preparation only through an explicit identity and scope interpretation. The record does not supply that reconciliation. The observation is a specific conflict in the supplied evidence and reasoning, not an independent expert whole-row verdict or a universal ban on biologic mixtures.",
+        "source_anchors": [
+          {
+            "event_id": "eee0b14cec1df209b5bd7917:1",
+            "stage": "initial_report",
+            "evidence_number": 1,
+            "evidence_id": "Ref 1",
+            "quote_number": 1,
+            "quote": "Structurally, functionally, and therapeutically, recombinant factor IX is comparable to monoclonal plasma-derived factor IX. The only observed difference between recombinant and plasma factor IX is the recovery in pharmacokinetic studies where recombinant factor IX recovery was approximately 72% that of a plasma factor IX product. This difference is attributed to be due to minor differences in the post-translational modification of recombinant factor IX compared to plasma. These studies demonstrate that recombinant factor IX is effective in the treatment of hemophilia B and has the safety profile expected from a product prepared by recombinant technology.",
+            "supplied_title": "Recombinant factor IX.",
+            "supplied_identifier": "9198163",
+            "source_locator": "/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/revision_execution_20261020/repair_runs/eee0b14cec1df209b5bd7917/data/session/9198163.json",
+            "source_status": "available",
+            "source_sha256": "107dae963a080c55c27049de93b2033a63c5d59b426f4f3141b8b8e46e08d5c4",
+            "saved_title": "Recombinant factor IX.",
+            "saved_doi": "",
+            "saved_ids": {
+              "pmid": "9198163",
+              "pmcid": ""
+            },
+            "location_status": "exact",
+            "text_field": "full_text",
+            "offset": 455,
+            "offset_basis": "original_text",
+            "source_context": "lly utilizable preparations of recombinant factor IX. This report describes the state of current tests with a recently licensed preparation of recombinant factor IX, BeneFix, from Genetics Institute. Structurally, functionally, and therapeutically, recombinant factor IX is comparable to monoclonal plasma-derived factor IX. The only observed difference between recombinant and plasma factor IX is the recovery in pharmacokinetic studies where recombinant factor IX recovery was approximately 72% that of a plasma factor IX product. This difference is attributed to be due to minor differences in the post-translational modification of recombinant factor IX compared to plasma. These studies demonstrate that recombinant factor IX is effective in the treatment of hemophilia B and has the safety profile expected from a product prepared by recombinant technology.",
+            "semantic_support": "not_adjudicated"
+          },
+          {
+            "event_id": "eee0b14cec1df209b5bd7917:1",
+            "stage": "response",
+            "evidence_number": 2,
+            "evidence_id": "Ref 3",
+            "quote_number": 1,
+            "quote": "Current formulations of inactivated PCCs available in the United States include factor IX complex, human (Baxter), which contains factors 2, 9, and 10, and prothrombin complex concentrate, human (CSL Behring), which contains factors 2, 7, 9, and 10.",
+            "supplied_title": "Prothrombin Complex Concentrate vs Plasma for Post-Cardiopulmonary Bypass Coagulopathy and Bleeding: A Randomized Clinical Trial.",
+            "supplied_identifier": "10.1001/jamasurg.2022.2235",
+            "source_locator": "/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/revision_execution_20261020/repair_runs/eee0b14cec1df209b5bd7917/data/session/10.1001jamasurg.2022.2235.json",
+            "source_status": "available",
+            "source_sha256": "f61eeaf3c4fe7a5a035f5569f0fcf994d8edfcfd778374b53480ca9ff244b2fe",
+            "saved_title": "Prothrombin Complex Concentrate vs Plasma for Post-Cardiopulmonary Bypass Coagulopathy and Bleeding: A Randomized Clinical Trial.",
+            "saved_doi": "10.1001/jamasurg.2022.2235",
+            "saved_ids": {
+              "doi": "10.1001/jamasurg.2022.2235",
+              "pmid": "35767271",
+              "pmcid": "PMC9244769",
+              "eupmc_id": "35767271"
+            },
+            "location_status": "exact",
+            "text_field": "full_text",
+            "offset": 23002,
+            "offset_basis": "original_text",
+            "source_context": "n adverse outcomes between groups.\n\nIn recent years, the use of PCCs has dramatically increased and is now the treatment of choice for management of bleeding in patients taking warfarin. 20 , 21 , 22 Current formulations of inactivated PCCs available in the United States include factor IX complex, human (Baxter), which contains factors 2, 9, and 10, and prothrombin complex concentrate, human (CSL Behring), which contains factors 2, 7, 9, and 10. The rationale for hemostatic therapy (such as non-RBC transfusions or PCC use) in cardiac surgery is to reduce bleeding, RBC transfusions, and associated complications. Prior retrospective studies 6 ",
+            "semantic_support": "not_adjudicated"
+          },
+          {
+            "event_id": "eee0b14cec1df209b5bd7917:1",
+            "stage": "response",
+            "evidence_number": 1,
+            "evidence_id": "Ref 1",
+            "quote_number": 1,
+            "quote": "Factor IX (FIX) is the proenzyme of serine protease from the blood coagulation cascade which hydrolyzes the arginine–isoleucine bond in a factor X molecule in the presence of Ca2+ and membrane phospholipids to yield activated factor X (FXa).",
+            "supplied_title": "A Highly Productive CHO Cell Line Secreting Human Blood Clotting Factor IX",
+            "supplied_identifier": "",
+            "source_locator": "/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/revision_execution_20261020/repair_runs/eee0b14cec1df209b5bd7917/data/session/A Highly Productive CHO Cell Line Secreting Human Blood Clotting Factor IX.json",
+            "source_status": "available",
+            "source_sha256": "0693acd349bcbad8fdb3f12c0db32cca28226cfdae0df8aa5d269285f76cf3a5",
+            "saved_title": "A Highly Productive CHO Cell Line Secreting Human Blood Clotting Factor IX",
+            "saved_doi": "",
+            "saved_ids": {
+              "doi": "",
+              "pmid": "",
+              "pmcid": "PMC5916734"
+            },
+            "location_status": "exact",
+            "text_field": "full_text",
+            "offset": 112,
+            "offset_basis": "original_text",
+            "source_context": "Title: A Highly Productive CHO Cell Line Secreting Human Blood Clotting Factor IX\nYear: 2018\n\n\n## INTRODUCTION\n\nFactor IX (FIX) is the proenzyme of serine protease from the blood coagulation cascade which hydrolyzes the arginine–isoleucine bond in a factor X molecule in the presence of Ca2+ and membrane phospholipids to yield activated factor X (FXa). The noncovalent complex of the factors IXa, VIIIa, and X bound to the phospholipid membrane (tenase) is the key element of the positive feedback loop of the coagulation cascade.\nThe FIX gene resides ",
+            "semantic_support": "not_adjudicated"
+          },
+          {
+            "event_id": "eee0b14cec1df209b5bd7917:1",
+            "stage": "response",
+            "evidence_number": 6,
+            "evidence_id": "Ref 8",
+            "quote_number": 1,
+            "quote": "Recombinant FIX (rFIX) has been developed as a pharmacological strategy to compensate for FIX deficiency in patients with Hemophilia B to prevent or control bleeding incidents.",
+            "supplied_title": "Soluble expression of recombinant coagulation factor IX protein using Escherichia coli",
+            "supplied_identifier": "",
+            "source_locator": "/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/revision_execution_20261020/repair_runs/eee0b14cec1df209b5bd7917/data/session/Soluble expression of recombinant coagulation factor IX protein using Escherichia coli.json",
+            "source_status": "available",
+            "source_sha256": "5ec90dc094133e687d9c00cb1d834629ab84152648a14d16949e34623b0aec4b",
+            "saved_title": "Soluble expression of recombinant coagulation factor IX protein using Escherichia coli",
+            "saved_doi": "",
+            "saved_ids": {
+              "doi": "",
+              "pmid": "",
+              "pmcid": "PMC11052911"
+            },
+            "location_status": "exact",
+            "text_field": "full_text",
+            "offset": 858,
+            "offset_basis": "original_text",
+            "source_context": "ng FIX. However, high-cost commercial antibody has been used and generation of a recombinant antibody is required. FIX protein is used as an antigen to generate a novel recombinant anti-FIX antibody. Recombinant FIX (rFIX) has been developed as a pharmacological strategy to compensate for FIX deficiency in patients with Hemophilia B to prevent or control bleeding incidents. Commercially available rFIXs from various sources and literature describing rFIX production strategies have provided useful information for improving the pharmaceutical efficacy and application of rF",
+            "semantic_support": "not_adjudicated"
+          }
+        ],
+        "source_contexts": [],
+        "inspection_level": "source_anchored"
+      }
+    ],
+    "packet_sha256": "ff4db2f2e93fdbb88daf919d0cdb485a7523e6621f3f0bf2fa06500130e8b3a4",
+    "independent_expert_review": false,
+    "whole_row_correctness": "not_adjudicated",
+    "carry_basis": "identical_complete_packet_and_revalidated_sources"
+  }
+]

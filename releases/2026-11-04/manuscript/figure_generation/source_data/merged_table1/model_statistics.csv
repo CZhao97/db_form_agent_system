@@ -1,0 +1,11 @@
+﻿topic,critic,adaptive,adaptive_sd,full,full_sd,change_pp
+DBP,GPT-5-mini,43.7,3.2,46.7,3.2,3.0
+DBP,Gemini 2.5 Flash,39.7,7.6,42.3,6.5,2.7
+Blood exposome,GPT-5-mini,18.7,1.2,18.7,3.1,0.0
+Blood exposome,Gemini 2.5 Flash,16.0,4.4,17.7,2.1,1.7
+Drug,GPT-5-mini,58.3,2.5,58.7,2.1,0.3
+Drug,Gemini 2.5 Flash,58.7,4.9,59.7,3.2,1.0
+Endogenous metabolite,GPT-5-mini,26.7,4.2,30.0,1.7,3.3
+Endogenous metabolite,Gemini 2.5 Flash,25.0,4.0,27.0,3.6,2.0
+Microbial natural product,GPT-5-mini,68.7,5.1,70.3,2.1,1.7
+Microbial natural product,Gemini 2.5 Flash,67.0,2.6,69.0,2.0,2.0

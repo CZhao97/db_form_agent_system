@@ -1,0 +1,6 @@
+topic,dbcurator_source_locatable,dbcurator_citations,zero_shot_source_locatable,zero_shot_citations,dbcurator_percent,zero_shot_percent
+dbp,1067,1084,0,200,98.43173431734317,0.0
+blood_exposome,1610,1622,0,200,99.26017262638717,0.0
+drug_compounds,2146,2216,0,200,96.84115523465704,0.0
+human_endogenous_metabolites,1964,2004,0,191,98.00399201596807,0.0
+microbial_natural_products,1556,1567,0,200,99.29802169751117,0.0

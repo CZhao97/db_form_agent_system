@@ -1,0 +1,6 @@
+﻿topic,candidates,final_confirmed,citation_instances,verified_citations,prediction_endpoint
+blood_exposome,300,68,942,899,last_researcher_claim
+dbp,687,330,1883,1799,last_researcher_claim
+drug_compounds,300,213,1887,1828,last_researcher_claim
+human_endogenous_metabolites,300,125,2074,1952,last_researcher_claim
+microbial_natural_products,300,239,857,786,last_researcher_claim

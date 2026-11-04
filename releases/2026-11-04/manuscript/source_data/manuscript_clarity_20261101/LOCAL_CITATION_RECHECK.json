@@ -1,0 +1,16 @@
+{
+  "n": 666,
+  "statuses": {
+    "compatible_saved_source_quote_not_located": 359,
+    "all_quotes_located_proposal": 26,
+    "no_compatible_saved_source": 225,
+    "ambiguous_title_only_sources": 17,
+    "no_attributed_quote": 35,
+    "unparsed_supplied_identifier": 3,
+    "publication_warning_requires_review": 1
+  },
+  "new_model_calls": 0,
+  "new_searches": 0,
+  "original_results_modified": false,
+  "catalog_sha256": "ef56ac8b76c0fac501cc791cdffcb9f2e85c9fc50f7d03fd6743201f5037ff96"
+}

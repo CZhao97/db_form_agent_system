@@ -1,0 +1,174 @@
+CASE 1: pomalidomide | Confirmed | these are elements, not specific molecular entities, and are typically handled in elemental toxicology datasets, not small-molecule exposomics
+entity_synonyms: [
+  "CC-4047",
+  "Pomalidomide6.8e",
+  "Cys203-Cys417",
+  "Cys437"
+]
+canonical_name: pomalidomide
+query: {
+  "task": "verify_candidate_entity",
+  "entity_name": "pomalidomide",
+  "original_query": "Decide whether 'pomalidomide' satisfies the confirmed-topic definition.",
+  "evaluation_criteria": {
+    "criteria_text": "- [mandatory] The chemical entity must be reported in human blood or systemic circulation.\n- [mandatory] The chemical entity must be introduced by, structurally modified by, or significantly change in amount in response to the external environment.\n- [mandatory] Evidence for the chemical entity's presence and exposomal origin must be supported by primary literature, biomonitoring surveys, or public metabolomics datasets.\n- [mandatory] The supporting evidence must be associated with human blood specimens.",
+    "rubric_items": [
+      {
+        "name": "The chemical entity must be reported in human blood or systemic circulation.",
+        "section": "rubric",
+        "priority": "mandatory"
+      },
+      {
+        "name": "The chemical entity must be introduced by, structurally modified by, or significantly change in amount in response to the external environment.",
+        "section": "rubric",
+        "priority": "mandatory"
+      },
+      {
+        "name": "Evidence for the chemical entity's presence and exposomal origin must be supported by primary literature, biomonitoring surveys, or public metabolomics datasets.",
+        "section": "rubric",
+        "priority": "mandatory"
+      },
+      {
+        "name": "The supporting evidence must be associated with human blood specimens.",
+        "section": "rubric",
+        "priority": "mandatory"
+      }
+    ],
+    "fixed_criteria": [
+      "The chemical entity must be reported in human blood or systemic circulation.",
+      "The chemical entity must be introduced by, structurally modified by, or significantly change in amount in response to the external environment.",
+      "Evidence for the chemical entity's presence and exposomal origin must be supported by primary literature, biomonitoring surveys, or public metabolomics datasets.",
+      "The supporting evidence must be associated with human blood specimens."
+    ]
+  },
+  "entity_synonyms": [
+    "4-amino-2-(2,6-dioxopiperidin-3-yl)isoindole-1,3-dione",
+    "Imnovid",
+    "4-amino-2-(2,6-dioxopiperidin-3-yl)isoindoline-1,3-dione",
+    "4-amino-2-(2,6-dioxopiperidin-3-yl)-1H-isoindole-1,3(2H)-dione",
+    "Phthalimide, 3-amino-N-(2,6-dioxo-3-piperidyl)-",
+    "4-Aminothalidomide",
+    "Pomalidomid",
+    "Pomalidomide (Standard)",
+    "2-(2,6-Dioxopiperidin-3-yl)-4-amino-isoindole-1,3-dione",
+    "3-Aminophthalimidoglutarimide",
+    "4-Amino-2-(2,6-dioxo-3-piperidyl)isoindoline-1,3-dione",
+    "4-Amino-2-(2,6-dioxo-3-piperidinyl)isoindole-1,3-dione",
+    "4-amino-2-(2,6-dioxopiperidin-3-yl)-2,3-dihydro-1H-isoindole-1,3-dione",
+    "Pomalyst",
+    "1H-Isoindole-1,3(2H)-dione, 4-amino-2-(2,6-dioxo-3-piperidinyl)-",
+    "pomalidomidum",
+    "3-(3-AMINO)-PHTALAMIDO-GLUTARIMIDE",
+    "3-aminio-phthalimido-glutarimide",
+    "4-amino-2-(2,6-dioxo-3-piperidinyl)-1H-Isoindole-1,3(2H)-dione",
+    "Pomalidomida",
+    "1,3-dioxo-2-(2,6-dioxopiperidin-3-yl)-4-aminoisoindoline",
+    "3-amino-N-(2,6-dioxo-3-piperidyl)phthalamide",
+    "orb1305562",
+    "3-Amino-N-(2,6-dioxo-3-piperidyl)phthalimide",
+    "Pomalidomide - Bio-X trade mark",
+    "s-3-amino-phthalimido-glutarimide",
+    "UVSMNLNDYGZFPF-UHFFFAOYSA-N",
+    "IMiD1",
+    "Pomalyst (TN)",
+    "Actimid",
+    "4-amino-2-(2,6-dioxo-3-piperidyl)isoindole-1,3-dione",
+    "BRD-A12994259-001-02-1"
+  ],
+  "domain": "blood",
+  "search_budget": {
+    "batch1_max_search_directions": 3,
+    "batch1_max_identity_terms": 2,
+    "batch1_max_primary_context_terms": 2,
+    "defer_method_fanout_until_followup": true,
+    "avoid_near_duplicate_context_terms": true
+  }
+}
+explanation: Pomalidomide is an orally administered pharmaceutical agent, directly introduced from the external environment. Its presence and pharmacokinetic profile, including metabolism, have been extensively studied and quantified in human blood and plasma samples, as evidenced by multiple primary literature sources.
+criteria_json: [
+  {
+    "name": "The chemical entity must be reported in human blood or systemic circulation.",
+    "priority": "mandatory",
+    "section": "rubric",
+    "status": "solved",
+    "notes": "Pomalidomide is detected and quantified in human plasma and whole blood.",
+    "support_type": "direct_evidence",
+    "score": 1.0
+  },
+  {
+    "name": "The chemical entity must be introduced by, structurally modified by, or significantly change in amount in response to the external environment.",
+    "priority": "mandatory",
+    "section": "rubric",
+    "status": "solved",
+    "notes": "Pomalidomide is an orally administered drug and undergoes metabolism in humans.",
+    "support_type": "direct_evidence",
+    "score": 1.0
+  },
+  {
+    "name": "Evidence for the chemical entity's presence and exposomal origin must be supported by primary literature, biomonitoring surveys, or public metabolomics datasets.",
+    "priority": "mandatory",
+    "section": "rubric",
+    "status": "solved",
+    "notes": "Evidence is from primary literature (pharmacokinetic studies, method development).",
+    "support_type": "direct_evidence",
+    "score": 1.0
+  },
+  {
+    "name": "The supporting evidence must be associated with human blood specimens.",
+    "priority": "mandatory",
+    "section": "rubric",
+    "status": "solved",
+    "notes": "Studies explicitly used human plasma and whole blood specimens.",
+    "support_type": "direct_evidence",
+    "score": 1.0
+  }
+]
+evidence_json: [
+  {
+    "id": "Ref 1",
+    "title": "Development and Validation of Pomalidomide Determination in Human Plasma by HPLC-MS/MS Method",
+    "year": "2020",
+    "doi": "10.33380/2305-2066-2020-9-4-146-154",
+    "original_ids": [
+      "Ref 1"
+    ],
+    "quotes": [
+      {
+        "quote": "This investigation provides development and validation of pomalidomide aiming to determine human blood plasma by HPLC-MS/MS method.",
+        "supports": "direct"
+      },
+      {
+        "quote": "The method of the determination of pomalidomide in human plasma was developed and validated by HPLC-MS/MS.",
+        "supports": "direct"
+      }
+    ]
+  },
+  {
+    "id": "Ref 2",
+    "title": "Absorption, metabolism and excretion of [14C]pomalidomide in humans following oral administration",
+    "year": "2012",
+    "doi": "10.1007/s00280-012-2040-6",
+    "original_ids": [
+      "Ref 2"
+    ],
+    "quotes": [
+      {
+        "quote": "Pomalidomide and metabolite concentrations in plasma calculated using plasma radioactivity concentrations and radiochromatography Concentration versus time curves for total radioactivity (TRA), pomalidomide, M2, M11, M12, M13, M16 and M17 in plasma following a single oral 2 mg dose of [14C]pomalidomide in healthy male subjects",
+        "supports": "direct"
+      },
+      {
+        "quote": "Plasma concentrations of each pomalidomide enantiomer were determined using a chiral LC–MS/MS assay. The pomalidomide enantiomers and 13C-labeled pomalidomide (internal standard; IS) were extracted from plasma (stabilized with citric acid) using liquid–liquid extraction with methyl tertiary butyl ether.",
+        "supports": "direct"
+      },
+      {
+        "quote": "The mean blood/plasma ratios of radioactivity were between 0.75 and 0.90 in the samples collected up to 24 h post-dose (data not shown), indicating moderate distribution of radioactivity (pomalidomide and its metabolites) into the blood cells.Table 1Pomalidomide in plasma and radioactivity in plasma and whole blood pharmacokinetic parameters following a single oral 2 mg dose of [14C]pomalidomide in healthy male subjects",
+        "supports": "direct"
+      },
+      {
+        "quote": "Pomalidomide is a racemic mixture of the S-enantiomer (CC-5083) and the R-enantiomer (CC-6016) which interconvert in plasma via both enzymatic and non-enzymatic pathways. The pharmacokinetics of pomalidomide in patients with relapsed or refractory MM following single or multiple (4 weeks) oral daily doses of 1, 2, 5 or 10 (single dose only) mg as capsules showed non-dose dependent absorption with a median T max between 1.5 and 2.75 h following a single dose and between 2.9 and 4.0 h following multiple doses [2 and unpublished data]. The current study was performed to evaluate the pharmacokinetics, metabolic disposition and excretion of a single oral suspension dose (2 mg, 100 μCi) of [14C]pomalidomide to healthy male subjects.",
+        "supports": "direct"
+      }
+    ]
+  }
+]
+results_dir: /data/chen/e2e_searching_results/blood_eval_run_20260420_100958/blood_eval_eval_blood_5a0a9d7b

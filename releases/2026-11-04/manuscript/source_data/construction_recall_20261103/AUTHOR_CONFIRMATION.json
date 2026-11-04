@@ -1,0 +1,13 @@
+{
+  "date": "2026-11-03",
+  "confirmed_by": "Chen Zhao",
+  "reviewer": "Botao Liu",
+  "other_95_reviewed_and_correctly_nonconfirmed": true,
+  "other_95_verbatim_answer": "是，95条均审核并认可不确认",
+  "blood_two_are_false_negatives": true,
+  "blood_two_verbatim_answer": "两条都应确认，计2个FN",
+  "false_negative_candidates": ["9-fluorenone", "N-Acetylputrescine"],
+  "other_12_blood_cases": "Agreement under the previously author-confirmed blank-comment review convention",
+  "scope": "109 non-Confirmed candidates from the five-topic 50-retained-per-topic construction evaluation",
+  "provenance_note": "Records the author's clarification of the existing human review, not a new assistant review or recovered annotation file."
+}

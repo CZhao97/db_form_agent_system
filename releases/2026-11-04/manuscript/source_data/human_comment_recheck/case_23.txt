@@ -1,0 +1,266 @@
+CASE 23: Octanal | Confirmed | Plant / Dietary
+entity_synonyms: 
+canonical_name: 
+query: {
+  "task": "verify_candidate_entity",
+  "entity_name": "Octanal",
+  "original_query": "Decide whether 'Octanal' satisfies the confirmed-topic definition.",
+  "evaluation_criteria": {
+    "criteria_text": "- [mandatory] The entity must be a small molecule.\n- [mandatory] The entity must be produced within the human body.\n- [mandatory] The entity must function in human biochemical or physiological processes.\n- [mandatory] The entity must not be solely an exogenous chemical.\n- [mandatory] The entity must not be solely a microbiota-only metabolite.\n- [optional] If a metabolite is produced by both microbiota and host metabolism, it is included.",
+    "rubric_items": [
+      {
+        "name": "The entity must be a small molecule.",
+        "section": "rubric",
+        "priority": "mandatory"
+      },
+      {
+        "name": "The entity must be produced within the human body.",
+        "section": "rubric",
+        "priority": "mandatory"
+      },
+      {
+        "name": "The entity must function in human biochemical or physiological processes.",
+        "section": "rubric",
+        "priority": "mandatory"
+      },
+      {
+        "name": "The entity must not be solely an exogenous chemical.",
+        "section": "rubric",
+        "priority": "mandatory"
+      },
+      {
+        "name": "The entity must not be solely a microbiota-only metabolite.",
+        "section": "rubric",
+        "priority": "mandatory"
+      },
+      {
+        "name": "If a metabolite is produced by both microbiota and host metabolism, it is included.",
+        "section": "rubric",
+        "priority": "optional"
+      }
+    ],
+    "fixed_criteria": [
+      "The entity must be a small molecule.",
+      "The entity must be produced within the human body.",
+      "The entity must function in human biochemical or physiological processes.",
+      "The entity must not be solely an exogenous chemical.",
+      "The entity must not be solely a microbiota-only metabolite."
+    ]
+  },
+  "entity_synonyms": [
+    "1-Caprylaldehyde",
+    "1-Octaldehyde",
+    "1-Octanal",
+    "1-Octylaldehyde",
+    "Aldehyde C-8",
+    "C-8 Aldehyde",
+    "Caprylaldehyd",
+    "Caprylaldehyde",
+    "Caprylic aldehyde",
+    "Kaprylaldehyd",
+    "N-Caprylaldehyde",
+    "N-Octaldehyde",
+    "N-Octanal",
+    "N-Octyl aldehyde",
+    "N-Octylal",
+    "Octan-1-al",
+    "Octanaldehyde",
+    "Octanoic aldehyde",
+    "Octylaldehyd",
+    "Octylaldehyde",
+    "Oktanal",
+    "Oktylaldehyd",
+    "Antifoam-LF",
+    "Octaldehyde",
+    "OCTANAL (ALDEHYDE C-8)",
+    "FEMA No. 2797",
+    "Octanal (natural)",
+    "octan-1-one",
+    "QSPL 183",
+    "Octanal, analytical standard",
+    "octan-8-one",
+    "ALDEHIDO C-8",
+    "InChI=1/C8H16O/c1-2-3-4-5-6-7-8-9/h8H,2-7H2,1H",
+    "TANNIN ALBUMINATE",
+    "orb2279173",
+    "Octanal, tech.",
+    "4-01-00-03337 (Beilstein Handbook Reference)",
+    "bmse000851",
+    "EC 204-683-8",
+    "n-Octanaldehyde",
+    "Octyl aldehydes",
+    "Octanal (Standard)",
+    "Octanal Solution in Methanol, 1000ug/mL",
+    "BRN 1744086"
+  ],
+  "domain": "endogenous_metabolite",
+  "search_budget": {
+    "batch1_max_search_directions": 3,
+    "batch1_max_identity_terms": 2,
+    "batch1_max_primary_context_terms": 2,
+    "defer_method_fanout_until_followup": true,
+    "avoid_near_duplicate_context_terms": true
+  }
+}
+explanation: Octanal is a small molecule (128.215 Da) endogenously produced in the human body as a product of lipid peroxidation and oleic acid metabolism. It functions in human biochemical processes by acting as a ligand for olfactory receptor 2 (Olfr2) in macrophages, contributing to inflammatory responses and atherosclerosis, and is also a substrate for human ALDH3B1 in detoxification. No evidence was found to suggest it is solely a microbiota-only metabolite.
+criteria_json: [
+  {
+    "name": "The entity must be a small molecule.",
+    "priority": "mandatory",
+    "section": "rubric",
+    "status": "solved",
+    "notes": "Confirmed by PubChem data (128.215 Da).",
+    "support_type": "direct_evidence",
+    "score": 1.0
+  },
+  {
+    "name": "The entity must be produced within the human body.",
+    "priority": "mandatory",
+    "section": "rubric",
+    "status": "solved",
+    "notes": "Produced from lipid peroxidation and oleic acid metabolism in humans.",
+    "support_type": "direct_evidence",
+    "score": 1.0
+  },
+  {
+    "name": "The entity must function in human biochemical or physiological processes.",
+    "priority": "mandatory",
+    "section": "rubric",
+    "status": "solved",
+    "notes": "Acts as a ligand for Olfr2 in macrophages, contributing to inflammation and atherosclerosis, and is a substrate for ALDH3B1 in detoxification.",
+    "support_type": "direct_evidence",
+    "score": 1.0
+  },
+  {
+    "name": "The entity must not be solely an exogenous chemical.",
+    "priority": "mandatory",
+    "section": "rubric",
+    "status": "solved",
+    "notes": "While found in foods, it is also endogenously produced in humans.",
+    "support_type": "direct_evidence",
+    "score": 1.0
+  },
+  {
+    "name": "The entity must not be solely a microbiota-only metabolite.",
+    "priority": "mandatory",
+    "section": "rubric",
+    "status": "solved",
+    "notes": "Evidence points to human metabolic pathways for its production and function, not solely microbiota. No evidence found for sole microbiota production.",
+    "support_type": "direct_evidence",
+    "score": 1.0
+  },
+  {
+    "name": "If a metabolite is produced by both microbiota and host metabolism, it is included.",
+    "priority": "optional",
+    "section": "rubric",
+    "status": "solved",
+    "notes": "No direct evidence found regarding microbiota co-production, but no evidence suggests it is solely a microbiota-only metabolite. The mandatory criterion 'The entity must not be solely a microbiota-only metabolite' is satisfied.",
+    "support_type": "inferred",
+    "score": 1.0
+  }
+]
+evidence_json: [
+  {
+    "id": "Ref 1",
+    "title": "PubChem",
+    "original_ids": [
+      "Ref 0"
+    ],
+    "quotes": [
+      {
+        "quote": "candidates\": [{\"formula\": \"C8H16O\", \"mass_da\": 128.215, \"name\": \"octanal\", \"pubchem_cid\": 454, \"smiles\": \"C(CCCCCCC)=O\"}]",
+        "supports": "direct"
+      }
+    ]
+  },
+  {
+    "id": "Ref 2",
+    "title": "(002) OCTANAL ACTIVATES AIM2 AND CASPASE-1 IN ENDOTHELIAL CELLS",
+    "year": "2024",
+    "doi": "10.1093/jsxmed/qdae167.002",
+    "original_ids": [
+      "Ref 1"
+    ],
+    "quotes": [
+      {
+        "quote": "Octanal is an aldehyde derived from oleic acid, a main product of lipid peroxidation.",
+        "supports": "direct"
+      },
+      {
+        "quote": "As a volatile organic aldehyde, octanal has been shown to induce an inflammatory response in epithelial cells and has also been contraindicated in the development of atherosclerosis due to its role in lipid metabolism.",
+        "supports": "direct"
+      },
+      {
+        "quote": "A recent study showed that the receptor for octanal, olfactory receptor 2 (olfr2) is present in vascular macrophages. Upon binding with olfr2, octanal caused an increase in reactive oxygen species (ROS) which activates the AIM2 inflammasomes.",
+        "supports": "direct"
+      },
+      {
+        "quote": "The object of this study is to determine the physiological role of octanal and how it may impact sexual function via the endothelial and cavernosal smooth muscle.",
+        "supports": "direct"
+      }
+    ]
+  },
+  {
+    "id": "Ref 3",
+    "title": "NHE1 in macrophages promotes octanal/Olfr2-induced atherosclerosis via calcium-dependent ROS and NLRP3 inflammasome activation.",
+    "year": "2025",
+    "doi": "10.1038/s41598-025-28218-9",
+    "original_ids": [
+      "Ref 3"
+    ],
+    "pmid": "41461716",
+    "quotes": [
+      {
+        "quote": "Octanal, a byproduct of lipid peroxidation, is commonly produced under oxidative stress conditions.",
+        "supports": "direct"
+      },
+      {
+        "quote": "Both in physiological and pathological states, octanal can be generated through the metabolism of oleic acid, a fatty acid commonly found in the human diet.",
+        "supports": "direct"
+      },
+      {
+        "quote": "Research has identified octanal as a ligand for Olfr2, with Olfr2 activation leading to increased calcium concentrations and the production of reactive oxygen species (ROS) in downstream signaling pathways. This process contributes to the formation of AS plaques in ApoE-/- mice.",
+        "supports": "direct"
+      },
+      {
+        "quote": "Octanal, present in fragrances and oxLDL, plays a pivotal role in the pathogenesis of AS.",
+        "supports": "direct"
+      }
+    ]
+  },
+  {
+    "id": "Ref 4",
+    "title": "Expression and initial characterization of human ALDH3B1.",
+    "year": "2007",
+    "doi": "10.1016/J.BBRC.2007.03.046",
+    "original_ids": [
+      "Ref 18"
+    ],
+    "quotes": [
+      {
+        "quote": "Accordingly, our findings indicate that the human ALDH3B1 gene encodes a metabolically-active enzyme that has distinct specificity for various aldehyde substrates, including many derived from lipid peroxidation such as hexanal, 4-HNE, nonanal, octanal, trans-2-hexenal, trans-2-nonenal, and trans-2-octenal.",
+        "supports": "direct"
+      },
+      {
+        "quote": "As shown for octanal, ALDH3B1 is catalytically-active and may play an important physiological role in detoxifying these aldehydes.",
+        "supports": "direct"
+      }
+    ]
+  },
+  {
+    "id": "Ref 5",
+    "title": "Targeting olfactory receptor 2 on monocytes for cardioprotection against myocardial ischaemia-reperfusion injury via NR4A1-mediated mitochondrial fission.",
+    "year": "2025",
+    "doi": "10.1093/cvr/cvaf232",
+    "original_ids": [
+      "Ref 20"
+    ],
+    "quotes": [
+      {
+        "quote": "Elevated OR6A2 levels on human monocytes and octanal, an OR6A2 agonist, were significantly associated with an increased risk of MACEs and correlated with increased oxidative stress and pro-inflammatory responses in patients with IR injury",
+        "supports": "direct"
+      }
+    ]
+  }
+]
+results_dir: /data/chen/e2e_searching_results/endogenous_metabolite_eval_run_20260419_194100/endogenous_metabolite_eval_eval_endogenous_metabolite_04e0a149

@@ -1,0 +1,238 @@
+CASE 6: Prop-2-enal | Explicit Negative Evidence | Possible DBPs
+entity_synonyms: 
+canonical_name: 
+query: {
+  "task": "verify_candidate_entity",
+  "entity_name": "Prop-2-enal",
+  "original_query": "Decide whether 'Prop-2-enal' satisfies the confirmed-topic definition.",
+  "evaluation_criteria": {
+    "criteria_text": "- [mandatory] The entity must be a specific chemical compound.\n- [mandatory] The compound's formation must occur during a water disinfection or oxidation process.\n- [mandatory] The formation must result from the reaction of disinfectants or oxidants with naturally occurring or anthropogenic precursors.\n- [mandatory] The reaction must occur in real or simulated water matrices.\n- [mandatory] There must be evidence directly attributing the compound’s formation to the treatment process.",
+    "rubric_items": [
+      {
+        "name": "The entity must be a specific chemical compound.",
+        "section": "rubric",
+        "priority": "mandatory"
+      },
+      {
+        "name": "The compound's formation must occur during a water disinfection or oxidation process.",
+        "section": "rubric",
+        "priority": "mandatory"
+      },
+      {
+        "name": "The formation must result from the reaction of disinfectants or oxidants with naturally occurring or anthropogenic precursors.",
+        "section": "rubric",
+        "priority": "mandatory"
+      },
+      {
+        "name": "The reaction must occur in real or simulated water matrices.",
+        "section": "rubric",
+        "priority": "mandatory"
+      },
+      {
+        "name": "There must be evidence directly attributing the compound’s formation to the treatment process.",
+        "section": "rubric",
+        "priority": "mandatory"
+      }
+    ],
+    "fixed_criteria": [
+      "The entity must be a specific chemical compound.",
+      "The compound's formation must occur during a water disinfection or oxidation process.",
+      "The formation must result from the reaction of disinfectants or oxidants with naturally occurring or anthropogenic precursors.",
+      "The reaction must occur in real or simulated water matrices.",
+      "There must be evidence directly attributing the compound’s formation to the treatment process."
+    ]
+  },
+  "entity_synonyms": [
+    "Akroleina",
+    "Acrylaldehyde",
+    "Akrolein",
+    "2 Propenal",
+    "Acrylic aldehyde, inhibited",
+    "UN 1092",
+    "Acrolein (stabilized with hydroquinone)",
+    "Rcra waste number P003",
+    "Acroleina",
+    "Allyl aldehyde",
+    "Aerolein",
+    "Magnacide H and B",
+    "prop-2-en-1-one",
+    "Aldehyde, Ethylene",
+    "RCRA waste no. P003",
+    "Acraldehyde",
+    "Acrolein, analytical standard",
+    "2-Propen-1-one",
+    "Aldehyde acrylique",
+    "Acrolein 5000 microg/mL in Methanol",
+    "Acrolein 100 microg/mL in Acetone",
+    "Acrolein 1000 microg/mL in Methanol",
+    "Acrolein Monomer",
+    "EPA Pesticide Chemical Code 000701",
+    "Acrolein, inhibited",
+    "CH2=CHCHO",
+    "Propenaldehyde",
+    "Acrylic aldehyde",
+    "Aqualin",
+    "Propenal",
+    "Biocide",
+    "Acroleine",
+    "Aldehyde, Allyl",
+    "2-Propenaldehyde",
+    "Propenal, inhibited",
+    "Slimicide",
+    "Acrolein 5000 microg/mL in Water",
+    "trans-Acrolein",
+    "trans-Acrolein Formylethylene",
+    "Magnacide H",
+    "Acrolein Solution, 5000 microg/mL in Methanol, Second Source",
+    "Papite",
+    "Acrylaldehyd",
+    "Aldehyde, Acrylic",
+    "Aqualine",
+    "InChI=1/C3H4O/c1-2-3-4/h2-3H,1H",
+    "Magnacide",
+    "Acraldehydeacroleina",
+    "EC 203-453-4",
+    "Epitope ID:143621",
+    "Magnacide B",
+    "Prop-2-en-1-al",
+    "Ethylene aldehyde",
+    "Aldeide acrilica",
+    "Acrolein Solution in Acetonitrile, 1000ug/mL",
+    "Crolean",
+    "Caswell No. 009"
+  ],
+  "domain": "dbp",
+  "search_budget": {
+    "batch1_max_search_directions": 3,
+    "batch1_max_identity_terms": 2,
+    "batch1_max_primary_context_terms": 2,
+    "defer_method_fanout_until_followup": true,
+    "avoid_near_duplicate_context_terms": true
+  }
+}
+explanation: While Prop-2-enal (Acrolein) is a specific chemical compound, the retrieved evidence does not support its formation during water disinfection or oxidation processes. One source explicitly states it has not been found as a contaminant in municipal drinking water, and other sources attribute its formation to food processing, endogenous metabolic pathways, and environmental pollutants.
+criteria_json: [
+  {
+    "name": "The entity must be a specific chemical compound.",
+    "priority": "mandatory",
+    "section": "rubric",
+    "status": "solved",
+    "notes": "Prop-2-enal (Acrolein) is confirmed as a specific chemical compound.",
+    "support_type": "direct_evidence",
+    "score": 1.0
+  },
+  {
+    "name": "The compound's formation must occur during a water disinfection or oxidation process.",
+    "priority": "mandatory",
+    "section": "rubric",
+    "status": "solved",
+    "notes": "No evidence found for formation during water disinfection/oxidation. Ref 3 states it has not been found in municipal drinking water.",
+    "support_type": "direct_evidence",
+    "score": 1.0
+  },
+  {
+    "name": "The formation must result from the reaction of disinfectants or oxidants with naturally occurring or anthropogenic precursors.",
+    "priority": "mandatory",
+    "section": "rubric",
+    "status": "solved",
+    "notes": "No evidence found for this specific formation pathway in water treatment.",
+    "support_type": "inferred",
+    "score": 1.0
+  },
+  {
+    "name": "The reaction must occur in real or simulated water matrices.",
+    "priority": "mandatory",
+    "section": "rubric",
+    "status": "solved",
+    "notes": "No evidence found for this, and Ref 3 suggests absence in municipal drinking water.",
+    "support_type": "direct_evidence",
+    "score": 1.0
+  },
+  {
+    "name": "There must be evidence directly attributing the compound’s formation to the treatment process.",
+    "priority": "mandatory",
+    "section": "rubric",
+    "status": "solved",
+    "notes": "No direct attribution found.",
+    "support_type": "inferred",
+    "score": 1.0
+  }
+]
+evidence_json: [
+  {
+    "id": "Ref 1",
+    "title": "PubChem",
+    "original_ids": [
+      "Ref 0"
+    ],
+    "quotes": [
+      {
+        "quote": "prop-2-enal (Acrolein) is a specific chemical compound with the formula C3H4O and PubChem CID 7847.",
+        "supports": "direct"
+      }
+    ]
+  },
+  {
+    "id": "Ref 2",
+    "title": "Origin and Fate of Acrolein in Foods",
+    "year": "2022",
+    "doi": "10.3390/foods11131976",
+    "original_ids": [
+      "Ref 1"
+    ],
+    "quotes": [
+      {
+        "quote": "Acrolein is a structurally simple α,β-unsaturated aldehyde [] present in the environment, water and food due to all kinds of human activities, such as high-temperature cooking, fossil fuel combustion, vehicle exhaust emission and insecticide abuse [].",
+        "supports": "near_miss"
+      }
+    ]
+  },
+  {
+    "id": "Ref 3",
+    "title": "Acrolein health effects.",
+    "year": "2008",
+    "doi": "10.1177/0748233708094188",
+    "original_ids": [
+      "Ref 3"
+    ],
+    "pmid": "19028774",
+    "quotes": [
+      {
+        "quote": "Acrolein degrade in 6A days when applied to surface water, and it has not been found as a contaminant in municipal drinking water.",
+        "supports": "explicit_negative"
+      }
+    ]
+  },
+  {
+    "id": "Ref 4",
+    "title": "An accessible HPLC-DAD method for the direct detection of acrolein-trapping compounds in complex plant matrices.",
+    "year": "2025",
+    "doi": "10.1016/j.mex.2025.103747",
+    "original_ids": [
+      "Ref 4"
+    ],
+    "pmid": "41458167",
+    "quotes": [
+      {
+        "quote": "Acrolein (2-propenal) is a highly toxic and reactive α,β-unsaturated aldehyde which can arise from both exogenous and endogenous sources. Diet is one of the main sources of exogenous acrolein, particularly through the consumption of fat-rich foods subjected to high-temperature processing. Acrolein is also found in environmental pollutants such as tobacco smoke and vehicle exhaust. In addition to these exogenous sources, it can be produced endogenously through various biochemical pathways, including lipid peroxidation as well as amino acid and polyamine metabolisms [,].",
+        "supports": "near_miss"
+      }
+    ]
+  },
+  {
+    "id": "Ref 5",
+    "title": "Synthesis of Selenium-Containing Polystyrene Microspheres and Using as Catalyst for Oxidation of Acrolein",
+    "year": "2021",
+    "doi": "10.3390/polym13101632",
+    "original_ids": [
+      "Ref 11"
+    ],
+    "quotes": [
+      {
+        "quote": "To evaluate the catalytic activity of DSe-PS, the oxidation of acrolein was used as a model reaction (Scheme 5).",
+        "supports": "near_miss"
+      }
+    ]
+  }
+]
+results_dir: /data/chen/e2e_searching_results/dbp_eval_run_20260416_161059/dbp_eval_eval_dbp_635c8e5d

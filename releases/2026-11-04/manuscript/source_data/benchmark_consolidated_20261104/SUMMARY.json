@@ -1,0 +1,23 @@
+{
+  "candidates": 1887,
+  "confirmed": 975,
+  "complete_tokens": 1887,
+  "complete_runtime": 1887,
+  "literature_references": 7647,
+  "real_literature": 7624,
+  "incorrect_literature": 23,
+  "unresolved_literature": 0,
+  "literature_existence_percent": 99.6992284556035,
+  "source_located_references": 7246,
+  "confirmed_references": 4169,
+  "confirmed_located": 3964,
+  "confirmed_false": 22,
+  "candidates_with_incorrect_references": 15,
+  "confirmed_candidates_with_incorrect_references": 14,
+  "reviewed_instances": 402,
+  "reviewed_real": 378,
+  "reviewed_false": 23,
+  "reviewed_excluded": 1,
+  "books_and_chapters_included": 2,
+  "quote_checks_not_upgraded_by_existence": true
+}

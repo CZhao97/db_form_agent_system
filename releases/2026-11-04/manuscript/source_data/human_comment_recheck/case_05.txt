@@ -1,0 +1,184 @@
+CASE 5: 3-CPAN | Confirmed | Name
+entity_synonyms: []
+canonical_name: 3-CPAN
+query: {
+  "task": "verify_candidate_entity",
+  "entity_name": "3-CPAN",
+  "original_query": "Decide whether '3-CPAN' satisfies the confirmed-topic definition.",
+  "evaluation_criteria": {
+    "criteria_text": "- [mandatory] The entity must be a specific chemical compound.\n- [mandatory] The compound's formation must occur during a water disinfection or oxidation process.\n- [mandatory] The formation must result from the reaction of disinfectants or oxidants with naturally occurring or anthropogenic precursors.\n- [mandatory] The reaction must occur in real or simulated water matrices.\n- [mandatory] There must be evidence directly attributing the compound’s formation to the treatment process.",
+    "rubric_items": [
+      {
+        "name": "The entity must be a specific chemical compound.",
+        "section": "rubric",
+        "priority": "mandatory"
+      },
+      {
+        "name": "The compound's formation must occur during a water disinfection or oxidation process.",
+        "section": "rubric",
+        "priority": "mandatory"
+      },
+      {
+        "name": "The formation must result from the reaction of disinfectants or oxidants with naturally occurring or anthropogenic precursors.",
+        "section": "rubric",
+        "priority": "mandatory"
+      },
+      {
+        "name": "The reaction must occur in real or simulated water matrices.",
+        "section": "rubric",
+        "priority": "mandatory"
+      },
+      {
+        "name": "There must be evidence directly attributing the compound’s formation to the treatment process.",
+        "section": "rubric",
+        "priority": "mandatory"
+      }
+    ],
+    "fixed_criteria": [
+      "The entity must be a specific chemical compound.",
+      "The compound's formation must occur during a water disinfection or oxidation process.",
+      "The formation must result from the reaction of disinfectants or oxidants with naturally occurring or anthropogenic precursors.",
+      "The reaction must occur in real or simulated water matrices.",
+      "There must be evidence directly attributing the compound’s formation to the treatment process."
+    ]
+  },
+  "domain": "dbp",
+  "search_budget": {
+    "batch1_max_search_directions": 3,
+    "batch1_max_identity_terms": 2,
+    "batch1_max_primary_context_terms": 2,
+    "defer_method_fanout_until_followup": true,
+    "avoid_near_duplicate_context_terms": true
+  }
+}
+explanation: Evidence confirms that 3-CPAN (3-chlorophenylacetonitrile) is a specific chemical compound. Its formation is directly attributed to water disinfection processes, specifically chlorination, where it is generated from naturally occurring or anthropogenic precursors like aromatic amino acids and indole in real or simulated water matrices.
+criteria_json: [
+  {
+    "name": "The entity must be a specific chemical compound.",
+    "priority": "mandatory",
+    "section": "rubric",
+    "status": "solved",
+    "notes": "3-CPAN is identified as 3-chlorophenylacetonitrile, a specific chemical compound, and is commercially available.",
+    "support_type": "direct_evidence",
+    "score": 1.0
+  },
+  {
+    "name": "The compound's formation must occur during a water disinfection or oxidation process.",
+    "priority": "mandatory",
+    "section": "rubric",
+    "status": "solved",
+    "notes": "3-CPAN is explicitly referred to as a drinking water disinfection byproduct formed during chlorination processes.",
+    "support_type": "direct_evidence",
+    "score": 1.0
+  },
+  {
+    "name": "The formation must result from the reaction of disinfectants or oxidants with naturally occurring or anthropogenic precursors.",
+    "priority": "mandatory",
+    "section": "rubric",
+    "status": "solved",
+    "notes": "CPANs are formed from the chlorination of aromatic amino acids (Tyr, Phe, Trp) and indole, which serve as precursors.",
+    "support_type": "direct_evidence",
+    "score": 1.0
+  },
+  {
+    "name": "The reaction must occur in real or simulated water matrices.",
+    "priority": "mandatory",
+    "section": "rubric",
+    "status": "solved",
+    "notes": "Formation is observed in drinking water, aquatic environments, and chloraminated water systems, including simulated chlorination processes.",
+    "support_type": "direct_evidence",
+    "score": 1.0
+  },
+  {
+    "name": "There must be evidence directly attributing the compound’s formation to the treatment process.",
+    "priority": "mandatory",
+    "section": "rubric",
+    "status": "solved",
+    "notes": "Multiple sources directly attribute the formation of 3-CPAN to disinfection processes like chlorination.",
+    "support_type": "direct_evidence",
+    "score": 1.0
+  }
+]
+evidence_json: [
+  {
+    "id": "Ref 1",
+    "title": "A Low-Cost Electrochemical Cell Sensor Based on MWCNT-COOH/α-Fe<sub>2</sub>O<sub>3</sub> for Toxicity Detection of Drinking Water Disinfection Byproducts.",
+    "year": "2025",
+    "doi": "10.3390/nano15020146",
+    "original_ids": [
+      "Ref 1"
+    ],
+    "pmid": "39852761",
+    "quotes": [
+      {
+        "quote": "2-CPAN (99%), 3-CPAN (≥98%), and 4-CPAN (≥98%) were purchased from J&K Scientific Ltd., Beijing, China.",
+        "supports": "direct"
+      },
+      {
+        "quote": "To evaluate the toxic effects of different concentrations of drinking water disinfection by-products on HepG2 cells, three sets of parallel experiments were established. The control group consisted of untreated culture medium, while the experimental groups were exposed to different concentrations of drinking water disinfection by-products: 2-CPAN (125.89 µM, 251.19 µM, 501.19 µM, 1000.00 µM, 1995.26 µM), 3-CPAN (125.89 µM, 251.19 µM, 501.19 µM, 1000.00 µM, 1995.26 µM), and 4-CPAN (125.89 µM, 251.19 µM, 501.19 µM, 1000.00 µM, 1995.26 µM).",
+        "supports": "direct"
+      },
+      {
+        "quote": "Furthermore, 3-chlorophenylacetonitrile (3-CPAN) and 4-chlorophenylacetonitrile (4-CPAN) have recently been detected in drinking water [8].",
+        "supports": "direct"
+      }
+    ]
+  },
+  {
+    "id": "Ref 2",
+    "title": "Chlorination of Aromatic Amino Acids: Elucidating Disinfection Byproducts, Reaction Kinetics, and Influence Factors.",
+    "year": "2024",
+    "doi": "10.3390/molecules29081879",
+    "original_ids": [
+      "Ref 2"
+    ],
+    "pmid": "38675699",
+    "quotes": [
+      {
+        "quote": "Notably, CPANs, which are highly toxic aromatic DBPs, are detected in the chlorination processes of all three aromatic AAs.",
+        "supports": "direct"
+      },
+      {
+        "quote": "This demonstrates that Tyr, Phe, and Trp may serve as precursors for CPANs in aquatic environments.",
+        "supports": "direct"
+      },
+      {
+        "quote": "In this study, the simulation of the chlorination process targeting three aromatic AAs (Tyr, Phe, and Trp) resulted in the identification of 15 DBPs, primarily consisting of various aldehydes, phenols, nitriles, and other chlorinated compounds. This comprehensive elucidation significantly enriches the existing DBP database. Of particular concern is the detection of highly toxic aromatic DBPs known as CPANs, including multiple monochlorinated and dichlorinated homologs.",
+        "supports": "direct"
+      },
+      {
+        "quote": "monochlorophenylacetonitrile (P-151, mono-CPAN), and dichlorophenylacetonitrile (P-185, di-CPAN), with detailed information provided in Table 1. Particularly noteworthy is the generation of two CPANs (P-151 and P-185), highlighting Tyr’s susceptibility to undergo chlorination-induced transformation to yield highly toxic aromatic DBPs.",
+        "supports": "direct"
+      },
+      {
+        "quote": "Moreover, during Trp chlorination, three isomers of mono-CPAN (P-151) can be generated, while four isomers of di-CPAN are formed (Figure 3b).",
+        "supports": "direct"
+      }
+    ]
+  },
+  {
+    "id": "Ref 3",
+    "title": "Storm-driven overflow disinfection highlights toxicity risk of chlorophenylacetonitriles: Unveiling indole in sewer sediments as a key precursor.",
+    "year": "2025",
+    "doi": "10.1016/j.watres.2025.124700",
+    "original_ids": [
+      "Ref 3"
+    ],
+    "pmid": "41038118",
+    "quotes": [
+      {
+        "quote": "This study reveals that chlorophenylacetonitriles (CPANs), which are formed during the disinfection process, exhibit toxicity levels higher than conventional trihalomethanes and haloacetonitriles.",
+        "supports": "direct"
+      },
+      {
+        "quote": "Laboratory analyses conducted in this work demonstrated that sewer sediments - not runoff or stormwater - are the dominant precursor source for CPAN formation during overflow disinfection. Source apportionment further identified a robust linear correlation (R² = 0.95) between sediment indole concentrations (0.093-0.91 μg/g) and CPAN formation, experimentally confirming for the first time that indole is a critical precursor.",
+        "supports": "direct"
+      },
+      {
+        "quote": "Chlorophenylacetonitriles (CPANs), a class of nitrogenous disinfection byproducts (DBPs) with high cytotoxicity, are increasingly detected in chloraminated water systems.",
+        "supports": "direct"
+      }
+    ]
+  }
+]
+results_dir: /data/chen/e2e_searching_results/dbp_eval_run_20260419_031554/dbp_eval_eval_dbp_528ac4c3

@@ -1,0 +1,18 @@
+{
+  "inputs": {
+    "/home/chen/GNPS_SIM/agent/db_form_agent_system/manuscript/all_labeled/db_curator_not_confirmed_blood_db.csv": "6ff240229bf51417bcbcb04e797eb6556bc06da7c7d84cf4bb99b5f2eac34a0b",
+    "/data/chen/db_curator_results/sec1/dbp/db_curator_not_confirmed.csv": "b3859fd574993da58992042914945ff31a05f566c1a3043a0797bd0fef927c56",
+    "/data/chen/db_curator_results/sec1/blood_exposome/db_curator_not_confirmed.csv": "1e5ebe7fb67b36d57364d347b9c34cf96c807fd84dab7ba351cb2b6e969a65ac",
+    "/data/chen/db_curator_results/sec1/drug_compounds/db_curator_not_confirmed.csv": "1e7ab263d6241cb8bbef3cd84c556b9afe20e421bfd326012f9091915c329c39",
+    "/data/chen/db_curator_results/sec1/human_endogenous_metabolites/db_curator_not_confirmed.csv": "561eb8d3b25a14f846311a559290a6a901c14f22888e322e82e9154eda667088",
+    "/data/chen/db_curator_results/sec1/microbial_natural_products/db_curator_not_confirmed.csv": "df0551df05e660d06d3355d9b2366678799c0a4a302fe15ad9b8fc7b8979c946"
+  },
+  "records": 109,
+  "review_records_located": 14,
+  "review_exports_not_located": 95,
+  "new_model_calls": 0,
+  "scientific_labels_changed": false,
+  "human_labels_imputed": false,
+  "matching_rule": "Exact topic and results_dir; candidate name also checked",
+  "scope": "50-retained-per-topic open-ended construction, config_tag=section1"
+}

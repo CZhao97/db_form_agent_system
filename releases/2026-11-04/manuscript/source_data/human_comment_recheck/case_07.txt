@@ -1,0 +1,215 @@
+CASE 7: (-)-epicatechin-3'-O-glucuronide | Confirmed | Exogenous
+entity_synonyms: 
+canonical_name: 
+query: {
+  "task": "verify_candidate_entity",
+  "entity_name": "(-)-epicatechin-3'-O-glucuronide",
+  "original_query": "Decide whether '(-)-epicatechin-3'-O-glucuronide' satisfies the confirmed-topic definition.",
+  "evaluation_criteria": {
+    "criteria_text": "- [mandatory] The entity must be a small molecule.\n- [mandatory] The entity must be produced within the human body.\n- [mandatory] The entity must function in human biochemical or physiological processes.\n- [mandatory] The entity must not be solely an exogenous chemical.\n- [mandatory] The entity must not be solely a microbiota-only metabolite.\n- [optional] If a metabolite is produced by both microbiota and host metabolism, it is included.",
+    "rubric_items": [
+      {
+        "name": "The entity must be a small molecule.",
+        "section": "rubric",
+        "priority": "mandatory"
+      },
+      {
+        "name": "The entity must be produced within the human body.",
+        "section": "rubric",
+        "priority": "mandatory"
+      },
+      {
+        "name": "The entity must function in human biochemical or physiological processes.",
+        "section": "rubric",
+        "priority": "mandatory"
+      },
+      {
+        "name": "The entity must not be solely an exogenous chemical.",
+        "section": "rubric",
+        "priority": "mandatory"
+      },
+      {
+        "name": "The entity must not be solely a microbiota-only metabolite.",
+        "section": "rubric",
+        "priority": "mandatory"
+      },
+      {
+        "name": "If a metabolite is produced by both microbiota and host metabolism, it is included.",
+        "section": "rubric",
+        "priority": "optional"
+      }
+    ],
+    "fixed_criteria": [
+      "The entity must be a small molecule.",
+      "The entity must be produced within the human body.",
+      "The entity must function in human biochemical or physiological processes.",
+      "The entity must not be solely an exogenous chemical.",
+      "The entity must not be solely a microbiota-only metabolite."
+    ]
+  },
+  "entity_synonyms": [
+    "(3S)-2-(4-hydroxy-3-{[(3S,4S,5S)-3,4,5-trihydroxy-6-(hydroxymethyl)oxan-2-yl]oxy}phenyl)-3,4-dihydro-2H-1-benzopyran-3,5,7-triol",
+    "(-)-EPICATECHIN-3'-.BETA.-D-GLUCURONIDE",
+    "Epicatechin-3'-glucuronide",
+    ".BETA.-D-GLUCOPYRANOSIDURONIC ACID, 5-((2R,3R)-3,4-DIHYDRO-3,5,7-TRIHYDROXY-2H-1-BENZOPYRAN-2-YL)-2-HYDROXYPHENYL",
+    "(-)-Epicatechin-3a(2)-O-glucuronide"
+  ],
+  "domain": "endogenous_metabolite",
+  "search_budget": {
+    "batch1_max_search_directions": 3,
+    "batch1_max_identity_terms": 2,
+    "batch1_max_primary_context_terms": 2,
+    "defer_method_fanout_until_followup": true,
+    "avoid_near_duplicate_context_terms": true
+  }
+}
+explanation: (-)-Epicatechin-3'-O-glucuronide is a small molecule (466.395 Da) formed in humans through phase II metabolism of dietary (-)-epicatechin, detected in plasma and urine. It is not solely an exogenous chemical or microbiota-only metabolite, and studies suggest it possesses in vivo activity.
+criteria_json: [
+  {
+    "name": "The entity must be a small molecule.",
+    "priority": "mandatory",
+    "section": "rubric",
+    "status": "solved",
+    "notes": "Confirmed by molecular weight from PubChem (466.395 Da).",
+    "support_type": "inferred",
+    "score": 1.0
+  },
+  {
+    "name": "The entity must be produced within the human body.",
+    "priority": "mandatory",
+    "section": "rubric",
+    "status": "solved",
+    "notes": "Multiple sources confirm its presence in human plasma and urine as a metabolite of (-)-epicatechin.",
+    "support_type": "direct_evidence",
+    "score": 1.0
+  },
+  {
+    "name": "The entity must function in human biochemical or physiological processes.",
+    "priority": "mandatory",
+    "section": "rubric",
+    "status": "solved",
+    "notes": "Suggested to possess in vivo activity and is part of the metabolic fate of epicatechins, which are beneficial for health.",
+    "support_type": "direct_evidence",
+    "score": 1.0
+  },
+  {
+    "name": "The entity must not be solely an exogenous chemical.",
+    "priority": "mandatory",
+    "section": "rubric",
+    "status": "solved",
+    "notes": "It is a metabolite formed in the human body from an exogenous precursor, not solely exogenous.",
+    "support_type": "direct_evidence",
+    "score": 1.0
+  },
+  {
+    "name": "The entity must not be solely a microbiota-only metabolite.",
+    "priority": "mandatory",
+    "section": "rubric",
+    "status": "solved",
+    "notes": "Formed through human phase II metabolism (glucuronidation) by enzymes like UGT1A9.",
+    "support_type": "direct_evidence",
+    "score": 1.0
+  },
+  {
+    "name": "If a metabolite is produced by both microbiota and host metabolism, it is included.",
+    "priority": "optional",
+    "section": "rubric",
+    "status": "solved",
+    "notes": "Not directly applicable as it's primarily a host metabolite, but its formation is distinct from microbiota-only metabolites.",
+    "support_type": "inferred",
+    "score": 1.0
+  }
+]
+evidence_json: [
+  {
+    "id": "Ref 1",
+    "title": "Structures of (-)-epicatechin glucuronide identified from plasma and urine after oral ingestion of (-)-epicatechin: differences between human and rat.",
+    "year": "2003",
+    "doi": "10.1016/S0891-5849(02)01434-X",
+    "original_ids": [
+      "Ref 1"
+    ],
+    "pmid": "12654472",
+    "quotes": [
+      {
+        "quote": "Three metabolites were purified from human urine including (-)-epicatechin-3'-O-glucuronide, 4'-O-methyl-(-)-epicatechin-3'-O-glucuronide, and 4'-O-methyl-(-)-epicatechin-5 or 7-O-glucuronide, according to 1H- and 13C-NMR, HMBC, and LC-MS analyses. The metabolites purified from rat urine were 3'-O-methyl-(-)-epicatechin, (-)-epicatechin-7-O-glucuronide, and 3'-O-methyl-(-)-epicatechin-7-O-glucuronide. These compounds were also detected in the blood of humans and rats by LC-MS",
+        "supports": "direct"
+      }
+    ]
+  },
+  {
+    "id": "Ref 2",
+    "title": "Absorption, metabolism, distribution and excretion of (-)-epicatechin: A review of recent findings.",
+    "year": "2017",
+    "doi": "10.1016/j.mam.2017.11.002",
+    "original_ids": [
+      "Ref 2"
+    ],
+    "pmid": "29126853",
+    "quotes": [
+      {
+        "quote": "Studies have shown that [2-14C](-)-epicatechin is absorbed in the small intestine with the 12 structural-related (-)-epicatechin metabolites (SREMs), mainly in the form of (-)-epicatechin-3'-O-glucuronide, 3'-O-methyl-(-)-epicatechin-5-sulfate and (-)-epicatechin-3'-sulfate, attaining sub-μmol/L peak plasma concentrations (Cmax) ∼1 h after ingestion.",
+        "supports": "direct"
+      }
+    ]
+  },
+  {
+    "id": "Ref 3",
+    "title": "(-)-Epicatechin and inflammation: Unraveling the role of microbial metabolites and interindividual metabolic variability.",
+    "year": "2026",
+    "doi": "10.3389/fmicb.2026.1803543",
+    "original_ids": [
+      "Ref 4"
+    ],
+    "pmid": "41960432",
+    "quotes": [
+      {
+        "quote": "These included (-)-epicatechin-3’-O-β-D-glucuronide, E3’S, as well as methylated derivatives such as 3’-O-methyl-(-)-epicatechin-5-sulfate and 3’-O-methyl-(-)-epicatechin-7-sulfate. Together, these metabolites provide compelling evidence for the extensive and complex biotransformation of EC within the human body. These findings collectively demonstrate that EC metabolism involves a coordinated sequence of intestinal absorption, hepatic and colonic biotransformation, and renal elimination, with distinct phase II conjugates acting as clearance intermediates and serving as characteristic metabolic signatures of EC exposure ().",
+        "supports": "direct"
+      }
+    ]
+  },
+  {
+    "id": "Ref 4",
+    "title": "In Vitro Antioxidative Activity of (−)-Epicatechin Glucuronide Metabolites Present in Human and Rat Plasma",
+    "year": "2004",
+    "doi": "10.1080/10715760400022087",
+    "original_ids": [
+      "Ref 5"
+    ],
+    "pmid": "15763958",
+    "quotes": [
+      {
+        "quote": "Recently we identified four conjugated glucuronide metabolites of epicatechin, (-)-epicatechin-3'-O-glucuronide (E3'G), 4'-O-methyl-(-)-epicatechin-3'-O-glucuronide (4'ME3'G), (-)-epicatechin-7-O-glucuronide (E7G) and 3'-O-methyl-(-)-epicatechin-7-O-glucuronide (3'ME7G) from plasma and urine. E3'G and 4'ME3'G were isolated from human urine, while E7G and 3'ME7G were isolated from rats that had received oral administration of (-)-epicatechin (Natsume et al. (2003), Free Radic. Biol. Med. 34,840-849). It has been suggested that these metabolites possess considerable in vivo activity, and therefore we carried out a study to compare the antioxidant activities of the metabolites with that of the parent compound.",
+        "supports": "direct"
+      }
+    ]
+  },
+  {
+    "id": "Ref 5",
+    "title": "Enzymatic synthesis of substituted epicatechins for bioactivity studies in neurological disorders.",
+    "year": "2012",
+    "doi": "10.1016/j.bbrc.2011.11.139",
+    "original_ids": [
+      "Ref 10",
+      "Ref 11",
+      "Ref 13"
+    ],
+    "pmid": "22166210",
+    "quotes": [
+      {
+        "quote": "Specifically, the metabolites identified in human urine and plasma were epicatechin-3′-O-glucuronide, 4′-O-methyl-epicatechin-3′-O-glucuronide, and 4′-O-methyl-epicatechin-5 or 7-O-glucuronide",
+        "supports": "direct"
+      },
+      {
+        "quote": "Because (epi)-catechin metabolites are beneficial for such a variety of health reasons, it is important to understand their metabolic fates and final disposition throughout the body. One study identified epicatechin as having higher in vivo bioavailability in rats than catechin (), and several studies have examined the metabolic fates of (epi)catechins in rodents and humans. Some differences and similarities in metabolites were observed after feeding epicatechin orally to humans and rats (; ). In general, humans produced more sulfated conjugates than rats (). Both humans and rats had a variety of methylated and/or conjugated epicatechins in the urine and plasma following oral administration of epicatechin.",
+        "supports": "direct"
+      },
+      {
+        "quote": "UGT1A9 was the most active enzyme with both substrates. UGT1A9 glucuronidated epicatechin at the 3′-position (and also most probably at the 5-O, but as a minor product) and 3′-O-methyl-epicatechin at the 5-O position as well as minor amounts of the three other possible methyl-epicatechin monoglucuronides (3, 7, and 4′).",
+        "supports": "direct"
+      }
+    ]
+  }
+]
+results_dir: /data/chen/e2e_searching_results/endogenous_metabolite_eval_run_20260419_190825/endogenous_metabolite_eval_eval_endogenous_metabolite_dd14995d

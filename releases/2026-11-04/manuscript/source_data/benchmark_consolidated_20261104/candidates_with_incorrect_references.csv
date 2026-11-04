@@ -1,0 +1,16 @@
+﻿case_id,topic,candidate,researcher_label,incorrect_reference_count,other_real_reference_count,source_located_reference_count,assessment
+5f2d4d443cba8fbeb9f80bd4,dbp,"3,5-Dibromo-4-hydroxybenzonitrile",Confirmed,2,1,0,Incorrect citation recorded. Other real references do not establish rubric sufficiency automatically.
+9cf8cf9088f32c4038e0c566,dbp,3-Bromo-5-chloro-4-hydroxybenzaldehyde,Confirmed,2,0,0,Incorrect citation recorded. Other real references do not establish rubric sufficiency automatically.
+9368b6473d5784d6c0a9007f,dbp,"(E)-3-bromo-2,3-dichloroprop-2-enoic acid",Confirmed,2,0,0,Incorrect citation recorded. Other real references do not establish rubric sufficiency automatically.
+1560f20575f4c3f60d367c4a,dbp,3-Chloro-L-tyrosine,Confirmed,1,1,0,Incorrect citation recorded. Other real references do not establish rubric sufficiency automatically.
+af37772431143b5f1562a8ed,dbp,Bromo(trichloro)methane,Confirmed,1,1,0,Incorrect citation recorded. Other real references do not establish rubric sufficiency automatically.
+3755d9eff8c4fa3514ffa18a,dbp,Bromo(chloro)nitromethane,Confirmed,2,0,0,Incorrect citation recorded. Other real references do not establish rubric sufficiency automatically.
+9b0b189daf75716a20ca4cce,dbp,"Benzene-1,3-dicarboxylic acid",Confirmed,2,0,0,Incorrect citation recorded. Other real references do not establish rubric sufficiency automatically.
+3a06d9f86fff1f7416649f0f,dbp,4-tert-Butylphenol,Confirmed,2,0,0,Incorrect citation recorded. Other real references do not establish rubric sufficiency automatically.
+a995009c5deb3936f4e754eb,dbp,2-Hydroxybenzaldehyde,Confirmed,2,0,0,Incorrect citation recorded. Other real references do not establish rubric sufficiency automatically.
+b4b9374c1d141f393aaa1f8b,dbp,3-Methylbutanal,Confirmed,1,2,0,Incorrect citation recorded. Other real references do not establish rubric sufficiency automatically.
+a5d3f40bb30c36a36826743a,dbp,2-Bromo-4-tert-butylphenol,Confirmed,2,0,0,Incorrect citation recorded. Other real references do not establish rubric sufficiency automatically.
+3e4c684c98c8bcad42c0a65a,human_endogenous_metabolites,4-Hydroxy-5-(dihydroxyphenyl)-valeric acid-O-methyl-O-sulphate,Insufficient Direct Evidence,1,1,1,Incorrect citation recorded. Other real references do not establish rubric sufficiency automatically.
+fa3922ab8ef10ebbf6927be6,human_endogenous_metabolites,PC(16:1(9Z)/18:0),Confirmed,1,1,0,Incorrect citation recorded. Other real references do not establish rubric sufficiency automatically.
+3c30e1eb4411a83ed0c7dfb6,microbial_natural_products,A-factor,Confirmed,1,2,0,Incorrect citation recorded. Other real references do not establish rubric sufficiency automatically.
+11fe68cd33285c2ecde48cbd,microbial_natural_products,Fusarinine C,Confirmed,1,13,11,Incorrect citation recorded. Other real references do not establish rubric sufficiency automatically.

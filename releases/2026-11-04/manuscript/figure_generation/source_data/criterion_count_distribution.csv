@@ -1,0 +1,166 @@
+﻿topic,criteria_passed,outcome,row_count,topic_fraction_percent
+dbp,0,Confirmed,6,0.8733624454148472
+dbp,1,Confirmed,10,1.455604075691412
+dbp,2,Confirmed,3,0.4366812227074236
+dbp,3,Confirmed,6,0.8733624454148472
+dbp,4,Confirmed,32,4.657933042212518
+dbp,5,Confirmed,273,39.737991266375545
+dbp,0,Insufficient evidence,3,0.4366812227074236
+dbp,1,Insufficient evidence,294,42.79475982532751
+dbp,2,Insufficient evidence,5,0.727802037845706
+dbp,3,Insufficient evidence,1,0.14556040756914118
+dbp,4,Insufficient evidence,2,0.29112081513828236
+dbp,5,Insufficient evidence,0,0.0
+dbp,0,Explicit negative,0,0.0
+dbp,1,Explicit negative,2,0.29112081513828236
+dbp,2,Explicit negative,0,0.0
+dbp,3,Explicit negative,0,0.0
+dbp,4,Explicit negative,1,0.14556040756914118
+dbp,5,Explicit negative,9,1.3100436681222707
+dbp,0,Suspected,2,0.29112081513828236
+dbp,1,Suspected,7,1.0189228529839884
+dbp,2,Suspected,1,0.14556040756914118
+dbp,3,Suspected,4,0.5822416302765647
+dbp,4,Suspected,7,1.0189228529839884
+dbp,5,Suspected,11,1.6011644832605532
+dbp,0,Other scope / identity,0,0.0
+dbp,1,Other scope / identity,6,0.8733624454148472
+dbp,2,Other scope / identity,0,0.0
+dbp,3,Other scope / identity,0,0.0
+dbp,4,Other scope / identity,0,0.0
+dbp,5,Other scope / identity,2,0.29112081513828236
+blood_exposome,0,Confirmed,1,0.3333333333333333
+blood_exposome,1,Confirmed,2,0.6666666666666666
+blood_exposome,2,Confirmed,2,0.6666666666666666
+blood_exposome,3,Confirmed,9,3.0
+blood_exposome,4,Confirmed,54,18.0
+blood_exposome,0,Insufficient evidence,167,55.666666666666664
+blood_exposome,1,Insufficient evidence,4,1.3333333333333333
+blood_exposome,2,Insufficient evidence,17,5.666666666666667
+blood_exposome,3,Insufficient evidence,0,0.0
+blood_exposome,4,Insufficient evidence,16,5.333333333333333
+blood_exposome,0,Explicit negative,0,0.0
+blood_exposome,1,Explicit negative,1,0.3333333333333333
+blood_exposome,2,Explicit negative,1,0.3333333333333333
+blood_exposome,3,Explicit negative,0,0.0
+blood_exposome,4,Explicit negative,5,1.6666666666666667
+blood_exposome,0,Suspected,0,0.0
+blood_exposome,1,Suspected,0,0.0
+blood_exposome,2,Suspected,10,3.3333333333333335
+blood_exposome,3,Suspected,4,1.3333333333333333
+blood_exposome,4,Suspected,7,2.3333333333333335
+blood_exposome,0,Other scope / identity,0,0.0
+blood_exposome,1,Other scope / identity,0,0.0
+blood_exposome,2,Other scope / identity,0,0.0
+blood_exposome,3,Other scope / identity,0,0.0
+blood_exposome,4,Other scope / identity,0,0.0
+drug_compounds,0,Confirmed,4,1.3333333333333333
+drug_compounds,1,Confirmed,2,0.6666666666666666
+drug_compounds,2,Confirmed,3,1.0
+drug_compounds,3,Confirmed,5,1.6666666666666667
+drug_compounds,4,Confirmed,0,0.0
+drug_compounds,5,Confirmed,18,6.0
+drug_compounds,6,Confirmed,181,60.333333333333336
+drug_compounds,0,Insufficient evidence,8,2.6666666666666665
+drug_compounds,1,Insufficient evidence,6,2.0
+drug_compounds,2,Insufficient evidence,5,1.6666666666666667
+drug_compounds,3,Insufficient evidence,2,0.6666666666666666
+drug_compounds,4,Insufficient evidence,6,2.0
+drug_compounds,5,Insufficient evidence,6,2.0
+drug_compounds,6,Insufficient evidence,1,0.3333333333333333
+drug_compounds,0,Explicit negative,0,0.0
+drug_compounds,1,Explicit negative,0,0.0
+drug_compounds,2,Explicit negative,0,0.0
+drug_compounds,3,Explicit negative,0,0.0
+drug_compounds,4,Explicit negative,0,0.0
+drug_compounds,5,Explicit negative,2,0.6666666666666666
+drug_compounds,6,Explicit negative,25,8.333333333333334
+drug_compounds,0,Suspected,0,0.0
+drug_compounds,1,Suspected,0,0.0
+drug_compounds,2,Suspected,3,1.0
+drug_compounds,3,Suspected,2,0.6666666666666666
+drug_compounds,4,Suspected,1,0.3333333333333333
+drug_compounds,5,Suspected,3,1.0
+drug_compounds,6,Suspected,7,2.3333333333333335
+drug_compounds,0,Other scope / identity,0,0.0
+drug_compounds,1,Other scope / identity,0,0.0
+drug_compounds,2,Other scope / identity,0,0.0
+drug_compounds,3,Other scope / identity,2,0.6666666666666666
+drug_compounds,4,Other scope / identity,3,1.0
+drug_compounds,5,Other scope / identity,0,0.0
+drug_compounds,6,Other scope / identity,5,1.6666666666666667
+human_endogenous_metabolites,0,Confirmed,1,0.3333333333333333
+human_endogenous_metabolites,1,Confirmed,3,1.0
+human_endogenous_metabolites,2,Confirmed,2,0.6666666666666666
+human_endogenous_metabolites,3,Confirmed,3,1.0
+human_endogenous_metabolites,4,Confirmed,3,1.0
+human_endogenous_metabolites,5,Confirmed,38,12.666666666666666
+human_endogenous_metabolites,6,Confirmed,75,25.0
+human_endogenous_metabolites,0,Insufficient evidence,0,0.0
+human_endogenous_metabolites,1,Insufficient evidence,69,23.0
+human_endogenous_metabolites,2,Insufficient evidence,5,1.6666666666666667
+human_endogenous_metabolites,3,Insufficient evidence,1,0.3333333333333333
+human_endogenous_metabolites,4,Insufficient evidence,1,0.3333333333333333
+human_endogenous_metabolites,5,Insufficient evidence,0,0.0
+human_endogenous_metabolites,6,Insufficient evidence,1,0.3333333333333333
+human_endogenous_metabolites,0,Explicit negative,0,0.0
+human_endogenous_metabolites,1,Explicit negative,2,0.6666666666666666
+human_endogenous_metabolites,2,Explicit negative,5,1.6666666666666667
+human_endogenous_metabolites,3,Explicit negative,6,2.0
+human_endogenous_metabolites,4,Explicit negative,5,1.6666666666666667
+human_endogenous_metabolites,5,Explicit negative,25,8.333333333333334
+human_endogenous_metabolites,6,Explicit negative,15,5.0
+human_endogenous_metabolites,0,Suspected,0,0.0
+human_endogenous_metabolites,1,Suspected,6,2.0
+human_endogenous_metabolites,2,Suspected,3,1.0
+human_endogenous_metabolites,3,Suspected,4,1.3333333333333333
+human_endogenous_metabolites,4,Suspected,10,3.3333333333333335
+human_endogenous_metabolites,5,Suspected,5,1.6666666666666667
+human_endogenous_metabolites,6,Suspected,5,1.6666666666666667
+human_endogenous_metabolites,0,Other scope / identity,0,0.0
+human_endogenous_metabolites,1,Other scope / identity,4,1.3333333333333333
+human_endogenous_metabolites,2,Other scope / identity,2,0.6666666666666666
+human_endogenous_metabolites,3,Other scope / identity,0,0.0
+human_endogenous_metabolites,4,Other scope / identity,0,0.0
+human_endogenous_metabolites,5,Other scope / identity,1,0.3333333333333333
+human_endogenous_metabolites,6,Other scope / identity,0,0.0
+microbial_natural_products,0,Confirmed,3,1.0
+microbial_natural_products,1,Confirmed,7,2.3333333333333335
+microbial_natural_products,2,Confirmed,1,0.3333333333333333
+microbial_natural_products,3,Confirmed,0,0.0
+microbial_natural_products,4,Confirmed,6,2.0
+microbial_natural_products,5,Confirmed,24,8.0
+microbial_natural_products,6,Confirmed,14,4.666666666666667
+microbial_natural_products,7,Confirmed,184,61.333333333333336
+microbial_natural_products,0,Insufficient evidence,3,1.0
+microbial_natural_products,1,Insufficient evidence,34,11.333333333333334
+microbial_natural_products,2,Insufficient evidence,3,1.0
+microbial_natural_products,3,Insufficient evidence,0,0.0
+microbial_natural_products,4,Insufficient evidence,0,0.0
+microbial_natural_products,5,Insufficient evidence,4,1.3333333333333333
+microbial_natural_products,6,Insufficient evidence,0,0.0
+microbial_natural_products,7,Insufficient evidence,0,0.0
+microbial_natural_products,0,Explicit negative,0,0.0
+microbial_natural_products,1,Explicit negative,0,0.0
+microbial_natural_products,2,Explicit negative,1,0.3333333333333333
+microbial_natural_products,3,Explicit negative,2,0.6666666666666666
+microbial_natural_products,4,Explicit negative,0,0.0
+microbial_natural_products,5,Explicit negative,0,0.0
+microbial_natural_products,6,Explicit negative,0,0.0
+microbial_natural_products,7,Explicit negative,1,0.3333333333333333
+microbial_natural_products,0,Suspected,1,0.3333333333333333
+microbial_natural_products,1,Suspected,0,0.0
+microbial_natural_products,2,Suspected,0,0.0
+microbial_natural_products,3,Suspected,4,1.3333333333333333
+microbial_natural_products,4,Suspected,0,0.0
+microbial_natural_products,5,Suspected,6,2.0
+microbial_natural_products,6,Suspected,1,0.3333333333333333
+microbial_natural_products,7,Suspected,0,0.0
+microbial_natural_products,0,Other scope / identity,0,0.0
+microbial_natural_products,1,Other scope / identity,1,0.3333333333333333
+microbial_natural_products,2,Other scope / identity,0,0.0
+microbial_natural_products,3,Other scope / identity,0,0.0
+microbial_natural_products,4,Other scope / identity,0,0.0
+microbial_natural_products,5,Other scope / identity,0,0.0
+microbial_natural_products,6,Other scope / identity,0,0.0
+microbial_natural_products,7,Other scope / identity,0,0.0

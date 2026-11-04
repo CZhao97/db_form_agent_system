@@ -1,0 +1,7 @@
+﻿topic,processed,retained,nonconfirmed,TP,FP,FN,TN,precision,processed_pool_recall
+dbp,122,50,72,45,5,0,72,0.9,1.0
+blood_exposome,64,50,14,50,0,2,12,1.0,0.9615384615384616
+drug_compounds,51,50,1,50,0,0,1,1.0,1.0
+human_endogenous_metabolites,65,50,15,47,3,0,15,0.94,1.0
+microbial_natural_products,57,50,7,49,1,0,7,0.98,1.0
+all,359,250,109,241,9,2,107,0.964,0.9917695473251029

@@ -1,0 +1,124 @@
+CASE 15: cis-Resveratrol 4'-O-glucuronide | Confirmed | Exogenous
+entity_synonyms: 
+canonical_name: 
+query: {
+  "task": "verify_candidate_entity",
+  "entity_name": "cis-Resveratrol 4'-O-glucuronide",
+  "original_query": "Decide whether 'cis-Resveratrol 4'-O-glucuronide' satisfies the confirmed-topic definition.",
+  "evaluation_criteria": {
+    "criteria_text": "- [mandatory] The entity must be a small molecule.\n- [mandatory] The entity must be produced within the human body.\n- [mandatory] The entity must function in human biochemical or physiological processes.\n- [mandatory] The entity must not be solely an exogenous chemical.\n- [mandatory] The entity must not be solely a microbiota-only metabolite.\n- [optional] If a metabolite is produced by both microbiota and host metabolism, it is included.",
+    "rubric_items": [
+      {
+        "name": "The entity must be a small molecule.",
+        "section": "rubric",
+        "priority": "mandatory"
+      },
+      {
+        "name": "The entity must be produced within the human body.",
+        "section": "rubric",
+        "priority": "mandatory"
+      },
+      {
+        "name": "The entity must function in human biochemical or physiological processes.",
+        "section": "rubric",
+        "priority": "mandatory"
+      },
+      {
+        "name": "The entity must not be solely an exogenous chemical.",
+        "section": "rubric",
+        "priority": "mandatory"
+      },
+      {
+        "name": "The entity must not be solely a microbiota-only metabolite.",
+        "section": "rubric",
+        "priority": "mandatory"
+      },
+      {
+        "name": "If a metabolite is produced by both microbiota and host metabolism, it is included.",
+        "section": "rubric",
+        "priority": "optional"
+      }
+    ],
+    "fixed_criteria": [
+      "The entity must be a small molecule.",
+      "The entity must be produced within the human body.",
+      "The entity must function in human biochemical or physiological processes.",
+      "The entity must not be solely an exogenous chemical.",
+      "The entity must not be solely a microbiota-only metabolite."
+    ]
+  },
+  "entity_synonyms": [
+    "(2S,3S,4S,5R,6S)-6-{4-[(Z)-2-(3,5-dihydroxyphenyl)ethenyl]phenoxy}-3,4,5-trihydroxyoxane-2-carboxylic acid",
+    "(2S,3S,4S,5R,6S)-6-{4-[(Z)-2-(3,5-dihydroxyphenyl)ethenyl]phenoxy}-3,4,5-trihydroxyoxane-2-carboxylate",
+    "cis Resveratrol 4'-O-?-D-Glucuronide",
+    "cis Resveratrol 4'-O- beta -D-Glucuronide",
+    "cis-Resveratrol 4'-O-b-D-glucuronide"
+  ],
+  "domain": "endogenous_metabolite",
+  "search_budget": {
+    "batch1_max_search_directions": 3,
+    "batch1_max_identity_terms": 2,
+    "batch1_max_primary_context_terms": 2,
+    "defer_method_fanout_until_followup": true,
+    "avoid_near_duplicate_context_terms": true
+  }
+}
+explanation: cis-Resveratrol 4'-O-glucuronide is a small molecule (C20H20O9) that is formed in the human body as a metabolite of dietary resveratrol. It has been detected in human urine and plasma and has demonstrated biological activity in cell culture experiments.
+criteria_json: [
+  {
+    "name": "The entity must be a small molecule.",
+    "priority": "mandatory",
+    "section": "rubric",
+    "status": "solved",
+    "notes": "The compound has a molecular formula of C20H20O9 and a mass of 404.371 Da, consistent with a small molecule.",
+    "support_type": "direct_evidence",
+    "score": 1.0
+  },
+  {
+    "name": "The entity must be produced within the human body.",
+    "priority": "mandatory",
+    "section": "rubric",
+    "status": "solved",
+    "notes": "cis-Resveratrol 4'-O-glucuronide is a human metabolite of resveratrol, formed by glucuronidation in the liver and intestine.",
+    "support_type": "direct_evidence",
+    "score": 1.0
+  },
+  {
+    "name": "The entity must function in human biochemical or physiological processes.",
+    "priority": "mandatory",
+    "section": "rubric",
+    "status": "solved",
+    "notes": "The metabolite has been shown to reduce DNA strand breakage in Jurkat T cells and inhibit colon cancer cell growth in vitro.",
+    "support_type": "direct_evidence",
+    "score": 1.0
+  },
+  {
+    "name": "The entity must not be solely an exogenous chemical.",
+    "priority": "mandatory",
+    "section": "rubric",
+    "status": "solved",
+    "notes": "While derived from exogenous resveratrol, it is a metabolic product formed within the human body.",
+    "support_type": "direct_evidence",
+    "score": 1.0
+  },
+  {
+    "name": "The entity must not be solely a microbiota-only metabolite.",
+    "priority": "mandatory",
+    "section": "rubric",
+    "status": "solved",
+    "notes": "It is formed by human enzymes (UGTs) in the liver and intestine, not solely by microbiota.",
+    "support_type": "direct_evidence",
+    "score": 1.0
+  },
+  {
+    "name": "If a metabolite is produced by both microbiota and host metabolism, it is included.",
+    "priority": "optional",
+    "section": "rubric",
+    "status": "solved",
+    "notes": "Resveratrol undergoes both host and microbial metabolism, and cis-resveratrol 4'-O-glucuronide is a host metabolite.",
+    "support_type": "direct_evidence",
+    "score": 1.0
+  }
+]
+evidence_json: []
+results_dir: /data/chen/e2e_searching_results/endogenous_metabolite_eval_run_20260419_194100/endogenous_metabolite_eval_eval_endogenous_metabolite_8da331ce

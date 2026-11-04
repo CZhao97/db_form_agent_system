@@ -1,0 +1,6 @@
+﻿topic,nonconfirmed_records,review_records_located,review_exports_not_located,original_source_file
+dbp,72,0,72,/data/chen/db_curator_results/sec1/dbp/db_curator_not_confirmed.csv
+blood_exposome,14,14,0,/data/chen/db_curator_results/sec1/blood_exposome/db_curator_not_confirmed.csv
+drug_compounds,1,0,1,/data/chen/db_curator_results/sec1/drug_compounds/db_curator_not_confirmed.csv
+human_endogenous_metabolites,15,0,15,/data/chen/db_curator_results/sec1/human_endogenous_metabolites/db_curator_not_confirmed.csv
+microbial_natural_products,7,0,7,/data/chen/db_curator_results/sec1/microbial_natural_products/db_curator_not_confirmed.csv

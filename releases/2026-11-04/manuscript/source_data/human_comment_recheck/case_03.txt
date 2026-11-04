@@ -1,0 +1,245 @@
+CASE 3: cotinine | Confirmed | class of compounds
+entity_synonyms: [
+  "cotinine-associated",
+  "DL-cotinine",
+  "Cotininea",
+  "Cotinine-hydroxyTobacco-related",
+  "CotinineTobacco-related",
+  "cotinine.bAdjusted",
+  "cotinine-adjusted",
+  "cotinine-to-creatinine",
+  "cotinine?€?positive",
+  "cotininePregnancy",
+  "cotinine-positive",
+  "Cotinine-related",
+  "cotinine-exposed",
+  "cotinine1.0Data",
+  "acid Cotinine",
+  "cotinine26,27",
+  "cotinineNull",
+  "cotinine.47",
+  "cotinine-d3",
+  "cotinine50"
+]
+canonical_name: cotinine
+query: {
+  "task": "verify_candidate_entity",
+  "entity_name": "cotinine",
+  "original_query": "Decide whether 'cotinine' satisfies the confirmed-topic definition.",
+  "evaluation_criteria": {
+    "criteria_text": "- [mandatory] The chemical entity must be reported in human blood or systemic circulation.\n- [mandatory] The chemical entity must be introduced by, structurally modified by, or significantly change in amount in response to the external environment.\n- [mandatory] Evidence for the chemical entity's presence and exposomal origin must be supported by primary literature, biomonitoring surveys, or public metabolomics datasets.\n- [mandatory] The supporting evidence must be associated with human blood specimens.",
+    "rubric_items": [
+      {
+        "name": "The chemical entity must be reported in human blood or systemic circulation.",
+        "section": "rubric",
+        "priority": "mandatory"
+      },
+      {
+        "name": "The chemical entity must be introduced by, structurally modified by, or significantly change in amount in response to the external environment.",
+        "section": "rubric",
+        "priority": "mandatory"
+      },
+      {
+        "name": "Evidence for the chemical entity's presence and exposomal origin must be supported by primary literature, biomonitoring surveys, or public metabolomics datasets.",
+        "section": "rubric",
+        "priority": "mandatory"
+      },
+      {
+        "name": "The supporting evidence must be associated with human blood specimens.",
+        "section": "rubric",
+        "priority": "mandatory"
+      }
+    ],
+    "fixed_criteria": [
+      "The chemical entity must be reported in human blood or systemic circulation.",
+      "The chemical entity must be introduced by, structurally modified by, or significantly change in amount in response to the external environment.",
+      "Evidence for the chemical entity's presence and exposomal origin must be supported by primary literature, biomonitoring surveys, or public metabolomics datasets.",
+      "The supporting evidence must be associated with human blood specimens."
+    ]
+  },
+  "entity_synonyms": [
+    "(5S)-1-methyl-5-pyridin-3-ylpyrrolidin-2-one",
+    "C 5923",
+    "Prestwick2_000082",
+    "(-)-Cotinine 100 microg/mL in Acetonitrile",
+    "SDCCGSBI-0050273.P004",
+    "NIH 10498(Cotinine)?",
+    "5-24-02-00504 (Beilstein Handbook Reference)",
+    "SDCCGMLS-0066565.P001",
+    "(-)-Cotinine 1.0 mg/ml in Methanol",
+    "2-Pyrrolidinone, 1-methyl-5-(3-pyridinyl)-, (S)-",
+    "Spectrum5_000465",
+    "KBio2_002541",
+    "1-Methyl-5-(3-pyridinyl)-2-pyrrolidinone",
+    "(5S)-1-Methyl-5-(pyridin-3-yl)pyrrolidin-2-one ((-)-Cotinine)",
+    "Cotinina",
+    "KBioSS_002550",
+    "KBioGR_002368",
+    "KBio1_000861",
+    "(5S)-1-methyl-5-(3-pyridinyl)-2-pyrrolidinone",
+    "1-methyl-5-(pyridin-3-yl)pyrrolidin-2-one",
+    "orb1309427",
+    "SPBio_001943",
+    "Spectrum_001984",
+    "Spectrum3_000700",
+    "BRD-K94144010-001-13-9",
+    "DivK1c_000861",
+    "(S)-1-methyl-5-(pyridin-3-yl)pyrrolidin-2-one",
+    "(S)-1-Methyl-5-(3-pyridinyl)-2-pyrrolidinone",
+    "Nicotine EP Impurity C",
+    "Cotinine (Standard)",
+    "Scotine",
+    "(5S)-1-methyl-5-(3-pyridyl)pyrrolidin-2-one",
+    "KBio2_005109",
+    "NC01 - Nicotine and Cotinine in Urine",
+    "Prestwick1_000082",
+    "BSPBio_002459",
+    "MEGxp0_001870",
+    "Prestwick_134",
+    "BSPBio_000004",
+    "Pharmakon1600-01500208",
+    "Prestwick0_000082",
+    "BPBio1_000006",
+    "S-(-)-Cotinine",
+    "BRN 0083099",
+    "US8609708, 91 Cotinine",
+    "KBio3_001679",
+    "S-(-)-Cotinine (1 mg/mL in Methanol)",
+    "Spectrum4_001793",
+    "BRD-K94144010-001-05-5",
+    "KBio2_007677",
+    "2-Pyrrolidinone, 1-methyl-5-(3-pyridinyl)-, (5S)-",
+    "(-)-Cotinine, analytical standard",
+    "S-(-)-Cotinine (1.0 mg/mL in Methanol)",
+    "Prestwick3_000082",
+    "S(-)-1-Methyl-5-(3-pyridyl)-2-pyrrolidone",
+    "Cotininum",
+    "ACon1_000202",
+    "(-)-1-METHYL-5-(3-PYRIDYL)-2-PYRROLIDINONE",
+    "(S)-(-)-1-Methyl-5-(3-pyridiyl)-2-pyrrolidinone",
+    "BRD-K94144010-001-09-7",
+    "BRD-K94144010-001-04-8",
+    "(S)-1-Methyl-5-(3-pyridyl)-2-pyrrolidinone",
+    "bmse000577",
+    "Epitope ID:2272242",
+    "n-methyl-2-(3-pyridyl)-5-pyrrolidone",
+    "Lopac0_000285",
+    "NIH 10498"
+  ],
+  "domain": "blood",
+  "search_budget": {
+    "batch1_max_search_directions": 3,
+    "batch1_max_identity_terms": 2,
+    "batch1_max_primary_context_terms": 2,
+    "defer_method_fanout_until_followup": true,
+    "avoid_near_duplicate_context_terms": true
+  }
+}
+explanation: Cotinine is a major metabolite of nicotine, formed in the human body after exposure to tobacco smoke. It is consistently reported in human blood and is used as a reliable biomarker for assessing environmental tobacco smoke exposure.
+criteria_json: [
+  {
+    "name": "The chemical entity must be reported in human blood or systemic circulation.",
+    "priority": "mandatory",
+    "section": "rubric",
+    "status": "solved",
+    "notes": "Cotinine is reported in human blood (serum/plasma) as a biomarker for nicotine exposure.",
+    "support_type": "direct_evidence",
+    "score": 1.0
+  },
+  {
+    "name": "The chemical entity must be introduced by, structurally modified by, or significantly change in amount in response to the external environment.",
+    "priority": "mandatory",
+    "section": "rubric",
+    "status": "solved",
+    "notes": "Cotinine is a metabolite of nicotine, formed in the human body after exposure to tobacco smoke (external environment).",
+    "support_type": "direct_evidence",
+    "score": 1.0
+  },
+  {
+    "name": "Evidence for the chemical entity's presence and exposomal origin must be supported by primary literature, biomonitoring surveys, or public metabolomics datasets.",
+    "priority": "mandatory",
+    "section": "rubric",
+    "status": "solved",
+    "notes": "Multiple primary literature sources and biomonitoring studies confirm cotinine's presence and origin from tobacco smoke exposure.",
+    "support_type": "direct_evidence",
+    "score": 1.0
+  },
+  {
+    "name": "The supporting evidence must be associated with human blood specimens.",
+    "priority": "mandatory",
+    "section": "rubric",
+    "status": "solved",
+    "notes": "Studies explicitly mention the measurement of cotinine in human serum and plasma.",
+    "support_type": "direct_evidence",
+    "score": 1.0
+  }
+]
+evidence_json: [
+  {
+    "id": "Ref 1",
+    "title": "Urinary cotinine cut-off concentrations in children under 5 years for assessing environmental tobacco smoke exposure: a systematic review and meta-analysis protocol.",
+    "year": "2025",
+    "doi": "10.1136/bmjopen-2024-094077",
+    "original_ids": [
+      "Ref 1"
+    ],
+    "pmid": "40379337",
+    "quotes": [
+      {
+        "quote": "Cotinine is a derivative of nicotine, the addictive compound found in tobacco smoke. On inhalation, nicotine undergoes metabolism in the human body, resulting in the formation of cotinine. Contrary to nicotine, which is rapidly eliminated from the body within an average of two to 3 hours, cotinine has a longer half-life of approximately 19-20 hours. This characteristic makes cotinine a more precise measure of the accumulative exposure to ETS over some time. It has been widely used as a biomarker for validating smokers and passive smokers. In addition, using cotinine as a biomarker of ETS exposure is advantageous since 72% of nicotine is converted to cotinine, which is the most abundant nicotine metabolite compared with other metabolites. Cotinine can be identified in many biological samples, including urine, blood, hair and saliva. Studies have shown that the level of cotinine in different biological fluids, such as serum, saliva or urine, strongly correlates with the degree of nicotine exposure.",
+        "supports": "direct"
+      }
+    ]
+  },
+  {
+    "id": "Ref 2",
+    "title": "Who Is Exposed to Secondhand Smoke? Self-Reported and Serum Cotinine Measured Exposure in the U.S., 1999–2006",
+    "year": "1999",
+    "doi": "10.3390/ijerph6051633",
+    "original_ids": [
+      "Ref 2"
+    ],
+    "quotes": [
+      {
+        "quote": "The patterns of prevalence rates of detectable serum cotinine among nonsmokers by sociodemographic characteristics during 1999–2006 are similar to the results from Table 2 using self-reported SHS exposure, except that the absolute values of cotinine-measured prevalence rates are much higher. The prevalence rates of cotinine measured exposure were 59.0%, 52.4%, and 40.5% respectively for children, adolescent, and adults.",
+        "supports": "direct"
+      },
+      {
+        "quote": "Our results indicate much higher rates of cotinine measured exposure than self-reported SHS exposure. To further analyze how these exposure measures differ, we calculated the prevalence rates of detectable cotinine and the geometric means of cotinine concentration separately for nonsmokers who self-reported SHS exposure and those who did not (Table 4). 98.2% of children with self-reported exposure had detectable serum cotinine levels, with a geometric mean of 1.20 ng/mL. For children who did not have self-reported exposure, almost half (47.6%) of them nonetheless had detectable serum cotinine, with a mean value of 0.08 ng/mL.",
+        "supports": "direct"
+      }
+    ]
+  },
+  {
+    "id": "Ref 3",
+    "title": "Serum cotinine cut-points for secondhand smoke exposure assessment in children under 5 years: A systemic review",
+    "year": "2022",
+    "doi": "10.1371/journal.pone.0267319",
+    "original_ids": [
+      "Ref 3"
+    ],
+    "quotes": [
+      {
+        "quote": "Cotinine, the major metabolite of nicotine, is considered the best biomarker for assessing recent SHS exposure due to its high specificity and sensitivity, as well as its relatively prolonged half-life which ranges from 16 to 20 hours in children [6,8]. Cotinine can be collected from various biological samples such as blood (serum/plasma), urine, saliva, hair, meconium and maternal milk, and quantified through several analytical techniques [6,8–10]. Although the collection of serum or plasma cotinine is more invasive than that from other samples, it is not influenced by renal function, flow rate, and urinary pH and it does not require urine dilution adjustments; over time, serum cotinine has become the most widely used biomarker of SHS exposure among children [1,6].",
+        "supports": "direct"
+      }
+    ]
+  },
+  {
+    "id": "Ref 4",
+    "title": "Biomarkers of secondhand smoke exposure in automobiles.",
+    "year": "2014",
+    "doi": "10.1136/tobaccocontrol-2012-050724",
+    "original_ids": [
+      "Ref 4"
+    ],
+    "pmid": "23349229",
+    "quotes": [
+      {
+        "quote": "Cotinine, 3-hydroxycotinine, and NNAL are tobacco-specific biomarkers that have been used to characterize systemic exposure to tobacco smoke constituents in both active and passive smokers. Cotinine, the proximate metabolite of nicotine, has on average a half-life of 16 h, and is eliminated from the body within 3-4 days following the last exposure . We measured cotinine in both plasma and urine in this study. We showed that the average maximum change in plasma cotinine following 1-hour SHS exposure was 0.13 ng/mL.",
+        "supports": "direct"
+      }
+    ]
+  }
+]
+results_dir: /data/chen/e2e_searching_results/blood_eval_run_20260420_124146/blood_eval_eval_blood_3ba8eabf

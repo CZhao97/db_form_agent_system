@@ -1,0 +1,12 @@
+{
+  "selected_cases": 69,
+  "complete_measurements": 69,
+  "original_failed_attempts_preserved": true,
+  "all_old_ledger_rows_unchanged": true,
+  "measurement_basis": "Designated output and its matching execution. Two authorized fresh runs exclude earlier executions from outcome-specific measurement, but not from cumulative expenditure.",
+  "fresh_case_ids": [
+    "13ecd6a211b72b3fae809877",
+    "14217cb0e8b33eac160d1397"
+  ],
+  "total_accounted_usd": 9.2774782
+}

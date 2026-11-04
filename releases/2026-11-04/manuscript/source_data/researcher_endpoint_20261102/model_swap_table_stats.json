@@ -1,0 +1,57 @@
+[
+  {
+    "topic": "dbp",
+    "mean": 42.333333333333336,
+    "sd": 6.506407098647712,
+    "change": 2.6666666666666714,
+    "repeat_counts": [
+      42,
+      49,
+      36
+    ]
+  },
+  {
+    "topic": "blood_exposome",
+    "mean": 17.666666666666668,
+    "sd": 2.0816659994661326,
+    "change": 1.6666666666666679,
+    "repeat_counts": [
+      20,
+      16,
+      17
+    ]
+  },
+  {
+    "topic": "drug_compounds",
+    "mean": 59.666666666666664,
+    "sd": 3.2145502536643185,
+    "change": 1.0,
+    "repeat_counts": [
+      61,
+      56,
+      62
+    ]
+  },
+  {
+    "topic": "human_endogenous_metabolites",
+    "mean": 27,
+    "sd": 3.605551275463989,
+    "change": 2.0,
+    "repeat_counts": [
+      23,
+      28,
+      30
+    ]
+  },
+  {
+    "topic": "microbial_natural_products",
+    "mean": 69,
+    "sd": 2.0,
+    "change": 2.0,
+    "repeat_counts": [
+      67,
+      69,
+      71
+    ]
+  }
+]

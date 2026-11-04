@@ -1,0 +1,5 @@
+﻿cohort,archived_rows,blank_agreements,new_comment_agreements,recorded_agreements,agreements_with_bound_decision,comments_not_classified_in_this_pass,interpretation
+benchmark_full_loop,1887,1828,20,1848,1846,27,Derived from current_recorded_agreement; not final scientific accuracy.
+blood_nonconfirmed_14,14,12,0,12,12,0,Derived from current_recorded_agreement; not final scientific accuracy.
+construction_250_labeled_version,250,218,3,221,220,27,Derived from current_recorded_agreement; not final scientific accuracy.
+zero_shot_250,250,248,0,248,,2,Derived from current_recorded_agreement; not final scientific accuracy.

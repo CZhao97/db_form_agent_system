@@ -1,0 +1,351 @@
+{
+  "benchmark": {
+    "topics": [
+      {
+        "topic": "dbp",
+        "n": 687,
+        "current_confirmed": 246,
+        "researcher_confirmed": 329,
+        "newly_confirmed": 83,
+        "no_longer_confirmed": 0
+      },
+      {
+        "topic": "blood_exposome",
+        "n": 300,
+        "current_confirmed": 53,
+        "researcher_confirmed": 69,
+        "newly_confirmed": 16,
+        "no_longer_confirmed": 0
+      },
+      {
+        "topic": "drug_compounds",
+        "n": 300,
+        "current_confirmed": 141,
+        "researcher_confirmed": 214,
+        "newly_confirmed": 73,
+        "no_longer_confirmed": 0
+      },
+      {
+        "topic": "human_endogenous_metabolites",
+        "n": 300,
+        "current_confirmed": 76,
+        "researcher_confirmed": 126,
+        "newly_confirmed": 50,
+        "no_longer_confirmed": 0
+      },
+      {
+        "topic": "microbial_natural_products",
+        "n": 300,
+        "current_confirmed": 160,
+        "researcher_confirmed": 238,
+        "newly_confirmed": 78,
+        "no_longer_confirmed": 0
+      },
+      {
+        "topic": "all",
+        "n": 1887,
+        "current_confirmed": 676,
+        "researcher_confirmed": 976,
+        "newly_confirmed": 300,
+        "no_longer_confirmed": 0
+      }
+    ],
+    "new_final_labels": {
+      "Suspected": 100,
+      "Insufficient Direct Evidence": 200
+    },
+    "new_critique_decisions": {
+      "clarify": 216,
+      "approve": 84
+    },
+    "new_release_reasons": {
+      "not_confirmed": 203,
+      "directional_contract_satisfied_pending_source_audit": 79,
+      "contract_unresolved:": 13,
+      "contract_unresolved:The entry excludes drug packages.: missing_evidence_links": 5
+    },
+    "citations": [
+      {
+        "group": "current_confirmed",
+        "cases": 676,
+        "paper_citations": 2615,
+        "verified_citations": 2615,
+        "all_paper_citations_verified_cases": 676,
+        "no_paper_citations_cases": 0
+      },
+      {
+        "group": "researcher_confirmed",
+        "cases": 976,
+        "paper_citations": 4183,
+        "verified_citations": 4003,
+        "all_paper_citations_verified_cases": 859,
+        "no_paper_citations_cases": 1
+      },
+      {
+        "group": "new_researcher_confirmed",
+        "cases": 300,
+        "paper_citations": 1568,
+        "verified_citations": 1388,
+        "all_paper_citations_verified_cases": 183,
+        "no_paper_citations_cases": 1
+      }
+    ]
+  },
+  "construction": {
+    "topics": [
+      {
+        "topic": "dbp",
+        "n": 707,
+        "current_confirmed": 223,
+        "researcher_confirmed": 269,
+        "newly_confirmed": 47,
+        "no_longer_confirmed": 1
+      },
+      {
+        "topic": "blood_exposome",
+        "n": 321,
+        "current_confirmed": 217,
+        "researcher_confirmed": 248,
+        "newly_confirmed": 31,
+        "no_longer_confirmed": 0
+      },
+      {
+        "topic": "drug_compounds",
+        "n": 331,
+        "current_confirmed": 206,
+        "researcher_confirmed": 238,
+        "newly_confirmed": 32,
+        "no_longer_confirmed": 0
+      },
+      {
+        "topic": "human_endogenous_metabolites",
+        "n": 360,
+        "current_confirmed": 216,
+        "researcher_confirmed": 281,
+        "newly_confirmed": 65,
+        "no_longer_confirmed": 0
+      },
+      {
+        "topic": "microbial_natural_products",
+        "n": 403,
+        "current_confirmed": 210,
+        "researcher_confirmed": 248,
+        "newly_confirmed": 38,
+        "no_longer_confirmed": 0
+      },
+      {
+        "topic": "all",
+        "n": 2122,
+        "current_confirmed": 1072,
+        "researcher_confirmed": 1284,
+        "newly_confirmed": 213,
+        "no_longer_confirmed": 1
+      }
+    ],
+    "retained": 1000,
+    "retained_with_researcher_confirmed": 999,
+    "missing_scientific_researcher_labels": 0,
+    "technical_incomplete": 29,
+    "note": "Counts are processed occurrences, not a newly deduplicated, identity-checked release."
+  },
+  "repeated_full": {
+    "topics": [
+      {
+        "topic": "dbp",
+        "n": 300,
+        "current_confirmed": 140,
+        "researcher_confirmed": 140,
+        "newly_confirmed": 0,
+        "no_longer_confirmed": 0
+      },
+      {
+        "topic": "blood_exposome",
+        "n": 300,
+        "current_confirmed": 56,
+        "researcher_confirmed": 56,
+        "newly_confirmed": 0,
+        "no_longer_confirmed": 0
+      },
+      {
+        "topic": "drug_compounds",
+        "n": 300,
+        "current_confirmed": 176,
+        "researcher_confirmed": 176,
+        "newly_confirmed": 0,
+        "no_longer_confirmed": 0
+      },
+      {
+        "topic": "human_endogenous_metabolites",
+        "n": 300,
+        "current_confirmed": 90,
+        "researcher_confirmed": 90,
+        "newly_confirmed": 0,
+        "no_longer_confirmed": 0
+      },
+      {
+        "topic": "microbial_natural_products",
+        "n": 300,
+        "current_confirmed": 211,
+        "researcher_confirmed": 211,
+        "newly_confirmed": 0,
+        "no_longer_confirmed": 0
+      },
+      {
+        "topic": "all",
+        "n": 1500,
+        "current_confirmed": 673,
+        "researcher_confirmed": 673,
+        "newly_confirmed": 0,
+        "no_longer_confirmed": 0
+      }
+    ],
+    "label_changes": 7,
+    "confirmed_without_accepted": 37
+  },
+  "feedback": [
+    {
+      "arm": "A",
+      "assigned": 100,
+      "completed": 98,
+      "confirmed": 58,
+      "accepted": 42
+    },
+    {
+      "arm": "B",
+      "assigned": 100,
+      "completed": 99,
+      "confirmed": 48,
+      "accepted": 36
+    },
+    {
+      "arm": "C",
+      "assigned": 100,
+      "completed": 100,
+      "confirmed": 51,
+      "accepted": 34
+    }
+  ],
+  "model_swap": {
+    "topics": [
+      {
+        "topic": "dbp",
+        "n": 300,
+        "current_confirmed": 141,
+        "researcher_confirmed": 127,
+        "newly_confirmed": 0,
+        "no_longer_confirmed": 14
+      },
+      {
+        "topic": "blood_exposome",
+        "n": 300,
+        "current_confirmed": 61,
+        "researcher_confirmed": 53,
+        "newly_confirmed": 0,
+        "no_longer_confirmed": 8
+      },
+      {
+        "topic": "drug_compounds",
+        "n": 300,
+        "current_confirmed": 180,
+        "researcher_confirmed": 179,
+        "newly_confirmed": 0,
+        "no_longer_confirmed": 1
+      },
+      {
+        "topic": "human_endogenous_metabolites",
+        "n": 300,
+        "current_confirmed": 83,
+        "researcher_confirmed": 81,
+        "newly_confirmed": 0,
+        "no_longer_confirmed": 2
+      },
+      {
+        "topic": "microbial_natural_products",
+        "n": 300,
+        "current_confirmed": 208,
+        "researcher_confirmed": 207,
+        "newly_confirmed": 0,
+        "no_longer_confirmed": 1
+      },
+      {
+        "topic": "all",
+        "n": 1500,
+        "current_confirmed": 673,
+        "researcher_confirmed": 647,
+        "newly_confirmed": 0,
+        "no_longer_confirmed": 26
+      }
+    ],
+    "label_changes": 33,
+    "current_binary_agreement": 1298,
+    "researcher_binary_agreement": 1302
+  },
+  "resources": [
+    {
+      "metric": "tokens",
+      "endpoint": "current_label",
+      "group": "Confirmed",
+      "n": 665,
+      "mean": 130873.01804511278,
+      "median": 83415.0
+    },
+    {
+      "metric": "tokens",
+      "endpoint": "current_label",
+      "group": "Other",
+      "n": 1159,
+      "mean": 406992.6937014668,
+      "median": 353706.0
+    },
+    {
+      "metric": "tokens",
+      "endpoint": "researcher_label",
+      "group": "Confirmed",
+      "n": 931,
+      "mean": 193702.19226638024,
+      "median": 113358.0
+    },
+    {
+      "metric": "tokens",
+      "endpoint": "researcher_label",
+      "group": "Other",
+      "n": 893,
+      "mean": 423738.3516237402,
+      "median": 374565.0
+    },
+    {
+      "metric": "runtime_seconds",
+      "endpoint": "current_label",
+      "group": "Confirmed",
+      "n": 671,
+      "mean": 239.7160831509404,
+      "median": 149.206
+    },
+    {
+      "metric": "runtime_seconds",
+      "endpoint": "current_label",
+      "group": "Other",
+      "n": 1210,
+      "mean": 662.0954817417381,
+      "median": 566.0085281667709
+    },
+    {
+      "metric": "runtime_seconds",
+      "endpoint": "researcher_label",
+      "group": "Confirmed",
+      "n": 970,
+      "mean": 335.5277537155938,
+      "median": 215.043
+    },
+    {
+      "metric": "runtime_seconds",
+      "endpoint": "researcher_label",
+      "group": "Other",
+      "n": 911,
+      "mean": 698.7081268909529,
+      "median": 624.136
+    }
+  ],
+  "new_model_calls": 0,
+  "official_results_modified": false
+}

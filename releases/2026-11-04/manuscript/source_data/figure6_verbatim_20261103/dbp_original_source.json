@@ -1,0 +1,37 @@
+{
+  "source": "PubMed",
+  "ids": {
+    "pmid": "31909989",
+    "pmcid": "",
+    "doi": "10.1021/acs.est.9b06403",
+    "eupmc_id": "31909989",
+    "s2id": "c59c819e062b7abbc976bbab1a487bbec4416560"
+  },
+  "title": "Nonhalogenated Aromatic DBPs in Drinking Water Chlorination: A Gap between NOM and Halogenated Aromatic DBPs.",
+  "authors": "Jiang Jingyi, Han Jiarui, Zhang Xiangru",
+  "journal": "Environmental science & technology",
+  "pubdate": "2020-Feb-04",
+  "doi": "10.1021/acs.est.9b06403",
+  "url": "https://doi.org/10.1021/acs.est.9b06403",
+  "abstract": "Halogenated disinfection byproducts (DBPs) are generated via reactions with natural organic matter (NOM) in chlorine disinfection of drinking water. How large NOM molecules are converted to halogenated aliphatic DBPs during chlorination remains a fascinating yet largely unresolved issue. Recently, many relatively toxic halogenated aromatic DBPs have been identified in chlorinated drinking waters, and they behave as intermediate DBPs to decompose to halogenated aliphatic DBPs. There is still one gap between NOM and halogenated aromatic DBPs. In this study, nine nonhalogenated aromatic compounds were identified as new intermediate DBPs in chlorination, including 4-hydroxybenzaldehyde, 4-hydroxybenzoic acid, 3-formyl-4-hydroxybenzoic acid, salicylic acid, 5-formyl-2-hydroxybenzoic acid, 4-hydroxyphthalic acid, 4'-hydroxyacetophenone, 4-methylbenzoic acid, and 4-hydroxy-3-methylbenzaldehyde. These nonhalogenated aromatic DBPs formed quickly and reached the maximum levels at relatively low chlorine doses within a short contact time, and their formation pathways were proposed. The formation kinetics of three nonhalogenated aromatic DBPs and their corresponding monochloro-/dichloro-substitutes during chlorination were then modeled. The nonhalogenated aromatic DBPs contributed up to 84% of the formed monochloro-substitutes and 22% of the formed dichloro-substitutes, demonstrating that they somewhat acted as intermediates between NOM and halogenated aromatic DBPs. Furthermore, the formed nonhalogenated aromatic DBPs were found to be removed by >50% by granular activated carbon adsorption.",
+  "full_text": "Halogenated disinfection byproducts (DBPs) are generated via reactions with natural organic matter (NOM) in chlorine disinfection of drinking water. How large NOM molecules are converted to halogenated aliphatic DBPs during chlorination remains a fascinating yet largely unresolved issue. Recently, many relatively toxic halogenated aromatic DBPs have been identified in chlorinated drinking waters, and they behave as intermediate DBPs to decompose to halogenated aliphatic DBPs. There is still one gap between NOM and halogenated aromatic DBPs. In this study, nine nonhalogenated aromatic compounds were identified as new intermediate DBPs in chlorination, including 4-hydroxybenzaldehyde, 4-hydroxybenzoic acid, 3-formyl-4-hydroxybenzoic acid, salicylic acid, 5-formyl-2-hydroxybenzoic acid, 4-hydroxyphthalic acid, 4'-hydroxyacetophenone, 4-methylbenzoic acid, and 4-hydroxy-3-methylbenzaldehyde. These nonhalogenated aromatic DBPs formed quickly and reached the maximum levels at relatively low chlorine doses within a short contact time, and their formation pathways were proposed. The formation kinetics of three nonhalogenated aromatic DBPs and their corresponding monochloro-/dichloro-substitutes during chlorination were then modeled. The nonhalogenated aromatic DBPs contributed up to 84% of the formed monochloro-substitutes and 22% of the formed dichloro-substitutes, demonstrating that they somewhat acted as intermediates between NOM and halogenated aromatic DBPs. Furthermore, the formed nonhalogenated aromatic DBPs were found to be removed by >50% by granular activated carbon adsorption.",
+  "sections": [],
+  "pdf_url": "",
+  "pdf_path": "",
+  "html_path": "",
+  "has_fulltext": false,
+  "_retrieval_source": "PubMed",
+  "_retrieval_query": "\"4-hydroxyphthalic acid\" \"natural organic matter\"",
+  "_retrieval_rank": 1,
+  "_rrf_score": 0.06530936012691697,
+  "_rrf_hits": 4,
+  "_rrf_sources": [
+    "PubMed",
+    "EuropePMC",
+    "SemanticScholar"
+  ],
+  "_rrf_queries": [
+    "\"4-hydroxyphthalic acid\" \"natural organic matter\"",
+    "\"4-hydroxyphthalic acid\" precursor chlorination NOM"
+  ]
+}

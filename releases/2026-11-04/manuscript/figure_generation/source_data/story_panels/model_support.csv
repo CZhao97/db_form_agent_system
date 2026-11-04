@@ -1,0 +1,6 @@
+topic,n,claude,gpt,both,neither,differ
+DBPs,100,63,56,51,32,17
+Blood exposome,100,85,79,78,14,8
+Drugs,100,93,93,92,6,2
+Endogenous metabolites,100,91,89,88,8,4
+Microbial natural products,100,87,94,86,5,9

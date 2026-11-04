@@ -1,0 +1,163 @@
+CASE 21: SR 49498 | Confirmed | drug metabolite
+entity_synonyms: 
+canonical_name: 
+query: {
+  "task": "verify_candidate_entity",
+  "entity_name": "SR 49498",
+  "original_query": "Decide whether 'SR 49498' satisfies the confirmed-topic definition.",
+  "evaluation_criteria": {
+    "criteria_text": "- [mandatory] The entity must be a small molecule.\n- [mandatory] The entity must be produced within the human body.\n- [mandatory] The entity must function in human biochemical or physiological processes.\n- [mandatory] The entity must not be solely an exogenous chemical.\n- [mandatory] The entity must not be solely a microbiota-only metabolite.\n- [optional] If a metabolite is produced by both microbiota and host metabolism, it is included.",
+    "rubric_items": [
+      {
+        "name": "The entity must be a small molecule.",
+        "section": "rubric",
+        "priority": "mandatory"
+      },
+      {
+        "name": "The entity must be produced within the human body.",
+        "section": "rubric",
+        "priority": "mandatory"
+      },
+      {
+        "name": "The entity must function in human biochemical or physiological processes.",
+        "section": "rubric",
+        "priority": "mandatory"
+      },
+      {
+        "name": "The entity must not be solely an exogenous chemical.",
+        "section": "rubric",
+        "priority": "mandatory"
+      },
+      {
+        "name": "The entity must not be solely a microbiota-only metabolite.",
+        "section": "rubric",
+        "priority": "mandatory"
+      },
+      {
+        "name": "If a metabolite is produced by both microbiota and host metabolism, it is included.",
+        "section": "rubric",
+        "priority": "optional"
+      }
+    ],
+    "fixed_criteria": [
+      "The entity must be a small molecule.",
+      "The entity must be produced within the human body.",
+      "The entity must function in human biochemical or physiological processes.",
+      "The entity must not be solely an exogenous chemical.",
+      "The entity must not be solely a microbiota-only metabolite."
+    ]
+  },
+  "entity_synonyms": [
+    "1-pentanamido-N-({4-[2-(2H-1,2,3,4-tetrazol-5-yl)phenyl]phenyl}methyl)cyclopentane-1-carboxamide",
+    "1-[(1-Hydroxypentylidene)amino]-N-{[2'-(2H-1,2,3,4-tetrazol-5-yl)-[1,1'-biphenyl]-4-yl]methyl}cyclopentane-1-carboximidate",
+    "Irbesartan impurity A",
+    "1-(Pentanoylamino)-N-((2'-(1H-tetrazol-5-yl)biphenyl-4-yl)methyl)cyclopentanecarboxamide",
+    "Irbesartan impurity A, European Pharmacopoeia (EP) Reference Standard",
+    "Irbesartan metabolite SR49498",
+    "N-((2'-(2H-tetrazol-5-yl)biphenyl-4-yl)methyl)-1-pentanamidocyclopentanecarboxamide",
+    "Cyclopentanecarboxamide, 1-((1-oxopentyl)amino)-N-((2'-(2H-tetrazol-5-yl)(1,1'-biphenyl)-4-yl)methyl)-",
+    "Irbesartan impurity A CRS",
+    "Irbesartan EP Impurity A",
+    "Irbesartan specified impurity A",
+    "Irbesartan EP Impurity A/ Irbesartan Related Compound A"
+  ],
+  "domain": "endogenous_metabolite",
+  "search_budget": {
+    "batch1_max_search_directions": 3,
+    "batch1_max_identity_terms": 2,
+    "batch1_max_primary_context_terms": 2,
+    "defer_method_fanout_until_followup": true,
+    "avoid_near_duplicate_context_terms": true
+  }
+}
+explanation: SR 49498 is identified as a small molecule metabolite of the drug irbesartan, formed through human biotransformation processes. Evidence confirms its presence in human urine, plasma, and feces after irbesartan administration, indicating its production within the human body and involvement in human biochemical processes.
+criteria_json: [
+  {
+    "name": "The entity must be a small molecule.",
+    "priority": "mandatory",
+    "section": "rubric",
+    "status": "solved",
+    "notes": "Confirmed by PubChem data (mass 446.555 Da).",
+    "support_type": "inferred",
+    "score": 1.0
+  },
+  {
+    "name": "The entity must be produced within the human body.",
+    "priority": "mandatory",
+    "section": "rubric",
+    "status": "solved",
+    "notes": "Identified in human urine, plasma, and feces as an irbesartan metabolite.",
+    "support_type": "direct_evidence",
+    "score": 1.0
+  },
+  {
+    "name": "The entity must function in human biochemical or physiological processes.",
+    "priority": "mandatory",
+    "section": "rubric",
+    "status": "solved",
+    "notes": "Formed via human biotransformation (oxidative metabolism by cytochrome P-4502C9).",
+    "support_type": "direct_evidence",
+    "score": 1.0
+  },
+  {
+    "name": "The entity must not be solely an exogenous chemical.",
+    "priority": "mandatory",
+    "section": "rubric",
+    "status": "solved",
+    "notes": "It is a metabolite of an exogenous drug, not solely exogenous itself.",
+    "support_type": "direct_evidence",
+    "score": 1.0
+  },
+  {
+    "name": "The entity must not be solely a microbiota-only metabolite.",
+    "priority": "mandatory",
+    "section": "rubric",
+    "status": "solved",
+    "notes": "Evidence points to human hepatic metabolism, not solely microbiota.",
+    "support_type": "direct_evidence",
+    "score": 1.0
+  },
+  {
+    "name": "If a metabolite is produced by both microbiota and host metabolism, it is included.",
+    "priority": "optional",
+    "section": "rubric",
+    "status": "solved",
+    "notes": "Not explicitly stated as microbiota-produced, but its human production is confirmed.",
+    "support_type": "inferred",
+    "score": 1.0
+  }
+]
+evidence_json: [
+  {
+    "id": "Ref 1",
+    "title": "Biotransformation of irbesartan in man.",
+    "year": "1998",
+    "original_ids": [
+      "Ref 1"
+    ],
+    "pmid": "9571222",
+    "quotes": [
+      {
+        "quote": "Irbesartan and the following eight metabolites were identified in human urine: (1) a tetrazole N2-beta-glucuronide conjugate of irbesartan, (2) a monohydroxylated metabolite resulting from omega-1 oxidation of the butyl side chain, (3, 4) two different monohydroxylated metabolites resulting from oxidation of the spirocyclopentane ring, (5) a diol resulting from omega-1 oxidation of the butyl side chain and oxidation of the spirocyclopentane ring, (6) a keto metabolite resulting from further oxidation of the omega-1 monohydroxy metabolite, (7) a keto-alcohol resulting from further oxidation of the omega-1 hydroxyl of the diol, and (8) a carboxylic acid metabolite resulting from oxidation of the terminal methyl group of the butyl side chain. Biotransformation profiles of pooled urine, feces, and plasma samples from healthy male volunteers given doses of [14C]irbesartan were determined by HPLC.",
+        "supports": "direct"
+      }
+    ]
+  },
+  {
+    "id": "Ref 2",
+    "title": "Role of cytochrome P-4502C9 in irbesartan oxidation by human liver microsomes.",
+    "year": "1999",
+    "doi": "10.1016/s0090-9556(24)15292-0",
+    "original_ids": [
+      "Ref 2"
+    ],
+    "pmid": "9929518",
+    "quotes": [
+      {
+        "quote": "The oxidative metabolism of irbesartan, a new nonpeptide angiotensin II receptor antagonist, was investigated on 12 human fully characterized hepatic microsomes and purified cytochrome P-450 (CYP) isoforms. After incubation of microsomes with irbesartan and NADPH, four main hydroxy metabolites were formed, as confirmed by liquid chromatography-mass spectrometry analysis. ... These results provide evidence that CYP2C9 plays a major role in irbesartan oxidation.",
+        "supports": "direct"
+      }
+    ]
+  }
+]
+results_dir: /data/chen/e2e_searching_results/endogenous_metabolite_eval_run_20260419_194100/endogenous_metabolite_eval_eval_endogenous_metabolite_4756b17f

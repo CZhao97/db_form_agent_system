@@ -1,0 +1,14 @@
+{
+  "DB_Curator_main_revision": {
+    "pages": 35,
+    "sha256": "1e448f72edb8d40276ab00d01b034d8d4ba9f508eb0b754e997238cf4360d3cd",
+    "compile_ok": true,
+    "overfull_hbox": false
+  },
+  "DB_Curator_SI_revision": {
+    "pages": 42,
+    "sha256": "3269e1511ce3a92744654054708e0163dc5e90748a23653742e7927e20f675ed",
+    "compile_ok": true,
+    "overfull_hbox": false
+  }
+}

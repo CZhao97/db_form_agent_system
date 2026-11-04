@@ -1,0 +1,297 @@
+CASE 22: Sulindac sulfide | Confirmed | drug metabolite
+entity_synonyms: 
+canonical_name: 
+query: {
+  "task": "verify_candidate_entity",
+  "entity_name": "Sulindac sulfide",
+  "original_query": "Decide whether 'Sulindac sulfide' satisfies the confirmed-topic definition.",
+  "evaluation_criteria": {
+    "criteria_text": "- [mandatory] The entity must be a small molecule.\n- [mandatory] The entity must be produced within the human body.\n- [mandatory] The entity must function in human biochemical or physiological processes.\n- [mandatory] The entity must not be solely an exogenous chemical.\n- [mandatory] The entity must not be solely a microbiota-only metabolite.\n- [optional] If a metabolite is produced by both microbiota and host metabolism, it is included.",
+    "rubric_items": [
+      {
+        "name": "The entity must be a small molecule.",
+        "section": "rubric",
+        "priority": "mandatory"
+      },
+      {
+        "name": "The entity must be produced within the human body.",
+        "section": "rubric",
+        "priority": "mandatory"
+      },
+      {
+        "name": "The entity must function in human biochemical or physiological processes.",
+        "section": "rubric",
+        "priority": "mandatory"
+      },
+      {
+        "name": "The entity must not be solely an exogenous chemical.",
+        "section": "rubric",
+        "priority": "mandatory"
+      },
+      {
+        "name": "The entity must not be solely a microbiota-only metabolite.",
+        "section": "rubric",
+        "priority": "mandatory"
+      },
+      {
+        "name": "If a metabolite is produced by both microbiota and host metabolism, it is included.",
+        "section": "rubric",
+        "priority": "optional"
+      }
+    ],
+    "fixed_criteria": [
+      "The entity must be a small molecule.",
+      "The entity must be produced within the human body.",
+      "The entity must function in human biochemical or physiological processes.",
+      "The entity must not be solely an exogenous chemical.",
+      "The entity must not be solely a microbiota-only metabolite."
+    ]
+  },
+  "entity_synonyms": [
+    "2-[(1Z)-5-fluoro-2-methyl-1-{[4-(methylsulfanyl)phenyl]methylidene}-1H-inden-3-yl]acetic acid",
+    "Sulindac sulphide",
+    "Sulindac sulfide, (Z)-isomer",
+    "Sulindac sulfide, sodium salt",
+    "Sulindac sulfide, (e)-isomer",
+    "Sulindac Impurity N92",
+    "Sulindac sulfidecis",
+    "(Z)-Sulindac sulfide",
+    "orb1708446",
+    "cis-Sulindac sulfide",
+    "5-Fluoro-2-methyl-1-(p-methylthiobenzylidene)-3-indenyl acetic acid",
+    "(Z)-2-(3-(4-(methylthio)benzylidene)-6-fluoro-2-methyl-3H-inden-1-yl)acetic acid",
+    "cid_5352624",
+    "Sulindac sulfide, (Z)-",
+    "Sulindac Sulphane",
+    "1H-INDENE-3-ACETIC ACID, 5-FLUORO-2-METHYL-1-((4-(METHYLTHIO)PHENYL)METHYLENE)-, (1Z)-",
+    "(1Z)-5-Fluoro-2-methyl-1-((4-(methylthio)phenyl)methylene)-1H-indene-3-acetic Acid",
+    "Sulindac sulfide (Standard)",
+    "BRD-K76525302-001-01-3",
+    "(Z)-5-Fluoro-2-methyl-1-((4-(methylthio)phenyl)methylene)-1H-indene-3-acetic acid",
+    "(Z)-5-fluoro-2-methyl-1-(4-methythiobenzylidene)-3-indenylacetic acid",
+    "Sulindac impurity 3?Sulindac EP impurity C?",
+    "Sulindac sulphide, (z)-",
+    "1H-Indene-3-acetic acid, 5-fluoro-2-methyl-1-((4-(methylthio)phenyl)methylene)-, (Z)-",
+    "Sulindac EP Impurity C",
+    "E/Z-Sulindac sulphide",
+    "(Z)-5-fluoro-2-methyl-1-(4-methylthiobenzylidene) inden-3-ylacetic acid",
+    "2-(3-(4-(methylthio)benzylidene)-6-fluoro-2-methyl-3H-inden-1-yl)acetic acid",
+    "Sulindac Sulfide - CAS 32004-67-4",
+    "Z-Sulindac sulphide"
+  ],
+  "domain": "endogenous_metabolite",
+  "search_budget": {
+    "batch1_max_search_directions": 3,
+    "batch1_max_identity_terms": 2,
+    "batch1_max_primary_context_terms": 2,
+    "defer_method_fanout_until_followup": true,
+    "avoid_near_duplicate_context_terms": true
+  }
+}
+explanation: Sulindac sulfide is a small molecule (340.419 Da) that is an active metabolite of the prodrug sulindac. It is produced in the human body through metabolism of sulindac by both gut microbiota and human enzymes (CYP450, FMO3). It functions in human biochemical and physiological processes by inhibiting COX activity, reducing prostaglandin synthesis, and exhibiting anti-inflammatory and anti-cancer effects.
+criteria_json: [
+  {
+    "name": "The entity must be a small molecule.",
+    "priority": "mandatory",
+    "section": "rubric",
+    "status": "solved",
+    "notes": "Sulindac sulfide has a molecular mass of 340.419 Da, confirming it as a small molecule.",
+    "support_type": "inferred",
+    "score": 1.0
+  },
+  {
+    "name": "The entity must be produced within the human body.",
+    "priority": "mandatory",
+    "section": "rubric",
+    "status": "solved",
+    "notes": "Sulindac sulfide is an active metabolite of the prodrug sulindac, formed in vivo by gut microbiota and human enzymes.",
+    "support_type": "direct_evidence",
+    "score": 1.0
+  },
+  {
+    "name": "The entity must function in human biochemical or physiological processes.",
+    "priority": "mandatory",
+    "section": "rubric",
+    "status": "solved",
+    "notes": "Sulindac sulfide inhibits COX activity, reduces prostaglandin synthesis, and exhibits anti-inflammatory and anti-cancer effects.",
+    "support_type": "direct_evidence",
+    "score": 1.0
+  },
+  {
+    "name": "The entity must not be solely an exogenous chemical.",
+    "priority": "mandatory",
+    "section": "rubric",
+    "status": "solved",
+    "notes": "While derived from an exogenous prodrug, it is an active metabolite produced within the human body.",
+    "support_type": "direct_evidence",
+    "score": 1.0
+  },
+  {
+    "name": "The entity must not be solely a microbiota-only metabolite.",
+    "priority": "mandatory",
+    "section": "rubric",
+    "status": "solved",
+    "notes": "Although gut microbiota contribute, human enzymes like CYP450 and FMO3 are also involved in its metabolism.",
+    "support_type": "direct_evidence",
+    "score": 1.0
+  },
+  {
+    "name": "If a metabolite is produced by both microbiota and host metabolism, it is included.",
+    "priority": "optional",
+    "section": "rubric",
+    "status": "solved",
+    "notes": "Evidence indicates both gut microbiota and human enzymes are involved in its formation.",
+    "support_type": "direct_evidence",
+    "score": 1.0
+  }
+]
+evidence_json: [
+  {
+    "id": "Ref 1",
+    "title": "Sulindac sulfide, but not sulindac sulfone, inhibits colorectal cancer growth.",
+    "year": "1999",
+    "doi": "10.1038/sj.neo.7900024",
+    "original_ids": [
+      "Ref 1"
+    ],
+    "pmid": "10933052",
+    "quotes": [
+      {
+        "quote": "Sulindac sulfide, a metabolite of the nonsteroidal antiinflammatory drug (NSAID) sulindac sulfoxide, is effective at reducing tumor burden in both familial adenomatous polyposis patients and in animals with colorectal cancer. Another sulindac sulfoxide metabolite, sulindac sulfone, has been reported to have antitumor properties without inhibiting cyclooxygenase activity. Here we report the effect of sulindac sulfone treatment on the growth of colorectal carcinoma cells. We observed that sulindac sulfide or sulfone treatment of HCA-7 cells led to inhibition of prostaglandin E 2 production. Both sulindac sulfide and sulfone inhibited HCA-7 and HCT-116 cell growth in vitro . Sulindac sulfone had no effect on the growth of either HCA-7 or HCT-116 xenografts, whereas the sulfide derivative inhibited HCA-7 growth in vivo . Both sulindac sulfide and sulfone inhibited colon carcinoma cell growth and prostaglandin production in vitro , but sulindac sulfone had no effect on the growth of colon cancer cell xenografts in nude mice.",
+        "supports": "direct"
+      }
+    ]
+  },
+  {
+    "id": "Ref 2",
+    "title": "Radioprotective Potential of Sulindac Sulfide to Prevent DNA Damage Due to Ionizing Radiation",
+    "year": "2019",
+    "doi": "10.2147/DDDT.S218022",
+    "original_ids": [
+      "Ref 2",
+      "Ref 4"
+    ],
+    "pmid": "31827319",
+    "quotes": [
+      {
+        "quote": "Sulindac is an inactive non-steroidal anti-inflammatory drug (NSAID) that is quickly metabolized following oral administration (). Sulindac has two metabolites, sulindac sulphone as an inactive metabolite that does not inhibit COX, and sulindac sulfide as the pharmacologically active metabolite that has NSAID properties and inhibits COX. Sulindac sulfide can directly inhibit 5-lipoxygenase and can also penetrate into the lipid bilayer. Furthermore, it can ionize the carboxyl group of the membrane, which shows better antioxidant capacity at the membrane level and potentially protects normal cells from ROS implicated in the pathophysiology of inflammation., Thus, sulindac sulfide protects the membrane against oxy-radicals and reduces the expression of pro-inflammatory factors TNFα, iNOS, IL-1β and IL-6.,Chemical structure: (A) sulindac sulfide (B), sulindac and (C) sulindac sulfone. Chemical structure: (A) sulindac sulfide (B), sulindac and (C) sulindac sulfone.",
+        "supports": "direct"
+      },
+      {
+        "quote": "In this study, sulindac sulfide as active metabolite of sulindac with anti-inflammatory and antioxidant properties can decrease genotoxicity and reduce levels of MDA. Moreover, sulindac sulfide can increase the antioxidant activity of SOD enzyme that induced by ionizing irradiation in human lymphocytes. Furthermore, sulindac sulfide showed the low toxicity as non-steroidal anti-inflammatory drugs and free radical scavenging properties. It can help the protection of the body against side effects’ ionizing irradiation in human.",
+        "supports": "direct"
+      }
+    ]
+  },
+  {
+    "id": "Ref 3",
+    "title": "Sulindac Sulfide Differentially Induces Apoptosis in Smac-Proficient and Smac-Deficient Human Colon Cancer Cells.",
+    "year": "2009",
+    "doi": "10.4255/mcpharmacol.09.11",
+    "original_ids": [
+      "Ref 3"
+    ],
+    "pmid": "20419043",
+    "quotes": [
+      {
+        "quote": "Sulindac is a prodrug that is metabolized in vivo and sulindac sulfide is the major active metabolite of sulindac (). Sulindac sulfide has been shown to induce apoptosis in a variety of cancer cell lines representing various malignancies including colon cancer (-).",
+        "supports": "direct"
+      }
+    ]
+  },
+  {
+    "id": "Ref 4",
+    "title": "Effects of FMO3 Polymorphisms on Pharmacokinetics of Sulindac in Chinese Healthy Male Volunteers",
+    "year": "2017",
+    "doi": "10.1155/2017/4189678",
+    "original_ids": [
+      "Ref 5"
+    ],
+    "quotes": [
+      {
+        "quote": "Sulindac as a prodrug that contains a racemic sulfoxide moiety could be transformed into the active drug, sulindac sulfide, by gut microbiota before absorption, while it could be metabolized by CYP450 in liver after absorption [3]. Subsequently, sulindac sulfide is oxidized to be the inactive metabolite, sulindac sulfone (Figure 1), which is catalyzed by the principal isozyme involved in the main metabolic pathway, flavin-containing monooxygenase subtype 3 (FMO3) [3, 4].",
+        "supports": "direct"
+      }
+    ]
+  },
+  {
+    "id": "Ref 5",
+    "title": "Sulindac as a precision microRNA modulator in early-stage K-Ras-driven oncogenesis.",
+    "year": "2025",
+    "doi": "10.1038/s41420-025-02870-6",
+    "original_ids": [
+      "Ref 6"
+    ],
+    "pmid": "41298349",
+    "quotes": [
+      {
+        "quote": "The recent study by Liang et al. [] provides crucial mechanistic insight, revealing that sulindac sulfide (SS), the active metabolite of sulindac, restores tumor-suppressive miRNA lethal-7b (Let-7b) to disrupt the Kirsten rat sarcoma viral oncogene homolog (K-Ras)/extracellular signal-regulated kinase (ERK)/lin-28 RNA-binding post-transcriptional regulator B (LIN28B) feedback loop, reframing sulindac as a precision modulator of oncogenesis.",
+        "supports": "direct"
+      }
+    ]
+  },
+  {
+    "id": "Ref 6",
+    "title": "A Validated LC-MS/MS Method for the Determination of Sulindac and Its Metabolite Su-EP‑C in Human Plasma and Their Pharmacokinetic Application in Healthy Volunteers.",
+    "year": "2025",
+    "doi": "10.1021/acsomega.5c08386",
+    "original_ids": [
+      "Ref 7"
+    ],
+    "pmid": "41358072",
+    "quotes": [
+      {
+        "quote": "Sulindac is a precursor drug that is converted to an active form in the body. After oral absorption, sulindac is metabolized in the body to sulfide. The biological relevance of sulindac and its sulfide metabolites can be summarized as anti-inflammatory effects. As with other NSAIDs, its mechanism of action is not fully understood but may be related to the inhibition of prostaglandin synthase. Sulindac and its sulfide metabolites inhibit cyclooxygenase (COX) enzymes, specifically COX-1 and COX-2, which play a key role in the synthesis of prostaglandins.",
+        "supports": "direct"
+      }
+    ]
+  },
+  {
+    "id": "Ref 7",
+    "title": "Sulindac activates NF-κB signaling in colon cancer cells",
+    "year": "2013",
+    "doi": "10.1186/1478-811x-11-73",
+    "original_ids": [
+      "Ref 8"
+    ],
+    "quotes": [
+      {
+        "quote": "In summary, this study provides experimental evidence that the pharmacologically-active sulindac metabolite, sulindac sulfide, activates NF-κB-mediated endogenous gene transcription in colon cells, including NF-κB target pro-inflammatory factors in vitro and in vivo.",
+        "supports": "direct"
+      }
+    ]
+  },
+  {
+    "id": "Ref 8",
+    "title": "Sulindac sulfide inhibits colon cancer cell growth and downregulates specificity protein transcription factors",
+    "year": "2015",
+    "doi": "10.1186/s12885-015-1956-8",
+    "original_ids": [
+      "Ref 9"
+    ],
+    "pmid": "26673922",
+    "quotes": [
+      {
+        "quote": "This study demonstrates that sulindac sulfide, the active metabolite of sulindac which is known to exhibit anti-neoplastic activity in human and experimental models of colon cancer, also downregulates Sp1, Sp3, Sp4 and pro-oncogenic Sp-regulated genes in colon cancer cells.",
+        "supports": "direct"
+      }
+    ]
+  },
+  {
+    "id": "Ref 9",
+    "title": "Population Pharmacokinetics of Sulindac and Genetic Polymorphisms of FMO3 and AOX1 in Women with Preterm Labor.",
+    "year": "2020",
+    "doi": "10.1007/s11095-020-2765-6",
+    "original_ids": [
+      "Ref 10"
+    ],
+    "pmid": "31993760",
+    "quotes": [
+      {
+        "quote": "Plasma concentrations of sulindac and its active metabolite (sulindac sulfide) were determined, and pharmacokinetic analysis was performed with NONMEM 7.3. The mean maternal and gestational ages at the time of dosing were 32.5 ± 4.4 (range, 20-41) years and 27.4 ± 4.4 (range, 16.4-33.4) weeks, respectively. In the population pharmacokinetic analysis, one depot compartment model of sulindac with absorption lag time best described the data. The metabolism of sulindac and sulindac sulfide was described using Michaelis-Menten kinetics. In stepwise modeling, gestational age impacted volume of distribution (Vc), and FMO3 rs2266782 was shown by the Michaelis constant to affect conversion of sulindac sulfide to sulindac (K M32 ); these were retained in the final model",
+        "supports": "direct"
+      }
+    ]
+  }
+]
+results_dir: /data/chen/e2e_searching_results/endogenous_metabolite_eval_run_20260419_194100/endogenous_metabolite_eval_eval_endogenous_metabolite_328032aa

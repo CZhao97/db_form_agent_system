@@ -1,0 +1,47 @@
+{
+  "inputs": {
+    "/home/chen/GNPS_SIM/agent/db_form_agent_system/deliverables/nmi_rewrite_20261026/manuscript/figure_generation/source_data/benchmark_operational_current.csv": "ed15adaac3ae3b7c282cd6cb07f8c4e532eb39b2081afa3bcc631b04df9afb06",
+    "/home/chen/GNPS_SIM/agent/db_form_agent_system/manuscript/all_labeled/db_curator_not_confirmed_blood_db.csv": "6ff240229bf51417bcbcb04e797eb6556bc06da7c7d84cf4bb99b5f2eac34a0b",
+    "/home/chen/GNPS_SIM/agent/db_form_agent_system/manuscript/all_labeled/processed_pool_precision_recall_corrected.csv": "d4f80db4a09fb84feeba3379e852692fcc72580b2b8f4c771081b31d73f68717",
+    "/home/chen/GNPS_SIM/agent/db_form_agent_system/manuscript/evaluation_plan/agentic_workflow_ablation/fix_recall_definition.py": "8de916f35f9667c5a1de2ee3ff63827499b68a67c95e5e5934100b412b81f22a"
+  },
+  "script_sha256": "354c142bf734d934ed4ca0d78dd9de7549895e05ae364f12cc4facf5dabb2a75",
+  "benchmark_records": 1887,
+  "complete_token_records": 1887,
+  "overall_groups": [
+    {
+      "topic": "all",
+      "outcome": "Confirmed",
+      "n": 975,
+      "median_tokens": 118650,
+      "mean_tokens": 197545.14666666667,
+      "total_tokens": 192606518,
+      "fraction_of_all_tokens": 0.3330079054836456,
+      "repeated_review_n": 326,
+      "repeated_review_fraction": 0.3343589743589744
+    },
+    {
+      "topic": "all",
+      "outcome": "non_Confirmed",
+      "n": 912,
+      "median_tokens": 375022.5,
+      "mean_tokens": 423001.8673245614,
+      "total_tokens": 385777703,
+      "fraction_of_all_tokens": 0.6669920945163543,
+      "repeated_review_n": 647,
+      "repeated_review_fraction": 0.7094298245614035
+    }
+  ],
+  "review_endpoint": "More than one recorded Critique assessment in the same evaluation run",
+  "review_endpoint_is_not_search_call_count": true,
+  "construction_review_records_located": 14,
+  "construction_review_nonblank_comments": 2,
+  "old_recall_audit": {
+    "blood_FN_rule": "Counts any nonblank manual comment as a false negative",
+    "other_topic_FN_rule": "Zero values hardcoded in TOPIC_COUNTS",
+    "current_recall_recomputed": false,
+    "reason": "The two comments do not explicitly identify human-valid false negatives"
+  },
+  "original_annotations_modified": false,
+  "new_model_calls": 0
+}

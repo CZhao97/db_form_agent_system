@@ -1,0 +1,61 @@
+\clearpage
+\begin{samepage}
+\textbf{Table 1 \textbar{} Component ablation, robustness and feedback-mechanism resource use.} In (a,b), counts are mean $\pm$ sample s.d. Confirmed labels per 100 candidates across three repeats. Adaptive search is Full's pre-Critique Researcher state, and Full uses the last Researcher label. Range in (a) uses all 100 assigned candidates. Agreement compares all 100 candidates per topic across three completed predictions. Mean changes in (b) compare pre-Critique and last Researcher labels within each end-to-end configuration. Panel c compares the same 100 selected candidates across three feedback mechanisms using the last Researcher label. Resource means use all 100 assigned candidates after the shared Researcher agent state.
+
+\begin{center}
+\scriptsize
+\setlength{\tabcolsep}{3.5pt}
+\textit{a, Component ablation and full-system stability}\\[2pt]
+\resizebox{\linewidth}{!}{%
+\begin{tabular}{lcccccc}
+\toprule
+Topic & Zero-shot & Static RAG & Adaptive search & Full label & Full-system range & Agreement \\
+\midrule
+DBP & $26.3\pm0.6$ & $15.7\pm1.2$ & $43.7\pm3.2$ & $46.7\pm3.2$ & 43--49\% & 76.0\% \\
+Blood exposome & $3.0\pm0.0$ & $14.3\pm2.1$ & $18.7\pm1.2$ & $18.7\pm3.1$ & 16--22\% & 90.0\% \\
+Drug & $42.7\pm0.6$ & $57.7\pm1.5$ & $58.3\pm2.5$ & $58.7\pm2.1$ & 57--61\% & 77.0\% \\
+Endogenous metabolite & $23.7\pm0.6$ & $20.0\pm2.6$ & $26.7\pm4.2$ & $30.0\pm1.7$ & 28--31\% & 83.0\% \\
+Microbial natural product & $10.0\pm0.0$ & $55.0\pm2.0$ & $68.7\pm5.1$ & $70.3\pm2.1$ & 68--72\% & 84.0\% \\
+\bottomrule
+\end{tabular}}
+
+\vspace{5pt}
+\begin{minipage}{\linewidth}
+\centering
+\textit{b, Critique-model comparison}\\[2pt]
+\resizebox{\linewidth}{!}{%
+\begin{tabular}{llccc}
+\toprule
+Topic & Critique model & Adaptive search & Full label & Mean change \\
+\midrule
+DBP & GPT-5-mini & $43.7\pm3.2$ & $46.7\pm3.2$ & $+3.0$ \\
+DBP & Gemini 2.5 Flash & $39.7\pm7.6$ & $42.3\pm6.5$ & $+2.7$ \\
+Blood exposome & GPT-5-mini & $18.7\pm1.2$ & $18.7\pm3.1$ & $+0.0$ \\
+Blood exposome & Gemini 2.5 Flash & $16.0\pm4.4$ & $17.7\pm2.1$ & $+1.7$ \\
+Drug & GPT-5-mini & $58.3\pm2.5$ & $58.7\pm2.1$ & $+0.3$ \\
+Drug & Gemini 2.5 Flash & $58.7\pm4.9$ & $59.7\pm3.2$ & $+1.0$ \\
+Endogenous metabolite & GPT-5-mini & $26.7\pm4.2$ & $30.0\pm1.7$ & $+3.3$ \\
+Endogenous metabolite & Gemini 2.5 Flash & $25.0\pm4.0$ & $27.0\pm3.6$ & $+2.0$ \\
+Microbial natural product & GPT-5-mini & $68.7\pm5.1$ & $70.3\pm2.1$ & $+1.7$ \\
+Microbial natural product & Gemini 2.5 Flash & $67.0\pm2.6$ & $69.0\pm2.0$ & $+2.0$ \\
+\bottomrule
+\end{tabular}}
+\end{minipage}
+\vspace{5pt}
+
+\textit{c, Same-state feedback comparison: system output and resource use}\\[2pt]
+\begin{tabular}{lrrr}
+\toprule
+Metric & A: directed & B: general & C: no explicit rubric\\
+\midrule
+Final Confirmed (\%) & 58.0 & 48.0 & 51.0\\
+Mean Researcher agent rounds & 1.62 & 1.08 & 1.07\\
+Mean post-fork tokens & 209,138 & 172,190 & 148,995\\
+Mean accounted post-fork cost (US\$) & 0.0880 & 0.0696 & 0.0613\\
+Mean new source files & 148.9 & 67.9 & 74.7\\
+\bottomrule
+\end{tabular}
+
+\parbox{\linewidth}{\scriptsize Each percentage and resource mean uses all 100 assigned candidates per arm. Source files are retrieval artifacts, not counts of unique papers. C withholds explicit rubric items and criterion assessments from Critique only. The Researcher agent retains the full rubric in all arms.}
+\end{center}
+\end{samepage}

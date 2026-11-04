@@ -1,0 +1,223 @@
+CASE 11: Quercetin 3'-O-glucuronide | Confirmed | Exogenous
+entity_synonyms: 
+canonical_name: 
+query: {
+  "task": "verify_candidate_entity",
+  "entity_name": "Quercetin 3'-O-glucuronide",
+  "original_query": "Decide whether 'Quercetin 3'-O-glucuronide' satisfies the confirmed-topic definition.",
+  "evaluation_criteria": {
+    "criteria_text": "- [mandatory] The entity must be a small molecule.\n- [mandatory] The entity must be produced within the human body.\n- [mandatory] The entity must function in human biochemical or physiological processes.\n- [mandatory] The entity must not be solely an exogenous chemical.\n- [mandatory] The entity must not be solely a microbiota-only metabolite.\n- [optional] If a metabolite is produced by both microbiota and host metabolism, it is included.",
+    "rubric_items": [
+      {
+        "name": "The entity must be a small molecule.",
+        "section": "rubric",
+        "priority": "mandatory"
+      },
+      {
+        "name": "The entity must be produced within the human body.",
+        "section": "rubric",
+        "priority": "mandatory"
+      },
+      {
+        "name": "The entity must function in human biochemical or physiological processes.",
+        "section": "rubric",
+        "priority": "mandatory"
+      },
+      {
+        "name": "The entity must not be solely an exogenous chemical.",
+        "section": "rubric",
+        "priority": "mandatory"
+      },
+      {
+        "name": "The entity must not be solely a microbiota-only metabolite.",
+        "section": "rubric",
+        "priority": "mandatory"
+      },
+      {
+        "name": "If a metabolite is produced by both microbiota and host metabolism, it is included.",
+        "section": "rubric",
+        "priority": "optional"
+      }
+    ],
+    "fixed_criteria": [
+      "The entity must be a small molecule.",
+      "The entity must be produced within the human body.",
+      "The entity must function in human biochemical or physiological processes.",
+      "The entity must not be solely an exogenous chemical.",
+      "The entity must not be solely a microbiota-only metabolite."
+    ]
+  },
+  "entity_synonyms": [
+    "(2S,3S,4S,5R,6S)-3,4,5-trihydroxy-6-[2-hydroxy-5-(3,5,7-trihydroxy-4-oxo-4H-chromen-2-yl)phenoxy]oxane-2-carboxylic acid",
+    "Quercetin 3'-glucuronide",
+    "(2S,3S,4S,5R,6S)-3,4,5-Trihydroxy-6-[2-hydroxy-5-(3,5,7-trihydroxy-4-oxo-4H-chromen-2-yl)phenoxy]oxane-2-carboxylate",
+    "2-Hydroxy-5-(3,5,7-trihydroxy-4-oxo-4H-chromen-2-yl)phenyl beta-D-glucopyranosiduronic acid",
+    "Quercetin 3'-o-beta-glucuronide",
+    ".BETA.-D-GLUCOPYRANOSIDURONIC ACID, 2-HYDROXY-5-(3,5,7-TRIHYDROXY-4-OXO-4H-1-BENZOPYRAN-2-YL)PHENYL",
+    "Compound NP-008479"
+  ],
+  "domain": "endogenous_metabolite",
+  "search_budget": {
+    "batch1_max_search_directions": 3,
+    "batch1_max_identity_terms": 2,
+    "batch1_max_primary_context_terms": 2,
+    "defer_method_fanout_until_followup": true,
+    "avoid_near_duplicate_context_terms": true
+  }
+}
+explanation: Quercetin 3'-O-glucuronide is a small molecule (Ref 1). It is a major metabolite of quercetin, formed in the human small intestine and liver by phase II biotransformation (Ref 2, Ref 3, Ref 4). It has been shown to have anti-inflammatory, anti-cancer, and antidepressant efficacies, and exerts cytoprotective effects in renal tubular cells (Ref 1, Ref 2, Ref 5). While quercetin itself is found in plants, quercetin 3'-O-glucuronide is a human metabolite, not solely exogenous (Ref 2, Ref 3). It is also not solely a microbiota-only metabolite, as it is formed by human phase II metabolism (Ref 2, Ref 3).
+criteria_json: [
+  {
+    "name": "The entity must be a small molecule.",
+    "priority": "mandatory",
+    "section": "rubric",
+    "status": "solved",
+    "notes": "Quercetin 3'-O-glucuronide is described as a flavonol glycoside, which is a small molecule.",
+    "support_type": "direct_evidence",
+    "score": 1.0
+  },
+  {
+    "name": "The entity must be produced within the human body.",
+    "priority": "mandatory",
+    "section": "rubric",
+    "status": "solved",
+    "notes": "It is a major metabolite of quercetin produced by phase II biotransformation in the human small intestine and liver.",
+    "support_type": "direct_evidence",
+    "score": 1.0
+  },
+  {
+    "name": "The entity must function in human biochemical or physiological processes.",
+    "priority": "mandatory",
+    "section": "rubric",
+    "status": "solved",
+    "notes": "It exhibits anti-inflammatory, anti-cancer, antidepressant efficacies, and cytoprotective effects in renal tubular cells.",
+    "support_type": "direct_evidence",
+    "score": 1.0
+  },
+  {
+    "name": "The entity must not be solely an exogenous chemical.",
+    "priority": "mandatory",
+    "section": "rubric",
+    "status": "solved",
+    "notes": "While its precursor (quercetin) is exogenous, quercetin 3'-O-glucuronide is a human metabolite.",
+    "support_type": "direct_evidence",
+    "score": 1.0
+  },
+  {
+    "name": "The entity must not be solely a microbiota-only metabolite.",
+    "priority": "mandatory",
+    "section": "rubric",
+    "status": "solved",
+    "notes": "It is produced by human phase II biotransformation, not solely by microbiota.",
+    "support_type": "direct_evidence",
+    "score": 1.0
+  },
+  {
+    "name": "If a metabolite is produced by both microbiota and host metabolism, it is included.",
+    "priority": "optional",
+    "section": "rubric",
+    "status": "solved",
+    "notes": "Evidence suggests correlation with gut microbiota, indicating potential involvement, but it is also a human metabolite.",
+    "support_type": "direct_evidence",
+    "score": 1.0
+  }
+]
+evidence_json: [
+  {
+    "id": "Ref 1",
+    "title": "Development and Validation of a Method for Determining the Quercetin-3-O-glucuronide and Ellagic Acid Content of Common Evening Primrose (Oenothera biennis) by HPLC-UVD",
+    "year": "2021",
+    "doi": "10.3390/molecules26020267",
+    "original_ids": [
+      "Ref 1"
+    ],
+    "quotes": [
+      {
+        "quote": "Quercetin-3-O-glucuronide is a flavonol glycoside in which the acidic sugar glucuronoic acid is attached to the 3′-carbon of quercetin (Figure 1a). This compound is reported to have anti-inflammatory [14], anti-cancer [15], and antidepressant [16] efficacies.",
+        "supports": "direct"
+      }
+    ]
+  },
+  {
+    "id": "Ref 2",
+    "title": "Protective Effect of Quercetin 3-O-Glucuronide against Cisplatin Cytotoxicity in Renal Tubular Cells",
+    "year": "2022",
+    "doi": "10.3390/molecules27041319",
+    "original_ids": [
+      "Ref 2"
+    ],
+    "pmid": "35209106",
+    "quotes": [
+      {
+        "quote": "Quercetin 3-O-glucuronide is one of the most common quercetin metabolites produced by phase II biotransformation in small intestine and liver cells, besides sulfated and methylated derivatives [].",
+        "supports": "direct"
+      },
+      {
+        "quote": "In our experiments, quercetin 3-O-glucuronide induced cellular protection in the two tubular cell lines assessed, HK-2 and NRK-52E, since it was able to palliate the cytotoxic effect of cisplatin.",
+        "supports": "direct"
+      }
+    ]
+  },
+  {
+    "id": "Ref 3",
+    "title": "Inhibitory Effects of Quercetin and Its Human and Microbial Metabolites on Xanthine Oxidase Enzyme",
+    "year": "2019",
+    "original_ids": [
+      "Ref 3"
+    ],
+    "quotes": [
+      {
+        "quote": "As a result of the metabolism, Q is known to form methyl, sulfate, and glucuronic acid conjugates, such as 3′-O-methylquercetin (isorhamnetin, IR), 4′-O-methylquercetin (tamarixetin, TAM), quercetin-3′-sulfate (Q3′S), quercetin-3-glucuronide (Q3G), and isorhamnetin-3-glucuronide (I3G) (Figure 1) [3,4,5,6]. Q3′S, Q3G, and I3G are the main circulating metabolites of Q with preserved flavonoid core in humans [7].",
+        "supports": "direct"
+      }
+    ]
+  },
+  {
+    "id": "Ref 4",
+    "title": "Anti-Inflammatory, Antioxidant, Moisturizing, and Antimelanogenesis Effects of Quercetin 3-O-β-D-Glucuronide in Human Keratinocytes and Melanoma Cells via Activation of NF-κB and AP-1 Pathways",
+    "year": "2021",
+    "doi": "10.3390/ijms23010433",
+    "original_ids": [
+      "Ref 4"
+    ],
+    "pmid": "35008862",
+    "quotes": [
+      {
+        "quote": "These quercetin metabolites are formed in the small intestine and liver by biotransformation enzymes including UDP-glucuronyltransferases as a result of phase II metabolism [,,].",
+        "supports": "direct"
+      }
+    ]
+  },
+  {
+    "id": "Ref 5",
+    "title": "Quercetin and quercetin-3-O-glucuronide are equally effective in ameliorating endothelial insulin resistance through inhibition of reactive oxygen species-associated inflammation.",
+    "year": "2013",
+    "doi": "10.1002/mnfr.201200569",
+    "original_ids": [
+      "Ref 5"
+    ],
+    "pmid": "23504962",
+    "quotes": [
+      {
+        "quote": "Quercetin and quercetin-3-O-glucuronide inhibited ROS overproduction and effectively restored Δψm, demonstrating their chemorpotection of mitochondrial function through antioxidative actions. Also, quercetin and quercetin-3-O-glucuronide inhibited ROS-associated inflammation by inhibition of interleukin-6 and tumor necrosis factor-α production with suppression of IKKβ/NF-κB phosphorylation.",
+        "supports": "direct"
+      }
+    ]
+  },
+  {
+    "id": "Ref 6",
+    "title": "Effects of Abelmoschus manihot (L.) and its combination with irbesartan in the treatment of diabetic nephropathy via the gut-kidney axis.",
+    "year": "2024",
+    "doi": "10.3389/fphar.2024.1424968",
+    "original_ids": [
+      "Ref 6"
+    ],
+    "quotes": [
+      {
+        "quote": "At the phylum level, Firmicutes was positively (indicated by red line) correlated with cytochalasin B and quercetin 3′-glucuronide but negatively (blue line) correlated with L-dopa and cortisol, while Bacteroidetes showed converse trends to Firmicutes (). At the family level, Muribaculaceae and Streptococcus were positively correlated with L-dopa, quercetin 3′-glucuronide, and acrylamide but negatively correlated with cortisol and acetoxy-8-gingerol (). At the genus level, Rikenellaceae and Enterobacteriaceae were positively correlated with cytochalasin B, cortisol, and acetoxy-8-gingerol but negatively correlated with L-dopa, quercetin 3′-glucuronide, and acrylamide (). Blautia was positively correlated with L-dopa, quercetin 3′-glucuronide, and acrylamide but negatively correlated with cytochalasin B, cortisol, and acetoxy-8-gingerol (). Desulfovibrio was positively correlated with cytochalasin B and negatively correlated with L-dopa, quercetin 3′-glucuronide, acrylamide, and acetoxy-8-gingerol ().",
+        "supports": "direct"
+      }
+    ]
+  }
+]
+results_dir: /data/chen/e2e_searching_results/endogenous_metabolite_eval_run_20260419_194100/endogenous_metabolite_eval_eval_endogenous_metabolite_25746d64

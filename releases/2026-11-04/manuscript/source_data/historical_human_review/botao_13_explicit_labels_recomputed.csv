@@ -1,0 +1,14 @@
+review_case_id,topic,candidate_name,original_final_label,gemini_replay_label,human_label_from_blind_column,original_exact_agreement,original_binary_agreement,gemini_exact_agreement,gemini_binary_agreement
+blood_exposome__0003,blood_exposome,3-Methylflavone-8-carboxylic acid,Suspected,Confirmed,Confirmed,False,False,True,True
+blood_exposome__0010,blood_exposome,Tyrosyl-valyl-alanyl-aspartic acid,Insufficient Direct Evidence,Explicit Negative Evidence,Insufficient Direct Evidence,True,True,False,True
+dbp__0042,dbp,Dibromo(nitro)methane,Suspected,Insufficient Direct Evidence,Confirmed,False,False,False,False
+dbp__0084,dbp,Heptanal,Insufficient Direct Evidence,Suspected,Explicit Negative Evidence,False,True,False,True
+drug_compounds__0004,drug_compounds,2-(N-morpholino)ethanesulfonic acid,Insufficient Direct Evidence,Explicit Negative Evidence,Explicit Negative Evidence,False,True,True,True
+drug_compounds__0007,drug_compounds,2-[3-({Methyl[1-(2-Naphthoyl)Piperidin-4-Yl]Amino}Carbonyl)-2-Naphthyl]-1-(1-Naphthyl)-2-Oxoethylphosphonic Acid,Suspected,Confirmed,Confirmed,False,False,True,True
+drug_compounds__0010,drug_compounds,"4-{4-[(5-hydroxy-2-methylphenyl)amino]quinolin-7-yl}-1,3-thiazole-2-carbaldehyde",Suspected,Confirmed,Confirmed,False,False,True,True
+drug_compounds__0033,drug_compounds,Elsamitrucin,Insufficient Direct Evidence,Suspected,Confirmed,False,False,False,False
+drug_compounds__0035,drug_compounds,Ergothioneine,Insufficient Direct Evidence,Suspected,Confirmed,False,False,False,False
+drug_compounds__0084,drug_compounds,Ricinoleic acid,Insufficient Direct Evidence,Suspected,Confirmed,False,False,False,False
+human_endogenous_metabolites__0056,human_endogenous_metabolites,"2,15-dimethyl-14-(6-methylheptan-2-yl)tetracyclo[8.7.0.0^{2,7}.0^{11,15}]heptadec-7-en-5-yl 9-(3-methyl-5-pentylfuran-2-yl)nonanoate",Confirmed,Insufficient Direct Evidence,Insufficient Direct Evidence,False,False,True,True
+microbial_natural_products__0084,microbial_natural_products,Russujaponol J,Insufficient Direct Evidence,Confirmed,Confirmed,False,False,True,True
+microbial_natural_products__0094,microbial_natural_products,Tricycloalternarene L,Suspected,Confirmed,Confirmed,False,False,True,True

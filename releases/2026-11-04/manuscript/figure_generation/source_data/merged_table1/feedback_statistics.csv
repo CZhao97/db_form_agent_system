@@ -1,0 +1,6 @@
+﻿metric,A,B,C
+Final Confirmed (\%),58.0,48.0,51.0
+Mean Researcher agent rounds,1.62,1.08,1.07
+Mean post-fork tokens,"209,138","172,190","148,995"
+Mean accounted post-fork cost (US\$),0.0880,0.0696,0.0613
+Mean new source files,148.9,67.9,74.7

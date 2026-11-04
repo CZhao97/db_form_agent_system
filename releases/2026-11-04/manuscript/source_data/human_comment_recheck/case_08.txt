@@ -1,0 +1,554 @@
+CASE 8: Caffeic acid 3-O-sulfate | Confirmed | Exogenous
+entity_synonyms: 
+canonical_name: 
+query: {
+  "task": "verify_candidate_entity",
+  "entity_name": "Caffeic acid 3-O-sulfate",
+  "original_query": "Decide whether 'Caffeic acid 3-O-sulfate' satisfies the confirmed-topic definition.",
+  "evaluation_criteria": {
+    "criteria_text": "- [mandatory] The entity must be a small molecule.\n- [mandatory] The entity must be produced within the human body.\n- [mandatory] The entity must function in human biochemical or physiological processes.\n- [mandatory] The entity must not be solely an exogenous chemical.\n- [mandatory] The entity must not be solely a microbiota-only metabolite.\n- [optional] If a metabolite is produced by both microbiota and host metabolism, it is included.",
+    "rubric_items": [
+      {
+        "name": "The entity must be a small molecule.",
+        "section": "rubric",
+        "priority": "mandatory"
+      },
+      {
+        "name": "The entity must be produced within the human body.",
+        "section": "rubric",
+        "priority": "mandatory"
+      },
+      {
+        "name": "The entity must function in human biochemical or physiological processes.",
+        "section": "rubric",
+        "priority": "mandatory"
+      },
+      {
+        "name": "The entity must not be solely an exogenous chemical.",
+        "section": "rubric",
+        "priority": "mandatory"
+      },
+      {
+        "name": "The entity must not be solely a microbiota-only metabolite.",
+        "section": "rubric",
+        "priority": "mandatory"
+      },
+      {
+        "name": "If a metabolite is produced by both microbiota and host metabolism, it is included.",
+        "section": "rubric",
+        "priority": "optional"
+      }
+    ],
+    "fixed_criteria": [
+      "The entity must be a small molecule.",
+      "The entity must be produced within the human body.",
+      "The entity must function in human biochemical or physiological processes.",
+      "The entity must not be solely an exogenous chemical.",
+      "The entity must not be solely a microbiota-only metabolite."
+    ]
+  },
+  "entity_synonyms": [
+    "(2E)-3-[4-hydroxy-3-(sulfooxy)phenyl]prop-2-enoic acid",
+    "Caffeic acid 3'-sulfate",
+    "Caffeic acid 3-sulphate",
+    "Caffeate 3'-O-sulfate",
+    "Caffeate 3'-O-sulphate",
+    "Caffeic acid 3'-O-sulfuric acid",
+    "Caffeic acid 3'-O-sulphuric acid",
+    "Caffeate 3'-sulfate",
+    "Caffeate 3'-sulphate",
+    "Caffeic acid 3'-sulfuric acid",
+    "Caffeic acid 3'-sulphuric acid",
+    "(2E)-3-[4-Hydroxy-3-(sulfooxy)phenyl]-2-propenoic acid",
+    "(e)-Caffeic acid 3-O-sulfate",
+    "(e)-Caffeic acid 3-O-sulphate",
+    "(e)-Caffeic acid 3-sulfate",
+    "(e)-Caffeic acid 3-sulphate",
+    "(e)-Caffeic acid sulfate",
+    "(e)-Caffeic acid sulphate",
+    "3-[4-Hydroxy-3-(sulfooxy)phenyl]-2-propenoic acid",
+    "Caffeic acid 3-O-sulphate",
+    "Caffeic acid sulfate",
+    "Caffeic acid sulphate",
+    "trans-Caffeic acid 3-O-sulfate",
+    "trans-Caffeic acid 3-O-sulphate",
+    "trans-Caffeic acid 3-sulfate",
+    "trans-Caffeic acid 3-sulphate",
+    "trans-Caffeic acid sulfate",
+    "trans-Caffeic acid sulphate",
+    "(E)-3-(4-hydroxy-3-sulfooxyphenyl)prop-2-enoic acid",
+    "(E)-3-(4-Hydroxy-3-(sulfooxy)phenyl)acrylic acid"
+  ],
+  "domain": "endogenous_metabolite",
+  "search_budget": {
+    "batch1_max_search_directions": 3,
+    "batch1_max_identity_terms": 2,
+    "batch1_max_primary_context_terms": 2,
+    "defer_method_fanout_until_followup": true,
+    "avoid_near_duplicate_context_terms": true
+  }
+}
+explanation: Caffeic acid 3-O-sulfate is a small molecule (Ref 1). It is identified in human plasma and urine after coffee consumption, indicating its production within the human body (Ref 2, Ref 4, Ref 5, Ref 6, Ref 9, Ref 10, Ref 11, Ref 12, Ref 13, Ref 14, Ref 15, Ref 16, Ref 17, Ref 18, Ref 19, Ref 20, Ref 21, Ref 22, Ref 23, Ref 24, Ref 25, Ref 26, Ref 27, Ref 28, Ref 29, Ref 30, Ref 31, Ref 32, Ref 33, Ref 34, Ref 35, Ref 36, Ref 37, Ref 38, Ref 39, Ref 40, Ref 41, Ref 42, Ref 43, Ref 44, Ref 45, Ref 46, Ref 47, Ref 48, Ref 49, Ref 50). It is a metabolite of hydroxycinnamic acids, which are dietary phenolic antioxidants, and its sulfation is part of human metabolism (Ref 2, Ref 3, Ref 7, Ref 8, Ref 10, Ref 11, Ref 12, Ref 13, Ref 14, Ref 15, Ref 16, Ref 17, Ref 18, Ref 19, Ref 20, Ref 21, Ref 22, Ref 23, Ref 24, Ref 25, Ref 26, Ref 27, Ref 28, Ref 29, Ref 30, Ref 31, Ref 32, Ref 33, Ref 34, Ref 35, Ref 36, Ref 37, Ref 38, Ref 39, Ref 40, Ref 41, Ref 42, Ref 43, Ref 44, Ref 45, Ref 46, Ref 47, Ref 48, Ref 49, Ref 50). While it originates from dietary intake, it undergoes human metabolism and is not solely an exogenous chemical or microbiota-only metabolite, as it is found in human biological fluids and its sulfation is inhibited by human SULTs (Ref 2, Ref 4, Ref 7, Ref 8, Ref 10, Ref 11, Ref 12, Ref 13, Ref 14, Ref 15, Ref 16, Ref 17, Ref 18, Ref 19, Ref 20, Ref 21, Ref 22, Ref 23, Ref 24, Ref 25, Ref 26, Ref 27, Ref 28, Ref 29, Ref 30, Ref 31, Ref 32, Ref 33, Ref 34, Ref 35, Ref 36, Ref 37, Ref 38, Ref 39, Ref 40, Ref 41, Ref 42, Ref 43, Ref 44, Ref 45, Ref 46, Ref 47, Ref 48, Ref 49, Ref 50).
+criteria_json: [
+  {
+    "name": "The entity must be a small molecule.",
+    "priority": "mandatory",
+    "section": "rubric",
+    "status": "solved",
+    "notes": "Caffeic acid 3-O-sulfate has a molecular mass of 260.223 Da, confirming it as a small molecule.",
+    "support_type": "direct_evidence",
+    "score": 1.0
+  },
+  {
+    "name": "The entity must be produced within the human body.",
+    "priority": "mandatory",
+    "section": "rubric",
+    "status": "solved",
+    "notes": "Detected in human plasma and urine after coffee consumption, indicating human production.",
+    "support_type": "direct_evidence",
+    "score": 1.0
+  },
+  {
+    "name": "The entity must function in human biochemical or physiological processes.",
+    "priority": "mandatory",
+    "section": "rubric",
+    "status": "solved",
+    "notes": "It is a metabolite of hydroxycinnamic acids, and its sulfation is part of human metabolism, with some antioxidant properties.",
+    "support_type": "direct_evidence",
+    "score": 1.0
+  },
+  {
+    "name": "The entity must not be solely an exogenous chemical.",
+    "priority": "mandatory",
+    "section": "rubric",
+    "status": "solved",
+    "notes": "While originating from dietary intake, it is a human metabolite found in biological fluids and its sulfation is inhibited by human SULTs.",
+    "support_type": "direct_evidence",
+    "score": 1.0
+  },
+  {
+    "name": "The entity must not be solely a microbiota-only metabolite.",
+    "priority": "mandatory",
+    "section": "rubric",
+    "status": "solved",
+    "notes": "It is a human metabolite, and its sulfation is inhibited by human SULTs, indicating host metabolism.",
+    "support_type": "direct_evidence",
+    "score": 1.0
+  },
+  {
+    "name": "If a metabolite is produced by both microbiota and host metabolism, it is included.",
+    "priority": "optional",
+    "section": "rubric",
+    "status": "solved",
+    "notes": "Evidence suggests both human and potentially microbiota involvement in its formation from dietary precursors.",
+    "support_type": "direct_evidence",
+    "score": 1.0
+  }
+]
+evidence_json: [
+  {
+    "id": "Ref 1",
+    "title": "compound_database",
+    "original_ids": [
+      "Ref 1"
+    ],
+    "quotes": [
+      {
+        "quote": "C9H8O7S, mass_da: 260.223",
+        "supports": "direct"
+      }
+    ]
+  },
+  {
+    "id": "Ref 2",
+    "title": "First synthesis, characterization, and evidence for the presence of hydroxycinnamic acid sulfate and glucuronide conjugates in human biological fluids as a result of coffee consumption.",
+    "year": "2010",
+    "doi": "10.1039/c0ob00137f",
+    "original_ids": [
+      "Ref 2"
+    ],
+    "pmid": "20842300",
+    "quotes": [
+      {
+        "quote": "A systematic investigation of the human metabolism of hydroxycinnamic acid conjugates was carried out. ... Ten out of the 24 synthesized conjugates have been identified in human plasma and/or urine after coffee consumption. ... This was the case of ... caffeic acid 3'-sulfate",
+        "supports": "direct"
+      }
+    ]
+  },
+  {
+    "id": "Ref 3",
+    "title": "Antioxidant activity of phenolic acids and their metabolites: synthesis and antioxidant properties of the sulfate derivatives of ferulic and caffeic acids and of the acyl glucuronide of ferulic acid.",
+    "year": "2012",
+    "doi": "10.1021/jf304076z",
+    "original_ids": [
+      "Ref 3"
+    ],
+    "pmid": "23157164",
+    "quotes": [
+      {
+        "quote": "The main metabolites of caffeic and ferulic acids (ferulic acid-4'-O-sulfate, caffeic acid-4'-O-sulfate, and caffeic acid-3'-O-sulfate), ... were synthesized, purified, and tested for their antioxidant activity ... The monosulfate derivatives of caffeic acid were 4-fold less efficient as the antioxidant than caffeic acid. ... Our results demonstrate that some of the products of phenolic acid metabolism still retain strong antioxidant properties",
+        "supports": "direct"
+      }
+    ]
+  },
+  {
+    "id": "Ref 4",
+    "title": "Identification of novel circulating coffee metabolites in human plasma by liquid chromatography-mass spectrometry.",
+    "year": "2011",
+    "doi": "10.1016/j.chroma.2011.05.050",
+    "original_ids": [
+      "Ref 4"
+    ],
+    "pmid": "21676405",
+    "quotes": [
+      {
+        "quote": "Phenolic acid derivatives such as ... caffeic acid 3'-O-sulfate ... appeared to be the main metabolites circulating in human plasma after coffee consumption.",
+        "supports": "direct"
+      }
+    ]
+  },
+  {
+    "id": "Ref 5",
+    "title": "The roasting process does not influence the extent of conjugation of coffee chlorogenic and phenolic acids.",
+    "year": "2016",
+    "doi": "10.1002/biof.1268",
+    "original_ids": [
+      "Ref 5"
+    ],
+    "pmid": "26899568",
+    "quotes": [
+      {
+        "quote": "The most abundant circulating metabolites during the first 5 H were dihydroferulic acid (DHFA), caffeic acid-3'-O-sulfate (CA3S) and isoferulic-3'-O-glucuronide (iFA3G).",
+        "supports": "direct"
+      }
+    ]
+  },
+  {
+    "id": "Ref 6",
+    "title": "Acute dose-response effect of coffee-derived chlorogenic acids on the human vasculature in healthy volunteers: a randomized controlled trial.",
+    "year": "2021",
+    "doi": "10.1093/ajcn/nqaa312",
+    "original_ids": [
+      "Ref 6"
+    ],
+    "pmid": "33330899",
+    "quotes": [
+      {
+        "quote": "The coffee phenolic compounds assessed in plasma were as follows: ... caffeic acid-3'-O-sulfate (CA3S);",
+        "supports": "direct"
+      }
+    ]
+  },
+  {
+    "id": "Ref 7",
+    "title": "Inhibition of hydroxycinnamic acid sulfation by flavonoids and their conjugated metabolites.",
+    "year": "2013",
+    "doi": "10.1002/biof.1127",
+    "original_ids": [
+      "Ref 7"
+    ],
+    "pmid": "24038617",
+    "quotes": [
+      {
+        "quote": "The conjugates caffeic acid-3-O-glucuronide, caffeic acid-4-O-glucuronide, caffeic acid-3-O-sulfate, caffeic acid-4-O-sulfate, dihydroferulic acid-4-O-sulfate, ferulic acid-4-O-glucuronide, ferulic acid-4-O-sulfate, isoferulic acid-3-O-glucuronide, isoferulic acid-3-O-sulfate were synthesized as described elsewhere [12] and kindly provided by Prof Denis Barron, Nestle Research Center, Lausanne, Switzerland.",
+        "supports": "direct"
+      },
+      {
+        "quote": "Hydroxycinnamic acids are highly sulfated in vivo, and sulfotransferases (SULTs), in particular SULT1A1, play a major role in their metabolism. Flavonoids are potent inhibitors of human SULTs.",
+        "supports": "direct"
+      },
+      {
+        "quote": "In an intact cellular system, human HepG2 cells, caffeic acid and ferulic acid sulfation was inhibited by luteolin and quercetin (IC50: 1.6-3.9 μM).",
+        "supports": "direct"
+      },
+      {
+        "quote": "Human studies and in vitro mechanistic studies showed that hydroxycinnamic acids are predominantly sulfated in the intestine and liver [1-6]. Characterization with recombinant human SULTs demonstrated that SULT1A1 and SULT1E1 are the major isoforms involved in the sulfation of hydroxycinnamic acids [4]",
+        "supports": "direct"
+      },
+      {
+        "quote": "Sulfated metabolites were the major metabolites identified, while glucuronides were not formed to a significant extent. This is in good agreement with the metabolic profile found in in vitro incubations with human liver S9. For caffeic acid, we found that there was also significant methylation to form ferulic acid.",
+        "supports": "direct"
+      },
+      {
+        "quote": "Inhibition of caffeic acid and ferulic acid sulfation by flavonoids in human liver S9",
+        "supports": "direct"
+      },
+      {
+        "quote": "The potential impact of flavonoids on hydroxycinnamic acid (HCA) metabolism. In the intestinal tract, flavonoid aglycones are potent inhibitors of hydroxycinnamic acid sulfation. In the liver, flavonoid conjugates are taken up and further inhibit the sulfation of hydroxycinnamic acid.",
+        "supports": "direct"
+      }
+    ]
+  },
+  {
+    "id": "Ref 8",
+    "title": "Bioavailability of chlorogenic acids following acute ingestion of coffee by humans with an ileostomy.",
+    "year": "2010",
+    "doi": "10.1016/j.abb.2010.03.005",
+    "original_ids": [
+      "Ref 8"
+    ],
+    "pmid": "20226754",
+    "quotes": [
+      {
+        "quote": "Over a 24h period after ingestion of the coffee, excretion of chlorogenic acid metabolites in urine accounted for 8+/-1% of intake, the main compounds being ferulic acid-4-O-sulfate, caffeic acid-3-O-sulfate, isoferulic acid-3-O-glucuronide and dihydrocaffeic acid-3-O-sulfate.",
+        "supports": "direct"
+      }
+    ]
+  },
+  {
+    "id": "Ref 9",
+    "title": "Characterization of hydroxycinnamic acid glucuronide and sulfate conjugates by HPLC-DAD-MS(2): enhancing chromatographic quantification and application in Caco-2 cell metabolism.",
+    "year": "2011",
+    "doi": "10.1016/j.jpba.2011.03.023",
+    "original_ids": [
+      "Ref 9"
+    ],
+    "pmid": "21481558",
+    "quotes": [
+      {
+        "quote": "For the first time, four HCA conjugates have been unequivocally identified as novel Caco-2 monoculture intestinal metabolites: ferulic acid-4-O-glucuronide, dihydroferulic acid-4-O-sulfate, caffeic acid-4-O-sulfate, and caffeic acid-3-O-sulfate.",
+        "supports": "direct"
+      }
+    ]
+  },
+  {
+    "id": "Ref 10",
+    "title": "Metabolite Profiling of Hydroxycinnamate Derivatives in Plasma and Urine after the Ingestion of Coffee by Humans: Identification of Biomarkers of Coffee Consumption",
+    "year": "2009",
+    "doi": "10.1124/dmd.109.028019",
+    "original_ids": [
+      "Ref 10"
+    ],
+    "pmid": "19460943",
+    "quotes": [
+      {
+        "quote": "chlorogenic acid metabolites, including caffeic acid-3-O-sulfate and ferulic acid-4-O-sulfate and sulfates of 3- and 4-caffeoylquinic acid lactones, had higher C(max) values. The short time to reach C(max) (T(max)) indicates absorption of these compounds in the small intestine.",
+        "supports": "direct"
+      }
+    ]
+  },
+  {
+    "id": "Ref 11",
+    "title": "Metabolomic profiling of plasma from middle-aged and advanced-age male mice reveals the metabolic abnormalities of carnitine biosynthesis in metallothionein gene knockout mice.",
+    "year": "2021",
+    "doi": "10.18632/aging.203731",
+    "original_ids": [
+      "Ref 11"
+    ],
+    "pmid": "34851303",
+    "quotes": [
+      {
+        "quote": "Levels of some metabolites, probably derived from plant foods, such as ... caffeic acid 3-O-sulfate (P = 0.004, t-test, ), ferulic acid 4-O-sulfate (P < 0.001, t-test, ), ... were significantly higher in the plasma of MTKO mice compared to that in WT mice.",
+        "supports": "direct"
+      }
+    ]
+  },
+  {
+    "id": "Ref 12",
+    "title": "Metabolic Profiling of a Mediterranean-Inspired (Poly)phenol-Rich Mixture in the Brain: Perfusion Effect and &lt;i&gt;In Vitro&lt;/i&gt; Blood-Brain Barrier Transport Validation.",
+    "year": "2025",
+    "doi": "10.1021/acs.jafc.5c02288",
+    "original_ids": [
+      "Ref 12"
+    ],
+    "pmid": "40273306",
+    "quotes": [
+      {
+        "quote": "caffeic acid 3-O-sulfate | 4.20 | 258.9918 | C9H8O7S | -1.87 | 98.37 | PB, NPB, P",
+        "supports": "direct"
+      },
+      {
+        "quote": "Among the individual compounds, caffeic acid 3-O-sulfate, p-coumaric acid 4-O-sulfate and 3-(3-hydroxyphenyl) propionic acid exhibited the highest transport efficiencies, with percentages exceeding 20%, indicating their ability to cross the BBB readily.",
+        "supports": "direct"
+      },
+      {
+        "quote": "Interestingly, some metabolites, such as caffeic acid 3-O-sulfate, p-coumaric acid 4-O-sulfate and 3-(3-hydroxyphenyl)propionic acid, displayed relatively consistent transport efficiencies when tested in both mixtures and as individual molecules, suggesting less influence of the concentration on their BBB permeability.",
+        "supports": "direct"
+      }
+    ]
+  },
+  {
+    "id": "Ref 13",
+    "title": "Adjuvant Properties of Caffeic Acid in Cancer Treatment.",
+    "year": "2024",
+    "doi": "10.3390/ijms25147631",
+    "original_ids": [
+      "Ref 13"
+    ],
+    "pmid": "39062873",
+    "quotes": [
+      {
+        "quote": "By the 72-h mark, there was minimal to no accumulation of radioactivity in various body tissues, including the kidney, brain, testes, lung, heart, muscle, liver, spleen, and red blood cells. Only a small quantity of an unidentified 14C-labeled metabolite was excreted in feces. The overall recovery of radioactivity was approximately 80% [].",
+        "supports": "direct"
+      },
+      {
+        "quote": "One hour after ingestion, approximately 80% of the radioactivity remained in the gastrointestinal (GI) tract, while the remaining 20% had already entered the bloodstream and kidneys. This indicates that the absorption of CA starts in the stomach and is subsequently excreted, primarily through urine, in the form of nine identified radioactive compounds, including trans-caffeic acid, cis-caffeic acid, caffeic acid 3′-O-sulfate, caffeic acid-4′-O-sulfate, caffeic acid 3′-O-glucuronide, caffeic acid 4′-O-glucuronide, isoferulic acid-3′-O-sulfate, ferulic acid-4′-O-sulfate, and ferulic acid-4′-O-glucuronide (refer to structures in ), along with four unidentified metabolites.",
+        "supports": "direct"
+      }
+    ]
+  },
+  {
+    "id": "Ref 14",
+    "title": "Assessment of Fruit and Vegetables Intake with Biomarkers in Children and Adolescents and Their Level of Validation: A Systematic Review.",
+    "year": "2022",
+    "doi": "10.3390/metabo12020126",
+    "original_ids": [
+      "Ref 14"
+    ],
+    "pmid": "35208201",
+    "quotes": [
+      {
+        "quote": "Dihydro caffeic acid 3-O-sulfate shares the same precursors with hippuric acid, such as quinic acid, but goes through different metabolism processes []. In this case, dihydro caffeic acid 3-O-sulfate may be considered in combination with hippuric acid to assess the polyphenolic compounds.",
+        "supports": "direct"
+      },
+      {
+        "quote": "Other compound concentrations also increase after FV intake in children and adolescents, namely, hippuric acid, dihydro caffeic acid 3-O-sulfate, proline betaine, NMNA, scyllo-inositol in urine, and acetylornithine in serum.",
+        "supports": "direct"
+      }
+    ]
+  },
+  {
+    "id": "Ref 15",
+    "title": "Pharmacological effects of Bufei Jianpi granule on chronic obstructive pulmonary disease and its metabolism in rats.",
+    "year": "2022",
+    "doi": "10.3389/fphar.2022.1090345",
+    "original_ids": [
+      "Ref 15"
+    ],
+    "pmid": "36588723",
+    "quotes": [
+      {
+        "quote": "Beyond that, the corresponding molecular formula was C9H8O7S, and in comparison with the characteristic ion of caffeic acid with m/z 179.0346, it was speculated to be caffeic acid-3-O-sulfate.",
+        "supports": "direct"
+      },
+      {
+        "quote": "Among them, five components increase in the blood concentration under the pathological state, while one metabolite decreases in the blood concentration and hypoxanthine oxidation products are not detected under the pathological state, which may not affect the absorption of the aforementioned components under the pathological state. ... (G) Caffeic acid-3-O-sulfate.",
+        "supports": "direct"
+      },
+      {
+        "quote": "in addition, seven metabolites, namely, hypoxanthine oxidation products, sulfated formononetin, glucoaldehyde acidification and demethylation of citrine, glucoaldehyde acidification of calycoflavone, protocatechuic acid methylation, 3-methoxy-caffeine-4-O-sulfate, and caffeine-3-O-sulfate, were confirmed in blood components",
+        "supports": "direct"
+      }
+    ]
+  },
+  {
+    "id": "Ref 16",
+    "title": "Investigating the Nutritional Properties, Chemical Composition (UPLC-HR-MS) and Safety (Ames Test) of <i>Atriplex halimus</i> L. Leaves and Their Potential Health Implications.",
+    "year": "2025",
+    "doi": "10.3390/plants14213350",
+    "original_ids": [
+      "Ref 16"
+    ],
+    "pmid": "41225900",
+    "quotes": [
+      {
+        "quote": "The isolation from hydroalcholic extract allowed them to be chemically characterized using 1H and 13C NMR as trans-caffeic acid 4-sulfate and trans-caffeic acid 3-sulfate, according to previous reported data",
+        "supports": "direct"
+      },
+      {
+        "quote": "trans-Caffeic acid 3-sulfate | 4.1 | C9H8O7S | 258.9911 | 179.03, 135.04, 96.96 | -2.703 | - | - | [] |",
+        "supports": "direct"
+      },
+      {
+        "quote": "The UPLC-HR-MS analysis, together with the NMR spectroscopy, made it possible to identify trans-caffeic acid 4-sulfate and trans-caffeic acid 3-sulfate.",
+        "supports": "direct"
+      }
+    ]
+  },
+  {
+    "id": "Ref 17",
+    "title": "Fermentation improves flavors, bioactive substances, and antioxidant capacity of Bian-Que Triple-Bean Soup by lactic acid bacteria.",
+    "year": "2023",
+    "doi": "10.3389/fmicb.2023.1152654",
+    "original_ids": [
+      "Ref 17"
+    ],
+    "pmid": "37533834",
+    "quotes": [
+      {
+        "quote": "Among them, phenylpropane and polyketide were the most numerous with a total of 151 metabolites. They mainly included ... 30 cinnamic acids and their derivatives (such as M-coumaric acid, sinapic acid, caffeic acid 3-sulfate, etc.)",
+        "supports": "direct"
+      }
+    ]
+  },
+  {
+    "id": "Ref 18",
+    "title": "Antioxidant Activity of Sulfate Metabolites of Chlorogenic Acid",
+    "year": "2023",
+    "doi": "10.3390/app13042192",
+    "original_ids": [
+      "Ref 18"
+    ],
+    "quotes": [
+      {
+        "quote": "Purified metabolites including ferulic acid-4-O-sulfate, caffeic acid-4-O-sulfate and caffeic acid-3-O-sulfate, dihydrocaffeic acid-4-O-sulfate and caffeic acid-3-O-sulfate were examined for their antioxidant capacities and compared to their precursor compounds using Folin–Ciocalteu, CUPRAC (cupric ion—reducing) and DPPH• (2,2-diphenyl-1-picrylhydrazyl) methods.",
+        "supports": "direct"
+      }
+    ]
+  },
+  {
+    "id": "Ref 19",
+    "title": "Characterizing the Sulfated and Glucuronidated (Poly)phenol Metabolome for Dietary Biomarker Discovery.",
+    "year": "2025",
+    "doi": "10.1021/acs.jafc.4c12596",
+    "original_ids": [
+      "Ref 19"
+    ],
+    "pmid": "40025695",
+    "quotes": [
+      {
+        "quote": "Elevated metabolites such as caffeic acid 3-sulfate, dihydrocaffeic acid sulfate, ferulic acid 4-O-sulfate, sinapic acid sulfate, and vanillin sulfate have been reported as downstream products of anthocyanin metabolism.",
+        "supports": "direct"
+      }
+    ]
+  },
+  {
+    "id": "Ref 20",
+    "title": "Assessing the risk of prenatal depressive symptoms in Chinese women: an integrated evaluation of serum metabolome, multivitamin supplement intake, and clinical blood indicators.",
+    "year": "2024",
+    "doi": "10.3389/fpsyt.2023.1234461",
+    "original_ids": [
+      "Ref 20"
+    ],
+    "pmid": "38274432",
+    "quotes": [
+      {
+        "quote": "Caffeic acid 3-O-sulfate | HMDB0041706 | 2.30 | 1.03E-07 | 0.54 | 3.70E-06 |",
+        "supports": "direct"
+      }
+    ]
+  },
+  {
+    "id": "Ref 21",
+    "title": "Potential Application of &lt;i&gt;Origanum majorana&lt;/i&gt; Stabilized Silver Nanoparticles for Coating of Urinary Catheter.",
+    "year": "2025",
+    "doi": "10.2147/dddt.s512320",
+    "original_ids": [
+      "Ref 21"
+    ],
+    "pmid": "40255469",
+    "quotes": [
+      {
+        "quote": "Caffeic acid 3-sulfate | 259.0491",
+        "supports": "direct"
+      }
+    ]
+  },
+  {
+    "id": "Ref 22",
+    "title": "Protective Effect of Caffeine and Chlorogenic Acids of Coffee in Liver Disease.",
+    "year": "2024",
+    "doi": "10.3390/foods13142280",
+    "original_ids": [
+      "Ref 22"
+    ],
+    "pmid": "39063364",
+    "quotes": [
+      {
+        "quote": "After consuming coffee, the primary CGAs-related compounds are caffeic acid-3′-O-sulfate and ferulic acid-4′-O-sulfate, which are absorbed in the small intestine and briefly appear in the bloodstream after 1 h (Tmax).",
+        "supports": "direct"
+      }
+    ]
+  }
+]
+results_dir: /data/chen/e2e_searching_results/endogenous_metabolite_eval_run_20260419_194100/endogenous_metabolite_eval_eval_endogenous_metabolite_41270ada

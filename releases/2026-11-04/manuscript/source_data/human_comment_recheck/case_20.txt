@@ -1,0 +1,221 @@
+CASE 20: Naproxen O-glucuronide | Confirmed | drug metabolite
+entity_synonyms: 
+canonical_name: 
+query: {
+  "task": "verify_candidate_entity",
+  "entity_name": "Naproxen O-glucuronide",
+  "original_query": "Decide whether 'Naproxen O-glucuronide' satisfies the confirmed-topic definition.",
+  "evaluation_criteria": {
+    "criteria_text": "- [mandatory] The entity must be a small molecule.\n- [mandatory] The entity must be produced within the human body.\n- [mandatory] The entity must function in human biochemical or physiological processes.\n- [mandatory] The entity must not be solely an exogenous chemical.\n- [mandatory] The entity must not be solely a microbiota-only metabolite.\n- [optional] If a metabolite is produced by both microbiota and host metabolism, it is included.",
+    "rubric_items": [
+      {
+        "name": "The entity must be a small molecule.",
+        "section": "rubric",
+        "priority": "mandatory"
+      },
+      {
+        "name": "The entity must be produced within the human body.",
+        "section": "rubric",
+        "priority": "mandatory"
+      },
+      {
+        "name": "The entity must function in human biochemical or physiological processes.",
+        "section": "rubric",
+        "priority": "mandatory"
+      },
+      {
+        "name": "The entity must not be solely an exogenous chemical.",
+        "section": "rubric",
+        "priority": "mandatory"
+      },
+      {
+        "name": "The entity must not be solely a microbiota-only metabolite.",
+        "section": "rubric",
+        "priority": "mandatory"
+      },
+      {
+        "name": "If a metabolite is produced by both microbiota and host metabolism, it is included.",
+        "section": "rubric",
+        "priority": "optional"
+      }
+    ],
+    "fixed_criteria": [
+      "The entity must be a small molecule.",
+      "The entity must be produced within the human body.",
+      "The entity must function in human biochemical or physiological processes.",
+      "The entity must not be solely an exogenous chemical.",
+      "The entity must not be solely a microbiota-only metabolite."
+    ]
+  },
+  "entity_synonyms": [
+    "(2S,3S,4S,5R)-3,4,5-trihydroxy-6-{[(2S)-2-(6-methoxynaphthalen-2-yl)propanoyl]oxy}oxane-2-carboxylic acid"
+  ],
+  "domain": "endogenous_metabolite",
+  "search_budget": {
+    "batch1_max_search_directions": 3,
+    "batch1_max_identity_terms": 2,
+    "batch1_max_primary_context_terms": 2,
+    "defer_method_fanout_until_followup": true,
+    "avoid_near_duplicate_context_terms": true
+  }
+}
+explanation: Naproxen O-glucuronide is a small molecule metabolite formed in humans from naproxen, excreted in urine, and investigated for its role in immune responses. It is not solely an exogenous chemical or a microbiota-only metabolite.
+criteria_json: [
+  {
+    "name": "The entity must be a small molecule.",
+    "priority": "mandatory",
+    "section": "rubric",
+    "status": "solved",
+    "notes": "Confirmed by PubChem data (406.387 Da).",
+    "support_type": "direct_evidence",
+    "score": 1.0
+  },
+  {
+    "name": "The entity must be produced within the human body.",
+    "priority": "mandatory",
+    "section": "rubric",
+    "status": "solved",
+    "notes": "Metabolized from naproxen in humans and found in human urine.",
+    "support_type": "direct_evidence",
+    "score": 1.0
+  },
+  {
+    "name": "The entity must function in human biochemical or physiological processes.",
+    "priority": "mandatory",
+    "section": "rubric",
+    "status": "solved",
+    "notes": "Involved in excretion, isomerization in blood, and investigated for T-cell responses.",
+    "support_type": "direct_evidence",
+    "score": 1.0
+  },
+  {
+    "name": "The entity must not be solely an exogenous chemical.",
+    "priority": "mandatory",
+    "section": "rubric",
+    "status": "solved",
+    "notes": "It is a human metabolite of an exogenous drug, not solely exogenous itself.",
+    "support_type": "direct_evidence",
+    "score": 1.0
+  },
+  {
+    "name": "The entity must not be solely a microbiota-only metabolite.",
+    "priority": "mandatory",
+    "section": "rubric",
+    "status": "solved",
+    "notes": "Metabolism described as human acyl glucuronidation, not solely microbiota-dependent.",
+    "support_type": "direct_evidence",
+    "score": 1.0
+  },
+  {
+    "name": "If a metabolite is produced by both microbiota and host metabolism, it is included.",
+    "priority": "optional",
+    "section": "rubric",
+    "status": "unsolved",
+    "notes": "No specific evidence found for microbiota involvement, but not required for 'Confirmed' status.",
+    "support_type": "none",
+    "score": 0.0
+  }
+]
+evidence_json: [
+  {
+    "id": "Ref 1",
+    "title": "PubChem Compound Summary for CID 54484412",
+    "original_ids": [
+      "CD1"
+    ],
+    "quotes": [
+      {
+        "quote": "Name: (2S,3S,4S,5R)-3,4,5-trihydroxy-6-[(2S)-2-(6-methoxynaphthalen-2-yl)propanoyl]oxyoxane-2-carboxylic acid, Formula: C20H22O9, Molecular Weight: 406.387",
+        "supports": "direct"
+      }
+    ]
+  },
+  {
+    "id": "Ref 2",
+    "title": "Determination of naproxen and its metabolite O-desmethylnaproxen with their acyl glucuronides in human plasma and urine by means of direct gradient high-performance liquid chromatography.",
+    "year": "1992",
+    "doi": "10.1016/0378-4347(92)80422-m",
+    "original_ids": [
+      "Ref 1"
+    ],
+    "pmid": "1400803",
+    "quotes": [
+      {
+        "quote": "Naproxen is metabolized in humans by O-demethylation, and by acyl glucuronidation to the 1-O-glucuronide.",
+        "supports": "direct"
+      },
+      {
+        "quote": "The glucuronide conjugates were isolated by preparative chromatography from human urine samples.",
+        "supports": "direct"
+      }
+    ]
+  },
+  {
+    "id": "Ref 3",
+    "title": "The pharmacokinetics of naproxen, its metabolite O-desmethylnaproxen, and their acyl glucuronides in humans. Effect of cimetidine.",
+    "year": "1993",
+    "doi": "10.1111/J.1365-2125.1993.TB04171.X",
+    "original_ids": [
+      "Ref 2"
+    ],
+    "quotes": [
+      {
+        "quote": "Naproxen acyl glucuronide accounted for 50.8 +/- 7.3% of the dose recovered in the urine...",
+        "supports": "direct"
+      },
+      {
+        "quote": "Even though the urine pH of the subjects was kept acid in order to stabilize the acyl glucuronides, isomerisation took place in blood.",
+        "supports": "direct"
+      }
+    ]
+  },
+  {
+    "id": "Ref 4",
+    "title": "In Vivo Functional Effects of CYP2C9 M1L, a Novel and Common Variant in the Yup’ik Alaska Native Population",
+    "year": "2021",
+    "doi": "10.1124/dmd.120.000301",
+    "original_ids": [
+      "Ref 3"
+    ],
+    "pmid": "33632714",
+    "quotes": [
+      {
+        "quote": "(S)-Naproxen ... is almost completely eliminated in the urine as naproxen glucuronide (60% of the dose)...",
+        "supports": "direct"
+      }
+    ]
+  },
+  {
+    "id": "Ref 5",
+    "title": "Chemical reactivity of the naproxen acyl glucuronide and the naproxen coenzyme A thioester towards bionucleophiles.",
+    "year": "2002",
+    "doi": "10.1016/S0731-7085(02)00026-2",
+    "original_ids": [
+      "Ref 4"
+    ],
+    "pmid": "12062660",
+    "quotes": [
+      {
+        "quote": "In this study, the reactivity of the major metabolite of naproxen--the 1-beta-O-glucuronide (Nap-GlcU)--was compared to the corresponding naproxen coenzyme A (Nap-CoA) thioester. The reactivity of the two metabolites was assessed in vitro in a phosphate buffer (pH 7.4; 0.1 M) at 37 degrees C towards the model bionucleophiles glutathione and human serum albumin (HSA).",
+        "supports": "direct"
+      }
+    ]
+  },
+  {
+    "id": "Ref 6",
+    "title": "Patients with naproxen‐induced liver injury display T‐cell memory responses toward an oxidative (S)‐O‐desmethyl naproxen metabolite but not the acyl glucuronide",
+    "year": "2023",
+    "doi": "10.1111/all.15830",
+    "original_ids": [
+      "Ref 6"
+    ],
+    "pmid": "37515456",
+    "quotes": [
+      {
+        "quote": "The aims of this study were to... determine whether NAP, DM-NAP, NAP acyl glucuronide (NAP-AG) or NAP-AG-albumin adducts participate in the T-cell response by functional and phenotyping experiments.",
+        "supports": "direct"
+      }
+    ]
+  }
+]
+results_dir: /data/chen/e2e_searching_results/endogenous_metabolite_eval_run_20260419_194100/endogenous_metabolite_eval_eval_endogenous_metabolite_0b690dc0

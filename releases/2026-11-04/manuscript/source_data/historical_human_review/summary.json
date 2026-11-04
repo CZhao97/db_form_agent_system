@@ -1,0 +1,24 @@
+{
+  "explicit_cases": 13,
+  "human_labels": {
+    "Confirmed": 9,
+    "Insufficient Direct Evidence": 2,
+    "Explicit Negative Evidence": 2
+  },
+  "original_exact": 1,
+  "gemini_exact": 7,
+  "neither_exact": 5,
+  "original_binary": 3,
+  "gemini_binary": 9,
+  "selection": "model-disagreement-only, not representative",
+  "reviewer_attribution": "Botao, based on user-provided provenance in conversation",
+  "blinding": "column name does not prove reviewer blinding; workbook contains model outputs",
+  "source_sha256": {
+    "/home/chen/GNPS_SIM/agent/db_form_agent_system/manuscript/all_labeled/db_curator_confirmed_blood_BL (1).csv": "2cfbb18d71b136b1287cfb94356477a79cdeb08cb1cfacf745d0dc388bd22fcb",
+    "/home/chen/GNPS_SIM/agent/db_form_agent_system/manuscript/all_labeled/db_curator_confirmed_dbp_BL (2).csv": "c056b4e5ae91f1741808fb2b967509a420220b489c81a05d21d875ffa00fb47b",
+    "/home/chen/GNPS_SIM/agent/db_form_agent_system/manuscript/all_labeled/db_curator_confirmed_drug_BL (1).csv": "b09a305f0b4b769b895393cdd1bff811f5acb522b74b3f6a1f0a3ead90a31e97",
+    "/home/chen/GNPS_SIM/agent/db_form_agent_system/manuscript/all_labeled/db_curator_confirmed_endo_BL (1).csv": "2499577ad2e153068247b94c5b4c68d1fa1fe24ddb98c698dc421e0d1cad63f2",
+    "/home/chen/GNPS_SIM/agent/db_form_agent_system/manuscript/all_labeled/db_curator_confirmed_microbial_BL (1).csv": "ed6a93d1136c686990ec3326200cc3fd7686513a21ae13c5e2afe393fe1d0485",
+    "/home/chen/GNPS_SIM/agent/db_form_agent_system/manuscript/human_evaluation/completed_pilot_annotations/model_swap_disagreement_review_20260706/model_swap_disagreement_review_sheet_labeled.xlsx": "b2126056511768de0a4dc9b8cbb90db75978ec2de9cfd6bc6903325991cfb25c"
+  }
+}

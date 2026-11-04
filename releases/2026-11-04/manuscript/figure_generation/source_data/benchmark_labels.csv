@@ -1,0 +1,6 @@
+﻿topic,candidates,final_confirmed,final_other,final_label_counts,prediction_endpoint
+dbp,687,330,357,"{""Confirmed"": 330, ""Explicit Negative Evidence"": 12, ""Indirect or Class-Level Only"": 4, ""Insufficient Direct Evidence"": 305, ""Out of Scope Matrix or Context"": 4, ""Suspected"": 32}",last_researcher_claim
+blood_exposome,300,68,232,"{""Confirmed"": 68, ""Explicit Negative Evidence"": 7, ""Insufficient Direct Evidence"": 204, ""Suspected"": 21}",last_researcher_claim
+drug_compounds,300,213,87,"{""Confirmed"": 213, ""Explicit Negative Evidence"": 27, ""Indirect or Class-Level Only"": 5, ""Insufficient Direct Evidence"": 34, ""Out of Scope Matrix or Context"": 5, ""Suspected"": 16}",last_researcher_claim
+human_endogenous_metabolites,300,125,175,"{""Confirmed"": 125, ""Explicit Negative Evidence"": 58, ""Indirect or Class-Level Only"": 3, ""Insufficient Direct Evidence"": 77, ""Out of Scope Matrix or Context"": 4, ""Suspected"": 33}",last_researcher_claim
+microbial_natural_products,300,239,61,"{""Confirmed"": 239, ""Explicit Negative Evidence"": 4, ""Insufficient Direct Evidence"": 44, ""Out of Scope Matrix or Context"": 1, ""Suspected"": 12}",last_researcher_claim

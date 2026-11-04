@@ -1,19 +1,25 @@
-# db_form_agent_system
+# DB-Curator
 
-This repository bundles the tools, prompts, and sample notebooks that power a literature-grounded compound discovery assistant. The components revolve around three core capabilities:
+DB-Curator is a deep-research workflow for on-demand chemical database construction.
+A topic definition and acceptance rubric, proposed by the agent and approved by
+the user, guide compound discovery, evidence acquisition and row-level verification.
 
-- **Full-text literature search** via `FullTextJournalSearchTool`, which saves enriched results into timestamped run folders under `searching_results/`.
-- **Semantic indexing and retrieval** delivered by `FullTextIndexTool` and `FullTextQueryTool`, enabling retrieval-augmented generation over the saved full texts.
-- **Compound knowledge lookup** through `CompoundDatabaseTool`, combining PubChem queries with optional RDKit analytics.
+## Current manuscript and reproducible snapshot
 
-📚 **Looking for the full workflow?** See [`docs/pipeline.md`](docs/pipeline.md) for a step-by-step description of the pipeline, storage layout, configuration knobs, and troubleshooting guidance.
+- [Versioned data and code archive on Zenodo](https://doi.org/10.5281/zenodo.21285739)
+- [2026-11-04 snapshot](releases/2026-11-04/README.md)
+- [Main manuscript](releases/2026-11-04/manuscript/DB_Curator_main.pdf)
+- [Supplementary Information](releases/2026-11-04/manuscript/DB_Curator_SI.pdf)
 
-## Quick Start
+The snapshot contains the current implementation, prompts, source data, figure
+scripts and offline checks. It includes 1,887 benchmark evaluations with paired
+token/runtime measurements and 1,000 retained construction entries across five
+chemical domains. The citation inventory preserves separate fields for literature
+existence and attributed-text location, including incorrect references.
 
-```bash
-# (optional) activate your virtual environment before running the scripts
-python scripts/run_searching_test.py   # generate a small literature run
-python scripts/run_compound_test.py    # exercise the compound lookup tool
-```
+Use the versioned snapshot for the manuscript. Existing root-level scripts and
+notebooks are retained as historical development files. Licensed full texts,
+credentials, local corpus shards and runtime caches are not in the release.
 
-After the search script completes, inspect the newly created folder in `searching_results/` and follow the pipeline guide to build an index or query the results inside your agent.
+The Zenodo archive can be downloaded without repository access. Repository
+visibility and permissions are managed separately.

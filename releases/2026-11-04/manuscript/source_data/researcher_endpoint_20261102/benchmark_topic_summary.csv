@@ -1,0 +1,7 @@
+﻿topic,n,current_confirmed,researcher_confirmed,newly_confirmed,no_longer_confirmed
+dbp,687,246,329,83,0
+blood_exposome,300,53,69,16,0
+drug_compounds,300,141,214,73,0
+human_endogenous_metabolites,300,76,126,50,0
+microbial_natural_products,300,160,238,78,0
+all,1887,676,976,300,0

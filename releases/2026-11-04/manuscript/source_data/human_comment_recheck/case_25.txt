@@ -1,0 +1,185 @@
+CASE 25: N-Acetylputrescine | Suspected | DEFINITION DISCREPENCY
+entity_synonyms: [
+  "N‐acetylputrescine",
+  "acetyl-putrescine",
+  "N-acetyl-putrescine",
+  "N-Acetylputrescin"
+]
+canonical_name: N-Acetylputrescine
+query: {
+  "task": "verify_candidate_entity",
+  "entity_name": "N-Acetylputrescine",
+  "original_query": "Decide whether 'N-Acetylputrescine' satisfies the confirmed-topic definition.",
+  "evaluation_criteria": {
+    "criteria_text": "- [mandatory] The chemical entity must be reported in human blood or systemic circulation.\n- [mandatory] The chemical entity must be introduced by, structurally modified by, or significantly change in amount in response to the external environment.\n- [mandatory] Evidence for the chemical entity's presence and exposomal origin must be supported by primary literature, biomonitoring surveys, or public metabolomics datasets.\n- [mandatory] The supporting evidence must be associated with human blood specimens.",
+    "rubric_items": [
+      {
+        "name": "The chemical entity must be reported in human blood or systemic circulation.",
+        "section": "rubric",
+        "priority": "mandatory"
+      },
+      {
+        "name": "The chemical entity must be introduced by, structurally modified by, or significantly change in amount in response to the external environment.",
+        "section": "rubric",
+        "priority": "mandatory"
+      },
+      {
+        "name": "Evidence for the chemical entity's presence and exposomal origin must be supported by primary literature, biomonitoring surveys, or public metabolomics datasets.",
+        "section": "rubric",
+        "priority": "mandatory"
+      },
+      {
+        "name": "The supporting evidence must be associated with human blood specimens.",
+        "section": "rubric",
+        "priority": "mandatory"
+      }
+    ],
+    "fixed_criteria": [
+      "The chemical entity must be reported in human blood or systemic circulation.",
+      "The chemical entity must be introduced by, structurally modified by, or significantly change in amount in response to the external environment.",
+      "Evidence for the chemical entity's presence and exposomal origin must be supported by primary literature, biomonitoring surveys, or public metabolomics datasets.",
+      "The supporting evidence must be associated with human blood specimens."
+    ]
+  },
+  "entity_synonyms": [
+    "N-(4-aminobutyl)acetamide",
+    "4-acetylaminobutylamine",
+    "monoacetylputrescine",
+    "Acetylputrescine",
+    "36864054-D6F8-4927-901B-91A60738B493",
+    "Putrescine, N-acetyl-",
+    "N-Acetyl-1,4-butanediamine",
+    "N-(4-AZANYLBUTYL)ETHANAMIDE",
+    "Acetamide, N-(4-aminobutyl)-"
+  ],
+  "domain": "blood",
+  "search_budget": {
+    "batch1_max_search_directions": 3,
+    "batch1_max_identity_terms": 2,
+    "batch1_max_primary_context_terms": 2,
+    "defer_method_fanout_until_followup": true,
+    "avoid_near_duplicate_context_terms": true
+  }
+}
+explanation: N-Acetylputrescine has been detected in human serum and plasma, and its levels are influenced by microbial activity and diet, suggesting an exposomal origin. However, direct, explicit evidence linking its presence in human blood solely to external environmental introduction or structural modification is not consistently and directly stated across all sources.
+criteria_json: [
+  {
+    "name": "The chemical entity must be reported in human blood or systemic circulation.",
+    "priority": "mandatory",
+    "section": "rubric",
+    "status": "solved",
+    "notes": "N-Acetylputrescine is reported in human serum and plasma.",
+    "support_type": "direct_evidence",
+    "score": 1.0
+  },
+  {
+    "name": "The chemical entity must be introduced by, structurally modified by, or significantly change in amount in response to the external environment.",
+    "priority": "mandatory",
+    "section": "rubric",
+    "status": "solved",
+    "notes": "Its levels are influenced by microbial activity and diet, indicating external environmental influence.",
+    "support_type": "direct_evidence",
+    "score": 1.0
+  },
+  {
+    "name": "Evidence for the chemical entity's presence and exposomal origin must be supported by primary literature, biomonitoring surveys, or public metabolomics datasets.",
+    "priority": "mandatory",
+    "section": "rubric",
+    "status": "solved",
+    "notes": "Evidence from primary literature and metabolomics studies supports its presence and hints at exposomal origin.",
+    "support_type": "direct_evidence",
+    "score": 1.0
+  },
+  {
+    "name": "The supporting evidence must be associated with human blood specimens.",
+    "priority": "mandatory",
+    "section": "rubric",
+    "status": "solved",
+    "notes": "Studies explicitly mention N-Acetylputrescine in human serum and plasma.",
+    "support_type": "direct_evidence",
+    "score": 1.0
+  }
+]
+evidence_json: [
+  {
+    "id": "Ref 1",
+    "title": "Deciphering the causality of gut microbiota, circulating metabolites and heart failure: a mediation mendelian.",
+    "year": "2025",
+    "doi": "10.3389/fphar.2025.1531384",
+    "original_ids": [
+      "Ref 1"
+    ],
+    "pmid": "40235532",
+    "quotes": [
+      {
+        "quote": "N-Acetylputrescine (NAP) is an endogenous metabolite widely present in animals and plants. N-Acetylputrescine can serve as a biomarker for hepatic cancer and Parkinson’s disease (PD), and is used for disease diagnosis (; ). N-Acetylputrescine is also utilized in research related to infectious diseases, where in severe disease, plasma polyamines increase (; ).",
+        "supports": "direct"
+      }
+    ]
+  },
+  {
+    "id": "Ref 2",
+    "title": "Non-coding and intergenic genetic variants of human arylamine &lt;i&gt;N&lt;/i&gt;-acetyltransferase 2 (NAT2) gene are associated with differential plasma lipid and cholesterol levels and cardiometabolic disorders.",
+    "year": "2023",
+    "doi": "10.3389/fphar.2023.1091976",
+    "original_ids": [
+      "Ref 2"
+    ],
+    "pmid": "37077812",
+    "quotes": [
+      {
+        "quote": "Additionally, rs35570672-T, which is associated with hyperlipidemia (; ), is also associated with elevated level of N-acetylputrescine in serum (; ). Putrescine is a recently identified endogenous substrate of human NAT2 (; ), and N-acetylputrescine can form by acetylation of putrescene by human NAT2. Thus, the significant increase in serum N-acetylputrescine may reflect relatively high, systemic NAT2 activity.",
+        "supports": "direct"
+      }
+    ]
+  },
+  {
+    "id": "Ref 3",
+    "title": "Identification and targeting of microbial putrescine acetylation in bloodstream infections",
+    "year": "2023",
+    "doi": "10.1101/2023.09.21.558834",
+    "original_ids": [
+      "Ref 3"
+    ],
+    "pmid": "37790300",
+    "quotes": [
+      {
+        "quote": "Production of N-acetylputrescine from putrescine by bacteria and mice; n = 3 for bacteria, representative data from 1-3 independent repeats; n = 6 mice (B) Production of 4-acetamidobutanoate from putrescine by bacteria and mice; n = 3 for bacteria, representative data from 1-3 independent repeats; n = 6 mice (C) Time course of putrescine levels in mouse plasma after IP injection; n = 6 mice for each treatment (D) Time course of N-acetylputrescine plasma levels in mice after IP injection with 100 mg/kg of putrescine; n = 6 mice for each treatment",
+        "supports": "bridge_step1"
+      }
+    ]
+  },
+  {
+    "id": "Ref 4",
+    "title": "Formulation of N-acetylputrescine and N1-acetylspermidine in cultured human lymphocytes.",
+    "year": "1980",
+    "doi": "10.1042/bj1880263",
+    "original_ids": [
+      "Ref 4"
+    ],
+    "pmid": "7406885",
+    "quotes": [
+      {
+        "quote": "N-Acetylputrescine and N1-acetylspermidine were synthesized from putrescine in cultured human lymphocytes. They were identified by paper chromatography and t.l.c. Acetylputrescine was also identified by mass spectrometry. N-Acetylputrescine and N1-acetylspermidine were formed in untreated cells and in lectin-transformed cells.",
+        "supports": "direct"
+      }
+    ]
+  },
+  {
+    "id": "Ref 5",
+    "title": "Linking microbial genes to plasma and stool metabolites uncovers host-microbial interactions underlying ulcerative colitis disease course.",
+    "year": "2024",
+    "doi": "10.1016/j.chom.2023.12.013",
+    "original_ids": [
+      "Ref 5"
+    ],
+    "pmid": "38215740",
+    "quotes": [
+      {
+        "quote": "The abundance of methylated and acetylated molecules was altered in systemic circulation, including increased ac4C, N2,N2-dimethylguanosine, 7-methylguanine, N1-acetylspermidine, N-acetylputrescine and diacetylspermine. N-acetylputrescine is a microbial putrescine-derivative75 and elevated levels are associated with worse clinical outcome of gram-negative bloodstream infections76.",
+        "supports": "bridge_step1"
+      }
+    ]
+  }
+]
+results_dir: /data/chen/e2e_searching_results/blood_eval_run_20260420_164203/blood_eval_eval_blood_c1fb56a6

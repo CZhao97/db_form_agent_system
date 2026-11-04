@@ -1,0 +1,16 @@
+{
+  "archived_rows": 2401,
+  "classified_comments": 39,
+  "new_agreements": 23,
+  "explicit_author_clarifications": 14,
+  "author_accepted_assistant_reassessments": 9,
+  "uncoded_comments": 56,
+  "original_columns_unchanged": true,
+  "counts": {
+    "benchmark_full_loop": 1848,
+    "construction_250_labeled_version": 221,
+    "zero_shot_250": 248,
+    "blood_nonconfirmed_14": 12
+  },
+  "aggregation_column": "current_recorded_agreement"
+}

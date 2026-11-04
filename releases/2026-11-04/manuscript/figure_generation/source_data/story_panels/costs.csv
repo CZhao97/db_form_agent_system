@@ -1,0 +1,5 @@
+﻿condition,confirmed,token_n,mean_tokens,time_n,mean_seconds
+Zero-shot,317/1500,1499,518,--,--
+Static RAG,488/1500,1500,3871,1500,29.03
+Adaptive search,648/1500,--,--,--,--
+Full DB-Curator,673/1500,1500,232118,1500,271.10

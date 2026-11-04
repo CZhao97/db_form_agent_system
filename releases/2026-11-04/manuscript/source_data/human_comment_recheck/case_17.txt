@@ -1,0 +1,178 @@
+CASE 17: 6-oxo-famciclovir | Confirmed | drug metabolite
+entity_synonyms: 
+canonical_name: 
+query: {
+  "task": "verify_candidate_entity",
+  "entity_name": "6-oxo-famciclovir",
+  "original_query": "Decide whether '6-oxo-famciclovir' satisfies the confirmed-topic definition.",
+  "evaluation_criteria": {
+    "criteria_text": "- [mandatory] The entity must be a small molecule.\n- [mandatory] The entity must be produced within the human body.\n- [mandatory] The entity must function in human biochemical or physiological processes.\n- [mandatory] The entity must not be solely an exogenous chemical.\n- [mandatory] The entity must not be solely a microbiota-only metabolite.\n- [optional] If a metabolite is produced by both microbiota and host metabolism, it is included.",
+    "rubric_items": [
+      {
+        "name": "The entity must be a small molecule.",
+        "section": "rubric",
+        "priority": "mandatory"
+      },
+      {
+        "name": "The entity must be produced within the human body.",
+        "section": "rubric",
+        "priority": "mandatory"
+      },
+      {
+        "name": "The entity must function in human biochemical or physiological processes.",
+        "section": "rubric",
+        "priority": "mandatory"
+      },
+      {
+        "name": "The entity must not be solely an exogenous chemical.",
+        "section": "rubric",
+        "priority": "mandatory"
+      },
+      {
+        "name": "The entity must not be solely a microbiota-only metabolite.",
+        "section": "rubric",
+        "priority": "mandatory"
+      },
+      {
+        "name": "If a metabolite is produced by both microbiota and host metabolism, it is included.",
+        "section": "rubric",
+        "priority": "optional"
+      }
+    ],
+    "fixed_criteria": [
+      "The entity must be a small molecule.",
+      "The entity must be produced within the human body.",
+      "The entity must function in human biochemical or physiological processes.",
+      "The entity must not be solely an exogenous chemical.",
+      "The entity must not be solely a microbiota-only metabolite."
+    ]
+  },
+  "entity_synonyms": [
+    "2-[(acetyloxy)methyl]-4-(6-hydroxy-2-imino-3,9-dihydro-2H-purin-9-yl)butyl acetate",
+    "Penciclovir Diacetate",
+    "(2-(Acetyloxymethyl)-4-(2-azanyl-6-oxidanylidene-1H-purin-9-yl)butyl) ethanoate"
+  ],
+  "domain": "endogenous_metabolite",
+  "search_budget": {
+    "batch1_max_search_directions": 3,
+    "batch1_max_identity_terms": 2,
+    "batch1_max_primary_context_terms": 2,
+    "defer_method_fanout_until_followup": true,
+    "avoid_near_duplicate_context_terms": true
+  }
+}
+explanation: 6-oxo-famciclovir is a small molecule (337.336 Da) formed in the human body as a metabolite of the prodrug famciclovir. This conversion is catalyzed by human aldehyde oxidase and is part of the activation pathway to the antiviral agent penciclovir, demonstrating its involvement in human biochemical processes. It is not solely an exogenous chemical or a microbiota-only metabolite.
+criteria_json: [
+  {
+    "name": "The entity must be a small molecule.",
+    "priority": "mandatory",
+    "section": "rubric",
+    "status": "solved",
+    "notes": "Confirmed by PubChem lookup (337.336 Da).",
+    "support_type": "inferred",
+    "score": 1.0
+  },
+  {
+    "name": "The entity must be produced within the human body.",
+    "priority": "mandatory",
+    "section": "rubric",
+    "status": "solved",
+    "notes": "Formed as a metabolite of famciclovir by human aldehyde oxidase.",
+    "support_type": "direct_evidence",
+    "score": 1.0
+  },
+  {
+    "name": "The entity must function in human biochemical or physiological processes.",
+    "priority": "mandatory",
+    "section": "rubric",
+    "status": "solved",
+    "notes": "It is an intermediate in the activation of famciclovir to the active antiviral agent penciclovir.",
+    "support_type": "direct_evidence",
+    "score": 1.0
+  },
+  {
+    "name": "The entity must not be solely an exogenous chemical.",
+    "priority": "mandatory",
+    "section": "rubric",
+    "status": "solved",
+    "notes": "It is a metabolite produced within the human body from an exogenous drug.",
+    "support_type": "direct_evidence",
+    "score": 1.0
+  },
+  {
+    "name": "The entity must not be solely a microbiota-only metabolite.",
+    "priority": "mandatory",
+    "section": "rubric",
+    "status": "solved",
+    "notes": "Evidence indicates human aldehyde oxidase is responsible for its formation, with no mention of microbiota.",
+    "support_type": "direct_evidence",
+    "score": 1.0
+  },
+  {
+    "name": "If a metabolite is produced by both microbiota and host metabolism, it is included.",
+    "priority": "optional",
+    "section": "rubric",
+    "status": "solved",
+    "notes": "Not applicable as no microbiota involvement was found.",
+    "support_type": "inferred",
+    "score": 1.0
+  }
+]
+evidence_json: [
+  {
+    "id": "Ref 1",
+    "title": "Aldehyde Oxidase: Reaction Mechanism and Prediction of Site of Metabolism.",
+    "year": "2017",
+    "doi": "10.1021/acsomega.7b00658",
+    "original_ids": [
+      "Ref 1"
+    ],
+    "pmid": "30023718",
+    "quotes": [
+      {
+        "quote": "Famciclovir is a prodrug of penciclovir with an improved oral bioavailability. The conversion of famciclovir to penciclovir requires hydrolyses of the ester functionalities and an AO-mediated oxidation of the 2-aminopurine moiety at position 6 forming the 6-oxo-metabolite.",
+        "supports": "direct"
+      }
+    ]
+  },
+  {
+    "id": "Ref 2",
+    "title": "In vitro oxidation of famciclovir and 6-deoxypenciclovir by aldehyde oxidase from human, guinea pig, rabbit, and rat liver.",
+    "year": "1997",
+    "original_ids": [
+      "Ref 2"
+    ],
+    "pmid": "9224775",
+    "quotes": [
+      {
+        "quote": "Studies with human liver cytosol have indicated that the oxidation of the penultimate metabolite, 6-deoxypenciclovir, to penciclovir is catalyzed by the molybdenum hydroxylase, aldehyde oxidase.",
+        "supports": "direct"
+      },
+      {
+        "quote": "Famciclovir and 6-deoxypenciclovir were oxidized predominantly to 6-oxo-famciclovir and penciclovir, respectively, by human, guinea pig, and rat liver aldehyde oxidase.",
+        "supports": "direct"
+      }
+    ]
+  },
+  {
+    "id": "Ref 3",
+    "title": "Roles of selected non-P450 human oxidoreductase enzymes in protective and toxic effects of chemicals: review and compilation of reactions.",
+    "year": "2022",
+    "doi": "10.1007/s00204-022-03304-3",
+    "original_ids": [
+      "Ref 3"
+    ],
+    "pmid": "35648190",
+    "quotes": [
+      {
+        "quote": "6-Deoxypenciclovir Famciclovir metabolite Oxidation Penciclovir and 8-oxo-6-deoxypenciclovir formation, activation to active metabolite, also XOR substrate",
+        "supports": "direct"
+      },
+      {
+        "quote": "Famciclovir Antiviral, prodrug of penciclovir, 2-aminopurine derivative Oxidation Dideacetylation and 6-oxidation to penciclovir, activation to the active metabolite",
+        "supports": "direct"
+      }
+    ]
+  }
+]
+results_dir: /data/chen/e2e_searching_results/endogenous_metabolite_eval_run_20260419_194100/endogenous_metabolite_eval_eval_endogenous_metabolite_e7be196e

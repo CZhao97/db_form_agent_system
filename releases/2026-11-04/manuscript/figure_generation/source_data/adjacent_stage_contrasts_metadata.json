@@ -1,0 +1,15 @@
+{
+  "input_sha256": {
+    "figure_generation/source_data/repeated500_candidate_clusters.csv": "f45178150d7950b0ec10e0903978ae8ae3501f27c791779f9d2d27a8ceb795f7",
+    "source_data/solid_evidence_20261017/table_inputs/ablation_labels6000.csv": "21e9947c2098a23ce48f82bbfc2bd02e5b49f31f7394dfc1d8825e85020bf1f9",
+    "figure_generation/source_data/repeated_contrasts.csv": "d5c506e32312d04501b431750b9bead637a5ebc6804fcde8d915bfe5effe57e8"
+  },
+  "numpy_version": "1.26.4",
+  "rng": "PCG64",
+  "bootstrap_replicates": 20000,
+  "existing_contrasts_checked": true,
+  "raw_labels_verified": 6000,
+  "new_contrasts": "Adaptive minus frozen, calculated from paired candidate clusters",
+  "output_sha256": "242ede183250f0a3d442475ce17d39ab0d4950214678d774e238e2a7e693e250",
+  "new_model_calls": 0
+}

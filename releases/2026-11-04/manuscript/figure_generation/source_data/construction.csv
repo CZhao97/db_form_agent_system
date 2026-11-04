@@ -1,0 +1,6 @@
+topic,topic_label,processed_to_200,run_final_evaluated,run_final_confirmed,selected_confirmed,system_confirmed_yield,processed_benchmark_overlap,confirmed_benchmark_overlap,confirmed_nonoverlap,dbcurator_fixed_release_overlap,zero_shot_fixed_release_overlap,zero_shot_benchmark_overlap,processed_pool_benchmark_recall
+blood_exposome,Blood exposome,267,267,200,200,0.7490636704119851,246,189,11,188,162,164,0.7682926829268293
+dbp,DBPs,580,609,207,200,0.3448275862068966,154,115,85,115,106,106,0.7467532467532467
+drug_compounds,Drugs,279,279,200,200,0.7168458781362007,139,124,76,124,198,198,0.8920863309352518
+human_endogenous_metabolites,Endogenous metabolites,269,269,200,200,0.7434944237918215,256,195,5,191,197,197,0.76171875
+microbial_natural_products,Microbial natural products,348,348,200,200,0.5747126436781609,54,50,150,50,123,125,0.9259259259259259
