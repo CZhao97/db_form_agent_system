@@ -6,6 +6,8 @@ the user, guide compound discovery, evidence acquisition and row-level verificat
 
 ## Current manuscript and reproducible snapshot
 
+Public archive is published and DOI-verified. [Publication status and current checks](publication/2026-11-04/README.md).
+
 - [Versioned data and code archive on Zenodo](https://doi.org/10.5281/zenodo.21285739)
 - [2026-11-04 snapshot](releases/2026-11-04/README.md)
 - [Main manuscript](releases/2026-11-04/manuscript/DB_Curator_main.pdf)

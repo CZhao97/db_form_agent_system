@@ -1,0 +1,71 @@
+{
+  "github": {
+    "url": "https://github.com/CZhao97/db_form_agent_system",
+    "commit": "efc13756fc76020ac6c92b84a71dd6dd673fb99d",
+    "branch": "main",
+    "visibility": "private",
+    "snapshot": "releases/2026-11-04"
+  },
+  "zenodo": {
+    "doi": "10.5281/zenodo.21285739",
+    "url": "https://zenodo.org/records/21285739",
+    "published": true,
+    "public_record_status": 200,
+    "public_doi_status": 200,
+    "files": [
+      {
+        "id": "9077b552-0470-4007-87e5-07a734370fec",
+        "filename": "DB_Curator_data_code_20261104.zip",
+        "filesize": 19601345,
+        "checksum": "6de7577bf31f36c62da64884f56da1d8",
+        "links": {
+          "self": "https://zenodo.org/api/records/21285739/files/9077b552-0470-4007-87e5-07a734370fec",
+          "download": "https://zenodo.org/api/records/21285739/draft/files/DB_Curator_data_code_20261104.zip/content"
+        }
+      },
+      {
+        "id": "ae8bf5d4-6fb7-4c1d-8c76-9374e862597f",
+        "filename": "DB_Curator_main.pdf",
+        "filesize": 983738,
+        "checksum": "41b94127b92beaabc1801c5c8b8e154b",
+        "links": {
+          "self": "https://zenodo.org/api/records/21285739/files/ae8bf5d4-6fb7-4c1d-8c76-9374e862597f",
+          "download": "https://zenodo.org/api/records/21285739/draft/files/DB_Curator_main.pdf/content"
+        }
+      },
+      {
+        "id": "8f7e45b9-0786-4677-86b3-d9b0a64c4f3c",
+        "filename": "RELEASE_README.md",
+        "filesize": 2530,
+        "checksum": "ca3bf5cb9f7d9e20b83b8654726ad481",
+        "links": {
+          "self": "https://zenodo.org/api/records/21285739/files/8f7e45b9-0786-4677-86b3-d9b0a64c4f3c",
+          "download": "https://zenodo.org/api/records/21285739/draft/files/RELEASE_README.md/content"
+        }
+      },
+      {
+        "id": "2511968a-2bef-4a97-9114-bee5076c0a69",
+        "filename": "SHA256SUMS.txt",
+        "filesize": 354,
+        "checksum": "e20aca7989072a99f16798183c72fa8f",
+        "links": {
+          "self": "https://zenodo.org/api/records/21285739/files/2511968a-2bef-4a97-9114-bee5076c0a69",
+          "download": "https://zenodo.org/api/records/21285739/draft/files/SHA256SUMS.txt/content"
+        }
+      },
+      {
+        "id": "a35ab334-cb17-4ca9-944a-cc7a6fd9c9be",
+        "filename": "DB_Curator_SI.pdf",
+        "filesize": 1007353,
+        "checksum": "0138b71596afc10862953ab72da9fa37",
+        "links": {
+          "self": "https://zenodo.org/api/records/21285739/files/a35ab334-cb17-4ca9-944a-cc7a6fd9c9be",
+          "download": "https://zenodo.org/api/records/21285739/draft/files/DB_Curator_SI.pdf/content"
+        }
+      }
+    ]
+  },
+  "offline_checks": "endpoint, reference counts, recall tables, five recall tests and figure generation passed",
+  "secrets_scan": "no findings in allowlisted snapshot",
+  "validation_report_note": "The validation report inside the frozen Zenodo ZIP predates public archive activation. Current publication access and PDF hashes are recorded in this publication status and the current GitHub validation report."
+}

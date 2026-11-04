@@ -1,0 +1,130 @@
+{
+  "status": "pass",
+  "documents": {
+    "DB_Curator_main": {
+      "pages": 27,
+      "sha256": "941e0a056f5a6ba7d67454e7721f4cef1aac7c6d6fa3dcb1471a89f8e10ef93f"
+    },
+    "DB_Curator_SI": {
+      "pages": 15,
+      "sha256": "f917a1d7d95751b1a147e5ea40e889e0d18ddaeeeb731be879173b045317caf1"
+    }
+  },
+  "abstract_words": 133,
+  "main_words_excluding_abstract_methods_legends_tables": 2906,
+  "main_figures": 6,
+  "main_tables": 0,
+  "display_items": 6,
+  "figure_outputs_hash_checked": 44,
+  "figure_inputs_unchanged": true,
+  "workshop_figure1_exports_hash_checked": 3,
+  "workshop_figure1_source_sha256": "7125db01af67b5fee1b2d360103ce14434433cc8247da9779175c73556d95c17",
+  "paper_existence": {
+    "true": 7624,
+    "false": 23,
+    "unresolved": 0
+  },
+  "benchmark_paper_citations": 7647,
+  "source_located_citations": 7246,
+  "validation_model_calls": 0,
+  "historical_labels_archived": true,
+  "designated_case_replacements": 69,
+  "semicolon_free_authored_prose": true,
+  "original_punctuation_preserved_in_quoted_sentences": true,
+  "verbatim_quote_semicolons": 1,
+  "expert_review_blinding": "with system labels hidden from the reviewer, across all four cohorts",
+  "author_actions": [],
+  "manual_publication_identities_remaining": 0,
+  "public_access_check": [
+    {
+      "url": "https://api.github.com/repos/CZhao97/db_form_agent_system",
+      "status": 404,
+      "final_url": "https://api.github.com/repos/CZhao97/db_form_agent_system",
+      "checked_utc": "2026-11-04T19:42:04.963137+00:00",
+      "access_note": "Development repository remains private. Public code/data are supplied through Zenodo."
+    },
+    {
+      "url": "https://zenodo.org/api/records/21285739",
+      "status": 200,
+      "final_url": "https://zenodo.org/api/records/21285739",
+      "checked_utc": "2026-11-04T19:42:05.942272+00:00",
+      "access_right": "open",
+      "doi": "10.5281/zenodo.21285739",
+      "files": [
+        {
+          "key": "RELEASE_README.md",
+          "size": 2530,
+          "checksum": "md5:ca3bf5cb9f7d9e20b83b8654726ad481"
+        },
+        {
+          "key": "SHA256SUMS.txt",
+          "size": 354,
+          "checksum": "md5:e20aca7989072a99f16798183c72fa8f"
+        },
+        {
+          "key": "DB_Curator_SI.pdf",
+          "size": 1007353,
+          "checksum": "md5:0138b71596afc10862953ab72da9fa37"
+        },
+        {
+          "key": "DB_Curator_data_code_20261104.zip",
+          "size": 19601345,
+          "checksum": "md5:6de7577bf31f36c62da64884f56da1d8"
+        },
+        {
+          "key": "DB_Curator_main.pdf",
+          "size": 983738,
+          "checksum": "md5:41b94127b92beaabc1801c5c8b8e154b"
+        }
+      ]
+    },
+    {
+      "url": "https://doi.org/10.5281/zenodo.21285739",
+      "status": 200,
+      "final_url": "https://zenodo.org/records/21285739",
+      "checked_utc": "2026-11-04T19:42:07.120221+00:00"
+    },
+    {
+      "url": "https://zenodo.org/records/21285739/files/SHA256SUMS.txt?download=1",
+      "status": 200,
+      "final_url": "https://zenodo.org/records/21285739/files/SHA256SUMS.txt?download=1",
+      "checked_utc": "2026-11-04T19:42:07.661639+00:00",
+      "checksum_file_matches_local": true
+    }
+  ],
+  "consolidated_results": {
+    "candidates": 1887,
+    "confirmed": 975,
+    "complete_tokens": 1887,
+    "complete_runtime": 1887,
+    "literature_references": 7647,
+    "real_literature": 7624,
+    "incorrect_literature": 23,
+    "unresolved_literature": 0,
+    "literature_existence_percent": 99.6992284556035,
+    "source_located_references": 7246,
+    "confirmed_references": 4169,
+    "confirmed_located": 3964,
+    "confirmed_false": 22,
+    "candidates_with_incorrect_references": 15,
+    "confirmed_candidates_with_incorrect_references": 14,
+    "reviewed_instances": 402,
+    "reviewed_real": 378,
+    "reviewed_false": 23,
+    "reviewed_excluded": 1,
+    "books_and_chapters_included": 2,
+    "quote_checks_not_upgraded_by_existence": true
+  },
+  "construction_processed_pool_review": {
+    "topic": "all",
+    "processed": 359,
+    "retained": 250,
+    "nonconfirmed": 109,
+    "TP": 241,
+    "FP": 9,
+    "FN": 2,
+    "TN": 107,
+    "precision": 0.964,
+    "processed_pool_recall": 0.9917695473251029
+  }
+}

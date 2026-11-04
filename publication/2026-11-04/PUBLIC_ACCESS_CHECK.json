@@ -1,0 +1,57 @@
+[
+  {
+    "url": "https://api.github.com/repos/CZhao97/db_form_agent_system",
+    "status": 404,
+    "final_url": "https://api.github.com/repos/CZhao97/db_form_agent_system",
+    "checked_utc": "2026-11-04T19:42:04.963137+00:00",
+    "access_note": "Development repository remains private. Public code/data are supplied through Zenodo."
+  },
+  {
+    "url": "https://zenodo.org/api/records/21285739",
+    "status": 200,
+    "final_url": "https://zenodo.org/api/records/21285739",
+    "checked_utc": "2026-11-04T19:42:05.942272+00:00",
+    "access_right": "open",
+    "doi": "10.5281/zenodo.21285739",
+    "files": [
+      {
+        "key": "RELEASE_README.md",
+        "size": 2530,
+        "checksum": "md5:ca3bf5cb9f7d9e20b83b8654726ad481"
+      },
+      {
+        "key": "SHA256SUMS.txt",
+        "size": 354,
+        "checksum": "md5:e20aca7989072a99f16798183c72fa8f"
+      },
+      {
+        "key": "DB_Curator_SI.pdf",
+        "size": 1007353,
+        "checksum": "md5:0138b71596afc10862953ab72da9fa37"
+      },
+      {
+        "key": "DB_Curator_data_code_20261104.zip",
+        "size": 19601345,
+        "checksum": "md5:6de7577bf31f36c62da64884f56da1d8"
+      },
+      {
+        "key": "DB_Curator_main.pdf",
+        "size": 983738,
+        "checksum": "md5:41b94127b92beaabc1801c5c8b8e154b"
+      }
+    ]
+  },
+  {
+    "url": "https://doi.org/10.5281/zenodo.21285739",
+    "status": 200,
+    "final_url": "https://zenodo.org/records/21285739",
+    "checked_utc": "2026-11-04T19:42:07.120221+00:00"
+  },
+  {
+    "url": "https://zenodo.org/records/21285739/files/SHA256SUMS.txt?download=1",
+    "status": 200,
+    "final_url": "https://zenodo.org/records/21285739/files/SHA256SUMS.txt?download=1",
+    "checked_utc": "2026-11-04T19:42:07.661639+00:00",
+    "checksum_file_matches_local": true
+  }
+]
